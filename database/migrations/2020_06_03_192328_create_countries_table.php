@@ -23,8 +23,8 @@ class CreateCountriesTable extends Migration
             $table->string('cca3', 3);
             $table->string('region', 255);
             $table->string('subregion', 255)->nullable();
-            $table->string('lat')->nullable();
-            $table->string('lng')->nullable();
+            $table->double('lat')->nullable();
+            $table->double('lng')->nullable();
             $table->string('flag', 255)->nullable();
             $table->timestamps();
             $table->softDeletes();
