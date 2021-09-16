@@ -2,21 +2,20 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 
-class Exhibition extends Model
+class Country extends Model
 {
-    use HasFactory, SoftDeletes;
+    use SoftDeletes;
 
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'exhibitions';
+    protected $table = 'countries';
     protected $primaryKey = 'uuid';
 
     /**
@@ -33,7 +32,6 @@ class Exhibition extends Model
      */
     protected $casts = [
         'uuid' => 'uuid',
-        'museum_uuid' => 'uuid',
     ];
 
     /**
@@ -42,9 +40,26 @@ class Exhibition extends Model
      * @var array
      */
     protected $dates = [
-        'began_at',
-        'ended_at',
         'deleted_at',
+    ];
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name_common_eng',
+        'name_common_fra',
+        'name_official_eng',
+        'name_official_fra',
+        'cca2',
+        'cca3',
+        'region',
+        'subregion',
+        'lat',
+        'lng',
+        'flag',
     ];
 
     /**
@@ -59,19 +74,15 @@ class Exhibition extends Model
         'laravel_through_key',
     ];
 
-    /**
-     * The attributes that are mass assignable.
+	/**
+     * Get the route key for the model.
      *
-     * @var array
+     * @return string
      */
-    protected $fillable = [
-        'museum_uuid',
-        'title',
-        'began_at',
-        'ended_at',
-        'description',
-        'link',
-    ];
+    public function getRouteKeyName()
+    {
+        return 'uuid';
+    }
 
     /**
      * Boot the Model.
@@ -86,14 +97,14 @@ class Exhibition extends Model
     }
 
     /**
-     * Get all the exhibitions for a specific museum.
+     * Get all the museums for a specific country.
      */
-    public function inMuseum()
+    public function hasMuseums()
     {
-        return $this->belongsTo(
+        return $this->hasMany(
             'App\Models\Museum',
-            'museum_uuid',
-            'uuid'
+            'country_cca3',
+            'cca3'
         );
     }
 }

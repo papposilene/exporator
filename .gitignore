@@ -24,6 +24,7 @@ run/var
 storage/*.key
 storage/*.index
 storage/search/*.index
+storage/seeders/*.json
 .env
 .env.backup
 Homestead.yaml

@@ -14,8 +14,16 @@ class CreateMuseumsTable extends Migration
     public function up()
     {
         Schema::create('museums', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('uuid')->primary();
+            $table->string('name', 255);
+            $table->text('address');
+            $table->double('lat');
+            $table->double('lon');
+            $table->string('link', 255);
+            $table->uuid('country_uuid');
+            $table->foreign('country_uuid')->references('uuid')->on('countries');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

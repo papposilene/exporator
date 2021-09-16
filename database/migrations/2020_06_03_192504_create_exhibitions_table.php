@@ -14,8 +14,16 @@ class CreateExhibitionsTable extends Migration
     public function up()
     {
         Schema::create('exhibitions', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('uuid')->primary();
+            $table->uuid('museum_uuid');
+            $table->foreign('museum_uuid')->references('uuid')->on('museums');
+            $table->string('title', 255);
+            $table->date('began_at');
+            $table->date('ended_at');
+            $table->text('description');
+            $table->string('link', 255);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
