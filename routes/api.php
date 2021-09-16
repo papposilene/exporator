@@ -17,3 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::prefix('1.1')->namespace('API')->group(function () {
+    // Museums
+    Route::get('/museums', 'MuseumController@index')->name('api.museum.index');
+    Route::get('/museum/{slug}', 'MuseumController@show')->name('api.museum.show');
+
+    // Exhibitions
+    Route::get('/exhibitions', 'ExhibitionController@index')->name('api.exhibition.index');
+    Route::get('/exhibition/{slug}', 'ExhibitionController@show')->name('api.exhibition.show');
+});

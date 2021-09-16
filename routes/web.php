@@ -13,10 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->namespace('Backend')->group(function () {
+    // Museums
+    Route::get('/museums', 'MuseumController@index')->name('api.museum.index');
+    Route::get('/museum/{uuid}', 'MuseumController@show')->name('api.museum.show');
+
+    // Exhibitions
+    Route::get('/exhibitions', 'ExhibitionController@index')->name('api.exhibition.index');
+    Route::get('/exhibition/{uuid}', 'ExhibitionController@show')->name('api.exhibition.show');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::view('/{path?}', 'app')->where('path', '.*')->name('nuxt');
