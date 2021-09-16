@@ -1,11 +1,13 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\Models\Country;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
-class CountriesSeeder extends Seeder
+class CountrySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -18,7 +20,7 @@ class CountriesSeeder extends Seeder
         DB::table('countries')->delete();
 
         // Countries https://github.com/mledoze/countries/blob/master/countries.json
-        $countriesFile = Storage::get('storage/seeders/countries.json');
+        $countriesFile = Storage::disk('install')->get('countries.json');
         $countriesData = json_decode($countriesFile);
         foreach ($countriesData as $data)
         {
