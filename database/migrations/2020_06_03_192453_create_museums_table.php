@@ -21,8 +21,8 @@ class CreateMuseumsTable extends Migration
             $table->double('lat');
             $table->double('lon');
             $table->string('link', 255);
-            $table->uuid('country_uuid');
-            $table->foreign('country_uuid')->references('uuid')->on('countries');
+            $table->uuid('country_cca3');
+            $table->foreign('country_cca3')->references('cca3')->on('countries');
             $table->timestamps();
             $table->softDeletes();
         });

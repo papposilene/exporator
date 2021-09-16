@@ -20,7 +20,7 @@ class CreateCountriesTable extends Migration
             $table->string('name_official_eng', 255);
             $table->string('name_official_fra', 255);
             $table->string('cca2', 2);
-            $table->string('cca3', 3);
+            $table->string('cca3', 3)->index();
             $table->string('region', 255);
             $table->string('subregion', 255)->nullable();
             $table->double('lat')->nullable();
