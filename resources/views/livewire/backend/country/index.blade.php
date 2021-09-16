@@ -9,13 +9,13 @@
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
         {{ $countries->links() }}
         <div class="p-5">
-            <table class="w-full p-5 table-fixed text-gray-700 dark:text-gray-400">
+            <table class="w-full p-5 table-fixed">
                 <thead>
                     <tr>
                         <th class="w-1/12 text-center">@ucfirst(__('app.iteration'))</th>
-                        <th class="w-4/12 text-center">@ucfirst(__('app.countries'))</th>
-                        <th class="w-1/12 text-center">@ucfirst(__('app.museums'))</th>
-                        <th class="w-1/12 text-center">@ucfirst(__('app.actions'))</th>
+                        <th class="w-7/12 text-center">@ucfirst(__('app.countries'))</th>
+                        <th class="w-2/12 text-center">@ucfirst(__('app.museums'))</th>
+                        <th class="w-2/12 text-center">@ucfirst(__('app.actions'))</th>
                     </tr>
                 </thead>
                 <tbody>
