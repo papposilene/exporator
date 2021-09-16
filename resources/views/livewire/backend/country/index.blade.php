@@ -1,11 +1,12 @@
-<div class="flex flex-row w-full px-4 md:px-0 md:mt-8 mb-16 text-gray-800 leading-normal">
-    <!-- Table: Territories -->
-    <div class="w-full bg-gray-800 border border-gray-800 rounded shadow">
-        <div class="border-b border-gray-800 p-3">
-            <nav aria-label="Breadcrumb" class="font-bold uppercase text-gray-700 dark:text-gray-400">
-                {{ __('app.list_of', ['name' => __('app.countries')]) }}
-            </nav>
-        </div>
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('app.list_of', ['name' => __('app.countries')]) }}
+        </h2>
+    </x-slot>
+
+    <div>
+        <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
         {{ $countries->links() }}
         <div class="p-5">
             <table class="w-full p-5 table-fixed text-gray-700 dark:text-gray-400">
@@ -44,5 +45,4 @@
         </div>
         {{ $countries->links() }}
     </div>
-    <!-- /Table: Territories -->
-</div>
+</x-app-layout>
