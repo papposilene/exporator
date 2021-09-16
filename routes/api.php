@@ -3,6 +3,10 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\API\CountryController;
+use App\Http\Controllers\API\ExhibitionController;
+use App\Http\Controllers\API\MuseumController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,12 +22,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::prefix('1.1')->namespace('API')->group(function () {
+Route::prefix('1.1')->group(function () {
+    // Countries
+    Route::get('/countries', [CountryController::class, 'index'])->name('api.country.index');
+    Route::get('/countries/{cca3}', [CountryController::class, 'show'])->name('api.country.show');
+
     // Museums
-    Route::get('/museums', 'MuseumController@index')->name('api.museum.index');
-    Route::get('/museum/{slug}', 'MuseumController@show')->name('api.museum.show');
+    Route::get('/museums', [MuseumController::class, 'index'])->name('api.museum.index');
+    Route::get('/museum/{slug}', [MuseumController::class, 'show'])->name('api.museum.show');
 
     // Exhibitions
-    Route::get('/exhibitions', 'ExhibitionController@index')->name('api.exhibition.index');
-    Route::get('/exhibition/{slug}', 'ExhibitionController@show')->name('api.exhibition.show');
+    Route::get('/exhibitions', [ExhibitionController::class, 'index'])->name('api.exhibition.index');
+    Route::get('/exhibition/{slug}', [ExhibitionController::class, 'show'])->name('api.exhibition.show');
 });

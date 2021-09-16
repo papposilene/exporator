@@ -66,6 +66,7 @@ class Exhibition extends Model
      */
     protected $fillable = [
         'museum_uuid',
+        'slug',
         'title',
         'began_at',
         'ended_at',

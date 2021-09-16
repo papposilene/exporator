@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\MuseumResource;
 use App\Models\Museum;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class MuseumController extends Controller
      */
     public function index()
     {
-        //
+        return MuseumResource::collection(Museum::paginate(25));
     }
 
     /**

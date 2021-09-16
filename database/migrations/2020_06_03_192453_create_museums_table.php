@@ -15,6 +15,7 @@ class CreateMuseumsTable extends Migration
     {
         Schema::create('museums', function (Blueprint $table) {
             $table->uuid('uuid')->primary();
+            $table->string('slug', 255);
             $table->string('name', 255);
             $table->text('address');
             $table->double('lat');

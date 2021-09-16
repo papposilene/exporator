@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\ExhibitionResource;
-use App\Models\Exhibition;
+use App\Models\Country;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
-class ExhibitionController extends Controller
+class CountryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +17,7 @@ class ExhibitionController extends Controller
      */
     public function index()
     {
-        return ExhibitionResource::collection(Exhibition::paginate(25));
+        //
     }
 
     /**
@@ -45,10 +44,10 @@ class ExhibitionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Exhibition  $exhibition
+     * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function show(Exhibition $exhibition)
+    public function show(Country $country)
     {
         //
     }
@@ -56,10 +55,10 @@ class ExhibitionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Exhibition  $exhibition
+     * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function edit(Exhibition $exhibition)
+    public function edit(Country $country)
     {
         //
     }
@@ -68,10 +67,10 @@ class ExhibitionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Exhibition  $exhibition
+     * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Exhibition $exhibition)
+    public function update(Request $request, Country $country)
     {
         //
     }
@@ -79,10 +78,10 @@ class ExhibitionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Exhibition  $exhibition
+     * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Exhibition $exhibition)
+    public function destroy(Country $country)
     {
         //
     }
