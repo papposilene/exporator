@@ -74,6 +74,8 @@ return [
     |
     */
 
+    'path' => 'admin',
+
     'prefix' => '',
 
     'domain' => null,

@@ -17,7 +17,8 @@ class CountryController extends Controller
      */
     public function index()
     {
-        $countries = Country::withCount('hasMuseums')->orderBy('hasmuseums_count', 'desc')->paginate(25);
+        $countries = Country::withCount('hasMuseums')->orderBy('has_museums_count', 'desc')->paginate(25);
+        return view('livewire.backend.country.index')->with(['countries']);
     }
 
     /**
