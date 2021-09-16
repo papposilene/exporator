@@ -34,7 +34,7 @@ class CountrySeeder extends Seeder
                 'region'            => $data->region,
                 'subregion'         => $data->subregion,
                 'lat'               => $data->latlng[0],
-                'lng'               => $data->latlng[1],
+                'lon'               => $data->latlng[1],
                 'flag'              => $data->flag,
 			]);
         }

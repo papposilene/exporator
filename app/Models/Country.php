@@ -58,7 +58,7 @@ class Country extends Model
         'region',
         'subregion',
         'lat',
-        'lng',
+        'lon',
         'flag',
     ];
 

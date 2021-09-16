@@ -48,9 +48,9 @@ class CountryController extends Controller
      * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function show(Country $country)
+    public function show($cca3)
     {
-        return new CountryResource(Country::findOrFail($country));
+        return new CountryResource(Country::where('cca3', $cca3)->firstOrFail());
     }
 
     /**
