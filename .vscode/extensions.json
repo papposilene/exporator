@@ -1,0 +1,15 @@
+{
+  "recommendations": [
+    "bmewburn.vscode-intelephense-client",
+    "dbaeumer.vscode-eslint",
+    "drewbourne.vscode-remark-lint",
+    "esbenp.prettier-vscode",
+    "stylelint.vscode-stylelint",
+    "editorconfig.editorconfig",
+    "bradlc.vscode-tailwindcss",
+    "ms-azuretools.vscode-docker",
+    "ahinkle.laravel-model-snippets",
+    "ryannaddy.laravel-artisan",
+    "mikestead.dotenv"
+  ]
+}
