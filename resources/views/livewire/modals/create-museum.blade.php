@@ -31,11 +31,11 @@
 
 <script>
 document.addEventListener('livewire:load', function () {
-    const button = document.getElementById('modalOpenCreateMuseum')
-    const closebutton = document.getElementById('modalCloseCreateMuseum')
-    const modal = document.getElementById('modalWindowCreateMuseum')
+    const modalOpenCreateMuseum = document.getElementById('modalOpenCreateMuseum')
+    const modalCloseCreateMuseum = document.getElementById('modalCloseCreateMuseum')
+    const modalWindowCreateMuseum = document.getElementById('modalWindowCreateMuseum')
 
-    button.addEventListener('click',()=>modal.classList.add('scale-100'))
-    closebutton.addEventListener('click',()=>modal.classList.remove('scale-100'))
+    modalOpenCreateMuseum.addEventListener('click',()=>modalWindowCreateMuseum.classList.add('scale-100'))
+    modalCloseCreateMuseum.addEventListener('click',()=>modalWindowCreateMuseum.classList.remove('scale-100'))
 })
 </script>
