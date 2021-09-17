@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Country;
+namespace App\Http\Livewire\Museum;
 
 use App\Models\Museum;
 use Livewire\Component;
@@ -20,7 +20,7 @@ class ListMuseum extends Component
 
     public function render()
     {
-        return view('livewire.country.list-museum', [
+        return view('livewire.museum.list-museum', [
             'museums' => Museum::withCount('hasExhibitions')->where('name', 'like', '%'.$this->search.'%')->orderBy('has_exhibitions_count', 'desc')->paginate(25),
         ]);
     }
