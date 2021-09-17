@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Livewire\Country\ListCountry;
+use App\Http\Livewire\Country\ShowCountry;
 use App\Http\Controllers\Backend\ExhibitionController;
 use App\Http\Controllers\Backend\MuseumController;
 
@@ -22,7 +23,7 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function
 
     // Countries
     Route::get('/countries', ListCountry::class)->name('admin.country.index');
-    Route::get('/countries/{cca3}', [CountryController::class, 'show'])->name('admin.country.show');
+    Route::get('/country/{cca3}', ShowCountry::class)->name('admin.country.show');
 
     // Museums
     Route::get('/museums', [MuseumController::class, 'index'])->name('admin.museum.index');
