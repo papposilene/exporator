@@ -1,14 +1,13 @@
 <div>
     <x-slot name="header">
-        <livewire:modals.import-museum />
-        <livewire:modals.create-museum />
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             @ucfirst(__('app.list_of', ['name' => __('app.museums')]))
         </h2>
-
     </x-slot>
 
     <div>
+        <livewire:modals.import-museum />
+        <livewire:modals.create-museum />
         <div class="max-w-7xl mx-auto py-5 sm:px-6 lg:px-8">
             {{ $museums->links() }}
             <div class="py-5">
