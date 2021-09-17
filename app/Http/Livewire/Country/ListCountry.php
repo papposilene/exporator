@@ -6,11 +6,11 @@ use App\Models\Country;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class Index extends Component
+class ListCountry extends Component
 {
     use WithPagination;
 
-    protected $queryString = ['search'];
+    //protected $queryString = ['search'];
     public $search = '';
 
     public function updatingSearch()
@@ -20,7 +20,7 @@ class Index extends Component
 
     public function render()
     {
-        return view('livewire.backend.country.index', [
+        return view('livewire.country.list-country', [
             'countries' => Country::withCount('hasMuseums')->where('name_common_fra', 'like', '%'.$this->search.'%')->orderBy('has_museums_count', 'desc')->paginate(25),
         ]);
     }

@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Backend\CountryController;
+use App\Http\Livewire\Country\ListCountry;
 use App\Http\Controllers\Backend\ExhibitionController;
 use App\Http\Controllers\Backend\MuseumController;
 
@@ -21,7 +21,7 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function
     Route::view('/dashboard', 'app')->name('dashboard');
 
     // Countries
-    Route::get('/countries', CountryIndex::class)->name('admin.country.index');
+    Route::get('/countries', ListCountry::class)->name('admin.country.index');
     Route::get('/countries/{cca3}', [CountryController::class, 'show'])->name('admin.country.show');
 
     // Museums
