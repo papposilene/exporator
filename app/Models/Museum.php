@@ -65,6 +65,7 @@ class Museum extends Model
     protected $fillable = [
         'slug',
         'name',
+        'is_open',
         'address',
         'lat',
         'lon',

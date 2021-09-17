@@ -14,8 +14,10 @@ return [
     */
 
     'actions' => 'actions',
-    'iteration' => '#',
+
     'countries' => 'pays',
+    'iteration' => '#',
+    'flags' => '🏳️',
     'museums' => 'musées',
     'exhibitions' => 'expositions',
 

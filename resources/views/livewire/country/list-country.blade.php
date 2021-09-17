@@ -1,7 +1,7 @@
 <div>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('app.list_of', ['name' => __('app.countries')]) }}
+            @ucfirst(__('app.list_of', ['name' => __('app.countries')]))
         </h2>
     </x-slot>
 
@@ -13,7 +13,8 @@
                 <thead>
                     <tr>
                         <th class="w-1/12 text-center">@ucfirst(__('app.iteration'))</th>
-                        <th class="w-7/12 text-center">@ucfirst(__('app.countries'))</th>
+                        <th class="w-1/12 text-center">@ucfirst(__('app.flags'))</th>
+                        <th class="w-6/12 text-center">@ucfirst(__('app.countries'))</th>
                         <th class="w-2/12 text-center">@ucfirst(__('app.museums'))</th>
                         <th class="w-2/12 text-center">@ucfirst(__('app.actions'))</th>
                     </tr>
@@ -22,6 +23,7 @@
                     @foreach($countries as $country)
                     <tr class="h-12 w-12 p-4">
                         <td class="text-center">{{ $loop->iteration }}</td>
+                        <td class="text-center">{{ $country->flag }}</td>
                         <td>
                             <a href="{{ route('admin.country.show', ['cca3' => $country->cca3]) }}"
                                 title="{{ $country->name_common_fra }}" aria-label="{{ $country->name_common_fra }}">
