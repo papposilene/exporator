@@ -19,6 +19,7 @@ return [
     'iteration' => '#',
     'flags' => '🏳️',
     'museums' => 'musées',
+    'nothing' => 'ici, il n’y à rien à afficher...',
     'exhibitions' => 'expositions',
 
     // Placeholders

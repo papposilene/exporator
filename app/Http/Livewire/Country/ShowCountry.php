@@ -14,6 +14,11 @@ class ShowCountry extends Component
     public $cca3;
     public $search = '';
 
+    public function mount($cca3)
+    {
+        $this->country = Country::where('cca3', $this->cca3)->withCount('hasMuseums')->firstOrFail();
+    }
+
     public function updatingSearch()
     {
         $this->resetPage();
@@ -22,7 +27,7 @@ class ShowCountry extends Component
     public function render()
     {
         return view('livewire.country.show-country', [
-            'country' => Country::where('cca3', $this->cca3)->firstOrFail(),
+            'country' => $this->country,
         ]);
     }
 }

@@ -33,7 +33,6 @@ class Museum extends Model
      */
     protected $casts = [
         'uuid' => 'uuid',
-        'country_uuid' => 'uuid',
     ];
 
     /**
