@@ -4,8 +4,10 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Livewire\Country\ListCountry;
 use App\Http\Livewire\Country\ShowCountry;
-use App\Http\Controllers\Backend\ExhibitionController;
-use App\Http\Controllers\Backend\MuseumController;
+use App\Http\Livewire\Exhibition\ListExhibition;
+use App\Http\Livewire\Exhibition\ShowExhibition;
+use App\Http\Livewire\Museum\ListMuseum;
+use App\Http\Livewire\Museum\ShowMuseum;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,12 +28,12 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function
     Route::get('/country/{cca3}', ShowCountry::class)->name('admin.country.show');
 
     // Museums
-    Route::get('/museums', [MuseumController::class, 'index'])->name('admin.museum.index');
-    Route::get('/museum/{slug}', [MuseumController::class, 'show'])->name('admin.museum.show');
+    Route::get('/museums', ListMuseum::class)->name('admin.museum.index');
+    Route::get('/museum/{slug}', ShowMuseum::class)->name('admin.museum.show');
 
     // Exhibitions
-    Route::get('/exhibitions', [ExhibitionController::class, 'index'])->name('admin.exhibition.index');
-    Route::get('/exhibition/{slug}', [ExhibitionController::class, 'show'])->name('admin.exhibition.show');
+    Route::get('/exhibitions', ListExhibition::class)->name('admin.exhibition.index');
+    Route::get('/exhibition/{slug}', ShowExhibition::class)->name('admin.exhibition.show');
 });
 
 
