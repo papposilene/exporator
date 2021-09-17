@@ -8,13 +8,20 @@
     <div>
         <div class="max-w-7xl mx-auto py-5 sm:px-6 lg:px-8">
             <ul class="inline-flex space-x-4 w-full">
-                <li class="flex-initial bg-gray-300 rounded p-2">{{ $country->flag }}</li>
-                <li class="flex-initial bg-gray-300 rounded p-2">{{ $country->name_common_fra }}</li>
-                <li class="flex-initial bg-gray-300 rounded p-2">{{ $country->name_official_fra }}</li>
-                <li class="flex-initial bg-gray-300 rounded p-2">@uppercase($country->cca2)</li>
-                <li class="flex-initial bg-gray-300 rounded p-2">@uppercase($country->cca3)</li>
-                <li class="flex-initial bg-gray-300 rounded p-2">{{ $country->region }}</li>
-                <li class="flex-initial bg-gray-300 rounded p-2">{{ $country->subregion }}</li>
+                <li class="flex-initial bg-gray-300 rounded p-2"
+                    title="@ucfirst(__('app.flag'))">{{ $country->flag }}</li>
+                <li class="flex-initial bg-gray-300 rounded p-2"
+                    title="@ucfirst(__('app.name_common'))">{{ $country->name_common_fra }}</li>
+                <li class="flex-initial bg-gray-300 rounded p-2"
+                    title="@ucfirst(__('app.name_official'))">{{ $country->name_official_fra }}</li>
+                <li class="flex-initial bg-gray-300 rounded p-2"
+                    title="@ucfirst(__('app.cca2'))">@uppercase($country->cca2)</li>
+                <li class="flex-initial bg-gray-300 rounded p-2"
+                    title="@ucfirst(__('app.cca3'))">@uppercase($country->cca3)</li>
+                <li class="flex-initial bg-gray-300 rounded p-2"
+                    title="@ucfirst(__('app.region'))">{{ $country->region }}</li>
+                <li class="flex-initial bg-gray-300 rounded p-2"
+                    title="@ucfirst(__('app.subregion'))">{{ $country->subregion }}</li>
             </ul>
         </div>
     </div>
