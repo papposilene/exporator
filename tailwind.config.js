@@ -9,13 +9,22 @@ module.exports = {
         './resources/views/**/*.blade.php',
     ],
 
+    darkMode: 'class',
+
     theme: {
         extend: {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
+            backgroundColor: ['active'],
+            borderRadius: ['active', 'hover', 'focus'],
         },
     },
 
-    plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
+    plugins: [
+        require('@tailwindcss/aspect-ratio'),
+        require('@tailwindcss/forms'),
+        require('@tailwindcss/line-clamp'),
+        require('@tailwindcss/typography'),
+    ],
 };
