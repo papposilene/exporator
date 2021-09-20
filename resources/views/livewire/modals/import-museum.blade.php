@@ -13,7 +13,7 @@
         <!-- Modal -->
         <div class="bg-white w-1/2 h-1/2 p-12">
             <!-- Close modal button-->
-            <button id="modalCloseImportMuseum" type="button" class="focus:outline-none">
+            <button id="modalCloseImportMuseum" type="button" class="focus:outline-none float-right">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -21,7 +21,8 @@
                 </svg>
             </button>
             <!-- Modal content -->
-            <form method="POST" action="{{ route('admin.museum.import') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('admin.museum.import') }}" enctype="multipart/form-data"
+                class="flex w-full">
                 @csrf
 
                 <div>
