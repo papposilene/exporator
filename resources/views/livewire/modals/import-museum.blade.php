@@ -22,27 +22,24 @@
             </button>
             <!-- Modal content -->
             <form method="POST" action="{{ route('admin.museum.import') }}" enctype="multipart/form-data"
-                class="flex w-full">
+                class="overscroll-auto flex flex-col w-full">
                 @csrf
 
-                <div>
-                    <p class="text-justify">
-                        @ucfirst(__('app.import'))
-                    </p>
-                    <ol>
-                        <li>@ucfirst(__('app.slug'))</li>
-                        <li>@ucfirst(__('app.name'))</li>
-                        <li>@ucfirst(__('app.address'))</li>
-                        <li>@ucfirst(__('app.city'))</li>
-                        <li>@ucfirst(__('app.cca3'))</li>
-                        <li>@ucfirst(__('app.latitude'))</li>
-                        <li>@ucfirst(__('app.longitude'))</li>
-                        <li>@ucfirst(__('app.link'))</li>
+                <div class="flex items-center mb-5">
+                    <ol class="flex flex-wrap space-x-2 m-2 list-decimal list-inside">
+                        <li class="flex-auto bg-green-300 m-2 p-2 rounded">@ucfirst(__('app.slug')) ;</li>
+                        <li class="flex-auto bg-red-300 m-2 p-2 rounded">@ucfirst(__('app.name')) ;</li>
+                        <li class="flex-auto bg-red-300 m-2 p-2 rounded">@ucfirst(__('app.open')) ;</li>
+                        <li class="flex-auto bg-red-300 m-2 p-2 rounded">@ucfirst(__('app.address')) ;</li>
+                        <li class="flex-auto bg-red-300 m-2 p-2 rounded">@ucfirst(__('app.city')) ;</li>
+                        <li class="flex-auto bg-red-300 m-2 p-2 rounded"><a href="https://fr.wikipedia.org/wiki/ISO_3166-1" target="_blank" rel="noopener">@ucfirst(__('app.cca3'))</a> ;</li>
+                        <li class="flex-auto bg-red-300 m-2 p-2 rounded">@ucfirst(__('app.latitude')) ;</li>
+                        <li class="flex-auto bg-red-300 m-2 p-2 rounded">@ucfirst(__('app.longitude')) ;</li>
+                        <li class="flex-initial bg-green-300 m-2 p-2 rounded">@ucfirst(__('app.link')).</li>
                     </ol>
                 </div>
 
-                <div>
-                    <x-jet-label for="file" value="@ucfirst(__('app.file'))" />
+                <div class="flex items-center">
                     <x-jet-input id="file" class="block mt-1 w-full" type="file" name="file" required autofocus />
                 </div>
 

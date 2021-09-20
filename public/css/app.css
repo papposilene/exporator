@@ -1103,6 +1103,9 @@ select {
 .float-right {
 	float: right;
 }
+.m-2 {
+	margin: 0.5rem;
+}
 .mx-auto {
 	margin-left: auto;
 	margin-right: auto;
@@ -1178,6 +1181,9 @@ select {
 }
 .-mt-px {
 	margin-top: -1px;
+}
+.mb-5 {
+	margin-bottom: 1.25rem;
 }
 .block {
 	display: block;
@@ -1314,6 +1320,9 @@ select {
 .flex-initial {
 	flex: 0 1 auto;
 }
+.flex-auto {
+	flex: 1 1 auto;
+}
 .flex-shrink-0 {
 	flex-shrink: 0;
 }
@@ -1366,6 +1375,9 @@ select {
 }
 .list-disc {
 	list-style-type: disc;
+}
+.list-decimal {
+	list-style-type: decimal;
 }
 .grid-cols-6 {
 	grid-template-columns: repeat(6, minmax(0, 1fr));
@@ -1420,6 +1432,11 @@ select {
 	margin-right: calc(1rem * var(--tw-space-x-reverse));
 	margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
 }
+.space-x-2 > :not([hidden]) ~ :not([hidden]) {
+	--tw-space-x-reverse: 0;
+	margin-right: calc(0.5rem * var(--tw-space-x-reverse));
+	margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
+}
 .overflow-hidden {
 	overflow: hidden;
 }
@@ -1428,6 +1445,10 @@ select {
 }
 .overflow-y-hidden {
 	overflow-y: hidden;
+}
+.overscroll-auto {
+	-ms-scroll-chaining: chained;
+	    overscroll-behavior: auto;
 }
 .truncate {
 	overflow: hidden;
@@ -1565,6 +1586,14 @@ select {
 .bg-gray-300 {
 	--tw-bg-opacity: 1;
 	background-color: rgba(209, 213, 219, var(--tw-bg-opacity));
+}
+.bg-green-300 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(110, 231, 183, var(--tw-bg-opacity));
+}
+.bg-red-300 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(252, 165, 165, var(--tw-bg-opacity));
 }
 .bg-opacity-25 {
 	--tw-bg-opacity: 0.25;
@@ -1736,6 +1765,9 @@ select {
 }
 .font-semibold {
 	font-weight: 600;
+}
+.font-black {
+	font-weight: 900;
 }
 .uppercase {
 	text-transform: uppercase;
