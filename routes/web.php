@@ -30,12 +30,12 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function
 
     // Museums
     Route::get('/museums', ListMuseum::class)->name('admin.museum.index');
-    Route::get('/museums/import', [MuseumController::class, 'import'])->name('admin.museum.import');
+    Route::post('/museums/import', [MuseumController::class, 'import'])->name('admin.museum.import');
     Route::get('/museum/{slug}', ShowMuseum::class)->name('admin.museum.show');
 
     // Exhibitions
     Route::get('/exhibitions', ListExhibition::class)->name('admin.exhibition.index');
-    Route::get('/museums/import', [ExhibitionController::class, 'import'])->name('admin.museum.import');
+    Route::post('/museums/import', [ExhibitionController::class, 'import'])->name('admin.museum.import');
     Route::get('/exhibition/{slug}', ShowExhibition::class)->name('admin.exhibition.show');
 });
 
