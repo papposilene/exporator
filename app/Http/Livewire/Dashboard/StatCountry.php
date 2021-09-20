@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Backend;
+namespace App\Http\Livewire\Dashboard;
 
 use App\Models\Country;
 use Livewire\Component;
@@ -11,7 +11,7 @@ class StatCountry extends Component
     {
         $ountries = Country::count();
 
-        return view('livewire.backend.stat-country',
+        return view('livewire.dashboard.stat-country',
             compact('countries')
         );
     }

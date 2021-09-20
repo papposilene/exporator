@@ -6,8 +6,8 @@
     </x-slot>
 
     <div class="py-12">
-        <livewire:backend.stat-country />
-        <livewire:backend.stat-museum />
-        <livewire:backend.stat-exhibition />
+        <livewire:dashboard.stat-country />
+        <livewire:dashboard.stat-museum />
+        <livewire:dashboard.stat-exhibition />
     </div>
 </div>
