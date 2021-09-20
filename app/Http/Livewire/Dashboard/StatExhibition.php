@@ -9,6 +9,10 @@ class StatExhibition extends Component
 {
     public function render()
     {
-        return view('livewire.dashboard.stat-exhibition');
+        $exhibitions = Exhibition::count();
+
+        return view('livewire.dashboard.stat-exhibition',
+            compact('exhibitions')
+        );
     }
 }

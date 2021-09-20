@@ -9,6 +9,10 @@ class StatMuseum extends Component
 {
     public function render()
     {
-        return view('livewire.dashboard.stat-museum');
+        $museums = Museum::count();
+
+        return view('livewire.dashboard.stat-museum',
+            compact('museums')
+        );
     }
 }
