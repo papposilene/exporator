@@ -26,6 +26,12 @@
                 @csrf
 
                 <div>
+                    <p class="text-justify">
+                        @ucfirst(__('app.import'))
+                    </p>
+                </div>
+
+                <div>
                     <x-jet-label for="file" value="@ucfirst(__('app.file'))" />
                     <x-jet-input id="file" class="block mt-1 w-full" type="file" name="file" required autofocus />
                 </div>

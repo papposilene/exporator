@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ImportMuseumRequest;
+use App\Imports\MuseumsImport;
 use App\Models\Museum;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Maatwebsite\Excel\Facades\Excel;
 
 class MuseumController extends Controller
 {
@@ -39,6 +42,21 @@ class MuseumController extends Controller
     public function store(Request $request)
     {
         //
+    }
+
+    /**
+     * Import a file for creating a new resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function import(ImportMuseumRequest $request)
+    {
+        $validated = $request->validated();
+
+        Excel::import(new MuseumsImport, request()->file('file'));
+
+        return redirect('/')->with('success', 'All good!');
     }
 
     /**
