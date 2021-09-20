@@ -2,6 +2,7 @@
 
 namespace App\Imports;
 
+use App\Models\Country;
 use App\Models\Museum;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
@@ -20,17 +21,19 @@ class MuseumsImport implements ToModel, WithBatchInserts, WithChunkReading, With
     */
     public function model(array $row)
     {
+        $slug = Str::slug($row['name'], '-');
+        $country = Country::where('cca3', strtolower($row['country']))->firstOrFail();
+
         return new Museum([
-            'slug' => Str::slug($row['name'], '-'),
+            'slug' => $slug,
             'name' => $row['name'],
-            'is_open' => $row['is_open'],
+            'is_open' => (bool) $row['is_open'],
             'address' => $row['address'],
             'city' => $row['city'],
-            'country_cca3' => $row['country'],
+            'country_cca3' => $country,
             'lat' => $row['latitude'],
             'lon' => $row['longitude'],
             'link' => $row['link'],
-
         ]);
     }
 
