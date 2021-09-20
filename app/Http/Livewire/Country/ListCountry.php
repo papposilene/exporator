@@ -20,12 +20,14 @@ class ListCountry extends Component
 
     public function render()
     {
-        return view('livewire.country.list-country', [
-            'countries' => Country::withCount('hasMuseums')
-                ->where('name_common_fra', 'like', '%'.$this->search.'%')
-                ->orderBy('has_museums_count', 'desc')
-                ->orderBy('name_common_fra', 'asc')
-                ->paginate(25),
-        ]);
+        $countries = Country::withCount('hasMuseums')
+            ->where('name_common_fra', 'like', '%'.$this->search.'%')
+            ->orderBy('has_museums_count', 'desc')
+            ->orderBy('name_common_fra', 'asc')
+            ->paginate(25);
+
+        return view('livewire.country.list-country',
+            compact('countries')
+        );
     }
 }
