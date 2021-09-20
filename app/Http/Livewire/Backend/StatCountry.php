@@ -9,6 +9,10 @@ class StatCountry extends Component
 {
     public function render()
     {
-        return view('livewire.backend.stat-country');
+        $ountries = Country::all();
+
+        return view('livewire.backend.stat-country',
+            compact('countries')
+        );
     }
 }
