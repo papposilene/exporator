@@ -25,10 +25,12 @@ class MuseumsImport implements ToModel, WithBatchInserts, WithChunkReading, With
             'name' => $row['name'],
             'is_open' => $row['is_open'],
             'address' => $row['address'],
+            'city' => $row['city'],
+            'country_cca3' => $row['country'],
             'lat' => $row['latitude'],
             'lon' => $row['longitude'],
             'link' => $row['link'],
-            'country_uuid' => $row['country'],
+
         ]);
     }
 
@@ -47,7 +49,6 @@ class MuseumsImport implements ToModel, WithBatchInserts, WithChunkReading, With
         return [
             '*.name' => Rule::in(['unique:museums,name']),
             '*.is_open' => Rule::in(['boolean']),
-            '*.address' => Rule::in(['date_format:d/m/Y']),
             '*.lat' => Rule::in(['date_format:d/m/Y']),
             '*.lon' => Rule::in(['date_format:d/m/Y']),
             '*.link' => Rule::in(['url']),

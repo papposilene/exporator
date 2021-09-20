@@ -66,10 +66,11 @@ class Museum extends Model
         'name',
         'is_open',
         'address',
+        'city',
+        'country_cca3',
         'lat',
         'lon',
         'link',
-        'country_uuid',
     ];
 
     /**
