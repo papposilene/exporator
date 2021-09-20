@@ -35,7 +35,7 @@ document.addEventListener('livewire:load', function () {
     const modalCloseImportMuseum = document.getElementById('modalCloseImportMuseum')
     const modalWindowImportMuseum = document.getElementById('modalWindowImportMuseum')
 
-    modalOpenImportMuseum.addEventListener('click',()=>modalWindowImportMuseum.classList.add('scale-100'))
-    modalCloseImportMuseum.addEventListener('click',()=>modalWindowImportMuseum.classList.remove('scale-100'))
+    modalOpenImportMuseum.addEventListener('click',()=>modalWindowImportMuseum.classList.remove('scale-0'))
+    modalCloseImportMuseum.addEventListener('click',()=>modalWindowImportMuseum.classList.add('scale-0'))
 })
 </script>
