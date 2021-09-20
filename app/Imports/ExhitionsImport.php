@@ -46,6 +46,7 @@ class ExhitionsImport implements ToModel, WithBatchInserts, WithChunkReading, Wi
             '*.title' => Rule::in(['unique:exhibitions,title']),
             '*.began_at' => Rule::in(['date_format:d/m/Y']),
             '*.ended_at' => Rule::in(['date_format:d/m/Y']),
+            '*.link' => Rule::in(['url']),
         ];
     }
 }

@@ -50,7 +50,7 @@ class MuseumsImport implements ToModel, WithBatchInserts, WithChunkReading, With
             '*.address' => Rule::in(['date_format:d/m/Y']),
             '*.lat' => Rule::in(['date_format:d/m/Y']),
             '*.lon' => Rule::in(['date_format:d/m/Y']),
-            '*.link' => Rule::in(['date_format:d/m/Y']),
+            '*.link' => Rule::in(['url']),
             '*.country' => Rule::in(['date_format:d/m/Y']),
         ];
     }
