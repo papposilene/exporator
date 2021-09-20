@@ -5,10 +5,11 @@ namespace App\Policies;
 use App\Models\Museum;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Laravel\Jetstream\HasTeams;
 
 class MuseumPolicy
 {
-    use HandlesAuthorization;
+    use HandlesAuthorization, hasTeamPermission;
 
     /**
      * Determine whether the user can view any models.
@@ -41,7 +42,7 @@ class MuseumPolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->hasTeamPermission($server->team, 'server:update');
     }
 
     /**
@@ -53,7 +54,7 @@ class MuseumPolicy
      */
     public function update(User $user, Museum $museum)
     {
-        //
+        return $user->hasTeamPermission($server->team, 'server:update');
     }
 
     /**
@@ -65,7 +66,7 @@ class MuseumPolicy
      */
     public function delete(User $user, Museum $museum)
     {
-        //
+        return $user->hasTeamPermission($server->team, 'server:update');
     }
 
     /**
@@ -77,7 +78,7 @@ class MuseumPolicy
      */
     public function restore(User $user, Museum $museum)
     {
-        //
+        return $user->hasTeamPermission($server->team, 'server:update');
     }
 
     /**
