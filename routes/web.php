@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Livewire\Dashboard;
+use App\Http\Livewire\Dashboard\Dashboard;
 use App\Http\Controllers\Backend\ExhibitionController;
 use App\Http\Controllers\Backend\MuseumController;
 use App\Http\Livewire\Country\ListCountry;
