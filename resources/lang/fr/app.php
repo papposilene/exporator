@@ -14,6 +14,8 @@ return [
     */
 
     'actions' => 'actions',
+    'address' => 'adresse postale',
+    'city' => 'ville',
     'cca2' => 'code ISO 3166-1 alpha-2 du pays',
     'cca3' => 'code ISO 3166-1 alpha-3 du pays',
     'country' => 'pays',
@@ -24,6 +26,8 @@ return [
     'file' => 'fichier à importer',
     'flag' => 'drapeau du pays',
     'flags' => '🏳️',
+    'latitude' => 'latitude',
+    'longitude' => 'longitude',
     'museum' => 'musée',
     'museums' => 'musées',
     'name_common' => 'dénomination courante du pays',
@@ -33,8 +37,7 @@ return [
     'exhibitions' => 'expositions',
     'region' => 'continent du pays',
     'subregion' => 'sous-continent du pays',
-
-
+    'slug' => 'identifiant textuel',
 
     // Placeholders
     'create_one' => 'ajouter un :what',

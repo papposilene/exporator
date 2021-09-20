@@ -29,6 +29,16 @@
                     <p class="text-justify">
                         @ucfirst(__('app.import'))
                     </p>
+                    <ol>
+                        <li>@ucfirst(__('app.slug'))</li>
+                        <li>@ucfirst(__('app.name'))</li>
+                        <li>@ucfirst(__('app.address'))</li>
+                        <li>@ucfirst(__('app.city'))</li>
+                        <li>@ucfirst(__('app.cca3'))</li>
+                        <li>@ucfirst(__('app.latitude'))</li>
+                        <li>@ucfirst(__('app.longitude'))</li>
+                        <li>@ucfirst(__('app.link'))</li>
+                    </ol>
                 </div>
 
                 <div>
