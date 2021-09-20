@@ -22,11 +22,15 @@
             </button>
             <!-- Modal content -->
             <form method="POST" action="{{ route('admin.museum.import') }}" enctype="multipart/form-data"
-                class="overscroll-auto flex flex-col w-full">
+                class="overflow-auto flex flex-col w-full">
                 @csrf
 
                 <div class="flex mb-5">
                     <table class="table-auto w-full">
+                        <caption class="grid-cols-2 mb-2 p-2">
+                            <span class="bg-green-200 mr-2 p-2">@ucfirst(__('app.optional'))</span>
+                            <span class="bg-red-200 ml-2 p-2">@ucfirst(__('app.mandatory'))</span>
+                        </caption>
                         <thead>
                             <tr>
                                 <th>@ucfirst(__('app.columns'))</th>
@@ -34,39 +38,47 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="border-b border-black border-dashed">
-                                <td class="bg-green-300 font-bold text-center">slug</td>
+                            <tr class="border-b border-black border-dashed"
+                                title="@ucfirst(__('app.optional'))">
+                                <td class="bg-green-200 font-bold text-center">slug</td>
                                 <td class="p-2">@ucfirst(__('app.slug'))</td>
                             </tr>
-                            <tr class="border-b border-black border-dashed">
-                                <td class="bg-red-300 font-bold text-center">name</td>
+                            <tr class="border-b border-black border-dashed"
+                                title="@ucfirst(__('app.mandatory'))">
+                                <td class="bg-red-200 font-bold text-center">name</td>
                                 <td class="p-2">@ucfirst(__('app.name'))</td>
                             </tr>
-                            <tr class="border-b border-black border-dashed">
-                                <td class="bg-red-300 font-bold text-center">open</td>
+                            <tr class="border-b border-black border-dashed"
+                                title="@ucfirst(__('app.mandatory'))">
+                                <td class="bg-red-200 font-bold text-center">open</td>
                                 <td class="p-2">@ucfirst(__('app.is_open'))</td>
                             </tr>
-                            <tr class="border-b border-black border-dashed">
-                                <td class="bg-red-300 font-bold text-center">address</td>
+                            <tr class="border-b border-black border-dashed"
+                                title="@ucfirst(__('app.mandatory'))">
+                                <td class="bg-red-200 font-bold text-center">address</td>
                                 <td class="p-2">@ucfirst(__('app.address'))</td>
                             </tr>
-                            <tr class="border-b border-black border-dashed">
-                                <td class="bg-red-300 font-bold text-center">city</td>
+                            <tr class="border-b border-black border-dashed"
+                                title="@ucfirst(__('app.mandatory'))">
+                                <td class="bg-red-200 font-bold text-center">city</td>
                                 <td class="p-2">@ucfirst(__('app.city'))</td>
                             </tr>
-                            <tr class="border-b border-black border-dashed">
-                                <td class="bg-red-300 font-bold text-center">country</td>
+                            <tr class="border-b border-black border-dashed"
+                                title="@ucfirst(__('app.mandatory'))">
+                                <td class="bg-red-200 font-bold text-center">country</td>
                                 <td class="p-2"><a href="https://fr.wikipedia.org/wiki/ISO_3166-1" target="_blank" rel="noopener">@ucfirst(__('app.cca3'))</a></td>
                             </tr>
-                            <tr class="border-b border-black border-dashed">
-                                <td class="bg-red-300 font-bold text-center">latitude</td>
+                            <tr>
+                                <td class="bg-red-200 font-bold text-center">latitude</td>
                                 <td class="p-2" rowspan="2">@ucfirst(__('app.geolocalisation'))</td>
                             </tr>
-                            <tr class="border-b border-black border-dashed">
-                                <td class="bg-red-300 font-bold text-center">longitude</td>
+                            <tr class="border-b border-black border-dashed"
+                                title="@ucfirst(__('app.mandatory'))">
+                                <td class="bg-red-200 font-bold text-center">longitude</td>
                             </tr>
-                            <tr class="border-b border-black border-dashed">
-                                <td class="bg-green-300 font-bold text-center">link</td>
+                            <tr class="border-b border-black border-dashed"
+                                title="@ucfirst(__('app.optional'))">
+                                <td class="bg-green-200 font-bold text-center">link</td>
                                 <td class="p-2">@ucfirst(__('app.link'))</td>
                             </tr>
                         </tbody>
