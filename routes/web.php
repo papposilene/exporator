@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\ExhibitionController;
 use App\Http\Controllers\Backend\MuseumController;
 use App\Http\Livewire\Country\ListCountry;
@@ -22,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::view('/dashboard', 'app')->name('dashboard');
+    Route::view('/dashboard', [AdminController::class, 'index'])->name('dashboard');
 
     // Countries
     Route::get('/countries', ListCountry::class)->name('admin.country.index');
