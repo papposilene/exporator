@@ -1,13 +1,14 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Backend\ExhibitionController;
+use App\Http\Controllers\Backend\MuseumController;
 use App\Http\Livewire\Country\ListCountry;
 use App\Http\Livewire\Country\ShowCountry;
 use App\Http\Livewire\Exhibition\ListExhibition;
 use App\Http\Livewire\Exhibition\ShowExhibition;
 use App\Http\Livewire\Museum\ListMuseum;
 use App\Http\Livewire\Museum\ShowMuseum;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,10 +30,12 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function
 
     // Museums
     Route::get('/museums', ListMuseum::class)->name('admin.museum.index');
+    Route::get('/museums/import', [MuseumController::class, 'import'])->name('admin.museum.import');
     Route::get('/museum/{slug}', ShowMuseum::class)->name('admin.museum.show');
 
     // Exhibitions
     Route::get('/exhibitions', ListExhibition::class)->name('admin.exhibition.index');
+    Route::get('/museums/import', [ExhibitionController::class, 'import'])->name('admin.museum.import');
     Route::get('/exhibition/{slug}', ShowExhibition::class)->name('admin.exhibition.show');
 });
 
