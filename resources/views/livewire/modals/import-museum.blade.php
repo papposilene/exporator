@@ -25,18 +25,52 @@
                 class="overscroll-auto flex flex-col w-full">
                 @csrf
 
-                <div class="flex items-center mb-5">
-                    <ol class="flex flex-wrap space-x-2 m-2 list-decimal list-inside">
-                        <li class="flex-auto bg-green-300 m-2 p-2 rounded">@ucfirst(__('app.slug')) ;</li>
-                        <li class="flex-auto bg-red-300 m-2 p-2 rounded">@ucfirst(__('app.name')) ;</li>
-                        <li class="flex-auto bg-red-300 m-2 p-2 rounded">@ucfirst(__('app.open')) ;</li>
-                        <li class="flex-auto bg-red-300 m-2 p-2 rounded">@ucfirst(__('app.address')) ;</li>
-                        <li class="flex-auto bg-red-300 m-2 p-2 rounded">@ucfirst(__('app.city')) ;</li>
-                        <li class="flex-auto bg-red-300 m-2 p-2 rounded"><a href="https://fr.wikipedia.org/wiki/ISO_3166-1" target="_blank" rel="noopener">@ucfirst(__('app.cca3'))</a> ;</li>
-                        <li class="flex-auto bg-red-300 m-2 p-2 rounded">@ucfirst(__('app.latitude')) ;</li>
-                        <li class="flex-auto bg-red-300 m-2 p-2 rounded">@ucfirst(__('app.longitude')) ;</li>
-                        <li class="flex-initial bg-green-300 m-2 p-2 rounded">@ucfirst(__('app.link')).</li>
-                    </ol>
+                <div class="flex mb-5">
+                    <table class="table-auto w-full">
+                        <thead>
+                            <tr>
+                                <th>@ucfirst(__('app.columns'))</th>
+                                <th>@ucfirst(__('app.details'))</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-black border-dashed">
+                                <td class="bg-green-300 font-bold text-center">slug</td>
+                                <td class="p-2">@ucfirst(__('app.slug'))</td>
+                            </tr>
+                            <tr class="border-b border-black border-dashed">
+                                <td class="bg-red-300 font-bold text-center">name</td>
+                                <td class="p-2">@ucfirst(__('app.name'))</td>
+                            </tr>
+                            <tr class="border-b border-black border-dashed">
+                                <td class="bg-red-300 font-bold text-center">open</td>
+                                <td class="p-2">@ucfirst(__('app.is_open'))</td>
+                            </tr>
+                            <tr class="border-b border-black border-dashed">
+                                <td class="bg-red-300 font-bold text-center">address</td>
+                                <td class="p-2">@ucfirst(__('app.address'))</td>
+                            </tr>
+                            <tr class="border-b border-black border-dashed">
+                                <td class="bg-red-300 font-bold text-center">city</td>
+                                <td class="p-2">@ucfirst(__('app.city'))</td>
+                            </tr>
+                            <tr class="border-b border-black border-dashed">
+                                <td class="bg-red-300 font-bold text-center">country</td>
+                                <td class="p-2"><a href="https://fr.wikipedia.org/wiki/ISO_3166-1" target="_blank" rel="noopener">@ucfirst(__('app.cca3'))</a></td>
+                            </tr>
+                            <tr class="border-b border-black border-dashed">
+                                <td class="bg-red-300 font-bold text-center">latitude</td>
+                                <td class="p-2" rowspan="2">@ucfirst(__('app.geolocalisation'))</td>
+                            </tr>
+                            <tr class="border-b border-black border-dashed">
+                                <td class="bg-red-300 font-bold text-center">longitude</td>
+                            </tr>
+                            <tr class="border-b border-black border-dashed">
+                                <td class="bg-green-300 font-bold text-center">link</td>
+                                <td class="p-2">@ucfirst(__('app.link'))</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
                 <div class="flex items-center">

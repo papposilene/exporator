@@ -1326,6 +1326,9 @@ select {
 .flex-shrink-0 {
 	flex-shrink: 0;
 }
+.table-auto {
+	table-layout: auto;
+}
 .table-fixed {
 	table-layout: fixed;
 }
@@ -1504,6 +1507,9 @@ select {
 .border-r {
 	border-right-width: 1px;
 }
+.border-dashed {
+	border-style: dashed;
+}
 .border-gray-300 {
 	--tw-border-opacity: 1;
 	border-color: rgba(209, 213, 219, var(--tw-border-opacity));
@@ -1526,6 +1532,10 @@ select {
 .border-gray-400 {
 	--tw-border-opacity: 1;
 	border-color: rgba(156, 163, 175, var(--tw-border-opacity));
+}
+.border-black {
+	--tw-border-opacity: 1;
+	border-color: rgba(0, 0, 0, var(--tw-border-opacity));
 }
 .bg-white {
 	--tw-bg-opacity: 1;
@@ -1768,6 +1778,9 @@ select {
 }
 .font-black {
 	font-weight: 900;
+}
+.font-bold {
+	font-weight: 700;
 }
 .uppercase {
 	text-transform: uppercase;
