@@ -9,7 +9,7 @@ class StatCountry extends Component
 {
     public function render()
     {
-        $ountries = Country::all();
+        $ountries = Country::count();
 
         return view('livewire.backend.stat-country',
             compact('countries')
