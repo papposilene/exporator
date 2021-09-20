@@ -2,12 +2,13 @@
 
 namespace App\Http\Livewire\Backend;
 
+use App\Models\Museum;
 use Livewire\Component;
 
-class Museums extends Component
+class StatMuseums extends Component
 {
     public function render()
     {
-        return view('livewire.backend.museums');
+        return view('livewire.backend.stat-museums');
     }
 }
