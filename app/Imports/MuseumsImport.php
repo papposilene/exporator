@@ -52,10 +52,12 @@ class MuseumsImport implements ToModel, WithBatchInserts, WithChunkReading, With
         return [
             '*.name' => Rule::in(['unique:museums,name']),
             '*.is_open' => Rule::in(['boolean']),
+            '*.address' => Rule::in(['string']),
+            '*.city' => Rule::in(['string|max:255']),
             //'*.lat' => Rule::in(['digits_between:1,10']),
             //'*.lon' => Rule::in(['digits_between:1,10']),
             '*.link' => Rule::in(['url']),
-            '*.country' => Rule::in(['date_format:d/m/Y']),
+            '*.country' => Rule::in(['string|min:3|max:3']),
         ];
     }
 }
