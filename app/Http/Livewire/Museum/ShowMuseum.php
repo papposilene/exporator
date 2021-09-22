@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Country;
+namespace App\Http\Livewire\Museum;
 
 use App\Models\Museum;
 use Livewire\Component;
