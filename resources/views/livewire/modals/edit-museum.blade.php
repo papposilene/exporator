@@ -23,9 +23,16 @@
                 class="flex flex-col w-full">
                 @csrf
 
+                <x-forms.input type="hidden" name="uuid" value="{{ $museum->uuid }}" />
+
                 <div class="mt-4">
                     <x-forms.label for="name">@ucfirst(__('app.museum'))</x-forms.label>
                     <x-forms.input id="name" class="block mt-1 w-full" type="text" name="name" required value="{{ $museum->name }}" />
+                </div>
+
+                <div class="mt-4">
+                    <x-forms.label for="slug">@ucfirst(__('app.slug'))</x-forms.label>
+                    <x-forms.input id="slug" class="block mt-1 w-full" type="text" name="slug" required value="{{ $museum->slug }}" />
                 </div>
 
                 <div class="mt-4">
@@ -45,8 +52,14 @@
                     <x-forms.label for="name">@ucfirst(__('app.city'))</x-forms.label>
                     <x-forms.label for="name">@ucfirst(__('app.country'))</x-forms.label>
                     <x-forms.input id="city" class="block mt-1 w-full" type="text" name="city" required value="{{ $museum->city }}" />
-
                     <x-forms.input id="country" class="block mt-1 w-full" type="text" name="country" required value="{{ $museum->inCountry->name_common_fra }}" />
+                </div>
+
+                <div class="grid grid-cols-2 gap-x-4 mt-4">
+                    <x-forms.label for="latitude">@ucfirst(__('app.latitude'))</x-forms.label>
+                    <x-forms.label for="longitude">@ucfirst(__('app.longitude'))</x-forms.label>
+                    <x-forms.input id="latitude" class="block mt-1 w-full" type="text" name="latitude" required value="{{ $museum->lat }}" />
+                    <x-forms.input id="longitude" class="block mt-1 w-full" type="text" name="longitude" required value="{{ $museum->lon }}" />
                 </div>
 
                 <div class="mt-4">

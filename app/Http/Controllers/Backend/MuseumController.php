@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ImportMuseumRequest;
+use App\Http\Requests\UpdateMuseumRequest;
 use App\Imports\MuseumsImport;
 use App\Models\Museum;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -99,9 +100,15 @@ class MuseumController extends Controller
      * @param  \App\Models\Museum  $museum
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Museum $museum)
+    public function update(UpdateMuseumRequest $request, Museum $museum)
     {
-        //
+        $this->authorize('create', Museum::class);
+
+        $validated = $request->validated();
+
+
+
+        return redirect()->route('admin.museum.index')->with('success', 'All good!');
     }
 
     /**
