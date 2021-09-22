@@ -51,5 +51,10 @@ return [
     'create_one' => 'ajouter un :what',
     'import_some' => 'importer des :what',
     'list_of' => 'liste des :name',
+    'numbers_of_countries' => 'nombre total : :count.',
+    'top1_of_countries' => 'Pays le plus référencé : :name.',
+    'numbers_of_museums' => 'nombre total : :count.',
+    'top1_of_museums' => 'Musée le plus référencé : :name.',
+    'numbers_of_exhibitions' => 'nombre total : :count.',
 
 ];

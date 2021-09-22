@@ -10,9 +10,10 @@ class StatMuseum extends Component
     public function render()
     {
         $museums = Museum::count();
+        $top1_of_museums = Museum::withCount('hasExhibitions')->orderBy('has_exhibitions_count', 'desc')->first();
 
         return view('livewire.dashboard.stat-museum',
-            compact('museums')
+            compact('museums', 'top1_of_museums')
         );
     }
 }
