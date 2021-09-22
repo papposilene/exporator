@@ -86,7 +86,7 @@
                 </div>
 
                 <div class="flex items-center">
-                    <x-jet-input id="file" class="block mt-1 w-full" type="file" name="file" required autofocus />
+                    <x-jet-input id="file" class="block mt-1 w-full" type="file" name="datafile" required autofocus />
                 </div>
 
                 <div class="flex items-center justify-end mt-4">

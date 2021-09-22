@@ -52,11 +52,13 @@ class MuseumController extends Controller
      */
     public function import(ImportMuseumRequest $request)
     {
-        $validated = $request->validated();
+        //$validated = $request->validated();
 
-        Excel::import(new MuseumsImport, request()->file('file'));
+        dd($request);
 
-        return redirect('/')->with('success', 'All good!');
+        Excel::import(new MuseumsImport, $request->file('datafile'));
+
+        return redirect()->route('admin.museum.index')->with('success', 'All good!');
     }
 
     /**

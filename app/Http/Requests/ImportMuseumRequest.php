@@ -13,7 +13,7 @@ class ImportMuseumRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return $this->authorize('create', Museum::class);
     }
 
     /**
@@ -24,7 +24,7 @@ class ImportMuseumRequest extends FormRequest
     public function rules()
     {
         return [
-            'file' => 'required|mimes:xls,xlsx,csv,odt',
+            'datafile' => 'required|mimes:xls,xlsx,csv,odt',
         ];
     }
 }
