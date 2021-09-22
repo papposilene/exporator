@@ -9,13 +9,13 @@
         <div class="max-w-7xl mx-auto py-5 sm:px-6 lg:px-8">
             <ul class="inline-flex space-x-4 w-full">
                 <li class="flex-initial bg-gray-300 rounded p-2"
-                    title="@ucfirst(__('app.flag'))">{{ $exhibition->name }}</li>
+                    title="@ucfirst(__('app.flag'))">{{ $museum->name }}</li>
                 <li class="flex-initial bg-gray-300 rounded p-2"
-                    title="@ucfirst(__('app.name_common'))">{{ $exhibition->adress }}</li>
+                    title="@ucfirst(__('app.name_common'))">{{ $museum->address }}</li>
                 <li class="flex-initial bg-gray-300 rounded p-2"
-                    title="@ucfirst(__('app.name_official'))">{{ $exhibition->city }}</li>
+                    title="@ucfirst(__('app.name_official'))">{{ $museum->city }}</li>
                 <li class="flex-initial bg-gray-300 rounded p-2"
-                    title="@ucfirst(__('app.cca2'))">{{ $exhibition->inCountry->name_common_fra }}</li>
+                    title="@ucfirst(__('app.cca2'))">{{ $museum->inCountry->name_common_fra }}</li>
             </ul>
         </div>
     </div>

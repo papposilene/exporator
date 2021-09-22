@@ -87,6 +87,18 @@ class Museum extends Model
     }
 
     /**
+     * Get the country for a specific museum.
+     */
+    public function inCountry()
+    {
+        return $this->belongsTo(
+            'App\Models\Country',
+            'country_cca3',
+            'cca3'
+        );
+    }
+
+    /**
      * Get all the exhibitions for a specific museum.
      */
     public function hasExhibitions()
