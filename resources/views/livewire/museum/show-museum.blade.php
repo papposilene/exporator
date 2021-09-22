@@ -41,14 +41,11 @@
                 </li>
             </ul>
             @if (Auth::user()->can('create', App\Models\Exhibition::class))
-            <ul class="bg-gray-200 list-inside m-5 p-5 w-full">
-                <li title="@ucfirst(__('app.create_one', ['what' => __('app.exhibitions')]))">
-                    <livewire:modals.create-exhibition />
-                </li>
-                <li title="@ucfirst(__('app.import_some', ['what' => __('app.exhibitions')]))">
-                    <livewire:modals.import-exhibition />
-                </li>
-            </ul>
+            <div class="bg-gray-100 list-inside m-5 p-5 w-full">
+                <livewire:modals.edit-museum />
+                <livewire:modals.create-exhibition />
+                <livewire:modals.import-exhibition />
+            </div>
             @endif
         </div>
 
