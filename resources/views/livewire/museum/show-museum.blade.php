@@ -41,11 +41,11 @@
                 </li>
             </ul>
             @if (Auth::user()->can('create', App\Models\Exhibition::class))
-            <div class="bg-gray-100 list-inside m-5 p-5 w-full">
-                <livewire:modals.edit-museum />
-                <livewire:modals.create-exhibition />
-                <livewire:modals.import-exhibition />
-            </div>
+            <ul class="bg-gray-200 list-inside m-5 p-5 w-full">
+                <li><livewire:modals.edit-museum /></li>
+                <li><livewire:modals.create-exhibition /></li>
+                <li><livewire:modals.import-exhibition /></li>
+            </ul>
             @endif
         </div>
 

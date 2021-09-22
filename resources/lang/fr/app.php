@@ -53,6 +53,9 @@ return [
 
     // Placeholders
     'create_one' => 'ajouter un :what',
+    'create_the' => 'ajouter le :what',
+    'edit_one' => 'modifier un :what',
+    'edit_the' => 'modifier le :what',
     'import_some' => 'importer des :what',
     'list_of' => 'liste des :name',
     'numbers_of_countries' => 'nombre total : :count.',
