@@ -32,6 +32,7 @@ class MuseumsImport implements ToModel, SkipsEmptyRows, WithBatchInserts, WithCh
         $is_open = ($row['is_open'] === 'open' ? true : false);
 
         return new Museum([
+            'uuid' => (string) Str::uuid(),
             'slug' => $slug,
             'name' => $row['name'],
             'is_open' => $is_open,

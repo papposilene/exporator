@@ -32,7 +32,7 @@ class Museum extends Model
      * @var array
      */
     protected $casts = [
-        'uuid' => 'uuid',
+        //'uuid' => 'uuid',
     ];
 
     /**
@@ -62,6 +62,7 @@ class Museum extends Model
      * @var array
      */
     protected $fillable = [
+        'uuid',
         'slug',
         'name',
         'is_open',
