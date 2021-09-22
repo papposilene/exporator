@@ -10,6 +10,16 @@
     </x-slot>
 
     <div>
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+
         <div class="max-w-7xl mx-auto py-5 sm:px-6 lg:px-8">
             {{ $museums->links() }}
             <div class="py-5">

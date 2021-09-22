@@ -6,14 +6,20 @@ use App\Models\Country;
 use App\Models\Museum;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
+use Maatwebsite\Excel\Concerns\Importable;
+use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
+use Maatwebsite\Excel\Concerns\SkipsFailures;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
+use Maatwebsite\Excel\Validators\Failure;
 
-class MuseumsImport implements ToModel, WithBatchInserts, WithChunkReading, WithHeadingRow, WithValidation
+class MuseumsImport implements ToModel, SkipsEmptyRows, WithBatchInserts, WithChunkReading, WithHeadingRow, WithValidation
 {
+    use Importable, SkipsFailures;
+
     /**
     * @param array $row
     *
@@ -23,6 +29,8 @@ class MuseumsImport implements ToModel, WithBatchInserts, WithChunkReading, With
     {
         $slug = Str::slug($row['name'], '-');
         $country = Country::where('cca3', strtolower($row['country']))->firstOrFail();
+
+        dd($country);
 
         return new Museum([
             'slug' => $slug,
@@ -54,10 +62,8 @@ class MuseumsImport implements ToModel, WithBatchInserts, WithChunkReading, With
             '*.is_open' => Rule::in(['boolean']),
             '*.address' => Rule::in(['string']),
             '*.city' => Rule::in(['string|max:255']),
-            //'*.lat' => Rule::in(['digits_between:1,10']),
-            //'*.lon' => Rule::in(['digits_between:1,10']),
-            '*.link' => Rule::in(['url']),
             '*.country' => Rule::in(['string|min:3|max:3']),
+            '*.link' => Rule::in(['url']),
         ];
     }
 }

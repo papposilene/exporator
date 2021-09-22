@@ -56,7 +56,21 @@ class MuseumController extends Controller
 
         $validated = $request->validated();
 
-        Excel::import(new MuseumsImport, $request->file('datafile'));
+        try {
+            $import = new MuseumsImport();
+            $import->import($request->file('datafile'));
+        } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+            $failures = $e->failures();
+
+            return redirect()->route('admin.museum.index')->with('errors', $failures);
+
+            /*foreach ($failures as $failure) {
+                $failure->row(); // row that went wrong
+                $failure->attribute(); // either heading key (if using heading row concern) or column index
+                $failure->errors(); // Actual error messages from Laravel validator
+                $failure->values(); // The values of the row that has failed.
+            }*/
+        }
 
         return redirect()->route('admin.museum.index')->with('success', 'All good!');
     }
