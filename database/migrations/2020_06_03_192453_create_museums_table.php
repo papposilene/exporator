@@ -17,7 +17,7 @@ class CreateMuseumsTable extends Migration
             $table->uuid('uuid')->primary();
             $table->string('slug', 255)->unique();
             $table->string('name', 255)->unique();
-            $table->boolean('is_open')->default(true);
+            $table->boolean('status')->default(true);
             $table->text('address');
             $table->text('city');
             $table->uuid('country_cca3');

@@ -16,6 +16,7 @@ return [
     'actions' => 'actions',
     'address' => 'adresse postale',
     'city' => 'ville',
+    'cities' => 'villes',
     'cca2' => 'code ISO 3166-1 alpha-2 du pays',
     'cca3' => 'code ISO 3166-1 alpha-3 du pays',
     'columns' => 'colonnes',
