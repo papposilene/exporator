@@ -1,3 +1,3 @@
 <div>
-    <livewire:dashboard.stat-country />
+    {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
 </div>
