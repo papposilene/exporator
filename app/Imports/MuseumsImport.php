@@ -29,16 +29,15 @@ class MuseumsImport implements ToModel, SkipsEmptyRows, WithBatchInserts, WithCh
     {
         $slug = Str::slug($row['name'], '-');
         $country = Country::where('cca3', strtolower($row['country']))->firstOrFail();
-
-        dd($country);
+        $is_open = ($row['is_open'] === 'open' ? true : false);
 
         return new Museum([
             'slug' => $slug,
             'name' => $row['name'],
-            'is_open' => (bool) $row['is_open'],
+            'is_open' => $is_open,
             'address' => $row['address'],
             'city' => $row['city'],
-            'country_cca3' => $country,
+            'country_cca3' => $country->cca3,
             'lat' => $row['latitude'],
             'lon' => $row['longitude'],
             'link' => $row['link'],
@@ -58,12 +57,30 @@ class MuseumsImport implements ToModel, SkipsEmptyRows, WithBatchInserts, WithCh
     public function rules(): array
     {
         return [
-            '*.name' => Rule::in(['unique:museums,name']),
-            '*.is_open' => Rule::in(['boolean']),
-            '*.address' => Rule::in(['string']),
-            '*.city' => Rule::in(['string|max:255']),
-            '*.country' => Rule::in(['string|min:3|max:3']),
-            '*.link' => Rule::in(['url']),
+            '*.name' => Rule::unique('museums', 'name'),
+            '*.is_open' => [
+                'required',
+                'in:open,close'
+            ],
+            '*.address' => [
+                'required',
+                'string'
+            ],
+            '*.city' => [
+                'required',
+                'string',
+                'max:255',
+            ],
+            '*.country' => [
+                'required',
+                'string',
+                'min:3',
+                'max:3',
+            ],
+            '*.link' => [
+                'nullable',
+                'url',
+            ],
         ];
     }
 }

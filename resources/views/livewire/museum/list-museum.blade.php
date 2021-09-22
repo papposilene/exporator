@@ -16,8 +16,7 @@
             <ul>
                 @foreach ($failures as $failure)
                     <li>
-                        # {{ $failure->row }}. {{ $failure->attribute() }}.<br />
-                        {{ $failure->errors() }}
+                        # {{ $failure }}.
                     </li>
                 @endforeach
             </ul>

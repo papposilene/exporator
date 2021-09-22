@@ -62,14 +62,9 @@ class MuseumController extends Controller
         } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
             $failures = $e->failures();
 
-            return redirect()->route('admin.museum.index', compact($failures));
+            dd($failures);
 
-            /*foreach ($failures as $failure) {
-                $failure->row(); // row that went wrong
-                $failure->attribute(); // either heading key (if using heading row concern) or column index
-                $failure->errors(); // Actual error messages from Laravel validator
-                $failure->values(); // The values of the row that has failed.
-            }*/
+            return redirect()->route('admin.museum.index', compact($failures));
         }
 
         return redirect()->route('admin.museum.index')->with('success', 'All good!');

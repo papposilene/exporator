@@ -26,7 +26,7 @@ return [
     'exhibitions' => 'expositions',
     'export' => 'exporter',
     'import' => 'importer',
-    'is_open' => 'le lieu est-il ouvert ? Si oui, 1. Si non, 0.',
+    'is_open' => 'le lieu est-il ouvert ? Si oui, open. Si non, close.',
     'iteration' => '#',
     'file' => 'fichier à importer',
     'flag' => 'drapeau du pays',
