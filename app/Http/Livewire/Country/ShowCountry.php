@@ -16,7 +16,7 @@ class ShowCountry extends Component
 
     public function mount($cca3)
     {
-        $this->country = Country::where('cca3', $this->cca3)->hasMuseums()->get();
+        $this->country = Country::where('cca3', $this->cca3)->firstOrFail();
     }
 
     public function updatingSearch()
@@ -28,6 +28,7 @@ class ShowCountry extends Component
     {
         return view('livewire.country.show-country', [
             'country' => $this->country,
+            'museums' => $this->country->hasMuseums()->paginate(25),
         ]);
     }
 }

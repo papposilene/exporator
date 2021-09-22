@@ -11,30 +11,28 @@
     </x-slot>
 
     <div>
-        <div class="max-w-7xl mx-auto py-5 sm:px-6 lg:px-8">
-            <ul class="inline-flex space-x-4 w-full">
-                <li class="flex-initial bg-gray-300 rounded p-2"
-                    title="@ucfirst(__('app.flag'))">{{ $country->flag }}</li>
-                <li class="flex-initial bg-gray-300 rounded p-2"
-                    title="@ucfirst(__('app.name_common'))">{{ $country->name_common_fra }}</li>
-                <li class="flex-initial bg-gray-300 rounded p-2"
-                    title="@ucfirst(__('app.name_official'))">{{ $country->name_official_fra }}</li>
-                <li class="flex-initial bg-gray-300 rounded p-2"
-                    title="@ucfirst(__('app.cca2'))">@uppercase($country->cca2)</li>
-                <li class="flex-initial bg-gray-300 rounded p-2"
-                    title="@ucfirst(__('app.cca3'))">@uppercase($country->cca3)</li>
-                <li class="flex-initial bg-gray-300 rounded p-2"
-                    title="@ucfirst(__('app.region'))">{{ $country->region }}</li>
-                <li class="flex-initial bg-gray-300 rounded p-2"
-                    title="@ucfirst(__('app.subregion'))">{{ $country->subregion }}</li>
+        <div class="w-3/12 mx-auto py-5 sm:px-6 lg:px-8 float-left">
+            <ul class="bg-indigo-100 list-inside m-5 p-5 w-full">
+                <li title="@ucfirst(__('app.name_common'))">
+                    <h3 class="font-bold text-2xl mb-5">
+                        {{ $country->flag }} {{ $country->name_common_fra }}
+                    </h3>
+                </li>
+                <li>
+                    <span title="@ucfirst(__('app.name_official'))">{{ $country->name_official_fra }}</span>
+                    (<span title="@ucfirst(__('app.cca2'))">@uppercase($country->cca2)</span>,
+                    <span title="@ucfirst(__('app.cca3'))">@uppercase($country->cca3)</span>).
+                </li>
+                <li>
+                    <span title="@ucfirst(__('app.region'))">{{ $country->region }}</span>,
+                    <span title="@ucfirst(__('app.subregion'))">{{ $country->subregion }}.</span>
+                </li>
             </ul>
         </div>
-    </div>
 
-    @if($country->hasMuseums()->count() > 0)
-    <div>
-        <div class="max-w-7xl mx-auto py-5 sm:px-6 lg:px-8">
-            {{ $country->links() }}
+        @if($museums->count() > 0)
+        <div class="w-9/12 mx-auto py-5 sm:px-6 lg:px-8 float-right">
+            {{ $museums->links() }}
             <div class="py-5">
                 <table class="w-full p-5 table-fixed">
                     <thead>
@@ -47,7 +45,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($country->hasMuseums()->get() as $museum)
+                        @foreach($museums as $museum)
                         <tr class="h-12 w-12 p-4">
                             <td class="text-center">{{ $loop->iteration }}</td>
                             <td class="text-center">{{ $museum->city }}</td>
@@ -64,7 +62,7 @@
                     </tbody>
                 </table>
             </div>
-            {{ $country->hasMuseums()->links() }}
+            {{ $museums->links() }}
         </div>
     </div>
     @else
