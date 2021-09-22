@@ -1960,6 +1960,22 @@ select {
 	--tw-text-opacity: 1;
 	color: rgba(0, 0, 0, var(--tw-text-opacity));
 }
+.text-green-100 {
+	--tw-text-opacity: 1;
+	color: rgba(209, 250, 229, var(--tw-text-opacity));
+}
+.text-red-100 {
+	--tw-text-opacity: 1;
+	color: rgba(254, 226, 226, var(--tw-text-opacity));
+}
+.text-green-900 {
+	--tw-text-opacity: 1;
+	color: rgba(6, 78, 59, var(--tw-text-opacity));
+}
+.text-red-900 {
+	--tw-text-opacity: 1;
+	color: rgba(127, 29, 29, var(--tw-text-opacity));
+}
 .underline {
 	text-decoration: underline;
 }

@@ -39,6 +39,8 @@ return [
     'mandatory' => 'informations obligatoires',
     'museum' => 'musée',
     'museums' => 'musées',
+    'museum_close' => 'musée fermé',
+    'museum_open' => 'musée ouvert',
     'name' => 'dénomination',
     'name_common' => 'dénomination courante du pays',
     'name_official' => 'dénomination officielle du pays',

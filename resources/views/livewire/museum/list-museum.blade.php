@@ -45,7 +45,11 @@
                                 </a>
                             </td>
                             <td class="text-center">
-                                {{ ($museum->status === true ? ucfirst(__('app.open')) : ucfirst(__('app.close'))) }}
+                                @if ($museum->status === 1)
+                                <span class="text-green-900">@ucfirst(__('app.museum_open'))</span>
+                                @else
+                                <span class="text-red-900">@ucfirst(__('app.museum_close'))</span>
+                                @endif
                             </td>
                             <td class="text-center">{{ $museum->hasExhibitions()->count() }}</td>
                         </tr>
