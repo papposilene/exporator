@@ -56,12 +56,12 @@ class CountryAutocomplete extends Component
     {
         $id = $id ?: $this->highlightIndex;
 
-        $account = $this->countries[$id] ?? null;
+        $country = $this->countries[$id] ?? null;
 
-        if ($account) {
+        if ($country) {
             $this->showDropdown = true;
-            $this->query = $account['name'];
-            $this->selectedAccount = $account['id'];
+            $this->query = $country['name'];
+            $this->selectedCountry = $country['id'];
         }
     }
 
