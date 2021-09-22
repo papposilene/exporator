@@ -1,11 +1,8 @@
-<div class="relative">
-    <x-label for="account" class="mb-2">Account Name</x-label>
-
     <div class="relative">
         <input
             type="text"
             class="relative w-full bg-white border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-            placeholder="Search countries..."
+            placeholder="@ucfirst(__('app.search_some', ['what' => __('app.countries')]))"
             wire:model="query"
             wire:click="reset"
             wire:keydown.escape="hideDropdown"
@@ -36,8 +33,7 @@
                     >{{ $country['name_common_fra'] }}</a>
                 @endforeach
             @else
-                <span class="block py-1 px-2 text-sm">No results!</span>
+                <span class="block py-1 px-2 text-sm">@ucfirst(__('app.nothing'))</span>
             @endif
         </div>
     @endif
-</div>

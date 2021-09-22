@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Country;
 
 use App\Models\Country;
 use Livewire\Component;
 
-class CountryAutocomplete extends Component
+class AutocompleteCountry extends Component
 {
     public $query= '';
     public array $countries = [];

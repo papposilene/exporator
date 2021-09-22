@@ -57,6 +57,7 @@ return [
     'edit_one' => 'modifier un :what',
     'edit_the' => 'modifier le :what',
     'import_some' => 'importer des :what',
+    'search_some' => 'rechercher des :what',
     'list_of' => 'liste des :name',
     'numbers_of_countries' => 'nombre total : :count.',
     'top1_of_countries' => 'Pays le plus référencé : :name.',
