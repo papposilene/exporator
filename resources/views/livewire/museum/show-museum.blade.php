@@ -23,7 +23,7 @@
                     <span title="@ucfirst(__('app.city'))">{{ $museum->city }}</span>,
                     <span title="@ucfirst(__('app.country'))">{{ $museum->inCountry->name_common_fra }}</span>.
                 </li>
-                <li title="@ucfirst(__('app.link'))">
+                <li class="mt-5" title="@ucfirst(__('app.link'))">
                     <a href="{{ $museum->link }}" target="_blank" rel="noopener">{{ $museum->link }}</a>
                 </li>
             </ul>
@@ -40,6 +40,16 @@
                     @endif
                 </li>
             </ul>
+            @if (Auth::user()->can('create', App\Models\Exhibition::class))
+            <ul class="bg-red-100 list-inside m-5 p-5 w-full">
+                <li title="@ucfirst(__('app.create_one', ['what' => __('app.exhibitions')]))">
+                    <livewire:modals.create-exhibition />
+                </li>
+                <li title="@ucfirst(__('app.import_some', ['what' => __('app.exhibitions')]))">
+                    <livewire:modals.import-exhibition />
+                </li>
+            </ul>
+            @endif
         </div>
 
         @if($exhibitions->count() > 0)

@@ -3,12 +3,14 @@
 namespace App\Policies;
 
 use App\Models\Exhibition;
+use App\Models\Team;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Laravel\Jetstream\HasTeams;
 
 class ExhibitionPolicy
 {
-    use HandlesAuthorization;
+    use HandlesAuthorization, hasTeams;
 
     /**
      * Determine whether the user can view any models.
@@ -41,7 +43,9 @@ class ExhibitionPolicy
      */
     public function create(User $user)
     {
-        //
+        $team = Team::where('id', $user->current_team_id)->first();
+
+        return $user->hasTeamPermission($team, 'server:update');
     }
 
     /**
@@ -53,7 +57,9 @@ class ExhibitionPolicy
      */
     public function update(User $user, Exhibition $exhibition)
     {
-        //
+        $team = Team::where('id', $user->current_team_id)->first();
+
+        return $user->hasTeamPermission($team, 'server:update');
     }
 
     /**
@@ -65,7 +71,9 @@ class ExhibitionPolicy
      */
     public function delete(User $user, Exhibition $exhibition)
     {
-        //
+        $team = Team::where('id', $user->current_team_id)->first();
+
+        return $user->hasTeamPermission($team, 'server:update');
     }
 
     /**
@@ -77,7 +85,9 @@ class ExhibitionPolicy
      */
     public function restore(User $user, Exhibition $exhibition)
     {
-        //
+        $team = Team::where('id', $user->current_team_id)->first();
+
+        return $user->hasTeamPermission($team, 'server:update');
     }
 
     /**
