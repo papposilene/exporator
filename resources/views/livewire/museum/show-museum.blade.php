@@ -41,7 +41,7 @@
                 </li>
             </ul>
             @if (Auth::user()->can('create', App\Models\Exhibition::class))
-            <ul class="bg-red-100 list-inside m-5 p-5 w-full">
+            <ul class="bg-gray-200 list-inside m-5 p-5 w-full">
                 <li title="@ucfirst(__('app.create_one', ['what' => __('app.exhibitions')]))">
                     <livewire:modals.create-exhibition />
                 </li>
