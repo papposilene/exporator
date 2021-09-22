@@ -103,11 +103,13 @@ class MuseumController extends Controller
      */
     public function update(UpdateMuseumRequest $request, Museum $museum)
     {
-        $this->authorize('create', Museum::class);
+        $this->authorize('update', Museum::class);
 
         $validated = $request->validated();
 
         $country = Country::where('cca3', $request->input('cca3'))->firstOrFail();
+
+        dd($validated);
 
         $museum = Museum::findOrFail($request->uuid);
         $museum->slug = $request->input('slug');

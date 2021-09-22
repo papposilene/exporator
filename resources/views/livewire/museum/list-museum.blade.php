@@ -10,17 +10,17 @@
     </x-slot>
 
     <div>
-        @if ($errors->any())
-        <div class="bg-red-400 border border-red-500 text-black">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endisset
+        <div class="w-9/12 mx-auto py-5 sm:px-6 lg:px-8">
+            @if ($errors->any())
+            <div class="bg-red-400 border border-red-500 py-5 text-black">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
 
-        <div class="max-w-7xl mx-auto py-5 sm:px-6 lg:px-8">
             {{ $museums->links() }}
             <div class="py-5">
                 <table class="w-full p-5 table-fixed">

@@ -30,8 +30,18 @@
             </ul>
         </div>
 
-        @if($museums->count() > 0)
         <div class="w-9/12 mx-auto py-5 sm:px-6 lg:px-8 float-right">
+            @if ($errors->any())
+            <div class="bg-red-400 border border-red-500 py-5 text-black">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+
+            @if($museums->count() > 0)
             {{ $museums->links() }}
             <div class="py-5">
                 <table class="w-full p-5 table-fixed">
@@ -63,13 +73,13 @@
                 </table>
             </div>
             {{ $museums->links() }}
+            @else
+            <div class="max-w-7xl mx-auto py-5 sm:px-6 lg:px-8">
+                <p class="text-center py-10">
+                    @ucfirst(__('app.nothing'))
+                </p>
+            </div>
+            @endif
         </div>
-        @else
-        <div class="max-w-7xl mx-auto py-5 sm:px-6 lg:px-8">
-            <p class="text-center py-10">
-                @ucfirst(__('app.nothing'))
-            </p>
-        </div>
-        @endif
     </div>
 </div>
