@@ -23,7 +23,7 @@ run/var
 .DS_Store
 storage/*.key
 storage/*.index
-storage/laravel-excel
+storage/framework
 storage/search/*.index
 .env
 .env.backup
