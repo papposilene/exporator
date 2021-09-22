@@ -1,8 +1,12 @@
 <div>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            <span>@ucfirst(__('app.list_of', ['name' => __('app.countries')]))</span> /
-            <span>{{ $country->flag }} {{ $country->name_common_fra }}</span>
+            <span>
+                <a href="{{ route('admin.country.index') }}">
+                    @ucfirst(__('app.list_of', ['name' => __('app.countries')]))
+                </a>
+            </span> /
+            <span>{{ $country->name_common_fra }}</span>
         </h2>
     </x-slot>
 
