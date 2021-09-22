@@ -52,9 +52,9 @@ class MuseumController extends Controller
      */
     public function import(ImportMuseumRequest $request)
     {
-        //$validated = $request->validated();
+        $this->authorize('create', Museum::class);
 
-        dd($request);
+        $validated = $request->validated();
 
         Excel::import(new MuseumsImport, $request->file('datafile'));
 
