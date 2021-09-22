@@ -2,6 +2,8 @@
     <h3 class="font-bold text-2xl mb-5">@ucfirst(__('app.museums'))</h3>
     <ol class="list-inside list-disc">
         <li>@ucfirst(__('app.numbers_of_museums', ['count' => $museums]))</li>
+        @isset ($top1_of_museums)
         <li>@ucfirst(__('app.top1_of_museums', ['name' => $top1_of_museums->name]))</li>
+        @endisset
     </ol>
 </div>
