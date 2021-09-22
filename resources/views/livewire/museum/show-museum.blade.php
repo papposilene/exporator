@@ -1,7 +1,8 @@
 <div>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ $museum->name }}
+            <span>@ucfirst(__('app.list_of', ['name' => __('app.museums')]))</span> /
+            <span>{{ $museum->name }}</span>
         </h2>
     </x-slot>
 
