@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::view('/dashboard', ShowDashboard::class)->name('dashboard');
+    Route::get('/dashboard', ShowDashboard::class)->name('dashboard');
 
     // Countries
     Route::get('/countries', ListCountry::class)->name('admin.country.index');
@@ -40,7 +40,5 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function
     Route::post('/exhibitions/import', [ExhibitionController::class, 'import'])->name('admin.exhibition.import');
     Route::get('/exhibition/{slug}', ShowExhibition::class)->name('admin.exhibition.show');
 });
-
-
 
 Route::view('/{path?}', 'app')->where('path', '.*')->name('nuxt');

@@ -1,3 +1,5 @@
 <div>
-    {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
+    <livewire:dashboard.stat-country />
+    <livewire:dashboard.stat-museum />
+    <livewire:dashboard.stat-exhibition />
 </div>
