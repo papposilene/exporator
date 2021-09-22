@@ -30,9 +30,9 @@
 
                 <div class="mt-4">
                     <x-forms.label for="status">@ucfirst(__('app.status'))</x-forms.label>
-                    <x-forms.select id="status" class="block mt-1 w-full" name="status" required />
-                        <option value="true">@ucfisrt(__('app.museum_open'))</option>
-                        <option value="true">@ucfisrt(__('app.museum_close'))</option>
+                    <x-forms.select id="status" class="block mt-1 w-full" name="status" required>
+                        <option value="true" {{ ($museum->status === 1 ? 'selected=true' : '') }}>@ucfirst(__('app.museum_open'))</option>
+                        <option value="false" {{ ($museum->status === 0 ? 'selected=true' : '') }}>@ucfirst(__('app.museum_close'))</option>
                     </x-forms.select>
                 </div>
 
