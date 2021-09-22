@@ -24,18 +24,34 @@
                 @csrf
 
                 <div class="mt-4">
-                    <x-forms.label for="name" value="{{ __('app.museum') }}" />
+                    <x-forms.label for="name">@ucfirst(__('app.museum'))</x-forms.label>
                     <x-forms.input id="name" class="block mt-1 w-full" type="text" name="name" required value="{{ $museum->name }}" />
                 </div>
 
                 <div class="mt-4">
-                    <x-forms.label for="address" value="{{ __('app.address') }}" />
+                    <x-forms.label for="status">@ucfirst(__('app.status'))</x-forms.label>
+                    <x-forms.select id="status" class="block mt-1 w-full" name="status" required />
+                        <option value="true">@ucfisrt(__('app.museum_open'))</option>
+                        <option value="true">@ucfisrt(__('app.museum_close'))</option>
+                    </x-forms.select>
+                </div>
+
+                <div class="mt-4">
+                    <x-forms.label for="address">@ucfirst(__('app.address'))</x-forms.label>
                     <x-forms.textarea id="address" class="block mt-1 w-full" type="text" name="address" required>{{ $museum->address }}</x-forms.textarea>
                 </div>
 
-                <div class="grid grid-cols-2 gap-4 mt-4">
+                <div class="grid grid-cols-2 gap-x-4 mt-4">
+                    <x-forms.label for="name">@ucfirst(__('app.city'))</x-forms.label>
+                    <x-forms.label for="name">@ucfirst(__('app.country'))</x-forms.label>
                     <x-forms.input id="city" class="block mt-1 w-full" type="text" name="city" required value="{{ $museum->city }}" />
-                    <x-forms.input id="country" class="block mt-1 w-full" type="text" name="country" required value="{{ $museum->country_cca3 }}" />
+
+                    <x-forms.input id="country" class="block mt-1 w-full" type="text" name="country" required value="{{ $museum->inCountry->name_common_fra }}" />
+                </div>
+
+                <div class="mt-4">
+                    <x-forms.label for="link">@ucfirst(__('app.link'))</x-forms.label>
+                    <x-forms.input id="link" class="block mt-1 w-full" type="text" name="link" required value="{{ $museum->link }}" />
                 </div>
 
                 <div class="flex items-center justify-end mt-4">
