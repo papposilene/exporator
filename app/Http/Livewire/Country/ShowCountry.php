@@ -16,7 +16,7 @@ class ShowCountry extends Component
 
     public function mount($cca3)
     {
-        $this->country = Country::where('cca3', $this->cca3)->withCount('hasMuseums')->firstOrFail();
+        $this->country = Country::where('cca3', $this->cca3)->hasMuseums()->get();
     }
 
     public function updatingSearch()
