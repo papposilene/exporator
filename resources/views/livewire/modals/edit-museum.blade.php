@@ -24,24 +24,24 @@
                 @csrf
 
                 <div class="mt-4">
-                    <x-jet-label for="name" value="{{ __('app.museum') }}" />
-                    <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" required value="{{ $museum->name }}" />
+                    <x-forms.label for="name" value="{{ __('app.museum') }}" />
+                    <x-forms.input id="name" class="block mt-1 w-full" type="text" name="name" required value="{{ $museum->name }}" />
                 </div>
 
                 <div class="mt-4">
-                    <x-jet-label for="address" value="{{ __('app.address') }}" />
-                    <x-jet-input id="address" class="block mt-1 w-full" type="text" name="address" required value="{{ $museum->address }}" />
+                    <x-forms.label for="address" value="{{ __('app.address') }}" />
+                    <x-forms.textarea id="address" class="block mt-1 w-full" type="text" name="address" required>{{ $museum->address }}</x-forms.textarea>
                 </div>
 
                 <div class="grid grid-cols-2 gap-4 mt-4">
-                    <x-jet-input id="city" class="block mt-1 w-full" type="text" name="city" required value="{{ $museum->city }}" />
-                    <x-jet-input id="country" class="block mt-1 w-full" type="text" name="country" required value="{{ $museum->country_cca3 }}" />
+                    <x-forms.input id="city" class="block mt-1 w-full" type="text" name="city" required value="{{ $museum->city }}" />
+                    <x-forms.input id="country" class="block mt-1 w-full" type="text" name="country" required value="{{ $museum->country_cca3 }}" />
                 </div>
 
                 <div class="flex items-center justify-end mt-4">
-                    <x-jet-button class="ml-4">
+                    <x-forms.button class="ml-4">
                         @ucfirst(__('app.import'))
-                    </x-jet-button>
+                    </x-forms.button>
                 </div>
             </form>
         </div>

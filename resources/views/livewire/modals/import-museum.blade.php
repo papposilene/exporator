@@ -86,13 +86,13 @@
                 </div>
 
                 <div class="flex items-center">
-                    <x-jet-input id="file" class="block mt-1 w-full" type="file" name="datafile" required autofocus />
+                    <x-forms.input id="file" class="block mt-1 w-full" type="file" name="datafile" required autofocus />
                 </div>
 
                 <div class="flex items-center justify-end mt-4">
-                    <x-jet-button class="ml-4">
+                    <x-forms.button class="ml-4">
                         @ucfirst(__('app.import'))
-                    </x-jet-button>
+                    </x-forms.button>
                 </div>
             </form>
         </div>
