@@ -52,16 +52,16 @@ class CountryAutocomplete extends Component
         $this->highlightIndex--;
     }
 
-    public function selectCountry($id = null)
+    public function selectCountry($uuid = null)
     {
-        $id = $id ?: $this->highlightIndex;
+        $uuid = $uuid ?: $this->highlightIndex;
 
-        $country = $this->countries[$id] ?? null;
+        $country = $this->countries[$uuid] ?? null;
 
         if ($country) {
             $this->showDropdown = true;
             $this->query = $country['name'];
-            $this->selectedCountry = $country['id'];
+            $this->selectedCountry = $country['cca3'];
         }
     }
 
