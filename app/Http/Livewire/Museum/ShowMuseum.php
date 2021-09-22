@@ -16,7 +16,7 @@ class ShowMuseum extends Component
 
     public function mount($slug)
     {
-        $this->museum = Museum::where('slug', $this->slug)->withCount('hasExhibitions')->firstOrFail();
+        $this->museum = Museum::where('slug', $this->slug)->firstOrFail();
     }
 
     public function updatingSearch()
@@ -28,6 +28,7 @@ class ShowMuseum extends Component
     {
         return view('livewire.museum.show-museum', [
             'museum' => $this->museum,
+            'exhibitions' => $this->museum->hasExhibitions()->paginate(25),
         ]);
     }
 }

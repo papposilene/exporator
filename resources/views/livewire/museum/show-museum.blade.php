@@ -11,59 +11,73 @@
     </x-slot>
 
     <div>
-        <div class="max-w-7xl mx-auto py-5 sm:px-6 lg:px-8">
-            <ul class="inline-flex space-x-4 w-full">
-                <li class="flex-initial bg-gray-300 rounded p-2"
-                    title="@ucfirst(__('app.flag'))">{{ $museum->name }}</li>
-                <li class="flex-initial bg-gray-300 rounded p-2"
-                    title="@ucfirst(__('app.name_common'))">{{ $museum->address }}</li>
-                <li class="flex-initial bg-gray-300 rounded p-2"
-                    title="@ucfirst(__('app.name_official'))">{{ $museum->city }}</li>
-                <li class="flex-initial bg-gray-300 rounded p-2"
-                    title="@ucfirst(__('app.cca2'))">{{ $museum->inCountry->name_common_fra }}</li>
+        <div class="w-3/12 mx-auto py-5 sm:px-6 lg:px-8 float-left">
+            <ul class="bg-purple-100 list-inside m-5 p-5 w-full">
+                <li title="@ucfirst(__('app.museum'))">
+                    <h3 class="font-bold text-2xl mb-5">
+                        {{ $museum->name }}
+                    </h3>
+                </li>
+                <li title="@ucfirst(__('app.address'))">{{ $museum->address }}</li>
+                <li>
+                    <span title="@ucfirst(__('app.city'))">{{ $museum->city }}</span>,
+                    <span title="@ucfirst(__('app.country'))">{{ $museum->inCountry->name_common_fra }}</span>.
+                </li>
+                <li title="@ucfirst(__('app.link'))">
+                    <a href="{{ $museum->link }}" target="_blank" rel="noopener">{{ $museum->link }}</a>
+                </li>
+            </ul>
+            @if ($museum->status === 1)
+            <ul class="bg-green-100 list-inside m-5 p-5 w-full">
+            @else
+            <ul class="bg-red-100 list-inside m-5 p-5 w-full">
+            @endif
+                <li title="@ucfirst(__('app.is_open'))">
+                    @if ($museum->status === 1)
+                    <span class="text-green-900">@ucfirst(__('app.museum_open')).</span>
+                    @else
+                    <span class="text-red-900">@ucfirst(__('app.museum_close')).</span>
+                    @endif
+                </li>
             </ul>
         </div>
-    </div>
 
-    @if($museum->has_exhibitions_count > 0)
-    <div>
-        <div class="max-w-7xl mx-auto py-5 sm:px-6 lg:px-8">
-
-        <div class="py-5">
-            <table class="w-full p-5 table-fixed">
-                <thead>
-                    <tr>
-                        <th class="w-1/12 text-center">@ucfirst(__('app.iteration'))</th>
-                        <th class="w-6/12 text-center">@ucfirst(__('app.museums'))</th>
-                        <th class="w-2/12 text-center">@ucfirst(__('app.exhibitions'))</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($museum->hasExhibitions() as $exhibition)
-                    <tr class="h-12 w-12 p-4">
-                        <td class="text-center">{{ $loop->iteration }}</td>
-                        <td>
-                            <a href="{{ route('admin.exhibition.show', ['slug' => $exhibition->slug]) }}"
-                                title="{{ $exhibition->title }}" aria-label="{{ $exhibition->title }}">
-                                {{ $exhibition->title }}
-                            </a>
-                        </td>
-                        <td class="text-center">{{ $museum->name }}</td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+        @if($exhibitions->count() > 0)
+        <div class="w-9/12 mx-auto py-5 sm:px-6 lg:px-8">
+            {{ $exhibitions->links() }}
+            <div class="py-5">
+                <table class="w-full p-5 table-fixed">
+                    <thead>
+                        <tr>
+                            <th class="w-1/12 text-center">@ucfirst(__('app.iteration'))</th>
+                            <th class="w-6/12 text-center">@ucfirst(__('app.museums'))</th>
+                            <th class="w-2/12 text-center">@ucfirst(__('app.exhibitions'))</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($museum->hasExhibitions() as $exhibition)
+                        <tr class="h-12 w-12 p-4">
+                            <td class="text-center">{{ $loop->iteration }}</td>
+                            <td>
+                                <a href="{{ route('admin.exhibition.show', ['slug' => $exhibition->slug]) }}"
+                                    title="{{ $exhibition->title }}" aria-label="{{ $exhibition->title }}">
+                                    {{ $exhibition->title }}
+                                </a>
+                            </td>
+                            <td class="text-center">{{ $museum->name }}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            {{ $exhibitions->links() }}
         </div>
-
-        </div>
-    </div>
-    @else
-    <div>
+        @else
         <div class="max-w-7xl mx-auto py-5 sm:px-6 lg:px-8">
             <p class="text-center py-10">
                 @ucfirst(__('app.nothing'))
             </p>
         </div>
+        @endif
     </div>
-    @endif
 </div>

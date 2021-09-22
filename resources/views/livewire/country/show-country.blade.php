@@ -64,14 +64,12 @@
             </div>
             {{ $museums->links() }}
         </div>
-    </div>
-    @else
-    <div>
+        @else
         <div class="max-w-7xl mx-auto py-5 sm:px-6 lg:px-8">
             <p class="text-center py-10">
                 @ucfirst(__('app.nothing'))
             </p>
         </div>
+        @endif
     </div>
-    @endif
 </div>
