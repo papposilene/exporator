@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Livewire\Dashboard\Dashboard;
+
 use App\Http\Controllers\Backend\ExhibitionController;
 use App\Http\Controllers\Backend\MuseumController;
 use App\Http\Livewire\Country\ListCountry;
 use App\Http\Livewire\Country\ShowCountry;
+use App\Http\Livewire\Dashboard\ShowDashboard;
 use App\Http\Livewire\Exhibition\ListExhibition;
 use App\Http\Livewire\Exhibition\ShowExhibition;
 use App\Http\Livewire\Museum\ListMuseum;
@@ -23,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::view('/dashboard', Dashboard::class)->name('dashboard');
+    Route::view('/dashboard', ShowDashboard::class)->name('dashboard');
 
     // Countries
     Route::get('/countries', ListCountry::class)->name('admin.country.index');
