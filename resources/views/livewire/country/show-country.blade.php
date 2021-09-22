@@ -1,7 +1,8 @@
 <div>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ $country->flag }} {{ $country->name_common_fra }}
+            <span>@ucfirst(__('app.list_of', ['name' => __('app.countries')]))</span> /
+            <span>{{ $country->flag }} {{ $country->name_common_fra }}</span>
         </h2>
     </x-slot>
 

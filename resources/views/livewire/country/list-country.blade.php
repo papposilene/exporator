@@ -1,7 +1,7 @@
 <div>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            @ucfirst(__('app.list_of', ['name' => __('app.countries')]))
+            <span>@ucfirst(__('app.list_of', ['name' => __('app.countries')]))</span>
         </h2>
     </x-slot>
 
