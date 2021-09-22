@@ -10,15 +10,19 @@
     </x-slot>
 
     <div>
-        @if ($errors->any())
+        @isset ($failures)
+        @php dd($failures) @endphp
         <div class="bg-red-400 border border-red-500 text-black">
             <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
+                @foreach ($failures as $failure)
+                    <li>
+                        # {{ $failure->row }}. {{ $failure->attribute() }}.<br />
+                        {{ $failure->errors() }}
+                    </li>
                 @endforeach
             </ul>
         </div>
-        @endif
+        @endisset
 
         <div class="max-w-7xl mx-auto py-5 sm:px-6 lg:px-8">
             {{ $museums->links() }}

@@ -62,7 +62,7 @@ class MuseumController extends Controller
         } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
             $failures = $e->failures();
 
-            return redirect()->route('admin.museum.index')->with('errors', $failures);
+            return redirect()->route('admin.museum.index', compact($failures));
 
             /*foreach ($failures as $failure) {
                 $failure->row(); // row that went wrong
