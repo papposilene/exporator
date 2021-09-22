@@ -12,6 +12,7 @@ class ShowMuseum extends Component
 
     //protected $queryString = ['search'];
     public $slug;
+    public Museum $museum;
     public $search = '';
 
     public function mount($slug)

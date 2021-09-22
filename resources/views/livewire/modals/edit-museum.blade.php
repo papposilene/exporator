@@ -1,6 +1,6 @@
 <div id="modalEditMuseum">
     <div id="modalButtonEditMuseum">
-        <button id="modalOpenImportExhibition" class="focus:outline-none bg-indigo-100 text-black bg-opacity-75 p-2 rounded w-full"
+        <button id="modalOpenEditMuseum" class="focus:outline-none bg-indigo-200 text-black bg-opacity-75 p-2 rounded w-full"
             type="button" title="@ucfirst(__('app.import_some', ['what' => __('app.museums')]))">
             @ucfirst(__('app.edit_the', ['what' => __('app.museum')]))
         </button>
@@ -19,72 +19,13 @@
                 </svg>
             </button>
             <!-- Modal content -->
-            <form method="POST" action="{{ route('admin.museum.import') }}" enctype="multipart/form-data"
+            <form method="POST" action="{{ route('admin.museum.update') }}" enctype="multipart/form-data"
                 class="flex flex-col w-full">
                 @csrf
 
-                <div class="flex mb-5">
-                    <table class="table-auto w-full">
-                        <caption class="grid-cols-2 mb-2 p-2">
-                            <span class="bg-green-200 mr-2 p-2">@ucfirst(__('app.optional'))</span>
-                            <span class="bg-red-200 ml-2 p-2">@ucfirst(__('app.mandatory'))</span>
-                        </caption>
-                        <thead>
-                            <tr>
-                                <th>@ucfirst(__('app.columns'))</th>
-                                <th>@ucfirst(__('app.details'))</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="border-b border-black border-dashed"
-                                title="@ucfirst(__('app.optional'))">
-                                <td class="bg-green-200 font-bold text-center">slug</td>
-                                <td class="p-2">@ucfirst(__('app.slug'))</td>
-                            </tr>
-                            <tr class="border-b border-black border-dashed"
-                                title="@ucfirst(__('app.mandatory'))">
-                                <td class="bg-red-200 font-bold text-center">name</td>
-                                <td class="p-2">@ucfirst(__('app.name'))</td>
-                            </tr>
-                            <tr class="border-b border-black border-dashed"
-                                title="@ucfirst(__('app.mandatory'))">
-                                <td class="bg-red-200 font-bold text-center">status</td>
-                                <td class="p-2">@ucfirst(__('app.is_open'))</td>
-                            </tr>
-                            <tr class="border-b border-black border-dashed"
-                                title="@ucfirst(__('app.mandatory'))">
-                                <td class="bg-red-200 font-bold text-center">address</td>
-                                <td class="p-2">@ucfirst(__('app.address'))</td>
-                            </tr>
-                            <tr class="border-b border-black border-dashed"
-                                title="@ucfirst(__('app.mandatory'))">
-                                <td class="bg-red-200 font-bold text-center">city</td>
-                                <td class="p-2">@ucfirst(__('app.city'))</td>
-                            </tr>
-                            <tr class="border-b border-black border-dashed"
-                                title="@ucfirst(__('app.mandatory'))">
-                                <td class="bg-red-200 font-bold text-center">country</td>
-                                <td class="p-2"><a href="https://fr.wikipedia.org/wiki/ISO_3166-1" target="_blank" rel="noopener">@ucfirst(__('app.cca3'))</a></td>
-                            </tr>
-                            <tr>
-                                <td class="bg-red-200 font-bold text-center">latitude</td>
-                                <td class="p-2" rowspan="2">@ucfirst(__('app.geolocalisation'))</td>
-                            </tr>
-                            <tr class="border-b border-black border-dashed"
-                                title="@ucfirst(__('app.mandatory'))">
-                                <td class="bg-red-200 font-bold text-center">longitude</td>
-                            </tr>
-                            <tr class="border-b border-black border-dashed"
-                                title="@ucfirst(__('app.optional'))">
-                                <td class="bg-green-200 font-bold text-center">link</td>
-                                <td class="p-2">@ucfirst(__('app.link'))</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="flex items-center">
-                    <x-jet-input id="file" class="block mt-1 w-full" type="file" name="datafile" required autofocus />
+                <div class="mt-4">
+                    <x-jet-label for="name" value="{{ __('app.museum') }}" />
+                    <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" required  wire:model="museum.name" />
                 </div>
 
                 <div class="flex items-center justify-end mt-4">

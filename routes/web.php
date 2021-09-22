@@ -34,11 +34,13 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function
     Route::get('/museums', ListMuseum::class)->name('admin.museum.index');
     Route::post('/museums/import', [MuseumController::class, 'import'])->name('admin.museum.import');
     Route::get('/museum/{slug}', ShowMuseum::class)->name('admin.museum.show');
+    Route::post('/museum/update', [MuseumController::class, 'update'])->name('admin.museum.update');
 
     // Exhibitions
     Route::get('/exhibitions', ListExhibition::class)->name('admin.exhibition.index');
     Route::post('/exhibitions/import', [ExhibitionController::class, 'import'])->name('admin.exhibition.import');
     Route::get('/exhibition/{slug}', ShowExhibition::class)->name('admin.exhibition.show');
+    Route::post('/exhibition/update', [ExhibitionController::class, 'update'])->name('admin.exhibition.update');
 });
 
 Route::view('/{path?}', 'app')->where('path', '.*')->name('nuxt');

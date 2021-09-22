@@ -1,6 +1,6 @@
 <div id="modalImportExhibition">
     <div id="modalButtonImportExhibition">
-        <button id="modalOpenImportExhibition" class="focus:outline-none bg-pink-100 text-black bg-opacity-75 p-2 rounded w-full"
+        <button id="modalOpenImportExhibition" class="focus:outline-none bg-pink-200 text-black bg-opacity-75 p-2 rounded w-full"
             type="button" title="@ucfirst(__('app.import_some', ['what' => __('app.exhibitions')]))">
             @ucfirst(__('app.import_some', ['what' => __('app.exhibitions')]))
         </button>
