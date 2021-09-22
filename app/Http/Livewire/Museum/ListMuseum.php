@@ -20,8 +20,14 @@ class ListMuseum extends Component
 
     public function render()
     {
+        $museums = Museum::withCount('hasExhibitions')
+            ->where('name', 'like', '%'.$this->search.'%')
+            ->orderBy('has_exhibitions_count', 'desc')
+            ->orderBy('name', 'asc')
+            ->paginate(25);
+
         return view('livewire.museum.list-museum', [
-            'museums' => Museum::withCount('hasExhibitions')->where('name', 'like', '%'.$this->search.'%')->orderBy('has_exhibitions_count', 'desc')->paginate(25),
+            'museums' => $museums,
         ]);
     }
 }

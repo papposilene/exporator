@@ -47,6 +47,7 @@ return [
     'region' => 'continent du pays',
     'subregion' => 'sous-continent du pays',
     'slug' => 'identifiant unique textuel',
+    'status' => 'status',
 
     // Placeholders
     'create_one' => 'ajouter un :what',

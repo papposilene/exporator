@@ -28,7 +28,8 @@
                         <tr>
                             <th class="w-1/12 text-center">@ucfirst(__('app.iteration'))</th>
                             <th class="w-2/12 text-center">@ucfirst(__('app.city'))</th>
-                            <th class="w-6/12 text-center">@ucfirst(__('app.museums'))</th>
+                            <th class="w-5/12 text-center">@ucfirst(__('app.museums'))</th>
+                            <th class="w-2/12 text-center">@ucfirst(__('app.status'))</th>
                             <th class="w-2/12 text-center">@ucfirst(__('app.exhibitions'))</th>
                         </tr>
                     </thead>
@@ -42,6 +43,9 @@
                                     title="{{ $museum->name }}" aria-label="{{ $museum->name }}">
                                     {{ $museum->name }}
                                 </a>
+                            </td>
+                            <td class="text-center">
+                                {{ ($museum->status === true ? ucfirst(__('app.open')) : ucfirst(__('app.close'))) }}
                             </td>
                             <td class="text-center">{{ $museum->hasExhibitions()->count() }}</td>
                         </tr>
