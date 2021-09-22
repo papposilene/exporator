@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ImportMuseumRequest;
 use App\Http\Requests\UpdateMuseumRequest;
 use App\Imports\MuseumsImport;
+use App\Models\Country;
 use App\Models\Museum;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
@@ -106,9 +107,21 @@ class MuseumController extends Controller
 
         $validated = $request->validated();
 
+        $country = Country::where('cca3', $request->input('cca3'))->firstOrFail();
 
+        $museum = Museum::findOrFail($request->uuid);
+        $museum->slug = $request->input('slug');
+        $museum->name = $request->input('name');
+        $museum->status = (bool) $request->input('status');
+        $museum->address = $request->input('address');
+        $museum->city = $request->input('city');
+        $museum->country_cca = $country->cca3;
+        $museum->lat = $request->input('latitude');
+        $museum->lon = $request->input('longitude');
+        $museum->link = $request->input('link');
+        $museum->save();
 
-        return redirect()->route('admin.museum.index')->with('success', 'All good!');
+        return redirect()->route('admin.museum.show', ['slug' => $request->input('slug')])->with('success', 'All good!');
     }
 
     /**

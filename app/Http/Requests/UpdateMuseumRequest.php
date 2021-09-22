@@ -18,7 +18,7 @@ class UpdateMuseumRequest extends FormRequest
             'name' => 'required|string|max:255',
             'slug' => 'required|string|max:255',
             'status' => 'boolean',
-            'address' => 'required|text',
+            'address' => 'required|string',
             'city' => 'required|string|max:255',
             'country' => 'required|string|min:3|max:3',
             'latitude' => 'required|integer|max:14',
