@@ -12,7 +12,7 @@
     <div id="modalWindowImportExhibition"
         class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-blue-500 bg-opacity-50 transform scale-0 transition-transform duration-300">
         <!-- Modal -->
-        <div class="bg-white w-1/2 h-1/2 p-12">
+        <div class="bg-white overflow-auto w-1/2 h-1/2 p-12">
             <!-- Close modal button-->
             <button id="modalCloseImportExhibition" type="button" class="focus:outline-none float-right">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"

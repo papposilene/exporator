@@ -1487,6 +1487,9 @@ select {
 .overflow-hidden {
 	overflow: hidden;
 }
+.overflow-visible {
+	overflow: visible;
+}
 .overflow-scroll {
 	overflow: scroll;
 }
