@@ -18,6 +18,7 @@
                         {{ $museum->name }}
                     </h3>
                 </li>
+                <li title="@ucfirst(__('app.type'))">{{ $museum->type }}</li>
                 <li title="@ucfirst(__('app.address'))">{{ $museum->address }}</li>
                 <li>
                     <span title="@ucfirst(__('app.city'))">{{ $museum->city }}</span>,
