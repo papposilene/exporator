@@ -11,9 +11,19 @@ class StatMuseum extends Component
     {
         $museums = Museum::count();
         $top1_of_museums = Museum::withCount('hasExhibitions')->orderBy('has_exhibitions_count', 'desc')->first();
+        $open_museums_without_exhibition = Museum::where('status', 'open')
+            ->withCount('hasExhibitions')
+            ->orderBy('name', 'asc')
+            ->get();
+
+        dd($open_museums_without_exhibition);
 
         return view('livewire.dashboard.stat-museum',
-            compact('museums', 'top1_of_museums')
+            compact(
+                'museums',
+                'top1_of_museums',
+                'open_museums_without_exhibition'
+            )
         );
     }
 }

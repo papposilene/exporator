@@ -29,14 +29,13 @@ class MuseumsImport implements ToModel, SkipsEmptyRows, WithBatchInserts, WithCh
     {
         $slug = Str::slug($row['name'], '-');
         $country = Country::where('cca3', strtolower($row['country']))->firstOrFail();
-        $status = ($row['status'] === 'open' ? true : false);
 
         return new Museum([
             'uuid' => (string) Str::uuid(),
             'slug' => $slug,
             'name' => $row['name'],
             'type' => $row['type'],
-            'status' => $status,
+            'status' => $row['status'],
             'address' => $row['address'],
             'city' => $row['city'],
             'country_cca3' => $country->cca3,

@@ -53,6 +53,7 @@ return [
     'name' => 'dénomination',
     'name_common' => 'dénomination courante du pays',
     'name_official' => 'dénomination officielle du pays',
+    'no_exhibition' => 'sans exposition',
     'nothing' => 'ici, il n’y à rien à afficher...',
     'optional' => 'information optionnelle',
     'other' => 'autre',
