@@ -11,6 +11,12 @@ class StatMuseum extends Component
     {
         $museums = Museum::count();
         $top1_of_museums = Museum::withCount('hasExhibitions')->orderBy('has_exhibitions_count', 'desc')->first();
+        $museum_type = Museum::where('type', 'museum')->count();
+        $gallery_type = Museum::where('type', 'gallery')->count();
+        $artcenter_type = Museum::where('type', 'art center')->count();
+        $library_type = Museum::where('type', 'library')->count();
+        $foundation_type = Museum::where('type', 'foundation')->count();
+        $other_type = Museum::where('type', 'other')->count();
         $open_museums_without_exhibition = Museum::where('status', 'open')
             ->withCount('hasExhibitions')
             ->orderBy('name', 'asc')
@@ -20,6 +26,12 @@ class StatMuseum extends Component
             compact(
                 'museums',
                 'top1_of_museums',
+                'museum_type',
+                'gallery_type',
+                'artcenter_type',
+                'library_type',
+                'foundation_type',
+                'other_type',
                 'open_museums_without_exhibition'
             )
         );
