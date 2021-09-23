@@ -18,7 +18,7 @@
                         {{ $museum->name }}
                     </h3>
                 </li>
-                <li title="@ucfirst(__('app.type'))">{{ $museum->type }}</li>
+                <li title="@ucfirst(__('app.type'))">@ucfirst(__('app.' . Str::slug($museum->type, '_')))</li>
                 <li title="@ucfirst(__('app.address'))">{{ $museum->address }}</li>
                 <li>
                     <span title="@ucfirst(__('app.city'))">{{ $museum->city }}</span>,

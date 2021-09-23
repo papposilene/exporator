@@ -10,7 +10,7 @@
     </x-slot>
 
     <div>
-        <div class="w-9/12 mx-auto py-5 sm:px-6 lg:px-8">
+        <div class="w-full mx-auto py-5 sm:px-6 lg:px-8">
             @if ($errors->any())
             <div class="bg-red-400 border border-red-500 py-5 text-black">
                 <ul>
@@ -29,16 +29,16 @@
                             <th class="w-1/12 text-center">@ucfirst(__('app.iteration'))</th>
                             <th class="w-2/12 text-center">@ucfirst(__('app.types'))</th>
                             <th class="w-2/12 text-center">@ucfirst(__('app.cities'))</th>
-                            <th class="w-3/12 text-center">@ucfirst(__('app.museums'))</th>
+                            <th class="w-4/12 text-center">@ucfirst(__('app.museums'))</th>
                             <th class="w-2/12 text-center">@ucfirst(__('app.status'))</th>
-                            <th class="w-2/12 text-center">@ucfirst(__('app.exhibitions'))</th>
+                            <th class="w-1/12 text-center">@ucfirst(__('app.exhibitions'))</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($museums as $museum)
                         <tr class="h-12 w-12 p-4">
                             <td class="text-center">{{ $loop->iteration }}</td>
-                            <td>{{ $museum->type }}</td>
+                            <td>@ucfirst(__('app.' . Str::slug($museum->type, '_')))</td>
                             <td>{{ $museum->city }}</td>
                             <td>
                                 <a href="{{ route('admin.museum.show', ['slug' => $museum->slug]) }}"
