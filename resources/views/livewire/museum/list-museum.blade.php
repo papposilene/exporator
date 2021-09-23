@@ -27,8 +27,9 @@
                     <thead>
                         <tr>
                             <th class="w-1/12 text-center">@ucfirst(__('app.iteration'))</th>
+                            <th class="w-2/12 text-center">@ucfirst(__('app.type'))</th>
                             <th class="w-2/12 text-center">@ucfirst(__('app.city'))</th>
-                            <th class="w-5/12 text-center">@ucfirst(__('app.museums'))</th>
+                            <th class="w-4/12 text-center">@ucfirst(__('app.museums'))</th>
                             <th class="w-2/12 text-center">@ucfirst(__('app.status'))</th>
                             <th class="w-2/12 text-center">@ucfirst(__('app.exhibitions'))</th>
                         </tr>
@@ -37,6 +38,7 @@
                         @foreach($museums as $museum)
                         <tr class="h-12 w-12 p-4">
                             <td class="text-center">{{ $loop->iteration }}</td>
+                            <td>{{ $museum->type }}</td>
                             <td>{{ $museum->city }}</td>
                             <td>
                                 <a href="{{ route('admin.museum.show', ['slug' => $museum->slug]) }}"
