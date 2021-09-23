@@ -65,6 +65,7 @@ class Museum extends Model
         'uuid',
         'slug',
         'name',
+        'type',
         'status',
         'address',
         'city',
