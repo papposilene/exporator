@@ -16,8 +16,6 @@ class StatMuseum extends Component
             ->orderBy('name', 'asc')
             ->get();
 
-        dd($open_museums_without_exhibition);
-
         return view('livewire.dashboard.stat-museum',
             compact(
                 'museums',
