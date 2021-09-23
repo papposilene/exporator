@@ -6,14 +6,20 @@ use App\Models\Exhibition;
 use App\Models\Museum;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
+use Maatwebsite\Excel\Concerns\Importable;
+use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
+use Maatwebsite\Excel\Concerns\SkipsFailures;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
+use Maatwebsite\Excel\Validators\Failure;
 
-class ExhibitionsImport implements ToModel, WithBatchInserts, WithChunkReading, WithHeadingRow, WithValidation
+class ExhibitionsImport implements ToModel, SkipsEmptyRows, WithBatchInserts, WithChunkReading, WithHeadingRow, WithValidation
 {
+    use Importable, SkipsFailures;
+
     /**
     * @param array $row
     *
@@ -21,7 +27,7 @@ class ExhibitionsImport implements ToModel, WithBatchInserts, WithChunkReading, 
     */
     public function model(array $row)
     {
-        $museum = Museum::where('name', $row['museum'])->firstOrFail();
+        $museum = Museum::where('name', $row['place'])->firstOrFail();
 
         return new Exhibition([
             'museum_uuid' => $museum->uuid,
@@ -47,10 +53,23 @@ class ExhibitionsImport implements ToModel, WithBatchInserts, WithChunkReading, 
     public function rules(): array
     {
         return [
-            '*.title' => Rule::in(['unique:exhibitions,title']),
-            '*.began_at' => Rule::in(['date_format:d/m/Y']),
-            '*.ended_at' => Rule::in(['date_format:d/m/Y']),
-            '*.link' => Rule::in(['url']),
+            '*.title' => Rule::unique('exhibitions', 'title'),
+            '*.began_at' => [
+                'required',
+                'date_format:d/m/Y'
+            ],
+            '*.ended_at' => [
+                'required',
+                'date_format:d/m/Y'
+            ],
+            '*.description' => [
+                'required',
+                'string'
+            ],
+            '*.link' => [
+                'required',
+                'url'
+            ],
         ];
     }
 }

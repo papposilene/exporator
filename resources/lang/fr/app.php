@@ -24,6 +24,7 @@ return [
     'columns' => 'colonnes',
     'country' => 'pays',
     'countries' => 'pays',
+    'create' => 'ajouter',
     'description' => 'description',
     'details' => 'détails',
     'ended_at' => 'date de fin',

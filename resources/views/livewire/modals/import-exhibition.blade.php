@@ -1,8 +1,8 @@
-<div id="modalImportExhibition">
+<div id="modalImportExhibition" class="relative float-right">
     <div id="modalButtonImportExhibition">
-        <button id="modalOpenImportExhibition" class="focus:outline-none bg-pink-200 text-black bg-opacity-75 p-2 rounded w-full"
-            type="button" title="@ucfirst(__('app.import_some', ['what' => __('app.exhibitions')]))">
-            @ucfirst(__('app.import_some', ['what' => __('app.exhibitions')]))
+        <button id="modalOpenImportExhibition" class="focus:outline-none bg-pink-200 text-black bg-opacity-75 px-1 rounded"
+            type="button" title="@ucfirst(__('app.import_some', ['what' => __('app.museums')]))">
+            @ucfirst(__('app.import'))
         </button>
     </div>
 
@@ -37,9 +37,9 @@
                         </thead>
                         <tbody>
                             <tr class="border-b border-black border-dashed"
-                                title="@ucfirst(__('app.optional'))">
-                                <td class="bg-green-200 font-bold text-center">slug</td>
-                                <td class="p-2">@ucfirst(__('app.slug'))</td>
+                                title="@ucfirst(__('app.mandatory'))">
+                                <td class="bg-red-200 font-bold text-center">place</td>
+                                <td class="p-2">@ucfirst(__('app.museum'))</td>
                             </tr>
                             <tr class="border-b border-black border-dashed"
                                 title="@ucfirst(__('app.mandatory'))">
@@ -48,31 +48,18 @@
                             </tr>
                             <tr class="border-b border-black border-dashed"
                                 title="@ucfirst(__('app.mandatory'))">
-                                <td class="bg-red-200 font-bold text-center">status</td>
-                                <td class="p-2">@ucfirst(__('app.is_open'))</td>
+                                <td class="bg-red-200 font-bold text-center">began_at</td>
+                                <td class="p-2">@ucfirst(__('app.began_at'))</td>
                             </tr>
                             <tr class="border-b border-black border-dashed"
                                 title="@ucfirst(__('app.mandatory'))">
-                                <td class="bg-red-200 font-bold text-center">address</td>
-                                <td class="p-2">@ucfirst(__('app.address'))</td>
+                                <td class="bg-red-200 font-bold text-center">ended_at</td>
+                                <td class="p-2">@ucfirst(__('app.ended_at'))</td>
                             </tr>
                             <tr class="border-b border-black border-dashed"
                                 title="@ucfirst(__('app.mandatory'))">
-                                <td class="bg-red-200 font-bold text-center">city</td>
-                                <td class="p-2">@ucfirst(__('app.city'))</td>
-                            </tr>
-                            <tr class="border-b border-black border-dashed"
-                                title="@ucfirst(__('app.mandatory'))">
-                                <td class="bg-red-200 font-bold text-center">country</td>
-                                <td class="p-2"><a href="https://fr.wikipedia.org/wiki/ISO_3166-1" target="_blank" rel="noopener">@ucfirst(__('app.cca3'))</a></td>
-                            </tr>
-                            <tr>
-                                <td class="bg-red-200 font-bold text-center">latitude</td>
-                                <td class="p-2" rowspan="2">@ucfirst(__('app.geolocalisation'))</td>
-                            </tr>
-                            <tr class="border-b border-black border-dashed"
-                                title="@ucfirst(__('app.mandatory'))">
-                                <td class="bg-red-200 font-bold text-center">longitude</td>
+                                <td class="bg-red-200 font-bold text-center">description</td>
+                                <td class="p-2">@ucfirst(__('app.description'))</td>
                             </tr>
                             <tr class="border-b border-black border-dashed"
                                 title="@ucfirst(__('app.optional'))">
