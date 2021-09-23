@@ -46,8 +46,8 @@
             <div class="py-5">
                 <table class="w-full p-5 table-fixed">
                     <thead>
-                        <tr>
-                            <th class="w-1/12 text-center">@ucfirst(__('app.iteration'))</th>
+                        <tr class="bg-gray-700 text-white">
+                            <th class="w-1/12 text-center p-3">@ucfirst(__('app.iteration'))</th>
                             <th class="w-2/12 text-center">@ucfirst(__('app.cities'))</th>
                             <th class="w-6/12 text-center">@ucfirst(__('app.museums'))</th>
                             <th class="w-2/12 text-center">@ucfirst(__('app.types'))</th>

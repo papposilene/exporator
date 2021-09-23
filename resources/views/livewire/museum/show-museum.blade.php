@@ -65,8 +65,8 @@
             <div class="py-5">
                 <table class="w-full p-5 table-fixed">
                     <thead>
-                        <tr>
-                            <th class="w-1/12 text-center">@ucfirst(__('app.iteration'))</th>
+                        <tr class="bg-gray-700 text-white">
+                            <th class="w-1/12 text-center p-3">@ucfirst(__('app.iteration'))</th>
                             <th class="w-7/12 text-center">@ucfirst(__('app.titles'))</th>
                             <th class="w-2/12 text-center">@ucfirst(__('app.began_at'))</th>
                             <th class="w-2/12 text-center">@ucfirst(__('app.ended_at'))</th>
@@ -74,7 +74,26 @@
                     </thead>
                     <tbody>
                         @foreach($exhibitions as $exhibition)
-                        <tr class="h-12 w-12 p-4">
+                        @php
+                        $today = date('Y-m-d');
+
+                        if ($today > $exhibition->began_at && $today < $exhibition->ended_at) {
+                            // Current exhibition
+                            $is_current = 'bg-green-100';
+                        }
+                        elseif ($today > $exhibition->ended_at) {
+                            // Past exhibition
+                            $is_current = 'bg-red-100';
+                        }
+                        elseif ($today < $exhibition->began_at) {
+                            // Future exhibition
+                            $is_current = 'bg-blue-100';
+                        }
+                        else {
+                            $is_current = 'bg-gray-100';
+                        }
+                        @endphp
+                        <tr class="h-12 w-12 p-4 {{ $is_current }}">
                             <td class="text-center">{{ $loop->iteration }}</td>
                             <td>
                                 <a href="{{ route('admin.exhibition.show', ['slug' => $exhibition->slug]) }}"
