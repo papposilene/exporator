@@ -34,6 +34,14 @@
                     <x-forms.label for="slug">@ucfirst(__('app.slug'))</x-forms.label>
                     <x-forms.input id="slug" class="block mt-1 w-full" type="text" name="slug" required value="{{ $museum->slug }}" />
                 </div>
+                
+                <div class="mt-4">
+                    <x-forms.label for="type">@ucfirst(__('app.type'))</x-forms.label>
+                    <x-forms.select id="type" class="block mt-1 w-full" name="type" required>
+                        <option value="true" {{ ($museum->type === 1 ? 'selected=true' : '') }}>@ucfirst(__('app.museum_open'))</option>
+                        <option value="false" {{ ($museum->type === 0 ? 'selected=true' : '') }}>@ucfirst(__('app.museum_close'))</option>
+                    </x-forms.select>
+                </div>
 
                 <div class="mt-4">
                     <x-forms.label for="status">@ucfirst(__('app.status'))</x-forms.label>
