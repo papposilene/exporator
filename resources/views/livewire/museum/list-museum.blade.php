@@ -27,8 +27,8 @@
                     <thead>
                         <tr>
                             <th class="w-1/12 text-center">@ucfirst(__('app.iteration'))</th>
-                            <th class="w-2/12 text-center">@ucfirst(__('app.type'))</th>
-                            <th class="w-2/12 text-center">@ucfirst(__('app.city'))</th>
+                            <th class="w-2/12 text-center">@ucfirst(__('app.types'))</th>
+                            <th class="w-2/12 text-center">@ucfirst(__('app.cities'))</th>
                             <th class="w-4/12 text-center">@ucfirst(__('app.museums'))</th>
                             <th class="w-2/12 text-center">@ucfirst(__('app.status'))</th>
                             <th class="w-2/12 text-center">@ucfirst(__('app.exhibitions'))</th>
