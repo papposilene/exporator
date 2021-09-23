@@ -59,6 +59,10 @@ class MuseumsImport implements ToModel, SkipsEmptyRows, WithBatchInserts, WithCh
     {
         return [
             '*.name' => Rule::unique('museums', 'name'),
+            '*.type' => [
+                'required',
+                'in:museum,gallery,library,foundation,art center,other'
+            ],
             '*.status' => [
                 'required',
                 'in:open,close'
