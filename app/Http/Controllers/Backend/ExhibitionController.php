@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ImportExhibitionRequest;
 use App\Http\Requests\StoreExhibitionRequest;
+use App\Imports\ExhibitionsImport;
 use App\Models\Exhibition;
 use App\Models\Museum;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ExhibitionController extends Controller
 {
@@ -58,6 +61,30 @@ class ExhibitionController extends Controller
         $exhibition->save();
 
         return redirect()->route('admin.museum.show', ['slug' => $museum->slug])->with('success', 'All good!');
+    }
+
+    /**
+     * Import a file for creating a new resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function import(ImportExhibitionRequest $request)
+    {
+        $this->authorize('create', Exhibition::class);
+
+        $validated = $request->validated();
+
+        try {
+            $import = new ExhibitionsImport();
+            $import->import($request->file('datafile'));
+        } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+            $failures = $e->failures();
+
+            return redirect()->route('admin.exhibition.index', compact($failures));
+        }
+
+        return redirect()->route('admin.exhibition.index')->with('success', 'All good!');
     }
 
     /**
