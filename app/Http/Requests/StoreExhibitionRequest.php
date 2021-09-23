@@ -24,7 +24,7 @@ class StoreExhibitionRequest extends FormRequest
     public function rules()
     {
         return [
-            'museum' => 'required|bail|uuid',
+            'uuid' => 'required|bail|uuid',
             'title' => 'required|string|max:255',
             'began_at' => 'required|date_format:d/m/Y',
             'ended_at' => 'required|date_format:d/m/Y',

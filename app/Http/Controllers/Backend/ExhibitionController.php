@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreExhibitionRequest;
 use App\Models\Exhibition;
+use App\Models\Museum;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Str;
 
 class ExhibitionController extends Controller
 {
@@ -36,9 +39,27 @@ class ExhibitionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreExhibitionRequest $request)
     {
-        //
+        $this->authorize('create', Exhibition::class);
+
+        $validated = $request->validated();
+
+        dd($validated);
+
+        $museum = Museum::findOrFail($request->input('uuid'));
+
+        $exhibition = new Exhibition;
+        $exhibition->museum_uuid = $museum->uuid;
+        $exhibition->slug = Str::slug($request->input('title'));
+        $exhibition->title = $request->input('title');
+        $exhibition->began_at = $request->input('began_at');
+        $exhibition->ended_at = $request->input('ended_at');
+        $exhibition->description = $request->input('description');
+        $exhibition->link = $request->input('link');
+        $exhibition->save();
+
+        return redirect()->route('admin.museum.show', ['slug' => $museum->slug])->with('success', 'All good!');
     }
 
     /**
