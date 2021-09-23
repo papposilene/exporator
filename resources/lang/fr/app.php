@@ -36,6 +36,7 @@ return [
     'is_open' => 'le lieu est-il ouvert ? Si oui, open. Si non, close.',
     'iteration' => '#',
     'file' => 'fichier à importer',
+    'final_days' => 'derniers jours',
     'flag' => 'drapeau du pays',
     'flags' => '🏳️',
     'gallery' => 'galerie',
@@ -57,8 +58,9 @@ return [
     'other' => 'autre',
     'region' => 'continent du pays',
     'save' => 'enregistrer',
-    'subregion' => 'sous-continent du pays',
     'slug' => 'identifiant unique textuel',
+    'statistics' => 'statistiques',
+    'subregion' => 'sous-continent du pays',
     'status' => 'status',
     'title' => 'titre',
     'titles' => 'titres',
@@ -81,5 +83,6 @@ return [
     'numbers_of_museums' => 'nombre total : :count.',
     'top1_of_museums' => 'Musée le plus référencé : :name.',
     'numbers_of_exhibitions' => 'nombre total : :count.',
+    'numbers_of_today_exhibitions' => 'nombre d’expositions pour aujourd’hui : :count.',
 
 ];
