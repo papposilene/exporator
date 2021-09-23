@@ -17,6 +17,7 @@ class CreateMuseumsTable extends Migration
             $table->uuid('uuid')->primary();
             $table->string('slug', 255)->unique();
             $table->string('name', 255)->unique();
+            $table->enum('type', ['museum', 'gallery', 'library', 'foundation', 'art center', 'other'])->default('other');
             $table->boolean('status')->default(true);
             $table->text('address');
             $table->text('city');
