@@ -44,8 +44,7 @@
             @if (Auth::user()->can('create', App\Models\Exhibition::class))
             <ul class="bg-gray-200 list-inside m-5 p-5 w-full">
                 <li><livewire:modals.edit-museum :museum="$museum" :wire:key="$museum->uuid" /></li>
-                <li><livewire:modals.create-exhibition /></li>
-                <li><livewire:modals.import-exhibition /></li>
+                <li><livewire:modals.create-exhibition :museum="$museum" :wire:key="$museum->uuid" /></li>
             </ul>
             @endif
         </div>

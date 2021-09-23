@@ -1,7 +1,7 @@
 <div id="modalEditMuseum">
     <div id="modalButtonEditMuseum">
         <button id="modalOpenEditMuseum" class="focus:outline-none bg-indigo-200 text-black bg-opacity-75 p-2 rounded w-full"
-            type="button" title="@ucfirst(__('app.import_some', ['what' => __('app.museums')]))">
+            type="button" title="@ucfirst(__('app.edit_the', ['what' => __('app.museums')]))">
             @ucfirst(__('app.edit_the', ['what' => __('app.museum')]))
         </button>
     </div>
@@ -34,7 +34,7 @@
                     <x-forms.label for="slug">@ucfirst(__('app.slug'))</x-forms.label>
                     <x-forms.input id="slug" class="block mt-1 w-full" type="text" name="slug" required value="{{ $museum->slug }}" />
                 </div>
-                
+
                 <div class="mt-4">
                     <x-forms.label for="type">@ucfirst(__('app.type'))</x-forms.label>
                     <x-forms.select id="type" class="block mt-1 w-full" name="type" required>

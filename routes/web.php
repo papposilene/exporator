@@ -40,6 +40,7 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function
     Route::get('/exhibitions', ListExhibition::class)->name('admin.exhibition.index');
     Route::post('/exhibitions/import', [ExhibitionController::class, 'import'])->name('admin.exhibition.import');
     Route::get('/exhibition/{slug}', ShowExhibition::class)->name('admin.exhibition.show');
+    Route::post('/exhibition/store', [ExhibitionController::class, 'store'])->name('admin.exhibition.store');
     Route::post('/exhibition/update', [ExhibitionController::class, 'update'])->name('admin.exhibition.update');
 });
 
