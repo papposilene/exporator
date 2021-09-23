@@ -32,8 +32,7 @@ class Exhibition extends Model
      * @var array
      */
     protected $casts = [
-        'uuid' => 'uuid',
-        'museum_uuid' => 'uuid',
+
     ];
 
     /**

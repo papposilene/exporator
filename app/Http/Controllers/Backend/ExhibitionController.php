@@ -45,16 +45,14 @@ class ExhibitionController extends Controller
 
         $validated = $request->validated();
 
-        dd($validated);
-
         $museum = Museum::findOrFail($request->input('uuid'));
 
         $exhibition = new Exhibition;
         $exhibition->museum_uuid = $museum->uuid;
         $exhibition->slug = Str::slug($request->input('title'));
         $exhibition->title = $request->input('title');
-        $exhibition->began_at = $request->input('began_at');
-        $exhibition->ended_at = $request->input('ended_at');
+        $exhibition->began_at = date('Y-m-d', strtotime($request->input('began_at')));
+        $exhibition->ended_at = date('Y-m-d', strtotime($request->input('ended_at')));
         $exhibition->description = $request->input('description');
         $exhibition->link = $request->input('link');
         $exhibition->save();
