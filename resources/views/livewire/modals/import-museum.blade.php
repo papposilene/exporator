@@ -50,6 +50,11 @@
                             </tr>
                             <tr class="border-b border-black border-dashed"
                                 title="@ucfirst(__('app.mandatory'))">
+                                <td class="bg-red-200 font-bold text-center">type</td>
+                                <td class="p-2">@ucfirst(__('app.type'))</td>
+                            </tr>
+                            <tr class="border-b border-black border-dashed"
+                                title="@ucfirst(__('app.mandatory'))">
                                 <td class="bg-red-200 font-bold text-center">status</td>
                                 <td class="p-2">@ucfirst(__('app.is_open'))</td>
                             </tr>
