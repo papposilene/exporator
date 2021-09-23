@@ -50,6 +50,8 @@ return [
     'subregion' => 'sous-continent du pays',
     'slug' => 'identifiant unique textuel',
     'status' => 'status',
+    'type' => 'typologie',
+    'types' => 'typologies',
 
     // Placeholders
     'create_one' => 'ajouter un :what',
