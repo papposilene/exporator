@@ -1,6 +1,6 @@
 <div id="modalEditMuseum">
     <div id="modalButtonEditMuseum">
-        <button id="modalOpenEditMuseum" class="focus:outline-none bg-indigo-200 text-black bg-opacity-75 p-2 rounded w-full"
+        <button id="modalOpenEditMuseum" class="focus:outline-none bg-purple-100 text-black bg-opacity-75 p-2 rounded w-full"
             type="button" title="@ucfirst(__('app.edit_the', ['what' => __('app.museums')]))">
             @ucfirst(__('app.edit_the', ['what' => __('app.museum')]))
         </button>

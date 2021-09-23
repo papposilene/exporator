@@ -1,6 +1,6 @@
 <div id="modalCreateExhibition">
     <div id="modalButtonCreateExhibition">
-        <button id="modalOpenCreateExhibition" class="focus:outline-none bg-pink-200 text-black bg-opacity-75 p-2 rounded w-full"
+        <button id="modalOpenCreateExhibition" class="focus:outline-none bg-pink-100 text-black bg-opacity-75 p-2 rounded w-full"
             type="button" title="@ucfirst(__('app.create_one', ['what' => __('app.exhibition')]))">
             @ucfirst(__('app.create_one', ['what' => __('app.exhibition')]))
         </button>
