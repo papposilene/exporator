@@ -60,6 +60,7 @@ return [
     'slug' => 'identifiant unique textuel',
     'status' => 'status',
     'title' => 'titre',
+    'titles' => 'titres',
     'type' => 'typologie',
     'types' => 'typologies',
 
