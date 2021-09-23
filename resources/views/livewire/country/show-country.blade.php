@@ -50,6 +50,7 @@
                             <th class="w-1/12 text-center">@ucfirst(__('app.iteration'))</th>
                             <th class="w-2/12 text-center">@ucfirst(__('app.cities'))</th>
                             <th class="w-6/12 text-center">@ucfirst(__('app.museums'))</th>
+                            <th class="w-2/12 text-center">@ucfirst(__('app.types'))</th>
                             <th class="w-6/12 text-center">@ucfirst(__('app.status'))</th>
                             <th class="w-2/12 text-center">@ucfirst(__('app.exhibitions'))</th>
                         </tr>
@@ -65,6 +66,7 @@
                                     {{ $museum->name }}
                                 </a>
                             </td>
+                            <td class="text-center">{{ $museum->type }}</td>
                             <td class="text-center">{{ $museum->status }}</td>
                             <td class="text-center">{{ $museum->hasExhibitions()->count() }}</td>
                         </tr>
