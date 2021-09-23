@@ -30,7 +30,7 @@ class ShowMuseum extends Component
     {
         return view('livewire.museum.show-museum', [
             'museum' => $this->museum,
-            'exhibitions' => $this->museum->hasExhibitions()->paginate(25),
+            'exhibitions' => $this->museum->hasExhibitions()->orderBy('began_at', 'desc')->paginate(25),
         ]);
     }
 }

@@ -67,12 +67,13 @@
                     <thead>
                         <tr>
                             <th class="w-1/12 text-center">@ucfirst(__('app.iteration'))</th>
-                            <th class="w-6/12 text-center">@ucfirst(__('app.museums'))</th>
-                            <th class="w-2/12 text-center">@ucfirst(__('app.exhibitions'))</th>
+                            <th class="w-7/12 text-center">@ucfirst(__('app.titles'))</th>
+                            <th class="w-2/12 text-center">@ucfirst(__('app.began_at'))</th>
+                            <th class="w-2/12 text-center">@ucfirst(__('app.ended_at'))</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($museum->hasExhibitions() as $exhibition)
+                        @foreach($exhibitions as $exhibition)
                         <tr class="h-12 w-12 p-4">
                             <td class="text-center">{{ $loop->iteration }}</td>
                             <td>
@@ -81,7 +82,8 @@
                                     {{ $exhibition->title }}
                                 </a>
                             </td>
-                            <td class="text-center">{{ $museum->name }}</td>
+                            <td class="text-center">@date($exhibition->began_at)</td>
+                            <td class="text-center">@date($exhibition->ended_at)</td>
                         </tr>
                         @endforeach
                     </tbody>
