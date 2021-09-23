@@ -114,6 +114,7 @@ class MuseumController extends Controller
         $museum = Museum::findOrFail($request->uuid);
         $museum->slug = $request->input('slug');
         $museum->name = $request->input('name');
+        $museum->type = $request->input('type');
         $museum->status = (bool) $request->input('status');
         $museum->address = $request->input('address');
         $museum->city = $request->input('city');
