@@ -53,7 +53,11 @@ class ExhibitionsImport implements ToModel, SkipsEmptyRows, WithBatchInserts, Wi
     public function rules(): array
     {
         return [
-            '*.title' => Rule::unique('exhibitions', 'title'),
+            '*.title' => [
+                'required',
+                'string',
+                'max:255',
+            ],
             '*.began_at' => [
                 'required',
                 'date_format:d/m/Y'
