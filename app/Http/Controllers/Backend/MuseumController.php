@@ -111,7 +111,7 @@ class MuseumController extends Controller
         dd($validated);
 
         $museum = Museum::findOrFail($request->input('uuid'));
-        $museum->slug = $request->input('slug');
+        $museum->slug = Str::slug($request->input('city') . ' ' . $request->input('name'), '-');
         $museum->name = $request->input('name');
         $museum->type = $request->input('type');
         $museum->status = (bool) $request->input('status');
