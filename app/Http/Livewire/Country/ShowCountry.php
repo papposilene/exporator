@@ -33,7 +33,9 @@ class ShowCountry extends Component
     {
         return view('livewire.country.show-country', [
             'country' => $this->country,
-            'museums' => $this->country->hasMuseums()->paginate(25),
+            'museums' => $this->country->hasMuseums()
+                ->where('name', 'like', '%'.$this->search.'%')
+                ->paginate(25),
         ]);
     }
 }
