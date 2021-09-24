@@ -61,7 +61,10 @@
             @endif
 
             @if($exhibitions->count() > 0)
-            {{ $exhibitions->links() }}
+            <div>
+                <x-forms.input wire:model="search" type="search" class="relative float-right h-9 ml-2 mb-3" :placeholder="@ucfirst(__('app.search'))" />
+                {{ $exhibitions->links() }}
+            </div>
             <div class="py-5">
                 <table class="w-full p-5 table-fixed">
                     <thead>
