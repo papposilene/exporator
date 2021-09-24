@@ -42,10 +42,7 @@
             @endif
 
             @if($museums->count() > 0)
-            <div>
-                <x-forms.input wire:model="search" type="search" class="relative float-right h-9 ml-2 mb-3" :placeholder="@ucfirst(__('app.search'))" />
-                {{ $museums->links() }}
-            </div>
+            {{ $museums->links() }}
             <div class="py-5">
                 <table class="w-full p-5 table-fixed">
                     <thead>
@@ -69,7 +66,7 @@
                                     {{ $museum->name }}
                                 </a>
                             </td>
-                            <td class="text-center">{{ $museum->type }}</td>
+                            <td class="text-center">@ucfirst(__('app.' . Str::slug($museum->type, '_')))</td>
                             <td class="text-center">{{ $museum->status }}</td>
                             <td class="text-center">{{ $museum->hasExhibitions()->count() }}</td>
                         </tr>
