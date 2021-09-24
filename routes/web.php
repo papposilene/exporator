@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::redirect('/', '/dashboard', 301);
     Route::get('/dashboard', ShowDashboard::class)->name('dashboard');
 
     // Countries
