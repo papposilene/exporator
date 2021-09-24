@@ -16,6 +16,7 @@ return [
     'actions' => 'actions',
     'address' => 'adresse postale',
     'art_center' => 'centre d’art',
+    'art_fair' => 'foire',
     'began_at' => 'date de début',
     'city' => 'ville',
     'cities' => 'villes',
