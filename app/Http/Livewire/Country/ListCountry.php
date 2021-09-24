@@ -10,8 +10,13 @@ class ListCountry extends Component
 {
     use WithPagination;
 
-    //protected $queryString = ['search'];
+    public $page = 1;
     public $search = '';
+
+    protected $queryString = [
+        'search' => ['except' => ''],
+        'page' => ['except' => 1],
+    ];
 
     public function updatingSearch()
     {

@@ -59,6 +59,7 @@ return [
     'other' => 'autre',
     'region' => 'continent du pays',
     'save' => 'enregistrer',
+    'search' => 'rechercher',
     'slug' => 'identifiant unique textuel',
     'statistics' => 'statistiques',
     'subregion' => 'sous-continent du pays',

@@ -10,11 +10,15 @@ class ShowMuseum extends Component
 {
     use WithPagination;
 
-    //protected $queryString = ['search'];
-    public $slug;
+    public $page = 1;
     public $search = '';
-
+    public $slug;
     public Museum $museum;
+
+    protected $queryString = [
+        'search' => ['except' => ''],
+        'page' => ['except' => 1],
+    ];
 
     public function mount($slug)
     {

@@ -7,7 +7,10 @@
 
     <div>
         <div class="max-w-7xl mx-auto py-5 sm:px-6 lg:px-8">
-            {{ $countries->links() }}
+            <div>
+                <x-forms.input wire:model="search" type="search" class="relative float-right ml-3 mb-3" :placeholder="@ucfirst(__('app.search'))" />
+                {{ $countries->links() }}
+            </div>
             <div class="py-5">
                 <table class="w-full p-5 table-fixed">
                     <thead>
