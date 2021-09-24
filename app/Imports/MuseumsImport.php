@@ -27,7 +27,7 @@ class MuseumsImport implements ToModel, SkipsEmptyRows, WithBatchInserts, WithCh
     */
     public function model(array $row)
     {
-        $slug = Str::slug($row['name'], '-');
+        $slug = Str::slug($row['city'] . ' ' . $row['name'], '-');
         $country = Country::where('cca3', strtolower($row['country']))->firstOrFail();
 
         return new Museum([
