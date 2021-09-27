@@ -16,6 +16,7 @@ use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
 use Maatwebsite\Excel\Validators\Failure;
+use Spatie\Tags\Tag;
 
 class ExhibitionsImport implements ToModel, SkipsEmptyRows, WithBatchInserts, WithChunkReading, WithHeadingRow, WithValidation
 {
@@ -30,6 +31,18 @@ class ExhibitionsImport implements ToModel, SkipsEmptyRows, WithBatchInserts, Wi
     {
         $museum = Museum::where('name', $row['place'])->firstOrFail();
 
+        // Is there some tags attached to the exhibition?
+        if (isset($row['tags']) && Str::of($row['tags'])->trim()->isNotEmpty())
+        {
+            // Format : semicolon-separated tags as tag-type:tag-name (ie type:museum of fines arts;type:ecomuseum)
+            $tags = Str::of($row['tags'])->split('/,+/');
+            foreach ($tags as $tag)
+            {
+                // Find or create the tag for the exhibition type.
+                $tagged[] = Tag::findOrCreate($tag, 'exhibition');
+            }
+        }
+
         return new Exhibition([
             'uuid' => (string) Str::uuid(),
             'museum_uuid' => $museum->uuid,
@@ -39,6 +52,7 @@ class ExhibitionsImport implements ToModel, SkipsEmptyRows, WithBatchInserts, Wi
             'ended_at' => Carbon::createFromFormat('d/m/Y', $row['ended_at'])->format('Y-m-d'),
             'description' => $row['description'],
             'link' => $row['link'],
+            'tags' => $tagged,
         ]);
     }
 
