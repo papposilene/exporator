@@ -2,8 +2,16 @@
 
 namespace App\Traits;
 
+use App\Models\Exhibition;
+
 trait ForExhibition
 {
+
+    public function __construct(Exhibition $exhibition)
+    {
+        $this->query = $exhibition;
+    }
+
     /**
      * add filtering.
      *
@@ -13,29 +21,25 @@ trait ForExhibition
     public function updatingForExhibition($filters = 'all')
     {
         if(!$filters || $filters === 'all') {
-            return $this;
+            return $this->query;
         }
 
         $today = date('Y-m-d');
 
         if($filters === 'past')
         {
-            $this->whereDate('ended_at', '<', $today);
+            $this->query->whereDate('ended_at', '<', $today);
         }
         elseif($filters === 'current')
         {
-            $this->whereDate('began_at', '>', $today)
+            $this->query->whereDate('began_at', '>', $today)
                 ->whereDate('ended', '<', $today);
         }
         elseif($filters === 'future')
         {
-            $this->whereDate('began_at', '>', $today);
-        }
-        else
-        {
-            return $this;
+            $this->query->whereDate('began_at', '>', $today);
         }
 
-        return $this;
+        return $this->query;
     }
 }
