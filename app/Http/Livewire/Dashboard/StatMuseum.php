@@ -17,7 +17,7 @@ class StatMuseum extends Component
         $library_type = Museum::where('type', 'library')->count();
         $foundation_type = Museum::where('type', 'foundation')->count();
         $other_type = Museum::where('type', 'other')->count();
-        $open_museums_without_exhibition = Museum::where('status', 'open')
+        $open_museums_without_exhibition = Museum::where('status', 1)
             ->withCount('hasExhibitions')
             ->orderBy('name', 'asc')
             ->get();
