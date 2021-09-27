@@ -25,6 +25,11 @@ class ListExhibition extends Component
         'sort' => ['except' => 'asc'],
     ];
 
+    public function mount()
+    {
+        $this->exhibition = Exhibition::all();
+    }
+
     public function updatingSearch()
     {
         $this->resetPage();
@@ -53,7 +58,7 @@ class ListExhibition extends Component
 
     public function render()
     {
-        $exhibitions = Exhibition::where('title', 'like', '%'.$this->search.'%')
+        $exhibitions = $this->exhibition
             ->where('title', 'like', '%'.$this->search.'%')
             ->orderBy('began_at', 'desc')
             ->paginate(25);
