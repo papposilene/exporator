@@ -7,7 +7,7 @@
     </div>
 
     <div id="modalWindowImportExhibition"
-        class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-blue-500 bg-opacity-50 transform scale-0 transition-transform duration-300">
+        class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-blue-500 bg-opacity-50 transform scale-0 transition-transform duration-300 z-10">
         <!-- Modal -->
         <div class="bg-white overflow-auto w-1/2 h-1/2 p-12">
             <!-- Close modal button-->
@@ -69,7 +69,7 @@
                             <tr class="border-b border-black border-dashed"
                                 title="@ucfirst(__('app.optional'))">
                                 <td class="bg-green-200 font-bold text-center">tags</td>
-                                <td class="p-2">type1:tag1,type1:tag2,type2,tag:1.</td>
+                                <td class="p-2">type1:tag1,type1:tag2,type2,tag:1</td>
                             </tr>
                         </tbody>
                     </table>
