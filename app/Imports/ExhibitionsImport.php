@@ -39,7 +39,7 @@ class ExhibitionsImport implements ToModel, SkipsEmptyRows, WithBatchInserts, Wi
             foreach ($tags as $tag)
             {
                 // Find or create the tag for the exhibition type.
-                $tagged[] = Tag::findOrCreate($tag, 'exhibition');
+                $tagged[] = Tag::findOrCreate($tag[1], $tag[0]);
             }
         }
 
