@@ -99,7 +99,7 @@
                         <tr class="h-12 w-12 p-4 {{ $is_current }}">
                             <td class="text-center">{{ $loop->iteration }}</td>
                             <td>
-                                <a href="{{ route('admin.exhibition.show', ['slug' => $exhibition->slug]) }}"
+                                <a href="{{ route('admin.exhibition.show', ['museum' => $exhibition->inMuseum->slug, 'exhibition' => $exhibition->slug]) }}"
                                     title="{{ $exhibition->title }}" aria-label="{{ $exhibition->title }}">
                                     {{ $exhibition->title }}
                                 </a>

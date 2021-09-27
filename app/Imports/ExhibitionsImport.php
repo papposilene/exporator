@@ -4,6 +4,7 @@ namespace App\Imports;
 
 use App\Models\Exhibition;
 use App\Models\Museum;
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Maatwebsite\Excel\Concerns\Importable;
@@ -30,6 +31,7 @@ class ExhibitionsImport implements ToModel, SkipsEmptyRows, WithBatchInserts, Wi
         $museum = Museum::where('name', $row['place'])->firstOrFail();
 
         return new Exhibition([
+            'uuid' => (string) Str::uuid(),
             'museum_uuid' => $museum->uuid,
             'slug' => Str::slug($row['title'], '-'),
             'title' => $row['title'],

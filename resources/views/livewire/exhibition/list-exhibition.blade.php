@@ -65,7 +65,7 @@
                                 </a>
                             </td>
                             <td>
-                                <a href="{{ route('admin.exhibition.show', ['slug' => $exhibition->slug]) }}"
+                                <a href="{{ route('admin.exhibition.show', ['museum' => $exhibition->inMuseum->slug, 'exhibition' => $exhibition->slug]) }}"
                                     title="{{ $exhibition->title }}" aria-label="{{ $exhibition->title }}">
                                     {{ $exhibition->title }}
                                 </a>
