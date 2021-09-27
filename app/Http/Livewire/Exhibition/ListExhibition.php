@@ -16,6 +16,7 @@ class ListExhibition extends Component
     public $page = 1;
     public $sort = 'asc';
     public $search = '';
+    public Exhibition $exhibition;
 
     protected $queryString = [
         'filter' => ['except' => 'all'],
@@ -33,6 +34,7 @@ class ListExhibition extends Component
     {
         $exhibitions = Exhibition::where('title', 'like', '%'.$this->search.'%')
             ->where('title', 'like', '%'.$this->search.'%')
+            ->filter($this->filter)
             ->orderBy('began_at', 'desc')
             ->paginate(25);
 

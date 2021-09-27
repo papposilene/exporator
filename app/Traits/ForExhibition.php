@@ -7,38 +7,35 @@ trait ForExhibition
     /**
      * add filtering.
      *
-     * @param  $builder: query builder.
-     * @param  $filters: array of filters.
+     * @param  $filters: string of filters (all, past, current, future).
      * @return query builder.
      */
-    public function scopeFilter($builder, $filters = [])
+    public function updatingForExhibition($filters = 'all')
     {
         if(!$filters || $filters === 'all') {
-            return $builder;
+            return $this;
         }
 
         $today = date('Y-m-d');
 
-        $tableName = $this->getTable();
-
         if($filters === 'past')
         {
-            $builder->whereDate($tableName.'.ended_at', 'LIKE', $today);
+            $this->whereDate('ended_at', '<', $today);
         }
         elseif($filters === 'current')
         {
-            $builder->whereDate($tableName.'.began_at', '=', $today)
-                ->whereDate($tableName.'.ended', '=', $today);
+            $this->whereDate('began_at', '>', $today)
+                ->whereDate('ended', '<', $today);
         }
         elseif($filters === 'future')
         {
-            $builder->whereDate($tableName.'.began_at', '=', $today);
+            $this->whereDate('began_at', '>', $today);
         }
         else
         {
-            return $builder;
+            return $this;
         }
 
-        return $builder;
+        return $this;
     }
 }
