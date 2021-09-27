@@ -22,7 +22,7 @@
 
             <div>
                 <x-forms.input wire:model="search" type="search" class="relative float-right h-9 ml-2 mb-3" :placeholder="@ucfirst(__('app.search'))" />
-                <x-forms.select wire:model="sort" class="relative float-right h-9 ml-2 mb-3">
+                <x-forms.select wire:model="filter" class="relative float-right h-9 ml-2 mb-3">
                     <option value="past">Past</option>
                     <option value="current">Current</option>
                     <option value="future">Future</option>

@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Exhibition;
 
-use App\Traits\WithFilter;
+use App\Traits\ForExhibition;
 use App\Traits\WithSorting;
 use App\Models\Exhibition;
 use Livewire\Component;
@@ -10,7 +10,7 @@ use Livewire\WithPagination;
 
 class ListExhibition extends Component
 {
-    use WithPagination, WithFilter, WithSorting;
+    use WithPagination, ForExhibition, WithSorting;
 
     public $filter = 'all';
     public $page = 1;
@@ -21,7 +21,7 @@ class ListExhibition extends Component
         'filter' => ['except' => 'all'],
         'page' => ['except' => 1],
         'search' => ['except' => ''],
-        'sort' => ['except' => ''],
+        'sort' => ['except' => 'asc'],
     ];
 
     public function updatingSearch()
