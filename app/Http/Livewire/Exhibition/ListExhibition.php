@@ -2,15 +2,13 @@
 
 namespace App\Http\Livewire\Exhibition;
 
-use App\Traits\ForExhibition;
-use App\Traits\WithSorting;
 use App\Models\Exhibition;
 use Livewire\Component;
 use Livewire\WithPagination;
 
 class ListExhibition extends Component
 {
-    use WithPagination, WithSorting;
+    use WithPagination;
 
     public $filter = 'all';
     public $page = 1;
@@ -25,7 +23,7 @@ class ListExhibition extends Component
         'sort' => ['except' => 'asc'],
     ];
 
-    public function mount()
+    public function boot()
     {
         $this->exhibition = Exhibition::all();
     }
