@@ -71,7 +71,7 @@ class ExhibitionsImport implements ToModel, SkipsEmptyRows, WithBatchInserts, Wi
                 'string'
             ],
             '*.link' => [
-                'required',
+                'nullable',
                 'url'
             ],
         ];

@@ -22,7 +22,7 @@ class CreateExhibitionsTable extends Migration
             $table->date('began_at');
             $table->date('ended_at');
             $table->text('description');
-            $table->string('link', 255);
+            $table->string('link', 255)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
