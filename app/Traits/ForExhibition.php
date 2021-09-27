@@ -6,7 +6,14 @@ use App\Models\Exhibition;
 
 trait ForExhibition
 {
+    /**
+     * @var string
+     */
+    public Exhibition $exhibition;
 
+    /**
+     * @param Exhibition    $exhibition
+     */
     public function __construct(Exhibition $exhibition)
     {
         $this->query = $exhibition;
