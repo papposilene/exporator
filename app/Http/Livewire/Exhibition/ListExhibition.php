@@ -26,7 +26,7 @@ class ListExhibition extends Component
     public function render()
     {
         $exhibitions = Exhibition::where('title', 'like', '%'.$this->search.'%')
-            ->orderBy('began_at', 'asc')
+            ->orderBy('began_at', 'desc')
             ->paginate(25);
 
         return view('livewire.exhibition.list-exhibition', [

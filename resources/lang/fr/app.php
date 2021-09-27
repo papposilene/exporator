@@ -93,5 +93,6 @@ return [
     'top1_of_museums' => 'Musée le plus référencé : :name.',
     'numbers_of_exhibitions' => 'nombre total : :count.',
     'numbers_of_today_exhibitions' => 'expositions pour aujourd’hui : :count.',
+    'numbers_of_next_exhibitions' => 'expositions du mois prochain : :count',
 
 ];

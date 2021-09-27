@@ -35,8 +35,8 @@ class ExhibitionsImport implements ToModel, SkipsEmptyRows, WithBatchInserts, Wi
             'museum_uuid' => $museum->uuid,
             'slug' => Str::slug($row['title'], '-'),
             'title' => $row['title'],
-            'began_at' => date('Y-m-d', strtotime($row['began_at'])),
-            'ended_at' => date('Y-m-d', strtotime($row['ended_at'])),
+            'began_at' => Carbon::createFromFormat('d/m/Y', $row['began_at'])->format('Y-m-d'),
+            'ended_at' => Carbon::createFromFormat('d/m/Y', $row['ended_at'])->format('Y-m-d'),
             'description' => $row['description'],
             'link' => $row['link'],
         ]);
