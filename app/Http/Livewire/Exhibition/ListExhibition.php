@@ -23,11 +23,6 @@ class ListExhibition extends Component
         'sort' => ['except' => 'asc'],
     ];
 
-    public function boot()
-    {
-        $this->exhibition = Exhibition::all();
-    }
-
     public function updatingSearch()
     {
         $this->resetPage();
@@ -43,20 +38,20 @@ class ListExhibition extends Component
         }
         elseif($filters === 'current')
         {
-            $this->exhibition->whereDate('began_at', '>', $today)
+            $this->whereDate('began_at', '>', $today)
                 ->whereDate('ended', '<', $today);
         }
         elseif($filters === 'future')
         {
-            $this->exhibition->whereDate('began_at', '>', $today);
+            $this->whereDate('began_at', '>', $today);
         }
 
-        return $this->exhibition;
+        return $this->query;
     }
 
     public function render()
     {
-        $exhibitions = $this->exhibition
+        $exhibitions = Exhibition::where('title', 'like', '%'.$this->search.'%')
             ->where('title', 'like', '%'.$this->search.'%')
             ->orderBy('began_at', 'desc')
             ->paginate(25);
