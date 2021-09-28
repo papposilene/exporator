@@ -5,7 +5,7 @@
         <livewire:dashboard.stat-exhibition />
     </div>
     <div class="flex flex-row justify-center w-full">
-        <livewire:components.leaflet-map />
+        <livewire:components.leaflet-map :data="" />
     </div>
     <div class="flex flex-row justify-center w-full">
         <livewire:components.amcharts-timeline />

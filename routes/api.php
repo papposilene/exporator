@@ -29,9 +29,11 @@ Route::prefix('1.1')->group(function () {
 
     // Museums
     Route::get('/museums', [MuseumController::class, 'index'])->name('api.museum.index');
+    Route::get('/museums/geojson', [MuseumController::class, 'geojson'])->name('api.museum.geojson');
     Route::get('/museum/{slug}', [MuseumController::class, 'show'])->name('api.museum.show');
 
     // Exhibitions
     Route::get('/exhibitions', [ExhibitionController::class, 'index'])->name('api.exhibition.index');
+    Route::get('/exhibition/geojson', [ExhibitionController::class, 'geojson'])->name('api.exhibition.geojson');
     Route::get('/exhibition/{slug}', [ExhibitionController::class, 'show'])->name('api.exhibition.show');
 });

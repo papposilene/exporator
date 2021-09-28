@@ -22,24 +22,13 @@ class MuseumController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display a listing of the resource in geojson format.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function geojson()
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        return MuseumResource::collection(Museum::paginate(25));
     }
 
     /**
@@ -60,29 +49,6 @@ class MuseumController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Museum $museum)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Museum  $museum
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Museum $museum)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Museum  $museum
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Museum $museum)
     {
         //
     }

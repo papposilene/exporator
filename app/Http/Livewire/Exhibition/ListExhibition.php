@@ -34,7 +34,6 @@ class ListExhibition extends Component
 
         $exhibitions = Exhibition::where('title', 'like', '%'.$this->search.'%')
             ->where('title', 'like', '%'.$this->search.'%')
-            ->whereDate('ended_at', '>', $today)
             ->orderBy('began_at', 'desc')
             ->paginate(25);
 
