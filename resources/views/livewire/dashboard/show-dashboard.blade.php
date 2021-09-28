@@ -5,9 +5,9 @@
         <livewire:dashboard.stat-exhibition />
     </div>
     <div class="flex flex-row justify-center w-full">
-        <livewire:dashboard.stat-map />
+        <livewire:components.leaflet-map />
     </div>
     <div class="flex flex-row justify-center w-full">
-        <livewire:dashboard.stat-timeline />
+        <livewire:components.amcharts-timeline />
     </div>
 </div>
