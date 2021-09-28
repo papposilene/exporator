@@ -21,6 +21,8 @@
         "tailwindcss": "^2.2.2"
     },
     "dependencies": {
+        "@amcharts/amcharts4": "^4.10.22",
+        "@amcharts/amcharts4-fonts": "^4.0.1",
         "@tailwindcss/aspect-ratio": "^0.2.1",
         "@tailwindcss/line-clamp": "^0.2.1",
         "leaflet": "^1.7.1",
