@@ -22,15 +22,15 @@
 
             <div class="relative flex items-center justify-between mb-2 w-full">
                 <div class="flex">
-                    <button class="text-base rounded-r-none hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer
+                    <button wire:click="" class="text-base rounded-r-none hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer
                         hover:bg-red-200 hover:text-black bg-red-100 border duration-200 ease-in-out border-gray-300 transition">
                         <div class="flex leading-5">@ucfirst(__('app.exhibitions_past'))</div>
                     </button>
-                    <button class="text-base rounded-l-none rounded-r-none border-l-0 border-r-0 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer
+                    <button wire:click="filterCurrent" class="text-base rounded-l-none rounded-r-none border-l-0 border-r-0 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer
                         hover:bg-green-200 hover:text-black bg-green-100 border duration-200 ease-in-out border-gray-300 transition">
                         <div class="flex leading-5">@ucfirst(__('app.exhibitions_current'))</div>
                     </button>
-                    <button class="text-base rounded-l-none hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer
+                    <button wire:click="filterFuture" class="text-base rounded-l-none hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer
                         hover:bg-blue-200 hover:text-black bg-blue-100 border duration-200 ease-in-out border-gray-300 transition">
                         <div class="flex leading-5">@ucfirst(__('app.exhibitions_future'))</div>
                     </button>

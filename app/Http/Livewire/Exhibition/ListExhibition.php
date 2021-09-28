@@ -10,14 +10,14 @@ class ListExhibition extends Component
 {
     use WithPagination;
 
-    public $filter = 'all';
+    public $filter = '';
     public $page = 1;
     public $sort = 'asc';
     public $search = '';
     public Exhibition $exhibition;
 
     protected $queryString = [
-        'filter' => ['except' => 'all'],
+        'filter' => ['except' => ''],
         'page' => ['except' => 1],
         'search' => ['except' => ''],
         'sort' => ['except' => 'asc'],
@@ -28,31 +28,13 @@ class ListExhibition extends Component
         $this->resetPage();
     }
 
-    public function updatingFilter($filters = 'all')
+    public function render()
     {
         $today = date('Y-m-d');
 
-        if($filters === 'past')
-        {
-            $this->exhibition->whereDate('ended_at', '<', $today);
-        }
-        elseif($filters === 'current')
-        {
-            $this->whereDate('began_at', '>', $today)
-                ->whereDate('ended', '<', $today);
-        }
-        elseif($filters === 'future')
-        {
-            $this->whereDate('began_at', '>', $today);
-        }
-
-        return $this->query;
-    }
-
-    public function render()
-    {
         $exhibitions = Exhibition::where('title', 'like', '%'.$this->search.'%')
             ->where('title', 'like', '%'.$this->search.'%')
+            ->whereDate('ended_at', '>', $today)
             ->orderBy('began_at', 'desc')
             ->paginate(25);
 
