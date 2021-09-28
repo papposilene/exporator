@@ -6,10 +6,12 @@ use Livewire\Component;
 
 class LeafletMap extends Component
 {
-    public $mapApi;
+    public $api = 'museum';
 
     public function render()
     {
-        return view('livewire.components.leaflet-map');
+        return view('livewire.components.leaflet-map', [
+            'api' => $this->api,
+        ]);
     }
 }
