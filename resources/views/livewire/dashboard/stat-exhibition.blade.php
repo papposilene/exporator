@@ -1,4 +1,4 @@
-<div class="bg-pink-100 m-5 p-5 w-1/4">
+<div class="bg-pink-100 m-5 p-5 w-full">
     <h3 class="font-bold text-2xl mb-5">@ucfirst(__('app.exhibitions'))</h3>
     <h4 class="font-bold text-1xl mb-2">@ucfirst(__('app.statistics'))</h4>
     <ol class="list-inside list-disc">
