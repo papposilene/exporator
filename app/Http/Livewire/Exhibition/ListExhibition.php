@@ -32,7 +32,8 @@ class ListExhibition extends Component
     {
         $today = date('Y-m-d');
 
-        $exhibitions = Exhibition::where('title', 'like', '%'.$this->search.'%')
+        $exhibitions = Exhibition::where('is_published', true)
+            ->where('title', 'like', '%'.$this->search.'%')
             ->orderBy('began_at', 'desc')
             ->paginate(25);
 
