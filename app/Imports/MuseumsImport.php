@@ -15,6 +15,7 @@ use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
 use Maatwebsite\Excel\Validators\Failure;
+use Spatie\Tags\Tag;
 
 class MuseumsImport implements ToModel, SkipsEmptyRows, WithBatchInserts, WithChunkReading, WithHeadingRow, WithValidation
 {
@@ -31,7 +32,22 @@ class MuseumsImport implements ToModel, SkipsEmptyRows, WithBatchInserts, WithCh
         $country = Country::where('cca3', strtolower($row['country']))->firstOrFail();
         $status = ($row['status'] === 'open' ? true : false);
 
-        return Museum::updateOrCreate([
+        // Is there some tags attached to the exhibition?
+        if (isset($row['tags']) && Str::of($row['tags'])->trim()->isNotEmpty())
+        {
+            // Format : semicolon-separated tags as tag-type:tag-name (ie type:museum of fines arts;type:ecomuseum)
+            $tags = Str::of($row['tags'])->split('/,+/');
+            foreach ($tags as $tag)
+            {
+                if (empty($tag)) continue;
+
+                // Find or create the tag for the exhibition type.
+                $splittag = Str::of($tag)->split('/:+/');
+                $tagged[] = Tag::findOrCreate($splittag[1], $splittag[0]);
+            }
+        }
+
+        $museum = Museum::updateOrCreate([
             'slug' => $slug,
             'name' => $row['name'],
         ],
@@ -46,6 +62,8 @@ class MuseumsImport implements ToModel, SkipsEmptyRows, WithBatchInserts, WithCh
             'lon' => $row['longitude'],
             'link' => $row['link'],
         ]);
+
+        $museum->attachTags($tagged);
     }
 
     public function batchSize(): int
