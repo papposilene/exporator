@@ -7,6 +7,7 @@ use App\Http\Livewire\Country\ListCountry;
 use App\Http\Livewire\Country\ShowCountry;
 use App\Http\Livewire\Dashboard\ShowDashboard;
 use App\Http\Livewire\Exhibition\ListExhibition;
+use App\Http\Livewire\Exhibition\ProposeExhibition;
 use App\Http\Livewire\Exhibition\ShowExhibition;
 use App\Http\Livewire\Museum\ListMuseum;
 use App\Http\Livewire\Museum\ShowMuseum;
