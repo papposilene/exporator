@@ -16,7 +16,11 @@
 
     <body class="font-sans antialiased bg-gray-100">
         <div>
+            @auth
             <livewire:backend-menu />
+            @else
+            <livewire:frontend-menu />
+            @endauth
 
             <!-- Page Heading -->
             @if (isset($header))
