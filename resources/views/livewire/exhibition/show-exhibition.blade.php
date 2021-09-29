@@ -77,15 +77,17 @@
                     <a href="{{ $exhibition->inMuseum->link }}" target="_blank" rel="noopener">{{ $exhibition->inMuseum->link }}</a>
                     @endif
                 </li>
-                <li class="mt-5" title="@ucfirst(__('app.tags'))">
-                    @if ($exhibition->tags)
-                    @foreach ($exhibition->tags as $tag)
+            </ul>
+            <ul class="list-inside mx-5 px-5 w-full">
+                @if ($exhibition->tags)
+                @foreach ($exhibition->tags as $tag)
+                <li class="bg-gray-300 mr-2 p-2 inline-block" title="{{ $tag->type }}">
                     {{ $tag->name }}
-                    @endforeach
-                    @else
-                    @ucfirst(__('app.notags'))
-                    @endif
                 </li>
+                @endforeach
+                @else
+                <li class="" title="@ucfirst(__('app.notags'))">@ucfirst(__('app.notags'))</li>
+                @endif
             </ul>
         </div>
     </div>
