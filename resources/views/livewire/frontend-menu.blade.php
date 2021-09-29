@@ -22,6 +22,12 @@
                     <x-jet-nav-link href="{{ route('front.exhibition.index') }}" :active="request()->routeIs('front.exhibition.*')">
                         {{ __('Exhibitions') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('front.exhibition.map') }}" :active="request()->routeIs('front.exhibition.*')">
+                        {{ __('Map') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('front.exhibition.timeline') }}" :active="request()->routeIs('front.exhibition.*')">
+                        {{ __('Timeline') }}
+                    </x-jet-nav-link>
                 </div>
             </div>
 
@@ -55,6 +61,12 @@
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('front.exhibition.index') }}" :active="request()->routeIs('front.exhibition.*')">
                 {{ __('Exhibitions') }}
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('front.exhibition.map') }}" :active="request()->routeIs('front.exhibition.*')">
+                {{ __('Map') }}
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('front.exhibition.timeline') }}" :active="request()->routeIs('front.exhibition.*')">
+                {{ __('Timeline') }}
             </x-jet-responsive-nav-link>
         </div>
 
