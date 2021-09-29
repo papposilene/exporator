@@ -24,8 +24,8 @@ services:
         depends_on:
             - mysql
     mysql:
-        platform: linux/x86_64
         image: 'mysql:8.0'
+        platform: linux/x86_64
         ports:
             - '${FORWARD_DB_PORT:-3306}:3306'
         environment:
@@ -42,6 +42,16 @@ services:
           test: ["CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}"]
           retries: 3
           timeout: 5s
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        environment:
+            - PMA_ARBITRARY=1
+            - PMA_HOST=localhost
+            - PMA_PORT=3306
+        networks:
+            - sail
+        ports:
+            - 8024:80
 networks:
     sail:
         driver: bridge
