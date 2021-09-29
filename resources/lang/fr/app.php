@@ -58,6 +58,7 @@ return [
     'name_common' => 'dénomination courante du pays',
     'name_official' => 'dénomination officielle du pays',
     'no_exhibition' => 'sans exposition',
+    'notags' => 'pas de mot-clé à afficher...',
     'nothing' => 'ici, il n’y à rien à afficher...',
     'optional' => 'information optionnelle',
     'other' => 'autre',
