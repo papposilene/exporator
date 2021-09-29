@@ -23,6 +23,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::redirect('/', '/dashboard', 301);
+Route::get('/dashboard', ShowDashboard::class)->name('dashboard');
+
+// Museums
+Route::get('/museums', ListMuseum::class)->name('front.museum.index');
+Route::get('/museum/{slug}', ShowMuseum::class)->name('front.museum.show');
+
+// Exhibitions
+Route::get('/exhibitions', ListExhibition::class)->name('front.exhibition.index');
+Route::get('/museum/{museum}/exhibition/{exhibition}', ShowExhibition::class)->name('front.exhibition.show');
+Route::get('/exhibitions/propose', ProposeExhibition::class)->name('front.exhibition.propose');
+
 Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::redirect('/', '/dashboard', 301);
     Route::get('/dashboard', ShowDashboard::class)->name('dashboard');
