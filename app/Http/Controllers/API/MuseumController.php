@@ -29,7 +29,7 @@ class MuseumController extends Controller
     public function geojson()
     {
         $today = date('Y-m-d');
-        $data = Museum::where('is_published', true)->get();
+        $data = Museum::all();
         $features = [];
 
         foreach($data as $key => $value)
@@ -54,9 +54,19 @@ class MuseumController extends Controller
                     'city' => $value['city'],
                     'link' => $value['link'],
                     'exhibitions' => [
-                        'past' => $value->hasExhibitions()->whereDate('ended_at', '>', $today)->count(),
-                        'present' => $value->hasExhibitions()->whereDate('began_at', '<', $today)->whereDate('ended_at', '>', $today)->count(),
-                        'future' => $value->hasExhibitions()->whereDate('began_at', '<', $today)->count(),
+                        'past' => $value->hasExhibitions()
+                            ->where('is_published', true)
+                            ->whereDate('ended_at', '>', $today)
+                            ->count(),
+                        'present' => $value->hasExhibitions()
+                            ->where('is_published', true)
+                            ->whereDate('began_at', '<', $today)
+                            ->whereDate('ended_at', '>', $today)
+                            ->count(),
+                        'future' => $value->hasExhibitions()
+                            ->where('is_published', true)
+                            ->whereDate('began_at', '<', $today)
+                            ->count(),
                     ],
                 ],
             ];

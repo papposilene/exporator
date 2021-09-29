@@ -18,9 +18,10 @@
         <div>
             @auth
             <livewire:backend-menu />
-            @else
-            <livewire:frontend-menu />
             @endauth
+            @guest
+            <livewire:frontend-menu />
+            @endguest
 
             <!-- Page Heading -->
             @if (isset($header))

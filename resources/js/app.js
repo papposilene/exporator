@@ -4,9 +4,10 @@ require('./bootstrap');
 import Alpine from 'alpinejs';
 
 /* amCharts */
-import * as am4core from '@amcharts/amcharts4/core';
-import * as am4charts from '@amcharts/amcharts4/charts';
-import * as am4plugins_timeline from '@amcharts/amcharts4/plugins/timeline';
+import am4core from '@amcharts/amcharts4/core.js';
+import am4charts from '@amcharts/amcharts4/charts.js';
+import am4plugins_timeline from '@amcharts/amcharts4/plugins/timeline.d.ts';
+import am4themes_animated from '@amcharts/amcharts4/themes/animated.js';
 
 /* Leaflet */
 import 'leaflet/dist/leaflet-src.js'
