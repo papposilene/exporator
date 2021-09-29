@@ -8,6 +8,6 @@ document.addEventListener('livewire:load', function () {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(leafletMap);
 
-    L.geoJSON('//localhost/api/1.1/{{ $api }}/geojson').addTo(leafletMap);
+    L.geoJSON('{{ route('api.' . $api . '.geojson') }}').addTo(leafletMap);
 })
 </script>

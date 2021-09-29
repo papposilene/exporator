@@ -28,7 +28,36 @@ class MuseumController extends Controller
      */
     public function geojson()
     {
-        return MuseumResource::collection(Museum::paginate(25));
+        $data = Museum::all();
+        $features = [];
+
+        foreach($data as $key => $value)
+        {
+            $features[] = [
+                'type' => 'Feature',
+                'geometry' => [
+                    'type' => 'Point',
+                    'coordinates' => [
+                        (float) $value['lat'],
+                        (float) $value['lon'],
+                    ]
+                ],
+                'properties' => [
+                    'uuid' => $value['uuid'],
+                    'name' => $value['name'],
+                    'address' => $value['address'],
+                    'city' => $value['city'],
+                    'link' => $value['link'],
+                ],
+            ];
+        };
+
+        $allfeatures = [
+            'type' => 'FeatureCollection',
+            'features' => $features
+        ];
+
+        return json_encode($allfeatures, JSON_PRETTY_PRINT);
     }
 
     /**

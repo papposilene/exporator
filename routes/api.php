@@ -18,10 +18,6 @@ use App\Http\Controllers\API\MuseumController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::prefix('1.1')->group(function () {
     // Countries
     Route::get('/countries', [CountryController::class, 'index'])->name('api.country.index');
