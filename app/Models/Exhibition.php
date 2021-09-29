@@ -73,6 +73,7 @@ class Exhibition extends Model
         'ended_at',
         'description',
         'link',
+        'is_published',
     ];
 
     /**
