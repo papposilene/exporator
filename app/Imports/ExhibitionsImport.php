@@ -31,19 +31,7 @@ class ExhibitionsImport implements ToModel, SkipsEmptyRows, WithBatchInserts, Wi
     {
         $museum = Museum::where('name', $row['place'])->firstOrFail();
 
-        // Is there some tags attached to the exhibition?
-        if (isset($row['tags']) && Str::of($row['tags'])->trim()->isNotEmpty())
-        {
-            // Format : semicolon-separated tags as tag-type:tag-name (ie type:museum of fines arts;type:ecomuseum)
-            $tags = Str::of($row['tags'])->split('/,+/');
-            foreach ($tags as $tag)
-            {
-                // Find or create the tag for the exhibition type.
-                $tagged[] = Tag::findOrCreate($tag[1], $tag[0]);
-            }
-        }
-
-        Exhibition::updateOrCreate([
+        $exhibition = Exhibition::updateOrCreate([
             'slug' => Str::slug($row['title'], '-'),
             'title' => $row['title'],
         ],
@@ -55,8 +43,23 @@ class ExhibitionsImport implements ToModel, SkipsEmptyRows, WithBatchInserts, Wi
             'description' => $row['description'],
             'link' => $row['link'],
             'is_published' => true,
-            'tags' => $tagged,
         ]);
+
+        // Is there some tags attached to the exhibition?
+        if (isset($row['tags']) && Str::of($row['tags'])->trim()->isNotEmpty())
+        {
+            // Format : semicolon-separated tags as tag-type:tag-name (ie type:museum of fines arts;type:ecomuseum)
+            $tags = Str::of($row['tags'])->split('/,+/');
+            foreach ($tags as $tag)
+            {
+                if (empty($tag)) continue;
+
+                // Find or create the tag for the exhibition type.
+                $splittag = Str::of($tag)->split('/:+/');
+                $tagged = Tag::findOrCreate($splittag[1], $splittag[0]);
+                $exhibition->attachTags([$splittag[1]], $splittag[0]);
+            }
+        }
     }
 
     public function batchSize(): int
