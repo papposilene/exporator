@@ -16,7 +16,7 @@
 
     <body class="font-sans antialiased bg-gray-100">
         <div>
-            @livewire('navigation-menu')
+            @livewire('backend-navigation')
 
             <!-- Page Heading -->
             @if (isset($header))
