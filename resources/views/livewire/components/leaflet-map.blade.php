@@ -2,7 +2,7 @@
 
 <script>
 document.addEventListener('livewire:load', function () {
-    var leafletMap = L.map('leaflet-map').setView([0, 0], 13);
+    var leafletMap = L.map('leaflet-map').setView([48.8635, 2.354], 2.5);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
