@@ -28,7 +28,8 @@ class MuseumController extends Controller
      */
     public function geojson()
     {
-        $data = Museum::all();
+        $today = date('Y-m-d');
+        $data = Museum::where('is_published', true)->get();
         $features = [];
 
         foreach($data as $key => $value)
@@ -52,6 +53,11 @@ class MuseumController extends Controller
                     'address' => $value['address'],
                     'city' => $value['city'],
                     'link' => $value['link'],
+                    'exhibitions' => [
+                        'past' => $value->hasExhibitions()->whereDate('ended_at', '>', $today)->count(),
+                        'present' => $value->hasExhibitions()->whereDate('began_at', '<', $today)->whereDate('ended_at', '>', $today)->count(),
+                        'future' => $value->hasExhibitions()->whereDate('began_at', '<', $today)->count(),
+                    ],
                 ],
             ];
         };
