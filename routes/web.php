@@ -43,6 +43,7 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function
     Route::get('/museum/{museum}/exhibition/{exhibition}', ShowExhibition::class)->name('admin.exhibition.show');
     Route::post('/exhibition/store', [ExhibitionController::class, 'store'])->name('admin.exhibition.store');
     Route::post('/exhibition/update', [ExhibitionController::class, 'update'])->name('admin.exhibition.update');
+    Route::get('/exhibitions/propose', ProposeExhibition::class)->name('admin.exhibition.propose');
 });
 
 Route::view('/{path?}', 'app')->where('path', '.*')->name('nuxt');
