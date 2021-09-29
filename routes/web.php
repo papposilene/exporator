@@ -23,6 +23,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+/*
+|--------------------------------------------------------------------------
+| Frontend
+|--------------------------------------------------------------------------
+*/
 Route::redirect('/', '/dashboard', 301);
 Route::get('/dashboard', ShowDashboard::class)->name('dashboard');
 
@@ -35,6 +41,11 @@ Route::get('/exhibitions', ListExhibition::class)->name('front.exhibition.index'
 Route::get('/museum/{museum}/exhibition/{exhibition}', ShowExhibition::class)->name('front.exhibition.show');
 Route::get('/exhibitions/propose', ProposeExhibition::class)->name('front.exhibition.propose');
 
+/*
+|--------------------------------------------------------------------------
+| Backend
+|--------------------------------------------------------------------------
+*/
 Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::redirect('/', '/dashboard', 301);
     Route::get('/dashboard', ShowDashboard::class)->name('dashboard');
