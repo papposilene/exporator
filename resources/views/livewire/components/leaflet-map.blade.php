@@ -8,8 +8,11 @@ function is_open(feature) {
 }
 
 function has_exhibition(feature) {
-    if (feature.properties.has_exhibition > 0) {
+    if (feature.properties.exhibitions.present > 0) {
         return {color: "#000000"};
+    }
+    else {
+        return {color: "#ff0000"};
     }
 }
 
