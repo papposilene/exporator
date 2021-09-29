@@ -38,13 +38,17 @@ class MuseumController extends Controller
                 'geometry' => [
                     'type' => 'Point',
                     'coordinates' => [
-                        (float) $value['lat'],
                         (float) $value['lon'],
+                        (float) $value['lat'],
+
                     ]
                 ],
                 'properties' => [
                     'uuid' => $value['uuid'],
+                    'slug' => $value['slug'],
                     'name' => $value['name'],
+                    'type' => $value['type'],
+                    'status' => ($value['status'] === 1 ? 'open' : 'closed'),
                     'address' => $value['address'],
                     'city' => $value['city'],
                     'link' => $value['link'],
@@ -54,7 +58,7 @@ class MuseumController extends Controller
 
         $allfeatures = [
             'type' => 'FeatureCollection',
-            'features' => $features
+            'features' => $features,
         ];
 
         return json_encode($allfeatures, JSON_PRETTY_PRINT);

@@ -5258,10 +5258,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/module.esm.js");
 /* harmony import */ var leaflet_dist_leaflet_src_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! leaflet/dist/leaflet-src.js */ "./node_modules/leaflet/dist/leaflet-src.js");
 /* harmony import */ var leaflet_dist_leaflet_src_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(leaflet_dist_leaflet_src_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var leaflet_ajax_dist_leaflet_ajax_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! leaflet-ajax/dist/leaflet.ajax.js */ "./node_modules/leaflet-ajax/dist/leaflet.ajax.js");
+/* harmony import */ var leaflet_ajax_dist_leaflet_ajax_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(leaflet_ajax_dist_leaflet_ajax_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var leaflet_locatecontrol_dist_L_Control_Locate_min_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! leaflet.locatecontrol/dist/L.Control.Locate.min.js */ "./node_modules/leaflet.locatecontrol/dist/L.Control.Locate.min.js");
+/* harmony import */ var leaflet_locatecontrol_dist_L_Control_Locate_min_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(leaflet_locatecontrol_dist_L_Control_Locate_min_js__WEBPACK_IMPORTED_MODULE_3__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 /* Leaflet */
+
+
 
 
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];
@@ -5297,6 +5303,608 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./node_modules/leaflet-ajax/dist/leaflet.ajax.js":
+/*!********************************************************!*\
+  !*** ./node_modules/leaflet-ajax/dist/leaflet.ajax.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=undefined;if(!u&&a)return require(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=undefined;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+'use strict';
+var immediate = require('immediate');
+
+/* istanbul ignore next */
+function INTERNAL() {}
+
+var handlers = {};
+
+var REJECTED = ['REJECTED'];
+var FULFILLED = ['FULFILLED'];
+var PENDING = ['PENDING'];
+
+module.exports = exports = Promise;
+
+function Promise(resolver) {
+  if (typeof resolver !== 'function') {
+    throw new TypeError('resolver must be a function');
+  }
+  this.state = PENDING;
+  this.queue = [];
+  this.outcome = void 0;
+  if (resolver !== INTERNAL) {
+    safelyResolveThenable(this, resolver);
+  }
+}
+
+Promise.prototype["catch"] = function (onRejected) {
+  return this.then(null, onRejected);
+};
+Promise.prototype.then = function (onFulfilled, onRejected) {
+  if (typeof onFulfilled !== 'function' && this.state === FULFILLED ||
+    typeof onRejected !== 'function' && this.state === REJECTED) {
+    return this;
+  }
+  var promise = new this.constructor(INTERNAL);
+  if (this.state !== PENDING) {
+    var resolver = this.state === FULFILLED ? onFulfilled : onRejected;
+    unwrap(promise, resolver, this.outcome);
+  } else {
+    this.queue.push(new QueueItem(promise, onFulfilled, onRejected));
+  }
+
+  return promise;
+};
+function QueueItem(promise, onFulfilled, onRejected) {
+  this.promise = promise;
+  if (typeof onFulfilled === 'function') {
+    this.onFulfilled = onFulfilled;
+    this.callFulfilled = this.otherCallFulfilled;
+  }
+  if (typeof onRejected === 'function') {
+    this.onRejected = onRejected;
+    this.callRejected = this.otherCallRejected;
+  }
+}
+QueueItem.prototype.callFulfilled = function (value) {
+  handlers.resolve(this.promise, value);
+};
+QueueItem.prototype.otherCallFulfilled = function (value) {
+  unwrap(this.promise, this.onFulfilled, value);
+};
+QueueItem.prototype.callRejected = function (value) {
+  handlers.reject(this.promise, value);
+};
+QueueItem.prototype.otherCallRejected = function (value) {
+  unwrap(this.promise, this.onRejected, value);
+};
+
+function unwrap(promise, func, value) {
+  immediate(function () {
+    var returnValue;
+    try {
+      returnValue = func(value);
+    } catch (e) {
+      return handlers.reject(promise, e);
+    }
+    if (returnValue === promise) {
+      handlers.reject(promise, new TypeError('Cannot resolve promise with itself'));
+    } else {
+      handlers.resolve(promise, returnValue);
+    }
+  });
+}
+
+handlers.resolve = function (self, value) {
+  var result = tryCatch(getThen, value);
+  if (result.status === 'error') {
+    return handlers.reject(self, result.value);
+  }
+  var thenable = result.value;
+
+  if (thenable) {
+    safelyResolveThenable(self, thenable);
+  } else {
+    self.state = FULFILLED;
+    self.outcome = value;
+    var i = -1;
+    var len = self.queue.length;
+    while (++i < len) {
+      self.queue[i].callFulfilled(value);
+    }
+  }
+  return self;
+};
+handlers.reject = function (self, error) {
+  self.state = REJECTED;
+  self.outcome = error;
+  var i = -1;
+  var len = self.queue.length;
+  while (++i < len) {
+    self.queue[i].callRejected(error);
+  }
+  return self;
+};
+
+function getThen(obj) {
+  // Make sure we only access the accessor once as required by the spec
+  var then = obj && obj.then;
+  if (obj && typeof obj === 'object' && typeof then === 'function') {
+    return function appyThen() {
+      then.apply(obj, arguments);
+    };
+  }
+}
+
+function safelyResolveThenable(self, thenable) {
+  // Either fulfill, reject or reject with error
+  var called = false;
+  function onError(value) {
+    if (called) {
+      return;
+    }
+    called = true;
+    handlers.reject(self, value);
+  }
+
+  function onSuccess(value) {
+    if (called) {
+      return;
+    }
+    called = true;
+    handlers.resolve(self, value);
+  }
+
+  function tryToUnwrap() {
+    thenable(onSuccess, onError);
+  }
+
+  var result = tryCatch(tryToUnwrap);
+  if (result.status === 'error') {
+    onError(result.value);
+  }
+}
+
+function tryCatch(func, value) {
+  var out = {};
+  try {
+    out.value = func(value);
+    out.status = 'success';
+  } catch (e) {
+    out.status = 'error';
+    out.value = e;
+  }
+  return out;
+}
+
+exports.resolve = resolve;
+function resolve(value) {
+  if (value instanceof this) {
+    return value;
+  }
+  return handlers.resolve(new this(INTERNAL), value);
+}
+
+exports.reject = reject;
+function reject(reason) {
+  var promise = new this(INTERNAL);
+  return handlers.reject(promise, reason);
+}
+
+exports.all = all;
+function all(iterable) {
+  var self = this;
+  if (Object.prototype.toString.call(iterable) !== '[object Array]') {
+    return this.reject(new TypeError('must be an array'));
+  }
+
+  var len = iterable.length;
+  var called = false;
+  if (!len) {
+    return this.resolve([]);
+  }
+
+  var values = new Array(len);
+  var resolved = 0;
+  var i = -1;
+  var promise = new this(INTERNAL);
+
+  while (++i < len) {
+    allResolver(iterable[i], i);
+  }
+  return promise;
+  function allResolver(value, i) {
+    self.resolve(value).then(resolveFromAll, function (error) {
+      if (!called) {
+        called = true;
+        handlers.reject(promise, error);
+      }
+    });
+    function resolveFromAll(outValue) {
+      values[i] = outValue;
+      if (++resolved === len && !called) {
+        called = true;
+        handlers.resolve(promise, values);
+      }
+    }
+  }
+}
+
+exports.race = race;
+function race(iterable) {
+  var self = this;
+  if (Object.prototype.toString.call(iterable) !== '[object Array]') {
+    return this.reject(new TypeError('must be an array'));
+  }
+
+  var len = iterable.length;
+  var called = false;
+  if (!len) {
+    return this.resolve([]);
+  }
+
+  var i = -1;
+  var promise = new this(INTERNAL);
+
+  while (++i < len) {
+    resolver(iterable[i]);
+  }
+  return promise;
+  function resolver(value) {
+    self.resolve(value).then(function (response) {
+      if (!called) {
+        called = true;
+        handlers.resolve(promise, response);
+      }
+    }, function (error) {
+      if (!called) {
+        called = true;
+        handlers.reject(promise, error);
+      }
+    });
+  }
+}
+
+},{"immediate":2}],2:[function(require,module,exports){
+(function (global){
+'use strict';
+var Mutation = global.MutationObserver || global.WebKitMutationObserver;
+
+var scheduleDrain;
+
+{
+  if (Mutation) {
+    var called = 0;
+    var observer = new Mutation(nextTick);
+    var element = global.document.createTextNode('');
+    observer.observe(element, {
+      characterData: true
+    });
+    scheduleDrain = function () {
+      element.data = (called = ++called % 2);
+    };
+  } else if (!global.setImmediate && typeof global.MessageChannel !== 'undefined') {
+    var channel = new global.MessageChannel();
+    channel.port1.onmessage = nextTick;
+    scheduleDrain = function () {
+      channel.port2.postMessage(0);
+    };
+  } else if ('document' in global && 'onreadystatechange' in global.document.createElement('script')) {
+    scheduleDrain = function () {
+
+      // Create a <script> element; its readystatechange event will be fired asynchronously once it is inserted
+      // into the document. Do so, thus queuing up the task. Remember to clean up once it's been called.
+      var scriptEl = global.document.createElement('script');
+      scriptEl.onreadystatechange = function () {
+        nextTick();
+
+        scriptEl.onreadystatechange = null;
+        scriptEl.parentNode.removeChild(scriptEl);
+        scriptEl = null;
+      };
+      global.document.documentElement.appendChild(scriptEl);
+    };
+  } else {
+    scheduleDrain = function () {
+      setTimeout(nextTick, 0);
+    };
+  }
+}
+
+var draining;
+var queue = [];
+//named nextTick for less confusing stack traces
+function nextTick() {
+  draining = true;
+  var i, oldQueue;
+  var len = queue.length;
+  while (len) {
+    oldQueue = queue;
+    queue = [];
+    i = -1;
+    while (++i < len) {
+      oldQueue[i]();
+    }
+    len = queue.length;
+  }
+  draining = false;
+}
+
+module.exports = immediate;
+function immediate(task) {
+  if (queue.push(task) === 1 && !draining) {
+    scheduleDrain();
+  }
+}
+
+}).call(this,typeof __webpack_require__.g !== "undefined" ? __webpack_require__.g : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],3:[function(require,module,exports){
+(function (global){
+'use strict';
+var jsonp = require('./jsonp');
+var Promise = require('lie');
+
+module.exports = function (url, options) {
+  options = options || {};
+  if (options.jsonp) {
+    return jsonp(url, options);
+  }
+  var request;
+  var cancel;
+  var out = new Promise(function (resolve, reject) {
+    cancel = reject;
+    if (global.XMLHttpRequest === undefined) {
+      reject('XMLHttpRequest is not supported');
+    }
+    var response;
+    request = new global.XMLHttpRequest();
+    request.open('GET', url);
+    if (options.headers) {
+      Object.keys(options.headers).forEach(function (key) {
+        request.setRequestHeader(key, options.headers[key]);
+      });
+    }
+    request.onreadystatechange = function () {
+      if (request.readyState === 4) {
+        if ((request.status < 400 && options.local) || request.status === 200) {
+          if (global.JSON) {
+            response = JSON.parse(request.responseText);
+          } else {
+            reject(new Error('JSON is not supported'));
+          }
+          resolve(response);
+        } else {
+          if (!request.status) {
+            reject('Attempted cross origin request without CORS enabled');
+          } else {
+            reject(request.statusText);
+          }
+        }
+      }
+    };
+    request.send();
+  });
+  out.catch(function (reason) {
+    request.abort();
+    return reason;
+  });
+  out.abort = cancel;
+  return out;
+};
+
+}).call(this,typeof __webpack_require__.g !== "undefined" ? __webpack_require__.g : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"./jsonp":5,"lie":1}],4:[function(require,module,exports){
+(function (global){
+'use strict';
+var L = global.L || require('leaflet');
+var Promise = require('lie');
+var ajax = require('./ajax');
+L.GeoJSON.AJAX = L.GeoJSON.extend({
+  defaultAJAXparams: {
+    dataType: 'json',
+    callbackParam: 'callback',
+    local: false,
+    middleware: function (f) {
+      return f;
+    }
+  },
+  initialize: function (url, options) {
+    this.urls = [];
+    if (url) {
+      if (typeof url === 'string') {
+        this.urls.push(url);
+      } else if (typeof url.pop === 'function') {
+        this.urls = this.urls.concat(url);
+      } else {
+        options = url;
+        url = undefined;
+      }
+    }
+    var ajaxParams = L.Util.extend({}, this.defaultAJAXparams);
+
+    for (var i in options) {
+      if (this.defaultAJAXparams.hasOwnProperty(i)) {
+        ajaxParams[i] = options[i];
+      }
+    }
+    this.ajaxParams = ajaxParams;
+    this._layers = {};
+    L.Util.setOptions(this, options);
+    this.on('data:loaded', function () {
+      if (this.filter) {
+        this.refilter(this.filter);
+      }
+    }, this);
+    var self = this;
+    if (this.urls.length > 0) {
+      new Promise(function (resolve) {
+        resolve();
+      }).then(function () {
+        self.addUrl();
+      });
+    }
+  },
+  clearLayers: function () {
+    this.urls = [];
+    L.GeoJSON.prototype.clearLayers.call(this);
+    return this;
+  },
+  addUrl: function (url) {
+    var self = this;
+    if (url) {
+      if (typeof url === 'string') {
+        self.urls.push(url);
+      } else if (typeof url.pop === 'function') {
+        self.urls = self.urls.concat(url);
+      }
+    }
+    var loading = self.urls.length;
+    var done = 0;
+    self.fire('data:loading');
+    self.urls.forEach(function (url) {
+      if (self.ajaxParams.dataType.toLowerCase() === 'json') {
+        ajax(url, self.ajaxParams).then(function (d) {
+          var data = self.ajaxParams.middleware(d);
+          self.addData(data);
+          self.fire('data:progress', data);
+        }, function (err) {
+          self.fire('data:progress', {
+            error: err
+          });
+        });
+      } else if (self.ajaxParams.dataType.toLowerCase() === 'jsonp') {
+        L.Util.jsonp(url, self.ajaxParams).then(function (d) {
+          var data = self.ajaxParams.middleware(d);
+          self.addData(data);
+          self.fire('data:progress', data);
+        }, function (err) {
+          self.fire('data:progress', {
+            error: err
+          });
+        });
+      }
+    });
+    self.on('data:progress', function () {
+      if (++done === loading) {
+        self.fire('data:loaded');
+      }
+    });
+  },
+  refresh: function (url) {
+    url = url || this.urls;
+    this.clearLayers();
+    this.addUrl(url);
+  },
+  refilter: function (func) {
+    if (typeof func !== 'function') {
+      this.filter = false;
+      this.eachLayer(function (a) {
+        a.setStyle({
+          stroke: true,
+          clickable: true
+        });
+      });
+    } else {
+      this.filter = func;
+      this.eachLayer(function (a) {
+        if (func(a.feature)) {
+          a.setStyle({
+            stroke: true,
+            clickable: true
+          });
+        } else {
+          a.setStyle({
+            stroke: false,
+            clickable: false
+          });
+        }
+      });
+    }
+  }
+});
+L.Util.Promise = Promise;
+L.Util.ajax = ajax;
+L.Util.jsonp = require('./jsonp');
+L.geoJson.ajax = function (geojson, options) {
+  return new L.GeoJSON.AJAX(geojson, options);
+};
+
+}).call(this,typeof __webpack_require__.g !== "undefined" ? __webpack_require__.g : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"./ajax":3,"./jsonp":5,"leaflet":undefined,"lie":1}],5:[function(require,module,exports){
+(function (global){
+'use strict';
+var L = global.L || require('leaflet');
+var Promise = require('lie');
+
+module.exports = function (url, options) {
+  options = options || {};
+  var head = document.getElementsByTagName('head')[0];
+  var scriptNode = L.DomUtil.create('script', '', head);
+  var cbName, ourl, cbSuffix, cancel;
+  var out = new Promise(function (resolve, reject) {
+    cancel = reject;
+    var cbParam = options.cbParam || 'callback';
+    if (options.callbackName) {
+      cbName = options.callbackName;
+    } else {
+      cbSuffix = '_' + ('' + Math.random()).slice(2);
+      cbName = '_leafletJSONPcallbacks.' + cbSuffix;
+    }
+    scriptNode.type = 'text/javascript';
+    if (cbSuffix) {
+      if (!global._leafletJSONPcallbacks) {
+        global._leafletJSONPcallbacks = {
+          length: 0
+        };
+      }
+      global._leafletJSONPcallbacks.length++;
+      global._leafletJSONPcallbacks[cbSuffix] = function (data) {
+        head.removeChild(scriptNode);
+        delete global._leafletJSONPcallbacks[cbSuffix];
+        global._leafletJSONPcallbacks.length--;
+        if (!global._leafletJSONPcallbacks.length) {
+          delete global._leafletJSONPcallbacks;
+        }
+        resolve(data);
+      };
+    }
+    if (url.indexOf('?') === -1) {
+      ourl = url + '?' + cbParam + '=' + cbName;
+    } else {
+      ourl = url + '&' + cbParam + '=' + cbName;
+    }
+    scriptNode.src = ourl;
+  }).then(null, function (reason) {
+    head.removeChild(scriptNode);
+    delete L.Util.ajax.cb[cbSuffix];
+    return reason;
+  });
+  out.abort = cancel;
+  return out;
+};
+
+}).call(this,typeof __webpack_require__.g !== "undefined" ? __webpack_require__.g : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"leaflet":undefined,"lie":1}]},{},[4]);
+
+
+/***/ }),
+
+/***/ "./node_modules/leaflet.locatecontrol/dist/L.Control.Locate.min.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/leaflet.locatecontrol/dist/L.Control.Locate.min.js ***!
+  \*************************************************************************/
+/***/ ((module, exports, __webpack_require__) => {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! Version: 0.74.0
+Copyright (c) 2016 Dominik Moritz */
+
+!function(t,i){ true?!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js")], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
+		__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+		(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)):0,void 0!==i&&i.L&&(i.L.Control.Locate=t(L))}(function(l){function o(i,o,t){(t=t.split(" ")).forEach(function(t){l.DomUtil[i].call(this,o,t)})}function i(t,i){o("addClass",t,i)}function s(t,i){o("removeClass",t,i)}var t=l.Marker.extend({initialize:function(t,i){l.Util.setOptions(this,i),this._latlng=t,this.createIcon()},createIcon:function(){var t=this.options,i="";void 0!==t.color&&(i+="stroke:"+t.color+";"),void 0!==t.weight&&(i+="stroke-width:"+t.weight+";"),void 0!==t.fillColor&&(i+="fill:"+t.fillColor+";"),void 0!==t.fillOpacity&&(i+="fill-opacity:"+t.fillOpacity+";"),void 0!==t.opacity&&(i+="opacity:"+t.opacity+";");i=this._getIconSVG(t,i);this._locationIcon=l.divIcon({className:i.className,html:i.svg,iconSize:[i.w,i.h]}),this.setIcon(this._locationIcon)},_getIconSVG:function(t,i){var o=t.radius,s=o+t.weight,t=2*s;return{className:"leaflet-control-locate-location",svg:'<svg xmlns="http://www.w3.org/2000/svg" width="'+t+'" height="'+t+'" version="1.1" viewBox="-'+s+" -"+s+" "+t+" "+t+'"><circle r="'+o+'" style="'+i+'" /></svg>',w:t,h:t}},setStyle:function(t){l.Util.setOptions(this,t),this.createIcon()}}),e=t.extend({initialize:function(t,i,o){l.Util.setOptions(this,o),this._latlng=t,this._heading=i,this.createIcon()},setHeading:function(t){this._heading=t},_getIconSVG:function(t,i){var o=t.radius,s=t.width+t.weight,o=2*(o+t.depth+t.weight),t="M0,0 l"+t.width/2+","+t.depth+" l-"+s+",0 z";return{className:"leaflet-control-locate-heading",svg:'<svg xmlns="http://www.w3.org/2000/svg" width="'+s+'" height="'+o+'" version="1.1" viewBox="-'+s/2+" 0 "+s+" "+o+'" style="'+("transform: rotate("+this._heading+"deg)")+'"><path d="'+t+'" style="'+i+'" /></svg>',w:s,h:o}}}),e=l.Control.extend({options:{position:"topleft",layer:void 0,setView:"untilPanOrZoom",keepCurrentZoomLevel:!1,initialZoomLevel:!1,getLocationBounds:function(t){return t.bounds},flyTo:!1,clickBehavior:{inView:"stop",outOfView:"setView",inViewNotFollowing:"inView"},returnToPrevBounds:!1,cacheLocation:!0,drawCircle:!0,drawMarker:!0,showCompass:!0,markerClass:t,compassClass:e,circleStyle:{className:"leaflet-control-locate-circle",color:"#136AEC",fillColor:"#136AEC",fillOpacity:.15,weight:0},markerStyle:{className:"leaflet-control-locate-marker",color:"#fff",fillColor:"#2A93EE",fillOpacity:1,weight:3,opacity:1,radius:9},compassStyle:{fillColor:"#2A93EE",fillOpacity:1,weight:0,color:"#fff",opacity:1,radius:9,width:9,depth:6},followCircleStyle:{},followMarkerStyle:{},followCompassStyle:{},icon:"fa fa-map-marker",iconLoading:"fa fa-spinner fa-spin",iconElementTag:"span",textElementTag:"small",circlePadding:[0,0],metric:!0,createButtonCallback:function(t,i){var o=l.DomUtil.create("a","leaflet-bar-part leaflet-bar-part-single",t);o.title=i.strings.title,o.role="button",o.href="#";t=l.DomUtil.create(i.iconElementTag,i.icon,o);return void 0!==i.strings.text&&(l.DomUtil.create(i.textElementTag,"leaflet-locate-text",o).textContent=i.strings.text,o.classList.add("leaflet-locate-text-active"),o.parentNode.style.display="flex",0<i.icon.length&&t.classList.add("leaflet-locate-icon")),{link:o,icon:t}},onLocationError:function(t,i){alert(t.message)},onLocationOutsideMapBounds:function(t){t.stop(),alert(t.options.strings.outsideMapBoundsMsg)},showPopup:!0,strings:{title:"Show me where I am",metersUnit:"meters",feetUnit:"feet",popup:"You are within {distance} {unit} from this point",outsideMapBoundsMsg:"You seem located outside the boundaries of the map"},locateOptions:{maxZoom:1/0,watch:!0,setView:!1}},initialize:function(t){for(var i in t)"object"==typeof this.options[i]?l.extend(this.options[i],t[i]):this.options[i]=t[i];this.options.followMarkerStyle=l.extend({},this.options.markerStyle,this.options.followMarkerStyle),this.options.followCircleStyle=l.extend({},this.options.circleStyle,this.options.followCircleStyle),this.options.followCompassStyle=l.extend({},this.options.compassStyle,this.options.followCompassStyle)},onAdd:function(t){var i=l.DomUtil.create("div","leaflet-control-locate leaflet-bar leaflet-control");this._container=i,this._map=t,this._layer=this.options.layer||new l.LayerGroup,this._layer.addTo(t),this._event=void 0,this._compassHeading=null,this._prevBounds=null;t=this.options.createButtonCallback(i,this.options);return this._link=t.link,this._icon=t.icon,l.DomEvent.on(this._link,"click",function(t){l.DomEvent.stopPropagation(t),l.DomEvent.preventDefault(t),this._onClick()},this).on(this._link,"dblclick",l.DomEvent.stopPropagation),this._resetVariables(),this._map.on("unload",this._unload,this),i},_onClick:function(){this._justClicked=!0;var t=this._isFollowing();if(this._userPanned=!1,this._userZoomed=!1,this._active&&!this._event)this.stop();else if(this._active){var i=this.options.clickBehavior,o=i.outOfView;switch(o=i[o=this._map.getBounds().contains(this._event.latlng)?t?i.inView:i.inViewNotFollowing:o]?i[o]:o){case"setView":this.setView();break;case"stop":this.stop(),this.options.returnToPrevBounds&&(this.options.flyTo?this._map.flyToBounds:this._map.fitBounds).bind(this._map)(this._prevBounds)}}else this.options.returnToPrevBounds&&(this._prevBounds=this._map.getBounds()),this.start();this._updateContainerStyle()},start:function(){this._activate(),this._event&&(this._drawMarker(this._map),this.options.setView&&this.setView()),this._updateContainerStyle()},stop:function(){this._deactivate(),this._cleanClasses(),this._resetVariables(),this._removeMarker()},stopFollowing:function(){this._userPanned=!0,this._updateContainerStyle(),this._drawMarker()},_activate:function(){var t,i,o;this._active||(this._map.locate(this.options.locateOptions),this._map.fire("locateactivate",this),this._active=!0,this._map.on("locationfound",this._onLocationFound,this),this._map.on("locationerror",this._onLocationError,this),this._map.on("dragstart",this._onDrag,this),this._map.on("zoomstart",this._onZoom,this),this._map.on("zoomend",this._onZoomEnd,this),!this.options.showCompass||((t="ondeviceorientationabsolute"in window)||"ondeviceorientation"in window)&&(i=this,o=function(){l.DomEvent.on(window,t?"deviceorientationabsolute":"deviceorientation",i._onDeviceOrientation,i)},DeviceOrientationEvent&&"function"==typeof DeviceOrientationEvent.requestPermission?DeviceOrientationEvent.requestPermission().then(function(t){"granted"===t&&o()}):o()))},_deactivate:function(){this._map.stopLocate(),this._map.fire("locatedeactivate",this),this._active=!1,this.options.cacheLocation||(this._event=void 0),this._map.off("locationfound",this._onLocationFound,this),this._map.off("locationerror",this._onLocationError,this),this._map.off("dragstart",this._onDrag,this),this._map.off("zoomstart",this._onZoom,this),this._map.off("zoomend",this._onZoomEnd,this),this.options.showCompass&&(this._compassHeading=null,"ondeviceorientationabsolute"in window?l.DomEvent.off(window,"deviceorientationabsolute",this._onDeviceOrientation,this):"ondeviceorientation"in window&&l.DomEvent.off(window,"deviceorientation",this._onDeviceOrientation,this))},setView:function(){var t;this._drawMarker(),this._isOutsideMapBounds()?(this._event=void 0,this.options.onLocationOutsideMapBounds(this)):this._justClicked&&!1!==this.options.initialZoomLevel?(t=this.options.flyTo?this._map.flyTo:this._map.setView).bind(this._map)([this._event.latitude,this._event.longitude],this.options.initialZoomLevel):this.options.keepCurrentZoomLevel?(t=this.options.flyTo?this._map.flyTo:this._map.panTo).bind(this._map)([this._event.latitude,this._event.longitude]):(t=this.options.flyTo?this._map.flyToBounds:this._map.fitBounds,this._ignoreEvent=!0,t.bind(this._map)(this.options.getLocationBounds(this._event),{padding:this.options.circlePadding,maxZoom:this.options.locateOptions.maxZoom}),l.Util.requestAnimFrame(function(){this._ignoreEvent=!1},this))},_drawCompass:function(){var t,i;this._event&&(t=this._event.latlng,this.options.showCompass&&t&&null!==this._compassHeading&&(i=this._isFollowing()?this.options.followCompassStyle:this.options.compassStyle,this._compass?(this._compass.setLatLng(t),this._compass.setHeading(this._compassHeading),this._compass.setStyle&&this._compass.setStyle(i)):this._compass=new this.options.compassClass(t,this._compassHeading,i).addTo(this._layer)),!this._compass||this.options.showCompass&&null!==this._compassHeading||(this._compass.removeFrom(this._layer),this._compass=null))},_drawMarker:function(){void 0===this._event.accuracy&&(this._event.accuracy=0);var t,i,o,s=this._event.accuracy,e=this._event.latlng;this.options.drawCircle&&(t=this._isFollowing()?this.options.followCircleStyle:this.options.circleStyle,this._circle?this._circle.setLatLng(e).setRadius(s).setStyle(t):this._circle=l.circle(e,s,t).addTo(this._layer)),o=this.options.metric?(i=s.toFixed(0),this.options.strings.metersUnit):(i=(3.2808399*s).toFixed(0),this.options.strings.feetUnit),this.options.drawMarker&&(s=this._isFollowing()?this.options.followMarkerStyle:this.options.markerStyle,this._marker?(this._marker.setLatLng(e),this._marker.setStyle&&this._marker.setStyle(s)):this._marker=new this.options.markerClass(e,s).addTo(this._layer)),this._drawCompass();var n=this.options.strings.popup;function a(){return"string"==typeof n?l.Util.template(n,{distance:i,unit:o}):"function"==typeof n?n({distance:i,unit:o}):n}this.options.showPopup&&n&&this._marker&&this._marker.bindPopup(a())._popup.setLatLng(e),this.options.showPopup&&n&&this._compass&&this._compass.bindPopup(a())._popup.setLatLng(e)},_removeMarker:function(){this._layer.clearLayers(),this._marker=void 0,this._circle=void 0},_unload:function(){this.stop(),this._map.off("unload",this._unload,this)},_setCompassHeading:function(t){!isNaN(parseFloat(t))&&isFinite(t)?(t=Math.round(t),this._compassHeading=t,l.Util.requestAnimFrame(this._drawCompass,this)):this._compassHeading=null},_onCompassNeedsCalibration:function(){this._setCompassHeading()},_onDeviceOrientation:function(t){this._active&&(t.webkitCompassHeading?this._setCompassHeading(t.webkitCompassHeading):t.absolute&&t.alpha&&this._setCompassHeading(360-t.alpha))},_onLocationError:function(t){3==t.code&&this.options.locateOptions.watch||(this.stop(),this.options.onLocationError(t,this))},_onLocationFound:function(t){if((!this._event||this._event.latlng.lat!==t.latlng.lat||this._event.latlng.lng!==t.latlng.lng||this._event.accuracy!==t.accuracy)&&this._active){switch(this._event=t,this._drawMarker(),this._updateContainerStyle(),this.options.setView){case"once":this._justClicked&&this.setView();break;case"untilPan":this._userPanned||this.setView();break;case"untilPanOrZoom":this._userPanned||this._userZoomed||this.setView();break;case"always":this.setView()}this._justClicked=!1}},_onDrag:function(){this._event&&!this._ignoreEvent&&(this._userPanned=!0,this._updateContainerStyle(),this._drawMarker())},_onZoom:function(){this._event&&!this._ignoreEvent&&(this._userZoomed=!0,this._updateContainerStyle(),this._drawMarker())},_onZoomEnd:function(){this._event&&this._drawCompass(),this._event&&!this._ignoreEvent&&this._marker&&!this._map.getBounds().pad(-.3).contains(this._marker.getLatLng())&&(this._userPanned=!0,this._updateContainerStyle(),this._drawMarker())},_isFollowing:function(){return!!this._active&&("always"===this.options.setView||("untilPan"===this.options.setView?!this._userPanned:"untilPanOrZoom"===this.options.setView?!this._userPanned&&!this._userZoomed:void 0))},_isOutsideMapBounds:function(){return void 0!==this._event&&(this._map.options.maxBounds&&!this._map.options.maxBounds.contains(this._event.latlng))},_updateContainerStyle:function(){this._container&&(this._active&&!this._event?this._setClasses("requesting"):this._isFollowing()?this._setClasses("following"):this._active?this._setClasses("active"):this._cleanClasses())},_setClasses:function(t){"requesting"==t?(s(this._container,"active following"),i(this._container,"requesting"),s(this._icon,this.options.icon),i(this._icon,this.options.iconLoading)):"active"==t?(s(this._container,"requesting following"),i(this._container,"active"),s(this._icon,this.options.iconLoading),i(this._icon,this.options.icon)):"following"==t&&(s(this._container,"requesting"),i(this._container,"active following"),s(this._icon,this.options.iconLoading),i(this._icon,this.options.icon))},_cleanClasses:function(){l.DomUtil.removeClass(this._container,"requesting"),l.DomUtil.removeClass(this._container,"active"),l.DomUtil.removeClass(this._container,"following"),s(this._icon,this.options.iconLoading),i(this._icon,this.options.icon)},_resetVariables:function(){this._active=!1,this._justClicked=!1,this._userPanned=!1,this._userZoomed=!1}});return l.control.locate=function(t){return new l.Control.Locate(t)},e},window);
+//# sourceMappingURL=L.Control.Locate.min.js.map
 
 /***/ }),
 
