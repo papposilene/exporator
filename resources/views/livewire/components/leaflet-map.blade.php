@@ -24,7 +24,7 @@ document.addEventListener('livewire:load', function () {
     }).addTo(leafletMap);
 
     //var geojsonLayer = new L.GeoJSON.AJAX("{{ route('api.' . $api . '.geojson') }}").addTo(leafletMap);
-    
+
     L.Util.ajax("{{ route('api.' . $api . '.geojson') }}").then(function(data){
         is_open(data);
         has_exhibition(data);
@@ -35,7 +35,7 @@ document.addEventListener('livewire:load', function () {
         icon: 'fas fa-map-marker',
         iconLoading: 'fas fa-spinner fa-spin',
         strings: {
-            title: '@ucfirst(__('app.mapGeolocate'))'
+            title: "@ucfirst(__('app.mapGeolocate'))"
         }
     }).addTo(leafletMap);
 })

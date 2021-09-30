@@ -23,7 +23,7 @@ document.addEventListener('livewire:load', function () {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(leafletMap);
 
-    //var geojsonLayer = new L.GeoJSON.AJAX("{{ route('api.exhibition.geojson') }}").addTo(leafletMap);
+    //var geojsonLayer = new L.GeoJSON.AJAX("{{ route('api.museum.geojson') }}").addTo(leafletMap);
 
     L.Util.ajax("{{ route('api.museum.geojson') }}").then(function(data){
         is_open(data);
