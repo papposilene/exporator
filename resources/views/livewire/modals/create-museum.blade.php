@@ -29,11 +29,6 @@
                 </div>
 
                 <div class="mt-4">
-                    <x-forms.label for="slug">@ucfirst(__('app.slug'))</x-forms.label>
-                    <x-forms.input id="slug" class="block mt-1 w-full" type="text" name="slug" required />
-                </div>
-
-                <div class="mt-4">
                     <x-forms.label for="type">@ucfirst(__('app.type'))</x-forms.label>
                     <x-forms.select id="type" class="block mt-1 w-full" name="type" required>
                         <option value="true">@ucfirst(__('app.museum_open'))</option>
@@ -51,7 +46,7 @@
 
                 <div class="mt-4">
                     <x-forms.label for="address">@ucfirst(__('app.address'))</x-forms.label>
-                    <x-forms.textarea id="address" class="block mt-1 w-full" type="text" name="address" required></x-forms.textarea>
+                    <x-forms.textarea id="address" class="block mt-1 w-full" type="text" name="address" required />
                 </div>
 
                 <div class="grid grid-cols-2 gap-x-4 mt-4">
