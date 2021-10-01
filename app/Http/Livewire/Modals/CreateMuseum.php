@@ -11,8 +11,8 @@ class CreateMuseum extends Component
     {
         $types = Type::orderBy('type')->get();
 
-        return view('livewire.modals.create-museum',
-            compact('types')
-        );
+        return view('livewire.modals.create-museum', [
+            'types' => $types,
+        ]);
     }
 }

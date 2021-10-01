@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Modals;
 
 use App\Models\Museum;
+use App\Models\Type;
 use Livewire\Component;
 
 class EditMuseum extends Component
@@ -16,8 +17,11 @@ class EditMuseum extends Component
 
     public function render()
     {
+        $types = Type::orderBy('type')->get();
+
         return view('livewire.modals.edit-museum', [
             'museum' => $this->museum,
+            'types' => $types,
         ]);
     }
 }
