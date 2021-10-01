@@ -61,6 +61,7 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function
 
     // Museums
     Route::get('/museums', ListMuseum::class)->name('admin.museum.index');
+    Route::post('/museums/store', [MuseumController::class, 'store'])->name('admin.museum.store');
     Route::post('/museums/import', [MuseumController::class, 'import'])->name('admin.museum.import');
     Route::get('/museum/{slug}', ShowMuseum::class)->name('admin.museum.show');
     Route::post('/museum/update', [MuseumController::class, 'update'])->name('admin.museum.update');
