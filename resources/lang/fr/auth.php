@@ -17,9 +17,9 @@ return [
     'logout' => 'se déconnecter',
     'register' => 's’enregistrer',
 
-    'email' => 'adresse courriel',
-    'name' => 'identifiant',
-    'password' => 'mot de passe',
+    'input_email' => 'adresse courriel',
+    'input_name' => 'identifiant',
+    'input_password' => 'mot de passe',
     'password_forgot' => 'mot de passe oublié ?',
     'remember_me' => 'se souvenir de moi ?',
 

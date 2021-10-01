@@ -16,12 +16,12 @@
             @csrf
 
             <div>
-                <x-jet-label for="email" :value="@ucfirst(__('auth.email'))" />
+                <x-jet-label for="email" :value="@ucfirst(__('auth.input_email'))" />
                 <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="password" :value="@ucfirst(__('auth.password'))" />
+                <x-jet-label for="password" :value="@ucfirst(__('auth.input_password'))" />
                 <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
             </div>
 
