@@ -1,9 +1,11 @@
 <div>
     <x-slot name="header">
+        @auth
         @if (Auth::user()->can('create', App\Models\Museum::class))
         <livewire:modals.import-museum />
         <livewire:modals.create-museum />
         @endif
+        @endauth
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             <span>@ucfirst(__('app.list_of', ['name' => __('app.museums')]))</span>
         </h2>

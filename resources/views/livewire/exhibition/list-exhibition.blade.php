@@ -1,8 +1,10 @@
 <div>
     <x-slot name="header">
+        @auth
         @if (Auth::user()->can('create', App\Models\Exhibition::class))
         <livewire:modals.import-exhibition />
         @endif
+        @endauth
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             <span>@ucfirst(__('app.list_of', ['name' => __('app.exhibitions')]))</span>
         </h2>

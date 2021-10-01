@@ -75,7 +75,9 @@
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="flex items-center px-4">
-
+                <x-jet-nav-link href="{{ route('login') }}">
+                    @ucfirst(__('auth.login'))
+                </x-jet-nav-link>
             </div>
         </div>
     </div>
