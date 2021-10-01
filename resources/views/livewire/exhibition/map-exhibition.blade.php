@@ -113,7 +113,7 @@ document.addEventListener('livewire:load', function () {
         })
         .finally(() => this.loading = false);
 
-    L.control.layers(null, overlayMaps, { collapsed: false }).addTo(leafletMap);
+    L.control.layers(null, overlayMaps).addTo(leafletMap);
     L.control.locate({
         flyTo: true,
         icon: 'fas fa-map-marker',
