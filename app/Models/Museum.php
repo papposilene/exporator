@@ -111,4 +111,16 @@ class Museum extends Model
             'uuid'
         );
     }
+
+    /**
+     * Get the type for a specific museum.
+     */
+    public function hasType()
+    {
+        return $this->hasOne(
+            'App\Models\Type',
+            'type',
+            'slug'
+        );
+    }
 }

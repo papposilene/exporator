@@ -46,7 +46,7 @@ class MuseumsImport implements ToModel, SkipsEmptyRows, WithBatchInserts, WithCh
         ],
         [
             'uuid' => (string) Str::uuid(),
-            'type' => $type,
+            'type' => $type->slug,
             'status' => $status,
             'address' => $row['address'],
             'city' => $row['city'],

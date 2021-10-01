@@ -41,7 +41,7 @@
                         @foreach($museums as $museum)
                         <tr class="border-b border-gray-300 border-dashed h-12 w-12 p-4">
                             <td class="text-center">{{ $loop->iteration }}</td>
-                            <td>@ucfirst(__('app.' . Str::slug($museum->type, '_')))</td>
+                            <td>@ucfirst(__('app.' . Str::slug($museum->hasType->type, '_')))</td>
                             <td>{{ $museum->city }}</td>
                             <td>
                                 <a href="{{ route('admin.museum.show', ['slug' => $museum->slug]) }}"
