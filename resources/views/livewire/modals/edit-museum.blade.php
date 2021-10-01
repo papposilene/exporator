@@ -38,8 +38,9 @@
                 <div class="mt-4">
                     <x-forms.label for="type">@ucfirst(__('app.type'))</x-forms.label>
                     <x-forms.select id="type" class="block mt-1 w-full" name="type" required>
-                        <option value="true" {{ ($museum->type === 1 ? 'selected=true' : '') }}>@ucfirst(__('app.museum_open'))</option>
-                        <option value="false" {{ ($museum->type === 0 ? 'selected=true' : '') }}>@ucfirst(__('app.museum_close'))</option>
+                        @foreach ($types as $type)
+                        <option value="{{ $type->slug }}" {{ ($type->slug === $museum->type ? 'selected=true' : '') }}>@ucfirst($type->type)</option>
+                        @endforeach
                     </x-forms.select>
                 </div>
 
