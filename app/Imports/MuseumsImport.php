@@ -4,6 +4,7 @@ namespace App\Imports;
 
 use App\Models\Country;
 use App\Models\Museum;
+use App\Models\Type;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Maatwebsite\Excel\Concerns\Importable;
@@ -30,6 +31,12 @@ class MuseumsImport implements ToModel, SkipsEmptyRows, WithBatchInserts, WithCh
     {
         $slug = Str::slug($row['city'] . ' ' . $row['name'], '-');
         $country = Country::where('cca3', strtolower($row['country']))->firstOrFail();
+        $type = Type::firstOrCreate([
+            'type' => strtolower($row['type']),
+        ],
+        [
+            'slug' => Str::slug($row['type'], '-'),
+        ]);
         $status = ($row['status'] === 'open' ? true : false);
 
         $museum = Museum::updateOrCreate([
