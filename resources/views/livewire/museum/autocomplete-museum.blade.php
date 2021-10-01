@@ -26,11 +26,11 @@
 
     @if(!empty($query) && $selectedMuseum == '' && $showDropdown)
     <div class="absolute z-10 bg-white mt-1 w-full border border-gray-300 rounded-md shadow-lg">
-        @if (!empty($Museums))
-        @foreach($Museums as $i => $Museum)
+        @if (!empty($museums))
+        @foreach($museums as $i => $museum)
         <a wire:click="selectMuseum({{ $i }})"
             class="block py-1 px-2 text-sm cursor-pointer hover:bg-blue-50 {{ $highlightIndex === $i ? 'bg-blue-50' : '' }}"
-            >{{ $Museum['name_common_fra'] }}</a>
+            >{{ $museum['name'] }}</a>
         @endforeach
         @else
         <span class="block py-1 px-2 text-sm">@ucfirst(__('app.nothing'))</span>

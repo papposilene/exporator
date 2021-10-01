@@ -23,11 +23,10 @@
                 class="flex flex-col w-full">
                 @csrf
 
-                <x-forms.input type="hidden" name="uuid" value="{{ $museum->uuid }}" />
-
                 <div class="mt-4">
                     <x-forms.label for="museum">@ucfirst(__('app.museum'))</x-forms.label>
                     <x-forms.input id="museum" class="block mt-1 w-full" type="text" required value="{{ $museum->name }}" />
+                    <x-forms.input type="hidden" name="museum" value="{{ $museum->uuid }}" />
                 </div>
 
                 <div class="mt-4">

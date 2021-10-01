@@ -48,7 +48,7 @@ class ExhibitionController extends Controller
 
         $validated = $request->validated();
 
-        $museum = Museum::findOrFail($request->input('uuid'));
+        $museum = Museum::findOrFail($request->input('museum'));
 
         $exhibition = new Exhibition;
         $exhibition->museum_uuid = $museum->uuid;
@@ -58,9 +58,36 @@ class ExhibitionController extends Controller
         $exhibition->ended_at = date('Y-m-d', strtotime($request->input('ended_at')));
         $exhibition->description = $request->input('description');
         $exhibition->link = $request->input('link');
+        $exhibition->is_published = true;
         $exhibition->save();
 
         return redirect()->route('admin.museum.show', ['slug' => $museum->slug])->with('success', 'All good!');
+    }
+
+    /**
+     * Store a resource in storage, proposed by a guest.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function propose(StoreExhibitionRequest $request)
+    {
+        $validated = $request->validated();
+
+        $museum = Museum::findOrFail($request->input('museum'));
+
+        $exhibition = new Exhibition;
+        $exhibition->museum_uuid = $museum->uuid;
+        $exhibition->slug = Str::slug($request->input('title'));
+        $exhibition->title = $request->input('title');
+        $exhibition->began_at = date('Y-m-d', strtotime($request->input('began_at')));
+        $exhibition->ended_at = date('Y-m-d', strtotime($request->input('ended_at')));
+        $exhibition->description = $request->input('description');
+        $exhibition->link = $request->input('link');
+        $exhibition->is_published = false;
+        $exhibition->save();
+
+        return redirect()->route('front.dashboard')->with('success', 'All good!');
     }
 
     /**
