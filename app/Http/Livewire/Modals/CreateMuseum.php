@@ -2,12 +2,17 @@
 
 namespace App\Http\Livewire\Modals;
 
+use App\Models\Type;
 use Livewire\Component;
 
 class CreateMuseum extends Component
 {
     public function render()
     {
-        return view('livewire.modals.create-museum');
+        $types = Type::orderBy('type')->get();
+
+        return view('livewire.modals.create-museum',
+            compact('types')
+        );
     }
 }
