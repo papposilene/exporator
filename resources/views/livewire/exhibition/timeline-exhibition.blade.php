@@ -1,4 +1,4 @@
-<div id="amcharts-timeline" class="w-full"></div>
+<div id="amcharts-timeline" class="h-screen w-full"></div>
 
 <script>
 document.addEventListener('livewire:load', function () {
