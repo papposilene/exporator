@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ImportMuseumRequest;
+use App\Http\Requests\StoreMuseumRequest;
 use App\Http\Requests\UpdateMuseumRequest;
 use App\Imports\MuseumsImport;
 use App\Models\Country;
@@ -42,9 +43,28 @@ class MuseumController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreMuseumRequest $request)
     {
-        //
+        $this->authorize('create', Museum::class);
+
+        $validated = $request->validated();
+
+        $country = Country::where('cca3', $request->input('cca3'))->firstOrFail();
+
+        $museum = new Museum();
+        $museum->slug = Str::slug($request->input('city') . ' ' . $request->input('name'), '-');
+        $museum->name = $request->input('name');
+        $museum->type = $request->input('type');
+        $museum->status = (bool) $request->input('status');
+        $museum->address = $request->input('address');
+        $museum->city = $request->input('city');
+        $museum->country_cca = $country->cca3;
+        $museum->lat = $request->input('latitude');
+        $museum->lon = $request->input('longitude');
+        $museum->link = $request->input('link');
+        $museum->save();
+
+        return redirect()->route('admin.museum.show', ['slug' => $request->input('slug')])->with('success', 'All good!');
     }
 
     /**
@@ -107,8 +127,6 @@ class MuseumController extends Controller
         $validated = $request->validated();
 
         $country = Country::where('cca3', $request->input('cca3'))->firstOrFail();
-
-        dd($validated);
 
         $museum = Museum::findOrFail($request->input('uuid'));
         $museum->slug = Str::slug($request->input('city') . ' ' . $request->input('name'), '-');

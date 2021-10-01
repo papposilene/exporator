@@ -7,16 +7,6 @@ use Illuminate\Foundation\Http\FormRequest;
 class StoreMuseumRequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        //return false;
-    }
-
-    /**
      * Get the validation rules that apply to the request.
      *
      * @return array
@@ -24,7 +14,14 @@ class StoreMuseumRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|string|max:255',
+            'status' => 'boolean',
+            'address' => 'required|string',
+            'city' => 'required|string|max:255',
+            'cca3' => 'required|string|min:3|max:3',
+            'latitude' => 'required|integer|max:15',
+            'longitude' => 'required|integer|max:15',
+            'link' => 'nullable|url',
         ];
     }
 }

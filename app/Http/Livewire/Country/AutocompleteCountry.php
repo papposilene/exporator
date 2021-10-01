@@ -9,7 +9,7 @@ class AutocompleteCountry extends Component
 {
     public $query = '';
     public array $countries = [];
-    public int $selectedCountry = 0;
+    public string $selectedCountry = '';
     public int $highlightIndex = 0;
     public bool $showDropdown;
 
@@ -23,7 +23,7 @@ class AutocompleteCountry extends Component
         $this->countries = [];
         $this->highlightIndex = 0;
         $this->query = '';
-        $this->selectedCountry = 0;
+        $this->selectedCountry = '';
         $this->showDropdown = true;
     }
 
@@ -52,15 +52,14 @@ class AutocompleteCountry extends Component
         $this->highlightIndex--;
     }
 
-    public function selectCountry($uuid = null)
+    public function selectCountry($cca3 = null)
     {
-        $uuid = $uuid ?: $this->highlightIndex;
-
-        $country = $this->countries[$uuid] ?? null;
+        $cca3 = $cca3 ?: $this->highlightIndex;
+        $country = $this->countries[$cca3] ?? null;
 
         if ($country) {
             $this->showDropdown = true;
-            $this->query = $country['name'];
+            $this->query = $country['name_common_fra'];
             $this->selectedCountry = $country['cca3'];
         }
     }
@@ -71,6 +70,7 @@ class AutocompleteCountry extends Component
             ->orWhere('name_official_fra', 'like', '%' . $this->query. '%')
             ->orWhere('name_common_eng', 'like', '%' . $this->query. '%')
             ->orWhere('name_official_eng', 'like', '%' . $this->query. '%')
+            ->orWhere('cca3', 'like', '%' . $this->query. '%')
             ->take(5)
             ->get()
             ->toArray();

@@ -1,8 +1,9 @@
+<div class="relative">
     <div class="relative">
-        <input
+        <x-forms.input
             type="text"
-            class="relative w-full bg-white border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-            placeholder="@ucfirst(__('app.search_some', ['what' => __('app.countries')]))"
+            class="relative border-gray-300 focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded-md shadow-sm block mt-1 w-full"
+            :placeholder="@ucfirst(__('app.search_some', ['what' => __('app.countries')]))"
             wire:model="query"
             wire:click="reset"
             wire:keydown.escape="hideDropdown"
@@ -12,7 +13,7 @@
             wire:keydown.enter.prevent="selectCountry"
         />
 
-        <input type="hidden" name="cca3" id="country" wire:model="selectedCountryID">
+        <input type="hidden" name="cca3" id="country" wire:model="selectedCountry">
 
         @if ($selectedCountry)
         <a class="absolute cursor-pointer top-2 right-2 text-gray-500" wire:click="reset">
@@ -23,7 +24,7 @@
         @endif
     </div>
 
-    @if(!empty($query) && $selectedCountry == 0 && $showDropdown)
+    @if(!empty($query) && $selectedCountry == '' && $showDropdown)
     <div class="absolute z-10 bg-white mt-1 w-full border border-gray-300 rounded-md shadow-lg">
         @if (!empty($countries))
         @foreach($countries as $i => $country)
@@ -36,3 +37,4 @@
         @endif
     </div>
     @endif
+</div>

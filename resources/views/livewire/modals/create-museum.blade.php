@@ -25,7 +25,7 @@
 
                 <div class="mt-4">
                     <x-forms.label for="name">@ucfirst(__('app.museum'))</x-forms.label>
-                    <x-forms.input id="name" class="block mt-1 w-full" type="text" name="name" required />
+                    <x-forms.input id="name" class="block mt-1 w-full" type="text" name="name" required :value="old('name')" />
                 </div>
 
                 <div class="mt-4">
@@ -47,28 +47,26 @@
 
                 <div class="mt-4">
                     <x-forms.label for="address">@ucfirst(__('app.address'))</x-forms.label>
-                    <x-forms.textarea id="address" class="block mt-1 w-full" type="text" name="address" required />
+                    <x-forms.textarea id="address" class="block mt-1 w-full" type="text" name="address" required>{{ old('address') }}</x-forms.textarea>
                 </div>
 
                 <div class="grid grid-cols-2 gap-x-4 mt-4">
                     <x-forms.label for="name">@ucfirst(__('app.city'))</x-forms.label>
                     <x-forms.label for="name">@ucfirst(__('app.country'))</x-forms.label>
-                    <x-forms.input id="city" class="block mt-1 w-full" type="text" name="city" required />
-
+                    <x-forms.input id="city" class="block mt-1 w-full" type="text" name="city" required :value="old('city')" />
                     <livewire:country.autocomplete-country />
-                    <!--x-forms.input id="country" class="block mt-1 w-full" type="text" name="country" required /-->
                 </div>
 
                 <div class="grid grid-cols-2 gap-x-4 mt-4">
                     <x-forms.label for="latitude">@ucfirst(__('app.latitude'))</x-forms.label>
                     <x-forms.label for="longitude">@ucfirst(__('app.longitude'))</x-forms.label>
-                    <x-forms.input id="latitude" class="block mt-1 w-full" type="text" name="latitude" required />
-                    <x-forms.input id="longitude" class="block mt-1 w-full" type="text" name="longitude" required />
+                    <x-forms.input id="latitude" class="block mt-1 w-full" type="text" name="latitude" required :value="old('latitude')" />
+                    <x-forms.input id="longitude" class="block mt-1 w-full" type="text" name="longitude" required :value="old('longitude')" />
                 </div>
 
                 <div class="mt-4">
                     <x-forms.label for="link">@ucfirst(__('app.link'))</x-forms.label>
-                    <x-forms.input id="link" class="block mt-1 w-full" type="text" name="link" required />
+                    <x-forms.input id="link" class="block mt-1 w-full" type="text" name="link" required :value="old('link')" />
                 </div>
 
                 <div class="flex items-center justify-end mt-4">
