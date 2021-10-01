@@ -31,9 +31,9 @@
                 </div>
             </div>
 
-            <div class="hidden sm:flex sm:items-center sm:ml-6">
+            <div class="flex">
                 <!-- Settings Dropdown -->
-                <div class="ml-3 relative">
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('login') }}">
                         @ucfirst(__('auth.login'))
                     </x-jet-nav-link>
