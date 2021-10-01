@@ -2,7 +2,11 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             <span>
+                @auth
                 <a href="{{ route('admin.museum.index') }}">
+                @else
+                <a href="{{ route('front.museum.index') }}">
+                @endauth
                     @ucfirst(__('app.list_of', ['name' => __('app.museums')]))
                 </a>
             </span> /
@@ -25,7 +29,7 @@
                     <span title="@ucfirst(__('app.country'))">{{ $museum->inCountry->name_common_fra }}</span>.
                 </li>
                 <li class="mt-5" title="@ucfirst(__('app.link'))">
-                    <a href="{{ $museum->link }}" target="_blank" rel="noopener">{{ $museum->link }}</a>
+                    <a href="{{ $museum->link }}" class="text-blue-700 hover:text-red-600" target="_blank" rel="noopener">{{ $museum->link }}</a>
                 </li>
             </ul>
             @if ($museum->status === 1)
@@ -41,12 +45,14 @@
                     @endif
                 </li>
             </ul>
+            @auth
             @if (Auth::user()->can('create', App\Models\Exhibition::class))
             <ul class="bg-gray-200 list-inside m-5 p-5 w-full">
                 <li><livewire:modals.edit-museum :museum="$museum" :wire:key="$museum->uuid" /></li>
                 <li><livewire:modals.create-exhibition :museum="$museum" :wire:key="$museum->uuid" /></li>
             </ul>
             @endif
+            @endauth
         </div>
 
         <div class="w-9/12 mx-auto py-5 sm:px-6 lg:px-8 float-right">
@@ -99,8 +105,13 @@
                         <tr class="border-b border-gray-300 border-dashed h-12 w-12 p-4 {{ $is_current }}">
                             <td class="text-center">{{ $loop->iteration }}</td>
                             <td>
+                                @auth
                                 <a href="{{ route('admin.exhibition.show', ['museum' => $exhibition->inMuseum->slug, 'exhibition' => $exhibition->slug]) }}"
                                     title="{{ $exhibition->title }}" aria-label="{{ $exhibition->title }}">
+                                @else
+                                <a href="{{ route('front.exhibition.show', ['museum' => $exhibition->inMuseum->slug, 'exhibition' => $exhibition->slug]) }}"
+                                    title="{{ $exhibition->title }}" aria-label="{{ $exhibition->title }}">
+                                @endauth
                                     {{ $exhibition->title }}
                                 </a>
                             </td>

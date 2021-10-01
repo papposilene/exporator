@@ -81,8 +81,13 @@
                                 </a>
                             </td>
                             <td>
+                                @auth
                                 <a href="{{ route('admin.exhibition.show', ['museum' => $exhibition->inMuseum->slug, 'exhibition' => $exhibition->slug]) }}"
                                     title="{{ $exhibition->title }}" aria-label="{{ $exhibition->title }}">
+                                @else
+                                <a href="{{ route('front.exhibition.show', ['museum' => $exhibition->inMuseum->slug, 'exhibition' => $exhibition->slug]) }}"
+                                    title="{{ $exhibition->title }}" aria-label="{{ $exhibition->title }}">
+                                @endauth
                                     {{ $exhibition->title }}
                                 </a>
                             </td>
