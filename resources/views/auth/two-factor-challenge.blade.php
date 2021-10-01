@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <x-logo class="block h-16 w-auto">{{ config('app.name', 'Exporator') }}</x-logo>
         </x-slot>
 
         <div x-data="{ recovery: false }">

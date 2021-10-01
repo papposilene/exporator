@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-logo class="block h-16 w-auto">Exporator</x-logo>
+            <x-logo class="block h-16 w-auto">{{ config('app.name', 'Exporator') }}</x-logo>
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
@@ -35,7 +35,7 @@
             <div class="flex items-center justify-end mt-4">
                 @if (Route::has('password.request'))
                     <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        @ucfirst(__('auth.passeword_forgot'))
+                        @ucfirst(__('auth.password_forgot'))
                     </a>
                 @endif
 

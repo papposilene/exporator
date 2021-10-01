@@ -1866,6 +1866,9 @@ select {
 .font-bold {
 	font-weight: 700;
 }
+.font-black {
+	font-weight: 900;
+}
 .uppercase {
 	text-transform: uppercase;
 }
