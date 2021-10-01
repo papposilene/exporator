@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\ExhibitionController;
 use App\Http\Controllers\Backend\MuseumController;
 use App\Http\Livewire\Country\ListCountry;
 use App\Http\Livewire\Country\ShowCountry;
+use App\Http\Livewire\Dashboard\ShowAbout;
 use App\Http\Livewire\Dashboard\ShowDashboard;
 use App\Http\Livewire\Exhibition\ListExhibition;
 use App\Http\Livewire\Exhibition\MapExhibition;
@@ -33,6 +34,7 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 Route::redirect('/', '/dashboard', 301);
+Route::get('/about', ShowAbout::class)->name('front.about');
 Route::get('/dashboard', ShowDashboard::class)->name('front.dashboard');
 
 // Museums
