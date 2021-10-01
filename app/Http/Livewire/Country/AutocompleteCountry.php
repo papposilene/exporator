@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class AutocompleteCountry extends Component
 {
-    public $query= '';
+    public $query = '';
     public array $countries = [];
     public int $selectedCountry = 0;
     public int $highlightIndex = 0;
