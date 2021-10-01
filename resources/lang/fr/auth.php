@@ -13,6 +13,10 @@ return [
     |
     */
 
+    'login' => 'se connecter',
+    'logout' => 'se déconnecter',
+    'register' => 's’enregistrer',
+
     'failed' => 'Les données d’authentification ne coorespondent à aucune de nos données.',
     'password' => 'Le mot de passe ne semble pas être correct.',
     'throttle' => 'Trop de tentatives de connexion. Veuillez patienter :seconds secondes avant de réessayer.',

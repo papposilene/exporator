@@ -14,19 +14,19 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('front.dashboard') }}" :active="request()->routeIs('front.dashboard')">
-                        {{ __('Dashboard') }}
+                        @ucfirst(__('app.dashboard'))
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('front.museum.index') }}" :active="request()->routeIs('front.museum.*')">
-                        {{ __('Museums') }}
+                        @ucfirst(__('app.museums'))
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('front.exhibition.index') }}" :active="request()->routeIs('front.exhibition.*')">
-                        {{ __('Exhibitions') }}
+                        @ucfirst(__('app.exhibitions'))
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('front.exhibition.map') }}" :active="request()->routeIs('front.exhibition.map')">
-                        {{ __('Map') }}
+                        @ucfirst(__('app.map'))
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('front.exhibition.timeline') }}" :active="request()->routeIs('front.exhibition.timeline')">
-                        {{ __('Timeline') }}
+                        @ucfirst(__('app.timeline'))
                     </x-jet-nav-link>
                 </div>
             </div>
@@ -34,7 +34,9 @@
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <!-- Settings Dropdown -->
                 <div class="ml-3 relative">
-
+                    <x-jet-nav-link href="{{ route('login') }}">
+                        @ucfirst(__('auth.login'))
+                    </x-jet-nav-link>
                 </div>
             </div>
 
