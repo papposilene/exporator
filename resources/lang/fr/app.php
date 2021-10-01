@@ -13,6 +13,7 @@ return [
     |
     */
 
+    'about' => 'a propos',
     'actions' => 'actions',
     'address' => 'adresse postale',
     'art_center' => 'centre d’art',
