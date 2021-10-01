@@ -38,6 +38,7 @@ return [
     'exhibitions_future' => 'à venir',
     'export' => 'exporter',
     'foundation' => 'fondation',
+    'geolocate' => 'me géolocaliser',
     'import' => 'importer',
     'is_open' => 'le lieu est-il ouvert ? Si oui, open. Si non, close.',
     'iteration' => '#',
@@ -77,6 +78,10 @@ return [
     'titles' => 'titres',
     'type' => 'typologie',
     'types' => 'typologies',
+    'with_past_exhibition' => 'Exposition(s) passée(s)',
+    'with_current_exhibition' => 'Exposition(s) en cours',
+    'with_future_exhibition' => 'Exposition(s) future(s)',
+    'without_exhibition' => 'Sans exposition',
 
     // Placeholders
     'ddmmyyyy' => 'JJ/MM/AAAA',
