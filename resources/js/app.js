@@ -10,10 +10,10 @@ import '@fortawesome/fontawesome-free/js/regular'
 import '@fortawesome/fontawesome-free/js/brands'
 
 /* amCharts */
-import am4core from '@amcharts/amcharts4/core.js'
-import am4charts from '@amcharts/amcharts4/charts.js'
-import am4plugins_timeline from '@amcharts/amcharts4/plugins/timeline.d.ts'
-import am4themes_animated from '@amcharts/amcharts4/themes/animated.js'
+import '@amcharts/amcharts4/core.js'
+import '@amcharts/amcharts4/charts.js'
+import '@amcharts/amcharts4/plugins/timeline.js'
+import '@amcharts/amcharts4/themes/animated.js'
 
 /* Leaflet */
 import 'leaflet/dist/leaflet-src.js'
