@@ -1,21 +1,6 @@
 <div id="leaflet-map" class="h-screen w-full"></div>
 
 <script>
-function is_open(feature) {
-    switch (feature.properties.status) {
-        case 'close': return {color: "#000000"};
-    }
-}
-
-function has_exhibition(feature) {
-    if (feature.properties.exhibitions.present > 0) {
-        return {color: "#000000"};
-    }
-    else {
-        return {color: "#ff0000"};
-    }
-}
-
 document.addEventListener('livewire:load', function () {
     var with_past_exhibition = L.layerGroup();
     var pastMarker = L.ExtraMarkers.icon({
