@@ -19,8 +19,8 @@ class StoreMuseumRequest extends FormRequest
             'address' => 'required|string',
             'city' => 'required|string|max:255',
             'cca3' => 'required|string|min:3|max:3',
-            'latitude' => 'required|integer|max:15',
-            'longitude' => 'required|integer|max:15',
+            'latitude' => 'required|string|max:15',
+            'longitude' => 'required|string|max:15',
             'link' => 'nullable|url',
         ];
     }

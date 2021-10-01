@@ -50,21 +50,22 @@ class MuseumController extends Controller
         $validated = $request->validated();
 
         $country = Country::where('cca3', $request->input('cca3'))->firstOrFail();
+        $slug = Str::slug($request->input('city') . ' ' . $request->input('name'), '-');
 
         $museum = new Museum();
-        $museum->slug = Str::slug($request->input('city') . ' ' . $request->input('name'), '-');
+        $museum->slug = $slug;
         $museum->name = $request->input('name');
         $museum->type = $request->input('type');
         $museum->status = (bool) $request->input('status');
         $museum->address = $request->input('address');
         $museum->city = $request->input('city');
-        $museum->country_cca = $country->cca3;
+        $museum->country_cca3 = $country->cca3;
         $museum->lat = $request->input('latitude');
         $museum->lon = $request->input('longitude');
         $museum->link = $request->input('link');
         $museum->save();
 
-        return redirect()->route('admin.museum.show', ['slug' => $request->input('slug')])->with('success', 'All good!');
+        return redirect()->route('admin.museum.show', ['slug' => $slug])->with('success', 'All good!');
     }
 
     /**
