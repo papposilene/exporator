@@ -17,6 +17,12 @@ return [
     'logout' => 'se déconnecter',
     'register' => 's’enregistrer',
 
+    'email' => 'adresse courriel',
+    'name' => 'identifiant',
+    'password' => 'mot de passe',
+    'password_forgot' => 'mot de passe oublié ?',
+    'remember_me' => 'se souvenir de moi ?',
+
     'failed' => 'Les données d’authentification ne coorespondent à aucune de nos données.',
     'password' => 'Le mot de passe ne semble pas être correct.',
     'throttle' => 'Trop de tentatives de connexion. Veuillez patienter :seconds secondes avant de réessayer.',
