@@ -119,8 +119,8 @@ class Museum extends Model
     {
         return $this->hasOne(
             'App\Models\Type',
-            'type',
-            'slug'
+            'slug',
+            'type'
         );
     }
 }
