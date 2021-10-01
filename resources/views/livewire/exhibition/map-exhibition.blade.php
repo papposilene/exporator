@@ -100,6 +100,11 @@ document.addEventListener('livewire:load', function () {
                         .bindPopup(popupContent)
                         .addTo(with_future_exhibition);
                 }
+                if (exhibition_past === 0 && exhibition_current === 0 && exhibition_future === 0) {
+                    L.marker([lat, lng], {icon: withoutMarker})
+                        .bindPopup(popupContent)
+                        .addTo(without_exhibition);
+                }
             }
         })
         .catch(error => {
