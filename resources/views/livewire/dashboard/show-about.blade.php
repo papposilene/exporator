@@ -14,7 +14,7 @@
             <p class="">
                 L'Exporateur permet de visualiser l'ensemble des expositions temporaires parisiennes sous
                 trois formes différentes, à savoir :
-                <ol class="list-inside list-decimal mb-5">
+                <ol class="list-inside list-decimal mb-3">
                     <li>
                         <a href="{{ route('front.exhibition.index') }}" class="text-blue-700 hover:text-red-600">une liste des expositions temporaires</a>,
                     </li>
@@ -26,7 +26,7 @@
                     </li>
                 </ol>
             </p>
-            <p class="mb-3">
+            <p class="mt-7 mb-3">
                 Créée par <a href="https://dev.psln.nl/" class="text-blue-700 hover:text-red-600" target="_blank" rel="noopener">Philippe-Alexandre Pierre</a>
                  en 2021, cette application web a été réalisée avec le <a href="https://laravel.com/docs/8.x"
                  class="text-blue-700 hover:text-red-600" target="_blank" rel="noopener">framework Laravel 8</a>,
