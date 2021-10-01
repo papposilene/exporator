@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto py-5 sm:px-6 lg:px-8">
             <p class="mb-3">
                 L'Exporateur, mot-valise entre <em>exposition</em> et <em>explorateur</em>, est un (énième ?)
-                site de référencement des expositions temporaires de Paris.
+                site de référencement des expositions temporaires à Paris et ses proches alentours.
             </p>
             <p>
                 L'Exporateur permet de visualiser l'ensemble des expositions temporaires parisiennes sous
