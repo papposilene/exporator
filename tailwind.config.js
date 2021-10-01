@@ -16,8 +16,9 @@ module.exports = {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
-            backgroundColor: ['active'],
+            backgroundColor: ['active', 'hover', 'focus'],
             borderRadius: ['active', 'hover', 'focus'],
+            textColor: ['active', 'hover', 'focus'],
         },
     },
 

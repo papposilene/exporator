@@ -16,9 +16,6 @@
                     <x-jet-nav-link href="{{ route('admin.dashboard') }}" :active="request()->routeIs('admin.dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('admin.country.index') }}" :active="request()->routeIs('admin.country.*')">
-                        {{ __('Countries') }}
-                    </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('admin.museum.index') }}" :active="request()->routeIs('admin.museum.*')">
                         {{ __('Museums') }}
                     </x-jet-nav-link>
@@ -150,9 +147,6 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-jet-responsive-nav-link href="{{ route('admin.dashboard') }}" :active="request()->routeIs('admin.dashboard')">
                 {{ __('Dashboard') }}
-            </x-jet-responsive-nav-link>
-            <x-jet-responsive-nav-link href="{{ route('admin.country.index') }}" :active="request()->routeIs('admin.country.*')">
-                {{ __('Countries') }}
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('admin.museum.index') }}" :active="request()->routeIs('admin.museum.*')">
                 {{ __('Museums') }}
