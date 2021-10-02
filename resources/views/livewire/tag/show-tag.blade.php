@@ -19,7 +19,7 @@
             <ul class="bg-purple-100 list-inside m-5 p-5 w-full">
                 <li title="@ucfirst(__('app.tag'))">
                     <h3 class="font-bold text-2xl mb-5">
-                        {{ $tag->name }}
+                        @ucfirst($tag->name)
                     </h3>
                 </li>
                 <li title="@ucfirst(__('app.type'))">@ucfirst($tag->type)</li>
