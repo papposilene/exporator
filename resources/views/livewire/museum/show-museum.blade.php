@@ -99,7 +99,7 @@
                             $is_current = 'bg-blue-100';
                         }
                         else {
-                            $is_current = 'bg-gray-100';
+                            $is_current = 'bg-gray-200';
                         }
                         @endphp
                         <tr class="border-b border-gray-300 border-dashed h-12 w-12 p-4 {{ $is_current }}">

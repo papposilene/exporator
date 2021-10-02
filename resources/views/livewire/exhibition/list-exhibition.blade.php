@@ -69,14 +69,19 @@
                             $is_current = 'bg-blue-100';
                         }
                         else {
-                            $is_current = 'bg-gray-100';
+                            $is_current = 'bg-gray-200';
                         }
                         @endphp
                         <tr class="border-b border-gray-300 border-dashed h-12 w-12 p-4 {{ $is_current }}">
                             <td class="text-center">{{ $loop->iteration }}</td>
                             <td>
+                                @auth
                                 <a href="{{ route('admin.museum.show', ['slug' => $exhibition->inMuseum->slug]) }}"
                                     title="{{ $exhibition->inMuseum->name }}" aria-label="{{ $exhibition->inMuseum->name }}">
+                                @else
+                                <a href="{{ route('front.museum.show', ['slug' => $exhibition->inMuseum->slug]) }}"
+                                    title="{{ $exhibition->inMuseum->name }}" aria-label="{{ $exhibition->inMuseum->name }}">
+                                @endauth
                                     {{ $exhibition->inMuseum->name }}
                                 </a>
                             </td>
