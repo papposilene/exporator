@@ -1,4 +1,4 @@
-<div id="leaflet-map" class="flex flex-grow w-full"></div>
+<div id="leaflet-map" class="h-screen w-full"></div>
 
 <script>
 document.addEventListener('livewire:load', function () {
