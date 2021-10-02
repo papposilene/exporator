@@ -16,7 +16,7 @@
 
     <div>
         <div class="w-3/12 mx-auto py-5 sm:px-6 lg:px-8 float-left">
-            <ul class="bg-purple-100 list-inside m-5 p-5 w-full">
+            <ul class="bg-indigo-100 list-inside m-5 p-5 w-full">
                 <li title="@ucfirst(__('app.museum'))">
                     <h3 class="font-bold text-2xl mb-5">
                         @auth
