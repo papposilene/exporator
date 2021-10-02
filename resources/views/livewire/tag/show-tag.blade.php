@@ -54,7 +54,8 @@
                     <thead>
                         <tr class="bg-gray-700 text-white">
                             <th class="w-1/12 text-center p-3">@ucfirst(__('app.iteration'))</th>
-                            <th class="w-7/12 text-center">@ucfirst(__('app.titles'))</th>
+                            <th class="w-3/12 text-center">@ucfirst(__('app.museums'))</th>
+                            <th class="w-4/12 text-center">@ucfirst(__('app.titles'))</th>
                             <th class="w-2/12 text-center">@ucfirst(__('app.began_at'))</th>
                             <th class="w-2/12 text-center">@ucfirst(__('app.ended_at'))</th>
                         </tr>
@@ -63,7 +64,6 @@
                         @foreach($exhibitions as $exhibition)
                         @php
                         $today = date('Y-m-d');
-
                         if ($today > $exhibition->began_at && $today < $exhibition->ended_at) {
                             // Current exhibition
                             $is_current = 'bg-green-100';
@@ -82,6 +82,17 @@
                         @endphp
                         <tr class="border-b border-gray-300 border-dashed h-12 w-12 p-4 {{ $is_current }}">
                             <td class="text-center">{{ $loop->iteration }}</td>
+                            <td>
+                                @auth
+                                <a href="{{ route('admin.museum.show', ['slug' => $exhibition->inMuseum->slug]) }}"
+                                    title="{{ $exhibition->inMuseum->name }}" aria-label="{{ $exhibition->inMuseum->name }}">
+                                @else
+                                <a href="{{ route('front.museum.show', ['slug' => $exhibition->inMuseum->slug]) }}"
+                                    title="{{ $exhibition->inMuseum->name }}" aria-label="{{ $exhibition->inMuseum->name }}">
+                                @endauth
+                                    {{ $exhibition->inMuseum->name }}
+                                </a>
+                            </td>
                             <td>
                                 @auth
                                 <a href="{{ route('admin.exhibition.show', ['museum' => $exhibition->inMuseum->slug, 'exhibition' => $exhibition->slug]) }}"
