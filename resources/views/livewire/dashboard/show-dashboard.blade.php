@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="flex flex-row flex-wrap max-w-7xl mx-auto py-5 px-6">
-            <livewire:dashboard.stat-tags />
+            <livewire:dashboard.stat-tag />
         </div>
     </div>
 </div>

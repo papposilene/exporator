@@ -12,6 +12,8 @@ use App\Http\Livewire\Exhibition\MapExhibition;
 use App\Http\Livewire\Exhibition\ProposeExhibition;
 use App\Http\Livewire\Exhibition\ShowExhibition;
 use App\Http\Livewire\Exhibition\TimelineExhibition;
+use App\Http\Livewire\Tag\ListTag;
+use App\Http\Livewire\Tag\ShowTag;
 use App\Http\Livewire\Museum\ListMuseum;
 use App\Http\Livewire\Museum\ShowMuseum;
 use Illuminate\Support\Facades\Route;
@@ -47,6 +49,10 @@ Route::get('/museum/{museum}/exhibition/{exhibition}', ShowExhibition::class)->n
 Route::get('/exhibitions/propose', ProposeExhibition::class)->name('front.exhibition.propose');
 Route::get('/exhibitions/map', MapExhibition::class)->name('front.exhibition.map');
 Route::get('/exhibitions/timeline', TimelineExhibition::class)->name('front.exhibition.timeline');
+
+// Exhibitions
+Route::get('/tags', ListTag::class)->name('front.tag.index');
+Route::get('/tag/{slug}', ShowTag::class)->name('front.tag.show');
 
 /*
 |--------------------------------------------------------------------------

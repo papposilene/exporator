@@ -5,7 +5,7 @@ namespace App\Http\Livewire\Dashboard;
 use Livewire\Component;
 use Spatie\Tags\Tag;
 
-class StatTags extends Component
+class StatTag extends Component
 {
     public function render()
     {
