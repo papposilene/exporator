@@ -47,7 +47,7 @@
                                     @ucfirst($tag->name)
                                 </a>
                             </td>
-                            <td class="text-center">{{ 'test' }}</td>
+                            <td class="text-center">{{ $exhibitions->hasTags()->get() }}</td>
                         </tr>
                         @endforeach
                     </tbody>
