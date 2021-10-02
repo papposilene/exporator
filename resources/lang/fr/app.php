@@ -110,5 +110,6 @@ return [
     'numbers_of_exhibitions' => 'nombre total : :count.',
     'numbers_of_today_exhibitions' => 'expositions pour aujourd’hui : :count.',
     'numbers_of_next_exhibitions' => 'expositions du mois prochain : :count',
+    'type_is' => 'typologie de tag : :type.',
 
 ];

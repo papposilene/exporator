@@ -3,11 +3,18 @@
 namespace App\Http\Livewire\Dashboard;
 
 use Livewire\Component;
+use Spatie\Tags\Tag;
 
 class StatTags extends Component
 {
     public function render()
     {
-        return view('livewire.dashboard.stat-tags');
+        $tags = Tag::orderBy('type', 'asc')
+            ->orderBy('name', 'asc')
+            ->get();
+
+        return view('livewire.dashboard.stat-tags', [
+            'tags' => $tags,
+        ]);
     }
 }
