@@ -22,5 +22,9 @@ class CreateTagTables extends Migration
             $table->morphs('taggable');
             $table->unique(['tag_id', 'taggable_id', 'taggable_type']);
         });
+
+        Schema::table('taggables', function (Blueprint $table) {
+            $table->uuid('taggable_id')->change();
+        });
     }
 }
