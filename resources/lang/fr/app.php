@@ -63,7 +63,7 @@ return [
     'name_official' => 'dénomination officielle du pays',
     'no_exhibition' => 'sans exposition',
     'notags' => 'pas de mot-clé à afficher...',
-    'nothing' => 'ici, il n’y à rien à afficher...',
+    'nothing' => 'ici, il n’y a encore rien à afficher...',
     'optional' => 'information optionnelle',
     'other' => 'autre',
     'region' => 'continent du pays',
