@@ -1127,6 +1127,9 @@ select {
 .m-5 {
 	margin: 1.25rem;
 }
+.m-1 {
+	margin: 0.25rem;
+}
 .mx-auto {
 	margin-left: auto;
 	margin-right: auto;
@@ -1134,6 +1137,18 @@ select {
 .mx-5 {
 	margin-left: 1.25rem;
 	margin-right: 1.25rem;
+}
+.mx-2 {
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
+}
+.mx-1 {
+	margin-left: 0.25rem;
+	margin-right: 0.25rem;
+}
+.mx-3 {
+	margin-left: 0.75rem;
+	margin-right: 0.75rem;
 }
 .ml-3 {
 	margin-left: 0.75rem;
@@ -3063,6 +3078,11 @@ svg.leaflet-image-layer.leaflet-interactive path {
 		margin-bottom: -1px;
 	}
 
+	.sm\:my-5 {
+		margin-top: 1.25rem;
+		margin-bottom: 1.25rem;
+	}
+
 	.sm\:ml-3 {
 		margin-left: 0.75rem;
 	}
@@ -3160,6 +3180,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
 		transform: var(--tw-transform);
 	}
 
+	.sm\:flex-row {
+		flex-direction: row;
+	}
+
 	.sm\:items-start {
 		align-items: flex-start;
 	}
@@ -3223,6 +3247,11 @@ svg.leaflet-image-layer.leaflet-interactive path {
 		padding-right: 5rem;
 	}
 
+	.sm\:py-5 {
+		padding-top: 1.25rem;
+		padding-bottom: 1.25rem;
+	}
+
 	.sm\:pt-0 {
 		padding-top: 0px;
 	}
@@ -3257,6 +3286,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
 		display: grid;
 	}
 
+	.md\:w-full {
+		width: 100%;
+	}
+
 	.md\:grid-cols-3 {
 		grid-template-columns: repeat(3, minmax(0, 1fr));
 	}
@@ -3283,9 +3316,46 @@ svg.leaflet-image-layer.leaflet-interactive path {
 		grid-column: span 4 / span 4;
 	}
 
+	.lg\:mr-3 {
+		margin-right: 0.75rem;
+	}
+
+	.lg\:ml-3 {
+		margin-left: 0.75rem;
+	}
+
+	.lg\:w-2\/4 {
+		width: 50%;
+	}
+
+	.lg\:w-1\/4 {
+		width: 25%;
+	}
+
+	.lg\:flex-col {
+		flex-direction: column;
+	}
+
+	.lg\:space-x-5 > :not([hidden]) ~ :not([hidden]) {
+		--tw-space-x-reverse: 0;
+		margin-right: calc(1.25rem * var(--tw-space-x-reverse));
+		margin-left: calc(1.25rem * calc(1 - var(--tw-space-x-reverse)));
+	}
+
+	.lg\:space-x-2 > :not([hidden]) ~ :not([hidden]) {
+		--tw-space-x-reverse: 0;
+		margin-right: calc(0.5rem * var(--tw-space-x-reverse));
+		margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
+	}
+
 	.lg\:px-8 {
 		padding-left: 2rem;
 		padding-right: 2rem;
+	}
+
+	.lg\:px-6 {
+		padding-left: 1.5rem;
+		padding-right: 1.5rem;
 	}
 }
 

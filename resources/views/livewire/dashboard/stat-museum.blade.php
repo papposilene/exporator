@@ -1,4 +1,4 @@
-<div class="bg-purple-100 p-5 w-full">
+<div class="flex-grow bg-purple-100 p-5 w-full">
     <h3 class="font-bold text-2xl mb-5">@ucfirst(__('app.museums'))</h3>
     <h4 class="font-bold text-1xl mb-2">@ucfirst(__('app.statistics'))</h4>
     <ol class="list-inside list-disc">
