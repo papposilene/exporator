@@ -23,7 +23,9 @@ class ShowTag extends Component
 
     public function mount($slug)
     {
-        $this->tag = Tag::where('slug', $this->slug)->firstOrFail();
+        $this->locale = \App::currentLocale();
+        $this->tag = Tag::where('slug->' . $this->locale, $this->slug)
+            ->firstOrFail();
     }
 
     public function updatingSearch()

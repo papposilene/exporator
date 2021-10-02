@@ -12,10 +12,10 @@ use App\Http\Livewire\Exhibition\MapExhibition;
 use App\Http\Livewire\Exhibition\ProposeExhibition;
 use App\Http\Livewire\Exhibition\ShowExhibition;
 use App\Http\Livewire\Exhibition\TimelineExhibition;
-use App\Http\Livewire\Tag\ListTag;
-use App\Http\Livewire\Tag\ShowTag;
 use App\Http\Livewire\Museum\ListMuseum;
 use App\Http\Livewire\Museum\ShowMuseum;
+use App\Http\Livewire\Tag\ListTag;
+use App\Http\Livewire\Tag\ShowTag;
 use Illuminate\Support\Facades\Route;
 
 /*
