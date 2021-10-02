@@ -27,7 +27,9 @@ class ListTag extends Component
     {
         $tags = Tag::where('name', 'like', '%'.$this->search.'%')
             ->orWhere('slug', 'like', '%'.$this->search.'%')
+            ->orWhere('type', 'like', '%'.$this->search.'%')
             ->orderBy('type', 'asc')
+            ->orderBy('name', 'asc')
             ->paginate(25);
 
         return view('livewire.tag.list-tag', [

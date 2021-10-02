@@ -48,7 +48,7 @@
                                     @ucfirst($tag->name)
                                 </a>
                             </td>
-                            <td class="text-center"></td>
+                            <td class="text-center">{{ 'test' }}</td>
                             <td class="text-center"></td>
                         </tr>
                         @endforeach
