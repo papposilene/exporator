@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire\Tag;
 
-use App;
 use App\Models\Tag;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -24,7 +23,7 @@ class ShowTag extends Component
 
     public function mount($slug)
     {
-        $this->locale = App::currentLocale();
+        $this->locale = \App::currentLocale();
         $this->tag = Tag::where('slug->' . $this->locale, $this->slug)
             ->firstOrFail();
     }
