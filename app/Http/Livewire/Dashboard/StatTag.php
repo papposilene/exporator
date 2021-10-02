@@ -13,7 +13,7 @@ class StatTag extends Component
             ->orderBy('name', 'asc')
             ->get();
 
-        return view('livewire.dashboard.stat-tags', [
+        return view('livewire.dashboard.stat-tag', [
             'tags' => $tags,
         ]);
     }
