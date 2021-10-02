@@ -26,7 +26,6 @@ class ListTag extends Component
 
     public function render()
     {
-        //$exhibitions = Exhibition::withCount('hasTags')->get();
         $tags = Tag::where('name', 'like', '%'.$this->search.'%')
             ->orWhere('slug', 'like', '%'.$this->search.'%')
             ->orWhere('type', 'like', '%'.$this->search.'%')
