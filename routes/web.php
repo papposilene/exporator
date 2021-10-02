@@ -36,8 +36,8 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 Route::redirect('/', '/dashboard', 301);
+Route::get('/dashboard', ShowDashboard::class)->name('dashboard');
 Route::get('/about', ShowAbout::class)->name('front.about');
-Route::get('/dashboard', ShowDashboard::class)->name('front.dashboard');
 
 // Museums
 Route::get('/museums', ListMuseum::class)->name('front.museum.index');
@@ -60,8 +60,8 @@ Route::get('/tag/{slug}', ShowTag::class)->name('front.tag.show');
 |--------------------------------------------------------------------------
 */
 Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::redirect('/', '/dashboard', 301);
-    Route::get('/dashboard', ShowDashboard::class)->name('admin.dashboard');
+    //Route::redirect('/', '/dashboard', 301);
+    //Route::get('/dashboard', ShowDashboard::class)->name('admin.dashboard');
 
     // Countries
     Route::get('/countries', ListCountry::class)->name('admin.country.index');
