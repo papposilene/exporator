@@ -23,7 +23,7 @@
                 <livewire:dashboard.stat-exhibition />
             </div>
         </div>
-        <div class="flex flex-row flex-wrap max-w-7xl mx-auto py-5 px-6">
+        <div class="flex flex-row flex-wrap max-w-7xl mx-auto -mt-7 py-5 px-6">
             <livewire:dashboard.stat-tag />
         </div>
     </div>
