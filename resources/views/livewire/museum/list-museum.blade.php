@@ -12,7 +12,7 @@
     </x-slot>
 
     <div>
-        <div class="max-w-7xl mx-auto py-5 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto py-5 px-6">
             @if ($errors->any())
             <div class="bg-red-400 border border-red-500 py-5 text-black">
                 <ul>
@@ -23,7 +23,7 @@
             </div>
             @endif
 
-            <div>
+            <div class="flex flex-wrap justify-end">
                 <x-forms.input wire:model="search" type="search" class="relative float-right h-9 ml-2 mb-3" :placeholder="@ucfirst(__('app.search'))" />
                 {{ $museums->links() }}
             </div>
@@ -32,10 +32,10 @@
                     <thead>
                         <tr class="bg-gray-700 text-white">
                             <th class="w-1/12 text-center p-3">@ucfirst(__('app.iteration'))</th>
-                            <th class="w-2/12 text-center">@ucfirst(__('app.types'))</th>
-                            <th class="w-2/12 text-center">@ucfirst(__('app.cities'))</th>
+                            <th class="w-2/12 text-center hidden lg:table-cell">@ucfirst(__('app.types'))</th>
+                            <th class="w-2/12 text-center hidden lg:table-cell">@ucfirst(__('app.cities'))</th>
                             <th class="w-4/12 text-center">@ucfirst(__('app.museums'))</th>
-                            <th class="w-2/12 text-center">@ucfirst(__('app.status'))</th>
+                            <th class="w-2/12 text-center hidden lg:table-cell">@ucfirst(__('app.status'))</th>
                             <th class="w-1/12 text-center">@ucfirst(__('app.exhibitions'))</th>
                         </tr>
                     </thead>
@@ -43,8 +43,8 @@
                         @foreach($museums as $museum)
                         <tr class="bg-gray-200 border-b border-gray-300 border-dashed h-12 w-12 p-4">
                             <td class="text-center">{{ $loop->iteration }}</td>
-                            <td>@ucfirst(__('app.' . Str::slug($museum->hasType->type, '_')))</td>
-                            <td>{{ $museum->city }}</td>
+                            <td class="hidden lg:table-cell">@ucfirst(__('app.' . Str::slug($museum->hasType->type, '_')))</td>
+                            <td class="hidden lg:table-cell">{{ $museum->city }}</td>
                             <td>
                                 @auth
                                 <a href="{{ route('admin.museum.show', ['slug' => $museum->slug]) }}"
@@ -56,7 +56,7 @@
                                     {{ $museum->name }}
                                 </a>
                             </td>
-                            <td class="text-center">
+                            <td class="text-center hidden lg:table-cell">
                                 @if ($museum->status === 1)
                                 <span class="text-green-900">@ucfirst(__('app.museum_open'))</span>
                                 @else

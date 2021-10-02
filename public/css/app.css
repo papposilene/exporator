@@ -1067,6 +1067,9 @@ select {
 .prose > :last-child {
 	margin-bottom: 0;
 }
+.visible {
+	visibility: visible;
+}
 .fixed {
 	position: fixed;
 }
@@ -3135,6 +3138,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
 		visibility: visible;
 	}
 
+	.sm\:invisible {
+		visibility: hidden;
+	}
+
 	.sm\:col-span-4 {
 		grid-column: span 4 / span 4;
 	}
@@ -3354,6 +3361,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
 }
 @media (min-width: 768px) {
 
+	.md\:visible {
+		visibility: visible;
+	}
+
 	.md\:col-span-2 {
 		grid-column: span 2 / span 2;
 	}
@@ -3368,6 +3379,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
 	.md\:grid {
 		display: grid;
+	}
+
+	.md\:hidden {
+		display: none;
 	}
 
 	.md\:w-full {
@@ -3396,6 +3411,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
 }
 @media (min-width: 1024px) {
 
+	.lg\:visible {
+		visibility: visible;
+	}
+
 	.lg\:col-span-4 {
 		grid-column: span 4 / span 4;
 	}
@@ -3406,6 +3425,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
 	.lg\:ml-3 {
 		margin-left: 0.75rem;
+	}
+
+	.lg\:table-cell {
+		display: table-cell;
 	}
 
 	.lg\:hidden {

@@ -11,7 +11,7 @@
     </x-slot>
 
     <div>
-        <div class="w-3/12 mx-auto py-5 sm:px-6 lg:px-8 float-left">
+        <div class="w-3/12 mx-auto py-5 px-6 float-left">
             <ul class="bg-indigo-100 list-inside m-5 p-5 w-full">
                 <li title="@ucfirst(__('app.name_common'))">
                     <h3 class="font-bold text-2xl mb-5">
@@ -42,7 +42,7 @@
             @endif
 
             @if($museums->count() > 0)
-            <div>
+            <div class="flex flex-wrap justify-end">
                 <x-forms.input wire:model="search" type="search" class="relative float-right h-9 ml-2 mb-3" :placeholder="@ucfirst(__('app.search'))" />
                 {{ $museums->links() }}
             </div>
