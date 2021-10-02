@@ -1,13 +1,22 @@
 <div>
-    <div class="flex flex-row justify-center w-full">
-        <livewire:dashboard.stat-country />
-        <livewire:dashboard.stat-museum />
-        <livewire:dashboard.stat-exhibition />
-    </div>
-    <div class="flex flex-row justify-center w-full">
-        <livewire:components.leaflet-map wire-model="museum" />
-    </div>
-    <div class="flex flex-row justify-center w-full">
-        <livewire:components.amcharts-timeline />
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            <span>{{ config('app.name', 'Exporator') }}</span>
+        </h2>
+    </x-slot>
+
+    <div>
+        <div class="flex flex-row max-w-7xl mx-auto py-5 sm:px-6 lg:px-8">
+            <div class="flex flex-col bg-white m-5 p-5 w-2/3">
+                <p class="mb-3">
+                    L'Exporateur, mot-valise entre <em>exposition</em> et <em>explorateur</em>, est un (énième ?)
+                    site de référencement des expositions temporaires à Paris et ses proches alentours.
+                </p>
+            </div>
+            <div class="flex flex-col justify-center w-1/3">
+                <livewire:dashboard.stat-museum />
+                <livewire:dashboard.stat-exhibition />
+            </div>
+        </div>
     </div>
 </div>
