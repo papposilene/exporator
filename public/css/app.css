@@ -1385,6 +1385,9 @@ select {
 .w-1\/4 {
 	width: 25%;
 }
+.w-5\/12 {
+	width: 41.666667%;
+}
 .min-w-0 {
 	min-width: 0px;
 }

@@ -27,7 +27,8 @@
                         <tr class="bg-gray-700 text-white">
                             <th class="w-1/12 text-center p-3">@ucfirst(__('app.iteration'))</th>
                             <th class="w-3/12 text-center">@ucfirst(__('app.types'))</th>
-                            <th class="w-6/12 text-center">@ucfirst(__('app.tags'))</th>
+                            <th class="w-4/12 text-center">@ucfirst(__('app.tags'))</th>
+                            <th class="w-2/12 text-center">@ucfirst(__('app.museums'))</th>
                             <th class="w-2/12 text-center">@ucfirst(__('app.exhibitions'))</th>
                         </tr>
                     </thead>
@@ -47,7 +48,8 @@
                                     @ucfirst($tag->name)
                                 </a>
                             </td>
-                            <td class="text-center">{{ $exhibitions->hasTags()->get() }}</td>
+                            <td class="text-center">{{ $tag->hasMuseums->count() }}</td>
+                            <td class="text-center">{{ $tag->hasExhibitions->count() }}</td>
                         </tr>
                         @endforeach
                     </tbody>

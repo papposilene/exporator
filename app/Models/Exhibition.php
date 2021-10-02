@@ -99,19 +99,4 @@ class Exhibition extends Model
             'uuid'
         );
     }
-
-    /**
-     * Get all the exhibitions for a specific museum.
-     */
-    public function hasTags()
-    {
-        return $this->hasManyThrough(
-            'Spatie\Tags\Tag',
-            'App\Models\Tagged',
-            'tag_id',
-            'id',
-            'uuid',
-            'taggable_id'
-        );
-    }
 }
