@@ -50,6 +50,7 @@ return [
     'geolocalisation' => 'géolocalisation de l’adresse postale',
     'latitude' => 'latitude',
     'library' => 'bibliothèque',
+    'loading' => 'chargement des données en cours...',
     'longitude' => 'longitude',
     'link' => 'lien vers le site internet',
     'map' => 'carte',

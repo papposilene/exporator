@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ExhibitionResource;
 use App\Models\Exhibition;
+use App\Models\Museum;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -32,11 +33,7 @@ class ExhibitionController extends Controller
         $ended_2months = date('Y-m-d', strtotime('-2 months'));
         $begin_in_2months = date('Y-m-d', strtotime('+2 months'));
 
-        $exhibitions = Exhibition::where('began_at', '>', $today)
-            ->where('ended_at', '>', $ended_2months)
-            ->where('began_at', '<', $begin_in_2months)
-            ->orderBy('began_at', 'asc')
-            ->get();
+        $museums = Museum::orderBy('name', 'asc')->get();
 
         $ii = 0;
         $colors = [
@@ -78,26 +75,29 @@ class ExhibitionController extends Controller
             '#EC4899',
         ];
 
-        foreach ($exhibitions as $exhibition)
+        foreach ($museums as $museum)
         {
-            if ($ii > count($colors)-1) $ii = 0;
+            $exhibitions = Exhibition::where('museum_uuid', $museum->uuid)
+                ->where('began_at', '>', $today)
+                ->where('ended_at', '>', $ended_2months)
+                ->where('began_at', '<', $begin_in_2months)
+                ->orderBy('began_at', 'asc')
+                ->get();
 
-            $json[] = [
-                'uuid' => $exhibition->uuid,
-                'slug' => $exhibition->slug,
-                'title' => $exhibition->title,
-                'began_at' => $exhibition->began_at->format('Y-m-d'),
-                'ended_at' => $exhibition->ended_at->format('Y-m-d'),
-                'description' => $exhibition->description,
-                'museum_name' => $exhibition->inMuseum->name,
-                'museum_slug' => $exhibition->inMuseum->slug,
-                'museum_address' => $exhibition->inMuseum->address,
-                'museum_city' => $exhibition->inMuseum->city,
-                'museum_country' => $exhibition->inMuseum->cca3,
-                'color' => $colors[$ii++],
-            ];
+            foreach ($museum->hasExhibitions as $exhibition)
+            {
 
-            $ii++;
+                $json[] = [
+                    'name' => $museum->name,
+                    'data' => [
+                        'x' => $exhibition->title,
+                        'data' => [
+                                $exhibition->began_at->format('Y-m-d'),
+                                $exhibition->ended_at->format('Y-m-d'),
+                            ]
+                    ],
+                ];
+            }
         }
 
         return json_encode($json, JSON_PRETTY_PRINT);
