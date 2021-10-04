@@ -36,7 +36,7 @@ document.addEventListener('livewire:load', function () {
         var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
         dateAxis.dataFields.valueY = "began_at";
         dateAxis.renderer.minGridDistance = 70;
-        dateAxis.baseInterval = { count: 1, timeUnit: "day" };
+        dateAxis.baseInterval = { count: 1, timeUnit: "month" };
         dateAxis.renderer.tooltipLocation = 0;
         dateAxis.startLocation = -0.5;
         dateAxis.renderer.line.strokeDasharray = "1,4";
@@ -69,7 +69,6 @@ document.addEventListener('livewire:load', function () {
         bullet.circle.strokeOpacity = 0;
         bullet.propertyFields.fill = "color";
         bullet.locationX = 0;
-
 
         var bullet2 = series.bullets.push(new am4charts.CircleBullet());
         bullet2.circle.radius = 3;
