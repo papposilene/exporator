@@ -10,11 +10,11 @@ import '@fortawesome/fontawesome-free/js/regular'
 import '@fortawesome/fontawesome-free/js/brands'
 
 /* amCharts */
-import '@amcharts/amcharts4/core.js'
-import '@amcharts/amcharts4/charts.js'
-import '@amcharts/amcharts4/plugins/bullets.js'
-import '@amcharts/amcharts4/plugins/timeline.js'
-import '@amcharts/amcharts4/themes/animated.js'
+//import '@amcharts/amcharts4/core.js'
+//import '@amcharts/amcharts4/charts.js'
+//import '@amcharts/amcharts4/plugins/bullets.js'
+//import '@amcharts/amcharts4/plugins/timeline.js'
+//import '@amcharts/amcharts4/themes/animated.js'
 
 /* Leaflet */
 import 'leaflet/dist/leaflet-src.js'
@@ -24,5 +24,4 @@ import 'leaflet.locatecontrol/dist/L.Control.Locate.min.js'
 
 
 window.Alpine = Alpine;
-
 Alpine.start();
