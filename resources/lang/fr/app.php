@@ -84,7 +84,7 @@ return [
     'with_past_exhibition' => 'Exposition(s) passée(s)',
     'with_current_exhibition' => 'Exposition(s) en cours',
     'with_future_exhibition' => 'Exposition(s) future(s)',
-    'without_exhibition' => 'Sans exposition',
+    'without_exhibition' => 'Pas d’exposition',
 
     // Placeholders
     'ddmmyyyy' => 'JJ/MM/AAAA',

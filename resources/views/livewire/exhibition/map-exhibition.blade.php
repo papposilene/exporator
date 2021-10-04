@@ -35,10 +35,10 @@ document.addEventListener('livewire:load', function () {
     });
 
     var overlayMaps = {
-        "@ucfirst(__('app.with_past_exhibition'))": with_past_exhibition,
-        "@ucfirst(__('app.with_current_exhibition'))": with_current_exhibition,
-        "@ucfirst(__('app.with_future_exhibition'))": with_future_exhibition,
-        "@ucfirst(__('app.without_exhibition'))": without_exhibition
+        "<span class='font-bold text-red-700'>@ucfirst(__('app.with_past_exhibition'))</span>": with_past_exhibition,
+        "<span class='font-bold text-green-700'>@ucfirst(__('app.with_current_exhibition'))</span>": with_current_exhibition,
+        "<span class='font-bold text-blue-700'>@ucfirst(__('app.with_future_exhibition'))</span>": with_future_exhibition,
+        "<span class='font-bold text-black'>@ucfirst(__('app.without_exhibition'))</span>": without_exhibition
     };
 
     var leafletMap = L.map('leaflet-map', {
