@@ -26,9 +26,30 @@ class ExhibitionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function json()
     {
-        //
+        $today = date('Y-m-d');
+
+        $exhibitions = Exhibition::where('ended_at', '<', $today)->orderBy('began_at', 'asc')->get();
+
+        foreach ($exhibitions as $exhibition)
+        {
+            $json[] = [
+                'uuid' => $exhibition->uuid,
+                'slug' => $exhibition->slug,
+                'title' => $exhibition->title,
+                'began_at' => $exhibition->began_at->format('Y-m-d'),
+                'ended_at' => $exhibition->ended_at->format('Y-m-d'),
+                'description' => $exhibition->description,
+                'museum_name' => $exhibition->inMuseum->name,
+                'museum_slug' => $exhibition->inMuseum->slug,
+                'museum_address' => $exhibition->inMuseum->address,
+                'museum_city' => $exhibition->inMuseum->city,
+                'museum_country' => $exhibition->inMuseum->cca3,
+            ];
+        }
+
+        return json_encode($json, JSON_PRETTY_PRINT);
     }
 
     /**

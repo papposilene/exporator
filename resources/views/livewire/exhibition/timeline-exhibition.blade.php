@@ -16,30 +16,17 @@ document.addEventListener('livewire:load', function () {
         chart.yAxisRadius = am4core.percent(25);
         chart.yAxisInnerRadius = am4core.percent(-25);
         chart.maskBullets = false;
-
-        var colorSet = new am4core.ColorSet();
-        colorSet.saturation = 0.5;
-
-chart.data = [{
-    "category": "Module #1",
-    "start": "2019-01-10",
-    "end": "2019-01-13",
-    "color": colorSet.getIndex(0),
-    "task": "Gathering requirements"
-}, {
-    "category": "Module #1",
-    "start": "2019-02-05",
-    "end": "2019-04-18",
-    "color": colorSet.getIndex(0),
-    "task": "Development"
-}];
-
+        chart.dataSource.url = "{{ route('api.exhibition.timeline') }}"
+        chart.dataSource.parser = new am4core.JSONParser();
         chart.dateFormatter.dateFormat = "yyyy-MM-dd";
         chart.dateFormatter.inputDateFormat = "yyyy-MM-dd";
         chart.fontSize = 11;
 
+        var colorSet = new am4core.ColorSet();
+        colorSet.saturation = 0.5;
+
         var categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
-        categoryAxis.dataFields.category = "category";
+        categoryAxis.dataFields.category = "museum_name";
         categoryAxis.renderer.grid.template.disabled = true;
         categoryAxis.renderer.labels.template.paddingRight = 25;
         categoryAxis.renderer.minGridDistance = 10;
@@ -47,6 +34,7 @@ chart.data = [{
         categoryAxis.renderer.radius = 60;
 
         var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+        dateAxis.dataFields.valueY = "began_at";
         dateAxis.renderer.minGridDistance = 70;
         dateAxis.baseInterval = { count: 1, timeUnit: "day" };
         dateAxis.renderer.tooltipLocation = 0;
@@ -67,11 +55,11 @@ chart.data = [{
 
         var series = chart.series.push(new am4plugins_timeline.CurveColumnSeries());
         series.columns.template.height = am4core.percent(20);
-        series.columns.template.tooltipText = "{task}: [bold]{openDateX}[/] - [bold]{dateX}[/]";
+        series.columns.template.tooltipText = "{title}: [bold]{began_at}[/] - [bold]{ended_at}[/]";
 
-        series.dataFields.openDateX = "start";
-        series.dataFields.dateX = "end";
-        series.dataFields.categoryY = "category";
+        series.dataFields.openDateX = "began_at";
+        series.dataFields.dateX = "ended_at";
+        series.dataFields.categoryY = "museum_slug";
         series.columns.template.propertyFields.fill = "color"; // get color from data
         series.columns.template.propertyFields.stroke = "color";
         series.columns.template.strokeOpacity = 0;
@@ -88,7 +76,6 @@ chart.data = [{
         bullet2.circle.strokeOpacity = 0;
         bullet2.propertyFields.fill = "color";
         bullet2.locationX = 1;
-
 
         var imageBullet1 = series.bullets.push(new am4plugins_bullets.PinBullet());
         imageBullet1.disabled = true;
@@ -112,22 +99,15 @@ chart.data = [{
 
 
         var eventSeries = chart.series.push(new am4plugins_timeline.CurveLineSeries());
-        eventSeries.dataFields.dateX = "eventDate";
-        eventSeries.dataFields.categoryY = "category";
-        eventSeries.data = [
-            { category: "", eventDate: "2019-01-15", letter: "A", description: "Something happened here" },
-            { category: "", eventDate: "2019-01-23", letter: "B", description: "Something happened here" },
-            { category: "", eventDate: "2019-02-10", letter: "C", description: "Something happened here" },
-            { category: "", eventDate: "2019-02-29", letter: "D", description: "Something happened here" },
-            { category: "", eventDate: "2019-03-06", letter: "E", description: "Something happened here" },
-            { category: "", eventDate: "2019-03-12", letter: "F", description: "Something happened here" },
-            { category: "", eventDate: "2019-03-22", letter: "G", description: "Something happened here" }];
+        eventSeries.dataFields.dateX = "began_at";
+        eventSeries.dataFields.categoryY = "museum_slug";
         eventSeries.strokeOpacity = 0;
 
         var flagBullet = eventSeries.bullets.push(new am4plugins_bullets.FlagBullet())
-        flagBullet.label.propertyFields.text = "letter";
+        flagBullet.label.propertyFields.text = "title";
         flagBullet.locationX = 0;
-        flagBullet.tooltipText = "{description}";
+        flagBullet.tooltipText = `{museum_name} :
+            {title}`;
 
         chart.scrollbarX = new am4core.Scrollbar();
         chart.scrollbarX.align = "center"
