@@ -11,6 +11,7 @@ use App\Models\Museum;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -106,12 +107,15 @@ class ExhibitionController extends Controller
             $import = new ExhibitionsImport();
             $import->import($request->file('datafile'));
         } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+            Storage::delete($request->file('datafile'));
             $failures = $e->failures();
 
             dd($failures);
 
             return redirect()->route('admin.exhibition.index', compact($failures));
         }
+        
+        Storage::delete($request->file('datafile'));
 
         return redirect()->route('admin.exhibition.index')->with('success', 'All good!');
     }
