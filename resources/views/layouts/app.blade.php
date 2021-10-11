@@ -21,7 +21,7 @@
 
     <body class="font-sans antialiased bg-gray-100" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
         <div>
-            <livewire:backend-menu />
+            <livewire:navigation-menu />
 
             <!-- Page Heading -->
             @if (isset($header))
