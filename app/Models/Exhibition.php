@@ -33,7 +33,8 @@ class Exhibition extends Model
      * @var array
      */
     protected $casts = [
-        //'uuid' => 'uuid',
+        'began_at' => 'date:Y-m-d',
+        'ended_at' => 'date:Y-m-d',
     ];
 
     /**

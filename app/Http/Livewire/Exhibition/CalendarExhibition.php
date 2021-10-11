@@ -13,6 +13,8 @@ class CalendarExhibition extends Component
     {
         $this->exhibitions = json_encode(Exhibition::all());
 
+        dd($this->exhibitions);
+
         return view('livewire.exhibition.calendar-exhibition');
     }
 }
