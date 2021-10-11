@@ -25,7 +25,6 @@ document.addEventListener('livewire:load', function () {
     const Calendar = FullCalendar.Calendar;
     const calendarEl = document.getElementById('calendar');
     const calendar = new Calendar(calendarEl, {
-        //plugins: [ dayGridPlugin, timeGridPlugin, listPlugin ],
         initialView: 'dayGridMonth',
         locale: '{{ config('app.locale') }}',
         events: JSON.parse(@this.exhibitions),
