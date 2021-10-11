@@ -7,7 +7,7 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-logo :class="block h-9 w-auto {darkMode ? 'bg-black' : ''}" {{ $attributes }}>{{ config('app.name', 'Exporator') }}</x-logo>
+                        <x-logo class="block h-9 w-auto">{{ config('app.name', 'Exporator') }}</x-logo>
                     </a>
                 </div>
 

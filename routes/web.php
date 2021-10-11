@@ -7,6 +7,7 @@ use App\Http\Livewire\Country\ListCountry;
 use App\Http\Livewire\Country\ShowCountry;
 use App\Http\Livewire\Dashboard\ShowAbout;
 use App\Http\Livewire\Dashboard\ShowDashboard;
+use App\Http\Livewire\Exhibition\CalendarExhibition;
 use App\Http\Livewire\Exhibition\ListExhibition;
 use App\Http\Livewire\Exhibition\MapExhibition;
 use App\Http\Livewire\Exhibition\ProposeExhibition;
@@ -51,7 +52,7 @@ Route::get('/exhibitions/calendar', CalendarExhibition::class)->name('front.exhi
 Route::get('/exhibitions/map', MapExhibition::class)->name('front.exhibition.map');
 Route::get('/exhibitions/timeline', TimelineExhibition::class)->name('front.exhibition.timeline');
 
-// Exhibitions
+// Tags
 Route::get('/tags', ListTag::class)->name('front.tag.index');
 Route::get('/tag/{slug}', ShowTag::class)->name('front.tag.show');
 
@@ -83,5 +84,3 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function
     Route::post('/exhibition/update', [ExhibitionController::class, 'update'])->name('admin.exhibition.update');
     Route::get('/exhibitions/propose', [ExhibitionController::class, 'propose'])->name('admin.exhibition.propose');
 });
-
-Route::view('/{path?}', 'app')->where('path', '.*')->name('nuxt');

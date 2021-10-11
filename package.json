@@ -24,6 +24,10 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.4",
+        "@fullcalendar/core": "^5.9.0",
+        "@fullcalendar/daygrid": "^5.9.0",
+        "@fullcalendar/list": "^5.9.0",
+        "@fullcalendar/timegrid": "^5.9.0",
         "@tailwindcss/aspect-ratio": "^0.2.1",
         "@tailwindcss/line-clamp": "^0.2.1",
         "apexcharts": "^3.28.3",

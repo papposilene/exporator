@@ -11,6 +11,12 @@ import '@fortawesome/fontawesome-free/js/brands'
 
 import ApexCharts from 'apexcharts'
 
+/* Calendar */
+import { Calendar } from '@fullcalendar/core';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import listPlugin from '@fullcalendar/list';
+
 /* Leaflet */
 import 'leaflet/dist/leaflet-src.js'
 import 'leaflet-ajax/dist/leaflet.ajax.js'
