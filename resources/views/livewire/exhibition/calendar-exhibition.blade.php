@@ -15,13 +15,17 @@
 </div>
 
 @push('scripts')
-<script src="{{ mix('js/@fullcalendar/main.min.js }}"></script>
+<script src="/js/@fullcalendar/main.global.min.js"></script>
+<script src="/js/@fullcalendar/locales-all.global.min.js"></script>
+<script src="/js/@fullcalendar/daygrid/main.global.min.js"></script>
+<script src="/js/@fullcalendar/list/main.global.min.js"></script>
+<script src="/js/@fullcalendar/timegrid/main.global.min.js"></script>
 <script>
 document.addEventListener('livewire:load', function () {
     const Calendar = FullCalendar.Calendar;
     const calendarEl = document.getElementById('calendar');
     const calendar = new Calendar(calendarEl, {
-        plugins: [ dayGridPlugin, timeGridPlugin, listPlugin ],
+        //plugins: [ dayGridPlugin, timeGridPlugin, listPlugin ],
         initialView: 'dayGridMonth',
         locale: '{{ config('app.locale') }}',
         events: JSON.parse(@this.exhibitions),
