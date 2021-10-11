@@ -7,7 +7,7 @@ document.addEventListener('livewire:load', function () {
     let calendar = new Calendar(calendarEl, {
         plugins: [ dayGridPlugin, timeGridPlugin, listPlugin ],
         initialView: 'dayGridMonth',
-        locale: '{{ config('app.locale') }}',
+        locale: "{{ config('app.locale') }}",
         events: JSON.parse(@this.exhibitions),
         headerToolbar: {
             left: 'prev,next today',

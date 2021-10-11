@@ -12,7 +12,7 @@ import '@fortawesome/fontawesome-free/js/brands'
 import ApexCharts from 'apexcharts'
 
 /* Calendar */
-import { Calendar } from '@fullcalendar/core';
+import Calendar from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
@@ -25,3 +25,5 @@ import 'leaflet.locatecontrol/dist/L.Control.Locate.min.js'
 
 window.Alpine = Alpine;
 Alpine.start();
+
+window.Calendar = Calendar;
