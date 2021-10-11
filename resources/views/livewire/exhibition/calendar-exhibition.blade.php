@@ -1,18 +1,29 @@
-<div id="calendar-container" class="w-full" wire:ignore>
-    <div id="calendar"></div>
+<div>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            <span>@ucfirst(__('app.calendar_of', ['name' => __('app.exhibitions')]))</span>
+        </h2>
+    </x-slot>
+
+    <div>
+        <div class="max-w-7xl mx-auto py-5 px-6">
+            <div id="calendar-container" class="w-full" wire:ignore>
+                <div id="calendar"></div>
+            </div>
+        </div>
+    </div>
 </div>
 
 @push('scripts')
-<link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.css" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.js"></script>
+<script src="{{ mix('js/@fullcalendar/main.min.js }}"></script>
 <script>
 document.addEventListener('livewire:load', function () {
     const Calendar = FullCalendar.Calendar;
     const calendarEl = document.getElementById('calendar');
     const calendar = new Calendar(calendarEl, {
-        //plugins: [ dayGridPlugin, timeGridPlugin, listPlugin ],
+        plugins: [ dayGridPlugin, timeGridPlugin, listPlugin ],
         initialView: 'dayGridMonth',
-        locale: "{{ config('app.locale') }}",
+        locale: '{{ config('app.locale') }}',
         events: JSON.parse(@this.exhibitions),
         headerToolbar: {
             left: 'prev,next today',
