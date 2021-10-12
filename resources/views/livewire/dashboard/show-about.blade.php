@@ -22,7 +22,7 @@
                         <a href="{{ route('front.exhibition.map') }}" class="text-blue-700 hover:text-red-600">une cartographie des expositions en cours</a>,
                     </li>
                     <li>
-                        <a href="{{ route('front.exhibition.timeline') }}" class="text-blue-700 hover:text-red-600">une chronologie des expositions fraîchement achevées, en cours et prochaines</a>.
+                        <a href="{{ route('front.exhibition.calendar') }}" class="text-blue-700 hover:text-red-600">un agenda des expositions fraîchement achevées, en cours et prochaines</a>.
                     </li>
                 </ol>
             </p>

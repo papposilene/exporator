@@ -17,8 +17,7 @@
                     celles déjà passées, mais bon...) disponibles sous la forme d’<a href="{{ route('front.exhibition.index') }}"
                     class="text-blue-700 hover:text-red-600">une simple liste</a>, d’<a href="{{ route('front.exhibition.map') }}"
                     class="text-blue-700 hover:text-red-600">une représentation cartographique</a> et
-                    d’<a href="{{ route('front.exhibition.timeline') }}" class="text-blue-700 hover:text-red-600">une
-                    représentation chronologique</a>.
+                    d’<a href="{{ route('front.exhibition.calendar') }}" class="text-blue-700 hover:text-red-600">un agenda</a>.
                 </p>
             </div>
             <div class="flex sm:flex-row lg:flex-col flex-grow shadow sm:w-full lg:w-1/4">
