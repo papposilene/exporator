@@ -38,6 +38,12 @@ document.addEventListener('livewire:load', function () {
             if (info.event.link) {
                 window.open(info.event.link);
             }
+        },
+        dayMaxEventRows: true,
+        views: {
+            timeGrid: {
+                dayMaxEventRows: 4
+            }
         }
     });
     calendar.render();
