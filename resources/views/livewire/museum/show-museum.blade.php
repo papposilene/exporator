@@ -55,7 +55,7 @@
             @endauth
         </div>
 
-        <div class="w-9/12 mx-auto py-5 sm:px-6 lg:px-8 float-right">
+        <div class="w-9/12 mx-auto py-5 px-6 float-right">
             @if ($errors->any())
             <div class="bg-red-400 border border-red-500 py-5 sm:px-6 lg:px-8 text-black rounded">
                 <ul>

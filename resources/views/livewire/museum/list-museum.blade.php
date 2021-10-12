@@ -23,10 +23,13 @@
             </div>
             @endif
 
-            <div class="flex flex-wrap justify-end">
-                <x-forms.input wire:model="search" type="search" class="relative float-right h-9 ml-2 mb-3" :placeholder="@ucfirst(__('app.search'))" />
-                {{ $museums->links() }}
+            <div class="relative flex items-center justify-between mb-2 w-full">
+                <div class="flex">
+
+                </div>
+                <x-forms.input wire:model="search" type="search" class="ml-2" :placeholder="@ucfirst(__('app.search'))" />
             </div>
+            {{ $museums->links() }}
             <div class="py-5">
                 <table class="w-full p-5 table-fixed">
                     <thead>
