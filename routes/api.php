@@ -30,6 +30,7 @@ Route::prefix('1.1')->group(function () {
 
     // Exhibitions
     Route::get('/exhibitions', [ExhibitionController::class, 'index'])->name('api.exhibition.index');
+    Route::get('/exhibitions/all', [ExhibitionController::class, 'all'])->name('api.exhibition.all');
     Route::get('/exhibition/timeline', [ExhibitionController::class, 'json'])->name('api.exhibition.timeline');
     Route::get('/exhibition/{slug}', [ExhibitionController::class, 'show'])->name('api.exhibition.show');
 });

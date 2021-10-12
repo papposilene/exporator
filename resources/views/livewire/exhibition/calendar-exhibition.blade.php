@@ -27,11 +27,7 @@ document.addEventListener('livewire:load', function () {
     const calendar = new Calendar(calendarEl, {
         initialView: 'dayGridMonth',
         locale: '{{ config('app.locale') }}',
-        eventSources: [{
-            url: '{{ route('api.exhibition.index') }}',
-            startParam: 'began_at',
-            endParam: 'ended_at',
-        }],
+        events: '{{ route('api.exhibition.all') }}',
         headerToolbar: {
             left: 'prev,next today',
             center: 'title',

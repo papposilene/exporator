@@ -17,8 +17,8 @@ class ExhibitionResource extends JsonResource
         return [
             'uuid' => $this->uuid,
             'title' => $this->title,
-            'began_at' => $this->began_at->format('Y-d-m'),
-            'ended_at' => $this->ended_at->format('Y-d-m'),
+            //'began_at' => $this->began_at->format('Y-d-m'),
+            //'ended_at' => $this->ended_at->format('Y-d-m'),
             'start' => $this->began_at->format('Y-d-m'),
             'end' => $this->ended_at->format('Y-d-m'),
             'description' => $this->description,

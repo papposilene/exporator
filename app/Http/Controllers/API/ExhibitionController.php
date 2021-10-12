@@ -17,6 +17,21 @@ class ExhibitionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function all()
+    {
+        $year = date('Y-01-01');
+
+        return ExhibitionResource::collection(
+            Exhibition::where('ended_at', '>', $year)
+            ->orderBy('began_at', 'asc')->get()
+        )->toJson();
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         return ExhibitionResource::collection(Exhibition::paginate(25));
