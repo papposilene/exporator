@@ -57,8 +57,7 @@ document.addEventListener('livewire:load', function () {
         layers: [
             with_past_exhibition,
             with_current_exhibition,
-            with_future_exhibition,
-            without_exhibition
+            with_future_exhibition
         ]
     });
 
