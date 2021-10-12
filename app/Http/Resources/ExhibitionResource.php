@@ -17,8 +17,10 @@ class ExhibitionResource extends JsonResource
         return [
             'uuid' => $this->uuid,
             'title' => $this->title,
-            'start' => $this->began_at,
-            'end' => $this->ended_at,
+            'began_at' => $this->began_at->format('Y-d-m'),
+            'ended_at' => $this->ended_at->format('Y-d-m'),
+            'start' => $this->began_at->format('Y-d-m'),
+            'end' => $this->ended_at->format('Y-d-m'),
             'description' => $this->description,
             'link' => $this->link,
             'museum' => [
@@ -29,7 +31,7 @@ class ExhibitionResource extends JsonResource
                 'status' => $this->inMuseum->status,
                 'address' => $this->inMuseum->address,
                 'city' => $this->inMuseum->city,
-                'country' => $this->inMuseum->cca3,
+                'country' => $this->inMuseum->inCountry->cca3,
                 'link' => $this->inMuseum->link,
                 'lat' => $this->inMuseum->lat,
                 'lon' => $this->inMuseum->lon,
