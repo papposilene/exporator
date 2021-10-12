@@ -19,6 +19,7 @@ return [
     'art_center' => 'centre d’art',
     'art_fair' => 'foire',
     'began_at' => 'date de début',
+    'calendar' => 'agenda',
     'city' => 'ville',
     'cities' => 'villes',
     'cca2' => 'code ISO 3166-1 alpha-2 du pays',

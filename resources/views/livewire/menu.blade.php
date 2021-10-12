@@ -22,11 +22,11 @@
                     <x-jet-nav-link href="{{ route('front.exhibition.index') }}" :active="request()->routeIs('admin.exhibition.*')">
                         @ucfirst(__('app.exhibitions'))
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('front.exhibition.calendar') }}" :active="request()->routeIs('front.exhibition.timeline')">
+                        @ucfirst(__('app.calendar'))
+                    </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('front.exhibition.map') }}" :active="request()->routeIs('front.exhibition.map')">
                         @ucfirst(__('app.map'))
-                    </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('front.exhibition.timeline') }}" :active="request()->routeIs('front.exhibition.timeline')">
-                        @ucfirst(__('app.timeline'))
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('front.tag.index') }}" :active="request()->routeIs('front.tag.*')">
                         @ucfirst(__('app.tags'))
@@ -165,11 +165,11 @@
             <x-jet-responsive-nav-link href="{{ route('front.exhibition.index') }}" :active="request()->routeIs('front.exhibition.*')">
                 @ucfirst(__('app.exhibitions'))
             </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('front.exhibition.calendar') }}" :active="request()->routeIs('front.exhibition.calendar')">
+                @ucfirst(__('app.calendar'))
+            </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('front.exhibition.map') }}" :active="request()->routeIs('front.exhibition.map')">
                 @ucfirst(__('app.map'))
-            </x-jet-responsive-nav-link>
-            <x-jet-responsive-nav-link href="{{ route('front.exhibition.timeline') }}" :active="request()->routeIs('front.exhibition.timeline')">
-                @ucfirst(__('app.timeline'))
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('front.tag.index') }}" :active="request()->routeIs('front.tag.*')">
                 @ucfirst(__('app.tags'))
