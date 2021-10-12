@@ -19,6 +19,8 @@ class ExhibitionResource extends JsonResource
             'title' => $this->title,
             'start' => $this->began_at,
             'end' => $this->ended_at,
+            'description' => $this->description,
+            'link' => $this->link,
             'museum' => [
                 'uuid' => $this->inMuseum->uuid,
                 'slug' => $this->inMuseum->slug,
