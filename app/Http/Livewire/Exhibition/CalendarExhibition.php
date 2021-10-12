@@ -11,7 +11,9 @@ class CalendarExhibition extends Component
 
     public function render()
     {
-        $this->exhibitions = Exhibition::all()->toJson();
+        $this->exhibitions = Exhibition::all()->toArray();
+
+        dd($this->exhibitions);
 
         return view('livewire.exhibition.calendar-exhibition');
     }

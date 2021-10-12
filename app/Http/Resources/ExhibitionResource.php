@@ -14,6 +14,24 @@ class ExhibitionResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'uuid' => $this->uuid,
+            'title' => $this->title,
+            'start' => $this->began_at,
+            'end' => $this->ended_at,
+            'museum' => [
+                'uuid' => $this->inMuseum->uuid,
+                'slug' => $this->inMuseum->slug,
+                'type' => $this->inMuseum->type,
+                'name' => $this->inMuseum->name,
+                'status' => $this->inMuseum->status,
+                'address' => $this->inMuseum->address,
+                'city' => $this->inMuseum->city,
+                'country' => $this->inMuseum->cca3,
+                'link' => $this->inMuseum->link,
+                'lat' => $this->inMuseum->lat,
+                'lon' => $this->inMuseum->lon,
+            ],
+        ];
     }
 }
