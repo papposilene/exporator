@@ -27,11 +27,17 @@ document.addEventListener('livewire:load', function () {
     const calendar = new Calendar(calendarEl, {
         initialView: 'dayGridMonth',
         locale: '{{ config('app.locale') }}',
-        events: '{{ route('api.exhibition.all') }}',
         headerToolbar: {
             left: 'prev,next today',
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,listWeek'
+        },
+        events: '{{ route('api.exhibition.all') }}',
+        eventClick: function(info) {
+            info.jsEvent.preventDefault();
+            if (info.event.link) {
+                window.open(info.event.link);
+            }
         }
     });
     calendar.render();
