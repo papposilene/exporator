@@ -4,10 +4,10 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 
-class NavigationMenu extends Component
+class Menu extends Component
 {
     public function render()
     {
-        return view('livewire.navigation-menu');
+        return view('livewire.menu');
     }
 }
