@@ -73,7 +73,7 @@
             </div>
             @endif
 
-            <ul class="list-inside bg-gray-200 pt-5 w-full">
+            <ul class="list-inside bg-gray-200 my-5 w-full">
                 <li class="px-5 md:px-0" title="@ucfirst(__('app.exhibition'))">
                     <h4 class="bg-gray-300 font-bold text-2xl p-3 mb-5">
                         {{ $exhibition->title }}
@@ -98,17 +98,18 @@
                     @endif
                 </li>
             </ul>
-            <ul class="list-inside bg-gray-200 px-5 w-full">
+            <div class="list-inside bg-gray-200 px-5 p-5 w-full">
                 @if ($exhibition->tags)
                 @foreach ($exhibition->tags as $tag)
-                <li class="bg-gray-300 mr-2 p-2 inline-block" title="{{ $tag->type }}">
+                <a href="{{ route('front.tag.show', ['slug' => $tag->slug]) }}"
+                    class="bg-gray-300 mr-2 p-2 inline-block" title="{{ $tag->type }}">
                     {{ $tag->name }}
-                </li>
+                </a>
                 @endforeach
                 @else
-                <li title="@ucfirst(__('app.notags'))">@ucfirst(__('app.notags'))</li>
+                <div title="@ucfirst(__('app.notags'))">@ucfirst(__('app.notags'))</div>
                 @endif
-            </ul>
+            </div>
         </div>
     </div>
 </div>

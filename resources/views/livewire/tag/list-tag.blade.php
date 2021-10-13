@@ -40,13 +40,8 @@
                             <td class="text-center">{{ $loop->iteration }}</td>
                             <td>@ucfirst($tag->type)</td>
                             <td>
-                                @auth
-                                <a href="{{ route('admin.tag.show', ['slug' => $tag->slug]) }}"
-                                    title="{{ $tag->name }}" aria-label="{{ $tag->name }}">
-                                @else
                                 <a href="{{ route('front.tag.show', ['slug' => $tag->slug]) }}"
                                     title="{{ $tag->name }}" aria-label="{{ $tag->name }}">
-                                @endauth
                                     @ucfirst($tag->name)
                                 </a>
                             </td>
