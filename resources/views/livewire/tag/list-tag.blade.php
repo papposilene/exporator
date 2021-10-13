@@ -1,4 +1,4 @@
-@section('title', @ucfirst(__('app.list_of', ['name' => __('app.tags')]))
+@section('title', @ucfirst(__('app.list_of', ['name' => __('app.tags')])))
 
 <div>
     <x-slot name="header">
