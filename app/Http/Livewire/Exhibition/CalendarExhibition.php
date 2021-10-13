@@ -23,7 +23,7 @@ class CalendarExhibition extends Component
     public function render()
     {
         // Bon ben vu que setlocale(LC_TIME, app()->getLocale()); ne fonctionne pas,
-        // on va passer par un sale petit appel au fichier lang/fr/app
+        // on va passer par un petit appel au fichier lang/fr/app
         // pour récupérer le nom et du jour et du mois, hein...
 
         $timestamp = strtotime(date('Y-m-d'));

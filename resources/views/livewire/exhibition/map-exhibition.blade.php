@@ -79,7 +79,7 @@ document.addEventListener('livewire:load', function () {
                 const url = museum.properties.url;
                 const popupContent = `<h5 class="font-medium text-lg">${name}</h5><br />
                           ${address}<br /><br />
-                          <a href="${url}" class="my-2">@ucfirst(__('app.list_of', ['name' => __('app.exhibitions')]))</a>`;
+                          <a href="${url}" class="my-2">@ucfirst(__('app.list_of', ['name' => __('app.exhibitions')]))...</a>`;
                 const exhibition_past = museum.properties.exhibitions.past;
                 const exhibition_current = museum.properties.exhibitions.present;
                 const exhibition_future = museum.properties.exhibitions.future;
