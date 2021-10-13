@@ -82,6 +82,7 @@ return [
     'titles' => 'titres',
     'type' => 'typologie',
     'types' => 'typologies',
+    'welcome' => 'bienvenue',
     'with_past_exhibition' => 'Exposition(s) passée(s)',
     'with_current_exhibition' => 'Exposition(s) en cours',
     'with_future_exhibition' => 'Exposition(s) future(s)',

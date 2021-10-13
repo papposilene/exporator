@@ -1,4 +1,4 @@
-@section('title', @ucfirst(__('app.map_of', ['name' => __('app.exhibitions')]))
+@section('title', @ucfirst(__('app.map_of', ['name' => __('app.exhibitions')])))
 
 <div>
     <x-slot name="header">
@@ -7,8 +7,8 @@
         </h2>
     </x-slot>
 
-    <div>
-        <div id="leaflet-map" class="h-screen w-full"></div>
+    <div class="min-h-screen flex flex-col">
+        <div id="leaflet-map" class="relative flex flex-grow"></div>
     </div>
 </div>
 
