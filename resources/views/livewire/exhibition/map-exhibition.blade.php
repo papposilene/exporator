@@ -7,7 +7,7 @@
         </h2>
     </x-slot>
 
-    <div class="min-h-screen flex flex-col">
+    <div class="h-min-screen flex flex-col">
         <div id="leaflet-map" class="relative flex flex-grow"></div>
     </div>
 </div>
@@ -77,7 +77,8 @@ document.addEventListener('livewire:load', function () {
                 const name = museum.properties.name;
                 const address = museum.properties.address;
                 const popupContent = `<h5 class="font-medium text-lg">${name}</h5><br />
-                          ${address}`;
+                          ${address}<br />
+                          ${url}`;
                 const exhibition_past = museum.properties.exhibitions.past;
                 const exhibition_current = museum.properties.exhibitions.present;
                 const exhibition_future = museum.properties.exhibitions.future;
