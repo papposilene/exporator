@@ -4,11 +4,10 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Authentication Language Lines
+    | App Language Lines
     |--------------------------------------------------------------------------
     |
-    | The following language lines are used during authentication for various
-    | messages that we need to display to the user. You are free to modify
+    | The following language lines are used by the app. You are free to modify
     | these language lines according to your application's requirements.
     |
     */
@@ -115,5 +114,4 @@ return [
     'numbers_of_today_exhibitions' => 'expositions pour aujourd’hui : :count.',
     'numbers_of_next_exhibitions' => 'expositions du mois prochain : :count',
     'type_is' => 'typologie de tag : :type.',
-
 ];

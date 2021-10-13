@@ -23,26 +23,27 @@
                 </div>
                 <x-forms.input wire:model="search" type="search" class="ml-2" :placeholder="@ucfirst(__('app.search'))" />
             </div>
-            <div class="py-5 h-screen overflow-auto">
-                <h3 class="bg-gray-400 p-3 text-2xl font-bold">
-                    {{ $month }} {{ $year }}
-                </h3>
+            <h3 class="bg-gray-400 p-3 text-2xl font-bold">
+                @ucfirst(__('date.' . lcfirst($month))) {{ $year }}
+            </h3>
+            <div class="h-screen overflow-auto">
                 @for ($ii = 0; $ii < ($remaining_days + 1); $ii++)
                 @php
                 $day = \Carbon\Carbon::today()->add($ii, 'day');
                 $exhibitions_of_the_day = $exhibitions->where('began_at', '>=', $day->format('Y-m-d'));
                 @endphp
                 <h4 class="bg-gray-300 p-3 text-2xl font-bold">
-                    {{ $day->formatLocalized('%A %d %B') }}
+                    @ucfirst(__('date.' . lcfirst($day->format('l')))) {{ $day->format('d') }}
                 </h4>
-                <ul>
+                <div class="bg-gray-200 grid grid-cols-1 md:grid-cols-3 md:gap-4">
                     @foreach ($exhibitions_of_the_day as $exhibition_of_the_day)
-                    <li class="bg-gray-200 p-2">
-                        <a href="">
+                    <div class="p-2">
+                        <a href="{{ route('front.exhibition.show', ['museum' => $exhibition_of_the_day->inMuseum->slug, 'exhibition' => $exhibition_of_the_day->slug]) }}"
+                            title="{{ $exhibition_of_the_day->title }}" aria-label="{{ $exhibition_of_the_day->title }}">
                             <em>{{ $exhibition_of_the_day->inMuseum->name }}</em><br />
                             {{ $exhibition_of_the_day->title }}
                         </a>
-                    </li>
+                    </div>
                     @endforeach
                 </ul>
                 @endfor

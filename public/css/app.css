@@ -3980,6 +3980,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
 		gap: 1.5rem;
 	}
 
+	.md\:gap-4 {
+		gap: 1rem;
+	}
+
 	.md\:border-t-0 {
 		border-top-width: 0px;
 	}

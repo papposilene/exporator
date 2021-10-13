@@ -22,10 +22,13 @@ class CalendarExhibition extends Component
 
     public function render()
     {
-        setlocale(LC_TIME, app()->getLocale());
+        // Bon ben vu que setlocale(LC_TIME, app()->getLocale()); ne fonctionne pas,
+        // on va passer par un sale petit appel au fichier lang/fr/app
+        // pour récupérer le nom et du jour et du mois, hein...
+
         $timestamp = strtotime(date('Y-m-d'));
         $year = date('Y');
-        $month = \Carbon\Carbon::month()->formatLocalized('%B');
+        $month = date('F');
         $remaining_days = (int) date('t', $timestamp) - (int)date('j', $timestamp);
         $today = date('Y-m-d');
 
