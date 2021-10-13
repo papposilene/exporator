@@ -54,7 +54,7 @@
                             class="flex flex-col bg-gray-300 p-2 hover:bg-green-200">
                         <div class="italic">{{ $exhibition_of_the_day->inMuseum->name }}</div>
                         <div class="flex-grow font-semibold text-lg text-center">{{ $exhibition_of_the_day->title }}</div>
-                        <div class="text-right text-sm italic">Jusqu'au @date($exhibition_of_the_day->ended_at).</div>
+                        <div class="text-right text-sm italic">@ucfirst(__('app.until', ['date' => $exhibition_of_the_day->ended_at->format('d/m/Y')]))</div>
                     </a>
                     @endforeach
                 </div>

@@ -22,7 +22,7 @@
                     <x-jet-nav-link href="{{ route('front.exhibition.index') }}" :active="request()->routeIs('admin.exhibition.*')">
                         @ucfirst(__('app.exhibitions'))
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('front.exhibition.calendar') }}" :active="request()->routeIs('front.exhibition.timeline')">
+                    <x-jet-nav-link href="{{ route('front.exhibition.calendar') }}" :active="request()->routeIs('front.exhibition.calendar')">
                         @ucfirst(__('app.calendar'))
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('front.exhibition.map') }}" :active="request()->routeIs('front.exhibition.map')">

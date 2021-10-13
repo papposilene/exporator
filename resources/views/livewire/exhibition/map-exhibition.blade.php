@@ -8,7 +8,9 @@
     </x-slot>
 
     <div>
-        <div id="leaflet-map" class="h-screen w-full"></div>
+        <div class="flex max-w-7xl mx-auto py-5 px-6">
+            <div id="leaflet-map" class="w-full shadow" style="height:530px"></div>
+        </div>
     </div>
 </div>
 

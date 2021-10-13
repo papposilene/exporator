@@ -94,6 +94,7 @@ return [
     'loremipsum' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque id velit auctor, sagittis lorem sed, aliquet eros. Sed scelerisque ultricies posuere. Nam posuere eget risus vel bibendum.',
     'create_one' => 'ajouter un :what',
     'create_the' => 'ajouter le :what',
+    'until' => 'jusqu’au :date.',
     'edit_one' => 'modifier un :what',
     'edit_the' => 'modifier le :what',
     'import_some' => 'importer des :what',

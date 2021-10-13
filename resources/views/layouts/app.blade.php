@@ -17,7 +17,7 @@
         @livewireStyles
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
-        @if (App::environment('prod')) {
+        @if (App::environment('prod'))
         <!-- Matomo -->
         <script>
         var _paq = window._paq = window._paq || [];
@@ -53,7 +53,7 @@
             @endif
 
             <!-- Page Content -->
-            <main class="h-auto w-full">
+            <main class="h-min-screen w-full">
                 {{ $slot }}
             </main>
 
