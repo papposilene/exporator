@@ -1,3 +1,5 @@
+@section('title', @ucfirst($tag->name))
+
 <div>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -10,7 +12,7 @@
                     @ucfirst(__('app.list_of', ['name' => __('app.tags')]))
                 </a>
             </span> /
-            <span>{{ $tag->name }}</span>
+            <span>@ucfirst($tag->name)</span>
         </h2>
     </x-slot>
 
