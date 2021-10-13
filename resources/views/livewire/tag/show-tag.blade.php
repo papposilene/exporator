@@ -15,8 +15,8 @@
     </x-slot>
 
     <div>
-        <div class="w-3/12 mx-auto py-5 sm:px-6 lg:px-8 float-left">
-            <ul class="bg-indigo-100 list-inside m-5 p-5 w-full">
+        <div class="max-w-7xl md:w-3/12 mx-auto py-5 px-6 md:float-left">
+            <ul class="bg-indigo-100 list-inside md:m-5 p-5 w-full">
                 <li title="@ucfirst(__('app.tag'))">
                     <h3 class="font-bold text-2xl mb-5">
                         @ucfirst($tag->name)
@@ -26,16 +26,16 @@
             </ul>
             @auth
             @if (Auth::user()->can('create', App\Models\Tag::class))
-            <ul class="bg-gray-200 list-inside m-5 p-5 w-full">
+            <ul class="bg-gray-200 list-inside md:m-5 p-5 w-full">
                 <li><livewire:modals.edit-tag :tag="$tag" :wire:key="$tag->id" /></li>
             </ul>
             @endif
             @endauth
         </div>
 
-        <div class="w-9/12 mx-auto py-5 sm:px-6 lg:px-8 float-right">
+        <div class="max-w-7xl md:w-9/12 mx-auto py-5 px-6 md:float-right">
             @if ($errors->any())
-            <div class="bg-red-400 border border-red-500 py-5 sm:px-6 lg:px-8 text-black rounded">
+            <div class="bg-red-400 border border-red-500 py-5 text-black rounded">
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -57,7 +57,7 @@
                             <th class="w-3/12 text-center">@ucfirst(__('app.museums'))</th>
                             <th class="w-4/12 text-center">@ucfirst(__('app.titles'))</th>
                             <th class="w-2/12 text-center">@ucfirst(__('app.began_at'))</th>
-                            <th class="w-2/12 text-center">@ucfirst(__('app.ended_at'))</th>
+                            <th class="hidden md:table-cell md:w-2/12 text-center">@ucfirst(__('app.ended_at'))</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -105,7 +105,7 @@
                                 </a>
                             </td>
                             <td class="text-center">@date($exhibition->began_at)</td>
-                            <td class="text-center">@date($exhibition->ended_at)</td>
+                            <td class="hidden md:table-cell text-center">@date($exhibition->ended_at)</td>
                         </tr>
                         @endforeach
                     </tbody>

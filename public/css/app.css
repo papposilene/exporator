@@ -3916,6 +3916,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
 }
 @media (min-width: 768px) {
 
+	.md\:visible {
+		visibility: visible;
+	}
+
 	.md\:col-span-2 {
 		grid-column: span 2 / span 2;
 	}
@@ -3938,6 +3942,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
 	.md\:mt-0 {
 		margin-top: 0px;
+	}
+
+	.md\:table-cell {
+		display: table-cell;
 	}
 
 	.md\:grid {
