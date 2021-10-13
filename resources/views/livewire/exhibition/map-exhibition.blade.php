@@ -7,8 +7,8 @@
         </h2>
     </x-slot>
 
-    <div class="h-min-screen flex flex-col">
-        <div id="leaflet-map" class="relative flex flex-grow"></div>
+    <div>
+        <div id="leaflet-map" class="h-screen w-full"></div>
     </div>
 </div>
 
@@ -76,9 +76,10 @@ document.addEventListener('livewire:load', function () {
                 const lng = museum.geometry.coordinates[0];
                 const name = museum.properties.name;
                 const address = museum.properties.address;
+                const url = museum.properties.url;
                 const popupContent = `<h5 class="font-medium text-lg">${name}</h5><br />
-                          ${address}<br />
-                          ${url}`;
+                          ${address}<br /><br />
+                          <a href="${url}" class="my-2">@ucfirst(__('app.list_of', ['name' => __('app.exhibitions')]))</a>`;
                 const exhibition_past = museum.properties.exhibitions.past;
                 const exhibition_current = museum.properties.exhibitions.present;
                 const exhibition_future = museum.properties.exhibitions.future;
