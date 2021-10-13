@@ -51,13 +51,8 @@
                             <td class="hidden lg:table-cell">@ucfirst(__('app.' . Str::slug($museum->hasType->type, '_')))</td>
                             <td class="hidden lg:table-cell">{{ $museum->city }}</td>
                             <td>
-                                @auth
-                                <a href="{{ route('admin.museum.show', ['slug' => $museum->slug]) }}"
-                                    title="{{ $museum->name }}" aria-label="{{ $museum->name }}">
-                                @else
                                 <a href="{{ route('front.museum.show', ['slug' => $museum->slug]) }}"
                                     title="{{ $museum->name }}" aria-label="{{ $museum->name }}">
-                                @endauth
                                     {{ $museum->name }}
                                 </a>
                             </td>
