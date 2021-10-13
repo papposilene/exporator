@@ -1,3 +1,5 @@
+@section('title', @ucfirst(__('app.map_of', ['name' => __('app.exhibitions')]))
+
 <div>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">

@@ -33,5 +33,4 @@ return [
     'october' => 'octobre',
     'november' => 'novembre',
     'december' => 'décembre',
-
 ];
