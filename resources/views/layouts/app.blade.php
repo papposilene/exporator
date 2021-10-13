@@ -17,6 +17,7 @@
         @livewireStyles
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
+        @if (App::environment('prod')) {
         <!-- Matomo -->
         <script>
         var _paq = window._paq = window._paq || [];
@@ -35,6 +36,7 @@
         </script>
         <noscript><p><img src="//pwk.psln.nl/matomo.php?idsite=14&amp;rec=1" style="border:0;" alt="" /></p></noscript>
         <!-- End Matomo Code -->
+        @endif
     </head>
 
     <body class="font-sans antialiased bg-gray-100" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
