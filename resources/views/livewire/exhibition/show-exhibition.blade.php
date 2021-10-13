@@ -15,8 +15,8 @@
     </x-slot>
 
     <div>
-        <div class="w-3/12 mx-auto py-5 px-6 float-left">
-            <ul class="bg-indigo-100 list-inside m-5 p-5 w-full">
+        <div class="max-w-7xl md:w-3/12 mx-auto py-5 px-6 md:float-left">
+            <ul class="bg-indigo-100 list-inside md:m-5 p-5 w-full">
                 <li title="@ucfirst(__('app.museum'))">
                     <h3 class="font-bold text-2xl mb-5">
                         @auth
@@ -39,9 +39,9 @@
                 </li>
             </ul>
             @if ($exhibition->inMuseum->status === 1)
-            <ul class="bg-green-100 list-inside m-5 p-5 w-full">
+            <ul class="bg-green-100 list-inside md:m-5 p-5 w-full">
             @else
-            <ul class="bg-red-100 list-inside m-5 p-5 w-full">
+            <ul class="bg-red-100 list-inside md:m-5 p-5 w-full">
             @endif
                 <li title="@ucfirst(__('app.is_open'))">
                     @if ($exhibition->inMuseum->status === 1)
@@ -53,16 +53,16 @@
             </ul>
             @auth
             @if (Auth::user()->can('create', App\Models\Exhibition::class))
-            <ul class="bg-gray-200 list-inside m-5 p-5 w-full">
+            <ul class="bg-gray-200 list-inside md:m-5 p-5 w-full">
                 <li><livewire:modals.edit-exhibition :exhibition="$exhibition" :wire:key="$exhibition->uuid" /></li>
             </ul>
             @endif
             @endauth
         </div>
 
-        <div class="w-9/12 mx-auto py-5 px-6 float-right">
+        <div class="max-w-7xl md:w-9/12 mx-auto py-5 px-6 md:float-right">
             @if ($errors->any())
-            <div class="bg-red-400 border border-red-500 py-5 sm:px-6 lg:px-8 text-black rounded">
+            <div class="bg-red-400 border border-red-500 py-5 text-black rounded">
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -71,13 +71,13 @@
             </div>
             @endif
 
-            <ul class="list-inside m-5 p-5 w-full">
-                <li title="@ucfirst(__('app.exhibition'))">
-                    <h4 class="font-bold text-2xl mb-5">
+            <ul class="list-inside bg-gray-200 pt-5 w-full">
+                <li class="px-5 md:px-0" title="@ucfirst(__('app.exhibition'))">
+                    <h4 class="bg-gray-300 font-bold text-2xl p-3 mb-5">
                         {{ $exhibition->title }}
                     </h4>
                 </li>
-                <li class="flex space-x-5 justify-end mb-5">
+                <li class="flex space-x-5 px-5 md:px-0 justify-end mb-5">
                     <span class="bg-green-100 p-2" title="@ucfirst(__('app.began_at'))">
                         @ucfirst(__('app.began_at')) : @date($exhibition->began_at).
                     </span>
@@ -85,10 +85,10 @@
                         @ucfirst(__('app.ended_at')) : @date($exhibition->ended_at).
                     </span>
                 </li>
-                <li>
+                <li class="px-5">
                     {{ $exhibition->description }}
                 </li>
-                <li class="mt-5" title="@ucfirst(__('app.link'))">
+                <li class="mt-5 p-5" title="@ucfirst(__('app.link'))">
                     @if ($exhibition->link)
                     <a href="{{ $exhibition->link }}" class="text-blue-700 hover:text-red-600" target="_blank" rel="noopener">{{ $exhibition->link }}</a>
                     @else
@@ -96,7 +96,7 @@
                     @endif
                 </li>
             </ul>
-            <ul class="list-inside mx-5 px-5 w-full">
+            <ul class="list-inside bg-gray-200 px-5 w-full">
                 @if ($exhibition->tags)
                 @foreach ($exhibition->tags as $tag)
                 <li class="bg-gray-300 mr-2 p-2 inline-block" title="{{ $tag->type }}">
@@ -104,7 +104,7 @@
                 </li>
                 @endforeach
                 @else
-                <li class="" title="@ucfirst(__('app.notags'))">@ucfirst(__('app.notags'))</li>
+                <li title="@ucfirst(__('app.notags'))">@ucfirst(__('app.notags'))</li>
                 @endif
             </ul>
         </div>
