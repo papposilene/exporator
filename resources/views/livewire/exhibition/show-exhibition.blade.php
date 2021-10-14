@@ -99,7 +99,7 @@
                 </li>
             </ul>
             <div class="list-inside bg-gray-200 px-5 p-5 w-full">
-                @if ($exhibition->tags)
+                @if (count($exhibition->tags) > 0)
                 @foreach ($exhibition->tags as $tag)
                 <a href="{{ route('front.tag.show', ['slug' => $tag->slug]) }}"
                     class="bg-gray-300 mr-2 p-2 inline-block" title="{{ $tag->type }}">
