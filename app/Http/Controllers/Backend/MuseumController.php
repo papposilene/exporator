@@ -66,7 +66,7 @@ class MuseumController extends Controller
         $museum->link = $request->input('link');
         $museum->save();
 
-        return redirect()->route('admin.museum.show', ['slug' => $slug])->with('success', 'All good!');
+        return redirect()->route('front.museum.show', ['slug' => $slug])->with('success', 'All good!');
     }
 
     /**
@@ -88,12 +88,12 @@ class MuseumController extends Controller
             Storage::delete($request->file('datafile'));
             $failures = $e->failures();
 
-            return redirect()->route('admin.museum.index', compact($failures));
+            return redirect()->route('front.museum.index', compact($failures));
         }
         
         Storage::delete($request->file('datafile'));
 
-        return redirect()->route('admin.museum.index')->with('success', 'All good!');
+        return redirect()->route('front.museum.index')->with('success', 'All good!');
     }
 
     /**
@@ -146,7 +146,7 @@ class MuseumController extends Controller
         $museum->link = $request->input('link');
         $museum->save();
 
-        return redirect()->route('admin.museum.show', ['slug' => $request->input('slug')])->with('success', 'All good!');
+        return redirect()->route('front.museum.show', ['slug' => $request->input('slug')])->with('success', 'All good!');
     }
 
     /**
