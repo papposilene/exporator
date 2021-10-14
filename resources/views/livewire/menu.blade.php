@@ -16,10 +16,10 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         @ucfirst(__('app.dashboard'))
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('front.museum.index') }}" :active="request()->routeIs('admin.museum.*')">
+                    <x-jet-nav-link href="{{ route('front.museum.index') }}" :active="request()->routeIs('front.museum.*')">
                         @ucfirst(__('app.museums'))
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('front.exhibition.index') }}" :active="request()->routeIs('admin.exhibition.*')">
+                    <x-jet-nav-link href="{{ route('front.exhibition.index') }}" :active="request()->routeIs('front.exhibition.*')">
                         @ucfirst(__('app.exhibitions'))
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('front.exhibition.calendar') }}" :active="request()->routeIs('front.exhibition.calendar')">
