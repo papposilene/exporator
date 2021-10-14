@@ -8,6 +8,7 @@ use App\Http\Requests\StoreExhibitionRequest;
 use App\Imports\ExhibitionsImport;
 use App\Models\Exhibition;
 use App\Models\Museum;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -55,8 +56,8 @@ class ExhibitionController extends Controller
         $exhibition->museum_uuid = $museum->uuid;
         $exhibition->slug = Str::slug($request->input('title'));
         $exhibition->title = $request->input('title');
-        $exhibition->began_at = date('Y-m-d', strtotime($request->input('began_at')));
-        $exhibition->ended_at = date('Y-m-d', strtotime($request->input('ended_at')));
+        $exhibition->began_at = Carbon::createFromFormat('d/m/Y', $request->input('began_at'))->format('Y-m-d')date('Y-m-d');
+        $exhibition->ended_at = Carbon::createFromFormat('d/m/Y', $request->input('ended_at'))->format('Y-m-d')date('Y-m-d');
         $exhibition->description = $request->input('description');
         $exhibition->link = $request->input('link');
         $exhibition->is_published = true;
