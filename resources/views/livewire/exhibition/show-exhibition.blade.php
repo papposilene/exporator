@@ -4,11 +4,7 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             <span>
-                @auth
-                <a href="{{ route('admin.museum.show', ['slug' => $exhibition->inMuseum->slug]) }}">
-                @else
                 <a href="{{ route('front.museum.show', ['slug' => $exhibition->inMuseum->slug]) }}">
-                @endif
                     {{ $exhibition->inMuseum->name }}
                 </a>
             </span> /
@@ -21,11 +17,7 @@
             <ul class="bg-indigo-100 list-inside md:m-5 p-5 w-full">
                 <li title="@ucfirst(__('app.museum'))">
                     <h3 class="font-bold text-2xl mb-5">
-                        @auth
-                        <a href="{{ route('admin.museum.show', ['slug' => $exhibition->inMuseum->slug]) }}">
-                        @else
                         <a href="{{ route('front.museum.show', ['slug' => $exhibition->inMuseum->slug]) }}">
-                        @endif
                             {{ $exhibition->inMuseum->name }}
                         </a>
                     </h3>
