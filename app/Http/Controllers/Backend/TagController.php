@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
-use Spatie\Tags\HasTags;
+use Spatie\Tags\Tag;
 
 class TagController extends Controller
 {
@@ -78,9 +78,19 @@ class TagController extends Controller
      * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tag $tag)
+    public function update(StoreTagRequest $request, Tag $tag)
     {
-        //
+        $this->authorize('update', Tag::class);
+
+        $validated = $request->validated();
+
+        $tag = Tag::findOrFail($request->input('id'));
+        $tag->slug = Str::slug($request->input('name'));
+        $tag->name = $request->input('name');
+        $tag->type = $request->input('type');
+        $museum->save();
+
+        return redirect()->route('front.tag.index')->with('success', 'All good!');
     }
 
     /**
