@@ -1,7 +1,7 @@
 <div id="modalCreateMuseum" class="relative float-right mr-2">
     <div id="modalButtonCreateMuseum">
         <button id="modalOpenCreateMuseum" class="focus:outline-none bg-purple-100 text-black bg-opacity-75 px-1 rounded"
-            type="button" title="@ucfirst(__('app.edit_the', ['what' => __('app.museums')]))">
+            type="button" title="@ucfirst(__('app.create_one', ['what' => __('app.museums')]))">
             @ucfirst(__('app.create_one', ['what' => __('app.museum')]))
         </button>
     </div>
