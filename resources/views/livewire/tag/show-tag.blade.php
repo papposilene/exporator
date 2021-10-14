@@ -4,11 +4,7 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             <span>
-                @auth
-                <a href="{{ route('admin.tag.index') }}">
-                @else
                 <a href="{{ route('front.tag.index') }}">
-                @endauth
                     @ucfirst(__('app.list_of', ['name' => __('app.tags')]))
                 </a>
             </span> /
