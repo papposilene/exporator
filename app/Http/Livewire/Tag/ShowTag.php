@@ -5,7 +5,6 @@ namespace App\Http\Livewire\Tag;
 use App\Models\Tag;
 use Livewire\Component;
 use Livewire\WithPagination;
-//use Spatie\Tags\Tag;
 
 class ShowTag extends Component
 {

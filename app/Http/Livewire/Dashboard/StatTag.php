@@ -9,8 +9,8 @@ class StatTag extends Component
 {
     public function render()
     {
-        $tags = Tag::orderBy('type', 'asc')
-            ->orderBy('name', 'asc')
+        $tags = Tag::inRandomOrder()
+            ->limit(15)
             ->get();
 
         return view('livewire.dashboard.stat-tag', [
