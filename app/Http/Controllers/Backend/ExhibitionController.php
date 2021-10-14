@@ -74,7 +74,7 @@ class ExhibitionController extends Controller
      */
     public function propose(StoreExhibitionRequest $request)
     {
-        $this->authorize('update', Tag::class);
+        $this->authorize('update', Exhibition::class);
         
         $validated = $request->validated();
 
