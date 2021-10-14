@@ -36,7 +36,7 @@ return [
     'exhibitions_all' => 'toutes',
     'exhibitions_current' => 'en cours',
     'exhibitions_past' => 'terminées',
-    'exhibitions_future' => 'à venir',
+    'exhibitions_future' => 'a venir',
     'export' => 'exporter',
     'foundation' => 'fondation',
     'geolocate' => 'me géolocaliser',
