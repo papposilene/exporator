@@ -66,6 +66,6 @@ class JetstreamServiceProvider extends ServiceProvider
         
         Jetstream::role('basic', 'Basic user', [
             'read',
-        ])->description('Editor users have the ability to read.');
+        ])->description('Basic users have the ability to read.');
     }
 }
