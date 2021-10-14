@@ -29,17 +29,17 @@
                 </a>
                 @endfor
             </div>
-            <h3 class="bg-gray-500 p-3 text-2xl font-bold">
+            <h3 class="bg-gray-500 p-3 text-2xl font-bold cursor-pointer">
                 @ucfirst(__('date.' . lcfirst($current_month))) {{ $year }}
             </h3>
-            <div class="h-screen overflow-auto">
+            <div class="h-screen overflow-auto" x-data="{selected:null}">
                 @for ($ii = 0; $ii < ($remaining_days + 1); $ii++)
                 @php
                 $day = \Carbon\Carbon::today()->add($ii, 'day');
                 $exhibitions_of_the_day = $exhibitions->where('began_at', '>=', $day->format('Y-m-d'));
                 @endphp
-                <h4 id="day-{{ $ii }}"
-                    class="bg-gray-400 border-b-2 border-t-4 border-black p-3 text-2xl font-bold">
+                <h4 id="day-{{ $ii }}" @click="selected !== {{ $ii }} ? selected = {{ $ii }} : selected = null"
+                    class="bg-gray-400 border-b-2 border-t-2 border-black p-3 text-2xl font-bold cursor-pointer">
                     @ucfirst(__('date.' . lcfirst($day->format('l')))) {{ $day->format('d') }}
                     <a href="#top" class="relative float-right hover:text-white">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -47,7 +47,7 @@
                         </svg>
                     </a>
                 </h4>
-                <div class="bg-gray-200 grid grid-cols-1 md:grid-cols-3 md:gap-4">
+                <div class="bg-gray-200 grid grid-cols-1 md:grid-cols-3 md:gap-4" x-show="selected == {{ $ii }}">
                     @foreach ($exhibitions_of_the_day as $exhibition_of_the_day)
                     <a href="{{ route('front.exhibition.show', ['museum' => $exhibition_of_the_day->inMuseum->slug, 'exhibition' => $exhibition_of_the_day->slug]) }}"
                             title="{{ $exhibition_of_the_day->title }}" aria-label="{{ $exhibition_of_the_day->title }}"
