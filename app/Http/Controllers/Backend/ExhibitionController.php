@@ -55,8 +55,8 @@ class ExhibitionController extends Controller
         $exhibition->museum_uuid = $museum->uuid;
         $exhibition->slug = Str::slug($request->input('title'));
         $exhibition->title = $request->input('title');
-        $exhibition->began_at = date('Y-m-d', strtotime($request->input('began_at')));
-        $exhibition->ended_at = date('Y-m-d', strtotime($request->input('ended_at')));
+        $exhibition->began_at = date('Y-m-d', $request->input('began_at'));
+        $exhibition->ended_at = date('Y-m-d', $request->input('ended_at'));
         $exhibition->description = $request->input('description');
         $exhibition->link = $request->input('link');
         $exhibition->is_published = true;
@@ -114,7 +114,7 @@ class ExhibitionController extends Controller
 
             return redirect()->route('admin.exhibition.index', compact($failures));
         }
-        
+
         Storage::delete($request->file('datafile'));
 
         return redirect()->route('admin.exhibition.index')->with('success', 'All good!');
