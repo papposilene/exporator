@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTagRequest;
-use App\Models\Tag;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
+use Spatie\Tags\HasTags;
 
 class TagController extends Controller
 {
@@ -44,12 +44,9 @@ class TagController extends Controller
 
         $validated = $request->validated();
 
-        $tag = new Tag;
-        $tag->slug = Str::slug($request->input('tag'));
-        $tag->tag = $request->input('tag');
-        $tag->save();
+        Tag::findOrCreate($request->input('name'), $request->input('type'));
 
-        return redirect()->route('front.tag.show', ['slug' => $tag->slug])->with('success', 'All good!');
+        return redirect()->route('front.tag.index')->with('success', 'All good!');
     }
 
     /**
