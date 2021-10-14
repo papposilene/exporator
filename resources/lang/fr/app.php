@@ -33,6 +33,7 @@ return [
     'ended_at' => 'date de fin',
     'exhibition' => 'exposition',
     'exhibitions' => 'expositions',
+    'exhibitions_all' => 'toutes',
     'exhibitions_current' => 'en cours',
     'exhibitions_past' => 'terminées',
     'exhibitions_future' => 'à venir',

@@ -12,7 +12,6 @@ class ListExhibition extends Component
 
     public $filter = '';
     public $page = 1;
-    public $sort = 'asc';
     public $search = '';
     public Exhibition $exhibition;
 
@@ -20,7 +19,6 @@ class ListExhibition extends Component
         'filter' => ['except' => ''],
         'page' => ['except' => 1],
         'search' => ['except' => ''],
-        'sort' => ['except' => 'asc'],
     ];
 
     public function updatingSearch()
@@ -32,10 +30,39 @@ class ListExhibition extends Component
     {
         $today = date('Y-m-d');
 
-        $exhibitions = Exhibition::where('is_published', true)
+        if ($this->filter === 'past')
+        {
+            $exhibitions = Exhibition::where('is_published', true)
+                ->where('title', 'like', '%'.$this->search.'%')
+                ->where('ended_at', '<', $today)
+                ->orderBy('began_at', 'desc')
+                ->paginate(25);
+        }
+        elseif ($this->filter === 'current')
+        {
+            $exhibitions = Exhibition::where('is_published', true)
+                ->where('title', 'like', '%'.$this->search.'%')
+                ->where('began_at', '<', $today)
+                ->where('ended_at', '>', $today)
+                ->orderBy('began_at', 'desc')
+                ->paginate(25);
+        }
+        elseif ($this->filter === 'future')
+        {
+            $exhibitions = Exhibition::where('is_published', true)
+                ->where('title', 'like', '%'.$this->search.'%')
+                ->where('began_at', '>', $today)
+                ->orderBy('began_at', 'desc')
+                ->paginate(25);
+        }
+        else
+        {
+            $exhibitions = Exhibition::where('is_published', true)
             ->where('title', 'like', '%'.$this->search.'%')
             ->orderBy('began_at', 'desc')
             ->paginate(25);
+        }
+
 
         return view('livewire.exhibition.list-exhibition', [
             'exhibitions' => $exhibitions,
