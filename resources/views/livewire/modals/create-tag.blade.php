@@ -19,54 +19,15 @@
                 </svg>
             </button>
             <!-- Modal content -->
-            <form method="POST" action="{{ route('admin.museum.store') }}" enctype="multipart/form-data"
+            <form method="POST" action="{{ route('admin.tag.store') }}" enctype="multipart/form-data"
                 class="flex flex-col w-full">
                 @csrf
-
-                <div class="mt-4">
-                    <x-forms.label for="name">@ucfirst(__('app.museum'))</x-forms.label>
-                    <x-forms.input id="name" class="block mt-1 w-full" type="text" name="name" required :value="old('name')" />
-                </div>
-
-                <div class="mt-4">
-                    <x-forms.label for="type">@ucfirst(__('app.type'))</x-forms.label>
-                    <x-forms.select id="type" class="block mt-1 w-full" name="type" required>
-                        @foreach ($types as $type)
-                        <option value="{{ $type->slug }}">@ucfirst($type->type)</option>
-                        @endforeach
-                    </x-forms.select>
-                </div>
-
-                <div class="mt-4">
-                    <x-forms.label for="status">@ucfirst(__('app.status'))</x-forms.label>
-                    <x-forms.select id="status" class="block mt-1 w-full" name="status" required>
-                        <option value="1">@ucfirst(__('app.museum_open'))</option>
-                        <option value="0">@ucfirst(__('app.museum_close'))</option>
-                    </x-forms.select>
-                </div>
-
-                <div class="mt-4">
-                    <x-forms.label for="address">@ucfirst(__('app.address'))</x-forms.label>
-                    <x-forms.textarea id="address" class="block mt-1 w-full" type="text" name="address" required>{{ old('address') }}</x-forms.textarea>
-                </div>
 
                 <div class="grid grid-cols-2 gap-x-4 mt-4">
                     <x-forms.label for="name">@ucfirst(__('app.city'))</x-forms.label>
                     <x-forms.label for="name">@ucfirst(__('app.country'))</x-forms.label>
                     <x-forms.input id="city" class="block mt-1 w-full" type="text" name="city" required :value="old('city')" />
-                    <livewire:country.autocomplete-country />
-                </div>
-
-                <div class="grid grid-cols-2 gap-x-4 mt-4">
-                    <x-forms.label for="latitude">@ucfirst(__('app.latitude'))</x-forms.label>
-                    <x-forms.label for="longitude">@ucfirst(__('app.longitude'))</x-forms.label>
-                    <x-forms.input id="latitude" class="block mt-1 w-full" type="text" name="latitude" required :value="old('latitude')" />
-                    <x-forms.input id="longitude" class="block mt-1 w-full" type="text" name="longitude" required :value="old('longitude')" />
-                </div>
-
-                <div class="mt-4">
-                    <x-forms.label for="link">@ucfirst(__('app.link'))</x-forms.label>
-                    <x-forms.input id="link" class="block mt-1 w-full" type="text" name="link" required :value="old('link')" />
+                    <x-forms.input id="city" class="block mt-1 w-full" type="text" name="city" required :value="old('city')" />
                 </div>
 
                 <div class="flex items-center justify-end mt-4">

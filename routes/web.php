@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\Backend\ExhibitionController;
 use App\Http\Controllers\Backend\MuseumController;
+use App\Http\Controllers\Backend\TagController;
 use App\Http\Livewire\Country\ListCountry;
 use App\Http\Livewire\Country\ShowCountry;
 use App\Http\Livewire\Dashboard\ShowAbout;
@@ -83,4 +84,6 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function
     Route::post('/exhibition/store', [ExhibitionController::class, 'store'])->name('admin.exhibition.store');
     Route::post('/exhibition/update', [ExhibitionController::class, 'update'])->name('admin.exhibition.update');
     Route::get('/exhibitions/propose', [ExhibitionController::class, 'propose'])->name('admin.exhibition.propose');
+
+    Route::post('/tag/store', [TagController::class, 'store'])->name('admin.tag.store');
 });
