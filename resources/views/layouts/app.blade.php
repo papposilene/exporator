@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}"
-    x-cloak
+    prefix="og: http://ogp.me/ns#" x-cloak
     x-data="{darkMode: localStorage.getItem('dark') === 'true'}"
     x-init="$watch('darkMode', val => localStorage.setItem('dark', val))"
     x-bind:class="{'dark': darkMode}">
@@ -10,6 +10,10 @@
         <meta name="csrf-token" content="{{ csrf_token() }}" />
         <meta name="robots" content="index, follow" />
         <title>@yield('title') - {{ config('app.name', 'Exporator') }}</title>
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:creator" content="@papposilene" />
+        <meta property="og:title" content="@yield('title') - {{ config('app.name', 'Exporator') }}" />
+        <meta property="og:description" content="L'Exporateur, mot-valise entre exposition et explorateur, est un (énième ?) site de référencement des expositions temporaires à Paris et ses proches alentours." />
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" />
         <!-- Styles -->
