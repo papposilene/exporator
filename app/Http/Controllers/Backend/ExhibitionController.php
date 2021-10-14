@@ -63,7 +63,7 @@ class ExhibitionController extends Controller
         $exhibition->is_published = true;
         $exhibition->save();
 
-        return redirect()->route('admin.museum.show', ['slug' => $museum->slug])->with('success', 'All good!');
+        return redirect()->route('front.museum.show', ['slug' => $museum->slug])->with('success', 'All good!');
     }
 
     /**
@@ -113,12 +113,12 @@ class ExhibitionController extends Controller
 
             dd($failures);
 
-            return redirect()->route('admin.exhibition.index', compact($failures));
+            return redirect()->route('front.exhibition.index', compact($failures));
         }
 
         Storage::delete($request->file('datafile'));
 
-        return redirect()->route('admin.exhibition.index')->with('success', 'All good!');
+        return redirect()->route('front.exhibition.index')->with('success', 'All good!');
     }
 
     /**
