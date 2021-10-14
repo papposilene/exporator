@@ -24,10 +24,10 @@
                 @csrf
 
                 <div class="grid grid-cols-2 gap-x-4 mt-4">
-                    <x-forms.label for="name">@ucfirst(__('app.city'))</x-forms.label>
-                    <x-forms.label for="name">@ucfirst(__('app.country'))</x-forms.label>
-                    <x-forms.input id="city" class="block mt-1 w-full" type="text" name="city" required :value="old('city')" />
-                    <x-forms.input id="city" class="block mt-1 w-full" type="text" name="city" required :value="old('city')" />
+                    <x-forms.label for="name">@ucfirst(__('app.type'))</x-forms.label>
+                    <x-forms.label for="name">@ucfirst(__('app.tag'))</x-forms.label>
+                    <x-forms.input id="type" class="block mt-1 w-full" type="text" name="type" required :value="old('type')" />
+                    <x-forms.input id="tag" class="block mt-1 w-full" type="text" name="tag" required :value="old('tag')" />
                 </div>
 
                 <div class="flex items-center justify-end mt-4">
