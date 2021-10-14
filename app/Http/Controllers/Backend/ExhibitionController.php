@@ -74,6 +74,8 @@ class ExhibitionController extends Controller
      */
     public function propose(StoreExhibitionRequest $request)
     {
+        $this->authorize('update', Tag::class);
+        
         $validated = $request->validated();
 
         $museum = Museum::findOrFail($request->input('museum'));
