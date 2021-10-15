@@ -13,22 +13,28 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <x-jet-nav-link href="{{ route('dashboard') }}"  class="text-gray-900"
+                        :active="request()->routeIs('dashboard')">
                         @ucfirst(__('app.dashboard'))
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('front.museum.index') }}" :active="request()->routeIs('front.museum.*')">
+                    <x-jet-nav-link href="{{ route('front.museum.index') }}" class="text-gray-900"
+                        :active="request()->routeIs('front.museum.*')">
                         @ucfirst(__('app.museums'))
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('front.exhibition.index') }}" :active="request()->routeIs('front.exhibition.*')">
+                    <x-jet-nav-link href="{{ route('front.exhibition.index') }}" class="text-gray-900"
+                        :active="request()->routeIs('front.exhibition.*')">
                         @ucfirst(__('app.exhibitions'))
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('front.exhibition.calendar') }}" :active="request()->routeIs('front.exhibition.calendar')">
+                    <x-jet-nav-link href="{{ route('front.exhibition.calendar') }}"  class="text-gray-900"
+                        :active="request()->routeIs('front.exhibition.calendar')">
                         @ucfirst(__('app.calendar'))
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('front.exhibition.map') }}" :active="request()->routeIs('front.exhibition.map')">
+                    <x-jet-nav-link href="{{ route('front.exhibition.map') }}"  class="text-gray-900"
+                        :active="request()->routeIs('front.exhibition.map')">
                         @ucfirst(__('app.map'))
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('front.tag.index') }}" :active="request()->routeIs('front.tag.*')">
+                    <x-jet-nav-link href="{{ route('front.tag.index') }}"  class="text-gray-900"
+                        :active="request()->routeIs('front.tag.*')">
                         @ucfirst(__('app.tags'))
                     </x-jet-nav-link>
                 </div>
@@ -137,6 +143,19 @@
                             </form>
                         </x-slot>
                     </x-jet-dropdown>
+                </div>
+            </div>
+            @else
+            <div class="hidden sm:flex sm:items-center sm:ml-6">
+                <div class="ml-3 relative">
+                    <div class="block px-4 py-2 text-xs text-gray-400">
+                        <a href="{{ route('login') }}" title="@ucfirst(__('auth.login'))"
+                            class="hover:text-red-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
             @endauth
