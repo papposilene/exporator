@@ -22,7 +22,7 @@
                         @ucfirst(__('app.museums'))
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('front.exhibition.index') }}" class="text-gray-900"
-                        :active="request()->routeIs('front.exhibition.*')">
+                        :active="request()->routeIs(['front.exhibition.index', 'front.exhibition.show'])">
                         @ucfirst(__('app.exhibitions'))
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('front.exhibition.calendar') }}"  class="text-gray-900"
