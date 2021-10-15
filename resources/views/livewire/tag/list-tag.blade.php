@@ -13,7 +13,7 @@
     </x-slot>
 
     <div>
-        <div class="max-w-7xl mx-auto py-5 px-6">
+        <div class="max-w-8xl mx-auto py-5 px-6">
             @if ($errors->any())
             <div class="bg-red-400 border border-red-500 py-5 text-black">
                 <ul>
