@@ -56,8 +56,8 @@ class ExhibitionController extends Controller
         $exhibition->museum_uuid = $museum->uuid;
         $exhibition->slug = Str::slug($request->input('title'));
         $exhibition->title = $request->input('title');
-        $exhibition->began_at = Carbon::createFromFormat('d/m/Y', $request->input('began_at'))->format('Y-m-d')date('Y-m-d');
-        $exhibition->ended_at = Carbon::createFromFormat('d/m/Y', $request->input('ended_at'))->format('Y-m-d')date('Y-m-d');
+        $exhibition->began_at = Carbon::createFromFormat('d/m/Y', $request->input('began_at'))->format('Y-m-d');
+        $exhibition->ended_at = Carbon::createFromFormat('d/m/Y', $request->input('ended_at'))->format('Y-m-d');
         $exhibition->description = $request->input('description');
         $exhibition->link = $request->input('link');
         $exhibition->is_published = true;
@@ -75,7 +75,7 @@ class ExhibitionController extends Controller
     public function propose(StoreExhibitionRequest $request)
     {
         $this->authorize('update', Exhibition::class);
-        
+
         $validated = $request->validated();
 
         $museum = Museum::findOrFail($request->input('museum'));
@@ -84,8 +84,8 @@ class ExhibitionController extends Controller
         $exhibition->museum_uuid = $museum->uuid;
         $exhibition->slug = Str::slug($request->input('title'));
         $exhibition->title = $request->input('title');
-        $exhibition->began_at = Carbon::createFromFormat('d/m/Y', $request->input('began_at'))->format('Y-m-d')date('Y-m-d');
-        $exhibition->ended_at = Carbon::createFromFormat('d/m/Y', $request->input('ended_at'))->format('Y-m-d')date('Y-m-d');
+        $exhibition->began_at = Carbon::createFromFormat('d/m/Y', $request->input('began_at'))->format('Y-m-d');
+        $exhibition->ended_at = Carbon::createFromFormat('d/m/Y', $request->input('ended_at'))->format('Y-m-d');
         $exhibition->description = $request->input('description');
         $exhibition->link = $request->input('link');
         $exhibition->is_published = false;
