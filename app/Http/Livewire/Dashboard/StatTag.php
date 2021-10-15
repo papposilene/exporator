@@ -10,7 +10,7 @@ class StatTag extends Component
     public function render()
     {
         $tags = Tag::inRandomOrder()
-            ->limit(15)
+            ->limit(20)
             ->get();
 
         return view('livewire.dashboard.stat-tag', [
