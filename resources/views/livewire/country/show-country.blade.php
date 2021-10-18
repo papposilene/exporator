@@ -13,7 +13,7 @@
     </x-slot>
 
     <div>
-        <div class="w-3/12 mx-auto py-5 px-6 float-left">
+        <div class="max-w-2xl md:w-3/12 mx-auto py-5 px-6 md:float-left">
             <ul class="bg-indigo-100 list-inside m-5 p-5 w-full">
                 <li title="@ucfirst(__('app.name_common'))">
                     <h3 class="font-bold text-2xl mb-5">
@@ -32,7 +32,7 @@
             </ul>
         </div>
 
-        <div class="w-9/12 mx-auto py-5 sm:px-6 lg:px-8 float-right">
+        <div class="max-w-5xl md:w-9/12 mx-auto py-5 px-6 md:float-right">
             @if ($errors->any())
             <div class="bg-red-400 border border-red-500 py-5 text-black">
                 <ul>
