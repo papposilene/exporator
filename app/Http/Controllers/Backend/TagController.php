@@ -43,8 +43,11 @@ class TagController extends Controller
         $this->authorize('create', Tag::class);
 
         $validated = $request->validated();
-
-        Tag::findOrCreate($request->input('name'), $request->input('type'));
+        
+        $tag = Str::of($request->input('name'))->lower();
+        $type = Str::of($request->input('type'))->lower();
+        
+        Tag::findOrCreate($tag, $type);
 
         return redirect()->route('front.tag.index')->with('success', 'All good!');
     }
@@ -83,11 +86,14 @@ class TagController extends Controller
         $this->authorize('update', Tag::class);
 
         $validated = $request->validated();
+        
+        $tag = Str::of($request->input('name'))->lower();
+        $type = Str::of($request->input('type'))->lower();
 
         $tag = Tag::findOrFail($request->input('id'));
-        $tag->slug = Str::slug($request->input('name'));
-        $tag->name = $request->input('name');
-        $tag->type = $request->input('type');
+        $tag->slug = Str::slug($tag);
+        $tag->name = $tag;
+        $tag->type = $type;
         $museum->save();
 
         return redirect()->route('front.tag.index')->with('success', 'All good!');
