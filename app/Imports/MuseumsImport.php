@@ -67,8 +67,12 @@ class MuseumsImport implements ToModel, SkipsEmptyRows, WithBatchInserts, WithCh
 
                 // Find or create the tag for the exhibition type.
                 $splittag = Str::of($tag)->split('/:+/');
-                $tagged = Tag::findOrCreate($splittag[1], $splittag[0]);
-                $museum->attachTags([$splittag[1]], $splittag[0]);
+                
+                $tag_type = Str::of($splittag[1])->lower();
+                $tag_tag = Str::of($splittag[0])->lower();
+                
+                $tagged = Tag::findOrCreate($tag_tag, $tag_type);
+                $museum->attachTags([$tag_tag], $tag_type);
             }
         }
     }
