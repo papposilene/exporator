@@ -45,6 +45,9 @@
                     @endif
                 </li>
             </ul>
+            <ul class="bg-gray-200 list-inside md:m-5 p-5 w-full">
+                <li><livewire:interfaces.map :museum="$exhibition" :wire:key="$exhibition->uuid" /></li>
+            </ul>
             @auth
             @if (Auth::user()->can('create', App\Models\Exhibition::class))
             <ul class="bg-gray-200 list-inside md:m-5 p-5 w-full">
