@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Museum;
 
 use App\Models\Museum;
+use App\Models\Type;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -45,9 +46,12 @@ class ListMuseum extends Component
                 ->orderBy('name', 'asc')
                 ->paginate(25);
         }
+        
+        $types = Type::orderBy('slug', 'asc')->get();
 
         return view('livewire.museum.list-museum', [
             'museums' => $museums,
+            'types' => $types,
         ]);
     }
 }
