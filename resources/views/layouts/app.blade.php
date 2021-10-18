@@ -50,7 +50,7 @@
             <!-- Page Heading -->
             @if (isset($header))
             <header class="flex bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 w-full">
+                <div class="max-w-8xl mx-auto py-6 px-4 sm:px-6 lg:px-8 w-full">
                     {{ $header }}
                 </div>
             </header>
@@ -62,7 +62,7 @@
             </main>
 
             <footer class="flex bg-gray-200 shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 w-full">
+                <div class="max-w-8xl mx-auto py-6 px-4 sm:px-6 lg:px-8 w-full">
                     <x-footer />
                 </div>
             <footer>
