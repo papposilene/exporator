@@ -68,6 +68,11 @@
                             </tr>
                             <tr class="border-b border-black border-dashed"
                                 title="@ucfirst(__('app.optional'))">
+                                <td class="bg-green-200 font-bold text-center">price</td>
+                                <td class="p-2">@ucfirst(__('app.price'))</td>
+                            </tr>
+                            <tr class="border-b border-black border-dashed"
+                                title="@ucfirst(__('app.optional'))">
                                 <td class="bg-green-200 font-bold text-center">tags</td>
                                 <td class="p-2">type1:tag1,type1:tag2,type2,tag:1</td>
                             </tr>
