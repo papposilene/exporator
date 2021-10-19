@@ -60,6 +60,7 @@ class ExhibitionController extends Controller
         $exhibition->ended_at = Carbon::createFromFormat('d/m/Y', $request->input('ended_at'))->format('Y-m-d');
         $exhibition->description = $request->input('description');
         $exhibition->link = $request->input('link');
+        $exhibition->price = $request->input('price');
         $exhibition->is_published = true;
         $exhibition->save();
 
@@ -88,6 +89,7 @@ class ExhibitionController extends Controller
         $exhibition->ended_at = Carbon::createFromFormat('d/m/Y', $request->input('ended_at'))->format('Y-m-d');
         $exhibition->description = $request->input('description');
         $exhibition->link = $request->input('link');
+        $exhibition->price = $request->input('price');
         $exhibition->is_published = false;
         $exhibition->save();
 
