@@ -14,7 +14,7 @@
 
     <div class="flex w-full max-w-7xl mx-auto">
         <div class="mx-auto py-5 px-6">
-            <ul class="bg-indigo-100 list-inside md:m-5 p-5 w-full">
+            <ul class="bg-indigo-100 list-inside md:mr-5 p-5 w-full">
                 <li title="@ucfirst(__('app.museum'))">
                     <h3 class="font-bold text-2xl mb-5">
                         <a href="{{ route('front.museum.show', ['slug' => $exhibition->inMuseum->slug]) }}">
@@ -33,7 +33,7 @@
                 </li>
             </ul>
             @if ($exhibition->inMuseum->status === 1)
-            <ul class="bg-green-100 list-inside md:m-5 p-5 w-full">
+            <ul class="bg-green-100 list-inside md:mt-5 md:mr-5 p-5 w-full">
             @else
             <ul class="bg-red-100 list-inside md:m-5 p-5 w-full">
             @endif
@@ -45,12 +45,12 @@
                     @endif
                 </li>
             </ul>
-            <ul class="list-inside md:m-5 w-full">
+            <ul class="list-inside md:mt-5 md:mr-5 w-full">
                 <li><livewire:interfaces.map :museum="$exhibition->inMuseum" :wire:key="$exhibition->inMuseum->uuid" /></li>
             </ul>
             @auth
             @if (Auth::user()->can('create', App\Models\Exhibition::class))
-            <ul class="bg-gray-200 list-inside md:m-5 p-5 w-full">
+            <ul class="bg-gray-200 list-inside md:mt-5 md:mr-5 p-5 w-full">
                 <li><livewire:modals.edit-exhibition :exhibition="$exhibition" :wire:key="$exhibition->uuid" /></li>
             </ul>
             @endif
