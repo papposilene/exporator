@@ -110,7 +110,7 @@
                 </a>
                 @endforeach
                 @else
-                <div title="@ucfirst(__('app.notags'))">@ucfirst(__('app.notags'))</div>
+                <div title="@ucfirst(__('app.no_tags'))">@ucfirst(__('app.no_tags'))</div>
                 @endif
             </div>
         </div>
