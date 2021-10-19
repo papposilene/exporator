@@ -12,8 +12,8 @@
         </h2>
     </x-slot>
 
-    <div>
-        <div class="max-w-2xl md:w-3/12 mx-auto py-5 px-6 md:float-left">
+    <div class="flex w-full max-w-7xl mx-auto">
+        <div class="mx-auto py-5 px-6">
             <ul class="bg-purple-100 list-inside md:m-5 p-5 w-full">
                 <li title="@ucfirst(__('app.museum'))">
                     <h3 class="font-bold text-2xl mb-5">
@@ -56,7 +56,7 @@
             @endauth
         </div>
 
-        <div class="max-w-5xl md:w-9/12 mx-auto py-5 px-6 md:float-right">
+        <div class="mx-auto py-5 px-6">
             @if ($errors->any())
             <div class="bg-red-400 border border-red-500 py-5 text-black rounded">
                 <ul>
