@@ -42,6 +42,7 @@ class ExhibitionsImport implements ToModel, SkipsEmptyRows, WithBatchInserts, Wi
             'ended_at' => Carbon::createFromFormat('d/m/Y', $row['ended_at'])->format('Y-m-d'),
             'description' => $row['description'],
             'link' => $row['link'],
+            'price' => $row['price'],
             'is_published' => true,
         ]);
 
@@ -99,6 +100,10 @@ class ExhibitionsImport implements ToModel, SkipsEmptyRows, WithBatchInserts, Wi
             '*.link' => [
                 'nullable',
                 'url'
+            ],
+            '*.price' => [
+                'nullable',
+                'integer'
             ],
         ];
     }
