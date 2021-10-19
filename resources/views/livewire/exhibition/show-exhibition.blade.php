@@ -101,7 +101,7 @@
                     @endif
                 </li>
             </ul>
-            <div class="list-inside bg-gray-200 px-5 p-5 w-full">
+            <div class="bg-gray-200 px-5 p-5 w-full">
                 @if (count($exhibition->tags) > 0)
                 @foreach ($exhibition->tags as $tag)
                 <a href="{{ route('front.tag.show', ['slug' => $tag->slug]) }}"
