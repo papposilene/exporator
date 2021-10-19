@@ -12,9 +12,9 @@
         </h2>
     </x-slot>
 
-    <div>
-        <div class="max-w-2xl md:w-3/12 mx-auto py-5 px-6 md:float-left">
-            <ul class="bg-indigo-100 list-inside md:m-5 p-5 w-full">
+    <div class="flex w-full max-w-7xl mx-auto">
+        <div class="mx-auto md:w-1/4 py-5 px-6">
+            <ul class="bg-indigo-100 list-inside md:mt-5 md:mr-5 p-5 w-full">
                 <li title="@ucfirst(__('app.tag'))">
                     <h3 class="font-bold text-2xl mb-5">
                         @ucfirst($tag->name)
@@ -24,14 +24,14 @@
             </ul>
             @auth
             @if (Auth::user()->can('create', App\Models\Tag::class))
-            <ul class="bg-gray-200 list-inside md:m-5 p-5 w-full">
+            <ul class="bg-gray-200 list-inside md:mt-5 md:mr-5 p-5 w-full">
                 <li><livewire:modals.edit-tag :tag="$tag" :wire:key="$tag->id" /></li>
             </ul>
             @endif
             @endauth
         </div>
 
-        <div class="max-w-5xl md:w-9/12 mx-auto py-5 px-6 md:float-right">
+        <div class="mx-auto md:w-3/4 py-5 px-6">
             @if ($errors->any())
             <div class="bg-red-400 border border-red-500 py-5 text-black rounded">
                 <ul>

@@ -23,6 +23,7 @@ class CreateExhibitionsTable extends Migration
             $table->date('ended_at');
             $table->text('description');
             $table->string('link', 255)->nullable();
+            $table->integer('price')->nullable();
             $table->boolean('is_published')->default(false);
             $table->timestamps();
             $table->softDeletes();

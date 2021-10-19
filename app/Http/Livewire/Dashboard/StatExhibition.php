@@ -15,7 +15,7 @@ class StatExhibition extends Component
         $year = date('Y');
 
         $exhibitions = Exhibition::count();
-        $exhibitions_today = Exhibition::whereDate('began_at', '<', $today)
+        $exhibitions_today = Exhibition::whereDate('began_at', '>', $today)
             ->whereDate('ended_at', '<', $today)
             ->count();
         $exhibitions_nextmonth = Exhibition::whereDate('began_at', '=', $month_next)

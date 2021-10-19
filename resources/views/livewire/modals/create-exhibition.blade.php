@@ -50,6 +50,11 @@
                     <x-forms.label for="link">@ucfirst(__('app.link'))</x-forms.label>
                     <x-forms.input id="link" class="block mt-1 w-full" type="text" name="link" placeholder="{{ __('app.https') }}" required />
                 </div>
+                
+                <div class="mt-4">
+                    <x-forms.label for="price">@ucfirst(__('app.price'))</x-forms.label>
+                    <x-forms.input id="price" class="block mt-1 w-full" type="text" name="price" placeholder="{{ __('app.price') }}" required />
+                </div>
 
                 <div class="flex items-center justify-end mt-4">
                     <x-forms.button class="ml-4">

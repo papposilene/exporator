@@ -27,12 +27,12 @@
 
             <div class="relative flex items-center justify-between mb-2 w-full">
                 <div class="flex">
-                    <a href="?filter=" class="text-base rounded-r-none hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer
+                    <a href="?filter=" class="text-base rounded-r-none hover:scale-110 focus:outline-none flex justify-center px-4 py-2 hover:rounded font-bold cursor-pointer
                         hover:bg-gray-300 hover:text-black bg-gray-200 border duration-200 ease-in-out border-gray-300 transition">
                         <div class="flex leading-5">@ucfirst(__('app.museums_all'))</div>
                     </a>
                     @foreach ($types as $type)
-                    <a href="?filter={{ $type->slug }}" class="text-base rounded-r-none hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer
+                    <a href="?filter={{ $type->slug }}" class="text-base rounded-r-none rounded-l-none hover:scale-110 focus:outline-none flex justify-center px-4 py-2 hover:rounded font-bold cursor-pointer
                         hover:bg-gray-200 hover:text-black bg-gray-300 border duration-200 ease-in-out border-gray-300 transition">
                         <div class="flex leading-5">@ucfirst(__('app.' . Str::slug($type->type, '_')))</div>
                     </a>

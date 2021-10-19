@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreExhibitionRequest extends FormRequest
+class UpdateExhibitionRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -14,6 +14,7 @@ class StoreExhibitionRequest extends FormRequest
     public function rules()
     {
         return [
+            'uuid' => 'required|bail|uuid',
             'museum' => 'required|bail|uuid',
             'title' => 'required|string|max:255',
             'began_at' => 'required|date_format:d/m/Y',

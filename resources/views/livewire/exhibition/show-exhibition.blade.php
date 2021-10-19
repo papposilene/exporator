@@ -12,9 +12,9 @@
         </h2>
     </x-slot>
 
-    <div>
-        <div class="max-w-2xl md:w-3/12 mx-auto py-5 px-6 md:float-left">
-            <ul class="bg-indigo-100 list-inside md:m-5 p-5 w-full">
+    <div class="flex w-full max-w-7xl mx-auto">
+        <div class="mx-auto md:w-1/4 py-5 px-6">
+            <ul class="bg-indigo-100 list-inside md:mr-5 p-5 w-full">
                 <li title="@ucfirst(__('app.museum'))">
                     <h3 class="font-bold text-2xl mb-5">
                         <a href="{{ route('front.museum.show', ['slug' => $exhibition->inMuseum->slug]) }}">
@@ -33,7 +33,7 @@
                 </li>
             </ul>
             @if ($exhibition->inMuseum->status === 1)
-            <ul class="bg-green-100 list-inside md:m-5 p-5 w-full">
+            <ul class="bg-green-100 list-inside md:mt-5 md:mr-5 p-5 w-full">
             @else
             <ul class="bg-red-100 list-inside md:m-5 p-5 w-full">
             @endif
@@ -45,19 +45,19 @@
                     @endif
                 </li>
             </ul>
-            <ul class="list-inside md:m-5 w-full">
+            <ul class="list-inside md:mt-5 md:mr-5 w-full">
                 <li><livewire:interfaces.map :museum="$exhibition->inMuseum" :wire:key="$exhibition->inMuseum->uuid" /></li>
             </ul>
             @auth
             @if (Auth::user()->can('create', App\Models\Exhibition::class))
-            <ul class="bg-gray-200 list-inside md:m-5 p-5 w-full">
+            <ul class="bg-gray-200 list-inside md:mt-5 md:mr-5 p-5 w-full">
                 <li><livewire:modals.edit-exhibition :exhibition="$exhibition" :wire:key="$exhibition->uuid" /></li>
             </ul>
             @endif
             @endauth
         </div>
 
-        <div class="max-w-5xl md:w-9/12 mx-auto py-5 px-6 md:float-right">
+        <div class="mx-auto md:w-3/4 py-5 px-6">
             @if ($errors->any())
             <div class="bg-red-400 border border-red-500 py-5 text-black rounded">
                 <ul>
@@ -75,6 +75,14 @@
                     </h4>
                 </li>
                 <li class="flex space-x-5 px-5 md:px-0 justify-end mb-5">
+                    <span class="bg-yellow-100 p-2" title="@ucfirst(__('app.price'))">
+                        @ucfirst(__('app.price')) : 
+                        @if ($exhibition->price)
+                            {{ $exhibition->price }}.
+                        @else
+                            @ucfirst(__('app.no_price'))
+                        @endif
+                    </span>
                     <span class="bg-green-100 p-2" title="@ucfirst(__('app.began_at'))">
                         @ucfirst(__('app.began_at')) : @date($exhibition->began_at).
                     </span>
@@ -93,7 +101,7 @@
                     @endif
                 </li>
             </ul>
-            <div class="list-inside bg-gray-200 px-5 p-5 w-full">
+            <div class="bg-gray-200 px-5 p-5 w-full">
                 @if (count($exhibition->tags) > 0)
                 @foreach ($exhibition->tags as $tag)
                 <a href="{{ route('front.tag.show', ['slug' => $tag->slug]) }}"
@@ -102,8 +110,9 @@
                 </a>
                 @endforeach
                 @else
-                <div title="@ucfirst(__('app.notags'))">@ucfirst(__('app.notags'))</div>
+                <div title="@ucfirst(__('app.no_tags'))">@ucfirst(__('app.no_tags'))</div>
                 @endif
+                <livewire:interfaces.tag-exhibition :exhibition="$exhibition" :wire:key="$exhibition->uuid" />
             </div>
         </div>
     </div>
