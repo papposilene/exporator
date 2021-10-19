@@ -75,6 +75,14 @@
                     </h4>
                 </li>
                 <li class="flex space-x-5 px-5 md:px-0 justify-end mb-5">
+                    <span class="bg-yellow-100 p-2" title="@ucfirst(__('app.price'))">
+                        @ucfirst(__('app.price')) : 
+                        @if ($exhibition->price)
+                            {{ $exhibition->price }}.
+                        @else
+                            @ucfirst(__('app.no_price'))
+                        @endif
+                    </span>
                     <span class="bg-green-100 p-2" title="@ucfirst(__('app.began_at'))">
                         @ucfirst(__('app.began_at')) : @date($exhibition->began_at).
                     </span>
