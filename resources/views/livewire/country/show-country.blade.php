@@ -14,7 +14,7 @@
 
     <div class="flex w-full max-w-7xl mx-auto">
         <div class="mx-auto py-5 px-6">
-            <ul class="bg-indigo-100 list-inside m-5 p-5 w-full">
+            <ul class="bg-indigo-100 list-inside md:mt-5 md:mr-5 p-5 w-full">
                 <li title="@ucfirst(__('app.name_common'))">
                     <h3 class="font-bold text-2xl mb-5">
                         {{ $country->flag }} {{ $country->name_common_fra }}
