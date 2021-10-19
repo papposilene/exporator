@@ -43,7 +43,7 @@
                     @endif
                 </li>
             </ul>
-            <ul class="bg-gray-200 list-inside md:m-5 p-5 w-full">
+            <ul class="list-inside md:m-5 w-full">
                 <li><livewire:interfaces.map :museum="$museum" :wire:key="$museum->uuid" /></li>
             </ul>
             @auth
