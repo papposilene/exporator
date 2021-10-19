@@ -3,43 +3,57 @@
     <h4 class="font-bold text-1xl mb-2">@ucfirst(__('app.statistics'))</h4>
     <ol class="list-inside list-disc">
         <li class="font-bold">
-            <a href="{{ route('front.museum.index') }}" class="text-black hover:text-red-600">
-                @ucfirst(__('app.numbers_of_museums', ['count' => $museums]))
+            @ucfirst(__('app.numbers_of_museums', ['count' => 
+                '<a href="{{ route('front.museum.index') }}" class="text-blue-700 hover:text-red-600">' . $museums . '</a>'
+            ]))
+        </li>
+        <li>
+            <a href="{{ route('front.museum.index', ['filter' => 'museum']) }}" class="text-blue-700 hover:text-red-600">
+                @ucfirst(__('app.numbers_of_museum_type', ['count' => 
+                    '<a href="{{ route('front.museum.index') }}" class="text-blue-700 hover:text-red-600">' . $museum_type . '</a>'
+                ]))
             </a>
         </li>
         <li>
-            <a href="{{ route('front.museum.index', ['filter' => 'museum']) }}" class="text-black hover:text-red-600">
-                @ucfirst(__('app.numbers_of_museum_type', ['count' => $museum_type]))
+            <a href="{{ route('front.museum.index', ['filter' => 'gallery']) }}" class="text-blue-700 hover:text-red-600">
+                @ucfirst(__('app.numbers_of_gallery_type', ['count' => 
+                    '<a href="{{ route('front.museum.index') }}" class="text-blue-700 hover:text-red-600">' . $gallery_type . '</a>'
+                ]))
             </a>
         </li>
         <li>
-            <a href="{{ route('front.museum.index', ['filter' => 'gallery']) }}" class="text-black hover:text-red-600">
-                @ucfirst(__('app.numbers_of_gallery_type', ['count' => $gallery_type]))
+            <a href="{{ route('front.museum.index', ['filter' => 'art-center']) }}" class="text-blue-700 hover:text-red-600">
+                @ucfirst(__('app.numbers_of_artcenter_type', ['count' => 
+                    '<a href="{{ route('front.museum.index') }}" class="text-blue-700 hover:text-red-600">' . $artcenter_type . '</a>'
+                ]))
             </a>
         </li>
         <li>
-            <a href="{{ route('front.museum.index', ['filter' => 'art-center']) }}" class="text-black hover:text-red-600">
-                @ucfirst(__('app.numbers_of_artcenter_type', ['count' => $artcenter_type]))
+            <a href="{{ route('front.museum.index', ['filter' => 'art-fair']) }}" class="text-blue-700 hover:text-red-600">
+                @ucfirst(__('app.numbers_of_artfair_type', ['count' => 
+                    '<a href="{{ route('front.museum.index') }}" class="text-blue-700 hover:text-red-600">' . $artfair_type . '</a>'
+                ]))
             </a>
         </li>
         <li>
-            <a href="{{ route('front.museum.index', ['filter' => 'art-fair']) }}" class="text-black hover:text-red-600">
-                @ucfirst(__('app.numbers_of_artfair_type', ['count' => $artfair_type]))
-            </a>
-        </li>
-        <li>
-            <a href="{{ route('front.museum.index', ['filter' => 'library']) }}" class="text-black hover:text-red-600">
-                @ucfirst(__('app.numbers_of_library_type', ['count' => $library_type]))
+            <a href="{{ route('front.museum.index', ['filter' => 'library']) }}" class="text-blue-700 hover:text-red-600">
+                @ucfirst(__('app.numbers_of_library_type', ['count' => 
+                    '<a href="{{ route('front.museum.index') }}" class="text-blue-700 hover:text-red-600">' . $library_type . '</a>'
+                ]))
             </a>
         </li>
         <li>
             <a href="{{ route('front.museum.index', ['filter' => 'foundation']) }}" class="text-black hover:text-red-600">
-                @ucfirst(__('app.numbers_of_foundation_type', ['count' => $foundation_type]))
+                @ucfirst(__('app.numbers_of_foundation_type', ['count' => 
+                    '<a href="{{ route('front.museum.index') }}" class="text-blue-700 hover:text-red-600">' . $foundation_type . '</a>'
+                ]))
             </a>
         </li>
         <li>
             <a href="{{ route('front.museum.index', ['filter' => 'other']) }}" class="text-black hover:text-red-600">
-                @ucfirst(__('app.numbers_of_other_type', ['count' => $other_type]))
+                @ucfirst(__('app.numbers_of_other_type', ['count' => 
+                    '<a href="{{ route('front.museum.index') }}" class="text-blue-700 hover:text-red-600">' . $other_type . '</a>'
+                ]))
             </a>
         </li>
     </ol>
