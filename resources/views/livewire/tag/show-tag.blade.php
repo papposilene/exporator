@@ -14,7 +14,7 @@
 
     <div class="flex w-full max-w-7xl mx-auto">
         <div class="mx-auto py-5 px-6">
-            <ul class="bg-indigo-100 list-inside md:m-5 p-5 w-full">
+            <ul class="bg-indigo-100 list-inside md:mt-5 md:mr-5 p-5 w-full">
                 <li title="@ucfirst(__('app.tag'))">
                     <h3 class="font-bold text-2xl mb-5">
                         @ucfirst($tag->name)
@@ -24,7 +24,7 @@
             </ul>
             @auth
             @if (Auth::user()->can('create', App\Models\Tag::class))
-            <ul class="bg-gray-200 list-inside md:m-5 p-5 w-full">
+            <ul class="bg-gray-200 list-inside md:mt-5 md:mr-5 p-5 w-full">
                 <li><livewire:modals.edit-tag :tag="$tag" :wire:key="$tag->id" /></li>
             </ul>
             @endif
