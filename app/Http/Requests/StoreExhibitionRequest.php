@@ -20,6 +20,8 @@ class StoreExhibitionRequest extends FormRequest
             'ended_at' => 'required|date_format:d/m/Y',
             'description' => 'required|string',
             'link' => 'nullable|url',
+            'price' => 'nullable|integer',
+            'is_published' => 'required|boolean',
         ];
     }
 }
