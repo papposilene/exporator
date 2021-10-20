@@ -62,16 +62,28 @@ class AutocompleteTag extends Component
             $this->query = $tag['name'];
             $this->selectedTag = $tag['slug'];
         }
+
+        dd($tag);
     }
 
     public function updatedQuery()
     {
-        $this->tags = Tag::where('name', 'like', '%' . $this->query. '%')
-            ->orWhere('slug', 'like', '%' . $this->query. '%')
+        $lang = app()->getLocale();
+
+        $this->tags = Tag::where('name->' . $lang, 'like', '%' . $this->query. '%')
+            ->orWhere('slug->' . $lang, 'like', '%' . $this->query. '%')
             ->orWhere('type', 'like', '%' . $this->query. '%')
             ->take(5)
             ->get()
-            ->toArray();
+            ->map(function (Tag $tag) {
+                return [
+                    'id' => $tag->id,
+                    'name' => $tag->name,
+                    'slug' => $tag->slug,
+                    'type' => $tag->type,
+                ];
+            });
+        dd($this->tags);
     }
 
     public function render()
