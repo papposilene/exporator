@@ -1,8 +1,8 @@
 <div id="modalCreateMuseum" class="relative float-right mr-2">
     <div id="modalButtonCreateMuseum">
         <button id="modalOpenCreateMuseum" class="focus:outline-none bg-purple-100 text-black bg-opacity-75 px-1 rounded"
-            type="button" title="@ucfirst(__('app.create_one', ['what' => __('app.museums')]))">
-            @ucfirst(__('app.create_one', ['what' => __('app.museum')]))
+            type="button" title="@ucfirst(__('app.create_one', ['what' => __('app.place')]))">
+            @ucfirst(__('app.create_one', ['what' => __('app.place')]))
         </button>
     </div>
 
@@ -24,7 +24,7 @@
                 @csrf
 
                 <div class="mt-4">
-                    <x-forms.label for="name">@ucfirst(__('app.museum'))</x-forms.label>
+                    <x-forms.label for="name">@ucfirst(__('app.place'))</x-forms.label>
                     <x-forms.input id="name" class="block mt-1 w-full" type="text" name="name" required :value="old('name')" />
                 </div>
 
