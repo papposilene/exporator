@@ -63,27 +63,18 @@ Route::get('/tag/{slug}', ShowTag::class)->name('front.tag.show');
 |--------------------------------------------------------------------------
 */
 Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function () {
-    //Route::redirect('/', '/dashboard', 301);
-    //Route::get('/dashboard', ShowDashboard::class)->name('admin.dashboard');
-
-    // Countries
-    Route::get('/countries', ListCountry::class)->name('admin.country.index');
-    Route::get('/country/{cca3}', ShowCountry::class)->name('admin.country.show');
-
     // Museums
-    Route::get('/museums', ListMuseum::class)->name('admin.museum.index');
     Route::post('/museums/store', [MuseumController::class, 'store'])->name('admin.museum.store');
     Route::post('/museums/import', [MuseumController::class, 'import'])->name('admin.museum.import');
-    Route::get('/museum/{slug}', ShowMuseum::class)->name('admin.museum.show');
     Route::post('/museum/update', [MuseumController::class, 'update'])->name('admin.museum.update');
 
     // Exhibitions
-    Route::get('/exhibitions', ListExhibition::class)->name('admin.exhibition.index');
     Route::post('/exhibitions/import', [ExhibitionController::class, 'import'])->name('admin.exhibition.import');
-    Route::get('/museum/{museum}/exhibition/{exhibition}', ShowExhibition::class)->name('admin.exhibition.show');
     Route::post('/exhibition/store', [ExhibitionController::class, 'store'])->name('admin.exhibition.store');
     Route::post('/exhibition/update', [ExhibitionController::class, 'update'])->name('admin.exhibition.update');
     Route::get('/exhibitions/propose', [ExhibitionController::class, 'propose'])->name('admin.exhibition.propose');
 
     Route::post('/tag/store', [TagController::class, 'store'])->name('admin.tag.store');
+    Route::post('/tag/update', [TagController::class, 'update'])->name('admin.tag.update');
+    Route::post('/tag/attach', [TagController::class, 'attach'])->name('admin.tag.attach');
 });
