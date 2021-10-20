@@ -80,12 +80,13 @@ class TagController extends Controller
      * Attach the specified tag to an exhibition.
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Exhibition  $exhibition
      * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function attach(AttachTagRequest $request, Tag $tag)
+    public function attach(AttachTagRequest $request, Exhibition $exhibition, Tag $tag)
     {
-        $this->authorize('update', Exhibition::class);
+        $this->authorize('create', Exhibition::class);
 
         $validated = $request->validated();
 

@@ -15,7 +15,7 @@ class AttachTagRequest extends FormRequest
     {
         return [
             'uuid' => 'required|bail|uuid',
-            'name' => 'required|bail|string|max:255',
+            'tag' => 'required|bail|string|max:255',
         ];
     }
 }
