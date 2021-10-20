@@ -13,7 +13,7 @@
             wire:keydown.enter.prevent="selectTag"
         />
 
-        <input type="hidden" name="slug" id="slug" wire:model="selectedTag">
+        <input type="hidden" name="tag_id" id="tag_id" wire:model="selectedTag">
 
         @if ($selectedTag)
         <a class="absolute cursor-pointer top-2 right-2 text-gray-500" wire:click="reset">

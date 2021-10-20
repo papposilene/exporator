@@ -60,10 +60,8 @@ class AutocompleteTag extends Component
         if ($tag) {
             $this->showDropdown = true;
             $this->query = $tag['name'];
-            $this->selectedTag = $tag['slug'];
+            $this->selectedTag = $tag['id'];
         }
-
-        dd($tag);
     }
 
     public function updatedQuery()
@@ -82,8 +80,8 @@ class AutocompleteTag extends Component
                     'slug' => $item->getTranslation('slug', $lang),
                     'type' => $item->type,
                 ];
-            });
-        dd($this->tags);
+            })
+            ->toArray();
     }
 
     public function render()
