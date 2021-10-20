@@ -81,10 +81,10 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function
     Route::post('/tag/attach', [TagController::class, 'attach'])->name('admin.tag.attach');
     
     // User
-    Route::post('/user/museum/follow', [UserController::class, 'museum_follow'])->name('admin.user.follow'); // Follow a place
-    Route::post('/user/museum/unfollow', [UserController::class, 'museum_unfollow'])->name('admin.user.unfollow'); // Unfollow a place
-    Route::post('/user/exhibition/add', [UserController::class, 'exhibition_add'])->name('admin.user.add'); // Add an exhibition
-    Route::post('/user/exhibition/delete', [UserController::class, 'exhibition_delete'])->name('admin.user.delete'); // Delete an exhibition
-    Route::post('/user/tag/follow', [UserController::class, 'tag_follow'])->name('admin.user.like'); // Follow a tag
-    Route::post('/user/tag/unfollow', [UserController::class, 'tag_unfollow'])->name('admin.user.exhibition_delete'); // Unfollow a tag
+    Route::post('/user/museum/follow', [UserController::class, 'museum_follow'])->name('admin.user.museum_follow'); // Follow a place
+    Route::post('/user/museum/unfollow', [UserController::class, 'museum_unfollow'])->name('admin.user.museum_unfollow'); // Unfollow a place
+    Route::post('/user/exhibition/add', [UserController::class, 'exhibition_follow'])->name('admin.user.exhibition_follow'); // Add an exhibition
+    Route::post('/user/exhibition/delete', [UserController::class, 'exhibition_unfollow'])->name('admin.user.exhibition_unfollow'); // Delete an exhibition
+    Route::post('/user/tag/follow', [UserController::class, 'tag_follow'])->name('admin.user.tag_follow'); // Follow a tag
+    Route::post('/user/tag/unfollow', [UserController::class, 'tag_unfollow'])->name('admin.user.tag_unfollow'); // Unfollow a tag
 });
