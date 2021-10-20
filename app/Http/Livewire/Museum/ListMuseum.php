@@ -31,7 +31,17 @@ class ListMuseum extends Component
 
     public function render()
     {
-        if (Str::of($this->type)->trim()->isNotEmpty())
+        if (Str::of($this->filter)->trim()->isNotEmpty() === 'no_exhibition')
+        {
+            $museums = Museum::withCount('hasExhibitions')->get();
+            $museums->where('has_exhibitions_count', 0)
+                ->where('type', $this->type)
+                ->where('name', 'like', '%'.$this->search.'%')
+                ->orderBy('has_exhibitions_count', 'desc')
+                ->orderBy('name', 'asc')
+                ->get();
+        }
+        elseif (Str::of($this->type)->trim()->isNotEmpty())
         {
             $museums = Museum::withCount('hasExhibitions')
                 ->where('type', $this->type)
