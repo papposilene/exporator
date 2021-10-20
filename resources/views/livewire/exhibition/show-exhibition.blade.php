@@ -80,7 +80,7 @@
                         @if ($exhibition->price)
                             {{ $exhibition->price }}.
                         @else
-                            @ucfirst(__('app.no_price'))
+                            {{ __('app.no_price') }}.
                         @endif
                     </span>
                     <span class="bg-green-100 p-2" title="@ucfirst(__('app.began_at'))">
