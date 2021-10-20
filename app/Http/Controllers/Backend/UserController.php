@@ -15,35 +15,16 @@ use App\Http\Requests\UnfollowMuseumRequest;
 use App\Http\Requests\UnfollowTagRequest;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Follow a museum.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\FollowMuseumRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function museum_follow(FollowMuseumRequest $request)
@@ -51,6 +32,14 @@ class UserController extends Controller
         $this->authorize('create', User::class);
 
         $validated = $request->validated();
+        
+        $user = Auth::id();
+        $museum = Museum::findOrFail($request->input('museum_uuid'));
+        
+        UserMuseum::create([
+            'user_uuid' => $user,
+            'museum_uuid' => $museum->uuid,
+        ]);
 
         return redirect()->back()->with('success', 'All good!');
     }
@@ -58,7 +47,7 @@ class UserController extends Controller
     /**
      * Unfollow a museum.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\UnfollowMuseumRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function museum_unfollow(UnfollowMuseumRequest $request)
@@ -66,62 +55,94 @@ class UserController extends Controller
         $this->authorize('delete', User::class);
 
         $validated = $request->validated();
+        
+        $following = UserMuseum::findOrFail($request->input('follow_uuid'));
+        $following->delete();
+
+        return redirect()->back()->with('success', 'All good!');
+    }
+    
+    /**
+     * Follow an exhibition.
+     *
+     * @param  \Illuminate\Http\FollowExhibitionRequest  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function exhibition_follow(FollowExhibitionRequest $request)
+    {
+        $this->authorize('create', User::class);
+
+        $validated = $request->validated();
+        
+        $user = Auth::id();
+        $exhibition = Exhibition::findOrFail($request->input('exhibition_uuid'));
+        
+        UserExhibition::create([
+            'user_uuid' => $user,
+            'exhibition_uuid' => $exhibition->uuid,
+        ]);
 
         return redirect()->back()->with('success', 'All good!');
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Unfollow an exhibition.
      *
-     * @param  \App\Models\Tag  $tag
+     * @param  \Illuminate\Http\UnfollowExhibitionRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tag $tag)
+    public function exhibition_unfollow(UnfollowExhibitionRequest $request)
     {
-        //
-    }
-
-    /**
-     * Attach the specified tag to an exhibition.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Exhibition  $exhibition
-     * @param  \App\Models\Tag  $tag
-     * @return \Illuminate\Http\Response
-     */
-    public function attach(AttachTagRequest $request, Exhibition $exhibition, Tag $tag)
-    {
-        $this->authorize('create', Exhibition::class);
+        $this->authorize('delete', User::class);
 
         $validated = $request->validated();
+        
+        $following = UserExhibition::findOrFail($request->input('follow_uuid'));
+        $following->delete();
+
+        return redirect()->back()->with('success', 'All good!');
+    }
+    
+    /**
+     * Follow a tag.
+     *
+     * @param  \Illuminate\Http\FollowTagRequest  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function museum_tag(FollowTagRequest $request)
+    {
+        $this->authorize('create', User::class);
+
+        $validated = $request->validated();
+        
+        $user = Auth::id();
+        $tag_id = Tag::findOrFail($request->input('tag_id'));
+        
+        UserMuseum::create([
+            'user_uuid' => $user,
+            'tag_id' => $tag->id,
+        ]);
 
         return redirect()->back()->with('success', 'All good!');
     }
 
     /**
-     * Update the specified resource in storage.
+     * Unfollow a tag.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Tag  $tag
+     * @param  \Illuminate\Http\UnfollowTagRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreTagRequest $request, Tag $tag)
+    public function tag_unfollow(UnfollowTagRequest $request)
     {
-        $this->authorize('update', Tag::class);
+        $this->authorize('delete', User::class);
 
         $validated = $request->validated();
+        
+        $following = UserTag::findOrFail($request->input('follow_uuid'));
+        $following->delete();
 
-        return redirect()->route('front.tag.index')->with('success', 'All good!');
+        return redirect()->back()->with('success', 'All good!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Tag  $tag
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Tag $tag)
-    {
-        //
-    }
+
 }
