@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Tag;
 
 use App\Models\Tag;
+use App\Models\Exhibition;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -31,7 +32,7 @@ class ListTag extends Component
             ->orderBy('type', 'asc')
             ->orderBy('name', 'asc')
             ->paginate(25);
-        
+
         $without_tags = Exhibition::query()->withCount('tags')->get();
 
         return view('livewire.tag.list-tag', [
