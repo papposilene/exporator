@@ -12,12 +12,12 @@ class ListMuseum extends Component
 {
     use WithPagination;
 
-    public $filter = '';
+    public $type = '';
     public $page = 1;
     public $search = '';
 
     protected $queryString = [
-        'filter' => ['except' => ''],
+        'type' => ['except' => ''],
         'page' => ['except' => 1],
         'search' => ['except' => ''],
     ];
@@ -29,10 +29,10 @@ class ListMuseum extends Component
 
     public function render()
     {
-        if (Str::of($this->filter)->trim()->isNotEmpty())
+        if (Str::of($this->type)->trim()->isNotEmpty())
         {
             $museums = Museum::withCount('hasExhibitions')
-                ->where('type', $this->filter)
+                ->where('type', $this->type)
                 ->where('name', 'like', '%'.$this->search.'%')
                 ->orderBy('has_exhibitions_count', 'desc')
                 ->orderBy('name', 'asc')
