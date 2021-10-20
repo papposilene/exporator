@@ -22,8 +22,6 @@
             <form method="POST" action="{{ route('admin.exhibition.store') }}" enctype="multipart/form-data"
                 class="flex flex-col w-full">
                 @csrf
-                
-                <input type="hidden" name="is_published" value="1" />
 
                 <div class="mt-4">
                     <x-forms.label for="museum">@ucfirst(__('app.museum'))</x-forms.label>
