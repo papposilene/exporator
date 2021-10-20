@@ -12,9 +12,9 @@
         </h2>
     </x-slot>
 
-    <div class="flex w-full max-w-7xl mx-auto">
-        <div class="mx-auto md:w-1/4 py-5 px-6">
-            <ul class="bg-indigo-100 list-inside md:mt-5 md:mr-5 p-5 w-full">
+    <div class="flex flex-wrap w-full max-w-7xl mx-auto">
+        <div class="mx-auto md:w-1/4 py-5 px-6 w-full">
+            <ul class="bg-indigo-100 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
                 <li title="@ucfirst(__('app.tag'))">
                     <h3 class="font-bold text-2xl mb-5">
                         @ucfirst($tag->name)
@@ -24,7 +24,7 @@
             </ul>
             @auth
             @if (Auth::user()->can('create', App\Models\Tag::class))
-            <ul class="bg-gray-200 list-inside md:mt-5 md:mr-5 p-5 w-full">
+            <ul class="bg-gray-200 list-inside md:mt-5 md:mr-5 p-5 shadow w-full">
                 <li><livewire:modals.edit-tag :tag="$tag" :wire:key="$tag->id" /></li>
             </ul>
             @endif
@@ -48,14 +48,14 @@
                 {{ $exhibitions->links() }}
             </div>
             <div class="py-5">
-                <table class="w-full p-5 table-fixed">
+                <table class="w-full p-5 table-fixed shadow">
                     <thead>
                         <tr class="bg-gray-700 text-white">
                             <th class="w-1/12 text-center p-3">@ucfirst(__('app.iteration'))</th>
                             <th class="w-3/12 text-center">@ucfirst(__('app.museums'))</th>
                             <th class="w-4/12 text-center">@ucfirst(__('app.titles'))</th>
-                            <th class="w-2/12 text-center">@ucfirst(__('app.began_at'))</th>
-                            <th class="hidden md:table-cell md:w-2/12 text-center">@ucfirst(__('app.ended_at'))</th>
+                            <th class="hidden md:table-cell md:w-2/12 text-center">@ucfirst(__('app.began_at'))</th>
+                            <th class="w-2/12 text-center">@ucfirst(__('app.ended_at'))</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -80,20 +80,20 @@
                         @endphp
                         <tr class="border-b border-gray-300 border-dashed h-12 w-12 p-4 {{ $is_current }}">
                             <td class="text-center">{{ $loop->iteration }}</td>
-                            <td>
+                            <td class="break-words">
                                 <a href="{{ route('front.museum.show', ['slug' => $exhibition->inMuseum->slug]) }}"
                                     title="{{ $exhibition->inMuseum->name }}" aria-label="{{ $exhibition->inMuseum->name }}">
                                     {{ $exhibition->inMuseum->name }}
                                 </a>
                             </td>
-                            <td>
+                            <td class="break-words">
                                 <a href="{{ route('front.exhibition.show', ['museum' => $exhibition->inMuseum->slug, 'exhibition' => $exhibition->slug]) }}"
                                     title="{{ $exhibition->title }}" aria-label="{{ $exhibition->title }}">
                                     {{ $exhibition->title }}
                                 </a>
                             </td>
-                            <td class="text-center">@date($exhibition->began_at)</td>
-                            <td class="hidden md:table-cell text-center">@date($exhibition->ended_at)</td>
+                            <td class="hidden md:table-cell text-center break-words">@date($exhibition->began_at)</td>
+                            <td class="text-center break-words">@date($exhibition->ended_at)</td>
                         </tr>
                         @endforeach
                     </tbody>

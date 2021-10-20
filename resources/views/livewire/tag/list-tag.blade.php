@@ -29,7 +29,7 @@
                 {{ $tags->links() }}
             </div>
             <div class="py-5">
-                <table class="w-full p-5 table-fixed">
+                <table class="w-full p-5 table-fixed shadow">
                     <thead>
                         <tr class="bg-gray-700 text-white">
                             <th class="w-1/12 text-center p-3">@ucfirst(__('app.iteration'))</th>

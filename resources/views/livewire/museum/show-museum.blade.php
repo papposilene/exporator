@@ -13,7 +13,7 @@
     </x-slot>
 
     <div class="flex flex-wrap w-full max-w-7xl mx-auto">
-        <div class="mx-auto md:w-1/4 py-5 px-6">
+        <div class="mx-auto md:w-1/4 py-5 px-6 w-full">
             <ul class="bg-purple-100 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
                 <li title="@ucfirst(__('app.museum'))">
                     <h3 class="font-bold text-2xl mb-5">
