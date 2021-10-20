@@ -66,7 +66,7 @@ return [
     'name_common' => 'dénomination courante du pays',
     'name_official' => 'dénomination officielle du pays',
     'no_exhibition' => 'sans exposition',
-    'no_price' => 'prix inconnu',
+    'no_price' => 'inconnu',
     'no_tags' => 'pas de mot-clé à afficher...',
     'nothing' => 'ici, il n’y a encore rien à afficher...',
     'price' => 'prix d’entrée',
