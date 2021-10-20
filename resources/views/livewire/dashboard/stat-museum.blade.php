@@ -46,7 +46,7 @@
         @if(count($open_museums_without_exhibition) > 0)
         @foreach($open_museums_without_exhibition->where('has_exhibitions_count', 0) as $no_exhibition)
         <li>
-            <a href="{{ route('admin.museum.show', ['slug' => $no_exhibition->slug]) }}">
+            <a href="{{ route('front.museum.show', ['slug' => $no_exhibition->slug]) }}">
                 {{ $no_exhibition->name }}
             </a>
         </li>
