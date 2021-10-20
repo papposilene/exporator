@@ -12,14 +12,16 @@ class ListMuseum extends Component
 {
     use WithPagination;
 
-    public $type = '';
+    public $filter = '';
     public $page = 1;
     public $search = '';
+    public $type = '';
 
     protected $queryString = [
-        'type' => ['except' => ''],
+        'filter' => ['except' => ''],
         'page' => ['except' => 1],
         'search' => ['except' => ''],
+        'type' => ['except' => ''],
     ];
 
     public function updatingSearch()
