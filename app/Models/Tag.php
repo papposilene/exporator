@@ -15,7 +15,7 @@ class Tag extends Model
      * @var string
      */
     protected $table = 'tags';
-    protected $primaryKey = 'uuid';
+    protected $primaryKey = 'id';
 
     /**
      * The attributes that should be cast to native types.
