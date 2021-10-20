@@ -39,6 +39,13 @@
                         <div class="flex leading-5">@ucfirst(__('app.' . Str::slug($type->type, '_')))</div>
                     </a>
                     @endforeach
+                    @if (Auth::user()->can('create', App\Models\Exhibition::class))
+                    <a href="?filter=no_exhibition" class="flex flex-auto text-base md:rounded-r-none md:rounded-l-none md:border-l-0 md:border-r-0
+                        hover:scale-110 focus:outline-none justify-center px-4 py-2 hover:rounded font-bold cursor-pointer
+                        hover:bg-red-200 hover:text-black bg-red-200 border duration-200 ease-in-out border-red-300 transition">
+                        <div class="flex leading-5">@ucfirst(__('app.no_exhibition')))</div>
+                    </a>
+                    @endauth
                 </div>
                 <x-forms.input wire:model="search" type="search" class="ml-2" :placeholder="@ucfirst(__('app.search'))" />
             </div>
