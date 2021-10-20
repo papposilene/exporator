@@ -14,6 +14,7 @@
         />
 
         <input type="hidden" name="tag" id="tag" wire:model="selectedTag">
+        <input type="hidden" name="type" id="type" wire:model="selectedType">
 
         @if ($selectedTag)
         <a class="absolute cursor-pointer top-2 right-2 text-gray-500" wire:click="reset">

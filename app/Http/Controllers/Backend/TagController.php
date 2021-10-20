@@ -91,9 +91,11 @@ class TagController extends Controller
         $validated = $request->validated();
 
         $tag = Str::of($request->input('tag'))->lower();
+        $type = Str::of($request->input('type'))->lower();
+        $existing_tag = Tag::findOrCreate($tag, $type);
 
         $exhibition = Exhibition::findOrFail($request->input('uuid'));
-        $exhibition->attachTag($tag);
+        $exhibition->attachTag($existing_tag);
         $exhibition->save();
 
         return redirect()->back()->with('success', 'All good!');
