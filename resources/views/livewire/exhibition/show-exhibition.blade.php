@@ -12,9 +12,9 @@
         </h2>
     </x-slot>
 
-    <div class="flex w-full max-w-7xl mx-auto">
+    <div class="flex flex-wrap w-full max-w-7xl mx-auto">
         <div class="mx-auto md:w-1/4 py-5 px-6">
-            <ul class="bg-indigo-100 list-inside md:mr-5 p-5 w-full">
+            <ul class="bg-indigo-100 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
                 <li title="@ucfirst(__('app.museum'))">
                     <h3 class="font-bold text-2xl mb-5">
                         <a href="{{ route('front.museum.show', ['slug' => $exhibition->inMuseum->slug]) }}">
@@ -33,9 +33,9 @@
                 </li>
             </ul>
             @if ($exhibition->inMuseum->status === 1)
-            <ul class="bg-green-100 list-inside md:mt-5 md:mr-5 p-5 w-full">
+            <ul class="bg-green-100 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
             @else
-            <ul class="bg-red-100 list-inside md:m-5 p-5 w-full">
+            <ul class="bg-red-100 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
             @endif
                 <li title="@ucfirst(__('app.is_open'))">
                     @if ($exhibition->inMuseum->status === 1)
@@ -45,12 +45,12 @@
                     @endif
                 </li>
             </ul>
-            <ul class="list-inside md:mt-5 md:mr-5 w-full">
+            <ul class="list-inside md:m-5 mt-5 md:mt-0 shadow w-full">
                 <li><livewire:interfaces.map :museum="$exhibition->inMuseum" :wire:key="$exhibition->inMuseum->uuid" /></li>
             </ul>
             @auth
             @if (Auth::user()->can('create', App\Models\Exhibition::class))
-            <ul class="bg-gray-200 list-inside md:mt-5 md:mr-5 p-5 w-full">
+            <ul class="bg-gray-200 list-inside md:mt-5 md:mr-5 p-5 shadow w-full">
                 <li><livewire:modals.edit-exhibition :exhibition="$exhibition" :wire:key="$exhibition->uuid" /></li>
             </ul>
             @endif
@@ -69,14 +69,14 @@
             @endif
 
             <ul class="list-inside bg-gray-200 my-5 w-full">
-                <li class="px-5 md:px-0" title="@ucfirst(__('app.exhibition'))">
+                <li title="@ucfirst(__('app.exhibition'))">
                     <h4 class="bg-gray-300 font-bold text-2xl p-3 mb-5">
                         {{ $exhibition->title }}
                     </h4>
                 </li>
-                <li class="flex space-x-5 px-5 md:px-0 justify-end mb-5">
+                <li class="flex space-x-5 md:px-0 justify-end mb-5">
                     <span class="bg-yellow-100 p-2" title="@ucfirst(__('app.price'))">
-                        @ucfirst(__('app.price')) : 
+                        @ucfirst(__('app.price')) :
                         @if ($exhibition->price)
                             {{ $exhibition->price }}.
                         @else

@@ -27,13 +27,15 @@
 
             <div class="relative flex items-center justify-between mb-2 w-full">
                 <div class="flex flex-wrap">
-                    <a href="?filter=" class="text-base rounded-r-none hover:scale-110 focus:outline-none flex justify-center px-4 py-2 hover:rounded font-bold cursor-pointer
+                    <a href="?filter=" class="flex flex-auto text-base md:rounded-r-none hover:scale-110 focus:outline-none
+                        justify-center px-4 py-2 hover:rounded font-bold cursor-pointer
                         hover:bg-gray-300 hover:text-black bg-gray-200 border duration-200 ease-in-out border-gray-300 transition">
                         <div class="flex leading-5">@ucfirst(__('app.all'))</div>
                     </a>
                     @foreach ($types as $type)
-                    <a href="?filter={{ $type->slug }}" class="text-base rounded-r-none rounded-l-none hover:scale-110 focus:outline-none flex justify-center px-4 py-2 hover:rounded font-bold cursor-pointer
-                        hover:bg-gray-200 hover:text-black bg-gray-300 border duration-200 ease-in-out border-gray-300 transition">
+                    <a href="?filter={{ $type->slug }}" class="flex flex-auto text-base md:rounded-r-none md:rounded-l-none md:border-l-0 md:border-r-0
+                        hover:scale-110 focus:outline-none justify-center px-4 py-2 hover:rounded font-bold cursor-pointer
+                        hover:bg-gray-200 hover:text-black bg-gray-200 border duration-200 ease-in-out border-gray-300 transition">
                         <div class="flex leading-5">@ucfirst(__('app.' . Str::slug($type->type, '_')))</div>
                     </a>
                     @endforeach
@@ -59,7 +61,7 @@
                             <td class="text-center">{{ $loop->iteration }}</td>
                             <td class="hidden lg:table-cell">@ucfirst(__('app.' . Str::slug($museum->hasType->type, '_')))</td>
                             <td class="hidden lg:table-cell">{{ $museum->city }}</td>
-                            <td>
+                            <td class="break-words">
                                 <a href="{{ route('front.museum.show', ['slug' => $museum->slug]) }}"
                                     title="{{ $museum->name }}" aria-label="{{ $museum->name }}">
                                     {{ $museum->name }}

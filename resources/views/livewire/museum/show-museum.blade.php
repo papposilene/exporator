@@ -105,14 +105,14 @@
                         @endphp
                         <tr class="border-b border-gray-300 border-dashed h-12 w-12 p-4 {{ $is_current }}">
                             <td class="text-center">{{ $loop->iteration }}</td>
-                            <td>
+                            <td class="break-words">
                                 <a href="{{ route('front.exhibition.show', ['museum' => $exhibition->inMuseum->slug, 'exhibition' => $exhibition->slug]) }}"
                                     title="{{ $exhibition->title }}" aria-label="{{ $exhibition->title }}">
                                     {{ $exhibition->title }}
                                 </a>
                             </td>
-                            <td class="hidden md:table-cell text-center">@date($exhibition->began_at)</td>
-                            <td class="text-center">@date($exhibition->ended_at)</td>
+                            <td class="hidden md:table-cell text-center break-words">@date($exhibition->began_at)</td>
+                            <td class="text-center break-words">@date($exhibition->ended_at)</td>
                         </tr>
                         @endforeach
                     </tbody>
