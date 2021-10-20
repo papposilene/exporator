@@ -34,7 +34,7 @@ class ListMuseum extends Component
         if (Str::of($this->filter)->trim()->isNotEmpty() === 'no_exhibition')
         {
             $museums = Museum::withCount('hasExhibitions')->get();
-            $museums->whereDate('began_at', '<', date('Y-m-d'))
+            $museums->whereDate('ended_at', '<', date('Y-m-d'))
                 ->where('has_exhibitions_count', 0)
                 ->where('type', $this->type)
                 ->where('name', 'like', '%'.$this->search.'%')
