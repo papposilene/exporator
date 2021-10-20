@@ -95,7 +95,7 @@ class TagController extends Controller
         $exhibition->attachTag($tag);
         $exhibition->save();
 
-        return redirect()->route('front.exhibition.show', [''])->with('success', 'All good!');
+        return redirect()->back()->with('success', 'All good!');
     }
 
     /**
