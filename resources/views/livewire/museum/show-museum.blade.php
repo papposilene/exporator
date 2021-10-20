@@ -5,7 +5,7 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             <span>
                 <a href="{{ route('front.museum.index') }}">
-                    @ucfirst(__('app.list_of', ['name' => __('app.museums')]))
+                    @ucfirst(__('app.list_of', ['name' => __('app.places')]))
                 </a>
             </span> /
             <span>{{ $museum->name }}</span>

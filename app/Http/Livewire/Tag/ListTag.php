@@ -31,9 +31,12 @@ class ListTag extends Component
             ->orderBy('type', 'asc')
             ->orderBy('name', 'asc')
             ->paginate(25);
+        
+        $without_tags = Exhibition::query()->withCount('tags')->get();
 
         return view('livewire.tag.list-tag', [
             'tags' => $tags,
+            'without_tags' => $without_tags,
         ]);
     }
 }

@@ -1,4 +1,4 @@
-@section('title', @ucfirst(__('app.list_of', ['name' => __('app.museums')])))
+@section('title', @ucfirst(__('app.list_of', ['name' => __('app.places')])))
 
 <div>
     <x-slot name="header">
@@ -9,7 +9,7 @@
         @endif
         @endauth
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            <span>@ucfirst(__('app.list_of', ['name' => __('app.museums')]))</span>
+            <span>@ucfirst(__('app.list_of', ['name' => __('app.places')]))</span>
         </h2>
     </x-slot>
 
@@ -27,18 +27,25 @@
 
             <div class="relative flex items-center justify-between mb-2 w-full">
                 <div class="flex flex-wrap">
-                    <a href="?filter=" class="flex flex-auto text-base md:rounded-r-none hover:scale-110 focus:outline-none
+                    <a href="?type=" class="flex flex-auto text-base md:rounded-r-none hover:scale-110 focus:outline-none
                         justify-center px-4 py-2 hover:rounded font-bold cursor-pointer
                         hover:bg-gray-300 hover:text-black bg-gray-200 border duration-200 ease-in-out border-gray-300 transition">
                         <div class="flex leading-5">@ucfirst(__('app.all'))</div>
                     </a>
                     @foreach ($types as $type)
-                    <a href="?filter={{ $type->slug }}" class="flex flex-auto text-base md:rounded-r-none md:rounded-l-none md:border-l-0 md:border-r-0
+                    <a href="?type={{ $type->slug }}" class="flex flex-auto text-base md:rounded-r-none md:rounded-l-none md:border-l-0 md:border-r-0
                         hover:scale-110 focus:outline-none justify-center px-4 py-2 hover:rounded font-bold cursor-pointer
                         hover:bg-gray-200 hover:text-black bg-gray-200 border duration-200 ease-in-out border-gray-300 transition">
                         <div class="flex leading-5">@ucfirst(__('app.' . Str::slug($type->type, '_')))</div>
                     </a>
                     @endforeach
+                    @if (Auth::user()->can('create', App\Models\Exhibition::class))
+                    <a href="?filter=no_exhibition" class="flex flex-auto text-base md:rounded-r-none md:rounded-l-none md:border-l-0 md:border-r-0
+                        hover:scale-110 focus:outline-none justify-center px-4 py-2 hover:rounded font-bold cursor-pointer
+                        hover:bg-red-200 hover:text-black bg-red-200 border duration-200 ease-in-out border-red-300 transition">
+                        <div class="flex leading-5">@ucfirst(__('app.no_exhibition')))</div>
+                    </a>
+                    @endauth
                 </div>
                 <x-forms.input wire:model="search" type="search" class="ml-2" :placeholder="@ucfirst(__('app.search'))" />
             </div>

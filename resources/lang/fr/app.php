@@ -11,6 +11,9 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    
+    'no' => 'non',
+    'yes' => 'oui',
 
     'about' => 'a propos',
     'actions' => 'actions',
@@ -69,6 +72,9 @@ return [
     'no_price' => 'inconnu',
     'no_tags' => 'pas de mot-clé à afficher...',
     'nothing' => 'ici, il n’y a encore rien à afficher...',
+    'place' => 'lieu',
+    'places' => 'lieux',
+    'public' => 'public',
     'price' => 'prix d’entrée',
     'optional' => 'information optionnelle',
     'other' => 'autre',
