@@ -1448,6 +1448,12 @@ select {
 .grid-cols-2 {
 	grid-template-columns: repeat(2, minmax(0, 1fr));
 }
+.grid-cols-3 {
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.grid-cols-5 {
+	grid-template-columns: repeat(5, minmax(0, 1fr));
+}
 .flex-row {
 	flex-direction: row;
 }
@@ -3997,6 +4003,14 @@ svg.leaflet-image-layer.leaflet-interactive path {
 		margin-right: 1.25rem;
 	}
 
+	.md\:mt-2 {
+		margin-top: 0.5rem;
+	}
+
+	.md\:mt-4 {
+		margin-top: 1rem;
+	}
+
 	.md\:table-cell {
 		display: table-cell;
 	}
@@ -4033,12 +4047,21 @@ svg.leaflet-image-layer.leaflet-interactive path {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 
+	.md\:grid-cols-1 {
+		grid-template-columns: repeat(1, minmax(0, 1fr));
+	}
+
 	.md\:gap-6 {
 		gap: 1.5rem;
 	}
 
 	.md\:gap-4 {
 		gap: 1rem;
+	}
+
+	.md\:gap-x-1 {
+		-moz-column-gap: 0.25rem;
+		     column-gap: 0.25rem;
 	}
 
 	.md\:rounded-r-none {
