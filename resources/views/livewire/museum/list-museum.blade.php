@@ -1,4 +1,4 @@
-@section('title', @ucfirst(__('app.list_of', ['name' => __('app.museums')])))
+@section('title', @ucfirst(__('app.list_of', ['name' => __('app.places')])))
 
 <div>
     <x-slot name="header">
@@ -9,7 +9,7 @@
         @endif
         @endauth
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            <span>@ucfirst(__('app.list_of', ['name' => __('app.museums')]))</span>
+            <span>@ucfirst(__('app.list_of', ['name' => __('app.places')]))</span>
         </h2>
     </x-slot>
 
