@@ -12,9 +12,9 @@
         </h2>
     </x-slot>
 
-    <div class="flex w-full max-w-7xl mx-auto">
+    <div class="flex flex-wrap w-full max-w-7xl mx-auto">
         <div class="mx-auto md:w-1/4 py-5 px-6">
-            <ul class="bg-purple-100 list-inside md:m-5 p-5 w-full">
+            <ul class="bg-purple-100 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
                 <li title="@ucfirst(__('app.museum'))">
                     <h3 class="font-bold text-2xl mb-5">
                         {{ $museum->name }}
@@ -31,9 +31,9 @@
                 </li>
             </ul>
             @if ($museum->status === 1)
-            <ul class="bg-green-100 list-inside md:mr-5 p-5 w-full">
+            <ul class="bg-green-100 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
             @else
-            <ul class="bg-red-100 list-inside md:mt-5 md:mr-5 p-5 w-full">
+            <ul class="bg-red-100 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
             @endif
                 <li title="@ucfirst(__('app.is_open'))">
                     @if ($museum->status === 1)
@@ -43,12 +43,12 @@
                     @endif
                 </li>
             </ul>
-            <ul class="list-inside md:mt-5 md:mr-5 w-full">
+            <ul class="list-inside md:m-5 mt-5 md:mt-0 shadow w-full">
                 <li><livewire:interfaces.map :museum="$museum" :wire:key="$museum->uuid" /></li>
             </ul>
             @auth
             @if (Auth::user()->can('create', App\Models\Exhibition::class))
-            <ul class="bg-gray-200 list-inside md:mt-5 md:mr-5 p-5 w-full">
+            <ul class="bg-gray-200 list-inside md:mt-5 md:mr-5 p-5 shadow w-full">
                 <li><livewire:modals.edit-museum :museum="$museum" :wire:key="$museum->uuid" /></li>
                 <li><livewire:modals.create-exhibition :museum="$museum" :wire:key="$museum->uuid" /></li>
             </ul>
@@ -73,13 +73,13 @@
                 {{ $exhibitions->links() }}
             </div>
             <div class="py-5">
-                <table class="w-full p-5 table-fixed">
+                <table class="w-full p-5 table-fixed shadow">
                     <thead>
                         <tr class="bg-gray-700 text-white">
                             <th class="w-1/12 text-center p-3">@ucfirst(__('app.iteration'))</th>
                             <th class="w-7/12 text-center">@ucfirst(__('app.titles'))</th>
-                            <th class="w-2/12 text-center">@ucfirst(__('app.began_at'))</th>
-                            <th class="hidden md:table-cell md:w-2/12 text-center">@ucfirst(__('app.ended_at'))</th>
+                            <th class="hidden md:table-cell md:w-2/12 text-center">@ucfirst(__('app.began_at'))</th>
+                            <th class="w-2/12 text-center">@ucfirst(__('app.ended_at'))</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -111,8 +111,8 @@
                                     {{ $exhibition->title }}
                                 </a>
                             </td>
-                            <td class="text-center">@date($exhibition->began_at)</td>
-                            <td class="hidden md:table-cell text-center">@date($exhibition->ended_at)</td>
+                            <td class="hidden md:table-cell text-center">@date($exhibition->began_at)</td>
+                            <td class="text-center">@date($exhibition->ended_at)</td>
                         </tr>
                         @endforeach
                     </tbody>
