@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Exhibition;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AttachTagRequest;
 use App\Http\Requests\StoreTagRequest;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
@@ -43,10 +45,10 @@ class TagController extends Controller
         $this->authorize('create', Tag::class);
 
         $validated = $request->validated();
-        
+
         $tag = Str::of($request->input('name'))->lower();
         $type = Str::of($request->input('type'))->lower();
-        
+
         Tag::findOrCreate($tag, $type);
 
         return redirect()->route('front.tag.index')->with('success', 'All good!');
@@ -75,6 +77,28 @@ class TagController extends Controller
     }
 
     /**
+     * Attach the specified tag to an exhibition.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Tag  $tag
+     * @return \Illuminate\Http\Response
+     */
+    public function attach(AttachTagRequest $request, Tag $tag)
+    {
+        $this->authorize('update', Exhibition::class);
+
+        $validated = $request->validated();
+
+        $tag = Str::of($request->input('tag'))->lower();
+
+        $exhibition = Exhibition::findOrFail($request->input('uuid'));
+        $exhibition->attachTag($tag);
+        $exhibition->save();
+
+        return redirect()->route('front.exhibition.show', [''])->with('success', 'All good!');
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -86,7 +110,7 @@ class TagController extends Controller
         $this->authorize('update', Tag::class);
 
         $validated = $request->validated();
-        
+
         $tag = Str::of($request->input('name'))->lower();
         $type = Str::of($request->input('type'))->lower();
 
@@ -94,7 +118,7 @@ class TagController extends Controller
         $tag->slug = Str::slug($tag);
         $tag->name = $tag;
         $tag->type = $type;
-        $museum->save();
+        $tag->save();
 
         return redirect()->route('front.tag.index')->with('success', 'All good!');
     }

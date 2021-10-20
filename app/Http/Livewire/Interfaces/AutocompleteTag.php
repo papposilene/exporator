@@ -60,7 +60,7 @@ class AutocompleteTag extends Component
         if ($tag) {
             $this->showDropdown = true;
             $this->query = $tag['name'];
-            $this->selectedTag = $tag['id'];
+            $this->selectedTag = $tag['name'];
         }
     }
 
