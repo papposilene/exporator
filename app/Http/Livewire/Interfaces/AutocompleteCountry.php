@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Country;
+namespace App\Http\Livewire\Interfaces;
 
 use App\Models\Country;
 use Livewire\Component;
