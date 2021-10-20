@@ -15,6 +15,7 @@ return [
     'about' => 'a propos',
     'actions' => 'actions',
     'address' => 'adresse postale',
+    'all' => 'tout',
     'art_center' => 'centre d’art',
     'art_fair' => 'foire',
     'began_at' => 'date de début',
