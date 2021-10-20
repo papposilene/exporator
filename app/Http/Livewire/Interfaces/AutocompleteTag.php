@@ -70,17 +70,17 @@ class AutocompleteTag extends Component
     {
         $lang = app()->getLocale();
 
-        $this->tags = Tag::where('name->' . $lang, 'like', '%' . $this->query. '%')
-            ->orWhere('slug->' . $lang, 'like', '%' . $this->query. '%')
+        $this->tags = Tag::where('name', 'like', '%' . $this->query. '%')
+            ->orWhere('slug', 'like', '%' . $this->query. '%')
             ->orWhere('type', 'like', '%' . $this->query. '%')
             ->take(5)
             ->get()
-            ->map(function (Tag $tag) {
+            ->map(function ($item, $key) use ($lang) {
                 return [
-                    'id' => $tag->id,
-                    'name' => $tag->name,
-                    'slug' => $tag->slug,
-                    'type' => $tag->type,
+                    'id' => $item->id,
+                    'name' => $item->getTranslation('name', $lang),
+                    'slug' => $item->getTranslation('slug', $lang),
+                    'type' => $item->type,
                 ];
             });
         dd($this->tags);
