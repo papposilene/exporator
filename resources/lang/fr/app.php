@@ -131,5 +131,6 @@ return [
     'top1_of_countries' => 'pays le plus référencé : :name.',
     'top1_of_museums' => 'Musée le plus référencé : :name.',
     'type_is' => 'typologie de tag : :type.',
+    'unfollow_the' => 'cesser de suivre le :what',
     'until' => 'jusqu’au :date.',
 ];
