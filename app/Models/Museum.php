@@ -132,10 +132,10 @@ class Museum extends Model
         return $this->hasOneThrough(
             'App\Models\User',
             'App\Models\UserMuseum',
-            'museum_uuid', // Foreign key on the cars table...
-            'user_uuid', // Foreign key on the owners table...
-            'uuid', // Local key on the mechanics table...
-            'uuid' // Local key on the cars table...
+            'museum_uuid',
+            'user_uuid',
+            'uuid',
+            'uuid'
         );
     }  
 }
