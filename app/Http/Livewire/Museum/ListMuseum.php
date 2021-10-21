@@ -34,7 +34,10 @@ class ListMuseum extends Component
     {
         if (Str::of($this->filter)->trim()->isNotEmpty() === 'followed')
         {
-            $museums = UserMuseum::where('name', 'like', '%'.$this->search.'%')
+            $museums = Museum::withCount('hasExhibitions')->get();
+            $museums->followedByUser()
+                ->where('type', $this->type)
+                ->where('name', 'like', '%'.$this->search.'%')
                 ->orderBy('has_exhibitions_count', 'desc')
                 ->orderBy('name', 'asc')
                 ->get();
