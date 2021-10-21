@@ -22,15 +22,18 @@
                     d’<a href="{{ route('front.exhibition.calendar') }}" class="text-blue-700 hover:text-red-600">un agenda</a>.
                 </p>
             </div>
-            <div class="flex sm:flex-row lg:flex-col flex-grow shadow sm:w-full lg:w-1/4">
-                <livewire:dashboard.stat-museum />
-            </div>
-            <div class="flex sm:flex-row lg:flex-col flex-grow shadow lg:ml-3 sm:w-full lg:w-1/4">
-                <livewire:dashboard.stat-exhibition />
-            </div>
+
         </div>
         <div class="flex flex-row flex-wrap max-w-7xl mx-auto -mt-7 py-5 px-6">
-            <livewire:dashboard.stat-tag />
+            <div class="flex sm:flex-row lg:flex-col flex-grow flex-wrap bg-gray-300 lg:mr-3 p-5 shadow sm:w-full lg:w-1/3">
+                <livewire:dashboard.stat-museum />
+            </div>
+            <div class="flex sm:flex-row lg:flex-col flex-grow flex-wrap bg-gray-300 lg:mr-3 p-5 shadow sm:w-full lg:w-1/3">
+                <livewire:dashboard.stat-exhibition />
+            </div>
+            <div class="flex sm:flex-row lg:flex-col flex-grow flex-wrap bg-gray-300 lg:mr-3 p-5 shadow sm:w-full lg:w-1/3">
+                <livewire:dashboard.stat-tag />
+            </div>
         </div>
     </div>
 </div>
