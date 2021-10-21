@@ -4,8 +4,9 @@ namespace App\Http\Livewire\Museum;
 
 use App\Models\Museum;
 use App\Models\Type;
-use App\Models\UserMuseum;
+use App\Models\User;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -34,8 +35,9 @@ class ListMuseum extends Component
     {
         if (Str::of($this->filter)->trim()->isNotEmpty() === 'followed')
         {
-            $museums = Museum::withCount('hasExhibitions')->get();
-            $museums->followedByUser()
+            $user = Auth::id();
+            $museums = User::findOrFail($user);
+            $museums->followedMuseums()
                 ->where('type', $this->type)
                 ->where('name', 'like', '%'.$this->search.'%')
                 ->orderBy('has_exhibitions_count', 'desc')
