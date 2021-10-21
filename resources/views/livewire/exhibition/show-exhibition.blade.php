@@ -32,6 +32,11 @@
                     <a href="{{ $exhibition->inMuseum->link }}" class="text-blue-700 hover:text-red-600" target="_blank" rel="noopener">{{ $exhibition->inMuseum->link }}</a>
                 </li>
             </ul>
+            @auth
+            <ul class="bg-yellow-400 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
+                <li><livewire:interfaces.follow-exhibition :museum="$exhibition" :wire:key="$exhibition->uuid" /></li>
+            </ul>
+            @endauth
             @if ($exhibition->inMuseum->status === 1)
             <ul class="bg-green-100 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
             @else
