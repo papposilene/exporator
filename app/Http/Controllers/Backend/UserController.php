@@ -80,6 +80,33 @@ class UserController extends Controller
         UserExhibition::create([
             'user_uuid' => $user,
             'exhibition_uuid' => $exhibition->uuid,
+            'visited' => false,
+        ]);
+
+        return redirect()->back()->with('success', 'All good!');
+    }
+    
+    /**
+     * Visited exhibition
+     *
+     * @param  \Illuminate\Http\FollowExhibitionRequest  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function exhibition_visited(FollowExhibitionRequest $request)
+    {
+        $this->authorize('create', User::class);
+
+        $validated = $request->validated();
+        
+        $user = Auth::id();
+        $exhibition = Exhibition::findOrFail($request->input('exhibition_uuid'));
+        
+        UserExhibition::updateOrCreate([
+            'user_uuid' => $user,
+            'exhibition_uuid' => $exhibition->uuid,
+        ], 
+        [
+            'visited' => true
         ]);
 
         return redirect()->back()->with('success', 'All good!');
@@ -99,6 +126,32 @@ class UserController extends Controller
         
         $following = UserExhibition::findOrFail($request->input('follow_uuid'));
         $following->delete();
+
+        return redirect()->back()->with('success', 'All good!');
+    }
+    
+    /**
+     * Un-visited exhibition
+     *
+     * @param  \Illuminate\Http\FollowExhibitionRequest  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function exhibition_unvisited(FollowExhibitionRequest $request)
+    {
+        $this->authorize('create', User::class);
+
+        $validated = $request->validated();
+        
+        $user = Auth::id();
+        $exhibition = Exhibition::findOrFail($request->input('exhibition_uuid'));
+        
+        UserExhibition::updateOrCreate([
+            'user_uuid' => $user,
+            'exhibition_uuid' => $exhibition->uuid,
+        ], 
+        [
+            'visited' => false
+        ]);
 
         return redirect()->back()->with('success', 'All good!');
     }
