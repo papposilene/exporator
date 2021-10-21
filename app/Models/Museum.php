@@ -89,7 +89,7 @@ class Museum extends Model
     }
 
     /**
-     * Get the country for a specific museum.
+     * Get the country for a specific institution.
      */
     public function inCountry()
     {
@@ -101,7 +101,7 @@ class Museum extends Model
     }
 
     /**
-     * Get all the exhibitions for a specific museum.
+     * Get all the exhibitions for a specific institution.
      */
     public function hasExhibitions()
     {
@@ -113,7 +113,7 @@ class Museum extends Model
     }
 
     /**
-     * Get the type for a specific museum.
+     * Get the type for a specific institution.
      */
     public function hasType()
     {
@@ -122,5 +122,5 @@ class Museum extends Model
             'slug',
             'type'
         );
-    }
+    }    
 }
