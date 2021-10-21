@@ -32,7 +32,7 @@ class UserExhibition extends Model
      * @var array
      */
     protected $casts = [
-        //'uuid' => 'uuid',
+        'visited' => 'boolean',
     ];
 
     /**
@@ -65,6 +65,7 @@ class UserExhibition extends Model
         'uuid',
         'user_uuid',
         'exhibition_uuid',
+        'visited',
     ];
 
     /**
