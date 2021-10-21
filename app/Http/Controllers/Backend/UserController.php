@@ -162,7 +162,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\FollowTagRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function museum_tag(FollowTagRequest $request)
+    public function tag_follow(FollowTagRequest $request)
     {
         $this->authorize('create', User::class);
 
