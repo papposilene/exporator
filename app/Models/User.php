@@ -77,7 +77,7 @@ class User extends Authenticatable
     }
     
     /**
-     * Get all the institutions followed by an user.
+     * Get all the exhibitions followed by an user.
      */
     public function followedExhibitions()
     {
@@ -92,7 +92,7 @@ class User extends Authenticatable
     }
     
     /**
-     * Get all the institutions followed by an user.
+     * Get all the tags followed by an user.
      */
     public function followedTags()
     {
