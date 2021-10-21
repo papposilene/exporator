@@ -34,7 +34,7 @@
             </ul>
             @auth
             <ul class="bg-yellow-400 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
-                <li><livewire:interfaces.follow-exhibition :museum="$exhibition" :wire:key="$exhibition->uuid" /></li>
+                <li><livewire:interfaces.follow-exhibition :exhibition="$exhibition" :wire:key="$exhibition->uuid" /></li>
             </ul>
             @endauth
             @if ($exhibition->inMuseum->status === 1)
