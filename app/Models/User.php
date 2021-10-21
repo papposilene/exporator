@@ -58,4 +58,49 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+    
+    /**
+     * Get all the institutions followed by an user.
+     */
+    public function followedMuseums()
+    {
+        return $this->hasManyThrough(
+            'App\Models\Museum',
+            'App\Models\UserMuseum',
+            'uuid',
+            'museum_uuid',
+            'user_uuid',
+            'uuid'
+        );
+    }
+    
+    /**
+     * Get all the institutions followed by an user.
+     */
+    public function followedExhibitions()
+    {
+        return $this->hasManyThrough(
+            'App\Models\Exhibition',
+            'App\Models\UserExhibition',
+            'uuid',
+            'exhibition_uuid',
+            'user_uuid',
+            'uuid'
+        );
+    }
+    
+    /**
+     * Get all the institutions followed by an user.
+     */
+    public function followedTags()
+    {
+        return $this->hasManyThrough(
+            'App\Models\Tag',
+            'App\Models\UserTag',
+            'uuid',
+            'tag_uuid',
+            'user_uuid',
+            'uuid'
+        );
+    }
 }
