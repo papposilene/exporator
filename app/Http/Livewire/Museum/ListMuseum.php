@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Museum;
 
 use App\Models\Museum;
 use App\Models\Type;
+use App\Models\UserMuseum;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -31,7 +32,14 @@ class ListMuseum extends Component
 
     public function render()
     {
-        if (Str::of($this->filter)->trim()->isNotEmpty() === 'no_exhibition')
+        if (Str::of($this->filter)->trim()->isNotEmpty() === 'followed')
+        {
+            $museums = UserMuseum::where('name', 'like', '%'.$this->search.'%')
+                ->orderBy('has_exhibitions_count', 'desc')
+                ->orderBy('name', 'asc')
+                ->get();
+        }
+        elseif (Str::of($this->filter)->trim()->isNotEmpty() === 'no_exhibition')
         {
             $museums = Museum::withCount('hasExhibitions')->get();
             $museums->whereDate('ended_at', '<', date('Y-m-d'))
