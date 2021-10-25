@@ -26,6 +26,7 @@ class CreateMuseumsTable extends Migration
             $table->decimal('lat', 20, 16);
             $table->decimal('lon', 20, 16);
             $table->string('link', 255)->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
