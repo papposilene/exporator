@@ -71,8 +71,11 @@ class TagSeeder extends Seeder
             'gender' => 'homme',
             'gender' => 'collectif',
             // Label
-            'label' => 'musée de france',
+            'label' => 'architecture contemporaine remarquable',
             'label' => 'exposition d’intérêt national',
+            'label' => 'maisons des illustres',
+            'label' => 'musée de france',
+            'label' => 'patrimoine européen',
             // Techniques artistiques
             'technique' => 'architecture',
             'technique' => 'art de la scène',
