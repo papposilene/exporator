@@ -98,6 +98,7 @@ class TagSeeder extends Seeder
             'theme' => 'littérature',
             'theme' => 'militaire',
             'theme' => 'prix artistique',
+            'theme' => 'rétrospective',
             'theme' => 'sciences et techniques',
         ];
 
