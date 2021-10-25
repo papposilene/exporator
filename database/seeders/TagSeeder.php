@@ -51,8 +51,9 @@ class TagSeeder extends Seeder
             'movement' => 'impressionnisme',
             'movement' => 'japonisme',
             'movement' => 'land art',
-            'movement' => 'orientalisme',
             'movement' => 'minimalisme',
+            'movement' => 'orientalisme',
+            'movement' => 'pop art',
             'movement' => 'post-impressionnisme',
             'movement' => 'post-modernisme',
             'movement' => 'primitivisme',
@@ -71,6 +72,7 @@ class TagSeeder extends Seeder
             'gender' => 'collectif',
             // Label
             'label' => 'musée de france',
+            'label' => 'exposition d’intérêt national',
             // Techniques artistiques
             'technique' => 'architecture',
             'technique' => 'art de la scène',
