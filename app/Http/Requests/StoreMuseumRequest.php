@@ -22,6 +22,7 @@ class StoreMuseumRequest extends FormRequest
             'latitude' => 'required|string|max:20',
             'longitude' => 'required|string|max:20',
             'link' => 'nullable|url',
+            'image' => 'nullable|image|size:2048',
         ];
     }
 }
