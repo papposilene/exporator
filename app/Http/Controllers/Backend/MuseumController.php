@@ -65,6 +65,13 @@ class MuseumController extends Controller
         $museum->lon = $request->input('longitude');
         $museum->link = $request->input('link');
         $museum->save();
+        
+        if ($request->hasFile('image') && $request->file('image')->isValid())
+        {
+            $request->image->storeAs(
+                'places', $slug
+            );
+        }
 
         return redirect()->route('front.museum.show', ['slug' => $slug])->with('success', 'All good!');
     }
@@ -132,9 +139,10 @@ class MuseumController extends Controller
         $validated = $request->validated();
 
         $country = Country::where('cca3', $request->input('cca3'))->firstOrFail();
+        $slug = Str::slug($request->input('city') . ' ' . $request->input('name'), '-');
 
         $museum = Museum::findOrFail($request->input('uuid'));
-        $museum->slug = Str::slug($request->input('city') . ' ' . $request->input('name'), '-');
+        $museum->slug = $slug;
         $museum->name = $request->input('name');
         $museum->type = $request->input('type');
         $museum->status = (bool) $request->input('status');
@@ -145,6 +153,13 @@ class MuseumController extends Controller
         $museum->lon = $request->input('longitude');
         $museum->link = $request->input('link');
         $museum->save();
+        
+        if ($request->hasFile('image') && $request->file('image')->isValid())
+        {
+            $request->image->storeAs(
+                'places', $slug
+            );
+        }
 
         return redirect()->route('front.museum.show', ['slug' => $request->input('slug')])->with('success', 'All good!');
     }
