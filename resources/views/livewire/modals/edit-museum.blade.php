@@ -75,6 +75,11 @@
                     <x-forms.label for="link">@ucfirst(__('app.link'))</x-forms.label>
                     <x-forms.input id="link" class="block mt-1 w-full" type="text" name="link" required value="{{ $museum->link }}" />
                 </div>
+                
+                <div class="mt-4">
+                    <x-forms.label for="image">@ucfirst(__('app.image'))</x-forms.label>
+                    <x-forms.file id="image" class="block mt-1 w-full" type="text" name="image" />
+                </div>
 
                 <div class="flex items-center justify-end mt-4">
                     <x-forms.button class="ml-4">
