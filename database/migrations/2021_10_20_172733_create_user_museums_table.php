@@ -15,8 +15,8 @@ class CreateUserMuseumsTable extends Migration
     {
         Schema::create('user_museums', function (Blueprint $table) {
             $table->uuid('uuid')->primary();
-            $table->uuid('user_uuid');
-            $table->foreign('user_uuid')->references('uuid')->on('users');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->uuid('museum_uuid');
             $table->foreign('museum_uuid')->references('uuid')->on('museums');
             $table->timestamps();
