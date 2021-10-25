@@ -24,6 +24,7 @@ class UpdateMuseumRequest extends FormRequest
             'latitude' => 'required|integer|max:20',
             'longitude' => 'required|integer|max:20',
             'link' => 'nullable|url',
+            'image' => 'nullable|image|size:2048',
         ];
     }
 }
