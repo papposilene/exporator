@@ -99,9 +99,9 @@ class TagSeeder extends Seeder
         // Drop the table
         DB::table('tags')->delete();
 
-        foreach ($tags as $data)
+        foreach ($tags as $key => $value)
         {
-            Tag::findOrCreate($data[1], $data[0]);
+            Tag::findOrCreate($value, $key);
         }
     }
 }
