@@ -43,10 +43,10 @@
             </div>
             @endif
 
-            @if($museums->count() > 0)
+            @if($places->count() > 0)
             <div class="flex flex-wrap justify-end">
                 <x-forms.input wire:model="search" type="search" class="relative float-right h-9 ml-2 mb-3" :placeholder="@ucfirst(__('app.search'))" />
-                {{ $museums->links() }}
+                {{ $places->links() }}
             </div>
             <div class="py-5">
                 <table class="w-full p-5 table-fixed">
@@ -54,7 +54,7 @@
                         <tr class="bg-gray-700 text-white">
                             <th class="w-1/12 text-center p-3">@ucfirst(__('app.iteration'))</th>
                             <th class="w-2/12 text-center">@ucfirst(__('app.cities'))</th>
-                            <th class="w-6/12 text-center">@ucfirst(__('app.museums'))</th>
+                            <th class="w-6/12 text-center">@ucfirst(__('app.places'))</th>
                             <th class="w-2/12 text-center">@ucfirst(__('app.types'))</th>
                             <th class="w-6/12 text-center">@ucfirst(__('app.status'))</th>
                             <th class="w-2/12 text-center">@ucfirst(__('app.exhibitions'))</th>
@@ -64,22 +64,22 @@
                         @foreach($museums as $museum)
                         <tr class="h-12 w-12 p-4">
                             <td class="text-center">{{ $loop->iteration }}</td>
-                            <td class="text-center">{{ $museum->city }}</td>
+                            <td class="text-center">{{ $place->city }}</td>
                             <td>
-                                <a href="{{ route('admin.museum.show', ['slug' => $museum->slug]) }}"
-                                    title="{{ $museum->name }}" aria-label="{{ $museum->name }}">
-                                    {{ $museum->name }}
+                                <a href="{{ route('front.place.show', ['slug' => $place->slug]) }}"
+                                    title="{{ $place->name }}" aria-label="{{ $place->name }}">
+                                    {{ $place->name }}
                                 </a>
                             </td>
-                            <td class="text-center">@ucfirst(__('app.' . Str::slug($museum->type, '_')))</td>
-                            <td class="text-center">{{ $museum->status }}</td>
-                            <td class="text-center">{{ $museum->hasExhibitions()->count() }}</td>
+                            <td class="text-center">@ucfirst(__('app.' . Str::slug($place->type, '_')))</td>
+                            <td class="text-center">{{ $place->status }}</td>
+                            <td class="text-center">{{ $place->hasExhibitions()->count() }}</td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
-            {{ $museums->links() }}
+            {{ $places->links() }}
             @else
             <div class="py-5">
                 <p class="text-center py-10">
