@@ -4,10 +4,10 @@ namespace App\Http\Livewire\Interfaces;
 
 use Livewire\Component;
 
-class AutocompleteMuseum extends Component
+class AutocompletePlace extends Component
 {
     public function render()
     {
-        return view('livewire.interfaces.autocomplete-museum');
+        return view('livewire.interfaces.autocomplete-places');
     }
 }
