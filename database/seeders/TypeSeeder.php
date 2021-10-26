@@ -28,7 +28,7 @@ class TypeSeeder extends Seeder
         ];
 
         // Drop the table
-        DB::table('museums_types')->delete();
+        DB::table('places_types')->delete();
 
         foreach ($types as $data)
         {
