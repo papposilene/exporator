@@ -15,8 +15,8 @@ class CreateExhibitionsTable extends Migration
     {
         Schema::create('exhibitions', function (Blueprint $table) {
             $table->uuid('uuid')->primary();
-            $table->uuid('museum_uuid');
-            $table->foreign('museum_uuid')->references('uuid')->on('museums');
+            $table->uuid('place_uuid');
+            $table->foreign('place_uuid')->references('uuid')->on('places');
             $table->string('slug', 255);
             $table->string('title', 255);
             $table->date('began_at');
