@@ -36,7 +36,7 @@ class ListPlace extends Component
         if (Str::of($this->filter)->trim()->isNotEmpty() === 'followed')
         {
             $user = Auth::id();
-            $museums = User::findOrFail($user);
+            $places = User::findOrFail($user);
             $places->followedPlaces()
                 ->where('type', $this->type)
                 ->where('name', 'like', '%'.$this->search.'%')
@@ -72,10 +72,10 @@ class ListPlace extends Component
                 ->orderBy('name', 'asc')
                 ->paginate(25);
         }
-        
+
         $types = Type::orderBy('slug', 'asc')->get();
 
-        return view('livewire.place.list-museum', [
+        return view('livewire.place.list-place', [
             'places' => $places,
             'types' => $types,
         ]);

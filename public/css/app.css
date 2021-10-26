@@ -4084,10 +4084,6 @@ svg.leaflet-image-layer.leaflet-interactive path {
 		margin-right: 0.75rem;
 	}
 
-	.lg\:ml-3 {
-		margin-left: 0.75rem;
-	}
-
 	.lg\:table-cell {
 		display: table-cell;
 	}
@@ -4110,6 +4106,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
 	.lg\:grid-cols-5 {
 		grid-template-columns: repeat(5, minmax(0, 1fr));
+	}
+
+	.lg\:flex-row {
+		flex-direction: row;
 	}
 
 	.lg\:flex-col {
