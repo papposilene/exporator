@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Livewire\Museum;
+namespace App\Http\Livewire\Place;
 
-use App\Models\Museum;
+use App\Models\Place;
 use App\Models\Type;
 use App\Models\User;
 use Illuminate\Support\Str;
@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class ListMuseum extends Component
+class ListPlace extends Component
 {
     use WithPagination;
 
@@ -37,7 +37,7 @@ class ListMuseum extends Component
         {
             $user = Auth::id();
             $museums = User::findOrFail($user);
-            $museums->followedMuseums()
+            $places->followedPlaces()
                 ->where('type', $this->type)
                 ->where('name', 'like', '%'.$this->search.'%')
                 ->orderBy('has_exhibitions_count', 'desc')
@@ -46,8 +46,8 @@ class ListMuseum extends Component
         }
         elseif (Str::of($this->filter)->trim()->isNotEmpty() === 'no_exhibition')
         {
-            $museums = Museum::withCount('hasExhibitions')->get();
-            $museums->whereDate('ended_at', '<', date('Y-m-d'))
+            $places = Place::withCount('hasExhibitions')->get();
+            $places->whereDate('ended_at', '<', date('Y-m-d'))
                 ->where('has_exhibitions_count', 0)
                 ->where('type', $this->type)
                 ->where('name', 'like', '%'.$this->search.'%')
@@ -57,7 +57,7 @@ class ListMuseum extends Component
         }
         elseif (Str::of($this->type)->trim()->isNotEmpty())
         {
-            $museums = Museum::withCount('hasExhibitions')
+            $places = Place::withCount('hasExhibitions')
                 ->where('type', $this->type)
                 ->where('name', 'like', '%'.$this->search.'%')
                 ->orderBy('has_exhibitions_count', 'desc')
@@ -66,7 +66,7 @@ class ListMuseum extends Component
         }
         else
         {
-            $museums = Museum::withCount('hasExhibitions')
+            $places = Place::withCount('hasExhibitions')
                 ->where('name', 'like', '%'.$this->search.'%')
                 ->orderBy('has_exhibitions_count', 'desc')
                 ->orderBy('name', 'asc')
@@ -75,8 +75,8 @@ class ListMuseum extends Component
         
         $types = Type::orderBy('slug', 'asc')->get();
 
-        return view('livewire.museum.list-museum', [
-            'museums' => $museums,
+        return view('livewire.place.list-museum', [
+            'places' => $places,
             'types' => $types,
         ]);
     }
