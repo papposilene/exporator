@@ -43,8 +43,8 @@
     </ol>
     <!-- h4 class="font-bold text-1xl mt-5 mb-2">@ucfirst(__('app.no_exhibition'))</h4>
     <ol class="list-inside list-disc">
-        @if(count($open_museums_without_exhibition) > 0)
-        @foreach($open_museums_without_exhibition->where('has_exhibitions_count', 0) as $no_exhibition)
+        @if(count($open_places_without_exhibition) > 0)
+        @foreach($open_places_without_exhibition->where('has_exhibitions_count', 0) as $no_exhibition)
         <li>
             <a href="{{ route('front.museum.show', ['slug' => $no_exhibition->slug]) }}">
                 {{ $no_exhibition->name }}

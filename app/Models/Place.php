@@ -107,7 +107,7 @@ class Place extends Model
     {
         return $this->hasMany(
             'App\Models\Exhibition',
-            'museum_uuid',
+            'place_uuid',
             'uuid'
         );
     }
@@ -123,7 +123,7 @@ class Place extends Model
             'type'
         );
     }
-    
+
     /**
      * Get if the user has followed the place
      */
@@ -137,5 +137,5 @@ class Place extends Model
             'uuid',
             'id'
         );
-    }  
+    }
 }

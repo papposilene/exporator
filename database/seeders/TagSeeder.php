@@ -19,16 +19,16 @@ class TagSeeder extends Seeder
     {
         // Drop the table
         DB::table('tags')->delete();
-        
+
         $lang = app()->getLocale();
-        
+
         $tagsFile = Storage::disk('install')->get('tags.json');
         $tagsData = json_decode($tagsFile);
         foreach ($tagsData as $data)
         {
             $tag = Tag::findOrCreate(
-                'tag' => addslashes($data->tag->{'$lang'}),
-                'type' => addslashes($data->type)
+                addslashes($data->tag->{$lang}),
+                addslashes($data->type)
             );
         }
     }

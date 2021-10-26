@@ -23,7 +23,7 @@ class StatPlace extends Component
             ->orderBy('name', 'asc')
             ->get();
 
-        return view('livewire.dashboard.stat-museum',
+        return view('livewire.dashboard.stat-place',
             compact(
                 'places',
                 'top1_of_places',
