@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 use Spatie\Tags\HasTags;
 
-class Museum extends Model
+class Place extends Model
 {
     use HasFactory, HasTags, SoftDeletes;
 
@@ -17,7 +17,7 @@ class Museum extends Model
      *
      * @var string
      */
-    protected $table = 'museums';
+    protected $table = 'places';
     protected $primaryKey = 'uuid';
 
     /**
@@ -131,11 +131,11 @@ class Museum extends Model
     {
         return $this->hasOneThrough(
             'App\Models\User',
-            'App\Models\UserMuseum',
-            'museum_uuid',
-            'user_uuid',
+            'App\Models\UserPlace',
+            'place_uuid',
+            'user_id',
             'uuid',
-            'uuid'
+            'id'
         );
     }  
 }
