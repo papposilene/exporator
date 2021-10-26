@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserMuseumsTable extends Migration
+class CreateUserPlacesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateUserMuseumsTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_museums', function (Blueprint $table) {
+        Schema::create('user_places', function (Blueprint $table) {
             $table->uuid('uuid')->primary();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->uuid('museum_uuid');
-            $table->foreign('museum_uuid')->references('uuid')->on('museums');
+            $table->uuid('place_uuid');
+            $table->foreign('place_uuid')->references('uuid')->on('places');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -31,6 +31,6 @@ class CreateUserMuseumsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_museums');
+        Schema::dropIfExists('user_places');
     }
 }
