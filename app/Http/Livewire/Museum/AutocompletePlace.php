@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Livewire\Museum;
+namespace App\Http\Livewire\Place;
 
-use App\Models\Museum;
+use App\Models\Place;
 use Livewire\Component;
 
-class AutocompleteMuseum extends Component
+class AutocompletePlace extends Component
 {
     public $query = '';
-    public array $museums = [];
-    public string $selectedMuseum = '';
+    public array $places = [];
+    public string $selectedPlace = '';
     public int $highlightIndex = 0;
     public bool $showDropdown;
 
@@ -20,10 +20,10 @@ class AutocompleteMuseum extends Component
 
     public function reset(...$properties)
     {
-        $this->countries = [];
+        $this->places = [];
         $this->highlightIndex = 0;
         $this->query = '';
-        $this->selectedMuseum = '';
+        $this->selectedPlace = '';
         $this->showDropdown = true;
     }
 
@@ -34,7 +34,7 @@ class AutocompleteMuseum extends Component
 
     public function incrementHighlight()
     {
-        if ($this->highlightIndex === count($this->museum) - 1) {
+        if ($this->highlightIndex === count($this->place) - 1) {
             $this->highlightIndex = 0;
             return;
         }
@@ -45,28 +45,28 @@ class AutocompleteMuseum extends Component
     public function decrementHighlight()
     {
         if ($this->highlightIndex === 0) {
-            $this->highlightIndex = count($this->museum) - 1;
+            $this->highlightIndex = count($this->place) - 1;
             return;
         }
 
         $this->highlightIndex--;
     }
 
-    public function selectMuseum($name = null)
+    public function selectPlace($name = null)
     {
         $name = $name ?: $this->highlightIndex;
-        $museum = $this->museums[$name] ?? null;
+        $place = $this->places[$name] ?? null;
 
-        if ($museum) {
+        if ($place) {
             $this->showDropdown = true;
-            $this->query = $museum['name'];
-            $this->selectedMuseum = $museum['uuid'];
+            $this->query = $place['name'];
+            $this->selectedPlace = $place['uuid'];
         }
     }
 
     public function updatedQuery()
     {
-        $this->museums = Museum::where('name', 'like', '%' . $this->query. '%')
+        $this->places = Place::where('name', 'like', '%' . $this->query. '%')
             ->orWhere('slug', 'like', '%' . $this->query. '%')
             ->take(5)
             ->get()
@@ -75,6 +75,6 @@ class AutocompleteMuseum extends Component
 
     public function render()
     {
-        return view('livewire.museum.autocomplete-museum');
+        return view('livewire.place.autocomplete-place');
     }
 }
