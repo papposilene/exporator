@@ -2,7 +2,7 @@
 
 Exporator is an Laravel-based application for referencing temporary exhibitions.
 
-### Museums
+### Places
 
 A place can be a museum, an art gallery, a library, a foundation, an art center, an art fair or an other type of institution. 
 You can import a list of places in a XLS format with the following columns : name, type, is_open, address, city, cca3 country code, geolocalisation (latitude and longitude) and link. 
