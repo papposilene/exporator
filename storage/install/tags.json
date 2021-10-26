@@ -1,0 +1,302 @@
+[
+  {
+    "type":"art",
+    "tag":"archéologie"
+  },
+  {
+    "type":"art",
+    "tag":"art du moyen âge"
+  },
+  {
+    "type":"art",
+    "tag":"art de l'islam"
+  },
+  {
+    "type":"art",
+    "tag":"art de la renaissance"
+  },
+  {
+    "type":"art",
+    "tag":"art baroque"
+  },
+  {
+    "type":"art",
+    "tag":"art moderne"
+  },
+  {
+    "type":"art",
+    "tag":"art contemporain"
+  },
+  {
+    "type":"art",
+    "tag":"art brut"
+  },
+  {
+    "type":"art",
+    "tag":"art naïf"
+  },
+  {
+    "type":"movement",
+    "tag":"art cinétique"
+  },
+  {
+    "type":"movement",
+    "tag":"art conceptuel"
+  },
+  {
+    "type":"movement",
+    "tag":"art déco"
+  },
+  {
+    "type":"movement",
+    "tag":"art nouveau"
+  },
+  {
+    "type":"movement",
+    "tag":"art populaire"
+  },
+  {
+    "type":"movement",
+    "tag":"abstraction"
+  },
+  {
+    "type":"movement",
+    "tag":"action painting"
+  },
+  {
+    "type":"movement",
+    "tag":"bauhaus"
+  },
+  {
+    "type":"movement",
+    "tag":"cobra"
+  },
+  {
+    "type":"movement",
+    "tag":"constructivisme"
+  },
+  {
+    "type":"movement",
+    "tag":"cubisme"
+  },
+  {
+    "type":"movement",
+    "tag":"dada"
+  },
+  {
+    "type":"movement",
+    "tag":"de stilj"
+  },
+  {
+    "type":"movement",
+    "tag":"der blaue reiter"
+  },
+  {
+    "type":"movement",
+    "tag":"école de barbizon"
+  },
+  {
+    "type":"movement",
+    "tag":"expressionnisme"
+  },
+  {
+    "type":"movement",
+    "tag":"fauvisme"
+  },
+  {
+    "type":"movement",
+    "tag":"fluxus"
+  },
+  {
+    "type":"movement",
+    "tag":"futurisme"
+  },
+  {
+    "type":"movement",
+    "tag":"impressionnisme"
+  },
+  {
+    "type":"movement",
+    "tag":"japonisme"
+  },
+  {
+    "type":"movement",
+    "tag":"land art"
+  },
+  {
+    "type":"movement",
+    "tag":"minimalisme"
+  },
+  {
+    "type":"movement",
+    "tag":"orientalisme"
+  },
+  {
+    "type":"movement",
+    "tag":"pop art"
+  },
+  {
+    "type":"movement",
+    "tag":"post-impressionnisme"
+  },
+  {
+    "type":"movement",
+    "tag":"post-modernisme"
+  },
+  {
+    "type":"movement",
+    "tag":"primitivisme"
+  },
+  {
+    "type":"movement",
+    "tag":"romantisme"
+  },
+  {
+    "type":"movement",
+    "tag":"suprématisme"
+  },
+  {
+    "type":"movement",
+    "tag":"surréalisme"
+  },
+  {
+    "type":"continent",
+    "tag":"afrique"
+  },
+  {
+    "type":"continent",
+    "tag":"amériques"
+  },
+  {
+    "type":"continent",
+    "tag":"asie"
+  },
+  {
+    "type":"continent",
+    "tag":"europe"
+  },
+  {
+    "type":"continent",
+    "tag":"océanie"
+  },
+  {
+    "type":"gender",
+    "tag":"femme"
+  },
+  {
+    "type":"gender",
+    "tag":"homme"
+  },
+  {
+    "type":"gender",
+    "tag":"collectif"
+  },
+  {
+    "type":"label",
+    "tag":"architecture contemporaine remarquable"
+  },
+  {
+    "type":"label",
+    "tag":"exposition d'intérêt national"
+  },
+  {
+    "type":"label",
+    "tag":"maisons des illustres"
+  },
+  {
+    "type":"label",
+    "tag":"musée de france"
+  },
+  {
+    "type":"label",
+    "tag":"patrimoine européen"
+  },
+  {
+    "type":"technique",
+    "tag":"architecture"
+  },
+  {
+    "type":"technique",
+    "tag":"art de la scène"
+  },
+  {
+    "type":"technique",
+    "tag":"bande dessinée"
+  },
+  {
+    "type":"technique",
+    "tag":"céramique"
+  },
+  {
+    "type":"technique",
+    "tag":"cinéma"
+  },
+  {
+    "type":"technique",
+    "tag":"dessin"
+  },
+  {
+    "type":"technique",
+    "tag":"estampe"
+  },
+  {
+    "type":"technique",
+    "tag":"installation"
+  },
+  {
+    "type":"technique",
+    "tag":"musique"
+  },
+  {
+    "type":"technique",
+    "tag":"nouveaux médias"
+  },
+  {
+    "type":"technique",
+    "tag":"orfèvrerie"
+  },
+  {
+    "type":"technique",
+    "tag":"peinture"
+  },
+  {
+    "type":"technique",
+    "tag":"photographie"
+  },
+  {
+    "type":"technique",
+    "tag":"sculpture"
+  },
+  {
+    "type":"theme",
+    "tag":"design"
+  },
+  {
+    "type":"theme",
+    "tag":"fashion"
+  },
+  {
+    "type":"theme",
+    "tag":"histoire"
+  },
+  {
+    "type":"theme",
+    "tag":"littérature"
+  },
+  {
+    "type":"theme",
+    "tag":"militaire"
+  },
+  {
+    "type":"theme",
+    "tag":"prix artistique"
+  },
+  {
+    "type":"theme",
+    "tag":"rétrospective"
+  },
+  {
+    "type":"theme",
+    "tag":"sciences et techniques"
+  }
+]
