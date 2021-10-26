@@ -48,7 +48,7 @@ Route::get('/place/{slug}', ShowPlace::class)->name('front.place.show');
 
 // Exhibitions
 Route::get('/exhibitions', ListExhibition::class)->name('front.exhibition.index');
-Route::get('/museum/{museum}/exhibition/{exhibition}', ShowExhibition::class)->name('front.exhibition.show');
+Route::get('/museum/{place}/exhibition/{exhibition}', ShowExhibition::class)->name('front.exhibition.show');
 Route::get('/exhibitions/propose', ProposeExhibition::class)->name('front.exhibition.propose');
 Route::get('/exhibitions/calendar', CalendarExhibition::class)->name('front.exhibition.calendar');
 Route::get('/exhibitions/map', MapExhibition::class)->name('front.exhibition.map');
