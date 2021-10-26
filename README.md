@@ -2,6 +2,19 @@
 
 Exporator is an Laravel-based application for referencing temporary exhibitions.
 
+### Museums
+
+A place can be a museum, an art gallery, a library, a foundation, an art center, an art fair or an other type of institution. 
+You can import a list of places in a XLS format with the following columns : name, type, is_open, address, city, cca3 country code, geolocalisation (latitude and longitude) and link. 
+
+### Exhibitions
+
+You can import a list of exhibitions in a XLS format with the following columns : place, title, began_at, ended_at, description, link, price and tags (type1:tag1,type1:tag2,type2,tag:1). 
+
+### Tags
+
+Each place or exhibition can be tagged with keywords.
+
 ## Running on Laravel 8
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel is accessible, powerful, and provides tools required for large, robust applications.
