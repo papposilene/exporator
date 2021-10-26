@@ -90,7 +90,7 @@ class Exhibition extends Model
     }
 
     /**
-     * Get all the exhibitions for a specific museum.
+     * Get all the exhibitions for a specific place.
      */
     public function inPlace()
     {
