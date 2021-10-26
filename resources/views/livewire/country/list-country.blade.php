@@ -20,7 +20,7 @@
                             <th class="w-1/12 text-center p-3">@ucfirst(__('app.iteration'))</th>
                             <th class="w-1/12 text-center">@ucfirst(__('app.flags'))</th>
                             <th class="w-6/12 text-center">@ucfirst(__('app.countries'))</th>
-                            <th class="w-2/12 text-center">@ucfirst(__('app.museums'))</th>
+                            <th class="w-2/12 text-center">@ucfirst(__('app.places'))</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,7 +34,7 @@
                                     {{ $country->name_common_fra }}
                                 </a>
                             </td>
-                            <td class="text-center">{{ $country->hasMuseums()->count() }}</td>
+                            <td class="text-center">{{ $country->hasPlaces()->count() }}</td>
                         </tr>
                         @endforeach
                     </tbody>
