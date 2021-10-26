@@ -18,7 +18,7 @@ use Maatwebsite\Excel\Concerns\WithValidation;
 use Maatwebsite\Excel\Validators\Failure;
 use Spatie\Tags\Tag;
 
-class MuseumsImport implements ToModel, SkipsEmptyRows, WithBatchInserts, WithChunkReading, WithHeadingRow, WithValidation
+class PlacesImport implements ToModel, SkipsEmptyRows, WithBatchInserts, WithChunkReading, WithHeadingRow, WithValidation
 {
     use Importable, SkipsFailures;
 
@@ -40,7 +40,7 @@ class MuseumsImport implements ToModel, SkipsEmptyRows, WithBatchInserts, WithCh
         $status = ($row['status'] === 'open' ? true : false);
 
 
-        $museum = Museum::updateOrCreate([
+        $place = Place::updateOrCreate([
             'slug' => $slug,
             'name' => $row['name'],
         ],
@@ -72,7 +72,7 @@ class MuseumsImport implements ToModel, SkipsEmptyRows, WithBatchInserts, WithCh
                 $tag_tag = Str::of($splittag[0])->lower();
                 
                 $tagged = Tag::findOrCreate($tag_tag, $tag_type);
-                $museum->attachTags([$tag_tag], $tag_type);
+                $place->attachTags([$tag_tag], $tag_type);
             }
         }
     }
@@ -90,7 +90,7 @@ class MuseumsImport implements ToModel, SkipsEmptyRows, WithBatchInserts, WithCh
     public function rules(): array
     {
         return [
-            '*.name' => Rule::unique('museums', 'name'),
+            '*.name' => Rule::unique('places', 'name'),
             '*.type' => [
                 'required',
                 'in:museum,gallery,library,foundation,art center,other'
