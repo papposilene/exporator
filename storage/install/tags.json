@@ -1,302 +1,523 @@
 [
   {
     "type":"art",
-    "tag":"archéologie"
+    "tag": {
+        "fr": "archéologie",
+        "en": "archeology"
+    }
   },
   {
     "type":"art",
-    "tag":"art du moyen âge"
+    "tag":{
+        "fr": "art du moyen âge"
+    }
   },
   {
     "type":"art",
-    "tag":"art de l'islam"
+    "tag":{
+        "fr": "art de l'islam"
+    }
   },
   {
     "type":"art",
-    "tag":"art de la renaissance"
+    "tag":{
+        "fr": "art de la renaissance"
+    }
   },
   {
     "type":"art",
-    "tag":"art baroque"
+    "tag":{
+        "fr": "art baroque",
+        "en": "modern art"
+    }
   },
   {
     "type":"art",
-    "tag":"art moderne"
+    "tag":{
+        "fr": "art moderne",
+        "en": "modern art"
+    }
+        
   },
   {
     "type":"art",
-    "tag":"art contemporain"
+    "tag":{
+        "fr": "art contemporain",
+        "en": "contemporary art"
+    }
+  
   },
   {
     "type":"art",
-    "tag":"art brut"
+    "tag":{
+        "fr": "art brut",
+        "en": "outsider art"
+    }
   },
   {
     "type":"art",
-    "tag":"art naïf"
+    "tag":{
+        "fr": "art naïf",
+        "en": "naive art"
+    }
   },
   {
     "type":"movement",
-    "tag":"art cinétique"
+    "tag":{
+        "fr": "art cinétique"
+    }
   },
   {
     "type":"movement",
-    "tag":"art conceptuel"
+    "tag":{
+        "fr": "art conceptuel"
+    }
   },
   {
     "type":"movement",
-    "tag":"art déco"
+    "tag":{
+        "fr": "art déco"
+    }
   },
   {
     "type":"movement",
-    "tag":"art nouveau"
+    "tag":{
+        "fr": "art nouveau"
+    }
   },
   {
     "type":"movement",
-    "tag":"art populaire"
+    "tag":{
+        "fr": "art populaire",
+        "en": "folk art"
+    }
   },
   {
     "type":"movement",
-    "tag":"abstraction"
+    "tag":{
+        "fr": "abstraction",
+        "en": "abstraction"
+    }
   },
   {
     "type":"movement",
-    "tag":"action painting"
+    "tag":{
+        "fr": "action painting",
+        "en": "action painting"
+    }
   },
   {
     "type":"movement",
-    "tag":"bauhaus"
+    "tag":{
+        "fr": "bauhaus",
+        "en": "bauhaus"
+    }
   },
   {
     "type":"movement",
-    "tag":"cobra"
+    "tag":{
+        "fr": "cobra",
+        "en": "cobra"
+    }
   },
   {
     "type":"movement",
-    "tag":"constructivisme"
+    "tag":{
+        "fr": "constructivisme",
+        "en": "constructivism"
+    }
   },
   {
     "type":"movement",
-    "tag":"cubisme"
+    "tag":{
+        "fr": "cubisme",
+        "en": "cubism"
+    }
   },
   {
     "type":"movement",
-    "tag":"dada"
+    "tag":{
+        "fr": "dada",
+        "en": "dada"
+    }
   },
   {
     "type":"movement",
-    "tag":"de stilj"
+    "tag":{
+        "fr": "de stilj",
+        "en": "de stilj"
+    }
   },
   {
     "type":"movement",
-    "tag":"der blaue reiter"
+    "tag":{
+        "fr": "der blaue reiter",
+        "en": "der blaue reiter"
+    }
   },
   {
     "type":"movement",
-    "tag":"école de barbizon"
+    "tag":{
+        "fr": "école de barbizon",
+        "en": "barbizon school"
+    }
   },
   {
     "type":"movement",
-    "tag":"expressionnisme"
+    "tag":{
+        "fr": "expressionnisme",
+        "en": "expressionnism"
+    }
   },
   {
     "type":"movement",
-    "tag":"fauvisme"
+    "tag":{
+        "fr": "fauvisme",
+        "en": "fauvism"
+    }
   },
   {
     "type":"movement",
-    "tag":"fluxus"
+    "tag":{
+        "fr": "fluxus",
+        "en": "fluxus"
+    }
   },
   {
     "type":"movement",
-    "tag":"futurisme"
+    "tag":{
+        "fr": "futurisme",
+        "en": "futurism"
+    }
   },
   {
     "type":"movement",
-    "tag":"impressionnisme"
+    "tag":{
+        "fr": "impressionnisme",
+        "en": "impressionnism"
+    }
   },
   {
     "type":"movement",
-    "tag":"japonisme"
+    "tag":{
+        "fr": "japonisme",
+        "en": "japonism"
+    }
   },
   {
     "type":"movement",
-    "tag":"land art"
+    "tag":{
+        "fr": "land art",
+        "en": "land art"
+    }
   },
   {
     "type":"movement",
-    "tag":"minimalisme"
+    "tag":{
+        "fr": "minimalisme",
+        "en": "minimalism"
+    }
   },
   {
     "type":"movement",
-    "tag":"orientalisme"
+    "tag":{
+        "fr": "orientalisme",
+        "en": "orientalism"
+    }
   },
   {
     "type":"movement",
-    "tag":"pop art"
+    "tag":{
+        "fr": "pop art",
+        "en": "pop art"
+    }
   },
   {
     "type":"movement",
-    "tag":"post-impressionnisme"
+    "tag":{
+        "fr": "post-impressionnisme",
+        "en": "post-impressionnism"
+    }
   },
   {
     "type":"movement",
-    "tag":"post-modernisme"
+    "tag":{
+        "fr": "post-modernisme",
+        "en": "post-modernism"
+    }
   },
   {
     "type":"movement",
-    "tag":"primitivisme"
+    "tag":{
+        "fr": "primitivisme",
+        "en": "primitivism"
+    }
   },
   {
     "type":"movement",
-    "tag":"romantisme"
+    "tag":{
+        "fr": "romantisme",
+        "en": "romantism"
+    }
   },
   {
     "type":"movement",
-    "tag":"suprématisme"
+    "tag":{
+        "fr": "suprématisme",
+        "en": "suprematism"
+    }
   },
   {
     "type":"movement",
-    "tag":"surréalisme"
+    "tag":{
+        "fr": "surréalisme",
+        "en": "surrealism"
+    }
   },
   {
     "type":"continent",
-    "tag":"afrique"
+    "tag":{
+        "fr": "afrique",
+        "en": "africa"
+    }
   },
   {
     "type":"continent",
-    "tag":"amériques"
+    "tag":{
+        "fr": "amériques",
+        "en": "americas"
+      }
+    }
   },
   {
     "type":"continent",
-    "tag":"asie"
+    "tag":{
+        "fr": "asie",
+        "en": "asia"
+    }
   },
   {
     "type":"continent",
-    "tag":"europe"
+    "tag":{
+        "fr": "europe",
+        "en": "europe"
+    }
   },
   {
     "type":"continent",
-    "tag":"océanie"
+    "tag":{
+        "fr": "océanie",
+        "en": "oceania"
+    }
   },
   {
     "type":"gender",
-    "tag":"femme"
+    "tag":{
+        "fr": "femme",
+        "en": "woman"
+    }
   },
   {
     "type":"gender",
-    "tag":"homme"
+    "tag":{
+        "fr": "homme",
+        "en": "man"
+    }
   },
   {
     "type":"gender",
-    "tag":"collectif"
+    "tag":{
+        "fr": "collectif",
+        "en": "group"
+    }
   },
   {
     "type":"label",
-    "tag":"architecture contemporaine remarquable"
+    "tag":{
+        "fr": "architecture contemporaine remarquable",
+        "en": "architecture contemporaine remarquable"
+    }
   },
   {
     "type":"label",
-    "tag":"exposition d'intérêt national"
+    "tag":{
+        "fr": "exposition d'intérêt national",
+        "en": "exposition d'intérêt national"
+    }
   },
   {
     "type":"label",
-    "tag":"maisons des illustres"
+    "tag":{
+        "fr": "maisons des illustres",
+        "en": "maisons des illustres"
+    }
   },
   {
     "type":"label",
-    "tag":"musée de france"
+    "tag":{
+        "fr": "musée de france",
+        "en": "museum of france"
+    }
   },
   {
     "type":"label",
-    "tag":"patrimoine européen"
+    "tag":{
+        "fr": "patrimoine européen",
+        "en": "european heritage label"
+    }
   },
   {
     "type":"technique",
-    "tag":"architecture"
+    "tag":{
+        "fr": "architecture",
+        "en": "architecture"
+    }
   },
   {
     "type":"technique",
-    "tag":"art de la scène"
+    "tag":{
+        "fr": "art de la scène",
+        "en": "performing arts"
+    }
   },
   {
     "type":"technique",
-    "tag":"bande dessinée"
+    "tag":{
+        "fr": "bande dessinée",
+        "en": "comics"
+    }
   },
   {
     "type":"technique",
-    "tag":"céramique"
+    "tag":{
+        "fr": "céramique",
+        "en": "ceramic"
+    }
   },
   {
     "type":"technique",
-    "tag":"cinéma"
+    "tag":{
+        "fr": "cinéma",
+        "en": "cinema"
+    }
   },
   {
     "type":"technique",
-    "tag":"dessin"
+    "tag":{
+        "fr": "dessin",
+        "en": "drawing"
+    }
   },
   {
     "type":"technique",
-    "tag":"estampe"
+    "tag":{
+        "fr": "estampe",
+        "en": "prints"
+    }
   },
   {
     "type":"technique",
-    "tag":"installation"
+    "tag":{
+        "fr": "installation",
+        "en": "installation"
+    }
   },
   {
     "type":"technique",
-    "tag":"musique"
+    "tag":{
+        "fr": "musique",
+        "en": "music"
+    }
   },
   {
     "type":"technique",
-    "tag":"nouveaux médias"
+    "tag":{
+        "fr": "nouveaux médias",
+        "en": "new medias"
+    }
   },
   {
     "type":"technique",
-    "tag":"orfèvrerie"
+    "tag":{
+        "fr": "orfèvrerie",
+        "en": "jewellery"
+    }
   },
   {
     "type":"technique",
-    "tag":"peinture"
+    "tag":{
+        "fr": "peinture",
+        "en": "painting"
+    }
   },
   {
     "type":"technique",
-    "tag":"photographie"
+    "tag":{
+        "fr": "photographie",
+        "en": "photography"
+    }
   },
   {
     "type":"technique",
-    "tag":"sculpture"
+    "tag":{
+        "fr": "sculpture",
+        "en": "sculpture"
+    }
   },
   {
     "type":"theme",
-    "tag":"design"
+    "tag":{
+        "fr": "design",
+        "en": "design"
+    }
   },
   {
     "type":"theme",
-    "tag":"fashion"
+    "tag":{
+        "fr": "fashion",
+        "en": "fashion"
+    }
   },
   {
     "type":"theme",
-    "tag":"histoire"
+    "tag":{
+        "fr": "histoire",
+        "en": "history"
+    }
   },
   {
     "type":"theme",
-    "tag":"littérature"
+    "tag":{
+        "fr": "littérature",
+        "en": "litterature"
+    }
   },
   {
     "type":"theme",
-    "tag":"militaire"
+    "tag":{
+        "fr": "militaire",
+        "en": "militaria"
+    }
   },
   {
     "type":"theme",
-    "tag":"prix artistique"
+    "tag":{
+        "fr": "prix artistique",
+        "en": "artistic award"
+    }
   },
   {
     "type":"theme",
-    "tag":"rétrospective"
+    "tag":{
+        "fr": "rétrospective",
+        "en": "retrospective"
+    }
   },
   {
     "type":"theme",
-    "tag":"sciences et techniques"
+    "tag":{
+        "fr": "sciences et techniques",
+        "en": "sciences and techniques"
+    }
   }
 ]
