@@ -17,9 +17,9 @@
                         :active="request()->routeIs('dashboard')">
                         @ucfirst(__('app.dashboard'))
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('front.museum.index') }}" class="text-gray-900"
-                        :active="request()->routeIs('front.museum.*')">
-                        @ucfirst(__('app.museums'))
+                    <x-jet-nav-link href="{{ route('front.place.index') }}" class="text-gray-900"
+                        :active="request()->routeIs('front.place.*')">
+                        @ucfirst(__('app.places'))
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('front.exhibition.index') }}" class="text-gray-900"
                         :active="request()->routeIs(['front.exhibition.index', 'front.exhibition.show'])">
@@ -178,8 +178,8 @@
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 @ucfirst(__('app.dashboard'))
             </x-jet-responsive-nav-link>
-            <x-jet-responsive-nav-link href="{{ route('front.museum.index') }}" :active="request()->routeIs('front.museum.*')">
-                @ucfirst(__('app.museums'))
+            <x-jet-responsive-nav-link href="{{ route('front.place.index') }}" :active="request()->routeIs('front.place.*')">
+                @ucfirst(__('app.places'))
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('front.exhibition.index') }}" :active="request()->routeIs('front.exhibition.*')">
                 @ucfirst(__('app.exhibitions'))
