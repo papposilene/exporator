@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 
-class UserMuseum extends Model
+class UserPlace extends Model
 {
     use HasFactory, SoftDeletes;
 
@@ -16,7 +16,7 @@ class UserMuseum extends Model
      *
      * @var string
      */
-    protected $table = 'user_museums';
+    protected $table = 'user_places';
     protected $primaryKey = 'uuid';
 
     /**
@@ -63,8 +63,8 @@ class UserMuseum extends Model
      */
     protected $fillable = [
         'uuid',
-        'user_uuid',
-        'museum_uuid',
+        'user_id',
+        'place_uuid',
     ];
 
     /**
