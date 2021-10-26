@@ -7,7 +7,7 @@
 <script>
 document.addEventListener('livewire:load', function () {
     var leafletMap = L.map('leaflet-map', {
-        center: [{{ $museum->lat }}, {{ $museum->lon }}],
+        center: [{{ $place->lat }}, {{ $place->lon }}],
         zoom: 14,
         zoomControl: false
     });
@@ -16,6 +16,6 @@ document.addEventListener('livewire:load', function () {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(leafletMap);
 
-    L.marker([{{ $museum->lat }}, {{ $museum->lon }}]).addTo(leafletMap);
+    L.marker([{{ $place->lat }}, {{ $place->lon }}]).addTo(leafletMap);
 })
 </script>
