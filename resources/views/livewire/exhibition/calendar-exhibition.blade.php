@@ -49,7 +49,7 @@
                 </h4>
                 <div class="bg-gray-200 grid grid-cols-1 md:grid-cols-3 md:gap-4" x-show="selected == {{ $ii }}">
                     @foreach ($exhibitions_of_the_day as $exhibition_of_the_day)
-                    <a href="{{ route('front.exhibition.show', ['museum' => $exhibition_of_the_day->inMuseum->slug, 'exhibition' => $exhibition_of_the_day->slug]) }}"
+                    <a href="{{ route('front.exhibition.show', ['place' => $exhibition_of_the_day->inPlace->slug, 'exhibition' => $exhibition_of_the_day->slug]) }}"
                             title="{{ $exhibition_of_the_day->title }}" aria-label="{{ $exhibition_of_the_day->title }}"
                             class="flex flex-col bg-gray-300 p-2 hover:bg-green-200">
                         <div class="italic">{{ $exhibition_of_the_day->inMuseum->name }}</div>
