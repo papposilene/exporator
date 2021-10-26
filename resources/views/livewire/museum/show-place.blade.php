@@ -1,48 +1,48 @@
-@section('title', $museum->name)
+@section('title', $place->name)
 
 <div>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             <span>
-                <a href="{{ route('front.museum.index') }}">
+                <a href="{{ route('front.place.index') }}">
                     @ucfirst(__('app.list_of', ['name' => __('app.places')]))
                 </a>
             </span> /
-            <span>{{ $museum->name }}</span>
+            <span>{{ $place->name }}</span>
         </h2>
     </x-slot>
 
     <div class="flex flex-wrap w-full max-w-7xl mx-auto">
         <div class="mx-auto md:w-1/4 py-5 px-6 w-full">
-            @if ($museum->image)
+            @if ($place->image)
             <ul class="bg-purple-100 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
                 <li>
-                    <img src="{{ storage_path($museum->image) }}" class="" alt="{{ $museum->name }}" title="{{ $museum->name }}" />
+                    <img src="{{ storage_path($place->image) }}" class="" alt="{{ $place->name }}" title="{{ $place->name }}" />
                 </li>
             </ul>
             @endif
             <ul class="bg-purple-100 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
-                <li title="@ucfirst(__('app.museum'))">
+                <li title="@ucfirst(__('app.place'))">
                     <h3 class="font-bold text-2xl mb-5">
-                        {{ $museum->name }}
+                        {{ $place->name }}
                     </h3>
                 </li>
-                <li title="@ucfirst(__('app.type'))">@ucfirst(__('app.' . Str::slug($museum->type, '_')))</li>
-                <li title="@ucfirst(__('app.address'))">{{ $museum->address }}</li>
+                <li title="@ucfirst(__('app.type'))">@ucfirst(__('app.' . Str::slug($place->type, '_')))</li>
+                <li title="@ucfirst(__('app.address'))">{{ $place->address }}</li>
                 <li>
-                    <span title="@ucfirst(__('app.city'))">{{ $museum->city }}</span>,
-                    <span title="@ucfirst(__('app.country'))">{{ $museum->inCountry->name_common_fra }}</span>.
+                    <span title="@ucfirst(__('app.city'))">{{ $place->city }}</span>,
+                    <span title="@ucfirst(__('app.country'))">{{ $place->inCountry->name_common_fra }}</span>.
                 </li>
                 <li class="mt-5" title="@ucfirst(__('app.link'))">
-                    <a href="{{ $museum->link }}" class="text-blue-700 hover:text-red-600" target="_blank" rel="noopener">{{ $museum->link }}</a>
+                    <a href="{{ $place->link }}" class="text-blue-700 hover:text-red-600" target="_blank" rel="noopener">{{ $place->link }}</a>
                 </li>
             </ul>
             @auth
             <ul class="bg-yellow-400 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
-                <li><livewire:interfaces.follow-museum :museum="$museum" :wire:key="$museum->uuid" /></li>
+                <li><livewire:interfaces.follow-place :museum="$place" :wire:key="$place->uuid" /></li>
             </ul>
             @endauth
-            @if ($museum->status === 1)
+            @if ($place->status === 1)
             <ul class="bg-green-100 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
             @else
             <ul class="bg-red-100 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
@@ -56,13 +56,13 @@
                 </li>
             </ul>
             <ul class="list-inside md:m-5 mt-5 md:mt-0 shadow w-full">
-                <li><livewire:interfaces.map :museum="$museum" :wire:key="$museum->uuid" /></li>
+                <li><livewire:interfaces.map :museum="$place" :wire:key="$place->uuid" /></li>
             </ul>
             @auth
             @if (Auth::user()->can('create', App\Models\Exhibition::class))
             <ul class="bg-gray-200 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
-                <li><livewire:modals.edit-museum :museum="$museum" :wire:key="$museum->uuid" /></li>
-                <li><livewire:modals.create-exhibition :museum="$museum" :wire:key="$museum->uuid" /></li>
+                <li><livewire:modals.edit-place :place="$place" :wire:key="$place->uuid" /></li>
+                <li><livewire:modals.create-exhibition :place="$place" :wire:key="$place->uuid" /></li>
             </ul>
             @endif
             @endauth
@@ -118,7 +118,7 @@
                         <tr class="border-b border-gray-300 border-dashed h-12 w-12 p-4 {{ $is_current }}">
                             <td class="text-center">{{ $loop->iteration }}</td>
                             <td class="break-words">
-                                <a href="{{ route('front.exhibition.show', ['museum' => $exhibition->inMuseum->slug, 'exhibition' => $exhibition->slug]) }}"
+                                <a href="{{ route('front.exhibition.show', ['place' => $exhibition->inPlace->slug, 'exhibition' => $exhibition->slug]) }}"
                                     title="{{ $exhibition->title }}" aria-label="{{ $exhibition->title }}">
                                     {{ $exhibition->title }}
                                 </a>
