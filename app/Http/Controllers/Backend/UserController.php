@@ -4,14 +4,14 @@ namespace App\Http\Controllers\Backend;
 
 use App\Models\User;
 use App\Models\UserExhibition;
-use App\Models\UserMuseum;
+use App\Models\UserPlace;
 use App\Models\UserTag;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AddExhibitionRequest;
 use App\Http\Requests\DeleteExhibitionRequest;
-use App\Http\Requests\FollowMuseumRequest;
+use App\Http\Requests\FollowPlaceRequest;
 use App\Http\Requests\FollowTagRequest;
-use App\Http\Requests\UnfollowMuseumRequest;
+use App\Http\Requests\UnfollowPlaceRequest;
 use App\Http\Requests\UnfollowTagRequest;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
@@ -22,41 +22,41 @@ use Illuminate\Support\Str;
 class UserController extends Controller
 {
     /**
-     * Follow a museum.
+     * Follow a place.
      *
-     * @param  \Illuminate\Http\FollowMuseumRequest  $request
+     * @param  \Illuminate\Http\FollowPlaceRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function museum_follow(FollowMuseumRequest $request)
+    public function place_follow(FollowPlaceRequest $request)
     {
         $this->authorize('create', User::class);
 
         $validated = $request->validated();
         
         $user = Auth::id();
-        $museum = Museum::findOrFail($request->input('museum_uuid'));
+        $place = Place::findOrFail($request->input('place_uuid'));
         
-        UserMuseum::create([
-            'user_uuid' => $user,
-            'museum_uuid' => $museum->uuid,
+        UserPlace::create([
+            'user_id' => $user,
+            'place_uuid' => $place->uuid,
         ]);
 
         return redirect()->back()->with('success', 'All good!');
     }
 
     /**
-     * Unfollow a museum.
+     * Unfollow a place.
      *
-     * @param  \Illuminate\Http\UnfollowMuseumRequest  $request
+     * @param  \Illuminate\Http\UnfollowPlaceRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function museum_unfollow(UnfollowMuseumRequest $request)
+    public function place_unfollow(UnfollowPlaceRequest $request)
     {
         $this->authorize('delete', User::class);
 
         $validated = $request->validated();
         
-        $following = UserMuseum::findOrFail($request->input('follow_uuid'));
+        $following = UserPlace::findOrFail($request->input('follow_uuid'));
         $following->delete();
 
         return redirect()->back()->with('success', 'All good!');
@@ -78,7 +78,7 @@ class UserController extends Controller
         $exhibition = Exhibition::findOrFail($request->input('exhibition_uuid'));
         
         UserExhibition::create([
-            'user_uuid' => $user,
+            'user_id' => $user,
             'exhibition_uuid' => $exhibition->uuid,
             'visited' => false,
         ]);
@@ -102,7 +102,7 @@ class UserController extends Controller
         $exhibition = Exhibition::findOrFail($request->input('exhibition_uuid'));
         
         UserExhibition::updateOrCreate([
-            'user_uuid' => $user,
+            'user_id' => $user,
             'exhibition_uuid' => $exhibition->uuid,
         ], 
         [
@@ -146,7 +146,7 @@ class UserController extends Controller
         $exhibition = Exhibition::findOrFail($request->input('exhibition_uuid'));
         
         UserExhibition::updateOrCreate([
-            'user_uuid' => $user,
+            'user_id' => $user,
             'exhibition_uuid' => $exhibition->uuid,
         ], 
         [
