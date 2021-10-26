@@ -13,7 +13,7 @@ class CreateTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('museums_types', function (Blueprint $table) {
+        Schema::create('places_types', function (Blueprint $table) {
             $table->uuid('uuid')->primary();
             $table->string('slug', 255)->unique();
             $table->string('type', 255)->unique();
@@ -29,6 +29,6 @@ class CreateTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('museums_types');
+        Schema::dropIfExists('places_types');
     }
 }
