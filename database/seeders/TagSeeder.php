@@ -22,7 +22,7 @@ class TagSeeder extends Seeder
         
         $tagsFile = Storage::disk('install')->get('tags.json');
         $tagsData = json_decode($tagsFile);
-        foreach ($countriesData as $data)
+        foreach ($tagsData as $data)
         {
             Tag::findOrCreate(
                 'tag' => addslashes($data->tag),
