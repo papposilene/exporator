@@ -1,17 +1,17 @@
-<div id="modalImportMuseum" class="relative float-right mr-2">
-    <div id="modalButtonImportMuseum">
-        <button id="modalOpenImportMuseum" class="focus:outline-none bg-purple-100 text-black bg-opacity-75 px-1 rounded"
-            type="button" title="@ucfirst(__('app.import_some', ['what' => __('app.museums')]))">
+<div id="modalImportPlace" class="relative float-right mr-2">
+    <div id="modalButtonImportPlace">
+        <button id="modalOpenImportPlace" class="focus:outline-none bg-purple-100 text-black bg-opacity-75 px-1 rounded"
+            type="button" title="@ucfirst(__('app.import_some', ['what' => __('app.places')]))">
             @ucfirst(__('app.import'))
         </button>
     </div>
 
-    <div id="modalWindowImportMuseum"
+    <div id="modalWindowImportPlace"
         class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-blue-500 bg-opacity-50 transform scale-0 transition-transform duration-300 z-10">
         <!-- Modal -->
         <div class="bg-white overflow-auto w-1/2 h-1/2 p-12">
             <!-- Close modal button-->
-            <button id="modalCloseImportMuseum" type="button" class="focus:outline-none float-right">
+            <button id="modalCloseImportPlace" type="button" class="focus:outline-none float-right">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -19,7 +19,7 @@
                 </svg>
             </button>
             <!-- Modal content -->
-            <form method="POST" action="{{ route('admin.museum.import') }}" enctype="multipart/form-data"
+            <form method="POST" action="{{ route('admin.place.import') }}" enctype="multipart/form-data"
                 class="flex flex-col w-full">
                 @csrf
 
@@ -104,11 +104,11 @@
 
 <script>
 document.addEventListener('livewire:load', function () {
-    const modalOpenImportMuseum = document.getElementById('modalOpenImportMuseum')
-    const modalCloseImportMuseum = document.getElementById('modalCloseImportMuseum')
-    const modalWindowImportMuseum = document.getElementById('modalWindowImportMuseum')
+    const modalOpenImportPlace = document.getElementById('modalOpenImportPlace')
+    const modalCloseImportPlace = document.getElementById('modalCloseImportPlace')
+    const modalWindowImportPlace = document.getElementById('modalWindowImportPlace')
 
-    modalOpenImportMuseum.addEventListener('click',()=>modalWindowImportMuseum.classList.remove('scale-0'))
-    modalCloseImportMuseum.addEventListener('click',()=>modalWindowImportMuseum.classList.add('scale-0'))
+    modalOpenImportPlace.addEventListener('click',()=>modalWindowImportPlace.classList.remove('scale-0'))
+    modalCloseImportPlace.addEventListener('click',()=>modalWindowImportPlace.classList.add('scale-0'))
 })
 </script>
