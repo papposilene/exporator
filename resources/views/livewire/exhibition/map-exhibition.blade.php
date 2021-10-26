@@ -69,22 +69,22 @@ document.addEventListener('livewire:load', function () {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(leafletMap);
 
-    axios.get("{{ route('api.museum.geojson') }}")
+    axios.get("{{ route('api.place.geojson') }}")
         .then(response => {
             geoJson = { ...response.data.features };
             for (let feature in geoJson) {
-                const museum = geoJson[feature];
-                const lat = museum.geometry.coordinates[1];
-                const lng = museum.geometry.coordinates[0];
-                const name = museum.properties.name;
-                const address = museum.properties.address;
-                const url = museum.properties.url;
+                const place = geoJson[feature];
+                const lat = place.geometry.coordinates[1];
+                const lng = place.geometry.coordinates[0];
+                const name = place.properties.name;
+                const address = place.properties.address;
+                const url = place.properties.url;
                 const popupContent = `<h5 class="font-medium text-lg">${name}</h5><br />
                           ${address}<br /><br />
                           <a href="${url}" class="my-2">@ucfirst(__('app.list_of', ['name' => __('app.exhibitions')]))...</a>`;
-                const exhibition_past = museum.properties.exhibitions.past;
-                const exhibition_current = museum.properties.exhibitions.present;
-                const exhibition_future = museum.properties.exhibitions.future;
+                const exhibition_past = place.properties.exhibitions.past;
+                const exhibition_current = place.properties.exhibitions.present;
+                const exhibition_future = place.properties.exhibitions.future;
                 if (exhibition_current > 0) {
                     L.marker([lat, lng], {icon: currentMarker})
                         .bindPopup(popupContent)
