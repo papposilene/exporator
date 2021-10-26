@@ -55,7 +55,7 @@
                     <thead>
                         <tr class="bg-gray-700 text-white">
                             <th class="w-1/12 text-center p-3">@ucfirst(__('app.iteration'))</th>
-                            <th class="w-3/12 text-center">@ucfirst(__('app.museums'))</th>
+                            <th class="w-3/12 text-center">@ucfirst(__('app.places'))</th>
                             <th class="w-4/12 text-center">@ucfirst(__('app.titles'))</th>
                             <th class="hidden md:table-cell md:w-2/12 text-center">@ucfirst(__('app.began_at'))</th>
                             <th class="w-2/12 text-center">@ucfirst(__('app.ended_at'))</th>
@@ -85,13 +85,13 @@
                         <tr class="border-b border-gray-300 border-dashed h-12 w-12 p-4 {{ $is_current }}">
                             <td class="text-center">{{ $loop->iteration }}</td>
                             <td class="break-words">
-                                <a href="{{ route('front.museum.show', ['slug' => $exhibition->inMuseum->slug]) }}"
-                                    title="{{ $exhibition->inMuseum->name }}" aria-label="{{ $exhibition->inMuseum->name }}">
-                                    {{ $exhibition->inMuseum->name }}
+                                <a href="{{ route('front.place.show', ['slug' => $exhibition->inPlace->slug]) }}"
+                                    title="{{ $exhibition->inPlace->name }}" aria-label="{{ $exhibition->inPlace->name }}">
+                                    {{ $exhibition->inPlace->name }}
                                 </a>
                             </td>
                             <td class="break-words">
-                                <a href="{{ route('front.exhibition.show', ['museum' => $exhibition->inMuseum->slug, 'exhibition' => $exhibition->slug]) }}"
+                                <a href="{{ route('front.exhibition.show', ['place' => $exhibition->inPlace->slug, 'exhibition' => $exhibition->slug]) }}"
                                     title="{{ $exhibition->title }}" aria-label="{{ $exhibition->title }}">
                                     {{ $exhibition->title }}
                                 </a>
