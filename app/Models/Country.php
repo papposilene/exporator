@@ -97,12 +97,12 @@ class Country extends Model
     }
 
     /**
-     * Get all the museums for a specific country.
+     * Get all the places for a specific country.
      */
-    public function hasMuseums()
+    public function hasPlaces()
     {
         return $this->hasMany(
-            'App\Models\Museum',
+            'App\Models\Place',
             'country_cca3',
             'cca3'
         );
