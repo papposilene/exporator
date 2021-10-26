@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class FollowMuseumRequest extends FormRequest
+class FollowPlaceRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -14,7 +14,7 @@ class FollowMuseumRequest extends FormRequest
     public function rules()
     {
         return [
-            'museum_uuid' => 'required|bail|uuid',
+            'place_uuid' => 'required|bail|uuid',
         ];
     }
 }
