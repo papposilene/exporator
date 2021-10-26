@@ -67,7 +67,7 @@ class Exhibition extends Model
      */
     protected $fillable = [
         'uuid',
-        'museum_uuid',
+        'place_uuid',
         'slug',
         'title',
         'began_at',
@@ -92,11 +92,11 @@ class Exhibition extends Model
     /**
      * Get all the exhibitions for a specific museum.
      */
-    public function inMuseum()
+    public function inPlace()
     {
         return $this->belongsTo(
-            'App\Models\Museum',
-            'museum_uuid',
+            'App\Models\Place',
+            'place_uuid',
             'uuid'
         );
     }
