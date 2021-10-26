@@ -1,12 +1,12 @@
-<div id="modalCreateMuseum" class="relative float-right mr-2">
-    <div id="modalButtonCreateMuseum">
-        <button id="modalOpenCreateMuseum" class="focus:outline-none bg-purple-100 text-black bg-opacity-75 px-1 rounded"
+<div id="modalCreatePlace" class="relative float-right mr-2">
+    <div id="modalButtonCreatePlace">
+        <button id="modalOpenCreatePlace" class="focus:outline-none bg-purple-100 text-black bg-opacity-75 px-1 rounded"
             type="button" title="@ucfirst(__('app.create_one', ['what' => __('app.place')]))">
             @ucfirst(__('app.create_one', ['what' => __('app.place')]))
         </button>
     </div>
 
-    <div id="modalWindowCreateMuseum"
+    <div id="modalWindowCreatePlace"
         class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-blue-500 bg-opacity-50 transform scale-0 transition-transform duration-300 z-10">
         <!-- Modal -->
         <div class="bg-white overflow-auto w-1/2 h-1/2 p-12">
@@ -19,7 +19,7 @@
                 </svg>
             </button>
             <!-- Modal content -->
-            <form method="POST" action="{{ route('admin.museum.store') }}" enctype="multipart/form-data"
+            <form method="POST" action="{{ route('admin.muplaceseum.store') }}" enctype="multipart/form-data"
                 class="flex flex-col w-full">
                 @csrf
 
@@ -86,11 +86,11 @@
 
 <script>
 document.addEventListener('livewire:load', function () {
-    const modalOpenCreateMuseum = document.getElementById('modalOpenCreateMuseum')
-    const modalCloseCreateMuseum = document.getElementById('modalCloseCreateMuseum')
-    const modalWindowCreateMuseum = document.getElementById('modalWindowCreateMuseum')
+    const modalOpenCreatePlace = document.getElementById('modalOpenCreatePlace')
+    const modalCloseCreatePlace = document.getElementById('modalCloseCreatePlace')
+    const modalWindowCreatePlace = document.getElementById('modalWindowCreatePlace')
 
-    modalOpenCreateMuseum.addEventListener('click',()=>modalWindowCreateMuseum.classList.remove('scale-0'))
-    modalCloseCreateMuseum.addEventListener('click',()=>modalWindowCreateMuseum.classList.add('scale-0'))
+    modalOpenCreatePlace.addEventListener('click',()=>modalWindowCreatePlace.classList.remove('scale-0'))
+    modalCloseCreatePlace.addEventListener('click',()=>modalWindowCreatePlace.classList.add('scale-0'))
 })
 </script>
