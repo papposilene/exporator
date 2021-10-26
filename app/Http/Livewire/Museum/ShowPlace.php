@@ -2,18 +2,18 @@
 
 namespace App\Http\Livewire\Museum;
 
-use App\Models\Museum;
+use App\Models\Place;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class ShowMuseum extends Component
+class ShowPlace extends Component
 {
     use WithPagination;
 
     public $page = 1;
     public $search = '';
     public $slug;
-    public Museum $museum;
+    public Place $place;
 
     protected $queryString = [
         'search' => ['except' => ''],
@@ -22,7 +22,7 @@ class ShowMuseum extends Component
 
     public function mount($slug)
     {
-        $this->museum = Museum::where('slug', $this->slug)->firstOrFail();
+        $this->place = Place::where('slug', $this->slug)->firstOrFail();
     }
 
     public function updatingSearch()
@@ -32,9 +32,9 @@ class ShowMuseum extends Component
 
     public function render()
     {
-        return view('livewire.museum.show-museum', [
-            'museum' => $this->museum,
-            'exhibitions' => $this->museum->hasExhibitions()
+        return view('livewire.place.show-museum', [
+            'place' => $this->place,
+            'exhibitions' => $this->place->hasExhibitions()
                 ->where('title', 'like', '%'.$this->search.'%')
                 ->orderBy('began_at', 'desc')->paginate(25),
         ]);
