@@ -3,7 +3,7 @@
 namespace App\Imports;
 
 use App\Models\Country;
-use App\Models\Museum;
+use App\Models\Place;
 use App\Models\Type;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
