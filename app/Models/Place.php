@@ -89,7 +89,7 @@ class Place extends Model
     }
 
     /**
-     * Get the country for a specific institution.
+     * Get the country for a specific place.
      */
     public function inCountry()
     {
@@ -101,7 +101,7 @@ class Place extends Model
     }
 
     /**
-     * Get all the exhibitions for a specific institution.
+     * Get all the exhibitions for a specific place.
      */
     public function hasExhibitions()
     {
@@ -113,7 +113,7 @@ class Place extends Model
     }
 
     /**
-     * Get the type for a specific institution.
+     * Get the type for a specific place.
      */
     public function hasType()
     {
@@ -125,7 +125,7 @@ class Place extends Model
     }
     
     /**
-     * Get if the user has followed the museum
+     * Get if the user has followed the place
      */
     public function isFollowed()
     {
