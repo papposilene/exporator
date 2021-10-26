@@ -2,7 +2,7 @@
 
 
 use App\Http\Controllers\Backend\ExhibitionController;
-use App\Http\Controllers\Backend\MuseumController;
+use App\Http\Controllers\Backend\PlaceController;
 use App\Http\Controllers\Backend\TagController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Livewire\Country\ListCountry;
@@ -15,8 +15,8 @@ use App\Http\Livewire\Exhibition\MapExhibition;
 use App\Http\Livewire\Exhibition\ProposeExhibition;
 use App\Http\Livewire\Exhibition\ShowExhibition;
 use App\Http\Livewire\Exhibition\TimelineExhibition;
-use App\Http\Livewire\Museum\ListMuseum;
-use App\Http\Livewire\Museum\ShowMuseum;
+use App\Http\Livewire\Place\ListPlace;
+use App\Http\Livewire\Place\ShowPlace;
 use App\Http\Livewire\Tag\ListTag;
 use App\Http\Livewire\Tag\ShowTag;
 use Illuminate\Support\Facades\Route;
@@ -43,8 +43,8 @@ Route::get('/dashboard', ShowDashboard::class)->name('dashboard');
 Route::get('/about', ShowAbout::class)->name('front.about');
 
 // Museums
-Route::get('/museums', ListMuseum::class)->name('front.museum.index');
-Route::get('/museum/{slug}', ShowMuseum::class)->name('front.museum.show');
+Route::get('/places', ListPlace::class)->name('front.place.index');
+Route::get('/place/{slug}', ShowPlace::class)->name('front.place.show');
 
 // Exhibitions
 Route::get('/exhibitions', ListExhibition::class)->name('front.exhibition.index');
@@ -65,9 +65,9 @@ Route::get('/tag/{slug}', ShowTag::class)->name('front.tag.show');
 */
 Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function () {
     // Museums
-    Route::post('/museums/store', [MuseumController::class, 'store'])->name('admin.museum.store');
-    Route::post('/museums/import', [MuseumController::class, 'import'])->name('admin.museum.import');
-    Route::post('/museum/update', [MuseumController::class, 'update'])->name('admin.museum.update');
+    Route::post('/places/store', [PlaceController::class, 'store'])->name('admin.place.store');
+    Route::post('/places/import', [PlaceController::class, 'import'])->name('admin.place.import');
+    Route::post('/place/update', [PlaceController::class, 'update'])->name('admin.place.update');
 
     // Exhibitions
     Route::post('/exhibitions/import', [ExhibitionController::class, 'import'])->name('admin.exhibition.import');
@@ -81,8 +81,8 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function
     Route::post('/tag/attach', [TagController::class, 'attach'])->name('admin.tag.attach');
     
     // User
-    Route::post('/user/museum/follow', [UserController::class, 'museum_follow'])->name('admin.user.museum_follow'); // Follow a place
-    Route::post('/user/museum/unfollow', [UserController::class, 'museum_unfollow'])->name('admin.user.museum_unfollow'); // Unfollow a place
+    Route::post('/user/place/follow', [UserController::class, 'place_follow'])->name('admin.user.place_follow'); // Follow a place
+    Route::post('/user/place/unfollow', [UserController::class, 'place_unfollow'])->name('admin.user.place_unfollow'); // Unfollow a place
     Route::post('/user/exhibition/follow', [UserController::class, 'exhibition_follow'])->name('admin.user.exhibition_follow'); // Follow an exhibition
     Route::post('/user/exhibition/visited', [UserController::class, 'exhibition_visited'])->name('admin.user.exhibition_visited'); // Exhibition visited
     Route::post('/user/exhibition/unfollow', [UserController::class, 'exhibition_unfollow'])->name('admin.user.exhibition_unfollow'); // Unfollow an exhibition
