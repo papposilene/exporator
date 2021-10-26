@@ -3,7 +3,7 @@
 namespace App\Imports;
 
 use App\Models\Exhibition;
-use App\Models\Museum;
+use App\Models\Place;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
@@ -29,7 +29,7 @@ class ExhibitionsImport implements ToModel, SkipsEmptyRows, WithBatchInserts, Wi
     */
     public function model(array $row)
     {
-        $museum = Museum::where('name', $row['place'])->firstOrFail();
+        $place = Place::where('name', $row['place'])->firstOrFail();
 
         $exhibition = Exhibition::updateOrCreate([
             'slug' => Str::slug($row['title'], '-'),
@@ -37,7 +37,7 @@ class ExhibitionsImport implements ToModel, SkipsEmptyRows, WithBatchInserts, Wi
         ],
         [
             'uuid' => (string) Str::uuid(),
-            'museum_uuid' => $museum->uuid,
+            'place_uuid' => $place->uuid,
             'began_at' => Carbon::createFromFormat('d/m/Y', $row['began_at'])->format('Y-m-d'),
             'ended_at' => Carbon::createFromFormat('d/m/Y', $row['ended_at'])->format('Y-m-d'),
             'description' => $row['description'],
