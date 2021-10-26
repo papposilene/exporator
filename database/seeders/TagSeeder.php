@@ -20,13 +20,15 @@ class TagSeeder extends Seeder
         // Drop the table
         DB::table('tags')->delete();
         
+        $lang = app()->getLocale();
+        
         $tagsFile = Storage::disk('install')->get('tags.json');
         $tagsData = json_decode($tagsFile);
         foreach ($tagsData as $data)
         {
             Tag::findOrCreate(
                 'tag' => addslashes($data->tag),
-                'type' => addslashes($data->type)
+                'type->' . $lang => addslashes($data->type->{'$lang'})
             );
         }
     }
