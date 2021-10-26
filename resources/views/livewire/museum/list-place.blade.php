@@ -3,9 +3,9 @@
 <div>
     <x-slot name="header">
         @auth
-        @if (Auth::user()->can('create', App\Models\Museum::class))
-        <livewire:modals.import-museum />
-        <livewire:modals.create-museum />
+        @if (Auth::user()->can('create', App\Models\Place::class))
+        <livewire:modals.import-place />
+        <livewire:modals.create-place />
         @endif
         @endauth
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -64,37 +64,37 @@
                             <th class="w-1/12 text-center p-3">@ucfirst(__('app.iteration'))</th>
                             <th class="w-2/12 text-center hidden lg:table-cell">@ucfirst(__('app.types'))</th>
                             <th class="w-2/12 text-center hidden lg:table-cell">@ucfirst(__('app.cities'))</th>
-                            <th class="w-4/12 text-center">@ucfirst(__('app.museums'))</th>
+                            <th class="w-4/12 text-center">@ucfirst(__('app.places'))</th>
                             <th class="w-2/12 text-center hidden lg:table-cell">@ucfirst(__('app.status'))</th>
                             <th class="w-1/12 text-center">@ucfirst(__('app.exhibitions'))</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($museums as $museum)
+                        @foreach($places as $place)
                         <tr class="bg-gray-200 border-b border-gray-300 border-dashed h-12 w-12 p-4">
                             <td class="text-center">{{ $loop->iteration }}</td>
-                            <td class="hidden lg:table-cell">@ucfirst(__('app.' . Str::slug($museum->hasType->type, '_')))</td>
-                            <td class="hidden lg:table-cell">{{ $museum->city }}</td>
+                            <td class="hidden lg:table-cell">@ucfirst(__('app.' . Str::slug($place->hasType->type, '_')))</td>
+                            <td class="hidden lg:table-cell">{{ $place->city }}</td>
                             <td class="break-words">
-                                <a href="{{ route('front.museum.show', ['slug' => $museum->slug]) }}"
-                                    title="{{ $museum->name }}" aria-label="{{ $museum->name }}">
-                                    {{ $museum->name }}
+                                <a href="{{ route('front.place.show', ['slug' => $place->slug]) }}"
+                                    title="{{ $place->name }}" aria-label="{{ $place->name }}">
+                                    {{ $place->name }}
                                 </a>
                             </td>
                             <td class="text-center hidden lg:table-cell">
-                                @if ($museum->status === 1)
-                                <span class="text-green-900">@ucfirst(__('app.museum_open'))</span>
+                                @if ($place->status === 1)
+                                <span class="text-green-900">@ucfirst(__('app.place_open'))</span>
                                 @else
-                                <span class="text-red-900">@ucfirst(__('app.museum_close'))</span>
+                                <span class="text-red-900">@ucfirst(__('app.place_close'))</span>
                                 @endif
                             </td>
-                            <td class="text-center">{{ $museum->hasExhibitions()->count() }}</td>
+                            <td class="text-center">{{ $place->hasExhibitions()->count() }}</td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
-            {{ $museums->links() }}
+            {{ $places->links() }}
         </div>
     </div>
 </div>
