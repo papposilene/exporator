@@ -19,7 +19,7 @@
                 </svg>
             </button>
             <!-- Modal content -->
-            <form method="POST" action="{{ route('admin.muplaceseum.store') }}" enctype="multipart/form-data"
+            <form method="POST" action="{{ route('admin.place.store') }}" enctype="multipart/form-data"
                 class="flex flex-col w-full">
                 @csrf
 
@@ -68,7 +68,7 @@
                     <x-forms.label for="link">@ucfirst(__('app.link'))</x-forms.label>
                     <x-forms.input id="link" class="block mt-1 w-full" type="text" name="link" required :value="old('link')" />
                 </div>
-                
+
                 <div class="mt-4">
                     <x-forms.label for="image">@ucfirst(__('app.image'))</x-forms.label>
                     <x-forms.file id="image" class="block mt-1 w-full" type="text" name="image" required :value="old('image')" />

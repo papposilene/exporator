@@ -43,13 +43,13 @@
                     <a href="?filter=followed" class="flex flex-auto text-base md:rounded-r-none md:rounded-l-none md:border-l-0 md:border-r-0
                         hover:scale-110 focus:outline-none justify-center px-4 py-2 hover:rounded font-bold cursor-pointer
                         hover:bg-yellow-500 hover:text-black bg-yellow-400 border duration-200 ease-in-out border-yellow-600 transition">
-                        <div class="flex leading-5">@ucfirst(__('app.followed')))</div>
+                        <div class="flex leading-5">@ucfirst(__('app.followed'))</div>
                     </a>
                     @if (Auth::user()->can('create', App\Models\Exhibition::class))
                     <a href="?filter=no_exhibition" class="flex flex-auto text-base md:rounded-r-none md:rounded-l-none md:border-l-0 md:border-r-0
                         hover:scale-110 focus:outline-none justify-center px-4 py-2 hover:rounded font-bold cursor-pointer
                         hover:bg-red-300 hover:text-black bg-red-200 border duration-200 ease-in-out border-red-400 transition">
-                        <div class="flex leading-5">@ucfirst(__('app.no_exhibition')))</div>
+                        <div class="flex leading-5">@ucfirst(__('app.no_exhibition'))</div>
                     </a>
                     @endif
                     @endauth
