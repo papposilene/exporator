@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\API\CountryController;
 use App\Http\Controllers\API\ExhibitionController;
-use App\Http\Controllers\API\MuseumController;
+use App\Http\Controllers\API\PlaceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +24,9 @@ Route::prefix('1.1')->group(function () {
     Route::get('/countries/{cca3}', [CountryController::class, 'show'])->name('api.country.show');
 
     // Museums
-    Route::get('/museums', [MuseumController::class, 'index'])->name('api.museum.index');
-    Route::get('/museums/geojson', [MuseumController::class, 'geojson'])->name('api.museum.geojson');
-    Route::get('/museum/{slug}', [MuseumController::class, 'show'])->name('api.museum.show');
+    Route::get('/places', [PlaceController::class, 'index'])->name('api.place.index');
+    Route::get('/places/geojson', [PlaceController::class, 'geojson'])->name('api.place.geojson');
+    Route::get('/place/{slug}', [PlaceController::class, 'show'])->name('api.place.show');
 
     // Exhibitions
     Route::get('/exhibitions', [ExhibitionController::class, 'index'])->name('api.exhibition.index');
