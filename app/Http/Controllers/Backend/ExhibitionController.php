@@ -50,7 +50,7 @@ class ExhibitionController extends Controller
 
         $validated = $request->validated();
 
-        $museum = Museum::findOrFail($request->input('museum'));
+        $place = Place::findOrFail($request->input('place'));
 
         $exhibition = new Exhibition;
         $exhibition->museum_uuid = $museum->uuid;
@@ -82,7 +82,7 @@ class ExhibitionController extends Controller
         $place = Place::findOrFail($request->input('place'));
 
         $exhibition = new Exhibition;
-        $exhibition->museum_uuid = $museum->uuid;
+        $exhibition->museum_uuid = $place->uuid;
         $exhibition->slug = Str::slug($request->input('title'));
         $exhibition->title = $request->input('title');
         $exhibition->began_at = Carbon::createFromFormat('d/m/Y', $request->input('began_at'))->format('Y-m-d');
