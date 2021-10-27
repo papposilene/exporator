@@ -51,7 +51,7 @@
                         </div>
                     </a>
                     @if (Auth::user()->can('create', App\Models\Exhibition::class))
-                    <a href="?filter=no_exhibition" class="flex flex-auto text-base md:rounded-r-none md:rounded-l-none md:border-l-0 md:border-r-0
+                    <a href="?filter=no_exhibition" class="flex flex-auto text-base md:rounded-r-none md:rounded-l-none md:border-r-0
                         hover:scale-110 focus:outline-none justify-center px-4 py-2 hover:rounded font-bold cursor-pointer
                         hover:bg-red-300 hover:text-black bg-red-200 border duration-200 ease-in-out border-red-400 transition">
                         <div class="flex leading-5">@ucfirst(__('app.no_exhibition'))</div>
