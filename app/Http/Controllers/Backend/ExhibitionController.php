@@ -7,7 +7,7 @@ use App\Http\Requests\ImportExhibitionRequest;
 use App\Http\Requests\StoreExhibitionRequest;
 use App\Imports\ExhibitionsImport;
 use App\Models\Exhibition;
-use App\Models\Museum;
+use App\Models\Place;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
@@ -79,7 +79,7 @@ class ExhibitionController extends Controller
 
         $validated = $request->validated();
 
-        $museum = Museum::findOrFail($request->input('museum'));
+        $place = Place::findOrFail($request->input('place'));
 
         $exhibition = new Exhibition;
         $exhibition->museum_uuid = $museum->uuid;
