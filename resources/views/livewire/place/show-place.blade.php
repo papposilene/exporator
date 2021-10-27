@@ -39,7 +39,7 @@
             </ul>
             @auth
             <ul class="bg-yellow-400 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
-                <li><livewire:interfaces.follow-place :museum="$place" :wire:key="$place->uuid" /></li>
+                <li><livewire:interfaces.follow-place :place="$place" :wire:key="$place->uuid" /></li>
             </ul>
             @endauth
             @if ($place->status === 1)
@@ -56,7 +56,7 @@
                 </li>
             </ul>
             <ul class="list-inside md:m-5 mt-5 md:mt-0 shadow w-full">
-                <li><livewire:interfaces.map :museum="$place" :wire:key="$place->uuid" /></li>
+                <li><livewire:interfaces.map :place="$place" :wire:key="$place->uuid" /></li>
             </ul>
             @auth
             @if (Auth::user()->can('create', App\Models\Exhibition::class))
