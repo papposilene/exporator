@@ -64,7 +64,7 @@ class ExhibitionController extends Controller
         $exhibition->is_published = true;
         $exhibition->save();
 
-        return redirect()->route('front.museum.show', ['slug' => $museum->slug])->with('success', 'All good!');
+        return redirect()->route('front.place.show', ['slug' => $place->slug])->with('success', 'All good!');
     }
 
     /**
