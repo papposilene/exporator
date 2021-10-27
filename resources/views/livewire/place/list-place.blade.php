@@ -60,9 +60,10 @@
                     <thead>
                         <tr class="bg-gray-700 text-white">
                             <th class="w-1/12 text-center p-3">@ucfirst(__('app.iteration'))</th>
+                            <th class="w-1/12 text-center hidden lg:table-cell">@ucfirst(__('app.followed'))</th>
                             <th class="w-2/12 text-center hidden lg:table-cell">@ucfirst(__('app.types'))</th>
                             <th class="w-2/12 text-center hidden lg:table-cell">@ucfirst(__('app.cities'))</th>
-                            <th class="w-4/12 text-center">@ucfirst(__('app.places'))</th>
+                            <th class="w-3/12 text-center">@ucfirst(__('app.places'))</th>
                             <th class="w-2/12 text-center hidden lg:table-cell">@ucfirst(__('app.status'))</th>
                             <th class="w-1/12 text-center">@ucfirst(__('app.exhibitions'))</th>
                         </tr>
@@ -71,6 +72,9 @@
                         @foreach($places as $place)
                         <tr class="bg-gray-200 border-b border-gray-300 border-dashed h-12 w-12 p-4">
                             <td class="text-center">{{ $loop->iteration }}</td>
+                            <td class="hidden lg:table-cell">
+                                <livewire:interfaces.follow-place :place="$place" :wire:key="$place->uuid" />
+                            </td>
                             <td class="hidden lg:table-cell">@ucfirst(__('app.' . Str::slug($place->hasType->type, '_')))</td>
                             <td class="hidden lg:table-cell">{{ $place->city }}</td>
                             <td class="break-words">
