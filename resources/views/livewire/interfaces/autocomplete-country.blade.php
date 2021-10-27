@@ -3,17 +3,17 @@
         <x-forms.input
             type="text"
             class="relative border-gray-300 focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded-md shadow-sm block mt-1 w-full"
-            :placeholder="@ucfirst(__('app.search_some', ['what' => __('app.museums')]))"
+            :placeholder="@ucfirst(__('app.search_some', ['what' => __('app.countries')]))"
             wire:model="query"
             wire:click="reset"
             wire:keydown.escape="hideDropdown"
             wire:keydown.tab="hideDropdown"
             wire:keydown.Arrow-Up="decrementHighlight"
             wire:keydown.Arrow-Down="incrementHighlight"
-            wire:keydown.enter.prevent="selectMuseum"
+            wire:keydown.enter.prevent="selectCountry"
         />
 
-        <input type="hidden" name="uuid" id="museum" wire:model="selectedMuseum">
+        <input type="hidden" name="uuid" id="country" wire:model="selectedCountry">
 
         @if ($selectedMuseum)
         <a class="absolute cursor-pointer top-2 right-2 text-gray-500" wire:click="reset">
@@ -24,13 +24,13 @@
         @endif
     </div>
 
-    @if(!empty($query) && $selectedMuseum == '' && $showDropdown)
+    @if(!empty($query) && $selectedCountry == '' && $showDropdown)
     <div class="absolute z-10 bg-white mt-1 w-full border border-gray-300 rounded-md shadow-lg">
-        @if (!empty($museums))
-        @foreach($museums as $i => $museum)
-        <a wire:click="selectMuseum({{ $i }})"
+        @if (!empty($countries))
+        @foreach($countries as $i => $country)
+        <a wire:click="selectCountry({{ $i }})"
             class="block py-1 px-2 text-sm cursor-pointer hover:bg-blue-50 {{ $highlightIndex === $i ? 'bg-blue-50' : '' }}"
-            >{{ $museum['name'] }}</a>
+            >{{ $country['name'] }}</a>
         @endforeach
         @else
         <span class="block py-1 px-2 text-sm">@ucfirst(__('app.nothing'))</span>

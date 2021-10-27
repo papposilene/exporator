@@ -22,9 +22,11 @@
                     d’<a href="{{ route('front.exhibition.calendar') }}" class="text-blue-700 hover:text-red-600">un agenda</a>.
                 </p>
             </div>
+            @auth
             <div class="flex flex-col flex-grow flex-wrap bg-yellow-300 lg:mr-3 shadow w-full lg:w-3/4">
                 <livewire:dashboard.stat-user />
             </div>
+            @endauth
         </div>
         <div class="flex flex-row flex-wrap max-w-7xl mx-auto -mt-7 py-5 px-6">
             <div class="flex flex-col flex-grow flex-wrap lg:mr-3 shadow w-full lg:w-1/3">

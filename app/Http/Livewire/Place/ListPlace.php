@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Place;
 use App\Models\Place;
 use App\Models\Type;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -33,6 +34,9 @@ class ListPlace extends Component
 
     public function render()
     {
+        $user = Auth::user();
+        $team = \App\Models\Team::where('id', $user->current_team_id)->first();
+
         if (Auth::check() && Str::of($this->filter)->trim()->isNotEmpty() === 'followed')
         {
             $user = Auth::id();
@@ -44,7 +48,7 @@ class ListPlace extends Component
                 ->orderBy('name', 'asc')
                 ->get();
         }
-        elseif ($this->authorize('create', App\Models\Exhibition::class) && Str::of($this->filter)->trim()->isNotEmpty() === 'no_exhibition')
+        elseif ($user->hasTeamPermission($team, 'server:create') && Str::of($this->filter)->trim()->isNotEmpty() === 'no_exhibition')
         {
             $places = Place::withCount('hasExhibitions')->get();
             $places->whereDate('ended_at', '<', date('Y-m-d'))

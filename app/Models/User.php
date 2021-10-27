@@ -26,8 +26,8 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'name', 
-        'email', 
+        'name',
+        'email',
         'password',
     ];
 
@@ -60,22 +60,22 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
-    
+
     /**
      * Get all the institutions followed by an user.
      */
-    public function followedMuseums()
+    public function followedPlaces()
     {
         return $this->hasManyThrough(
-            'App\Models\Museum',
-            'App\Models\UserMuseum',
+            'App\Models\Place',
+            'App\Models\UserPlace',
+            'user_id',
             'uuid',
-            'museum_uuid',
-            'user_uuid',
-            'uuid'
+            'id',
+            'place_uuid'
         );
     }
-    
+
     /**
      * Get all the exhibitions followed by an user.
      */
@@ -84,13 +84,13 @@ class User extends Authenticatable
         return $this->hasManyThrough(
             'App\Models\Exhibition',
             'App\Models\UserExhibition',
+            'user_id',
             'uuid',
-            'exhibition_uuid',
-            'user_uuid',
-            'uuid'
+            'id',
+            'exhibition_uuid'
         );
     }
-    
+
     /**
      * Get all the tags followed by an user.
      */
@@ -99,10 +99,10 @@ class User extends Authenticatable
         return $this->hasManyThrough(
             'App\Models\Tag',
             'App\Models\UserTag',
-            'uuid',
-            'tag_uuid',
-            'user_uuid',
-            'uuid'
+            'user_id',
+            'id',
+            'id',
+            'tag_id'
         );
     }
 }
