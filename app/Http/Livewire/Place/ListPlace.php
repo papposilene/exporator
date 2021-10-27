@@ -33,7 +33,7 @@ class ListPlace extends Component
 
     public function render()
     {
-        if (Str::of($this->filter)->trim()->isNotEmpty() === 'followed')
+        if (Auth::check() && Str::of($this->filter)->trim()->isNotEmpty() === 'followed')
         {
             $user = Auth::id();
             $places = User::findOrFail($user);
@@ -44,7 +44,7 @@ class ListPlace extends Component
                 ->orderBy('name', 'asc')
                 ->get();
         }
-        elseif (Str::of($this->filter)->trim()->isNotEmpty() === 'no_exhibition')
+        elseif ($this->authorize('create', App\Models\Exhibition::class) && Str::of($this->filter)->trim()->isNotEmpty() === 'no_exhibition')
         {
             $places = Place::withCount('hasExhibitions')->get();
             $places->whereDate('ended_at', '<', date('Y-m-d'))
