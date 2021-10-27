@@ -54,7 +54,7 @@
                     <x-forms.label for="name">@ucfirst(__('app.city'))</x-forms.label>
                     <x-forms.label for="name">@ucfirst(__('app.country'))</x-forms.label>
                     <x-forms.input id="city" class="block mt-1 w-full" type="text" name="city" required :value="old('city')" />
-                    <livewire:interfaces.autocomplete-country />
+                    <livewire:interfaces.autocomplete-place />
                 </div>
 
                 <div class="grid grid-cols-2 gap-x-4 mt-4">
