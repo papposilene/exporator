@@ -62,6 +62,8 @@ return [
     'link' => 'lien vers le site internet',
     'map' => 'carte',
     'mandatory' => 'informations obligatoires',
+    'museum' => 'musée',
+    'museums' => 'musées',
     'name' => 'dénomination',
     'name_common' => 'dénomination courante du pays',
     'name_official' => 'dénomination officielle du pays',
@@ -131,4 +133,7 @@ return [
     'type_is' => 'typologie de tag : :type',
     'unfollow_the' => 'cesser de suivre :what',
     'until' => 'jusqu’au :date',
+    'user_following_places' => 'total des lieux d’exposition suivis : :count',
+    'user_following_exhibitions' => 'total des expositions suivies : :count',
+    'user_following_tags' => 'total des mots-clés suivis : :count',
 ];
