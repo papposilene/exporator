@@ -26,9 +26,9 @@
                 <input type="hidden" name="uuid" value="{{ $exhibition->uuid }}" />
 
                 <div class="mt-4">
-                    <x-forms.label for="museum">@ucfirst(__('app.museum'))</x-forms.label>
-                    <x-forms.input id="museum" class="block mt-1 w-full" type="text" required value="{{ $museum->name }}" />
-                    <x-forms.input type="hidden" name="museum" value="{{ $museum->uuid }}" />
+                    <x-forms.label for="place">@ucfirst(__('app.museum'))</x-forms.label>
+                    <x-forms.input id="place" class="block mt-1 w-full" type="text" required value="{{ $place->name }}" />
+                    <x-forms.input type="hidden" name="place" value="{{ $place->uuid }}" />
                 </div>
 
                 <div class="mt-4">
