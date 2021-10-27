@@ -78,7 +78,7 @@
                 
                 <div class="mt-4">
                     <x-forms.label for="image">@ucfirst(__('app.image'))</x-forms.label>
-                    <x-forms.file id="image" class="block mt-1 w-full" type="text" name="image" />
+                    <x-forms.input id="image" class="block mt-1 w-full" type="file" name="image" />
                 </div>
 
                 <div class="flex items-center justify-end mt-4">
