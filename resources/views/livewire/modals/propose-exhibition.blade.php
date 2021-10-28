@@ -1,8 +1,8 @@
 <div id="modalProposeExhibition">
     <div id="modalButtonProposeExhibition">
         <button id="modalOpenProposeExhibition" class="focus:outline-none bg-pink-100 text-black bg-opacity-75 p-2 rounded w-full"
-            type="button" title="@ucfirst(__('app.create_one', ['what' => __('app.exhibition')]))">
-            @ucfirst(__('app.create_one', ['what' => __('app.exhibition')]))
+            type="button" title="@ucfirst(__('app.propose_one', ['what' => __('app.exhibition')]))">
+            @ucfirst(__('app.propose_one', ['what' => __('app.exhibition')]))
         </button>
     </div>
 
