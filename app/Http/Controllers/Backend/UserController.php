@@ -80,7 +80,7 @@ class UserController extends Controller
         UserExhibition::create([
             'user_id' => $user,
             'exhibition_uuid' => $exhibition->uuid,
-            'visited' => false,
+            'visited_at' => null,
         ]);
 
         return redirect()->back()->with('success', 'All good!');
@@ -106,7 +106,7 @@ class UserController extends Controller
             'exhibition_uuid' => $exhibition->uuid,
         ], 
         [
-            'visited' => true
+            'visited_at' => date('Y-m-d')
         ]);
 
         return redirect()->back()->with('success', 'All good!');
