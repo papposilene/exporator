@@ -59,12 +59,14 @@
                 <li><livewire:interfaces.map :place="$place" :wire:key="$place->uuid" /></li>
             </ul>
             @auth
-            @if (Auth::user()->can('create', App\Models\Exhibition::class))
             <ul class="bg-gray-200 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
+            @if (Auth::user()->can('create', App\Models\Exhibition::class))
                 <li><livewire:modals.edit-place :place="$place" :wire:key="$place->uuid" /></li>
                 <li><livewire:modals.create-exhibition :place="$place" :wire:key="$place->uuid" /></li>
-            </ul>
+            @else
+                <li><livewire:modals.propose-exhibition :place="$place" :wire:key="$place->uuid" /></li>
             @endif
+            </ul>
             @endauth
         </div>
 
