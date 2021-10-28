@@ -22,6 +22,10 @@
             <form method="POST" action="{{ route('front.exhibition.propose') }}" enctype="multipart/form-data"
                 class="flex flex-col w-full">
                 @csrf
+                
+                <div class="mt-4">
+                    <p>@ucfirst(__('app.propose_informations'))</p>
+                </div>
 
                 <div class="mt-4">
                     <x-forms.label for="place">@ucfirst(__('app.place'))</x-forms.label>
