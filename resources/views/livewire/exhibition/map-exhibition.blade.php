@@ -8,7 +8,8 @@
     </x-slot>
 
     <div>
-        <div class="flex max-w-7xl mx-auto py-5 px-6">
+        <!--div class="flex max-w-7xl mx-auto py-5 px-6"-->
+        <div class="flex">
             <div id="leaflet-map" class="w-full shadow" style="height: 100vw; max-height: 650px; position: relative;"></div>
         </div>
     </div>
