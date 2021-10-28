@@ -48,11 +48,11 @@ Route::get('/place/{slug}', ShowPlace::class)->name('front.place.show');
 
 // Exhibitions
 Route::get('/exhibitions', ListExhibition::class)->name('front.exhibition.index');
-Route::get('/museum/{place}/exhibition/{exhibition}', ShowExhibition::class)->name('front.exhibition.show');
-Route::get('/exhibitions/propose', ProposeExhibition::class)->name('front.exhibition.propose');
+Route::get('/place/{place}/exhibition/{exhibition}', ShowExhibition::class)->name('front.exhibition.show');
 Route::get('/exhibitions/calendar', CalendarExhibition::class)->name('front.exhibition.calendar');
 Route::get('/exhibitions/map', MapExhibition::class)->name('front.exhibition.map');
 Route::get('/exhibitions/timeline', TimelineExhibition::class)->name('front.exhibition.timeline');
+Route::post('/exhibitions/propose', ProposeExhibition::class)->name('front.exhibition.propose');
 
 // Tags
 Route::get('/tags', ListTag::class)->name('front.tag.index');
@@ -73,7 +73,6 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function
     Route::post('/exhibitions/import', [ExhibitionController::class, 'import'])->name('admin.exhibition.import');
     Route::post('/exhibition/store', [ExhibitionController::class, 'store'])->name('admin.exhibition.store');
     Route::post('/exhibition/update', [ExhibitionController::class, 'update'])->name('admin.exhibition.update');
-    Route::get('/exhibitions/propose', [ExhibitionController::class, 'propose'])->name('admin.exhibition.propose');
 
     // Tag
     Route::post('/tag/store', [TagController::class, 'store'])->name('admin.tag.store');
