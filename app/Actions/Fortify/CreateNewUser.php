@@ -36,7 +36,7 @@ class CreateNewUser implements CreatesNewUsers
                 'password' => Hash::make($input['password']),
             ]), function (User $user) {
                 $this->createTeam($user);
-                //$this->attach(Jetstream::findUserByEmailOrFail($input['email']), ['role' => 'user']);
+                //$this->addToUserTeam($user);
             });
         });
     }
@@ -53,6 +53,21 @@ class CreateNewUser implements CreatesNewUsers
             'user_id' => $user->id,
             'name' => explode(' ', $user->name, 2)[0]."'s Team",
             'personal_team' => true,
+        ]));
+    }
+    
+    /**
+     * Add the user to the users' team.
+     *
+     * @param  \App\Models\User  $user
+     * @return void
+     */
+    protected function addToUserTeam(User $user)
+    {
+        $user->ownedTeams()->save(Team::forceCreate([
+            'user_id' => $user->id,
+            'name' => explode(' ', $user->name, 2)[0]."'s Team",
+            'personal_team' => false,
         ]));
     }
 }
