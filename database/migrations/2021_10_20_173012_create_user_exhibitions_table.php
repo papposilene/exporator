@@ -20,6 +20,7 @@ class CreateUserExhibitionsTable extends Migration
             $table->uuid('exhibition_uuid');
             $table->foreign('exhibition_uuid')->references('uuid')->on('exhibitions');
             $table->boolean('visited')->default(0);
+            $table->date('visited_at');
             $table->timestamps();
             $table->softDeletes();
         });
