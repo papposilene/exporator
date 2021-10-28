@@ -1,17 +1,17 @@
-<div id="modalCreateExhibition">
-    <div id="modalButtonCreateExhibition">
-        <button id="modalOpenCreateExhibition" class="focus:outline-none bg-pink-100 text-black bg-opacity-75 p-2 rounded w-full"
+<div id="modalProposeExhibition">
+    <div id="modalButtonProposeExhibition">
+        <button id="modalOpenProposeExhibition" class="focus:outline-none bg-pink-100 text-black bg-opacity-75 p-2 rounded w-full"
             type="button" title="@ucfirst(__('app.create_one', ['what' => __('app.exhibition')]))">
             @ucfirst(__('app.create_one', ['what' => __('app.exhibition')]))
         </button>
     </div>
 
-    <div id="modalWindowCreateExhibition"
+    <div id="modalWindowProposeExhibition"
         class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-blue-500 bg-opacity-50 transform scale-0 transition-transform duration-300 z-10">
         <!-- Modal -->
         <div class="bg-white overflow-auto w-1/2 h-1/2 p-12">
             <!-- Close modal button-->
-            <button id="modalCloseCreateExhibition" type="button" class="focus:outline-none float-right">
+            <button id="modalCloseProposeExhibition" type="button" class="focus:outline-none float-right">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -19,7 +19,7 @@
                 </svg>
             </button>
             <!-- Modal content -->
-            <form method="POST" action="{{ route('admin.exhibition.propose') }}" enctype="multipart/form-data"
+            <form method="POST" action="{{ route('front.exhibition.propose') }}" enctype="multipart/form-data"
                 class="flex flex-col w-full">
                 @csrf
 
@@ -60,14 +60,10 @@
                         <option value="0" selected>@ucfirst(__('app.no'))</option>
                     </x-forms.select>
                 </div>
-                
-                <div class="mt-4">
-
-                </div>
 
                 <div class="flex items-center justify-end mt-4">
                     <x-forms.button class="ml-4">
-                        @ucfirst(__('app.save'))
+                        @ucfirst(__('app.propose'))
                     </x-forms.button>
                 </div>
             </form>
@@ -77,11 +73,11 @@
 
 <script>
 document.addEventListener('livewire:load', function () {
-    const modalOpenCreateExhibition = document.getElementById('modalOpenCreateExhibition')
-    const modalCloseCreateExhibition = document.getElementById('modalCloseCreateExhibition')
-    const modalWindowCreateExhibition = document.getElementById('modalWindowCreateExhibition')
+    const modalOpenProposeExhibition = document.getElementById('modalOpenProposeExhibition')
+    const modalCloseProposeExhibition = document.getElementById('modalCloseProposeExhibition')
+    const modalWindowProposeExhibition = document.getElementById('modalWindowProposeExhibition')
 
-    modalOpenCreateExhibition.addEventListener('click',()=>modalWindowCreateExhibition.classList.remove('scale-0'))
-    modalCloseCreateExhibition.addEventListener('click',()=>modalWindowCreateExhibition.classList.add('scale-0'))
+    modalOpenProposeExhibition.addEventListener('click',()=>modalWindowProposeExhibition.classList.remove('scale-0'))
+    modalCloseProposeExhibition.addEventListener('click',()=>modalWindowProposeExhibition.classList.add('scale-0'))
 })
 </script>
