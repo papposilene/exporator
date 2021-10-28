@@ -42,6 +42,11 @@
                  Enfin, son code-source complet, sous licence MIT, est <a href="https://github.com/papposilene/exporator"
                 class="text-blue-700 hover:text-red-600" target="_blank" rel="noopener">disponible sur Github</a>.
             </p>
+            <p class="mt-7 mb-3">
+                <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" 
+                    data-slug="papposilene" data-color="#FFDD00" data-emoji="" data-font="Bree" data-text="Buy me a coffee" data-outline-color="#000000" 
+                    data-font-color="#000000" data-coffee-color="#ffffff"></script>
+            </p>
         </div>
     </div>
 </div>
