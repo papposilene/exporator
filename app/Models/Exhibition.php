@@ -74,6 +74,7 @@ class Exhibition extends Model
         'ended_at',
         'description',
         'link',
+        'price',
         'is_published',
     ];
 
