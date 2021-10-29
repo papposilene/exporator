@@ -7,7 +7,7 @@
     </div>
 
     <div id="modalWindowUpdateExhibition"
-        class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-blue-500 bg-opacity-50 transform scale-0 transition-transform duration-300 z-10">
+        class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-blue-500 bg-opacity-50 transform scale-0 transition-transform duration-300 z-1000">
         <!-- Modal -->
         <div class="bg-white overflow-auto w-1/2 h-1/2 p-12">
             <!-- Close modal button-->
@@ -22,7 +22,7 @@
             <form method="POST" action="{{ route('admin.exhibition.store') }}" enctype="multipart/form-data"
                 class="flex flex-col w-full">
                 @csrf
-                
+
                 <input type="hidden" name="uuid" value="{{ $exhibition->uuid }}" />
 
                 <div class="mt-4">
@@ -52,7 +52,7 @@
                     <x-forms.label for="link">@ucfirst(__('app.link'))</x-forms.label>
                     <x-forms.input id="link" class="block mt-1 w-full" type="text" name="link" placeholder="{{ __('app.https') }}" value="{{ $exhibition->link }}"" required />
                 </div>
-                
+
                 <div class="grid grid-cols-2 gap-x-4 mt-4">
                     <x-forms.label for="price">@ucfirst(__('app.price'))</x-forms.label>
                     <x-forms.label for="public">@ucfirst(__('app.is_published'))</x-forms.label>
@@ -62,7 +62,7 @@
                         <option value="0" selected>@ucfirst(__('app.no'))</option>
                     </x-forms.select>
                 </div>
-                
+
                 <div class="flex items-center justify-end mt-4">
                     <x-forms.button class="ml-4">
                         @ucfirst(__('app.save'))

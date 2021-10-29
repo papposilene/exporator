@@ -7,7 +7,7 @@
     </div>
 
     <div id="modalWindowProposeExhibition"
-        class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-blue-500 bg-opacity-50 transform scale-0 transition-transform duration-300 z-10">
+        class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-blue-500 bg-opacity-50 transform scale-0 transition-transform duration-300 z-1000">
         <!-- Modal -->
         <div class="bg-white overflow-auto w-1/2 h-1/2 p-12">
             <!-- Close modal button-->
@@ -22,7 +22,7 @@
             <form method="POST" action="{{ route('front.exhibition.propose') }}" enctype="multipart/form-data"
                 class="flex flex-col w-full">
                 @csrf
-                
+
                 <div class="mt-4">
                     <p>@ucfirst(__('app.propose_informations'))</p>
                 </div>
@@ -54,7 +54,7 @@
                     <x-forms.label for="link">@ucfirst(__('app.link'))</x-forms.label>
                     <x-forms.input id="link" class="block mt-1 w-full" type="text" name="link" placeholder="{{ __('app.https') }}" required />
                 </div>
-                
+
                 <div class="grid grid-cols-2 gap-x-4 mt-4">
                     <x-forms.label for="price">@ucfirst(__('app.price'))</x-forms.label>
                     <x-forms.label for="public">@ucfirst(__('app.is_published'))</x-forms.label>

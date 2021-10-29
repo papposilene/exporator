@@ -1108,6 +1108,12 @@ select {
 .z-10 {
 	z-index: 10;
 }
+.z-auto {
+	z-index: auto;
+}
+.z-1000 {
+	z-index: 1000;
+}
 .col-span-6 {
 	grid-column: span 6 / span 6;
 }
@@ -1374,9 +1380,6 @@ select {
 }
 .flex-grow {
 	flex-grow: 1;
-}
-.flex-grow-0 {
-	flex-grow: 0;
 }
 .table-auto {
 	table-layout: auto;
@@ -1733,10 +1736,6 @@ select {
 .bg-yellow-400 {
 	--tw-bg-opacity: 1;
 	background-color: rgba(251, 191, 36, var(--tw-bg-opacity));
-}
-.bg-yellow-300 {
-	--tw-bg-opacity: 1;
-	background-color: rgba(252, 211, 77, var(--tw-bg-opacity));
 }
 .bg-opacity-25 {
 	--tw-bg-opacity: 0.25;
@@ -3900,10 +3899,6 @@ svg.leaflet-image-layer.leaflet-interactive path {
 		transform: var(--tw-transform);
 	}
 
-	.sm\:grid-cols-1 {
-		grid-template-columns: repeat(1, minmax(0, 1fr));
-	}
-
 	.sm\:flex-row {
 		flex-direction: row;
 	}
@@ -4098,22 +4093,6 @@ svg.leaflet-image-layer.leaflet-interactive path {
 		margin-right: 0.75rem;
 	}
 
-	.lg\:mr-2 {
-		margin-right: 0.5rem;
-	}
-
-	.lg\:ml-2 {
-		margin-left: 0.5rem;
-	}
-
-	.lg\:-ml-2 {
-		margin-left: -0.5rem;
-	}
-
-	.lg\:ml-1 {
-		margin-left: 0.25rem;
-	}
-
 	.lg\:table-cell {
 		display: table-cell;
 	}
@@ -4130,24 +4109,12 @@ svg.leaflet-image-layer.leaflet-interactive path {
 		width: 75%;
 	}
 
-	.lg\:w-1\/3 {
-		width: 33.333333%;
-	}
-
 	.lg\:w-2\/4 {
 		width: 50%;
 	}
 
 	.lg\:flex-grow-0 {
 		flex-grow: 0;
-	}
-
-	.lg\:grid-cols-5 {
-		grid-template-columns: repeat(5, minmax(0, 1fr));
-	}
-
-	.lg\:grid-cols-2 {
-		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 
 	.lg\:grid-cols-4 {
@@ -4173,10 +4140,6 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
 	.lg\:pr-2 {
 		padding-right: 0.5rem;
-	}
-
-	.lg\:pl-2 {
-		padding-left: 0.5rem;
 	}
 }
 
