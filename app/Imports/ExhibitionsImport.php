@@ -57,10 +57,10 @@ class ExhibitionsImport implements ToModel, SkipsEmptyRows, WithBatchInserts, Wi
 
                 // Find or create the tag for the exhibition type.
                 $splittag = Str::of($tag)->split('/:+/');
-                
-                $tag_type = Str::of($splittag[1])->lower();
-                $tag_tag = Str::of($splittag[0])->lower();
-                
+
+                $tag_type = Str::of($splittag[0])->lower();
+                $tag_tag = Str::of($splittag[1])->lower();
+
                 $tagged = Tag::findOrCreate($tag_tag, $tag_type);
                 $exhibition->attachTags([$tag_tag], $tag_type);
             }

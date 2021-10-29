@@ -32,18 +32,13 @@
                     <a href="{{ $exhibition->inPlace->link }}" class="text-blue-700 hover:text-red-600" target="_blank" rel="noopener">{{ $exhibition->inPlace->link }}</a>
                 </li>
             </ul>
-            @auth
-            <ul class="bg-yellow-400 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
-                <li><livewire:interfaces.follow-exhibition :exhibition="$exhibition" :wire:key="$exhibition->uuid" /></li>
-            </ul>
-            @endauth
             @if ($exhibition->inPlace->status === 1)
             <ul class="bg-green-100 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
             @else
             <ul class="bg-red-100 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
             @endif
                 <li title="@ucfirst(__('app.is_open'))">
-                    @if ($exhibition->inMuseum->status === 1)
+                    @if ($exhibition->inPlace->status === 1)
                     <span class="text-green-900">@ucfirst(__('app.place_open')).</span>
                     @else
                     <span class="text-red-900">@ucfirst(__('app.place_close')).</span>
@@ -53,6 +48,11 @@
             <ul class="list-inside md:m-5 mt-5 md:mt-0 shadow w-full">
                 <li><livewire:interfaces.map :place="$exhibition->inPlace" :wire:key="$exhibition->inPlace->uuid" /></li>
             </ul>
+            @auth
+            <ul class="bg-gray-200 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
+                <li><livewire:interfaces.follow-exhibition :exhibition="$exhibition" :wire:key="$exhibition->uuid" /></li>
+            </ul>
+            @endauth
             @auth
             @if (Auth::user()->can('create', App\Models\Exhibition::class))
             <ul class="bg-gray-200 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">

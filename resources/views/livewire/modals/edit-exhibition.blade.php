@@ -2,7 +2,7 @@
     <div id="modalButtonUpdateExhibition">
         <button id="modalOpenCreateExhibition" class="focus:outline-none bg-pink-100 text-black bg-opacity-75 p-2 rounded w-full"
             type="button" title="@ucfirst(__('app.create_one', ['what' => __('app.exhibition')]))">
-            @ucfirst(__('app.create_one', ['what' => __('app.exhibition')]))
+            @ucfirst(__('app.edit_one', ['what' => __('app.exhibition')]))
         </button>
     </div>
 
@@ -26,9 +26,9 @@
                 <input type="hidden" name="uuid" value="{{ $exhibition->uuid }}" />
 
                 <div class="mt-4">
-                    <x-forms.label for="place">@ucfirst(__('app.museum'))</x-forms.label>
-                    <x-forms.input id="place" class="block mt-1 w-full" type="text" required value="{{ $place->name }}" />
-                    <x-forms.input type="hidden" name="place" value="{{ $place->uuid }}" />
+                    <x-forms.label for="place">@ucfirst(__('app.place'))</x-forms.label>
+                    <x-forms.input id="place" class="block mt-1 w-full" type="text" required value="{{ $exhibition->inPlace->name }}" />
+                    <x-forms.input type="hidden" name="place" value="{{ $exhibition->inPlace->uuid }}" />
                 </div>
 
                 <div class="mt-4">
@@ -57,7 +57,7 @@
                     <x-forms.label for="price">@ucfirst(__('app.price'))</x-forms.label>
                     <x-forms.label for="public">@ucfirst(__('app.is_published'))</x-forms.label>
                     <x-forms.input id="price" class="block mt-1 w-full" type="text" name="price" placeholder="{{ __('app.price') }}" value="{{ $exhibition->price }}" required />
-                    <x-forms.select id="public" class="block mt-1 w-full" name="public" required />
+                    <x-forms.select id="public" class="block mt-1 w-full" name="public" required>
                         <option value="1" selected>@ucfirst(__('app.yes'))</option>
                         <option value="0" selected>@ucfirst(__('app.no'))</option>
                     </x-forms.select>
