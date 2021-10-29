@@ -1,6 +1,6 @@
-<div id="modalEditPlace">
+<div id="modalEditPlace" class="relative float-right mr-2">
     <div id="modalButtonEditPlace">
-        <button id="modalOpenEditPlace" class="focus:outline-none bg-purple-100 text-black bg-opacity-75 p-2 rounded w-full"
+        <button id="modalOpenEditPlace" class="focus:outline-none bg-purple-100 text-black bg-opacity-75 px-1 rounded"
             type="button" title="@ucfirst(__('app.edit_the', ['what' => __('app.places')]))">
             @ucfirst(__('app.edit_the', ['what' => __('app.place')]))
         </button>

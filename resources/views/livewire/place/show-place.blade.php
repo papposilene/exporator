@@ -2,6 +2,14 @@
 
 <div>
     <x-slot name="header">
+        @auth
+        @if (Auth::user()->can('create', App\Models\Exhibition::class))
+        <livewire:modals.edit-place :place="$place" :wire:key="$place->uuid" />
+        <livewire:modals.create-exhibition :place="$place" :wire:key="$place->uuid" />
+        @else
+        <livewire:modals.propose-exhibition :place="$place" :wire:key="$place->uuid" />
+        @endif
+        @endauth
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             <span>
                 <a href="{{ route('front.place.index') }}">
@@ -37,11 +45,6 @@
                     <a href="{{ $place->link }}" class="text-blue-700 hover:text-red-600" target="_blank" rel="noopener">{{ $place->link }}</a>
                 </li>
             </ul>
-            @auth
-            <ul class="bg-yellow-400 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
-                <li><livewire:interfaces.follow-place :place="$place" :wire:key="$place->uuid" /></li>
-            </ul>
-            @endauth
             @if ($place->status === 1)
             <ul class="bg-green-100 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
             @else
@@ -60,12 +63,7 @@
             </ul>
             @auth
             <ul class="bg-gray-200 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
-            @if (Auth::user()->can('create', App\Models\Exhibition::class))
-                <li><livewire:modals.edit-place :place="$place" :wire:key="$place->uuid" /></li>
-                <li><livewire:modals.create-exhibition :place="$place" :wire:key="$place->uuid" /></li>
-            @else
-                <li><livewire:modals.propose-exhibition :place="$place" :wire:key="$place->uuid" /></li>
-            @endif
+                <li><livewire:interfaces.follow-place :place="$place" :wire:key="$place->uuid" /></li>
             </ul>
             @endauth
         </div>
