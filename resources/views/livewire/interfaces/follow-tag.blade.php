@@ -3,7 +3,7 @@
     <form method="POST" action="{{ route('admin.user.tag_unfollow') }}" class="flex justify-center w-full">
         @csrf
 
-        <input type="hidden" name="uuid" value="{{ $tag->isFollowed->uuid }}" />
+        <input type="hidden" name="tag" value="{{ $tag->id }}" />
 
         <x-forms.button class="block mt-1 bg-transparent">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -16,7 +16,7 @@
     <form method="POST" action="{{ route('admin.user.tag_follow') }}" class="flex justify-center w-full">
         @csrf
 
-        <input type="hidden" name="uuid" value="{{ $tag->uuid }}" />
+        <input type="hidden" name="tag" value="{{ $tag->id }}" />
 
         <x-forms.button class="block mt-1 bg-transparent">
             <svg xmlns="http://www.w3.org/2000/svg" class="text-yellow-500 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
