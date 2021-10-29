@@ -100,4 +100,19 @@ class Exhibition extends Model
             'uuid'
         );
     }
+
+    /**
+     * Get if the user has followed the place
+     */
+    public function isFollowed()
+    {
+        return $this->hasOneThrough(
+            'App\Models\User',
+            'App\Models\UserExhibition',
+            'user_id',
+            'id',
+            'uuid',
+            'exhibition_uuid'
+        );
+    }
 }

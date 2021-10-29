@@ -86,17 +86,32 @@ class Tag extends Model
     }
 
     /**
-     * Get all the museums for a specific tag.
+     * Get all the places for a specific tag.
      */
-    public function hasMuseums()
+    public function hasPlaces()
     {
         return $this->hasManyThrough(
-            'App\Models\Museum',
+            'App\Models\Place',
             'App\Models\Tagged',
             'tag_id',
             'uuid',
             'id',
             'taggable_id'
+        );
+    }
+
+    /**
+     * Get if the user has followed the place
+     */
+    public function isFollowed()
+    {
+        return $this->hasOneThrough(
+            'App\Models\User',
+            'App\Models\UserTag',
+            'user_id',
+            'id',
+            'id',
+            'tag_id'
         );
     }
 }
