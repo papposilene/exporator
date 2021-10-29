@@ -78,6 +78,6 @@ class AutocompleteCountry extends Component
 
     public function render()
     {
-        return view('livewire.country.autocomplete-country');
+        return view('livewire.interfaces.autocomplete-country');
     }
 }

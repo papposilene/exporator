@@ -2,22 +2,22 @@
 
 namespace App\Http\Livewire\Modals;
 
-use App\Models\Museum;
+use App\Models\Place;
 use Livewire\Component;
 
 class CreateExhibition extends Component
 {
-    public Museum $museum;
+    public Place $place;
 
-    public function mount($museum)
+    public function mount($place)
     {
-        $this->museum = $museum;
+        $this->place = $place;
     }
 
     public function render()
     {
         return view('livewire.modals.create-exhibition', [
-            'museum' => $this->museum,
+            'place' => $this->place,
         ]);
     }
 }

@@ -32,7 +32,7 @@ class ShowPlace extends Component
 
     public function render()
     {
-        return view('livewire.place.show-museum', [
+        return view('livewire.place.show-place', [
             'place' => $this->place,
             'exhibitions' => $this->place->hasExhibitions()
                 ->where('title', 'like', '%'.$this->search.'%')

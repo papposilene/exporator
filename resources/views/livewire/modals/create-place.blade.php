@@ -40,8 +40,8 @@
                 <div class="mt-4">
                     <x-forms.label for="status">@ucfirst(__('app.status'))</x-forms.label>
                     <x-forms.select id="status" class="block mt-1 w-full" name="status" required>
-                        <option value="1">@ucfirst(__('app.museum_open'))</option>
-                        <option value="0">@ucfirst(__('app.museum_close'))</option>
+                        <option value="1">@ucfirst(__('app.place_open'))</option>
+                        <option value="0">@ucfirst(__('app.place_close'))</option>
                     </x-forms.select>
                 </div>
 
@@ -54,7 +54,7 @@
                     <x-forms.label for="name">@ucfirst(__('app.city'))</x-forms.label>
                     <x-forms.label for="name">@ucfirst(__('app.country'))</x-forms.label>
                     <x-forms.input id="city" class="block mt-1 w-full" type="text" name="city" required :value="old('city')" />
-                    <livewire:interfaces.autocomplete-place />
+                    <livewire:interfaces.autocomplete-country />
                 </div>
 
                 <div class="grid grid-cols-2 gap-x-4 mt-4">

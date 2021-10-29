@@ -48,10 +48,10 @@
             <ul class="bg-red-100 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
             @endif
                 <li title="@ucfirst(__('app.is_open'))">
-                    @if ($museum->status === 1)
-                    <span class="text-green-900">@ucfirst(__('app.museum_open')).</span>
+                    @if ($place->status === 1)
+                    <span class="text-green-900">@ucfirst(__('app.place_open')).</span>
                     @else
-                    <span class="text-red-900">@ucfirst(__('app.museum_close')).</span>
+                    <span class="text-red-900">@ucfirst(__('app.place_close')).</span>
                     @endif
                 </li>
             </ul>

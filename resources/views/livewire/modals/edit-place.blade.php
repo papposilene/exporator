@@ -61,7 +61,7 @@
                     <x-forms.label for="name">@ucfirst(__('app.city'))</x-forms.label>
                     <x-forms.label for="name">@ucfirst(__('app.country'))</x-forms.label>
                     <x-forms.input id="city" class="block mt-1 w-full" type="text" name="city" required value="{{ $place->city }}" />
-                    <livewire:country.autocomplete-country />
+                    <livewire:interfaces.autocomplete-country />
                 </div>
 
                 <div class="grid grid-cols-2 gap-x-4 mt-4">
@@ -75,7 +75,7 @@
                     <x-forms.label for="link">@ucfirst(__('app.link'))</x-forms.label>
                     <x-forms.input id="link" class="block mt-1 w-full" type="text" name="link" required value="{{ $place->link }}" />
                 </div>
-                
+
                 <div class="mt-4">
                     <x-forms.label for="image">@ucfirst(__('app.image'))</x-forms.label>
                     <x-forms.input id="image" class="block mt-1 w-full" type="file" name="image" />
