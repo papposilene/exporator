@@ -11,7 +11,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-    
+
     'no' => 'non',
     'yes' => 'oui',
 
@@ -118,7 +118,7 @@ return [
     'map_of' => 'carte des :name',
     'numbers_of_countries' => 'nombre total : :count',
     'numbers_of_places' => 'nombre total : :count',
-    'numbers_of_place_type' => 'total des lieux d’exposition : :count',
+    'numbers_of_museum_type' => 'total des lieux d’exposition : :count',
     'numbers_of_gallery_type' => 'total des galeries : :count',
     'numbers_of_artcenter_type' => 'total des centres d’art : :count',
     'numbers_of_artfair_type' => 'total des foires : :count',
