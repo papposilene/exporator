@@ -108,10 +108,10 @@ class Tag extends Model
         return $this->hasOneThrough(
             'App\Models\User',
             'App\Models\UserTag',
-            'user_id',
+            'tag_id',
             'id',
             'id',
-            'tag_id'
+            'user_id'
         );
     }
 }

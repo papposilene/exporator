@@ -132,10 +132,10 @@ class Place extends Model
         return $this->hasOneThrough(
             'App\Models\User',
             'App\Models\UserPlace',
-            'user_id',
+            'place_uuid',
             'id',
             'uuid',
-            'place_uuid'
+            'user_id'
         );
     }
 }

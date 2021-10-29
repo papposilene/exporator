@@ -110,10 +110,10 @@ class Exhibition extends Model
         return $this->hasOneThrough(
             'App\Models\User',
             'App\Models\UserExhibition',
-            'user_id',
+            'exhibition_uuid',
             'id',
             'uuid',
-            'exhibition_uuid'
+            'user_id'
         );
     }
 }
