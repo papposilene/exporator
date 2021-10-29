@@ -40,7 +40,7 @@ class UserController extends Controller
 
         UserPlace::create([
             'user_id' => $user,
-            'place' => $place->uuid,
+            'place_uuid' => $place->uuid,
         ]);
 
         return redirect()->back()->with('success', 'All good!');
