@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Exhibition;
+use App\Models\Place;
 use App\Models\User;
 use App\Models\UserExhibition;
 use App\Models\UserPlace;
 use App\Models\UserTag;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AddExhibitionRequest;
-use App\Http\Requests\DeleteExhibitionRequest;
+use App\Http\Requests\FollowExhibitionRequest;
 use App\Http\Requests\FollowPlaceRequest;
 use App\Http\Requests\FollowTagRequest;
+use App\Http\Requests\UnfollowExhibitionRequest;
 use App\Http\Requests\UnfollowPlaceRequest;
 use App\Http\Requests\UnfollowTagRequest;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -32,13 +34,13 @@ class UserController extends Controller
         $this->authorize('create', User::class);
 
         $validated = $request->validated();
-        
+
         $user = Auth::id();
-        $place = Place::findOrFail($request->input('place_uuid'));
-        
+        $place = Place::findOrFail($request->input('place'));
+
         UserPlace::create([
             'user_id' => $user,
-            'place_uuid' => $place->uuid,
+            'place' => $place->uuid,
         ]);
 
         return redirect()->back()->with('success', 'All good!');
@@ -55,13 +57,13 @@ class UserController extends Controller
         $this->authorize('delete', User::class);
 
         $validated = $request->validated();
-        
-        $following = UserPlace::findOrFail($request->input('follow_uuid'));
+
+        $following = UserPlace::findOrFail($request->input('follow'));
         $following->delete();
 
         return redirect()->back()->with('success', 'All good!');
     }
-    
+
     /**
      * Follow an exhibition.
      *
@@ -73,10 +75,10 @@ class UserController extends Controller
         $this->authorize('create', User::class);
 
         $validated = $request->validated();
-        
+
         $user = Auth::id();
-        $exhibition = Exhibition::findOrFail($request->input('exhibition_uuid'));
-        
+        $exhibition = Exhibition::findOrFail($request->input('exhibition'));
+
         UserExhibition::create([
             'user_id' => $user,
             'exhibition_uuid' => $exhibition->uuid,
@@ -85,7 +87,7 @@ class UserController extends Controller
 
         return redirect()->back()->with('success', 'All good!');
     }
-    
+
     /**
      * Visited exhibition
      *
@@ -97,14 +99,14 @@ class UserController extends Controller
         $this->authorize('create', User::class);
 
         $validated = $request->validated();
-        
+
         $user = Auth::id();
-        $exhibition = Exhibition::findOrFail($request->input('exhibition_uuid'));
-        
+        $exhibition = Exhibition::findOrFail($request->input('exhibition'));
+
         UserExhibition::updateOrCreate([
             'user_id' => $user,
             'exhibition_uuid' => $exhibition->uuid,
-        ], 
+        ],
         [
             'visited_at' => date('Y-m-d')
         ]);
@@ -123,13 +125,13 @@ class UserController extends Controller
         $this->authorize('delete', User::class);
 
         $validated = $request->validated();
-        
-        $following = UserExhibition::findOrFail($request->input('follow_uuid'));
+
+        $following = UserExhibition::findOrFail($request->input('follow'));
         $following->delete();
 
         return redirect()->back()->with('success', 'All good!');
     }
-    
+
     /**
      * Un-visited exhibition
      *
@@ -141,21 +143,21 @@ class UserController extends Controller
         $this->authorize('create', User::class);
 
         $validated = $request->validated();
-        
+
         $user = Auth::id();
-        $exhibition = Exhibition::findOrFail($request->input('exhibition_uuid'));
-        
+        $exhibition = Exhibition::findOrFail($request->input('exhibition'));
+
         UserExhibition::updateOrCreate([
             'user_id' => $user,
             'exhibition_uuid' => $exhibition->uuid,
-        ], 
+        ],
         [
             'visited' => false
         ]);
 
         return redirect()->back()->with('success', 'All good!');
     }
-    
+
     /**
      * Follow a tag.
      *
@@ -167,11 +169,11 @@ class UserController extends Controller
         $this->authorize('create', User::class);
 
         $validated = $request->validated();
-        
+
         $user = Auth::id();
-        $tag_id = Tag::findOrFail($request->input('tag_id'));
-        
-        UserMuseum::create([
+        $tag_id = Tag::findOrFail($request->input('tag'));
+
+        UserPlace::create([
             'user_uuid' => $user,
             'tag_id' => $tag->id,
         ]);
@@ -190,8 +192,8 @@ class UserController extends Controller
         $this->authorize('delete', User::class);
 
         $validated = $request->validated();
-        
-        $following = UserTag::findOrFail($request->input('follow_uuid'));
+
+        $following = UserTag::findOrFail($request->input('follow'));
         $following->delete();
 
         return redirect()->back()->with('success', 'All good!');
