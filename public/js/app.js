@@ -4593,13 +4593,11 @@ var require_shared_cjs = __commonJS((exports) => {
   var isGloballyWhitelisted = /* @__PURE__ */ makeMap(GLOBALS_WHITE_LISTED);
   var range = 2;
   function generateCodeFrame(source, start2 = 0, end = source.length) {
-    let lines = source.split(/(\r?\n)/);
-    const newlineSequences = lines.filter((_, idx) => idx % 2 === 1);
-    lines = lines.filter((_, idx) => idx % 2 === 0);
+    const lines = source.split(/\r?\n/);
     let count = 0;
     const res = [];
     for (let i = 0; i < lines.length; i++) {
-      count += lines[i].length + (newlineSequences[i] && newlineSequences[i].length || 0);
+      count += lines[i].length + 1;
       if (count >= start2) {
         for (let j = i - range; j <= i + range || end > count; j++) {
           if (j < 0 || j >= lines.length)
@@ -4607,9 +4605,8 @@ var require_shared_cjs = __commonJS((exports) => {
           const line = j + 1;
           res.push(`${line}${" ".repeat(Math.max(3 - String(line).length, 0))}|  ${lines[j]}`);
           const lineLength = lines[j].length;
-          const newLineSeqLength = newlineSequences[j] && newlineSequences[j].length || 0;
           if (j === i) {
-            const pad = start2 - (count - (lineLength + newLineSeqLength));
+            const pad = start2 - (count - lineLength) + 1;
             const length = Math.max(1, end > count ? lineLength - pad : end - start2);
             res.push(`   |  ` + " ".repeat(pad) + "^".repeat(length));
           } else if (j > i) {
@@ -4617,7 +4614,7 @@ var require_shared_cjs = __commonJS((exports) => {
               const length = Math.max(Math.min(end - count, lineLength), 1);
               res.push(`   |  ` + "^".repeat(length));
             }
-            count += lineLength + newLineSeqLength;
+            count += lineLength + 1;
           }
         }
         break;
@@ -5158,33 +5155,31 @@ var require_reactivity_cjs = __commonJS((exports) => {
   var shallowGet = /* @__PURE__ */ createGetter(false, true);
   var readonlyGet = /* @__PURE__ */ createGetter(true);
   var shallowReadonlyGet = /* @__PURE__ */ createGetter(true, true);
-  var arrayInstrumentations = /* @__PURE__ */ createArrayInstrumentations();
-  function createArrayInstrumentations() {
-    const instrumentations = {};
-    ["includes", "indexOf", "lastIndexOf"].forEach((key) => {
-      instrumentations[key] = function(...args) {
-        const arr = toRaw2(this);
-        for (let i = 0, l = this.length; i < l; i++) {
-          track(arr, "get", i + "");
-        }
-        const res = arr[key](...args);
-        if (res === -1 || res === false) {
-          return arr[key](...args.map(toRaw2));
-        } else {
-          return res;
-        }
-      };
-    });
-    ["push", "pop", "shift", "unshift", "splice"].forEach((key) => {
-      instrumentations[key] = function(...args) {
-        pauseTracking();
-        const res = toRaw2(this)[key].apply(this, args);
-        resetTracking();
+  var arrayInstrumentations = {};
+  ["includes", "indexOf", "lastIndexOf"].forEach((key) => {
+    const method = Array.prototype[key];
+    arrayInstrumentations[key] = function(...args) {
+      const arr = toRaw2(this);
+      for (let i = 0, l = this.length; i < l; i++) {
+        track(arr, "get", i + "");
+      }
+      const res = method.apply(arr, args);
+      if (res === -1 || res === false) {
+        return method.apply(arr, args.map(toRaw2));
+      } else {
         return res;
-      };
-    });
-    return instrumentations;
-  }
+      }
+    };
+  });
+  ["push", "pop", "shift", "unshift", "splice"].forEach((key) => {
+    const method = Array.prototype[key];
+    arrayInstrumentations[key] = function(...args) {
+      pauseTracking();
+      const res = method.apply(this, args);
+      resetTracking();
+      return res;
+    };
+  });
   function createGetter(isReadonly2 = false, shallow = false) {
     return function get3(target, key, receiver) {
       if (key === "__v_isReactive") {
@@ -5285,11 +5280,11 @@ var require_reactivity_cjs = __commonJS((exports) => {
       return true;
     }
   };
-  var shallowReactiveHandlers = /* @__PURE__ */ shared.extend({}, mutableHandlers, {
+  var shallowReactiveHandlers = shared.extend({}, mutableHandlers, {
     get: shallowGet,
     set: shallowSet
   });
-  var shallowReadonlyHandlers = /* @__PURE__ */ shared.extend({}, readonlyHandlers, {
+  var shallowReadonlyHandlers = shared.extend({}, readonlyHandlers, {
     get: shallowReadonlyGet
   });
   var toReactive = (value) => shared.isObject(value) ? reactive3(value) : value;
@@ -5432,82 +5427,73 @@ var require_reactivity_cjs = __commonJS((exports) => {
       return type === "delete" ? false : this;
     };
   }
-  function createInstrumentations() {
-    const mutableInstrumentations2 = {
-      get(key) {
-        return get$1(this, key);
-      },
-      get size() {
-        return size(this);
-      },
-      has: has$1,
-      add,
-      set: set$1,
-      delete: deleteEntry,
-      clear,
-      forEach: createForEach(false, false)
-    };
-    const shallowInstrumentations2 = {
-      get(key) {
-        return get$1(this, key, false, true);
-      },
-      get size() {
-        return size(this);
-      },
-      has: has$1,
-      add,
-      set: set$1,
-      delete: deleteEntry,
-      clear,
-      forEach: createForEach(false, true)
-    };
-    const readonlyInstrumentations2 = {
-      get(key) {
-        return get$1(this, key, true);
-      },
-      get size() {
-        return size(this, true);
-      },
-      has(key) {
-        return has$1.call(this, key, true);
-      },
-      add: createReadonlyMethod("add"),
-      set: createReadonlyMethod("set"),
-      delete: createReadonlyMethod("delete"),
-      clear: createReadonlyMethod("clear"),
-      forEach: createForEach(true, false)
-    };
-    const shallowReadonlyInstrumentations2 = {
-      get(key) {
-        return get$1(this, key, true, true);
-      },
-      get size() {
-        return size(this, true);
-      },
-      has(key) {
-        return has$1.call(this, key, true);
-      },
-      add: createReadonlyMethod("add"),
-      set: createReadonlyMethod("set"),
-      delete: createReadonlyMethod("delete"),
-      clear: createReadonlyMethod("clear"),
-      forEach: createForEach(true, true)
-    };
-    const iteratorMethods = ["keys", "values", "entries", Symbol.iterator];
-    iteratorMethods.forEach((method) => {
-      mutableInstrumentations2[method] = createIterableMethod(method, false, false);
-      readonlyInstrumentations2[method] = createIterableMethod(method, true, false);
-      shallowInstrumentations2[method] = createIterableMethod(method, false, true);
-      shallowReadonlyInstrumentations2[method] = createIterableMethod(method, true, true);
-    });
-    return [
-      mutableInstrumentations2,
-      readonlyInstrumentations2,
-      shallowInstrumentations2,
-      shallowReadonlyInstrumentations2
-    ];
-  }
-  var [mutableInstrumentations, readonlyInstrumentations, shallowInstrumentations, shallowReadonlyInstrumentations] = /* @__PURE__ */ createInstrumentations();
+  var mutableInstrumentations = {
+    get(key) {
+      return get$1(this, key);
+    },
+    get size() {
+      return size(this);
+    },
+    has: has$1,
+    add,
+    set: set$1,
+    delete: deleteEntry,
+    clear,
+    forEach: createForEach(false, false)
+  };
+  var shallowInstrumentations = {
+    get(key) {
+      return get$1(this, key, false, true);
+    },
+    get size() {
+      return size(this);
+    },
+    has: has$1,
+    add,
+    set: set$1,
+    delete: deleteEntry,
+    clear,
+    forEach: createForEach(false, true)
+  };
+  var readonlyInstrumentations = {
+    get(key) {
+      return get$1(this, key, true);
+    },
+    get size() {
+      return size(this, true);
+    },
+    has(key) {
+      return has$1.call(this, key, true);
+    },
+    add: createReadonlyMethod("add"),
+    set: createReadonlyMethod("set"),
+    delete: createReadonlyMethod("delete"),
+    clear: createReadonlyMethod("clear"),
+    forEach: createForEach(true, false)
+  };
+  var shallowReadonlyInstrumentations = {
+    get(key) {
+      return get$1(this, key, true, true);
+    },
+    get size() {
+      return size(this, true);
+    },
+    has(key) {
+      return has$1.call(this, key, true);
+    },
+    add: createReadonlyMethod("add"),
+    set: createReadonlyMethod("set"),
+    delete: createReadonlyMethod("delete"),
+    clear: createReadonlyMethod("clear"),
+    forEach: createForEach(true, true)
+  };
+  var iteratorMethods = ["keys", "values", "entries", Symbol.iterator];
+  iteratorMethods.forEach((method) => {
+    mutableInstrumentations[method] = createIterableMethod(method, false, false);
+    readonlyInstrumentations[method] = createIterableMethod(method, true, false);
+    shallowInstrumentations[method] = createIterableMethod(method, false, true);
+    shallowReadonlyInstrumentations[method] = createIterableMethod(method, true, true);
+  });
   function createInstrumentationGetter(isReadonly2, shallow) {
     const instrumentations = shallow ? isReadonly2 ? shallowReadonlyInstrumentations : shallowInstrumentations : isReadonly2 ? readonlyInstrumentations : mutableInstrumentations;
     return (target, key, receiver) => {
@@ -5522,16 +5508,16 @@ var require_reactivity_cjs = __commonJS((exports) => {
     };
   }
   var mutableCollectionHandlers = {
-    get: /* @__PURE__ */ createInstrumentationGetter(false, false)
+    get: createInstrumentationGetter(false, false)
   };
   var shallowCollectionHandlers = {
-    get: /* @__PURE__ */ createInstrumentationGetter(false, true)
+    get: createInstrumentationGetter(false, true)
   };
   var readonlyCollectionHandlers = {
-    get: /* @__PURE__ */ createInstrumentationGetter(true, false)
+    get: createInstrumentationGetter(true, false)
   };
   var shallowReadonlyCollectionHandlers = {
-    get: /* @__PURE__ */ createInstrumentationGetter(true, true)
+    get: createInstrumentationGetter(true, true)
   };
   function checkIdentityKeys(target, has2, key) {
     const rawKey = toRaw2(key);
@@ -5628,19 +5614,18 @@ var require_reactivity_cjs = __commonJS((exports) => {
     return createRef(value, true);
   }
   var RefImpl = class {
-    constructor(value, _shallow = false) {
+    constructor(_rawValue, _shallow = false) {
+      this._rawValue = _rawValue;
       this._shallow = _shallow;
       this.__v_isRef = true;
-      this._rawValue = _shallow ? value : toRaw2(value);
-      this._value = _shallow ? value : convert(value);
+      this._value = _shallow ? _rawValue : convert(_rawValue);
     }
     get value() {
       track(toRaw2(this), "get", "value");
       return this._value;
     }
     set value(newVal) {
-      newVal = this._shallow ? newVal : toRaw2(newVal);
-      if (shared.hasChanged(newVal, this._rawValue)) {
+      if (shared.hasChanged(toRaw2(newVal), this._rawValue)) {
         this._rawValue = newVal;
         this._value = this._shallow ? newVal : convert(newVal);
         trigger(toRaw2(this), "set", "value", newVal);
@@ -5899,8 +5884,10 @@ function cleanupAttributes(el, names) {
   if (!el._x_attributeCleanups)
     return;
   Object.entries(el._x_attributeCleanups).forEach(([name, value]) => {
-    (names === void 0 || names.includes(name)) && value.forEach((i) => i());
-    delete el._x_attributeCleanups[name];
+    if (names === void 0 || names.includes(name)) {
+      value.forEach((i) => i());
+      delete el._x_attributeCleanups[name];
+    }
   });
 }
 var observer = new MutationObserver(onMutate);
@@ -5910,6 +5897,7 @@ function startObservingMutations() {
   currentlyObserving = true;
 }
 function stopObservingMutations() {
+  flushObserver();
   observer.disconnect();
   currentlyObserving = false;
 }
@@ -5932,13 +5920,26 @@ function processRecordQueue() {
 function mutateDom(callback) {
   if (!currentlyObserving)
     return callback();
-  flushObserver();
   stopObservingMutations();
   let result = callback();
   startObservingMutations();
   return result;
 }
+var isCollecting = false;
+var deferredMutations = [];
+function deferMutations() {
+  isCollecting = true;
+}
+function flushAndStopDeferringMutations() {
+  isCollecting = false;
+  onMutate(deferredMutations);
+  deferredMutations = [];
+}
 function onMutate(mutations) {
+  if (isCollecting) {
+    deferredMutations = deferredMutations.concat(mutations);
+    return;
+  }
   let addedNodes = [];
   let removedNodes = [];
   let addedAttributes = new Map();
@@ -6021,7 +6022,7 @@ function closestDataStack(node) {
   return closestDataStack(node.parentNode);
 }
 function mergeProxies(objects) {
-  return new Proxy({}, {
+  let thisProxy = new Proxy({}, {
     ownKeys: () => {
       return Array.from(new Set(objects.flatMap((i) => Object.keys(i))));
     },
@@ -6029,7 +6030,32 @@ function mergeProxies(objects) {
       return objects.some((obj) => obj.hasOwnProperty(name));
     },
     get: (target, name) => {
-      return (objects.find((obj) => obj.hasOwnProperty(name)) || {})[name];
+      return (objects.find((obj) => {
+        if (obj.hasOwnProperty(name)) {
+          let descriptor = Object.getOwnPropertyDescriptor(obj, name);
+          if (descriptor.get && descriptor.get._x_alreadyBound || descriptor.set && descriptor.set._x_alreadyBound) {
+            return true;
+          }
+          if ((descriptor.get || descriptor.set) && descriptor.enumerable) {
+            let getter = descriptor.get;
+            let setter = descriptor.set;
+            let property = descriptor;
+            getter = getter && getter.bind(thisProxy);
+            setter = setter && setter.bind(thisProxy);
+            if (getter)
+              getter._x_alreadyBound = true;
+            if (setter)
+              setter._x_alreadyBound = true;
+            Object.defineProperty(obj, name, {
+              ...property,
+              get: getter,
+              set: setter
+            });
+          }
+          return true;
+        }
+        return false;
+      }) || {})[name];
     },
     set: (target, name, value) => {
       let closestObjectWithKey = objects.find((obj) => obj.hasOwnProperty(name));
@@ -6041,6 +6067,7 @@ function mergeProxies(objects) {
       return true;
     }
   });
+  return thisProxy;
 }
 
 // packages/alpinejs/src/interceptor.js
@@ -6444,210 +6471,6 @@ function destroyTree(root) {
   walk(root, (el) => cleanupAttributes(el));
 }
 
-// packages/alpinejs/src/utils/debounce.js
-function debounce(func, wait) {
-  var timeout;
-  return function() {
-    var context = this, args = arguments;
-    var later = function() {
-      timeout = null;
-      func.apply(context, args);
-    };
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-  };
-}
-
-// packages/alpinejs/src/utils/throttle.js
-function throttle(func, limit) {
-  let inThrottle;
-  return function() {
-    let context = this, args = arguments;
-    if (!inThrottle) {
-      func.apply(context, args);
-      inThrottle = true;
-      setTimeout(() => inThrottle = false, limit);
-    }
-  };
-}
-
-// packages/alpinejs/src/plugin.js
-function plugin(callback) {
-  callback(alpine_default);
-}
-
-// packages/alpinejs/src/store.js
-var stores = {};
-var isReactive = false;
-function store(name, value) {
-  if (!isReactive) {
-    stores = reactive(stores);
-    isReactive = true;
-  }
-  if (value === void 0) {
-    return stores[name];
-  }
-  stores[name] = value;
-  if (typeof value === "object" && value !== null && value.hasOwnProperty("init") && typeof value.init === "function") {
-    stores[name].init();
-  }
-}
-function getStores() {
-  return stores;
-}
-
-// packages/alpinejs/src/clone.js
-var isCloning = false;
-function skipDuringClone(callback) {
-  return (...args) => isCloning || callback(...args);
-}
-function clone(oldEl, newEl) {
-  newEl._x_dataStack = oldEl._x_dataStack;
-  isCloning = true;
-  dontRegisterReactiveSideEffects(() => {
-    cloneTree(newEl);
-  });
-  isCloning = false;
-}
-function cloneTree(el) {
-  let hasRunThroughFirstEl = false;
-  let shallowWalker = (el2, callback) => {
-    walk(el2, (el3, skip) => {
-      if (hasRunThroughFirstEl && isRoot(el3))
-        return skip();
-      hasRunThroughFirstEl = true;
-      callback(el3, skip);
-    });
-  };
-  initTree(el, shallowWalker);
-}
-function dontRegisterReactiveSideEffects(callback) {
-  let cache = effect;
-  overrideEffect((callback2, el) => {
-    let storedEffect = cache(callback2);
-    release(storedEffect);
-    return () => {
-    };
-  });
-  callback();
-  overrideEffect(cache);
-}
-
-// packages/alpinejs/src/datas.js
-var datas = {};
-function data(name, callback) {
-  datas[name] = callback;
-}
-function injectDataProviders(obj, context) {
-  Object.entries(datas).forEach(([name, callback]) => {
-    Object.defineProperty(obj, name, {
-      get() {
-        return (...args) => {
-          return callback.bind(context)(...args);
-        };
-      },
-      enumerable: false
-    });
-  });
-  return obj;
-}
-
-// packages/alpinejs/src/alpine.js
-var Alpine = {
-  get reactive() {
-    return reactive;
-  },
-  get release() {
-    return release;
-  },
-  get effect() {
-    return effect;
-  },
-  get raw() {
-    return raw;
-  },
-  version: "3.3.4",
-  disableEffectScheduling,
-  setReactivityEngine,
-  addRootSelector,
-  mapAttributes,
-  evaluateLater,
-  setEvaluator,
-  closestRoot,
-  interceptor,
-  mutateDom,
-  directive,
-  throttle,
-  debounce,
-  evaluate,
-  initTree,
-  nextTick,
-  prefix: setPrefix,
-  plugin,
-  magic,
-  store,
-  start,
-  clone,
-  data
-};
-var alpine_default = Alpine;
-
-// packages/alpinejs/src/index.js
-var import_reactivity9 = __toModule(require_reactivity());
-
-// packages/alpinejs/src/magics/$nextTick.js
-magic("nextTick", () => nextTick);
-
-// packages/alpinejs/src/magics/$dispatch.js
-magic("dispatch", (el) => dispatch.bind(dispatch, el));
-
-// packages/alpinejs/src/magics/$watch.js
-magic("watch", (el) => (key, callback) => {
-  let evaluate2 = evaluateLater(el, key);
-  let firstTime = true;
-  let oldValue;
-  effect(() => evaluate2((value) => {
-    let div = document.createElement("div");
-    div.dataset.throwAway = value;
-    if (!firstTime) {
-      queueMicrotask(() => {
-        callback(value, oldValue);
-        oldValue = value;
-      });
-    } else {
-      oldValue = value;
-    }
-    firstTime = false;
-  }));
-});
-
-// packages/alpinejs/src/magics/$store.js
-magic("store", getStores);
-
-// packages/alpinejs/src/magics/$root.js
-magic("root", (el) => closestRoot(el));
-
-// packages/alpinejs/src/magics/$refs.js
-magic("refs", (el) => {
-  if (el._x_refs_proxy)
-    return el._x_refs_proxy;
-  el._x_refs_proxy = mergeProxies(getArrayOfRefObject(el));
-  return el._x_refs_proxy;
-});
-function getArrayOfRefObject(el) {
-  let refObjects = [];
-  let currentEl = el;
-  while (currentEl) {
-    if (currentEl._x_refs)
-      refObjects.push(currentEl._x_refs);
-    currentEl = currentEl.parentNode;
-  }
-  return refObjects;
-}
-
-// packages/alpinejs/src/magics/$el.js
-magic("el", (el) => el);
-
 // packages/alpinejs/src/utils/classes.js
 function setClasses(el, value) {
   if (Array.isArray(value)) {
@@ -6844,8 +6667,7 @@ function registerTransitionObject(el, setFunction, defaultValue = {}) {
         transition(el, setFunction, {
           during: this.enter.during,
           start: this.enter.start,
-          end: this.enter.end,
-          entering: true
+          end: this.enter.end
         }, before, after);
       },
       out(before = () => {
@@ -6854,14 +6676,15 @@ function registerTransitionObject(el, setFunction, defaultValue = {}) {
         transition(el, setFunction, {
           during: this.leave.during,
           start: this.leave.start,
-          end: this.leave.end,
-          entering: false
+          end: this.leave.end
         }, before, after);
       }
     };
 }
 window.Element.prototype._x_toggleAndCascadeWithTransitions = function(el, value, show, hide) {
-  let clickAwayCompatibleShow = show;
+  let clickAwayCompatibleShow = () => {
+    document.visibilityState === "visible" ? requestAnimationFrame(show) : setTimeout(show);
+  };
   if (value) {
     el._x_transition ? el._x_transition.in(show) : clickAwayCompatibleShow();
     return;
@@ -6902,7 +6725,7 @@ function closestHide(el) {
     return;
   return parent._x_hidePromise ? parent : closestHide(parent);
 }
-function transition(el, setFunction, {during, start: start2, end, entering} = {}, before = () => {
+function transition(el, setFunction, {during, start: start2, end} = {}, before = () => {
 }, after = () => {
 }) {
   if (el._x_transitioning)
@@ -6930,9 +6753,9 @@ function transition(el, setFunction, {during, start: start2, end, entering} = {}
       undoDuring();
       undoEnd();
     }
-  }, entering);
+  });
 }
-function performTransition(el, stages, entering) {
+function performTransition(el, stages) {
   let interrupted, reachedBefore, reachedEnd;
   let finish = once(() => {
     mutateDom(() => {
@@ -6961,8 +6784,7 @@ function performTransition(el, stages, entering) {
       ;
       finish();
     }),
-    finish,
-    entering
+    finish
   };
   mutateDom(() => {
     stages.start();
@@ -7014,6 +6836,214 @@ function modifierValue(modifiers, key, fallback) {
   }
   return rawValue;
 }
+
+// packages/alpinejs/src/utils/debounce.js
+function debounce(func, wait) {
+  var timeout;
+  return function() {
+    var context = this, args = arguments;
+    var later = function() {
+      timeout = null;
+      func.apply(context, args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
+// packages/alpinejs/src/utils/throttle.js
+function throttle(func, limit) {
+  let inThrottle;
+  return function() {
+    let context = this, args = arguments;
+    if (!inThrottle) {
+      func.apply(context, args);
+      inThrottle = true;
+      setTimeout(() => inThrottle = false, limit);
+    }
+  };
+}
+
+// packages/alpinejs/src/plugin.js
+function plugin(callback) {
+  callback(alpine_default);
+}
+
+// packages/alpinejs/src/store.js
+var stores = {};
+var isReactive = false;
+function store(name, value) {
+  if (!isReactive) {
+    stores = reactive(stores);
+    isReactive = true;
+  }
+  if (value === void 0) {
+    return stores[name];
+  }
+  stores[name] = value;
+  if (typeof value === "object" && value !== null && value.hasOwnProperty("init") && typeof value.init === "function") {
+    stores[name].init();
+  }
+}
+function getStores() {
+  return stores;
+}
+
+// packages/alpinejs/src/clone.js
+var isCloning = false;
+function skipDuringClone(callback) {
+  return (...args) => isCloning || callback(...args);
+}
+function clone(oldEl, newEl) {
+  newEl._x_dataStack = oldEl._x_dataStack;
+  isCloning = true;
+  dontRegisterReactiveSideEffects(() => {
+    cloneTree(newEl);
+  });
+  isCloning = false;
+}
+function cloneTree(el) {
+  let hasRunThroughFirstEl = false;
+  let shallowWalker = (el2, callback) => {
+    walk(el2, (el3, skip) => {
+      if (hasRunThroughFirstEl && isRoot(el3))
+        return skip();
+      hasRunThroughFirstEl = true;
+      callback(el3, skip);
+    });
+  };
+  initTree(el, shallowWalker);
+}
+function dontRegisterReactiveSideEffects(callback) {
+  let cache = effect;
+  overrideEffect((callback2, el) => {
+    let storedEffect = cache(callback2);
+    release(storedEffect);
+    return () => {
+    };
+  });
+  callback();
+  overrideEffect(cache);
+}
+
+// packages/alpinejs/src/datas.js
+var datas = {};
+function data(name, callback) {
+  datas[name] = callback;
+}
+function injectDataProviders(obj, context) {
+  Object.entries(datas).forEach(([name, callback]) => {
+    Object.defineProperty(obj, name, {
+      get() {
+        return (...args) => {
+          return callback.bind(context)(...args);
+        };
+      },
+      enumerable: false
+    });
+  });
+  return obj;
+}
+
+// packages/alpinejs/src/alpine.js
+var Alpine = {
+  get reactive() {
+    return reactive;
+  },
+  get release() {
+    return release;
+  },
+  get effect() {
+    return effect;
+  },
+  get raw() {
+    return raw;
+  },
+  version: "3.4.2",
+  flushAndStopDeferringMutations,
+  disableEffectScheduling,
+  setReactivityEngine,
+  addRootSelector,
+  deferMutations,
+  mapAttributes,
+  evaluateLater,
+  setEvaluator,
+  closestRoot,
+  interceptor,
+  transition,
+  setStyles,
+  mutateDom,
+  directive,
+  throttle,
+  debounce,
+  evaluate,
+  initTree,
+  nextTick,
+  prefix: setPrefix,
+  plugin,
+  magic,
+  store,
+  start,
+  clone,
+  data
+};
+var alpine_default = Alpine;
+
+// packages/alpinejs/src/index.js
+var import_reactivity9 = __toModule(require_reactivity());
+
+// packages/alpinejs/src/magics/$nextTick.js
+magic("nextTick", () => nextTick);
+
+// packages/alpinejs/src/magics/$dispatch.js
+magic("dispatch", (el) => dispatch.bind(dispatch, el));
+
+// packages/alpinejs/src/magics/$watch.js
+magic("watch", (el) => (key, callback) => {
+  let evaluate2 = evaluateLater(el, key);
+  let firstTime = true;
+  let oldValue;
+  effect(() => evaluate2((value) => {
+    let div = document.createElement("div");
+    div.dataset.throwAway = value;
+    if (!firstTime) {
+      queueMicrotask(() => {
+        callback(value, oldValue);
+        oldValue = value;
+      });
+    } else {
+      oldValue = value;
+    }
+    firstTime = false;
+  }));
+});
+
+// packages/alpinejs/src/magics/$store.js
+magic("store", getStores);
+
+// packages/alpinejs/src/magics/$root.js
+magic("root", (el) => closestRoot(el));
+
+// packages/alpinejs/src/magics/$refs.js
+magic("refs", (el) => {
+  if (el._x_refs_proxy)
+    return el._x_refs_proxy;
+  el._x_refs_proxy = mergeProxies(getArrayOfRefObject(el));
+  return el._x_refs_proxy;
+});
+function getArrayOfRefObject(el) {
+  let refObjects = [];
+  let currentEl = el;
+  while (currentEl) {
+    if (currentEl._x_refs)
+      refObjects.push(currentEl._x_refs);
+    currentEl = currentEl.parentNode;
+  }
+  return refObjects;
+}
+
+// packages/alpinejs/src/magics/$el.js
+magic("el", (el) => el);
 
 // packages/alpinejs/src/directives/x-ignore.js
 var handler = () => {
@@ -7147,7 +7177,7 @@ function isBooleanAttr(attrName) {
   return booleanAttributes.includes(attrName);
 }
 function attributeShouldntBePreservedIfFalsy(name) {
-  return !["aria-pressed", "aria-checked"].includes(name);
+  return !["aria-pressed", "aria-checked", "aria-expanded"].includes(name);
 }
 
 // packages/alpinejs/src/utils/on.js
@@ -7162,6 +7192,8 @@ function on(el, event, modifiers, callback) {
     event = camelCase2(event);
   if (modifiers.includes("passive"))
     options.passive = true;
+  if (modifiers.includes("capture"))
+    options.capture = true;
   if (modifiers.includes("window"))
     listenerTarget = window;
   if (modifiers.includes("document"))

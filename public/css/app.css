@@ -1,4 +1,4 @@
-/*! tailwindcss v2.2.15 | MIT License | https://tailwindcss.com *//*! modern-normalize v1.1.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
+/*! tailwindcss v2.2.17 | MIT License | https://tailwindcss.com *//*! modern-normalize v1.1.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
 
 /*
 Document
@@ -614,6 +614,7 @@ video {
 	padding-left: 0.75rem;
 	font-size: 1rem;
 	line-height: 1.5rem;
+	--tw-shadow: 0 0 #0000;
 }
 
 [type='text']:focus, [type='email']:focus, [type='url']:focus, [type='password']:focus, [type='number']:focus, [type='date']:focus, [type='datetime-local']:focus, [type='month']:focus, [type='search']:focus, [type='tel']:focus, [type='time']:focus, [type='week']:focus, [multiple]:focus, textarea:focus, select:focus {
@@ -625,7 +626,7 @@ video {
 	--tw-ring-color: #2563eb;
 	--tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
 	--tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
-	box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+	box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
 	border-color: #2563eb;
 }
 
@@ -693,6 +694,7 @@ select {
 	background-color: #fff;
 	border-color: #6b7280;
 	border-width: 1px;
+	--tw-shadow: 0 0 #0000;
 }
 
 [type='checkbox'] {
@@ -712,7 +714,7 @@ select {
 	--tw-ring-color: #2563eb;
 	--tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
 	--tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
-	box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+	box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
 }
 
 [type='checkbox']:checked,[type='radio']:checked {
@@ -1372,6 +1374,9 @@ select {
 }
 .flex-grow {
 	flex-grow: 1;
+}
+.flex-grow-0 {
+	flex-grow: 0;
 }
 .table-auto {
 	table-layout: auto;
@@ -2512,6 +2517,7 @@ When it's NOT activated, the fc-button classes won't even be in the DOM.
 .fc .fc-scrollgrid-section-sticky > * {
     background: #fff;
     background: var(--fc-page-bg-color, #fff);
+    position: -webkit-sticky;
     position: sticky;
     z-index: 3; /* TODO: var */
     /* TODO: box-shadow when sticking */
@@ -2528,6 +2534,7 @@ When it's NOT activated, the fc-button classes won't even be in the DOM.
     margin-bottom: -1px;
   }
 .fc-sticky { /* no .fc wrap because used as child of body */
+  position: -webkit-sticky;
   position: sticky;
 }
 .fc .fc-view-harness {
@@ -2651,14 +2658,17 @@ a.fc-event:hover {
       bottom: -20px;
     }
 /* selecting (always TOUCH) */
+/* OR, focused by tab-index */
+/* (TODO: maybe not the best focus-styling for .fc-daygrid-dot-event) */
 /* ---------------------------------------------------------------------------------------------------- */
-.fc-event-selected {
+.fc-event-selected,
+.fc-event:focus {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2)
 
   /* expand hit area (subclasses should expand) */
 
 }
-.fc-event-selected:before {
+.fc-event-selected:before, .fc-event:focus:before {
     content: "";
     position: absolute;
     z-index: 3;
@@ -2667,12 +2677,13 @@ a.fc-event:hover {
     right: 0;
     bottom: 0;
   }
-.fc-event-selected {
+.fc-event-selected,
+.fc-event:focus {
 
   /* dimmer effect */
 
 }
-.fc-event-selected:after {
+.fc-event-selected:after, .fc-event:focus:after {
     content: "";
     background: rgba(0, 0, 0, 0.25);
     background: var(--fc-event-selected-overlay-color, rgba(0, 0, 0, 0.25));
@@ -2751,29 +2762,29 @@ A HORIZONTAL event
 .fc-direction-rtl .fc-h-event:not(.fc-event-selected) .fc-event-resizer-end {
   cursor: w-resize;
   left: -4px;
-  left: calc(var(--fc-event-resizer-thickness, 8px) / -2);
+  left: calc(-0.5 * var(--fc-event-resizer-thickness, 8px));
 }
 .fc-direction-ltr .fc-h-event:not(.fc-event-selected) .fc-event-resizer-end,
 .fc-direction-rtl .fc-h-event:not(.fc-event-selected) .fc-event-resizer-start {
   cursor: e-resize;
   right: -4px;
-  right: calc(var(--fc-event-resizer-thickness, 8px) / -2);
+  right: calc(-0.5 * var(--fc-event-resizer-thickness, 8px));
 }
 /* resizers for TOUCH */
 .fc-h-event.fc-event-selected .fc-event-resizer {
   top: 50%;
   margin-top: -4px;
-  margin-top: calc(var(--fc-event-resizer-dot-total-width, 8px) / -2);
+  margin-top: calc(-0.5 * var(--fc-event-resizer-dot-total-width, 8px));
 }
 .fc-direction-ltr .fc-h-event.fc-event-selected .fc-event-resizer-start,
 .fc-direction-rtl .fc-h-event.fc-event-selected .fc-event-resizer-end {
   left: -4px;
-  left: calc(var(--fc-event-resizer-dot-total-width, 8px) / -2);
+  left: calc(-0.5 * var(--fc-event-resizer-dot-total-width, 8px));
 }
 .fc-direction-ltr .fc-h-event.fc-event-selected .fc-event-resizer-end,
 .fc-direction-rtl .fc-h-event.fc-event-selected .fc-event-resizer-start {
   right: -4px;
-  right: calc(var(--fc-event-resizer-dot-total-width, 8px) / -2);
+  right: calc(-0.5 * var(--fc-event-resizer-dot-total-width, 8px));
 }
 .fc .fc-popover {
     position: absolute;
@@ -4087,6 +4098,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
 		margin-right: 0.75rem;
 	}
 
+	.lg\:mr-2 {
+		margin-right: 0.5rem;
+	}
+
 	.lg\:table-cell {
 		display: table-cell;
 	}
@@ -4107,8 +4122,16 @@ svg.leaflet-image-layer.leaflet-interactive path {
 		width: 33.333333%;
 	}
 
+	.lg\:flex-grow-0 {
+		flex-grow: 0;
+	}
+
 	.lg\:grid-cols-5 {
 		grid-template-columns: repeat(5, minmax(0, 1fr));
+	}
+
+	.lg\:flex-row {
+		flex-direction: row;
 	}
 
 	.lg\:flex-col {
