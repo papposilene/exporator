@@ -28,7 +28,9 @@
             </div>
             @else
             <div class="flex flex-grow lg:flex-grow-0 flex-wrap bg-gray-300 p-5 shadow w-full lg:w-3/4">
-                <div>Non connecté.</div>
+                <p>
+                    <a href="{{ route('login') }}" class="text-blue-700 hover:text-red-600">@ucfirst(__('auth.login'))</a>.
+                </p>
             </div>
             @endauth
         </div>
