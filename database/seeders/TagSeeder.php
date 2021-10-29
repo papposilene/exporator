@@ -27,8 +27,8 @@ class TagSeeder extends Seeder
         foreach ($tagsData as $data)
         {
             $tag = Tag::findOrCreate(
-                addslashes($data->tag->{$lang}),
-                addslashes($data->type)
+                $data->tag->{$lang},
+                $data->type
             );
         }
     }

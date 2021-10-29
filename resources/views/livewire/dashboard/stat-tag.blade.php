@@ -4,7 +4,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-4 sm:gap-2 lg:gap-4">
         @foreach($tags as $tag)
         <div class="bg-indigo-300 hover:bg-white m-2 p-2 rounded" title="@ucfirst(__('app.type_is', ['type' => $tag->type]))">
-            <a href="{{ route('front.tag.show', ['slug' => $tag->slug]) }}" class="flex flex-grow justify-center">
+            <a href="{{ route('front.tag.show', ['slug' => $tag->slug]) }}" class="flex flex-grow justify-center text-center">
                 @ucfirst($tag->name)
             </a>
         </div>

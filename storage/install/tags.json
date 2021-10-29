@@ -37,7 +37,7 @@
         "fr": "art moderne",
         "en": "modern art"
     }
-        
+
   },
   {
     "type":"art",
@@ -45,7 +45,7 @@
         "fr": "art contemporain",
         "en": "contemporary art"
     }
-  
+
   },
   {
     "type":"art",
@@ -158,7 +158,7 @@
   {
     "type":"movement",
     "tag":{
-        "fr": "école de barbizon",
+        "fr": "ecole de barbizon",
         "en": "barbizon school"
     }
   },
