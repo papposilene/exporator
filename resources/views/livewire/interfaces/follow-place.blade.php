@@ -3,7 +3,7 @@
     <form method="POST" action="{{ route('admin.user.place_unfollow') }}" class="flex justify-center w-full">
         @csrf
 
-        <input type="hidden" name="uuid" value="{{ $place->isFollowed->uuid }}" />
+        <input type="hidden" name="place" value="{{ $place->isFollowed->uuid }}" />
 
         <x-forms.button class="block mt-1 bg-transparent">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -16,7 +16,7 @@
     <form method="POST" action="{{ route('admin.user.place_follow') }}" class="flex justify-center w-full">
         @csrf
 
-        <input type="hidden" name="uuid" value="{{ $place->uuid }}" />
+        <input type="hidden" name="place" value="{{ $place->uuid }}" />
 
         <x-forms.button class="block mt-1 bg-transparent">
             <svg xmlns="http://www.w3.org/2000/svg" class="text-yellow-500 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

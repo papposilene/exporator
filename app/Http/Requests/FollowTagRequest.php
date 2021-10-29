@@ -14,7 +14,7 @@ class FollowTagRequest extends FormRequest
     public function rules()
     {
         return [
-            'tag_id' => 'required|bail|integer',
+            'tag' => 'required|bail|integer',
         ];
     }
 }

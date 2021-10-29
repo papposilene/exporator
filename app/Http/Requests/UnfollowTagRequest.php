@@ -14,7 +14,7 @@ class UnfollowTagRequest extends FormRequest
     public function rules()
     {
         return [
-            'follow_uuid' => 'required|bail|uuid',
+            'follow' => 'required|bail|uuid',
         ];
     }
 }

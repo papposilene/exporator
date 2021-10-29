@@ -14,7 +14,7 @@ class FollowExhibitionRequest extends FormRequest
     public function rules()
     {
         return [
-            'place_uuid' => 'required|bail|uuid',
+            'exhibition' => 'required|bail|uuid',
         ];
     }
 }

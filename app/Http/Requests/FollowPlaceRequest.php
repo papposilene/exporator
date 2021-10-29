@@ -14,7 +14,7 @@ class FollowPlaceRequest extends FormRequest
     public function rules()
     {
         return [
-            'place_uuid' => 'required|bail|uuid',
+            'place' => 'required|bail|uuid',
         ];
     }
 }
