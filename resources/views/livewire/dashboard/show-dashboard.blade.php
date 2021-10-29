@@ -30,6 +30,9 @@
             <div class="flex flex-grow lg:flex-grow-0 flex-wrap bg-gray-300 p-5 shadow w-full lg:w-3/4">
                 <p>
                     <a href="{{ route('login') }}" class="text-blue-700 hover:text-red-600">@ucfirst(__('auth.login'))</a>.
+                    @if (\Laravel\Fortify\Features::registration())
+                    <a href="{{ route('register') }}" class="text-blue-700 hover:text-red-600">@ucfirst(__('auth.register'))</a>.
+                    @endif
                 </p>
             </div>
             @endauth
