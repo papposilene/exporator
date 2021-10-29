@@ -4102,6 +4102,18 @@ svg.leaflet-image-layer.leaflet-interactive path {
 		margin-right: 0.5rem;
 	}
 
+	.lg\:ml-2 {
+		margin-left: 0.5rem;
+	}
+
+	.lg\:-ml-2 {
+		margin-left: -0.5rem;
+	}
+
+	.lg\:ml-1 {
+		margin-left: 0.25rem;
+	}
+
 	.lg\:table-cell {
 		display: table-cell;
 	}
@@ -4122,12 +4134,24 @@ svg.leaflet-image-layer.leaflet-interactive path {
 		width: 33.333333%;
 	}
 
+	.lg\:w-2\/4 {
+		width: 50%;
+	}
+
 	.lg\:flex-grow-0 {
 		flex-grow: 0;
 	}
 
 	.lg\:grid-cols-5 {
 		grid-template-columns: repeat(5, minmax(0, 1fr));
+	}
+
+	.lg\:grid-cols-2 {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.lg\:grid-cols-4 {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
 	}
 
 	.lg\:flex-row {
@@ -4145,6 +4169,14 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	.lg\:px-8 {
 		padding-left: 2rem;
 		padding-right: 2rem;
+	}
+
+	.lg\:pr-2 {
+		padding-right: 0.5rem;
+	}
+
+	.lg\:pl-2 {
+		padding-left: 0.5rem;
 	}
 }
 
