@@ -34,8 +34,11 @@ class ListPlace extends Component
 
     public function render()
     {
-        $user = Auth::user();
-        $team = \App\Models\Team::where('id', $user->current_team_id)->first();
+        if (Auth::check())
+        {
+            $user = Auth::user();
+            $team = \App\Models\Team::where('id', $user->current_team_id)->first();
+        }
 
         if (Auth::check() && Str::of($this->filter)->trim()->isNotEmpty() === 'followed')
         {
@@ -48,7 +51,7 @@ class ListPlace extends Component
                 ->orderBy('name', 'asc')
                 ->get();
         }
-        elseif ($user->hasTeamPermission($team, 'server:create') && Str::of($this->filter)->trim()->isNotEmpty() === 'no_exhibition')
+        elseif (Auth::check() && $user->hasTeamPermission($team, 'server:create') && Str::of($this->filter)->trim()->isNotEmpty() === 'no_exhibition')
         {
             $places = Place::withCount('hasExhibitions')->get();
             $places->whereDate('ended_at', '<', date('Y-m-d'))
