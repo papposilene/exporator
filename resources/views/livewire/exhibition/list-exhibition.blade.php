@@ -28,22 +28,22 @@
                 <div class="flex flex-wrap">
                     <a href="?filter=" class="flex flex-auto text-base md:rounded-r-none hover:scale-110 focus:outline-none
                         justify-center px-4 py-2 hover:rounded font-bold cursor-pointer
-                        hover:bg-gray-300 hover:text-black bg-gray-200 border duration-200 ease-in-out border-gray-300 transition">
+                        hover:bg-gray-300 hover:text-black bg-gray-200 border duration-200 ease-in-out hover:border-gray-300 transition">
                         <div class="flex leading-5">@ucfirst(__('app.all'))</div>
                     </a>
                     <a href="?filter=past" class="flex flex-auto text-base md:rounded-r-none md:rounded-l-none md:border-l-0 md:border-r-0
                         hover:scale-110 focus:outline-none justify-center px-4 py-2 hover:rounded font-bold cursor-pointer
-                        hover:bg-red-200 hover:text-black bg-red-100 border duration-200 ease-in-out border-gray-300 transition">
+                        hover:bg-red-200 hover:text-black bg-red-100 border duration-200 ease-in-out hover:border-gray-300 transition">
                         <div class="flex leading-5">@ucfirst(__('app.exhibitions_past'))</div>
                     </a>
                     <a href="?filter=current" class="flex flex-auto text-base md:rounded-r-none md:rounded-l-none md:border-l-0 md:border-r-0
                         hover:scale-110 focus:outline-none justify-center px-4 py-2 hover:rounded font-bold cursor-pointer
-                        hover:bg-green-200 hover:text-black bg-green-100 border duration-200 ease-in-out border-gray-300 transition">
+                        hover:bg-green-200 hover:text-black bg-green-100 border duration-200 ease-in-out hover:border-gray-300 transition">
                         <div class="flex leading-5">@ucfirst(__('app.exhibitions_current'))</div>
                     </a>
                     <a href="?filter=future" class="flex flex-auto text-base md:rounded-l-none hover:scale-110 focus:outline-none
                         justify-center px-4 py-2 hover:rounded font-bold cursor-pointer
-                        hover:bg-blue-200 hover:text-black bg-blue-100 border duration-200 ease-in-out border-gray-300 transition">
+                        hover:bg-blue-200 hover:text-black bg-blue-100 border duration-200 ease-in-out hover:border-gray-300 transition">
                         <div class="flex leading-5">@ucfirst(__('app.exhibitions_future'))</div>
                     </a>
                 </div>
