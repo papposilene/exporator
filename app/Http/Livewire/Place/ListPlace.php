@@ -51,7 +51,8 @@ class ListPlace extends Component
                 ->orderBy('name', 'asc')
                 ->get();
         }
-        elseif (Auth::check() && $user->hasTeamPermission($team, 'server:create') && Str::of($this->filter)->trim()->isNotEmpty() === 'no_exhibition')
+        elseif (Auth::check() && $user->hasTeamPermission($team, 'server:create')
+            && Str::of($this->filter)->trim()->isNotEmpty() === 'no_exhibition')
         {
             $places = Place::withCount('hasExhibitions')->get();
             $places->whereDate('ended_at', '<', date('Y-m-d'))

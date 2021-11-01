@@ -52,7 +52,7 @@
                     <a href="{{ route('front.exhibition.show', ['place' => $exhibition_of_the_day->inPlace->slug, 'exhibition' => $exhibition_of_the_day->slug]) }}"
                             title="{{ $exhibition_of_the_day->title }}" aria-label="{{ $exhibition_of_the_day->title }}"
                             class="flex flex-col bg-gray-300 p-2 hover:bg-green-200">
-                        <div class="italic">{{ $exhibition_of_the_day->inPlace->name }}</div>
+                        <div class="italic">{{ $exhibition_of_the_day->g->name }}</div>
                         <div class="flex-grow font-semibold text-lg text-center">{{ $exhibition_of_the_day->title }}</div>
                         <div class="text-right text-sm italic">@ucfirst(__('app.until', ['date' => $exhibition_of_the_day->ended_at->format('d/m/Y')]))</div>
                     </a>

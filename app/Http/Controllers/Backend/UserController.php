@@ -171,7 +171,7 @@ class UserController extends Controller
         $validated = $request->validated();
 
         $user = Auth::id();
-        $tag_id = Tag::findOrFail($request->input('tag'));
+        $tag = Tag::findOrFail($request->input('tag'));
 
         UserPlace::create([
             'user_uuid' => $user,
