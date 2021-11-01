@@ -1,5 +1,5 @@
 <div>
-    @if ($exhibition->isFollowed)
+    @if (Auth::check() && $exhibition->isFollowed)
     <form method="POST" action="{{ route('admin.user.exhibition_unfollow') }}" class="flex justify-center w-full">
         @csrf
 
