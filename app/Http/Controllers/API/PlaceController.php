@@ -53,7 +53,7 @@ class PlaceController extends Controller
                     'address' => $value['address'],
                     'city' => $value['city'],
                     'link' => $value['link'],
-                    'url' => route('front.museum.show', ['slug' => $value['slug']]),
+                    'url' => route('front.place.show', ['slug' => $value['slug']]),
                     'exhibitions' => [
                         'past' => $value->hasExhibitions()
                             ->where('is_published', true)
