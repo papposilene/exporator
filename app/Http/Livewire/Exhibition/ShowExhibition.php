@@ -24,7 +24,7 @@ class ShowExhibition extends Component
     public function mount($exhibition)
     {
         $this->exhibition = Exhibition::where('slug', $this->exhibition)->firstOrFail();
-        $this->suggestions = Tagged::where('taggable_id', $this->exhibition)->get();
+        $this->suggestions = Tagged::where('taggable_id', $this->exhibition)->take(3)->get();
     }
 
     public function updatingSearch()
