@@ -36,15 +36,19 @@
                     <thead>
                         <tr class="bg-gray-700 text-white">
                             <th class="w-1/12 text-center p-3">@ucfirst(__('app.iteration'))</th>
+                            <th class="w-1/12 text-center hidden lg:table-cell">@ucfirst(__('app.followed'))</th>
                             <th class="w-4/12 text-center">@ucfirst(__('app.types'))</th>
                             <th class="w-5/12 text-center">@ucfirst(__('app.tags'))</th>
-                            <th class="w-2/12 text-center">@ucfirst(__('app.exhibitions'))</th>
+                            <th class="w-1/12 text-center">@ucfirst(__('app.exhibitions'))</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($tags as $tag)
                         <tr class="bg-gray-200 border-b border-gray-300 border-dashed h-12 w-12 p-4">
                             <td class="text-center">{{ $loop->iteration }}</td>
+                            <td class="hidden lg:table-cell">
+                                <livewire:interfaces.follow-tag :tag="$tag" :wire:key="$tag->id" />
+                            </td>
                             <td>@ucfirst($tag->type)</td>
                             <td>
                                 <a href="{{ route('front.tag.show', ['slug' => $tag->slug]) }}"
