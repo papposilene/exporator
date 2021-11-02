@@ -119,6 +119,14 @@
                 @endif
                 <livewire:interfaces.tag-exhibition :exhibition="$exhibition" :wire:key="$exhibition->uuid" />
             </div>
+            <div class="bg-gray-200 px-5 p-5 w-full">
+                @foreach ($suggestions as $suggestion)
+                <a href="{{ route('front.exhibition.show', ['place' => $suggestion->inPlance->slug, 'slug' => $suggestion->slug]) }}"
+                    class="bg-gray-300 mr-2 p-2 inline-block" title="{{ $suggestion->name }}">
+                    {{ $suggestion->name }}
+                </a>
+                @endforeach
+            </div>
         </div>
     </div>
 </div>
