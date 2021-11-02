@@ -55,6 +55,7 @@
                     <thead>
                         <tr class="bg-gray-700 text-white">
                             <th class="w-1/12 text-center p-3">@ucfirst(__('app.iteration'))</th>
+                            <th class="w-1/12 text-center hidden lg:table-cell">@ucfirst(__('app.followed'))</th>
                             <th class="w-3/12 text-center">@ucfirst(__('app.places'))</th>
                             <th class="w-4/12 text-center">@ucfirst(__('app.titles'))</th>
                             <th class="hidden md:table-cell md:w-2/12 text-center">@ucfirst(__('app.began_at'))</th>
@@ -65,7 +66,6 @@
                         @foreach($exhibitions as $exhibition)
                         @php
                         $today = date('Y-m-d');
-
                         if ($today > $exhibition->began_at && $today < $exhibition->ended_at) {
                             // Current exhibition
                             $is_current = 'bg-green-100';
@@ -84,6 +84,9 @@
                         @endphp
                         <tr class="border-b border-gray-300 border-dashed h-12 w-12 p-4 {{ $is_current }}">
                             <td class="text-center">{{ $loop->iteration }}</td>
+                            <td class="hidden lg:table-cell">
+                                <livewire:interfaces.follow-exhibition :exhibition="$exhibition" :wire:key="$exhibition->uuid" />
+                            </td>
                             <td class="break-words">
                                 <a href="{{ route('front.place.show', ['slug' => $exhibition->inPlace->slug]) }}"
                                     title="{{ $exhibition->inPlace->name }}" aria-label="{{ $exhibition->inPlace->name }}">
