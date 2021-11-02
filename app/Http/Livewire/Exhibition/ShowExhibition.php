@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Exhibition;
 
 use App\Models\Exhibition;
+use App\Models\Tagged;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -12,7 +13,8 @@ class ShowExhibition extends Component
 
     public $page = 1;
     public $search = '';
-    public $exhibition;
+    public Exhibition $exhibition;
+    public $suggestions;
 
     protected $queryString = [
         'search' => ['except' => ''],
@@ -22,6 +24,7 @@ class ShowExhibition extends Component
     public function mount($exhibition)
     {
         $this->exhibition = Exhibition::where('slug', $this->exhibition)->firstOrFail();
+        $this->suggestions = Tagged::where('taggable_id', $this->exhibition)->get();
     }
 
     public function updatingSearch()
@@ -32,7 +35,8 @@ class ShowExhibition extends Component
     public function render()
     {
         return view('livewire.exhibition.show-exhibition', [
-            'exhibition' => $this->exhibition
+            'exhibition' => $this->exhibition,
+            'suggestions' => $this->suggestions
         ]);
     }
 }
