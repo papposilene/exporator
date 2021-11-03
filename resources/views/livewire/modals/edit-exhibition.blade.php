@@ -1,8 +1,8 @@
 <div id="modalUpdateExhibition">
     <div id="modalButtonUpdateExhibition">
         <button id="modalOpenCreateExhibition" class="focus:outline-none bg-sky-100 text-black bg-opacity-75 p-2 rounded w-full"
-            type="button" title="@ucfirst(__('app.create_one', ['what' => __('app.exhibition')]))">
-            @ucfirst(__('app.edit_one', ['what' => __('app.exhibition')]))
+            type="button" title="@ucfirst(__('app.edit_', ['what' => $exhibition->title]))">
+            @ucfirst(__('app.edit_', ['what' => $exhibition->title]))
         </button>
     </div>
 

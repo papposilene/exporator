@@ -53,7 +53,7 @@ class ExhibitionController extends Controller
         $place = Place::findOrFail($request->input('place'));
 
         $exhibition = new Exhibition;
-        $exhibition->museum_uuid = $museum->uuid;
+        $exhibition->place_uuid = $place->uuid;
         $exhibition->slug = Str::slug($request->input('title'));
         $exhibition->title = $request->input('title');
         $exhibition->began_at = Carbon::createFromFormat('d/m/Y', $request->input('began_at'))->format('Y-m-d');
@@ -75,14 +75,14 @@ class ExhibitionController extends Controller
      */
     public function propose(StoreExhibitionRequest $request)
     {
-        $this->authorize('update', Exhibition::class);
+        $this->authorize('update', \App\Models\User::class, Exhibition::class);
 
         $validated = $request->validated();
 
         $place = Place::findOrFail($request->input('place'));
 
         $exhibition = new Exhibition;
-        $exhibition->museum_uuid = $place->uuid;
+        $exhibition->place_uuid = $place->uuid;
         $exhibition->slug = Str::slug($request->input('title'));
         $exhibition->title = $request->input('title');
         $exhibition->began_at = Carbon::createFromFormat('d/m/Y', $request->input('began_at'))->format('Y-m-d');

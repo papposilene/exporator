@@ -1,8 +1,8 @@
 <div id="modalEditPlace" class="relative float-right mr-2">
     <div id="modalButtonEditPlace">
         <button id="modalOpenEditPlace" class="focus:outline-none bg-rose-100 text-black bg-opacity-75 px-1 rounded"
-            type="button" title="@ucfirst(__('app.edit_the', ['what' => __('app.places')]))">
-            @ucfirst(__('app.edit_the', ['what' => __('app.place')]))
+            type="button" title="@ucfirst(__('app.edit_', ['what' => $place->name]))">
+            @ucfirst(__('app.edit_', ['what' => $place->name]))
         </button>
     </div>
 

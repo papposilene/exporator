@@ -77,6 +77,7 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function
     Route::post('/tag/store', [TagController::class, 'store'])->name('admin.tag.store');
     Route::post('/tag/update', [TagController::class, 'update'])->name('admin.tag.update');
     Route::post('/tag/attach', [TagController::class, 'attach'])->name('admin.tag.attach');
+    Route::post('/tag/delete', [TagController::class, 'delete'])->name('admin.tag.delete');
 
     // User
     Route::post('/user/place/follow', [UserController::class, 'place_follow'])->name('admin.user.place_follow'); // Follow a place

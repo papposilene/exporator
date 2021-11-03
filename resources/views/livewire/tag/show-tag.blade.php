@@ -2,6 +2,14 @@
 
 <div>
     <x-slot name="header">
+        @auth
+        @if (Auth::user()->can('delete', App\Models\User::class, App\Models\Tag::class))
+        <livewire:interfaces.delete-tag :tag="$tag" :wire:key="$tag->id" />
+        @endif
+        @if (Auth::user()->can('update', App\Models\User::class, App\Models\Tag::class))
+        <livewire:modals.edit-tag :tag="$tag" :wire:key="$tag->id" />
+        @endif
+        @endauth
         <h2 class="font-semibold text-xl text-bluegray-800 leading-tight">
             <span>
                 <a href="{{ route('front.tag.index') }}">
@@ -26,13 +34,6 @@
             <ul class="bg-bluegray-200 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
                 <li><livewire:interfaces.follow-tag :tag="$tag" :wire:key="$tag->id" /></li>
             </ul>
-            @endauth
-            @auth
-            @if (Auth::user()->can('create', App\Models\Tag::class))
-            <ul class="bg-bluegray-200 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
-                <li><livewire:modals.edit-tag :tag="$tag" :wire:key="$tag->id" /></li>
-            </ul>
-            @endif
             @endauth
         </div>
 
