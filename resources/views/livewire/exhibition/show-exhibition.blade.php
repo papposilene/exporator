@@ -102,7 +102,7 @@
                     @if ($exhibition->link)
                     <a href="{{ $exhibition->link }}" class="text-blue-700 hover:text-red-600" target="_blank" rel="noopener">{{ $exhibition->link }}</a>
                     @else
-                    <a href="{{ $exhibition->inMuseum->link }}" class="text-blue-700 hover:text-red-600" target="_blank" rel="noopener">{{ $exhibition->inMuseum->link }}</a>
+                    <a href="{{ $exhibition->inPlace->link }}" class="text-blue-700 hover:text-red-600" target="_blank" rel="noopener">{{ $exhibition->inPlace->link }}</a>
                     @endif
                 </li>
             </ul>
@@ -117,7 +117,9 @@
                 @else
                 <div title="@ucfirst(__('app.no_tags'))">@ucfirst(__('app.no_tags'))</div>
                 @endif
+                @auth
                 <livewire:interfaces.tag-exhibition :exhibition="$exhibition" :wire:key="$exhibition->uuid" />
+                @endauth
             </div>
             <div class="bg-gray-200 px-5 p-5 w-full">
                 @foreach ($suggestions as $suggestion)
