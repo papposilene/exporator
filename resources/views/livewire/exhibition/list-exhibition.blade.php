@@ -94,7 +94,7 @@
                                 </a>
                             </td>
                             <td class="break-words">
-                                <a href="{{ route('front.exhibition.show', ['place' => $exhibition->inPlace->slug, 'exhibition' => $exhibition->slug]) }}"
+                                <a href="{{ route('front.exhibition.show', ['place' => $exhibition->inPlace->slug, 'slug' => $exhibition->slug]) }}"
                                     title="{{ $exhibition->title }}" aria-label="{{ $exhibition->title }}">
                                     {{ $exhibition->title }}
                                 </a>
