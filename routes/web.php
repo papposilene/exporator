@@ -12,7 +12,6 @@ use App\Http\Livewire\Dashboard\ShowDashboard;
 use App\Http\Livewire\Exhibition\CalendarExhibition;
 use App\Http\Livewire\Exhibition\ListExhibition;
 use App\Http\Livewire\Exhibition\MapExhibition;
-use App\Http\Livewire\Exhibition\ProposeExhibition;
 use App\Http\Livewire\Exhibition\ShowExhibition;
 use App\Http\Livewire\Exhibition\TimelineExhibition;
 use App\Http\Livewire\Place\ListPlace;
@@ -52,7 +51,7 @@ Route::get('/place/{place}/exhibition/{slug}', ShowExhibition::class)->name('fro
 Route::get('/exhibitions/calendar', CalendarExhibition::class)->name('front.exhibition.calendar');
 Route::get('/exhibitions/map', MapExhibition::class)->name('front.exhibition.map');
 Route::get('/exhibitions/timeline', TimelineExhibition::class)->name('front.exhibition.timeline');
-Route::post('/exhibitions/propose', ProposeExhibition::class)->name('front.exhibition.propose');
+Route::post('/exhibitions/propose', [ExhibitionController::class, 'propose'])->name('front.exhibition.propose');
 
 // Tags
 Route::get('/tags', ListTag::class)->name('front.tag.index');

@@ -125,6 +125,9 @@
             </div>
             <div class="bg-indigo-100 mt-5 px-5 p-5 w-full">
                 @foreach ($suggestions as $suggestion)
+                @if ($suggestion->isExhibition->uuid == $exhibition->uuid)
+                    @continue
+                @endif
                 <a href="{{ route('front.exhibition.show', ['place' => $suggestion->isExhibition->inPlace->slug, 'slug' => $suggestion->isExhibition->slug]) }}"
                     class="bg-bluegray-300 mr-2 p-2 inline-block" title="{{ $suggestion->isExhibition->title }}">
                     {{ $suggestion->isExhibition->title }}
