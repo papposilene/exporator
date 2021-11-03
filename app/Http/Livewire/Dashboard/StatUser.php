@@ -12,10 +12,12 @@ class StatUser extends Component
     {
         $year = date('Y');
         $user = User::findOrFail(Auth::id());
+        $since = $eayr - date('Y', $user->created_at);
 
         return view('livewire.dashboard.stat-user',
             compact(
                 'user',
+                'since',
                 'year'
             )
         );
