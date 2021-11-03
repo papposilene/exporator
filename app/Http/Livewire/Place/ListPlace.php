@@ -44,15 +44,13 @@ class ListPlace extends Component
             ((string) Str::of($this->filter)->trim() === 'followed'))
         {
             $user = Auth::id();
-            $places = User::findOrFail($user);
-            $places->followedPlaces()
-                ->where('type', $this->type)
+            $user = User::findOrFail($user);
+            $places = $user->followedPlaces()
+                ->withCount('hasExhibitions')
                 ->where('name', 'like', '%'.$this->search.'%')
                 ->orderBy('has_exhibitions_count', 'desc')
                 ->orderBy('name', 'asc')
-                ->get();
-
-            dd($places);
+                ->paginate(25);
         }
         elseif (Auth::check() &&
             $user->hasTeamPermission($team, 'server:create') &&
