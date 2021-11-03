@@ -5,7 +5,7 @@
         @foreach($tags as $tag)
         <div class="bg-indigo-300 hover:bg-white m-2 p-2 rounded" title="@ucfirst(__('app.type_is', ['type' => $tag->type]))">
             <a href="{{ route('front.tag.show', ['slug' => $tag->slug]) }}" class="flex flex-grow justify-center text-center">
-                @ucfirst($tag->name)
+                @ucfirst($tag->name) ({{ $tag->count() }})
             </a>
         </div>
         @endforeach
