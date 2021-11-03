@@ -7,7 +7,7 @@
         <livewire:modals.create-tag />
         @endif
         @endauth
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-bluegray-800 leading-tight">
             <span>@ucfirst(__('app.list_of', ['name' => __('app.tags')]))</span>
         </h2>
     </x-slot>
@@ -34,7 +34,7 @@
             <div class="py-5">
                 <table class="w-full p-5 table-fixed shadow">
                     <thead>
-                        <tr class="bg-gray-700 text-white">
+                        <tr class="bg-bluegray-700 text-white">
                             <th class="w-1/12 text-center p-3">@ucfirst(__('app.iteration'))</th>
                             <th class="w-1/12 text-center hidden lg:table-cell">@ucfirst(__('app.followed'))</th>
                             <th class="w-4/12 text-center">@ucfirst(__('app.types'))</th>
@@ -44,7 +44,7 @@
                     </thead>
                     <tbody>
                         @foreach($tags as $tag)
-                        <tr class="bg-gray-200 border-b border-gray-300 border-dashed h-12 w-12 p-4">
+                        <tr class="bg-bluegray-200 border-b border-bluegray-300 border-dashed h-12 w-12 p-4">
                             <td class="text-center">{{ $loop->iteration }}</td>
                             <td class="hidden lg:table-cell">
                                 <livewire:interfaces.follow-tag :tag="$tag" :wire:key="$tag->id" />

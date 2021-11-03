@@ -13,7 +13,7 @@ class StatUser extends Component
     {
         $year = date('Y');
         $user = User::findOrFail(Auth::id());
-        $since = $year - Carbon::createFromFormat('Y-m-d', $user->created_at)->format('Y');
+        $since = $year - $user->created_at->format('Y');
 
         return view('livewire.dashboard.stat-user',
             compact(

@@ -7,7 +7,7 @@
         <livewire:modals.import-exhibition />
         @endif
         @endauth
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-bluegray-800 leading-tight">
             <span>@ucfirst(__('app.list_of', ['name' => __('app.exhibitions')]))</span>
         </h2>
     </x-slot>
@@ -28,22 +28,22 @@
                 <div class="flex flex-wrap">
                     <a href="?filter=" class="flex flex-auto text-base md:rounded-r-none hover:scale-110 focus:outline-none
                         justify-center px-4 py-2 hover:rounded font-bold cursor-pointer
-                        hover:bg-gray-300 hover:text-black bg-gray-200 border duration-200 ease-in-out hover:border-gray-300 transition">
+                        hover:bg-bluegray-300 hover:text-black bg-bluegray-200 border duration-200 ease-in-out hover:border-bluegray-300 transition">
                         <div class="flex leading-5">@ucfirst(__('app.all'))</div>
                     </a>
                     <a href="?filter=past" class="flex flex-auto text-base md:rounded-r-none md:rounded-l-none md:border-l-0 md:border-r-0
                         hover:scale-110 focus:outline-none justify-center px-4 py-2 hover:rounded font-bold cursor-pointer
-                        hover:bg-red-200 hover:text-black bg-red-100 border duration-200 ease-in-out hover:border-gray-300 transition">
+                        hover:bg-red-200 hover:text-black bg-red-100 border duration-200 ease-in-out hover:border-bluegray-300 transition">
                         <div class="flex leading-5">@ucfirst(__('app.exhibitions_past'))</div>
                     </a>
                     <a href="?filter=current" class="flex flex-auto text-base md:rounded-r-none md:rounded-l-none md:border-l-0 md:border-r-0
                         hover:scale-110 focus:outline-none justify-center px-4 py-2 hover:rounded font-bold cursor-pointer
-                        hover:bg-green-200 hover:text-black bg-green-100 border duration-200 ease-in-out hover:border-gray-300 transition">
+                        hover:bg-green-200 hover:text-black bg-green-100 border duration-200 ease-in-out hover:border-bluegray-300 transition">
                         <div class="flex leading-5">@ucfirst(__('app.exhibitions_current'))</div>
                     </a>
                     <a href="?filter=future" class="flex flex-auto text-base md:rounded-l-none hover:scale-110 focus:outline-none
                         justify-center px-4 py-2 hover:rounded font-bold cursor-pointer
-                        hover:bg-blue-200 hover:text-black bg-blue-100 border duration-200 ease-in-out hover:border-gray-300 transition">
+                        hover:bg-sky-200 hover:text-black bg-sky-100 border duration-200 ease-in-out hover:border-bluegray-300 transition">
                         <div class="flex leading-5">@ucfirst(__('app.exhibitions_future'))</div>
                     </a>
                 </div>
@@ -53,7 +53,7 @@
             <div class="py-5">
                 <table class="w-full p-5 table-fixed shadow">
                     <thead>
-                        <tr class="bg-gray-700 text-white">
+                        <tr class="bg-bluegray-700 text-white">
                             <th class="w-1/12 text-center p-3">@ucfirst(__('app.iteration'))</th>
                             <th class="w-1/12 text-center hidden lg:table-cell">@ucfirst(__('app.followed'))</th>
                             <th class="w-3/12 text-center">@ucfirst(__('app.places'))</th>
@@ -76,13 +76,13 @@
                         }
                         elseif ($today < $exhibition->began_at) {
                             // Future exhibition
-                            $is_current = 'bg-blue-100';
+                            $is_current = 'bg-sky-100';
                         }
                         else {
-                            $is_current = 'bg-gray-200';
+                            $is_current = 'bg-bluegray-200';
                         }
                         @endphp
-                        <tr class="border-b border-gray-300 border-dashed h-12 w-12 p-4 {{ $is_current }}">
+                        <tr class="border-b border-bluegray-300 border-dashed h-12 w-12 p-4 {{ $is_current }}">
                             <td class="text-center">{{ $loop->iteration }}</td>
                             <td class="hidden lg:table-cell">
                                 <livewire:interfaces.follow-exhibition :exhibition="$exhibition" :wire:key="$exhibition->uuid" />

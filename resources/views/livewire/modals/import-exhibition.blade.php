@@ -7,7 +7,7 @@
     </div>
 
     <div id="modalWindowImportExhibition"
-        class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-blue-500 bg-opacity-50 transform scale-0 transition-transform duration-300 z-1000">
+        class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-sky-500 bg-opacity-50 transform scale-0 transition-transform duration-300 z-1000">
         <!-- Modal -->
         <div class="bg-white overflow-auto w-1/2 h-1/2 p-12">
             <!-- Close modal button-->
@@ -30,7 +30,7 @@
                             <span class="bg-red-200 ml-2 p-2">@ucfirst(__('app.mandatory'))</span>
                         </caption>
                         <thead>
-                            <tr class="bg-gray-700 text-white">
+                            <tr class="bg-bluegray-700 text-white">
                                 <th class="p-3">@ucfirst(__('app.columns'))</th>
                                 <th>@ucfirst(__('app.details'))</th>
                             </tr>

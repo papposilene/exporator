@@ -2,7 +2,7 @@
 
 <div>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-bluegray-800 leading-tight">
             <span>
                 <a href="{{ route('admin.country.index') }}">
                     @ucfirst(__('app.list_of', ['name' => __('app.countries')]))
@@ -51,7 +51,7 @@
             <div class="py-5">
                 <table class="w-full p-5 table-fixed">
                     <thead>
-                        <tr class="bg-gray-700 text-white">
+                        <tr class="bg-bluegray-700 text-white">
                             <th class="w-1/12 text-center p-3">@ucfirst(__('app.iteration'))</th>
                             <th class="w-2/12 text-center">@ucfirst(__('app.cities'))</th>
                             <th class="w-6/12 text-center">@ucfirst(__('app.places'))</th>

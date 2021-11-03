@@ -2,7 +2,7 @@
 
 <div>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-bluegray-800 leading-tight">
             <span>
                 <a href="{{ route('front.place.show', ['slug' => $exhibition->inPlace->slug]) }}">
                     {{ $exhibition->inPlace->name }}
@@ -29,7 +29,7 @@
                     <span title="@ucfirst(__('app.country'))">{{ $exhibition->inPlace->inCountry->name_common_fra }}</span>.
                 </li>
                 <li class="mt-5" title="@ucfirst(__('app.link'))">
-                    <a href="{{ $exhibition->inPlace->link }}" class="text-blue-700 hover:text-red-600" target="_blank" rel="noopener">{{ $exhibition->inPlace->link }}</a>
+                    <a href="{{ $exhibition->inPlace->link }}" class="text-sky-700 hover:text-red-600" target="_blank" rel="noopener">{{ $exhibition->inPlace->link }}</a>
                 </li>
             </ul>
             @if ($exhibition->inPlace->status === 1)
@@ -49,13 +49,13 @@
                 <li><livewire:interfaces.map :place="$exhibition->inPlace" :wire:key="$exhibition->inPlace->uuid" /></li>
             </ul>
             @auth
-            <ul class="bg-gray-200 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
+            <ul class="bg-bluegray-200 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
                 <li><livewire:interfaces.follow-exhibition :exhibition="$exhibition" :wire:key="$exhibition->uuid" /></li>
             </ul>
             @endauth
             @auth
             @if (Auth::user()->can('create', App\Models\Exhibition::class))
-            <ul class="bg-gray-200 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
+            <ul class="bg-bluegray-200 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
                 <li><livewire:modals.edit-exhibition :exhibition="$exhibition" :wire:key="$exhibition->uuid" /></li>
             </ul>
             @endif
@@ -73,9 +73,9 @@
             </div>
             @endif
 
-            <ul class="list-inside bg-gray-200 my-5 w-full">
+            <ul class="list-inside bg-bluegray-200 my-5 w-full">
                 <li title="@ucfirst(__('app.exhibition'))">
-                    <h4 class="bg-gray-300 font-bold text-2xl p-3 mb-5">
+                    <h4 class="bg-bluegray-300 font-bold text-2xl p-3 mb-5">
                         {{ $exhibition->title }}
                     </h4>
                 </li>
@@ -100,17 +100,17 @@
                 </li>
                 <li class="mt-5 p-5" title="@ucfirst(__('app.link'))">
                     @if ($exhibition->link)
-                    <a href="{{ $exhibition->link }}" class="text-blue-700 hover:text-red-600" target="_blank" rel="noopener">{{ $exhibition->link }}</a>
+                    <a href="{{ $exhibition->link }}" class="text-sky-700 hover:text-red-600" target="_blank" rel="noopener">{{ $exhibition->link }}</a>
                     @else
-                    <a href="{{ $exhibition->inPlace->link }}" class="text-blue-700 hover:text-red-600" target="_blank" rel="noopener">{{ $exhibition->inPlace->link }}</a>
+                    <a href="{{ $exhibition->inPlace->link }}" class="text-sky-700 hover:text-red-600" target="_blank" rel="noopener">{{ $exhibition->inPlace->link }}</a>
                     @endif
                 </li>
             </ul>
-            <div class="bg-gray-200 px-5 p-5 w-full">
+            <div class="bg-bluegray-200 px-5 p-5 w-full">
                 @if (count($exhibition->tags) > 0)
                 @foreach ($exhibition->tags as $tag)
                 <a href="{{ route('front.tag.show', ['slug' => $tag->slug]) }}"
-                    class="bg-gray-300 mr-2 p-2 inline-block" title="{{ $tag->type }}">
+                    class="bg-bluegray-300 mr-2 p-2 inline-block" title="{{ $tag->type }}">
                     {{ $tag->name }}
                 </a>
                 @endforeach
@@ -123,10 +123,10 @@
                 @endif
                 @endauth
             </div>
-            <div class="bg-gray-200 px-5 p-5 w-full">
+            <div class="bg-bluegray-200 px-5 p-5 w-full">
                 @foreach ($suggestions as $suggestion)
                 <a href="{{ route('front.exhibition.show', ['place' => $suggestion->inPlace->slug, 'slug' => $suggestion->slug]) }}"
-                    class="bg-gray-300 mr-2 p-2 inline-block" title="{{ $suggestion->name }}">
+                    class="bg-bluegray-300 mr-2 p-2 inline-block" title="{{ $suggestion->name }}">
                     {{ $suggestion->name }}
                 </a>
                 @endforeach

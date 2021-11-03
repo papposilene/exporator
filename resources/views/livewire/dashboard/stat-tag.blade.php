@@ -1,4 +1,4 @@
-<div class="flex-grow bg-blue-100 p-5 w-full">
+<div class="flex-grow bg-sky-100 p-5 w-full">
     <h3 class="font-bold text-2xl mb-5">@ucfirst(__('app.tagcloud'))</h3>
     @if(count($tags) > 0)
     <div class="grid grid-cols-1 lg:grid-cols-4 sm:gap-2 lg:gap-4">

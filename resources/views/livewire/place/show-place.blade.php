@@ -10,7 +10,7 @@
         <livewire:modals.propose-exhibition :place="$place" :wire:key="$place->uuid" />
         @endif
         @endauth
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-bluegray-800 leading-tight">
             <span>
                 <a href="{{ route('front.place.index') }}">
                     @ucfirst(__('app.list_of', ['name' => __('app.places')]))
@@ -23,13 +23,13 @@
     <div class="flex flex-wrap w-full max-w-7xl mx-auto">
         <div class="mx-auto md:w-1/4 py-5 px-6 w-full">
             @if ($place->image)
-            <ul class="bg-purple-100 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
+            <ul class="bg-rose-100 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
                 <li>
                     <img src="{{ storage_path($place->image) }}" class="" alt="{{ $place->name }}" title="{{ $place->name }}" />
                 </li>
             </ul>
             @endif
-            <ul class="bg-purple-100 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
+            <ul class="bg-rose-100 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
                 <li title="@ucfirst(__('app.place'))">
                     <h3 class="font-bold text-2xl mb-5">
                         {{ $place->name }}
@@ -42,7 +42,7 @@
                     <span title="@ucfirst(__('app.country'))">{{ $place->inCountry->name_common_fra }}</span>.
                 </li>
                 <li class="mt-5" title="@ucfirst(__('app.link'))">
-                    <a href="{{ $place->link }}" class="text-blue-700 hover:text-red-600" target="_blank" rel="noopener">{{ $place->link }}</a>
+                    <a href="{{ $place->link }}" class="text-sky-700 hover:text-red-600" target="_blank" rel="noopener">{{ $place->link }}</a>
                 </li>
             </ul>
             @if ($place->status === 1)
@@ -62,7 +62,7 @@
                 <li><livewire:interfaces.map :place="$place" :wire:key="$place->uuid" /></li>
             </ul>
             @auth
-            <ul class="bg-gray-200 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
+            <ul class="bg-bluegray-200 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
                 <li><livewire:interfaces.follow-place :place="$place" :wire:key="$place->uuid" /></li>
             </ul>
             @endauth
@@ -87,7 +87,7 @@
             <div class="py-5">
                 <table class="w-full p-5 table-fixed shadow">
                     <thead>
-                        <tr class="bg-gray-700 text-white">
+                        <tr class="bg-bluegray-700 text-white">
                             <th class="w-1/12 text-center p-3">@ucfirst(__('app.iteration'))</th>
                             <th class="w-7/12 text-center">@ucfirst(__('app.titles'))</th>
                             <th class="hidden md:table-cell md:w-2/12 text-center">@ucfirst(__('app.began_at'))</th>
@@ -109,13 +109,13 @@
                         }
                         elseif ($today < $exhibition->began_at) {
                             // Future exhibition
-                            $is_current = 'bg-blue-100';
+                            $is_current = 'bg-sky-100';
                         }
                         else {
-                            $is_current = 'bg-gray-200';
+                            $is_current = 'bg-bluegray-200';
                         }
                         @endphp
-                        <tr class="border-b border-gray-300 border-dashed h-12 w-12 p-4 {{ $is_current }}">
+                        <tr class="border-b border-bluegray-300 border-dashed h-12 w-12 p-4 {{ $is_current }}">
                             <td class="text-center">{{ $loop->iteration }}</td>
                             <td class="break-words">
                                 <a href="{{ route('front.exhibition.show', ['place' => $exhibition->inPlace->slug, 'exhibition' => $exhibition->slug]) }}"

@@ -2,7 +2,7 @@
 
 <div>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-bluegray-800 leading-tight">
             <span>
                 <a href="{{ route('front.tag.index') }}">
                     @ucfirst(__('app.list_of', ['name' => __('app.tags')]))
@@ -29,7 +29,7 @@
             @endauth
             @auth
             @if (Auth::user()->can('create', App\Models\Tag::class))
-            <ul class="bg-gray-200 list-inside md:mt-5 md:mr-5 p-5 shadow w-full">
+            <ul class="bg-bluegray-200 list-inside md:mt-5 md:mr-5 p-5 shadow w-full">
                 <li><livewire:modals.edit-tag :tag="$tag" :wire:key="$tag->id" /></li>
             </ul>
             @endif
@@ -55,7 +55,7 @@
             <div class="py-5">
                 <table class="w-full p-5 table-fixed shadow">
                     <thead>
-                        <tr class="bg-gray-700 text-white">
+                        <tr class="bg-bluegray-700 text-white">
                             <th class="w-1/12 text-center p-3">@ucfirst(__('app.iteration'))</th>
                             <th class="w-3/12 text-center">@ucfirst(__('app.places'))</th>
                             <th class="w-4/12 text-center">@ucfirst(__('app.titles'))</th>
@@ -77,13 +77,13 @@
                         }
                         elseif ($today < $exhibition->began_at) {
                             // Future exhibition
-                            $is_current = 'bg-blue-100';
+                            $is_current = 'bg-sky-100';
                         }
                         else {
-                            $is_current = 'bg-gray-200';
+                            $is_current = 'bg-bluegray-200';
                         }
                         @endphp
-                        <tr class="border-b border-gray-300 border-dashed h-12 w-12 p-4 {{ $is_current }}">
+                        <tr class="border-b border-bluegray-300 border-dashed h-12 w-12 p-4 {{ $is_current }}">
                             <td class="text-center">{{ $loop->iteration }}</td>
                             <td class="break-words">
                                 <a href="{{ route('front.place.show', ['slug' => $exhibition->inPlace->slug]) }}"

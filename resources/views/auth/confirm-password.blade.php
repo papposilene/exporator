@@ -4,7 +4,7 @@
             <x-logo class="block h-16 w-auto">{{ config('app.name', 'Exporator') }}</x-logo>
         </x-slot>
 
-        <div class="mb-4 text-sm text-gray-600">
+        <div class="mb-4 text-sm text-bluegray-600">
             {{ __('This is a secure area of the application. Please confirm your password before continuing.') }}
         </div>
 

@@ -8,7 +8,7 @@
         <livewire:modals.create-place />
         @endif
         @endauth
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-bluegray-800 leading-tight">
             <span>@ucfirst(__('app.list_of', ['name' => __('app.places')]))</span>
         </h2>
     </x-slot>
@@ -29,20 +29,20 @@
                 <div class="flex flex-wrap">
                     <a href="?type=" class="flex flex-auto text-base md:rounded-r-none hover:scale-110 focus:outline-none
                         justify-center px-4 py-2 hover:rounded font-bold cursor-pointer
-                        hover:bg-gray-300 hover:text-black bg-gray-200 border duration-200 ease-in-out hover:border-gray-400 transition">
+                        hover:bg-bluegray-300 hover:text-black bg-bluegray-200 border duration-200 ease-in-out hover:border-bluegray-400 transition">
                         <div class="flex leading-5">@ucfirst(__('app.all'))</div>
                     </a>
                     @foreach($types as $type)
                     <a href="?type={{ $type->type }}" class="flex flex-auto text-base md:rounded-r-none hover:scale-110 focus:outline-none
                         justify-center px-4 py-2 hover:rounded font-bold cursor-pointer
-                        hover:bg-gray-300 hover:text-black bg-gray-200 border duration-200 ease-in-out hover:border-gray-400 transition">
+                        hover:bg-bluegray-300 hover:text-black bg-bluegray-200 border duration-200 ease-in-out hover:border-bluegray-400 transition">
                         <div class="flex leading-5">@ucfirst(__('app.' . Str::slug($type->type, '_')))</div>
                     </a>
                     @endforeach
                     @auth
                     <a href="?filter=followed" class="flex flex-auto text-base md:rounded-r-none md:rounded-l-none md:border-l-0 md:border-r-0
                         hover:scale-110 focus:outline-none justify-center px-4 py-2 hover:rounded font-bold cursor-pointer
-                        hover:bg-gray-200 hover:text-black bg-gray-300 border duration-200 ease-in-out border-gray-400 transition">
+                        hover:bg-bluegray-200 hover:text-black bg-bluegray-300 border duration-200 ease-in-out border-bluegray-400 transition">
                         <div class="flex leading-5">
                             <svg xmlns="http://www.w3.org/2000/svg" class="text-yellow-500 h-6 w-6" fill="yes" viewBox="0 0 24 24" stroke="currentColor" title="@ucfirst(__('app.followed'))">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -65,7 +65,7 @@
             <div class="py-5">
                 <table class="w-full p-5 table-fixed shadow">
                     <thead>
-                        <tr class="bg-gray-700 text-white">
+                        <tr class="bg-bluegray-700 text-white">
                             <th class="w-1/12 text-center p-3">@ucfirst(__('app.iteration'))</th>
                             <th class="w-1/12 text-center hidden lg:table-cell">@ucfirst(__('app.followed'))</th>
                             <th class="w-2/12 text-center hidden lg:table-cell">@ucfirst(__('app.types'))</th>
@@ -77,7 +77,7 @@
                     </thead>
                     <tbody>
                         @foreach($places as $place)
-                        <tr class="bg-gray-200 border-b border-gray-300 border-dashed h-12 w-12 p-4">
+                        <tr class="bg-bluegray-200 border-b border-bluegray-300 border-dashed h-12 w-12 p-4">
                             <td class="text-center">{{ $loop->iteration }}</td>
                             <td class="hidden lg:table-cell">
                                 <livewire:interfaces.follow-place :place="$place" :wire:key="$place->uuid" />

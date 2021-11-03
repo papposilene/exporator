@@ -43,7 +43,7 @@
         @endif
     </head>
 
-    <body class="font-sans antialiased bg-gray-100" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <body class="font-sans antialiased bg-bluegray-100" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
         <div class="flex flex-col h-min-screen">
             <livewire:menu />
 
@@ -61,7 +61,7 @@
                 {{ $slot }}
             </main>
 
-            <footer class="flex bg-gray-200 shadow">
+            <footer class="flex bg-bluegray-200 shadow">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 w-full">
                     <x-footer />
                 </div>

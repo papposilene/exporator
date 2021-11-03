@@ -34,8 +34,8 @@
         <noscript><p><img src="//pwk.psln.nl/matomo.php?idsite=14&amp;rec=1" style="border:0;" alt="" /></p></noscript>
         <!-- End Matomo Code -->
     </head>
-    <body class="font-sans antialiased bg-gray-100">
-        <div class="font-sans text-gray-900 antialiased">
+    <body class="font-sans antialiased bg-bluegray-100">
+        <div class="font-sans text-bluegray-900 antialiased">
             {{ $slot }}
         </div>
     </body>

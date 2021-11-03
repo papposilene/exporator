@@ -2,7 +2,7 @@
 
 <div>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-bluegray-800 leading-tight">
             <span>@ucfirst(__('app.map_of', ['name' => __('app.exhibitions')]))</span>
         </h2>
     </x-slot>
@@ -52,7 +52,7 @@ document.addEventListener('livewire:load', function () {
     var overlayMaps = {
         "<span class='font-bold text-red-700'>@ucfirst(__('app.with_past_exhibition'))</span>": with_past_exhibition,
         "<span class='font-bold text-green-700'>@ucfirst(__('app.with_current_exhibition'))</span>": with_current_exhibition,
-        "<span class='font-bold text-blue-700'>@ucfirst(__('app.with_future_exhibition'))</span>": with_future_exhibition,
+        "<span class='font-bold text-sky-700'>@ucfirst(__('app.with_future_exhibition'))</span>": with_future_exhibition,
         "<span class='font-bold text-black'>@ucfirst(__('app.without_exhibition'))</span>": without_exhibition
     };
 

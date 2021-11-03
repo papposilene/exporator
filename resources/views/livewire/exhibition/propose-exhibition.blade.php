@@ -3,7 +3,7 @@
         @if (Auth::user()->can('create', App\Models\Exhibition::class))
         <livewire:modals.import-exhibition />
         @endif
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-bluegray-800 leading-tight">
             <span>@ucfirst(__('app.list_of', ['name' => __('app.exhibitions')]))</span>
         </h2>
     </x-slot>
@@ -27,7 +27,7 @@
             <div class="py-5">
                 <table class="w-full p-5 table-fixed">
                     <thead>
-                        <tr class="bg-gray-700 text-white">
+                        <tr class="bg-bluegray-700 text-white">
                             <th class="w-1/12 text-center p-3">@ucfirst(__('app.iteration'))</th>
                             <th class="w-1/12 text-center">@ucfirst(__('app.created_at'))</th>
                             <th class="w-3/12 text-center">@ucfirst(__('app.museums'))</th>
@@ -39,7 +39,7 @@
                     </thead>
                     <tbody>
                         @foreach($exhibitions as $exhibition)
-                        <tr class="border-b border-gray-300 border-dashed h-12 w-12 p-4">
+                        <tr class="border-b border-bluegray-300 border-dashed h-12 w-12 p-4">
                             <td class="text-center">{{ $loop->iteration }}</td>
                             <td class="text-center">@date($exhibition->created_at)</td>
                             <td>
