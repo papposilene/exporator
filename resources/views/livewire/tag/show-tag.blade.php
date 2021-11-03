@@ -23,13 +23,13 @@
                 <li title="@ucfirst(__('app.type'))">@ucfirst($tag->type)</li>
             </ul>
             @auth
-            <ul class="bg-yellow-400 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
+            <ul class="bg-bluegray-200 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
                 <li><livewire:interfaces.follow-tag :tag="$tag" :wire:key="$tag->id" /></li>
             </ul>
             @endauth
             @auth
             @if (Auth::user()->can('create', App\Models\Tag::class))
-            <ul class="bg-bluegray-200 list-inside md:mt-5 md:mr-5 p-5 shadow w-full">
+            <ul class="bg-bluegray-200 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
                 <li><livewire:modals.edit-tag :tag="$tag" :wire:key="$tag->id" /></li>
             </ul>
             @endif
@@ -92,7 +92,7 @@
                                 </a>
                             </td>
                             <td class="break-words">
-                                <a href="{{ route('front.exhibition.show', ['place' => $exhibition->inPlace->slug, 'exhibition' => $exhibition->slug]) }}"
+                                <a href="{{ route('front.exhibition.show', ['place' => $exhibition->inPlace->slug, 'slug' => $exhibition->slug]) }}"
                                     title="{{ $exhibition->title }}" aria-label="{{ $exhibition->title }}">
                                     {{ $exhibition->title }}
                                 </a>
