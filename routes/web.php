@@ -48,7 +48,7 @@ Route::get('/place/{slug}', ShowPlace::class)->name('front.place.show');
 
 // Exhibitions
 Route::get('/exhibitions', ListExhibition::class)->name('front.exhibition.index');
-Route::get('/place/{place}/exhibition/{exhibition}', ShowExhibition::class)->name('front.exhibition.show');
+Route::get('/place/{place}/exhibition/{slug}', ShowExhibition::class)->name('front.exhibition.show');
 Route::get('/exhibitions/calendar', CalendarExhibition::class)->name('front.exhibition.calendar');
 Route::get('/exhibitions/map', MapExhibition::class)->name('front.exhibition.map');
 Route::get('/exhibitions/timeline', TimelineExhibition::class)->name('front.exhibition.timeline');
@@ -65,14 +65,14 @@ Route::get('/tag/{slug}', ShowTag::class)->name('front.tag.show');
 */
 Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function () {
     // Places
-    Route::post('/places/store', [PlaceController::class, 'store'])->name('admin.place.store');
-    Route::post('/places/import', [PlaceController::class, 'import'])->name('admin.place.import');
+    Route::post('/place/store', [PlaceController::class, 'store'])->name('admin.place.store');
     Route::post('/place/update', [PlaceController::class, 'update'])->name('admin.place.update');
+    Route::post('/places/import', [PlaceController::class, 'import'])->name('admin.place.import');
 
     // Exhibitions
-    Route::post('/exhibitions/import', [ExhibitionController::class, 'import'])->name('admin.exhibition.import');
     Route::post('/exhibition/store', [ExhibitionController::class, 'store'])->name('admin.exhibition.store');
     Route::post('/exhibition/update', [ExhibitionController::class, 'update'])->name('admin.exhibition.update');
+    Route::post('/exhibitions/import', [ExhibitionController::class, 'import'])->name('admin.exhibition.import');
 
     // Tag
     Route::post('/tag/store', [TagController::class, 'store'])->name('admin.tag.store');

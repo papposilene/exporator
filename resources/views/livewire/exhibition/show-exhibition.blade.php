@@ -118,16 +118,16 @@
                 <div title="@ucfirst(__('app.no_tags'))">@ucfirst(__('app.no_tags'))</div>
                 @endif
                 @auth
-                @if (Auth::user()->can('update', App\Models\Exhibition::class))
+                @if (Auth::user()->can('update', App\Models\User::class, App\Models\Exhibition::class))
                 <livewire:interfaces.tag-exhibition :exhibition="$exhibition" :wire:key="$exhibition->uuid" />
                 @endif
                 @endauth
             </div>
-            <div class="bg-bluegray-200 px-5 p-5 w-full">
+            <div class="bg-indigo-100 mt-5 px-5 p-5 w-full">
                 @foreach ($suggestions as $suggestion)
-                <a href="{{ route('front.exhibition.show', ['place' => $suggestion->inPlace->slug, 'slug' => $suggestion->slug]) }}"
-                    class="bg-bluegray-300 mr-2 p-2 inline-block" title="{{ $suggestion->name }}">
-                    {{ $suggestion->name }}
+                <a href="{{ route('front.exhibition.show', ['place' => $suggestion->isExhibition->inPlace->slug, 'slug' => $suggestion->isExhibition->slug]) }}"
+                    class="bg-bluegray-300 mr-2 p-2 inline-block" title="{{ $suggestion->isExhibition->title }}">
+                    {{ $suggestion->isExhibition->title }}
                 </a>
                 @endforeach
             </div>

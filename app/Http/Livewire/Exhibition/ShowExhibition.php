@@ -13,6 +13,7 @@ class ShowExhibition extends Component
 
     public $page = 1;
     public $search = '';
+    public $slug;
     public Exhibition $exhibition;
     public $suggestions;
 
@@ -21,10 +22,10 @@ class ShowExhibition extends Component
         'page' => ['except' => 1],
     ];
 
-    public function mount($exhibition)
+    public function mount($slug)
     {
-        $this->exhibition = Exhibition::where('slug', $this->exhibition)->firstOrFail();
-        $this->suggestions = Tagged::where('taggable_id', $this->exhibition)->take(3)->get();
+        $this->exhibition = Exhibition::where('slug', $this->slug)->firstOrFail();
+        $this->suggestions = Tagged::where('taggable_id', $this->exhibition->uuid)->take(3)->get();
     }
 
     public function updatingSearch()

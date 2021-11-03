@@ -3,8 +3,10 @@
 <div>
     <x-slot name="header">
         @auth
-        @if (Auth::user()->can('create', App\Models\Exhibition::class))
+        @if (Auth::user()->can('update', App\Models\User::class, App\Models\Exhibition::class))
         <livewire:modals.edit-place :place="$place" :wire:key="$place->uuid" />
+        @endif
+        @if (Auth::user()->can('create', App\Models\Exhibition::class))
         <livewire:modals.create-exhibition :place="$place" :wire:key="$place->uuid" />
         @else
         <livewire:modals.propose-exhibition :place="$place" :wire:key="$place->uuid" />
@@ -118,7 +120,7 @@
                         <tr class="border-b border-bluegray-300 border-dashed h-12 w-12 p-4 {{ $is_current }}">
                             <td class="text-center">{{ $loop->iteration }}</td>
                             <td class="break-words">
-                                <a href="{{ route('front.exhibition.show', ['place' => $exhibition->inPlace->slug, 'exhibition' => $exhibition->slug]) }}"
+                                <a href="{{ route('front.exhibition.show', ['place' => $exhibition->inPlace->slug, 'slug' => $exhibition->slug]) }}"
                                     title="{{ $exhibition->title }}" aria-label="{{ $exhibition->title }}">
                                     {{ $exhibition->title }}
                                 </a>

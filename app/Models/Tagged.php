@@ -12,4 +12,16 @@ class Tagged extends Model
      * @var string
      */
     protected $table = 'taggables';
+
+    /**
+     * Get all the exhibitions for a specific tag.
+     */
+    public function isExhibition()
+    {
+        return $this->hasOne(
+            'App\Models\Exhibition',
+            'uuid',
+            'taggable_id'
+        );
+    }
 }
