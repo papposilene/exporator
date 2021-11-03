@@ -1,5 +1,5 @@
 <div>
-    @if (Auth::check() && $place->isFollowed)
+    @if (Auth::check() && $tag->isFollowed)
     <form method="POST" action="{{ route('admin.user.tag_unfollow') }}" class="flex justify-center w-full">
         @csrf
 

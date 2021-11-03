@@ -1,6 +1,6 @@
 <div id="modalCreateTag" class="relative float-right mr-2">
     <div id="modalButtonCreateTag">
-        <button id="modalOpenCreateTag" class="focus:outline-none bg-sky-100 text-black bg-opacity-75 px-1 rounded"
+        <button id="modalOpenCreateTag" class="focus:outline-none bg-indigo-100 text-black bg-opacity-75 px-1 rounded"
             type="button" title="@ucfirst(__('app.create_one', ['what' => __('app.tag')]))">
             @ucfirst(__('app.create_one', ['what' => __('app.tag')]))
         </button>

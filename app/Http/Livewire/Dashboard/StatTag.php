@@ -3,13 +3,14 @@
 namespace App\Http\Livewire\Dashboard;
 
 use Livewire\Component;
-use Spatie\Tags\Tag;
+use App\Models\Tag;
 
 class StatTag extends Component
 {
     public function render()
     {
-        $tags = Tag::inRandomOrder()
+        $tags = Tag::withCount('hasExhibitions')
+            ->inRandomOrder()
             ->limit(12)
             ->get();
 
