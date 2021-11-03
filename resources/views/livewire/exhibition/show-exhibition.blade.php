@@ -118,7 +118,9 @@
                 <div title="@ucfirst(__('app.no_tags'))">@ucfirst(__('app.no_tags'))</div>
                 @endif
                 @auth
+                @if (Auth::user()->can('update', App\Models\Exhibition::class))
                 <livewire:interfaces.tag-exhibition :exhibition="$exhibition" :wire:key="$exhibition->uuid" />
+                @endif
                 @endauth
             </div>
             <div class="bg-gray-200 px-5 p-5 w-full">
