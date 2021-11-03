@@ -72,7 +72,7 @@
 
         <div class="mx-auto md:w-3/4 py-5 px-6">
             @if ($errors->any())
-            <div class="bg-red-400 border border-red-500 py-5 text-black rounded">
+            <div class="bg-red-500 border border-red-700 mb-3 p-3 rounded shadow text-white font-bold">
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
