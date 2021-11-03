@@ -18,29 +18,21 @@ class UserController extends Controller
      */
     public function index()
     {
-        return UserResource::collection(User::paginate(25));
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function stats()
-    {
-        $year = date('Y');
-        $data = User::all();
+        // return UserResource::collection(User::paginate(25));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  UUID $uuid
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($uuid = null)
     {
-        //
+        // Abort unless the given User's UUID is not the same as Auth:id()
+        abort_unless(Auth::id() === $uuid, 403);
+        
+        return new UserResource(User::findOrFail($uuid));
     }
 
     /**
