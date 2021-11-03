@@ -21,7 +21,7 @@ class Exhibition extends ResourceCollection
             'end' => $this->ended_at,
             'description' => $this->description,
             'link' => $this->link,
-            'museum' => [
+            'place' => [
                 'uuid' => $this->inPlace->uuid,
                 'slug' => $this->inPlace->slug,
                 'type' => $this->inPlace->type,
