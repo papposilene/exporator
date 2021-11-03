@@ -23,11 +23,11 @@
                 </p>
             </div>
             @auth
-            <div class="flex flex-grow lg:flex-grow-0 flex-wrap bg-bluegray-300 p-5 shadow w-full lg:w-3/4">
+            <div class="flex flex-grow lg:flex-grow-0 flex-wrap w-full lg:pl-2 lg:w-3/4">
                 <livewire:dashboard.stat-user />
             </div>
             @else
-            <div class="flex flex-grow lg:flex-grow-0 flex-wrap bg-bluegray-300 p-5 shadow w-full lg:w-3/4">
+            <div class="flex flex-grow lg:flex-grow-0 flex-wrap w-full lg:pr-2 lg:w-3/4">
                 <p>
                     <a href="{{ route('login') }}" class="text-sky-700 hover:text-red-600">@ucfirst(__('auth.login'))</a>.
                     @if (\Laravel\Fortify\Features::registration())

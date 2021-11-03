@@ -4302,6 +4302,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
 		margin-right: 0.75rem;
 	}
 
+	.lg\:mr-2 {
+		margin-right: 0.5rem;
+	}
+
 	.lg\:table-cell {
 		display: table-cell;
 	}
@@ -4353,6 +4357,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
 	.lg\:pr-2 {
 		padding-right: 0.5rem;
+	}
+
+	.lg\:pl-2 {
+		padding-left: 0.5rem;
 	}
 }
 

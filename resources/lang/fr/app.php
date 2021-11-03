@@ -139,4 +139,5 @@ return [
     'user_following_places' => 'total des lieux d’exposition suivis : :count',
     'user_following_exhibitions' => 'total des expositions suivies : :count',
     'user_following_tags' => 'total des mots-clés suivis : :count',
+    'welcome_to' => 'bienvenue, :name !',
 ];
