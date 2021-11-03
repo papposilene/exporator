@@ -88,7 +88,7 @@
                             <td class="break-words">
                                 <a href="{{ route('front.place.show', ['slug' => $exhibition->inPlace->slug]) }}"
                                     title="{{ $exhibition->inPlace->name }}" aria-label="{{ $exhibition->inPlace->name }}">
-                                    {{ $exhibition->inMuseum->name }}
+                                    {{ $exhibition->inPlace->name }}
                                 </a>
                             </td>
                             <td class="break-words">

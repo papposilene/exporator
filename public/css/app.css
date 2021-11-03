@@ -1566,6 +1566,9 @@ select {
 .border-t-2 {
 	border-top-width: 2px;
 }
+.border-r {
+	border-right-width: 1px;
+}
 .border-dashed {
 	border-style: dashed;
 }
@@ -1615,6 +1618,10 @@ select {
 .border-bluegray-200 {
 	--tw-border-opacity: 1;
 	border-color: rgba(226, 232, 240, var(--tw-border-opacity));
+}
+.border-gray-400 {
+	--tw-border-opacity: 1;
+	border-color: rgba(161, 161, 170, var(--tw-border-opacity));
 }
 .bg-white {
 	--tw-bg-opacity: 1;
@@ -1985,6 +1992,9 @@ select {
 .tracking-widest {
 	letter-spacing: 0.1em;
 }
+.tracking-wider {
+	letter-spacing: 0.05em;
+}
 .text-gray-500 {
 	--tw-text-opacity: 1;
 	color: rgba(113, 113, 122, var(--tw-text-opacity));
@@ -2108,6 +2118,14 @@ select {
 .text-green-700 {
 	--tw-text-opacity: 1;
 	color: rgba(21, 128, 61, var(--tw-text-opacity));
+}
+.text-gray-200 {
+	--tw-text-opacity: 1;
+	color: rgba(228, 228, 231, var(--tw-text-opacity));
+}
+.text-gray-300 {
+	--tw-text-opacity: 1;
+	color: rgba(212, 212, 216, var(--tw-text-opacity));
 }
 .underline {
 	text-decoration: underline;
@@ -3951,6 +3969,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
 .dark .dark\:bg-bluegray-800 {
 	--tw-bg-opacity: 1;
 	background-color: rgba(30, 41, 59, var(--tw-bg-opacity));
+}
+.dark .dark\:bg-gray-900 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(24, 24, 27, var(--tw-bg-opacity));
 }
 .dark .dark\:text-bluegray-500 {
 	--tw-text-opacity: 1;
