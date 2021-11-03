@@ -20,8 +20,9 @@
     <div class="flex w-full">
         <div>
             @for ($ii = 0; $since < $ii; $ii++)
-            {{ $user->followedExhibitions()->whereYear('created_at', $year)->count() }}
-            {{ $user->followedExhibitions()->whereYear('created_at', $year)->pluck('price') }}
+            @php $yearToFind = $year - $ii; @endphp
+            {{ $user->followedExhibitions()->whereYear('created_at', $yearToFind)->count() }}
+            {{ $user->followedExhibitions()->whereYear('created_at', $yearToFind)->pluck('price') }}
             @endfor
         </div>
     </div>
