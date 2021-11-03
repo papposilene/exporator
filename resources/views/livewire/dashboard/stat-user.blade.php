@@ -21,8 +21,8 @@
         <div>
             @for ($ii = 0; $since < $ii; $ii++)
             @php $yearToFind = $year - $ii; @endphp
-            {{ $user->followedExhibitions()->whereYear('created_at', $yearToFind)->count() }}
-            {{ $user->followedExhibitions()->whereYear('created_at', $yearToFind)->pluck('price') }}
+            {{ $user->followedExhibitions()->whereYear('visited_at', $yearToFind)->count() }}
+            {{ $user->followedExhibitions()->whereYear('visited_at', $yearToFind)->pluck('price') }}
             @endfor
         </div>
     </div>
