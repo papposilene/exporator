@@ -27,12 +27,12 @@ class UserController extends Controller
      * @param  UUID $uuid
      * @return \Illuminate\Http\Response
      */
-    public function show($uuid = null)
+    public function show($id = null)
     {
         // Abort unless the given User's UUID is not the same as Auth:id()
-        abort_unless(Auth::id() === $uuid, 403);
+        abort_unless(Auth::id() === $id, 403);
         
-        return new UserResource(User::findOrFail($uuid));
+        return new UserResource(User::findOrFail($id));
     }
 
     /**
