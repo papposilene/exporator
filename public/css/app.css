@@ -1770,6 +1770,10 @@ select {
 	--tw-bg-opacity: 1;
 	background-color: rgba(252, 231, 243, var(--tw-bg-opacity));
 }
+.bg-yellow-900 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(113, 63, 18, var(--tw-bg-opacity));
+}
 .bg-opacity-25 {
 	--tw-bg-opacity: 0.25;
 }
@@ -2102,6 +2106,10 @@ select {
 .text-bluegray-300 {
 	--tw-text-opacity: 1;
 	color: rgba(203, 213, 225, var(--tw-text-opacity));
+}
+.text-yellow-900 {
+	--tw-text-opacity: 1;
+	color: rgba(113, 63, 18, var(--tw-text-opacity));
 }
 .underline {
 	text-decoration: underline;

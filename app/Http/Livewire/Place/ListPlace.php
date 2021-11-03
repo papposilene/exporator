@@ -41,7 +41,7 @@ class ListPlace extends Component
         }
 
         if (Auth::check() &&
-            (Str::of($this->filter)->trim()->isNotEmpty() === 'followed'))
+            ((string) Str::of($this->filter)->trim() === 'followed'))
         {
             $user = Auth::id();
             $places = User::findOrFail($user);
@@ -56,7 +56,7 @@ class ListPlace extends Component
         }
         elseif (Auth::check() &&
             $user->hasTeamPermission($team, 'server:create') &&
-            (Str::of($this->filter)->trim()->isNotEmpty() === 'no_exhibition'))
+            ((string) Str::of($this->filter)->trim() === 'no_exhibition'))
         {
             $places = Place::withCount('hasExhibitions')->get();
             $places->whereDate('ended_at', '<', date('Y-m-d'))
