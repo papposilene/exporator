@@ -1,13 +1,13 @@
 <div id="modalCreatePlace" class="relative float-right mr-2">
     <div id="modalButtonCreatePlace">
-        <button id="modalOpenCreatePlace" class="focus:outline-none bg-rose-100 text-black bg-opacity-75 px-1 rounded"
+        <button id="modalOpenCreatePlace" class="focus:outline-none bg-rose-300 text-black bg-opacity-75 px-1 rounded"
             type="button" title="@ucfirst(__('app.create_one', ['what' => __('app.place')]))">
             @ucfirst(__('app.create_one', ['what' => __('app.place')]))
         </button>
     </div>
 
     <div id="modalWindowCreatePlace"
-        class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-sky-500 bg-opacity-50 transform scale-0 transition-transform duration-300 z-1000">
+        class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-bluegray-900 bg-opacity-50 transform scale-0 transition-transform duration-300 z-1000">
         <!-- Modal -->
         <div class="bg-white overflow-auto w-1/2 h-1/2 p-12">
             <!-- Close modal button-->

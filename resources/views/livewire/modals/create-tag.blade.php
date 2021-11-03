@@ -1,13 +1,13 @@
 <div id="modalCreateTag" class="relative float-right mr-2">
     <div id="modalButtonCreateTag">
-        <button id="modalOpenCreateTag" class="focus:outline-none bg-indigo-100 text-black bg-opacity-75 px-1 rounded"
+        <button id="modalOpenCreateTag" class="focus:outline-none bg-indigo-300 text-black bg-opacity-75 px-1 rounded"
             type="button" title="@ucfirst(__('app.create_one', ['what' => __('app.tag')]))">
             @ucfirst(__('app.create_one', ['what' => __('app.tag')]))
         </button>
     </div>
 
     <div id="modalWindowCreateTag"
-        class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-sky-500 bg-opacity-50 transform scale-0 transition-transform duration-300 z-1000">
+        class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-bluegray-900 bg-opacity-50 transform scale-0 transition-transform duration-300 z-1000">
         <!-- Modal -->
         <div class="bg-white overflow-auto w-1/2 h-1/2 p-12">
             <!-- Close modal button-->
@@ -22,6 +22,10 @@
             <form method="POST" action="{{ route('admin.tag.store') }}" enctype="multipart/form-data"
                 class="flex flex-col w-full">
                 @csrf
+
+                <div class="grid grid-cols-1 mt-4">
+                    <p>@ucfirst(__('app.tag_info'))</p>
+                </div>
 
                 <div class="grid grid-cols-2 gap-x-4 mt-4">
                     <x-forms.label for="type">@ucfirst(__('app.type'))</x-forms.label>

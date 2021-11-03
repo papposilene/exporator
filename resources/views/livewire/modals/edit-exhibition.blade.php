@@ -1,13 +1,13 @@
 <div id="modalUpdateExhibition">
     <div id="modalButtonUpdateExhibition">
-        <button id="modalOpenCreateExhibition" class="focus:outline-none bg-sky-100 text-black bg-opacity-75 p-2 rounded w-full"
+        <button id="modalOpenCreateExhibition" class="focus:outline-none bg-sky-300 text-black bg-opacity-75 p-2 rounded w-full"
             type="button" title="@ucfirst(__('app.edit_', ['what' => $exhibition->title]))">
             @ucfirst(__('app.edit_', ['what' => $exhibition->title]))
         </button>
     </div>
 
     <div id="modalWindowUpdateExhibition"
-        class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-sky-500 bg-opacity-50 transform scale-0 transition-transform duration-300 z-1000">
+        class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-bluegray-900 bg-opacity-50 transform scale-0 transition-transform duration-300 z-1000">
         <!-- Modal -->
         <div class="bg-white overflow-auto w-1/2 h-1/2 p-12">
             <!-- Close modal button-->
