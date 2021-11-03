@@ -42,7 +42,7 @@ class TagController extends Controller
      */
     public function store(StoreTagRequest $request)
     {
-        $this->authorize('create', Tag::class);
+        $this->authorize('create', App\Models\Tag::class);
 
         $validated = $request->validated();
 
@@ -110,7 +110,7 @@ class TagController extends Controller
      */
     public function update(StoreTagRequest $request, Tag $tag)
     {
-        $this->authorize('update', Tag::class);
+        $this->authorize('update', App\Models\User::class, App\Models\Tag::class);
 
         $validated = $request->validated();
 
