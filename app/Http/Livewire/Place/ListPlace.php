@@ -56,14 +56,14 @@ class ListPlace extends Component
             $user->hasTeamPermission($team, 'server:create') &&
             ((string) Str::of($this->filter)->trim() === 'no_exhibition'))
         {
-            $places = Place::withCount('hasExhibitions')->get();
-            $places->whereDate('ended_at', '<', date('Y-m-d'))
-                ->where('has_exhibitions_count', 0)
-                ->where('type', $this->type)
+            $places = Place::withCount('hasExhibitions')
                 ->where('name', 'like', '%'.$this->search.'%')
+                ->where('has_exhibitions_count', 0)
                 ->orderBy('has_exhibitions_count', 'desc')
                 ->orderBy('name', 'asc')
-                ->get();
+                ->paginate(25);
+
+                //dd($places[0]->hasExhibitions()->whereDate('ended_at', '>', date('Y-m-d'))->get());
         }
         elseif (Str::of($this->type)->trim()->isNotEmpty())
         {
