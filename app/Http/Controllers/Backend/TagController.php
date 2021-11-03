@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Models\Exhibition;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AttachTagRequest;
+use App\Http\Requests\DeleteTagRequest;
 use App\Http\Requests\StoreTagRequest;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
@@ -42,7 +43,7 @@ class TagController extends Controller
      */
     public function store(StoreTagRequest $request)
     {
-        $this->authorize('create', App\Models\Tag::class);
+        $this->authorize('create', Tag::class);
 
         $validated = $request->validated();
 
@@ -110,7 +111,7 @@ class TagController extends Controller
      */
     public function update(StoreTagRequest $request, Tag $tag)
     {
-        $this->authorize('update', App\Models\User::class, App\Models\Tag::class);
+        $this->authorize('update', App\Models\User::class, Tag::class);
 
         $validated = $request->validated();
 
@@ -128,6 +129,25 @@ class TagController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Tag  $tag
+     * @return \Illuminate\Http\Response
+     */
+    public function delete(DeleteTagRequest $request, Tag $tag)
+    {
+        $this->authorize('delete', App\Models\User::class, Tag::class);
+
+        $validated = $request->validated();
+
+        $tag = Tag::findOrFail($request->input('id'));
+        $tag->delete();
+
+        return redirect()->route('front.tag.index')->with('success', 'All good!');
+    }
+
+    /**
+     * Delete the specified resource from storage.
      *
      * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
