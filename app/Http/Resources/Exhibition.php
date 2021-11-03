@@ -20,6 +20,7 @@ class Exhibition extends ResourceCollection
             'start' => $this->began_at,
             'end' => $this->ended_at,
             'description' => $this->description,
+            'price' => $this->price,
             'link' => $this->link,
             'place' => [
                 'uuid' => $this->inPlace->uuid,
