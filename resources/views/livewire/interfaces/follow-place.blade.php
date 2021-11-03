@@ -3,7 +3,7 @@
     <form method="POST" action="{{ route('admin.user.place_unfollow') }}" class="flex justify-center w-full">
         @csrf
 
-        <input type="hidden" name="place" value="{{ $place->uuid }}" />
+        <input type="hidden" name="follow" value="{{ $place->hasOne(\App\Models\UserPlace::class)->first()->uuid }}" />
 
         <x-forms.button class="block mt-1 bg-transparent">
             <svg xmlns="http://www.w3.org/2000/svg" class="text-yellow-500 h-6 w-6" fill="yes" viewBox="0 0 24 24" stroke="currentColor">

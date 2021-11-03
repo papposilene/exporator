@@ -3,7 +3,7 @@
     <form method="POST" action="{{ route('admin.user.exhibition_unfollow') }}" class="flex justify-center w-full">
         @csrf
 
-        <input type="hidden" name="exhibition" value="{{ $exhibition->uuid }}" />
+        <input type="hidden" name="follow" value="{{ $exhibition->hasOne(\App\Models\UserExhibition::class)->first()->uuid }}" />
 
         <x-forms.button class="block mt-1 bg-transparent">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
