@@ -4,17 +4,17 @@
         <p>dsaq</p>
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-3 sm:gap-2 lg:gap-4">
-        <div class="bg-rose-300 hover:bg-white m-2 p-2 rounded" title="@ucfirst(__('app.user_following_places', ['count' => $user->followedPlaces()->count()]))">
+        <div class="bg-rose-300 hover:bg-rose-400 hover:text-white m-2 p-2 rounded" title="@ucfirst(__('app.user_following_places', ['count' => $user->followedPlaces()->count()]))">
             <a href="{{ route('front.place.index', ['filter' => 'followed']) }}" class="flex flex-grow justify-center text-center">
                 @ucfirst(__('app.places')) : {{ $user->followedPlaces()->count() }}.
             </a>
         </div>
-        <div class="bg-sky-300 hover:bg-white m-2 p-2 rounded" title="@ucfirst(__('app.user_following_exhibitions', ['count' => $user->followedExhibitions()->count()]))">
+        <div class="bg-sky-300 hover:bg-sky-400 hover:text-white m-2 p-2 rounded" title="@ucfirst(__('app.user_following_exhibitions', ['count' => $user->followedExhibitions()->count()]))">
             <a href="{{ route('front.exhibition.index', ['filter' => 'followed']) }}" class="flex flex-grow justify-center text-center">
                 @ucfirst(__('app.exhibitions')) : {{ $user->followedExhibitions()->count()  }}.
             </a>
         </div>
-        <div class="bg-indigo-300 hover:bg-white m-2 p-2 rounded" title="@ucfirst(__('app.user_following_tags', ['count' => $user->followedTags()->count()]))">
+        <div class="bg-indigo-300 hover:bg-indigo-400 hover:text-white m-2 p-2 rounded" title="@ucfirst(__('app.user_following_tags', ['count' => $user->followedTags()->count()]))">
             <a href="{{ route('front.tag.index', ['filter' => 'followed']) }}" class="flex flex-grow justify-center text-center">
                 @ucfirst(__('app.tags')) : {{ $user->followedTags()->count() }}.
             </a>

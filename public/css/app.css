@@ -3695,6 +3695,26 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	--tw-bg-opacity: 1;
 	background-color: rgba(0, 0, 0, var(--tw-bg-opacity));
 }
+.hover\:bg-indigo-200:hover {
+	--tw-bg-opacity: 1;
+	background-color: rgba(199, 210, 254, var(--tw-bg-opacity));
+}
+.hover\:bg-rose-200:hover {
+	--tw-bg-opacity: 1;
+	background-color: rgba(254, 205, 211, var(--tw-bg-opacity));
+}
+.hover\:bg-rose-400:hover {
+	--tw-bg-opacity: 1;
+	background-color: rgba(251, 113, 133, var(--tw-bg-opacity));
+}
+.hover\:bg-sky-400:hover {
+	--tw-bg-opacity: 1;
+	background-color: rgba(56, 189, 248, var(--tw-bg-opacity));
+}
+.hover\:bg-indigo-400:hover {
+	--tw-bg-opacity: 1;
+	background-color: rgba(129, 140, 248, var(--tw-bg-opacity));
+}
 .hover\:text-gray-500:hover {
 	--tw-text-opacity: 1;
 	color: rgba(113, 113, 122, var(--tw-text-opacity));
