@@ -64,7 +64,7 @@
                 </div>
 
                 <div class="flex items-center justify-end mt-4">
-                    <x-forms.button class="ml-4">
+                    <x-forms.button class="ml-4 bg-bluegray-500">
                         @ucfirst(__('app.save'))
                     </x-forms.button>
                 </div>
