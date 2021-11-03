@@ -37,7 +37,7 @@
             </div>
             @endauth
         </div>
-        <div class="flex flex-col lg:flex-row flex-wrap max-w-7xl mx-auto -mt-7 py-5 px-6">
+        <div class="flex flex-col lg:flex-row flex-wrap max-w-7xl mx-auto -mt-8 py-5 px-6">
             <div class="flex flex-grow lg:flex-grow-0 lg:pr-2 flex-wrap w-full lg:w-2/4">
                 <livewire:dashboard.stat-place />
             </div>
@@ -45,7 +45,7 @@
                 <livewire:dashboard.stat-exhibition />
             </div>
         </div>
-        <div class="flex flex-col lg:flex-row flex-wrap max-w-7xl mx-auto -mt-7 py-5 px-6">
+        <div class="flex flex-col lg:flex-row flex-wrap max-w-7xl mx-auto -mt-8 py-5 px-6">
             <div class="flex flex-grow flex-wrap shadow w-full">
                 <livewire:dashboard.stat-tag />
             </div>
