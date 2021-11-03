@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Models\Exhibition;
 use App\Models\Place;
+use App\Models\Tag;
 use App\Models\User;
 use App\Models\UserExhibition;
 use App\Models\UserPlace;
@@ -173,8 +174,8 @@ class UserController extends Controller
         $user = Auth::id();
         $tag = Tag::findOrFail($request->input('tag'));
 
-        UserPlace::create([
-            'user_uuid' => $user,
+        UserTag::updateOrCreate([
+            'user_id' => $user,
             'tag_id' => $tag->id,
         ]);
 
