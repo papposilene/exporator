@@ -30,9 +30,6 @@
                 </li>
                 <li title="@ucfirst(__('app.type'))">@ucfirst($tag->type)</li>
             </ul>
-            <ul class="bg-bluegray-200 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
-                <li><livewire:interfaces.follow-tag :tag="$tag" :wire:key="$tag->id" /></li>
-            </ul>
             @if ($otherTags->count()  > 0)
             <ul class="bg-indigo-200 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
                 @foreach ($otherTags as $otherTag)
@@ -45,11 +42,14 @@
                 @endforeach
                 <li>
                     <a href="{{ route('front.tag.index') }}">
-                        @ucfirst(__('app.explore_other', ['name' => __('app.tags')]))
+                        @ucfirst(__('app.explore_other', ['what' => __('app.tags')]))
                     </a>
                 </li>
             </ul>
             @endif
+            <ul class="bg-bluegray-200 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
+                <li><livewire:interfaces.follow-tag :tag="$tag" :wire:key="$tag->id" /></li>
+            </ul>
         </div>
 
         <div class="mx-auto md:w-3/4 py-5 px-6">
@@ -87,7 +87,7 @@
                         if ($exhibition->is_published === false) {
                             $is_not_published = 'font-bold text-red-500';
                         }
-                        
+
                         $today = date('Y-m-d');
                         if ($today > $exhibition->began_at && $today < $exhibition->ended_at) {
                             // Current exhibition
