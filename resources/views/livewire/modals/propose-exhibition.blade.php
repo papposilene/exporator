@@ -24,7 +24,7 @@
                 @csrf
 
                 <div class="mt-4">
-                    <p>@ucfirst(__('app.propose_informations'))</p>
+                    <p>@ucfirst(__('app.propose_info'))</p>
                 </div>
 
                 <div class="mt-4">
