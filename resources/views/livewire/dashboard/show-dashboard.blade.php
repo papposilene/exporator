@@ -34,9 +34,9 @@
                         <p>dsaq</p>
                     </div>
                     <div class="grid grid-cols-1 lg:grid-cols-3 sm:gap-2 lg:gap-4">
-                        <a href="{{ route('login') }}" class="text-sky-700 hover:text-red-600">@ucfirst(__('auth.login'))</a>.
-                        @if (\Laravel\Fortify\Features::registration())
-                        <a href="{{ route('register') }}" class="text-sky-700 hover:text-red-600">@ucfirst(__('auth.register'))</a>.
+                        <a href="{{ route('login') }}" class="text-white hover:text-red-400">@ucfirst(__('auth.login'))</a>.
+                        @if (Laravel\Jetstream\Jetstream::hasRegistration())
+                        <a href="{{ route('register') }}" class="text-white hover:text-red-400">@ucfirst(__('auth.register'))</a>.
                         @endif
                     </div>
                 </div>
