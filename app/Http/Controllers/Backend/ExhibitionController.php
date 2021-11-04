@@ -110,7 +110,7 @@ class ExhibitionController extends Controller
 
         $validated = $request->validated();
 
-        $exhibition = Exhibition::findOrFail($request->input('uuid'));
+        $exhibition = Exhibition::findOrFail($request->input('exhibition'));
         $exhibition->is_published = true;
         $exhibition->save();
 
