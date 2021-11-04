@@ -35,6 +35,18 @@
                 <li><livewire:interfaces.follow-tag :tag="$tag" :wire:key="$tag->id" /></li>
             </ul>
             @endauth
+            @if ($otherTags->count()  > 0)
+            <ul class="bg-bluegray-200 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
+                @foreach ($otherTags as $otherTag)
+                <li>
+                    <a href="{{ route('front.tag.show', ['slug' => $otherTag->slug]) }}"
+                        title="{{ $otherTag->name }}" aria-label="{{ $otherTag->name }}">
+                        @ucfirst($otherTag->name)
+                    </a>
+                </li>
+                @endforeach
+            </ul>
+            @endif
         </div>
 
         <div class="mx-auto md:w-3/4 py-5 px-6">
