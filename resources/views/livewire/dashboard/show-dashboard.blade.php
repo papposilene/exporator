@@ -9,7 +9,12 @@
 
     <div>
         <div class="flex flex-col lg:flex-row flex-wrap max-w-7xl mx-auto py-5 px-6">
-            <div class="flex flex-grow lg:flex-grow-0 flex-wrap bg-bluegray-500 text-white p-5 shadow w-full lg:w-1/4">
+            <div class="flex flex-grow lg:flex-grow-0 flex-wrap bg-bluegray-500 text-white p-5 shadow w-full">
+                @auth
+                <h3 class="font-bold text-2xl mb-5">@ucfirst(__('app.welcome_to', ['name' => Auth::user()->name]))</h3>
+                @else
+                <h3 class="font-bold text-2xl mb-5">@ucfirst(__('app.welcome'))</h3>
+                @endauth
                 <p class="text-lg mb-3">
                     L'Exporateur, mot-valise entre <em>exposition</em> et <em>explorateur</em>, est un (énième ?)
                     site de référencement des expositions temporaires à Paris et ses proches alentours.
@@ -21,25 +26,12 @@
                     class="text-white hover:text-red-400">une représentation cartographique</a> et
                     d’<a href="{{ route('front.exhibition.calendar') }}" class="text-white hover:text-red-400">un agenda</a>.
                 </p>
-            </div>
-            @auth
-            <div class="flex flex-grow lg:flex-grow-0 flex-wrap w-full lg:pl-2 lg:w-3/4">
-                <livewire:dashboard.stat-user />
-            </div>
-            @else
-            <div class="flex flex-grow lg:flex-grow-0 flex-wrap w-full lg:pl-2 lg:w-3/4">
-                <div class="flex-grow bg-bluegray-500 text-white p-5 w-full">
-                    <h3 class="font-bold text-2xl mb-5">@ucfirst(__('app.welcome'))</h3>
-                    <div class="grid grid-cols-1 mb-4">
-                        <p>dsaq</p>
-                    </div>
-                    <div class="grid grid-cols-1 lg:grid-cols-3 sm:gap-2 lg:gap-4">
-                        <a href="{{ route('login') }}" class="text-white hover:text-red-400">@ucfirst(__('auth.login'))</a>.
-                        @if (Laravel\Jetstream\Jetstream::hasRegistration())
-                        <a href="{{ route('register') }}" class="text-white hover:text-red-400">@ucfirst(__('auth.register'))</a>.
-                        @endif
-                    </div>
-                </div>
+                <p class="mb-3">
+                    <a href="{{ route('login') }}" class="text-white hover:text-red-400">@ucfirst(__('auth.login'))</a>
+                    @if (Laravel\Jetstream\Jetstream::hasRegistration())
+                    <a href="{{ route('register') }}" class="text-white hover:text-red-400">@ucfirst(__('auth.register'))</a>
+                    @endif
+                </p>
             </div>
             @endauth
         </div>
