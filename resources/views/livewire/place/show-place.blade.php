@@ -100,7 +100,7 @@
                         @foreach($exhibitions as $exhibition)
                         @php
                         // If not published
-                        $is_not_published == '';
+                        $is_not_published = '';
                         if ($exhibition->is_published === false) {
                             $is_not_published = 'font-bold text-red-500';
                         }
