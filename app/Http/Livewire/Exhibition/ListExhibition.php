@@ -70,8 +70,6 @@ class ListExhibition extends Component
         }
         else
         {
-            dd(Auth::check());
-
             $exhibitions = Exhibition::when(Auth::check(), function ($query) {
                     return $query;
                 }, function ($query) {
