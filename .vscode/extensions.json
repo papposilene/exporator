@@ -10,7 +10,7 @@
     "ms-azuretools.vscode-docker",
     "ahinkle.laravel-model-snippets",
     "ryannaddy.laravel-artisan",
-    "m1guelpf/better-pest",
+    "m1guelpf.better-pest",
     "mikestead.dotenv"
   ]
 }
