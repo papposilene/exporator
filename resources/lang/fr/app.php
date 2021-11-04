@@ -107,6 +107,9 @@ return [
     'without_exhibition' => 'Pas d’exposition',
 
     // Texts
+    'published_info' => 'cette exposition n’est pas encore publiée, et n’est donc pas visible pour les visiteurs
+        ou les utilisateurs sans droit d’administration. Vous pouvez en vérifier les informations puis la rendre
+        publique afin de la rendre accessible à tous.',
     'tag_info' => 'Un mot-clé (ou tag) vous permet de ranger les expositions temporaires
         référencées sur le site. Vous pouvez également créer une catégorie afin d’y ranger le mot-clé
         dans une typologie plus globale.',
