@@ -45,6 +45,11 @@
                     </a>
                 </li>
                 @endforeach
+                <li>
+                    <a href="{{ route('front.tag.index') }}">
+                        @ucfirst(__('app.explore_other', ['name' => __('app.tags')]))
+                    </a>
+                </li>
             </ul>
             @endif
         </div>
