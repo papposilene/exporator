@@ -33,15 +33,15 @@ class ShowPlace extends Component
 
     public function render()
     {
-        $auth = Auth::check();
+        //dd(Auth::user() === null);
 
         return view('livewire.place.show-place', [
             'place' => $this->place,
             'exhibitions' => $this->place->hasExhibitions()
-                ->when($auth, function ($query, $auth) {
-                    return $query->where('is_published', false);
-                }, function ($query) {
+                ->when(Auth::check(), function ($query) {
                     return $query->where('is_published', true);
+                }, function ($query) {
+                    return $query->where('is_published', false);
                 })
                 ->where('title', 'like', '%'.$this->search.'%')
                 ->orderBy('began_at', 'desc')
