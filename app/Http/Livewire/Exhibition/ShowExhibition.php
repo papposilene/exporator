@@ -26,9 +26,9 @@ class ShowExhibition extends Component
     public function mount($slug)
     {
         $this->exhibition = Exhibition::when(Auth::check(), function ($query) {
-                return $query->where('is_published', true);
+                return $query;
             }, function ($query) {
-                return $query->where('is_published', false);
+                return $query->where('is_published', true);
             })
             ->where('slug', $this->slug)->firstOrFail();
         $this->suggestions = Tagged::where('taggable_id', $this->exhibition->uuid)->take(3)->get();
