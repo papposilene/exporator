@@ -25,7 +25,7 @@
 
                 <div class="mt-4">
                     <x-forms.label for="place">@ucfirst(__('app.place'))</x-forms.label>
-                    <x-forms.input id="place" class="block mt-1 w-full" type="text" required value="{{ $place->name }}" />
+                    <x-forms.input id="place" class="block mt-1 w-full" type="text" required value="{{ $place->name }}" disabled />
                     <x-forms.input type="hidden" name="place" value="{{ $place->uuid }}" />
                 </div>
 
@@ -48,16 +48,16 @@
 
                 <div class="mt-4">
                     <x-forms.label for="link">@ucfirst(__('app.link'))</x-forms.label>
-                    <x-forms.input id="link" class="block mt-1 w-full" type="text" name="link" placeholder="{{ __('app.https') }}" required />
+                    <x-forms.input id="link" class="block mt-1 w-full" type="text" name="link" placeholder="{{ __('app.https') }}" />
                 </div>
 
                 <div class="grid grid-cols-2 gap-x-4 mt-4">
                     <x-forms.label for="price">@ucfirst(__('app.price'))</x-forms.label>
                     <x-forms.label for="public">@ucfirst(__('app.is_published'))</x-forms.label>
                     <x-forms.input id="price" class="block mt-1 w-full" type="text" name="price" placeholder="{{ __('app.price') }}" required />
-                    <x-forms.select id="public" class="block mt-1 w-full" name="public" required>
-                        <option value="1" selected>@ucfirst(__('app.yes'))</option>
-                        <option value="0" selected>@ucfirst(__('app.no'))</option>
+                    <x-forms.select id="public" class="block mt-1 w-full" name="is_published" required>
+                        <option value="1" selected>@ucfirst(__('app.public'))</option>
+                        <option value="0" selected>@ucfirst(__('app.private'))</option>
                     </x-forms.select>
                 </div>
 

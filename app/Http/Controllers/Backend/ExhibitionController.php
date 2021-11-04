@@ -8,6 +8,7 @@ use App\Http\Requests\StoreExhibitionRequest;
 use App\Imports\ExhibitionsImport;
 use App\Models\Exhibition;
 use App\Models\Place;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
@@ -61,7 +62,7 @@ class ExhibitionController extends Controller
         $exhibition->description = $request->input('description');
         $exhibition->link = $request->input('link');
         $exhibition->price = $request->input('price');
-        $exhibition->is_published = true;
+        $exhibition->is_published = $request->input('is_published');
         $exhibition->save();
 
         return redirect()->route('front.place.show', ['slug' => $place->slug])->with('success', 'All good!');
@@ -75,7 +76,7 @@ class ExhibitionController extends Controller
      */
     public function propose(StoreExhibitionRequest $request)
     {
-        $this->authorize('update', \App\Models\User::class, Exhibition::class);
+        $this->authorize('update', User::class, Exhibition::class);
 
         $validated = $request->validated();
 
