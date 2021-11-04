@@ -27,13 +27,19 @@
                 <livewire:dashboard.stat-user />
             </div>
             @else
-            <div class="flex flex-grow lg:flex-grow-0 flex-wrap w-full lg:pr-2 lg:w-3/4">
-                <p>
-                    <a href="{{ route('login') }}" class="text-sky-700 hover:text-red-600">@ucfirst(__('auth.login'))</a>.
-                    @if (\Laravel\Fortify\Features::registration())
-                    <a href="{{ route('register') }}" class="text-sky-700 hover:text-red-600">@ucfirst(__('auth.register'))</a>.
-                    @endif
-                </p>
+            <div class="flex flex-grow lg:flex-grow-0 flex-wrap w-full lg:pl-2 lg:w-3/4">
+                <div class="flex-grow bg-bluegray-400 p-5 w-full">
+                    <h3 class="font-bold text-2xl mb-5">@ucfirst(__('app.welcome'))</h3>
+                    <div class="grid grid-cols-1 mb-4">
+                        <p>dsaq</p>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-3 sm:gap-2 lg:gap-4">
+                        <a href="{{ route('login') }}" class="text-sky-700 hover:text-red-600">@ucfirst(__('auth.login'))</a>.
+                        @if (\Laravel\Fortify\Features::registration())
+                        <a href="{{ route('register') }}" class="text-sky-700 hover:text-red-600">@ucfirst(__('auth.register'))</a>.
+                        @endif
+                    </div>
+                </div>
             </div>
             @endauth
         </div>
