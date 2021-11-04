@@ -1,6 +1,7 @@
 <div class="flex-grow bg-rose-300 p-5 shadow w-full">
     <h3 class="font-bold text-2xl mb-5">@ucfirst(__('app.places'))</h3>
     <h4 class="font-bold text-1xl mb-2">@ucfirst(__('app.statistics'))</h4>
+    <canvas id="chartPlaces" width="400" height="400"></canvas>
     <ol class="list-inside list-disc">
         <li class="font-bold">
             @ucfirst(__('app.numbers_of_places', ['count' => $places]))
@@ -58,3 +59,25 @@
         @endif
     </ol -->
 </div>
+
+<script>
+const chartErrored = false;
+const chartLoading = true;
+const ctx = document.getElementById('chartPlaces').getContext('2d');
+axios.get('{{ route('api.place.stat') }}')
+    .then(response => {
+        new Chart(document.getElementById('chartPlaces').getContext('2d'), {
+            type: 'pie',
+            data: response.data.chart,
+            options: response.data.options,
+        });
+        this.chartLoading = false
+    })
+    .catch(error => {
+        this.chartErrored = true
+        this.chartError = error.response.data.message || error.message
+    })
+    .finally(() => this.chartLoading = false);
+
+});
+</script>
