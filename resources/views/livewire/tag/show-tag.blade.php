@@ -30,11 +30,9 @@
                 </li>
                 <li title="@ucfirst(__('app.type'))">@ucfirst($tag->type)</li>
             </ul>
-            @auth
             <ul class="bg-bluegray-200 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
                 <li><livewire:interfaces.follow-tag :tag="$tag" :wire:key="$tag->id" /></li>
             </ul>
-            @endauth
             @if ($otherTags->count()  > 0)
             <ul class="bg-indigo-200 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
                 @foreach ($otherTags as $otherTag)
