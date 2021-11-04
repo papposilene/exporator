@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ImportExhibitionRequest;
+use App\Http\Requests\PublishExhibitionRequest;
 use App\Http\Requests\StoreExhibitionRequest;
 use App\Imports\ExhibitionsImport;
 use App\Models\Exhibition;
@@ -95,6 +96,25 @@ class ExhibitionController extends Controller
         $exhibition->save();
 
         return redirect()->route('front.dashboard')->with('success', 'All good!');
+    }
+    
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function publish(PublishExhibitionRequest $request)
+    {
+        $this->authorize('create', Exhibition::class);
+
+        $validated = $request->validated();
+
+        $exhibition = Exhibition::findOrFail($request->input('uuid'));
+        $exhibition->is_published = true;
+        $exhibition->save();
+
+        return redirect()->route('front.exhibition.show', ['place' => exhibition->inPlace->slug, 'slug' => exhibition->slug])->with('success', 'All good!');
     }
 
     /**
