@@ -99,8 +99,13 @@
                     <tbody>
                         @foreach($exhibitions as $exhibition)
                         @php
+                        // If not published
+                        $is_not_published == '';
+                        if ($exhibition->is_published === false) {
+                            $is_not_published = 'font-bold text-red-500';
+                        }
+                        
                         $today = date('Y-m-d');
-
                         if ($today > $exhibition->began_at && $today < $exhibition->ended_at) {
                             // Current exhibition
                             $is_current = 'bg-green-100';
@@ -117,7 +122,7 @@
                             $is_current = 'bg-bluegray-200';
                         }
                         @endphp
-                        <tr class="border-b border-bluegray-300 border-dashed h-12 w-12 p-4 {{ $is_current }}">
+                        <tr class="border-b border-bluegray-300 border-dashed h-12 w-12 p-4 {{ $is_not_published }} {{ $is_current }}">
                             <td class="text-center">{{ $loop->iteration }}</td>
                             <td class="break-words">
                                 <a href="{{ route('front.exhibition.show', ['place' => $exhibition->inPlace->slug, 'slug' => $exhibition->slug]) }}"
