@@ -28,16 +28,19 @@ Route::prefix('1.1')->group(function () {
     // Places
     Route::get('/places', [PlaceController::class, 'index'])->name('api.place.index');
     Route::get('/places/geojson', [PlaceController::class, 'geojson'])->name('api.place.geojson');
+    Route::get('/places/statistics', [PlaceController::class, 'statistic'])->name('api.place.stat');
     Route::get('/place/{slug}', [PlaceController::class, 'show'])->name('api.place.show');
 
     // Exhibitions
     Route::get('/exhibitions', [ExhibitionController::class, 'index'])->name('api.exhibition.index');
     Route::get('/exhibitions/all', [ExhibitionController::class, 'all'])->name('api.exhibition.all');
+    Route::get('/exhibitions/statistics', [ExhibitionController::class, 'statistic'])->name('api.exhibition.stat');
     Route::get('/exhibition/timeline', [ExhibitionController::class, 'json'])->name('api.exhibition.timeline');
     Route::get('/exhibition/{slug}', [ExhibitionController::class, 'show'])->name('api.exhibition.show');
 
     // Tags
     Route::get('/tags', [TagController::class, 'index'])->name('api.tag.index');
+    Route::get('/tags/statistics', [TagController::class, 'statistic'])->name('api.tag.stat');
     Route::get('/tag/{slug}', [TagController::class, 'show'])->name('api.tag.show');
     
     // Users
