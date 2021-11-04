@@ -34,9 +34,9 @@ class ListExhibition extends Component
         if ($this->filter === 'past')
         {
             $exhibitions = Exhibition::when(Auth::check(), function ($query) {
-                    return $query->where('is_published', true);
+                    return $query;
                 }, function ($query) {
-                    return $query->where('is_published', false);
+                    return $query->where('is_published', true);
                 })
                 ->where('title', 'like', '%'.$this->search.'%')
                 ->where('ended_at', '<', $today)
@@ -46,9 +46,9 @@ class ListExhibition extends Component
         elseif ($this->filter === 'current')
         {
             $exhibitions = Exhibition::when(Auth::check(), function ($query) {
-                    return $query->where('is_published', true);
+                    return $query;
                 }, function ($query) {
-                    return $query->where('is_published', false);
+                    return $query->where('is_published', true);
                 })
                 ->where('title', 'like', '%'.$this->search.'%')
                 ->where('began_at', '<', $today)
@@ -59,9 +59,9 @@ class ListExhibition extends Component
         elseif ($this->filter === 'future')
         {
             $exhibitions = Exhibition::when(Auth::check(), function ($query) {
-                    return $query->where('is_published', true);
+                    return $query;
                 }, function ($query) {
-                    return $query->where('is_published', false);
+                    return $query->where('is_published', true);
                 })
                 ->where('title', 'like', '%'.$this->search.'%')
                 ->where('began_at', '>', $today)
@@ -73,9 +73,9 @@ class ListExhibition extends Component
             dd(Auth::check());
 
             $exhibitions = Exhibition::when(Auth::check(), function ($query) {
-                    return $query->where('is_published', true);
+                    return $query;
                 }, function ($query) {
-                    return $query->where('is_published', false);
+                    return $query->where('is_published', true);
                 })
                 ->where('title', 'like', '%'.$this->search.'%')
                 ->orderBy('began_at', 'desc')
