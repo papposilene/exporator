@@ -10,7 +10,8 @@ module.exports = {
         './resources/views/**/*.blade.php',
     ],
 
-    darkMode: 'class',
+    //darkMode: 'class',
+    darkMode: 'media',
 
     theme: {
         extend: {
