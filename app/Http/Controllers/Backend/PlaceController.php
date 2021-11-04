@@ -52,7 +52,7 @@ class PlaceController extends Controller
 
         $country = Country::where('cca3', $request->input('cca3'))->firstOrFail();
         $slug = Str::slug($request->input('city') . ' ' . $request->input('name'), '-');
-        
+
         if ($request->hasFile('image') && $request->file('image')->isValid())
         {
             $path = $request->image->storeAs(
@@ -71,9 +71,9 @@ class PlaceController extends Controller
         $place->lat = $request->input('latitude');
         $place->lon = $request->input('longitude');
         $place->link = $request->input('link');
-        $place->image = ($path ? $path : null);
+        $place->image = ($request->hasFile('image') ? $path : null);
         $place->save();
-        
+
 
 
         return redirect()->route('front.place.show', ['slug' => $slug])->with('success', 'All good!');
@@ -100,7 +100,7 @@ class PlaceController extends Controller
 
             return redirect()->route('front.place.index', compact($failures));
         }
-        
+
         Storage::delete($request->file('datafile'));
 
         return redirect()->route('front.place.index')->with('success', 'All good!');
@@ -143,10 +143,10 @@ class PlaceController extends Controller
 
         $country = Country::where('cca3', $request->input('cca3'))->firstOrFail();
         $slug = Str::slug($request->input('city') . ' ' . $request->input('name'), '-');
-        
+
         if ($request->hasFile('image') && $request->file('image')->isValid())
         {
-            $request->image->storeAs(
+            $path = $request->image->storeAs(
                 'places', $slug
             );
         }
@@ -162,9 +162,9 @@ class PlaceController extends Controller
         $place->lat = $request->input('latitude');
         $place->lon = $request->input('longitude');
         $place->link = $request->input('link');
-        $place->image = ($path ? $path : null);
+        $place->image = ($request->hasFile('image') ? $path : null);
         $place->save();
-        
+
         return redirect()->route('front.place.show', ['slug' => $request->input('slug')])->with('success', 'All good!');
     }
 

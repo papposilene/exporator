@@ -32,7 +32,7 @@
                     <x-forms.label for="type">@ucfirst(__('app.type'))</x-forms.label>
                     <x-forms.select id="type" class="block mt-1 w-full" name="type" required>
                         @foreach ($types as $type)
-                        <option value="{{ $type->slug }}">@ucfirst($type->type)</option>
+                        <option value="{{ $type->slug }}">@ucfirst(__('app.' . Str::slug($type->type, '_')))</option>
                         @endforeach
                     </x-forms.select>
                 </div>
@@ -71,7 +71,7 @@
 
                 <div class="mt-4">
                     <x-forms.label for="image">@ucfirst(__('app.image'))</x-forms.label>
-                    <x-forms.input id="image" class="block mt-1 w-full" type="file" name="image" required :value="old('image')" />
+                    <x-forms.input id="image" class="block mt-1 w-full" type="file" name="image" :value="old('image')" />
                 </div>
 
                 <div class="flex items-center justify-end mt-4">

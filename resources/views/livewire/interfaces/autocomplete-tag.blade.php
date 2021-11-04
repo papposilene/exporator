@@ -26,7 +26,7 @@
     </div>
 
     @if(!empty($query) && $selectedTag == '' && $showDropdown)
-    <div class="absolute z-10 bg-white mt-1 w-full border border-bluegray-300 rounded-md shadow-lg">
+    <div class="absolute z-1001 bg-white mt-1 w-full border border-bluegray-300 rounded-md shadow-lg">
         @if (!empty($tags))
         @foreach($tags as $i => $tag)
         <a wire:click="selectTag({{ $i }})"

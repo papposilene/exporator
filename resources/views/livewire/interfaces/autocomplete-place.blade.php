@@ -25,7 +25,7 @@
     </div>
 
     @if(!empty($query) && $selectedPlace == '' && $showDropdown)
-    <div class="absolute z-10 bg-white mt-1 w-full border border-bluegray-300 rounded-md shadow-lg">
+    <div class="absolute z-1001 bg-white mt-1 w-full border border-bluegray-300 rounded-md shadow-lg">
         @if (!empty($places))
         @foreach($places as $i => $place)
         <a wire:click="selectPlace({{ $i }})"

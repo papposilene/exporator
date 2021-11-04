@@ -13,7 +13,7 @@
             wire:keydown.enter.prevent="selectCountry"
         />
 
-        <input type="hidden" name="uuid" id="country" wire:model="selectedCountry">
+        <input type="hidden" name="cca3" id="country" wire:model="selectedCountry">
 
         @if ($selectedCountry)
         <a class="absolute cursor-pointer top-2 right-2 text-bluegray-500" wire:click="reset">
@@ -25,12 +25,12 @@
     </div>
 
     @if(!empty($query) && $selectedCountry == '' && $showDropdown)
-    <div class="absolute z-10 bg-white mt-1 w-full border border-bluegray-300 rounded-md shadow-lg">
+    <div class="absolute z-1001 bg-white mt-1 w-full border border-bluegray-300 rounded-md shadow-lg">
         @if (!empty($countries))
         @foreach($countries as $i => $country)
         <a wire:click="selectCountry({{ $i }})"
             class="block py-1 px-2 text-sm cursor-pointer hover:bg-sky-50 {{ $highlightIndex === $i ? 'bg-sky-50' : '' }}"
-            >{{ $country['name'] }}</a>
+            >{{ $country['name_common_fra'] }}</a>
         @endforeach
         @else
         <span class="block py-1 px-2 text-sm">@ucfirst(__('app.nothing'))</span>
