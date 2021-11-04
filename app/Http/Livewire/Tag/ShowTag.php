@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Tag;
 
 use App\Models\Tag;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -37,6 +38,11 @@ class ShowTag extends Component
         return view('livewire.tag.show-tag', [
             'tag' => $this->tag,
             'exhibitions' => $this->tag->hasExhibitions()
+                ->when(Auth::check(), function ($query) {
+                    return $query;
+                }, function ($query) {
+                    return $query->where('is_published', true);
+                })
                 ->where('title', 'like', '%'.$this->search.'%')
                 ->orderBy('began_at', 'desc')->paginate(25),
         ]);
