@@ -15,12 +15,12 @@
                 @else
                 <h3 class="font-bold text-2xl mb-5">@ucfirst(__('app.welcome'))</h3>
                 @endauth
-                <div class="grid grid-cols-1 lg:grid-cols-2 mb-3">
+                <div class="grid grid-cols-1 mb-3">
                     <p class="text-lg">
                         L'Exporateur, mot-valise entre <em>exposition</em> et <em>explorateur</em>, est un (énième ?)
                         site de référencement des expositions temporaires à Paris et ses proches alentours.
                     </p>
-                    <p class="grid mb-3">
+                    <p class="mb-3">
                         Vous trouverez sur ce site les expositions temporaires actuellement en cours et futures (et
                         celles déjà passées, mais bon...) disponibles sous la forme d’<a href="{{ route('front.exhibition.index') }}"
                         class="text-white hover:text-red-400">une simple liste</a>, d’<a href="{{ route('front.exhibition.map') }}"
@@ -30,12 +30,11 @@
                 </div>
                 <div class="mb-3">
                     <a href="{{ route('login') }}" class="text-white hover:text-red-400">@ucfirst(__('auth.login'))</a>
-                    @if (Laravel\Jetstream\Jetstream::hasRegistration())
+                    @if (Route::has('register'))
                     <a href="{{ route('register') }}" class="text-white hover:text-red-400">@ucfirst(__('auth.register'))</a>
                     @endif
                 </div>
             </div>
-            @endauth
         </div>
         <div class="flex flex-col lg:flex-row flex-wrap max-w-7xl mx-auto -mt-8 py-5 px-6">
             <div class="flex flex-grow lg:flex-grow-0 lg:pr-2 flex-wrap w-full lg:w-2/4">

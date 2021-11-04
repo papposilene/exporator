@@ -33,6 +33,7 @@
         "@tailwindcss/aspect-ratio": "^0.2.1",
         "@tailwindcss/line-clamp": "^0.2.1",
         "apexcharts": "^3.28.3",
+        "chart.js": "^3.6.0",
         "leaflet": "^1.7.1",
         "leaflet-ajax": "^2.1.0",
         "leaflet-extra-markers": "^1.2.1",

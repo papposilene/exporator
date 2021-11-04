@@ -90,17 +90,17 @@ class PlaceController extends Controller
      */
     public function statistic(Place $place)
     {
-        $dataStatistics = Type::withCount('hasPlaces')->orderBy('has_places', 'desc')->get();
+        $dataStatistics = Type::withCount('hasPlaces')->orderBy('has_places_count', 'desc')->get();
 
         $statistics = collect([
             'data' => [
-                'total' => $acquisitions_count,
+                'total' => $dataStatistics->count(),
             ],
             'chart' => [
                 'labels' => $dataStatistics->pluck('type'),
                 'datasets' => [
                     [
-                        'label' => __('chart.places_by_types'),
+                        'label' => ucfirst(__('chart.places_by_types')),
                         'data' => $dataStatistics->pluck('has_places_count'),
                         'backgroundColor' => [
                             '#F87171',
@@ -123,7 +123,7 @@ class PlaceController extends Controller
                     'display' => true,
                     'fontColor' => '#fff',
                     'position' => 'top',
-                    'text' => __('chart.places_by_types'),
+                    'text' => ucfirst(__('chart.places_by_types')),
                 ],
                 'responsive' => true,
                 'legend' => [
@@ -133,7 +133,7 @@ class PlaceController extends Controller
                 ],
             ],
         ])->all();
-        
+
         return $statistics;
     }
 

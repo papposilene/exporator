@@ -42,30 +42,16 @@
             </a>
         </li>
     </ol>
-    <!-- h4 class="font-bold text-1xl mt-5 mb-2">@ucfirst(__('app.no_exhibition'))</h4>
-    <ol class="list-inside list-disc">
-        @if(count($open_places_without_exhibition) > 0)
-        @foreach($open_places_without_exhibition->where('has_exhibitions_count', 0) as $no_exhibition)
-        <li>
-            <a href="{{ route('front.place.show', ['slug' => $no_exhibition->slug]) }}">
-                {{ $no_exhibition->name }}
-            </a>
-        </li>
-        @endforeach
-        @else
-        <li>
-            @ucfirst(__('app.nothing')).
-        </li>
-        @endif
-    </ol -->
 </div>
 
 <script>
+import axios from 'axios';
+
 const chartError = null;
 const chartErrored = false;
 const chartLoading = true;
 const ctx = document.getElementById('chartPlaces').getContext('2d');
-axios.get('{{ route('api.place.stat') }}')
+axios.get('{{ route("api.place.stat") }}')
     .then(response => {
         new Chart(document.getElementById('chartPlaces').getContext('2d'), {
             type: 'pie',
@@ -79,5 +65,4 @@ axios.get('{{ route('api.place.stat') }}')
         this.chartError = error.response.data.message || error.message
     })
     .finally(() => this.chartLoading = false);
-});
 </script>
