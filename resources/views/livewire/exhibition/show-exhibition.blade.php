@@ -77,6 +77,9 @@
             <div class="bg-red-500 border border-red-700 mb-3 p-3 rounded shadow text-white font-bold">
                 <ul>
                     <li>@ucfirst(__('app.published_info'))</li>
+                    <li>
+                        <livewire:interfaces.publish-exhibition :exhibition="$exhibition" :wire:key="$exhibition->uuid" />
+                    </li>
                 </ul>
             </div>
             @endif
