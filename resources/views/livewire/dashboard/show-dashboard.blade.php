@@ -9,7 +9,7 @@
 
     <div>
         <div class="flex flex-col lg:flex-row flex-wrap max-w-7xl mx-auto py-5 px-6">
-            <div class="flex flex-grow lg:flex-grow-0 flex-wrap bg-bluegray-400 p-5 shadow w-full lg:w-1/4">
+            <div class="flex flex-grow lg:flex-grow-0 flex-wrap bg-bluegray-400 text-white p-5 shadow w-full lg:w-1/4">
                 <p class="text-lg mb-3">
                     L'Exporateur, mot-valise entre <em>exposition</em> et <em>explorateur</em>, est un (énième ?)
                     site de référencement des expositions temporaires à Paris et ses proches alentours.
@@ -28,7 +28,7 @@
             </div>
             @else
             <div class="flex flex-grow lg:flex-grow-0 flex-wrap w-full lg:pl-2 lg:w-3/4">
-                <div class="flex-grow bg-bluegray-400 p-5 w-full">
+                <div class="flex-grow bg-bluegray-400 text-white p-5 w-full">
                     <h3 class="font-bold text-2xl mb-5">@ucfirst(__('app.welcome'))</h3>
                     <div class="grid grid-cols-1 mb-4">
                         <p>dsaq</p>
