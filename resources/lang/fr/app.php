@@ -113,6 +113,8 @@ return [
     'tag_info' => 'Un mot-clé (ou tag) vous permet de ranger les expositions temporaires
         référencées sur le site. Vous pouvez également créer une catégorie afin d’y ranger le mot-clé
         dans une typologie plus globale.',
+    'propose_info' => 'Vous pouvez proposer à tout moment une exposition temporaire. Elle devra être validée par 
+        un des administrateurs pour qu’elle soit publiée.',
 
     // Placeholders
     'calendar_of' => 'agenda des :name',
@@ -142,7 +144,7 @@ return [
     'numbers_of_today_exhibitions' => 'expositions pour aujourd’hui : :count',
     'numbers_of_next_exhibitions' => 'expositions du mois prochain : :count',
     'propose_one' => 'proposer une :what',
-    'propose_informations' => 'Vous pouvez proposer à tout moment une exposition temporaire. Elle devra être validée par un des administrateurs pour qu’elle soit publiée.',
+    'publish_' => 'rendre l’exposition &laquo; :what &raquo; publique',
     'search_some' => 'rechercher des :what',
     'top1_of_countries' => 'pays le plus référencé : :name',
     'top1_of_places' => 'Lieu d’exposition le plus référencé : :name',
