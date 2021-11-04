@@ -20,9 +20,9 @@ class UpdatePlaceRequest extends FormRequest
             'status' => 'boolean',
             'address' => 'required|string',
             'city' => 'required|string|max:255',
-            'country' => 'required|string|min:3|max:3',
-            'latitude' => 'required|integer|max:20',
-            'longitude' => 'required|integer|max:20',
+            'cca3' => 'required|string|min:3|max:3',
+            'latitude' => 'required|string|max:20',
+            'longitude' => 'required|string|max:20',
             'link' => 'nullable|url',
             'image' => 'nullable|image|size:2048',
         ];

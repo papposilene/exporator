@@ -9,6 +9,7 @@ use App\Http\Requests\UpdatePlaceRequest;
 use App\Imports\PlacesImport;
 use App\Models\Country;
 use App\Models\Place;
+use App\Models\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -137,7 +138,7 @@ class PlaceController extends Controller
      */
     public function update(UpdatePlaceRequest $request, Place $place)
     {
-        $this->authorize('update', Place::class);
+        $this->authorize('update', User::class, Place::class);
 
         $validated = $request->validated();
 
@@ -158,7 +159,7 @@ class PlaceController extends Controller
         $place->status = (bool) $request->input('status');
         $place->address = $request->input('address');
         $place->city = $request->input('city');
-        $place->country_cca = $country->cca3;
+        $place->country_cca3 = $country->cca3;
         $place->lat = $request->input('latitude');
         $place->lon = $request->input('longitude');
         $place->link = $request->input('link');
