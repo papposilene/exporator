@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Exhibition;
 
 use App\Models\Exhibition;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -32,7 +33,11 @@ class ListExhibition extends Component
 
         if ($this->filter === 'past')
         {
-            $exhibitions = Exhibition::where('is_published', true)
+            $exhibitions = Exhibition::when(Auth::check(), function ($query) {
+                    return $query->where('is_published', true);
+                }, function ($query) {
+                    return $query->where('is_published', false);
+                })
                 ->where('title', 'like', '%'.$this->search.'%')
                 ->where('ended_at', '<', $today)
                 ->orderBy('began_at', 'desc')
@@ -40,7 +45,11 @@ class ListExhibition extends Component
         }
         elseif ($this->filter === 'current')
         {
-            $exhibitions = Exhibition::where('is_published', true)
+            $exhibitions = Exhibition::when(Auth::check(), function ($query) {
+                    return $query->where('is_published', true);
+                }, function ($query) {
+                    return $query->where('is_published', false);
+                })
                 ->where('title', 'like', '%'.$this->search.'%')
                 ->where('began_at', '<', $today)
                 ->where('ended_at', '>', $today)
@@ -49,7 +58,11 @@ class ListExhibition extends Component
         }
         elseif ($this->filter === 'future')
         {
-            $exhibitions = Exhibition::where('is_published', true)
+            $exhibitions = Exhibition::when(Auth::check(), function ($query) {
+                    return $query->where('is_published', true);
+                }, function ($query) {
+                    return $query->where('is_published', false);
+                })
                 ->where('title', 'like', '%'.$this->search.'%')
                 ->where('began_at', '>', $today)
                 ->orderBy('began_at', 'desc')
@@ -57,10 +70,16 @@ class ListExhibition extends Component
         }
         else
         {
-            $exhibitions = Exhibition::where('is_published', true)
-            ->where('title', 'like', '%'.$this->search.'%')
-            ->orderBy('began_at', 'desc')
-            ->paginate(25);
+            dd(Auth::check());
+
+            $exhibitions = Exhibition::when(Auth::check(), function ($query) {
+                    return $query->where('is_published', true);
+                }, function ($query) {
+                    return $query->where('is_published', false);
+                })
+                ->where('title', 'like', '%'.$this->search.'%')
+                ->orderBy('began_at', 'desc')
+                ->paginate(25);
         }
 
 

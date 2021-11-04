@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Exhibition;
 
 use App\Models\Exhibition;
 use App\Models\Tagged;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -24,7 +25,12 @@ class ShowExhibition extends Component
 
     public function mount($slug)
     {
-        $this->exhibition = Exhibition::where('slug', $this->slug)->firstOrFail();
+        $this->exhibition = Exhibition::when(Auth::check(), function ($query) {
+                return $query->where('is_published', true);
+            }, function ($query) {
+                return $query->where('is_published', false);
+            })
+            ->where('slug', $this->slug)->firstOrFail();
         $this->suggestions = Tagged::where('taggable_id', $this->exhibition->uuid)->take(3)->get();
     }
 

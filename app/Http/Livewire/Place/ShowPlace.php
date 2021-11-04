@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Place;
 
 use App\Models\Place;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -32,11 +33,19 @@ class ShowPlace extends Component
 
     public function render()
     {
+        $auth = Auth::check();
+
         return view('livewire.place.show-place', [
             'place' => $this->place,
             'exhibitions' => $this->place->hasExhibitions()
+                ->when($auth, function ($query, $auth) {
+                    return $query->where('is_published', false);
+                }, function ($query) {
+                    return $query->where('is_published', true);
+                })
                 ->where('title', 'like', '%'.$this->search.'%')
-                ->orderBy('began_at', 'desc')->paginate(25),
+                ->orderBy('began_at', 'desc')
+                ->paginate(25),
         ]);
     }
 }
