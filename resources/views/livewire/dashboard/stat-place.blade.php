@@ -61,6 +61,7 @@
 </div>
 
 <script>
+const chartError = null;
 const chartErrored = false;
 const chartLoading = true;
 const ctx = document.getElementById('chartPlaces').getContext('2d');
