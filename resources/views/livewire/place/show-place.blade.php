@@ -63,11 +63,9 @@
             <ul class="list-inside md:m-5 mt-5 md:mt-0 shadow w-full">
                 <li><livewire:interfaces.map :place="$place" :wire:key="$place->uuid" /></li>
             </ul>
-            @auth
             <ul class="bg-bluegray-200 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
                 <li><livewire:interfaces.follow-place :place="$place" :wire:key="$place->uuid" /></li>
             </ul>
-            @endauth
         </div>
 
         <div class="mx-auto md:w-3/4 py-5 px-6">
