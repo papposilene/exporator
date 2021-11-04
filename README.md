@@ -9,7 +9,7 @@ You can import a list of places in a XLS format with the following columns : nam
 
 ### Exhibitions
 
-You can import a list of exhibitions in a XLS format with the following columns : place, title, began_at, ended_at, description, link, price and tags (type1:tag1,type1:tag2,type2,tag:1). 
+You can import a list of exhibitions in a XLS format with the following columns : place, title, began_at, ended_at, description, link, price and tags (type1:tag1,type1:tag2,type2:tag:1). 
 
 ### Tags
 
