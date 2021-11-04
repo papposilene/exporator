@@ -48,11 +48,9 @@
             <ul class="list-inside md:m-5 mt-5 md:mt-0 shadow w-full">
                 <li><livewire:interfaces.map :place="$exhibition->inPlace" :wire:key="$exhibition->inPlace->uuid" /></li>
             </ul>
-            @auth
             <ul class="bg-bluegray-200 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
                 <li><livewire:interfaces.follow-exhibition :exhibition="$exhibition" :wire:key="$exhibition->uuid" /></li>
             </ul>
-            @endauth
             @auth
             @if (Auth::user()->can('create', App\Models\Exhibition::class))
             <ul class="bg-bluegray-200 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
