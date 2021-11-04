@@ -8,7 +8,7 @@
     </x-slot>
 
     <div class="flex flex-row flex-wrap max-w-7xl mx-auto py-5 px-6">
-        <div class="flex sm:flex-row lg:flex-col flex-grow flex-wrap bg-bluegray-300 lg:mr-3 p-5 shadow sm:w-full lg:w-1/4">
+        <div class="flex sm:flex-row lg:flex-col flex-grow flex-wrap bg-bluegray-500 text-white lg:mr-3 p-5 shadow sm:w-full lg:w-1/4">
             <p class="mb-3">
                 L'Exporateur, mot-valise entre <em>exposition</em> et <em>explorateur</em>, est un (énième ?)
                 site de référencement des expositions temporaires à Paris et ses proches alentours.
@@ -18,13 +18,13 @@
                 trois formes différentes, à savoir :
                 <ol class="list-inside list-decimal mb-3">
                     <li>
-                        <a href="{{ route('front.exhibition.index') }}" class="text-sky-700 hover:text-red-600">une liste des expositions temporaires</a>,
+                        <a href="{{ route('front.exhibition.index') }}" class="text-white hover:text-red-400">une liste des expositions temporaires</a>,
                     </li>
                     <li>
-                        <a href="{{ route('front.exhibition.map') }}" class="text-sky-700 hover:text-red-600">une cartographie des expositions en cours</a>,
+                        <a href="{{ route('front.exhibition.map') }}" class="text-white hover:text-red-400">une cartographie des expositions en cours</a>,
                     </li>
                     <li>
-                        <a href="{{ route('front.exhibition.calendar') }}" class="text-sky-700 hover:text-red-600">un agenda des expositions pour le mois en cours</a>.
+                        <a href="{{ route('front.exhibition.calendar') }}" class="text-white hover:text-red-400">un agenda des expositions pour le mois en cours</a>.
                     </li>
                 </ol>
             </p>
