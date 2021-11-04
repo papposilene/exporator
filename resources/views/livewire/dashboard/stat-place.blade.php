@@ -79,6 +79,5 @@ axios.get('{{ route('api.place.stat') }}')
         this.chartError = error.response.data.message || error.message
     })
     .finally(() => this.chartLoading = false);
-
 });
 </script>
