@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\PlaceResource;
 use App\Models\Place;
+use App\Models\Type;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -73,23 +74,58 @@ class PlaceController extends Controller
             ];
         };
 
-        $allfeatures = [
+        $allFeatures = [
             'type' => 'FeatureCollection',
             'features' => $features,
         ];
 
-        return json_encode($allfeatures, JSON_PRETTY_PRINT);
+        return json_encode($allFeatures, JSON_PRETTY_PRINT);
     }
 
     /**
-     * Display the specified resource.
+     * Retrieve the statistics for places.
      *
      * @param  \App\Models\Place  $place
      * @return \Illuminate\Http\Response
      */
-    public function show(Place $place)
+    public function statistic(Place $place)
     {
-        //
+        $dataStatistics = Type::withCount('hasPlaces')->orderBy('has_places', 'desc')->get();
+
+        $statistics = collect([
+            'data' => [
+                'total' => $acquisitions_count,
+            ],
+            'chart' => [
+                'labels' => $dataStatistics->pluck('type'),
+                'datasets' => [
+                    [
+                        'label' => __('chart.places_by_types'),
+                        'data' => $dataStatistics->pluck('has_places_count'),
+                        'backgroundColor' => [
+                            '#F87171',
+                        ],
+                        'borderColor' => '#000',
+                    ],
+                ],
+            ],
+            'options' => [
+                'title' => [
+                    'display' => true,
+                    'fontColor' => '#fff',
+                    'position' => 'top',
+                    'text' => __('chart.places_by_types'),
+                ],
+                'responsive' => true,
+                'legend' => [
+                    'display' => false,
+                    'position' => 'bottom',
+                    'fontColor' => '#fff',
+                ],
+            ],
+        ])->all();
+        
+        return $statistics;
     }
 
     /**
