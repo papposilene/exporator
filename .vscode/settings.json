@@ -1,5 +1,8 @@
 {
   "eslint.format.enable": true,
+  "files.exclude": {
+    "node_modules": true
+  },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
