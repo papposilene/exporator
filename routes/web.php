@@ -72,6 +72,7 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function
     Route::post('/exhibition/store', [ExhibitionController::class, 'store'])->name('admin.exhibition.store');
     Route::post('/exhibition/update', [ExhibitionController::class, 'update'])->name('admin.exhibition.update');
     Route::post('/exhibitions/import', [ExhibitionController::class, 'import'])->name('admin.exhibition.import');
+    Route::post('/exhibitions/publish', [ExhibitionController::class, 'publish'])->name('admin.exhibition.publish');
 
     // Tag
     Route::post('/tag/store', [TagController::class, 'store'])->name('admin.tag.store');
