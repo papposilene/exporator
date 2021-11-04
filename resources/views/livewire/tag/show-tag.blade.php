@@ -36,7 +36,7 @@
             </ul>
             @endauth
             @if ($otherTags->count()  > 0)
-            <ul class="bg-bluegray-200 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
+            <ul class="bg-indigo-200 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
                 @foreach ($otherTags as $otherTag)
                 <li>
                     <a href="{{ route('front.tag.show', ['slug' => $otherTag->slug]) }}"
