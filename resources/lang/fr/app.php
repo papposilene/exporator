@@ -125,6 +125,7 @@ return [
     'edit_one' => 'modifier un :what',
     'edit_the' => 'modifier le :what',
     'delete_' => 'supprimer &laquo; :what &raquo;',
+    'explore_other' => 'explorer d’autres :what...',
     'follow_the' => 'suivre :what',
     'https' => 'https://www.',
     'import_some' => 'importer des :what',
