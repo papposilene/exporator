@@ -23,6 +23,11 @@
                 </ul>
             </div>
             @endif
+            
+            <div class="py-5">
+                <canvas id="chartType" width="400" height="400"></canvas>
+            
+            </div>
 
             @if($exhibitions->count() > 0)
             <div>
@@ -104,10 +109,10 @@ document.addEventListener('livewire:load', function () {
     const chartError = null;
     const chartErrored = false;
     const chartLoading = true;
-    const ctx = document.getElementById('chartTypes').getContext('2d');
+    const ctx = document.getElementById('chartType').getContext('2d');
     axios.get('{{ route("api.tag.stat") }}')
         .then(response => {
-            new Chart(document.getElementById('chartTypes').getContext('2d'), {
+            new Chart(document.getElementById('chartType').getContext('2d'), {
                 type: 'pie',
                 data: response.data.chart,
                 options: response.data.options,
