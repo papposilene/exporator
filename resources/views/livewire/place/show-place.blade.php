@@ -15,7 +15,7 @@
         <h2 class="font-semibold text-xl text-bluegray-800 leading-tight">
             <span>
                 <a href="{{ route('front.place.index') }}">
-                    @ucfirst(__('app.list_of', ['name' => __('app.places')]))
+                    @ucfirst(__('app.list_of', ['what' => __('app.places')]))
                 </a>
             </span> /
             <span>{{ $place->name }}</span>
