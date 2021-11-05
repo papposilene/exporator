@@ -30,13 +30,13 @@
                 </li>
                 <li title="@ucfirst(__('app.type'))">@ucfirst($tag->type)</li>
             </ul>
-            @if ($otherTags->count()  > 0)
+            @if ($suggestions->count()  > 0)
             <ul class="bg-indigo-200 list-inside list-disc md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
-                @foreach ($otherTags as $otherTag)
+                @foreach ($suggestions as $suggestion)
                 <li>
-                    <a href="{{ route('front.tag.show', ['slug' => $otherTag->slug]) }}"
-                        title="{{ $otherTag->name }}" aria-label="{{ $otherTag->name }}">
-                        @ucfirst($otherTag->name)
+                    <a href="{{ route('front.tag.show', ['slug' => $suggestion->slug]) }}"
+                        title="{{ $suggestion->name }}" aria-label="{{ $suggestion->name }}">
+                        @ucfirst($suggestion->name)
                     </a>
                 </li>
                 @endforeach
