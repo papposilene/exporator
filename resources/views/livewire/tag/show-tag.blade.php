@@ -28,7 +28,7 @@
                         @ucfirst($tag->name)
                     </h3>
                 </li>
-                <li title="@ucfirst(__('app.type'))">@ucfirst(__('app.category_', ['what' => $tag->type]))</li>
+                <li title="@ucfirst(__('app.type'))">@ucfirst(__('app.category_is', ['what' => $tag->type]))</li>
             </ul>
             <div class="bg-indigo-200 md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
                 <h4 class="font-bold text-2xl mb-5">
