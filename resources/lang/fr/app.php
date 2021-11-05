@@ -118,7 +118,7 @@ return [
 
     // Placeholders
     'calendar_of' => 'agenda des :what',
-    'category_' => 'catégorie : :what',
+    'category_is' => 'catégorie : :what',
     'create_one' => 'ajouter un :what',
     'create_the' => 'ajouter le :what',
     'ddmmyyyy' => 'JJ/MM/AAAA',
@@ -148,8 +148,8 @@ return [
     'propose_one' => 'proposer une :what',
     'publish_' => 'rendre l’exposition &laquo; :what &raquo; publique',
     'search_some' => 'rechercher des :what',
-    'top1_of_countries' => 'pays le plus référencé : :name',
-    'top1_of_places' => 'Lieu d’exposition le plus référencé : :name',
+    'top1_of_countries' => 'pays le plus référencé : :what',
+    'top1_of_places' => 'Lieu d’exposition le plus référencé : :what',
     'type_is' => 'typologie de tag : :type',
     'unfollow_the' => 'cesser de suivre :what',
     'until' => 'jusqu’au :date',
