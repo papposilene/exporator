@@ -30,6 +30,12 @@
                 </li>
                 <li title="@ucfirst(__('app.type'))">@ucfirst($tag->type)</li>
             </ul>
+            <div class="bg-indigo-200 md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
+                <h4 class="font-bold text-2xl mb-5">
+                    @ucfirst(__('app.statistics'))
+                </h4>
+                <canvas id="chartTags" width="400" height="400"></canvas>
+            </div>
             @if ($suggestions->count()  > 0)
             <ul class="bg-indigo-200 list-inside list-disc md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
                 @foreach ($suggestions as $suggestion)
@@ -137,3 +143,26 @@
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener('livewire:load', function () {
+    const chartError = null;
+    const chartErrored = false;
+    const chartLoading = true;
+    const ctx = document.getElementById('chartTags').getContext('2d');
+    axios.get('{{ route("api.tag.stat") }}')
+        .then(response => {
+            new Chart(document.getElementById('chartTags').getContext('2d'), {
+                type: 'pie',
+                data: response.data.chart,
+                options: response.data.options,
+            });
+            this.chartLoading = false
+        })
+        .catch(error => {
+            this.chartErrored = true
+            this.chartError = error.response.data.message || error.message
+        })
+        .finally(() => this.chartLoading = false);
+})
+</script>
