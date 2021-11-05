@@ -23,8 +23,7 @@ class ShowTag extends Component
 
     public function mount($slug)
     {
-        $this->locale = app()->getLocale();
-        $this->tag = Tag::where('slug->' . $this->locale, $this->slug)
+        $this->tag = Tag::where('slug->' . app()->getLocale(), $this->slug)
             ->firstOrFail();
     }
 
