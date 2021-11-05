@@ -1,6 +1,6 @@
 <div class="flex-grow bg-sky-300 p-5 shadow w-full">
     <h3 class="font-bold text-2xl mb-5">
-        <a href="{{ route('front.tag.index') }}">
+        <a href="{{ route('front.exhibition.index') }}">
             @ucfirst(__('app.exhibitions'))
         </a>
     </h3>
