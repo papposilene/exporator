@@ -14,6 +14,6 @@ return [
     */
 
     'places_by_types' => 'nombre de lieux par typologies',
-    'tags_by_year' => 'utilisation du mot-clé par année',
+    'tag_by_year' => 'utilisation du mot-clé par année',
 
 ];
