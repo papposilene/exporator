@@ -117,7 +117,8 @@ return [
         un des administrateurs pour qu’elle soit publiée.',
 
     // Placeholders
-    'calendar_of' => 'agenda des :name',
+    'calendar_of' => 'agenda des :what',
+    'category_' => 'catégorie : :what',
     'create_one' => 'ajouter un :what',
     'create_the' => 'ajouter le :what',
     'ddmmyyyy' => 'JJ/MM/AAAA',
@@ -129,9 +130,9 @@ return [
     'follow_the' => 'suivre :what',
     'https' => 'https://www.',
     'import_some' => 'importer des :what',
-    'list_of' => 'liste des :name',
+    'list_of' => 'liste des :what',
     'loremipsum' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque id velit auctor, sagittis lorem sed, aliquet eros. Sed scelerisque ultricies posuere. Nam posuere eget risus vel bibendum.',
-    'map_of' => 'carte des :name',
+    'map_of' => 'carte des :what',
     'numbers_of_countries' => 'nombre total : :count',
     'numbers_of_places' => 'nombre total : :count',
     'numbers_of_museum_type' => 'total des lieux d’exposition : :count',
