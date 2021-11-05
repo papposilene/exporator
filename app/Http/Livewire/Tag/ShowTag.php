@@ -37,7 +37,6 @@ class ShowTag extends Component
     {
         return view('livewire.tag.show-tag', [
             'tag' => $this->tag,
-            'otherTags' => $this->tag->where('type', $this->tag->type)->take(5)->get(),
             'exhibitions' => $this->tag->hasExhibitions()
                 ->when(Auth::check(), function ($query) {
                     return $query;
@@ -46,6 +45,7 @@ class ShowTag extends Component
                 })
                 ->where('title', 'like', '%'.$this->search.'%')
                 ->orderBy('began_at', 'desc')->paginate(25),
+            'suggestions' => $this->tag->where('type', $this->tag->type)->take(5)->get(),
         ]);
     }
 }
