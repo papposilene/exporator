@@ -13,7 +13,7 @@
         <h2 class="font-semibold text-xl text-bluegray-800 leading-tight">
             <span>
                 <a href="{{ route('front.tag.index') }}">
-                    @ucfirst(__('app.list_of', ['name' => __('app.tags')]))
+                    @ucfirst(__('app.list_of', ['what' => __('app.tags')]))
                 </a>
             </span> /
             <span>@ucfirst($tag->name)</span>
@@ -28,7 +28,7 @@
                         @ucfirst($tag->name)
                     </h3>
                 </li>
-                <li title="@ucfirst(__('app.type'))">@ucfirst($tag->type)</li>
+                <li title="@ucfirst(__('app.type'))">@ucfirst(__('app.category_', ['what' => $tag->type]))</li>
             </ul>
             <div class="bg-indigo-200 md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
                 <h4 class="font-bold text-2xl mb-5">
