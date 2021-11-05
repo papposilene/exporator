@@ -18,6 +18,7 @@ use App\Http\Livewire\Place\ListPlace;
 use App\Http\Livewire\Place\ShowPlace;
 use App\Http\Livewire\Tag\ListTag;
 use App\Http\Livewire\Tag\ShowTag;
+use App\Http\Livewire\Tag\ShowType;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -56,6 +57,7 @@ Route::post('/exhibitions/propose', [ExhibitionController::class, 'propose'])->n
 // Tags
 Route::get('/tags', ListTag::class)->name('front.tag.index');
 Route::get('/tag/{slug}', ShowTag::class)->name('front.tag.show');
+Route::get('/tag/type/{slug}', ShowType::class)->name('front.tag.type');
 
 /*
 |--------------------------------------------------------------------------
