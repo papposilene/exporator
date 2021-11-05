@@ -3,7 +3,7 @@
 <div>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-bluegray-800 leading-tight">
-            <span id="top">@ucfirst(__('app.calendar_of', ['name' => __('app.exhibitions')]))</span>
+            <span id="top">@ucfirst(__('app.calendar_of', ['what' => __('app.exhibitions')]))</span>
         </h2>
     </x-slot>
 
