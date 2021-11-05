@@ -38,11 +38,11 @@ class TagController extends Controller
                 // Solution found at https://stackoverflow.com/a/25538667/14699817
                 return Carbon::parse($date->began_at)->format('Y');
                 //return Carbon::parse($date->created_at)->format('m'); // grouping by months
-            });
+            })->get();
             
             $dataChart[] = [
                 'label' => ucfirst(__('chart.tag_by_year')),
-                'data' => $dataStatistics->pluck('has_places_count'),
+                'data' => $exhibitions->count(),
                 'backgroundColor' => [
                     '#F87171',
                     '#FBBF24',
@@ -61,10 +61,10 @@ class TagController extends Controller
         
         $statistics = collect([
             'data' => [
-                'total' => $dataStatistics->count(),
+                'total' => $tags->count(),
             ],
             'chart' => [
-                'labels' => $dataStatistics->pluck('type'),
+                //'labels' => $dataStatistics->pluck('type'),
                 'datasets' => [
                     $dataChart
                 ],
