@@ -473,6 +473,13 @@
   {
     "type":"theme",
     "tag":{
+        "fr": "etudes de genre",
+        "en": "gender studies"
+    }
+  },
+  {
+    "type":"theme",
+    "tag":{
         "fr": "fashion",
         "en": "fashion"
     }
