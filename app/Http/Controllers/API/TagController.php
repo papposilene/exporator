@@ -22,68 +22,69 @@ class TagController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Retrieve the statistics for places.
      *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
+     * @param  $slug
      * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function stat_tag($slug, Tag $tag)
     {
-        return new TagResource(Tag::where('slug', $slug)->firstOrFail());
-    }
+        $tags = Tag::where('name->' . app()->getLocale(), $tag)->get();
+        
+        foreach ($tags as $tag)
+        {
+            $exhibitions = $tag->hasExhibitions()->groupBy(function($date) {
+                // Solution found at https://stackoverflow.com/a/25538667/14699817
+                return Carbon::parse($date->began_at)->format('Y');
+                //return Carbon::parse($date->created_at)->format('m'); // grouping by months
+            });
+            
+            $dataChart[] = [
+                'label' => ucfirst(__('chart.tag_by_year')),
+                'data' => $dataStatistics->pluck('has_places_count'),
+                'backgroundColor' => [
+                    '#F87171',
+                    '#FBBF24',
+                    '#34D399',
+                    '#60A5FA',
+                    '#818CF8',
+                    '#FCA5A5',
+                    '#FCD34D',
+                    '#6EE7B7',
+                    '#93C5FD',
+                    '#A5B4FC',
+                ],
+                'borderColor' => '#000',
+            ];
+        }
+        
+        $statistics = collect([
+            'data' => [
+                'total' => $dataStatistics->count(),
+            ],
+            'chart' => [
+                'labels' => $dataStatistics->pluck('type'),
+                'datasets' => [
+                    $dataChart
+                ],
+            ],
+            'options' => [
+                'title' => [
+                    'display' => true,
+                    'fontColor' => '#fff',
+                    'position' => 'top',
+                    'text' => ucfirst(__('chart.tag_by_year')),
+                ],
+                'responsive' => true,
+                'legend' => [
+                    'display' => false,
+                    'position' => 'bottom',
+                    'fontColor' => '#fff',
+                ],
+            ],
+        ])->all();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Tag  $tag
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Tag $tag)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Tag  $tag
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Tag $tag)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Tag  $tag
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Tag $tag)
-    {
-        //
+        return $statistics;
     }
 }
