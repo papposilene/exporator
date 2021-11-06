@@ -23,10 +23,11 @@
     <div class="flex flex-wrap w-full max-w-7xl mx-auto">
         <div class="mx-auto md:w-1/4 py-5 px-6 w-full">
             <ul class="bg-indigo-300 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
-                <li title="@ucfirst(__('app.tag'))">
+                <li class="flex flex-grow justify-between" title="@ucfirst(__('app.tag'))">
                     <h3 class="font-bold text-2xl mb-5">
                         @ucfirst($tag->name)
                     </h3>
+                    <span><livewire:interfaces.follow-tag :tag="$tag" :wire:key="$tag->id" /></span>
                 </li>
                 <li title="@ucfirst(__('app.type'))">@ucfirst(__('app.category_is', ['what' => $tag->type]))</li>
             </ul>
@@ -53,9 +54,6 @@
                 </li>
             </ul>
             @endif
-            <ul class="bg-bluegray-200 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
-                <li><livewire:interfaces.follow-tag :tag="$tag" :wire:key="$tag->id" /></li>
-            </ul>
         </div>
 
         <div class="mx-auto md:w-3/4 py-5 px-6">
@@ -150,7 +148,7 @@ document.addEventListener('livewire:load', function () {
     const chartErrored = false;
     const chartLoading = true;
     const ctx = document.getElementById('chartTags').getContext('2d');
-    axios.get('{{ route("api.tag.stat") }}')
+    axios.get("{{ route('api.tag.stat_tag', ['slug' => $tag->slug]) }}")
         .then(response => {
             new Chart(document.getElementById('chartTags').getContext('2d'), {
                 type: 'pie',

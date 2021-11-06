@@ -54,7 +54,7 @@ document.addEventListener('livewire:load', function () {
     const chartErrored = false;
     const chartLoading = true;
     const ctx = document.getElementById('chartPlaces').getContext('2d');
-    axios.get('{{ route("api.place.stat") }}')
+    axios.get("{{ route('api.place.stat') }}")
         .then(response => {
             new Chart(document.getElementById('chartPlaces').getContext('2d'), {
                 type: 'doughnut',
