@@ -125,6 +125,7 @@ class PlaceController extends Controller
                     'position' => 'top',
                     'text' => ucfirst(__('chart.places_by_types')),
                 ],
+                //'indexAxis' => 'y',
                 'responsive' => true,
                 'legend' => [
                     'display' => false,

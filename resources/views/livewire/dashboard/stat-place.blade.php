@@ -57,7 +57,7 @@ document.addEventListener('livewire:load', function () {
     axios.get('{{ route("api.place.stat") }}')
         .then(response => {
             new Chart(document.getElementById('chartPlaces').getContext('2d'), {
-                type: 'pie',
+                type: 'doughnut',
                 data: response.data.chart,
                 options: response.data.options,
             });
