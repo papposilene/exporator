@@ -52,7 +52,7 @@
                     </li>
                 </ul>
                 @endforeach
-                <p>
+                <p class="mt-3 text-center">
                     <a href="{{ route('front.tag.index') }}">
                         @ucfirst(__('app.explore_other', ['what' => __('app.tags')]))
                     </a>
@@ -156,7 +156,7 @@ document.addEventListener('livewire:load', function () {
     axios.get("{{ route('api.tag.stat_tag', ['slug' => $tag->slug]) }}")
         .then(response => {
             new Chart(document.getElementById('chartTags').getContext('2d'), {
-                type: 'pie',
+                type: 'bar',
                 data: response.data.chart,
                 options: response.data.options,
             });

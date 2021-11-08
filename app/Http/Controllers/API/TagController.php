@@ -31,35 +31,31 @@ class TagController extends Controller
      */
     public function stat_tag($slug, Tag $tag)
     {
-        $dataChart = [];
+        //$dataChart = [];
         $tags = Tag::where('slug->' . app()->getLocale(), $slug)->get();
 
         foreach ($tags as $tag)
         {
             $exhibitions = $tag->hasExhibitions()->get();
-
-            $exhibitions->groupBy(function($date) {
-                // Solution found at https://stackoverflow.com/a/25538667/14699817
-                return Carbon::parse($date->began_at)->format('Y');
+            $dataYears = $exhibitions->groupBy(function($date) {
+                // Solution found at https://stackoverflow.com/a/25538667
+                return Carbon::parse($date->began_at)->format('Y'); // grouping by years
                 //return Carbon::parse($date->created_at)->format('m'); // grouping by months
             });
 
-            dd($exhibitions);
+            $dataYears = $dataYears->toArray();
+            krsort($dataYears);
+            foreach ($dataYears as $year => $value)
+            {
+                $years[$year] = count($value);
+            }
 
             $dataChart[] = [
+                'axis' => 'y',
                 'label' => ucfirst(__('chart.tag_by_year')),
-                'data' => $exhibitions->count(),
+                'data' => array_values($years),
                 'backgroundColor' => [
                     '#F87171',
-                    '#FBBF24',
-                    '#34D399',
-                    '#60A5FA',
-                    '#818CF8',
-                    '#FCA5A5',
-                    '#FCD34D',
-                    '#6EE7B7',
-                    '#93C5FD',
-                    '#A5B4FC',
                 ],
                 'borderColor' => '#000',
             ];
@@ -70,12 +66,11 @@ class TagController extends Controller
                 'total' => $tags->count(),
             ],
             'chart' => [
-                //'labels' => $dataStatistics->pluck('type'),
-                'datasets' => [
-                    $dataChart
-                ],
+                'labels' => array_keys($years),
+                'datasets' => $dataChart,
             ],
             'options' => [
+                'indexAxis' => 'y',
                 'title' => [
                     'display' => true,
                     'fontColor' => '#fff',
