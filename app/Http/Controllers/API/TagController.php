@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Models\Tag;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\TagResource;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -30,16 +31,21 @@ class TagController extends Controller
      */
     public function stat_tag($slug, Tag $tag)
     {
-        $tags = Tag::where('name->' . app()->getLocale(), $tag)->get();
-        
+        $dataChart = [];
+        $tags = Tag::where('slug->' . app()->getLocale(), $slug)->get();
+
         foreach ($tags as $tag)
         {
-            $exhibitions = $tag->hasExhibitions()->groupBy(function($date) {
+            $exhibitions = $tag->hasExhibitions()->get();
+
+            $exhibitions->groupBy(function($date) {
                 // Solution found at https://stackoverflow.com/a/25538667/14699817
                 return Carbon::parse($date->began_at)->format('Y');
                 //return Carbon::parse($date->created_at)->format('m'); // grouping by months
-            })->get();
-            
+            });
+
+            dd($exhibitions);
+
             $dataChart[] = [
                 'label' => ucfirst(__('chart.tag_by_year')),
                 'data' => $exhibitions->count(),
@@ -58,7 +64,7 @@ class TagController extends Controller
                 'borderColor' => '#000',
             ];
         }
-        
+
         $statistics = collect([
             'data' => [
                 'total' => $tags->count(),

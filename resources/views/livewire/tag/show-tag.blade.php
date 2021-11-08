@@ -21,7 +21,7 @@
     </x-slot>
 
     <div class="flex flex-wrap w-full max-w-7xl mx-auto">
-        <div class="mx-auto md:w-1/4 py-5 px-6 w-full">
+        <div class="mx-auto py-5 px-6 w-full lg:w-1/4">
             <ul class="bg-indigo-300 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
                 <li class="flex flex-grow justify-between" title="@ucfirst(__('app.tag'))">
                     <h3 class="font-bold text-2xl mb-5">
@@ -38,25 +38,30 @@
                 <canvas id="chartTags" width="400" height="400"></canvas>
             </div>
             @if ($suggestions->count()  > 0)
-            <ul class="bg-indigo-200 list-inside list-disc md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
+            <div class="bg-indigo-200 md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
+                <h4 class="font-bold text-2xl mb-5">
+                    @ucfirst(__('app.suggestions'))
+                </h4>
                 @foreach ($suggestions as $suggestion)
-                <li>
-                    <a href="{{ route('front.tag.show', ['slug' => $suggestion->slug]) }}"
-                        title="{{ $suggestion->name }}" aria-label="{{ $suggestion->name }}">
-                        @ucfirst($suggestion->name)
-                    </a>
-                </li>
+                <ul class="list-inside list-disc">
+                    <li>
+                        <a href="{{ route('front.tag.show', ['slug' => $suggestion->slug]) }}"
+                            title="{{ $suggestion->name }}" aria-label="{{ $suggestion->name }}">
+                            @ucfirst($suggestion->name)
+                        </a>
+                    </li>
+                </ul>
                 @endforeach
-                <li>
+                <p>
                     <a href="{{ route('front.tag.index') }}">
                         @ucfirst(__('app.explore_other', ['what' => __('app.tags')]))
                     </a>
-                </li>
-            </ul>
+                </p>
+            </div>
             @endif
         </div>
 
-        <div class="mx-auto md:w-3/4 py-5 px-6">
+        <div class="mx-auto py-5 px-6 lg:w-3/4">
             @if ($errors->any())
             <div class="bg-red-500 border border-red-700 mb-3 p-3 rounded shadow text-white font-bold">
                 <ul>

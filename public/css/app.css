@@ -1673,6 +1673,10 @@ select {
 .bg-transparent {
 	background-color: transparent;
 }
+.bg-yellow-500 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(234, 179, 8, var(--tw-bg-opacity));
+}
 .bg-indigo-100 {
 	--tw-bg-opacity: 1;
 	background-color: rgba(224, 231, 255, var(--tw-bg-opacity));
@@ -1772,10 +1776,6 @@ select {
 .bg-sky-500 {
 	--tw-bg-opacity: 1;
 	background-color: rgba(14, 165, 233, var(--tw-bg-opacity));
-}
-.bg-yellow-500 {
-	--tw-bg-opacity: 1;
-	background-color: rgba(234, 179, 8, var(--tw-bg-opacity));
 }
 .bg-pink-100 {
 	--tw-bg-opacity: 1;
@@ -4359,6 +4359,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
 	.lg\:w-1\/4 {
 		width: 25%;
+	}
+
+	.lg\:w-3\/4 {
+		width: 75%;
 	}
 
 	.lg\:flex-grow-0 {

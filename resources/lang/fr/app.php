@@ -73,6 +73,8 @@ return [
     'no_price' => 'inconnu',
     'no_tags' => 'pas de mot-clé à afficher...',
     'nothing' => 'ici, il n’y a encore rien à afficher...',
+    'optional' => 'information optionnelle',
+    'other' => 'autre',
     'place' => 'lieu d’exposition',
     'places' => 'lieux d’exposition',
     'places_all' => 'toutes les catégories',
@@ -82,14 +84,13 @@ return [
     'public' => 'public',
     'price' => 'prix d’entrée',
     'propose' => 'proposer',
-    'optional' => 'information optionnelle',
-    'other' => 'autre',
     'region' => 'continent du pays',
     'save' => 'enregistrer',
     'search' => 'rechercher',
     'slug' => 'identifiant unique textuel',
     'statistics' => 'statistiques',
     'subregion' => 'sous-continent du pays',
+    'suggestions' => 'suggestions',
     'status' => 'status',
     'tag' => 'mot-clé',
     'tags' => 'mots-clés',
@@ -113,7 +114,7 @@ return [
     'tag_info' => 'Un mot-clé (ou tag) vous permet de ranger les expositions temporaires
         référencées sur le site. Vous pouvez également créer une catégorie afin d’y ranger le mot-clé
         dans une typologie plus globale.',
-    'propose_info' => 'Vous pouvez proposer à tout moment une exposition temporaire. Elle devra être validée par 
+    'propose_info' => 'Vous pouvez proposer à tout moment une exposition temporaire. Elle devra être validée par
         un des administrateurs pour qu’elle soit publiée.',
 
     // Placeholders
