@@ -60,9 +60,7 @@ document.addEventListener('livewire:load', function () {
         center: [48.8635, 2.354],
         zoom: 2.5,
         layers: [
-            with_past_exhibition,
-            with_current_exhibition,
-            with_future_exhibition
+            with_current_exhibition
         ]
     });
 
