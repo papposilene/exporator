@@ -6,9 +6,10 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
-use Laravel\Jetstream\HasTeams;
+//use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -16,9 +17,18 @@ class User extends Authenticatable
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
-    use HasTeams;
+    //use HasTeams;
     use Notifiable;
     use TwoFactorAuthenticatable;
+
+    protected $primaryKey = 'uuid';
+
+    /**
+     * Indicates if the IDs are auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = false;
 
     /**
      * The attributes that are mass assignable.
@@ -26,6 +36,7 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
+        'uuid',
         'name',
         'email',
         'password',
@@ -62,6 +73,18 @@ class User extends Authenticatable
     ];
 
     /**
+     * Boot the Model.
+     */
+    public static function boot()
+    {
+        parent::boot();
+
+        self::creating(function ($model) {
+            $model->uuid = (string) Str::uuid();
+        });
+    }
+
+    /**
      * Get all the institutions followed by an user.
      */
     public function followedPlaces()
@@ -69,9 +92,9 @@ class User extends Authenticatable
         return $this->hasManyThrough(
             'App\Models\Place',
             'App\Models\UserPlace',
-            'user_id',
+            'user_uuid',
             'uuid',
-            'id',
+            'uuid',
             'place_uuid'
         );
     }
@@ -84,9 +107,9 @@ class User extends Authenticatable
         return $this->hasManyThrough(
             'App\Models\Exhibition',
             'App\Models\UserExhibition',
-            'user_id',
+            'user_uuid',
             'uuid',
-            'id',
+            'uuid',
             'exhibition_uuid'
         );
     }
@@ -99,9 +122,9 @@ class User extends Authenticatable
         return $this->hasManyThrough(
             'App\Models\Tag',
             'App\Models\UserTag',
-            'user_id',
+            'user_uuid',
             'id',
-            'id',
+            'uuid',
             'tag_id'
         );
     }

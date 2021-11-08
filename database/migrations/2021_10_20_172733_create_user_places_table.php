@@ -15,8 +15,8 @@ class CreateUserPlacesTable extends Migration
     {
         Schema::create('user_places', function (Blueprint $table) {
             $table->uuid('uuid')->primary();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->uuid('user_uuid');
+            $table->foreign('user_uuid')->references('uuid')->on('users');
             $table->uuid('place_uuid');
             $table->foreign('place_uuid')->references('uuid')->on('places');
             $table->timestamps();

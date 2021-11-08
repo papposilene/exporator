@@ -40,7 +40,7 @@ class UserController extends Controller
         $place = Place::findOrFail($request->input('place'));
 
         UserPlace::create([
-            'user_id' => $user,
+            'user_uuid' => $user,
             'place_uuid' => $place->uuid,
         ]);
 
@@ -81,7 +81,7 @@ class UserController extends Controller
         $exhibition = Exhibition::findOrFail($request->input('exhibition'));
 
         UserExhibition::create([
-            'user_id' => $user,
+            'user_uuid' => $user,
             'exhibition_uuid' => $exhibition->uuid,
             'visited_at' => null,
         ]);
@@ -105,7 +105,7 @@ class UserController extends Controller
         $exhibition = Exhibition::findOrFail($request->input('exhibition'));
 
         UserExhibition::updateOrCreate([
-            'user_id' => $user,
+            'user_uuid' => $user,
             'exhibition_uuid' => $exhibition->uuid,
         ],
         [
@@ -149,7 +149,7 @@ class UserController extends Controller
         $exhibition = Exhibition::findOrFail($request->input('exhibition'));
 
         UserExhibition::updateOrCreate([
-            'user_id' => $user,
+            'user_uuid' => $user,
             'exhibition_uuid' => $exhibition->uuid,
         ],
         [
@@ -175,7 +175,7 @@ class UserController extends Controller
         $tag = Tag::findOrFail($request->input('tag'));
 
         UserTag::updateOrCreate([
-            'user_id' => $user,
+            'user_uuid' => $user,
             'tag_id' => $tag->id,
         ]);
 

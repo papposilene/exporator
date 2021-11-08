@@ -15,8 +15,8 @@ class CreateUserExhibitionsTable extends Migration
     {
         Schema::create('user_exhibitions', function (Blueprint $table) {
             $table->uuid('uuid')->primary();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->uuid('user_uuid');
+            $table->foreign('user_uuid')->references('uuid')->on('users');
             $table->uuid('exhibition_uuid');
             $table->foreign('exhibition_uuid')->references('uuid')->on('exhibitions');
             $table->date('visited_at')->nullable();

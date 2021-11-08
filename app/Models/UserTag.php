@@ -63,7 +63,7 @@ class UserTag extends Model
      */
     protected $fillable = [
         'uuid',
-        'user_id',
+        'user_uuid',
         'tag_id',
     ];
 
