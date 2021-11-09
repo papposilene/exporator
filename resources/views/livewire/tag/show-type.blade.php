@@ -24,7 +24,7 @@
             </div>
             @endif
 
-            <div class="py-5">
+            <div class="grid grid-cols-1 lg:grid-cols-2 py-5">
                 <canvas id="chartType" width="400" height="400"></canvas>
 
             </div>
