@@ -31,7 +31,6 @@ class TagController extends Controller
      */
     public function stat_tag($slug, Tag $tag)
     {
-        //$dataChart = [];
         $tags = Tag::where('slug->' . app()->getLocale(), $slug)->get();
 
         foreach ($tags as $tag)
@@ -71,6 +70,72 @@ class TagController extends Controller
             ],
             'options' => [
                 'indexAxis' => 'y',
+                'title' => [
+                    'display' => true,
+                    'fontColor' => '#fff',
+                    'position' => 'top',
+                    'text' => ucfirst(__('chart.tag_by_year')),
+                ],
+                'responsive' => true,
+                'legend' => [
+                    'display' => false,
+                    'position' => 'bottom',
+                    'fontColor' => '#fff',
+                ],
+            ],
+        ])->all();
+
+        return $statistics;
+    }
+
+    /**
+     * Retrieve the statistics for a type of tag.
+     *
+     * @param  $slug
+     * @param  \App\Models\Tag  $tag
+     * @return \Illuminate\Http\Response
+     */
+    public function stat_type($slug, Tag $tag)
+    {
+        $type = Tag::where('type', $slug)->get();
+
+        foreach ($type as $tag)
+        {
+            $exhibitions = $tag->hasExhibitions()->get();
+            $dataYears = $exhibitions->groupBy(function($date) {
+                // Solution found at https://stackoverflow.com/a/25538667
+                return Carbon::parse($date->began_at)->format('Y'); // grouping by years
+                //return Carbon::parse($date->created_at)->format('m'); // grouping by months
+            });
+
+            $dataYears = $dataYears->toArray();
+            krsort($dataYears);
+            foreach ($dataYears as $year => $value)
+            {
+                $years[$year] = count($value);
+            }
+
+            $dataChart[] = [
+                'axis' => 'x',
+                'label' => ucfirst(__('chart.tag_by_year')),
+                'data' => array_values($years),
+                'backgroundColor' => [
+                    '#F87171',
+                ],
+                'borderColor' => '#000',
+            ];
+        }
+
+        $statistics = collect([
+            'data' => [
+                'total' => $type->count(),
+            ],
+            'chart' => [
+                'labels' => array_keys($years),
+                'datasets' => $dataChart,
+            ],
+            'options' => [
+                'indexAxis' => 'x',
                 'title' => [
                     'display' => true,
                     'fontColor' => '#fff',
