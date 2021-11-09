@@ -139,7 +139,7 @@
                                 <x-jet-dropdown-link href="{{ route('logout') }}"
                                          onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                    {{ __('Log Out') }}
+                                    @ucfirst(__('auth.logout'))
                                 </x-jet-dropdown-link>
                             </form>
                         </x-slot>
@@ -232,7 +232,7 @@
                     <x-jet-responsive-nav-link href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                     this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        @ucfirst(__('auth.logout'))
                     </x-jet-responsive-nav-link>
                 </form>
 
