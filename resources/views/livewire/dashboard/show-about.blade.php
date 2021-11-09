@@ -18,13 +18,10 @@
                 trois formes différentes, à savoir :
                 <ol class="list-inside list-decimal mb-3">
                     <li>
-                        <a href="{{ route('front.exhibition.index') }}" class="text-white hover:text-red-400">une liste des expositions temporaires</a>,
+                        <a href="{{ route('front.exhibition.index') }}" class="hover:text-red-400">une liste des expositions temporaires</a>,
                     </li>
                     <li>
-                        <a href="{{ route('front.exhibition.map') }}" class="text-white hover:text-red-400">une cartographie des expositions en cours</a>,
-                    </li>
-                    <li>
-                        <a href="{{ route('front.exhibition.calendar') }}" class="text-white hover:text-red-400">un agenda des expositions pour le mois en cours</a>.
+                        <a href="{{ route('front.exhibition.map') }}" class="hover:text-red-400">une cartographie des expositions en cours</a>.
                     </li>
                 </ol>
             </p>
@@ -34,13 +31,13 @@
                 restantes.
             </p>
             <p class="mt-7 mb-3">
-                Créée par <a href="https://dev.psln.nl/" class="text-sky-700 hover:text-red-600" target="_blank" rel="noopener">Philippe-Alexandre Pierre</a>
+                Créée par <a href="https://dev.psln.nl/" class="hover:text-red-600" target="_blank" rel="noopener">Philippe-Alexandre Pierre</a>
                  en 2021, cette application web a été réalisée avec le <a href="https://laravel.com/docs/8.x"
-                 class="text-sky-700 hover:text-red-600" target="_blank" rel="noopener">framework Laravel 8</a>,
-                 <a href="https://laravel-livewire.com/docs/2.x/" class="text-sky-700 hover:text-red-600" target="_blank" rel="noopener">Livewire 2</a>
-                 et <a href="https://tailwindcss.com/" class="text-sky-700 hover:text-red-600" target="_blank" rel="noopener">TailwindCSS 2</a>.
+                 class="hover:text-red-600" target="_blank" rel="noopener">framework Laravel 8</a>,
+                 <a href="https://laravel-livewire.com/docs/2.x/" class="hover:text-red-600" target="_blank" rel="noopener">Livewire 2</a>
+                 et <a href="https://tailwindcss.com/" class="hover:text-red-600" target="_blank" rel="noopener">TailwindCSS 2</a>.
                  Enfin, son code-source complet, sous licence MIT, est <a href="https://github.com/papposilene/exporator"
-                class="text-sky-700 hover:text-red-600" target="_blank" rel="noopener">disponible sur Github</a>.
+                class="hover:text-red-600" target="_blank" rel="noopener">disponible sur Github</a>.
             </p>
             <p class="mt-7 mb-3">
                 <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button"
