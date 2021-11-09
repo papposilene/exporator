@@ -55,8 +55,7 @@ class RoleSeeder extends Seeder
         $role = Role::create(['name' => 'super-admin']);
         $role->givePermissionTo(Permission::all());
 
-        // or may be done by chaining
-        $role = Role::create(['name' => 'editor'])
+        $role = Role::create(['name' => 'moderator'])
             ->givePermissionTo([
                 'create places',
                 'update places',
@@ -74,6 +73,33 @@ class RoleSeeder extends Seeder
                 'create tags',
                 'update tags',
                 'delete tags',
+                'publish tags',
+                'unpublish tags',
+                'follow tags',
+                'unfollow tags',
+                'create reviews',
+                'update reviews',
+                'delete reviews',
+                'publish reviews',
+                'unpublish reviews',
+            ]);
+
+        $role = Role::create(['name' => 'editor'])
+            ->givePermissionTo([
+                'create places',
+                'update places',
+                'publish places',
+                'unpublish places',
+                'follow places',
+                'unfollow places',
+                'create exhibitions',
+                'update exhibitions',
+                'publish exhibitions',
+                'unpublish exhibitions',
+                'follow exhibitions',
+                'unfollow exhibitions',
+                'create tags',
+                'update tags',
                 'publish tags',
                 'unpublish tags',
                 'follow tags',
