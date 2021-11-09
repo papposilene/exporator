@@ -133,9 +133,9 @@ class Place extends Model
             'App\Models\User',
             'App\Models\UserPlace',
             'place_uuid',
-            'id',
             'uuid',
-            'user_id'
+            'uuid',
+            'user_uuid'
         );
     }
 }

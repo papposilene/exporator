@@ -111,9 +111,9 @@ class Exhibition extends Model
             'App\Models\User',
             'App\Models\UserExhibition',
             'exhibition_uuid',
-            'id',
             'uuid',
-            'user_id'
+            'uuid',
+            'user_uuid'
         );
     }
 }
