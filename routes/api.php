@@ -42,8 +42,9 @@ Route::prefix('1.1')->group(function () {
     Route::get('/tags', [TagController::class, 'index'])->name('api.tag.index');
     Route::get('/tag/{slug}', [TagController::class, 'show'])->name('api.tag.show');
     Route::get('/statistics/tags', [TagController::class, 'stat_tags'])->name('api.tag.stat_tags');
+    Route::get('/statistics/tags/type/{slug}', [TagController::class, 'stat_type'])->name('api.tag.stat_type');
     Route::get('/statistics/tag/{slug}', [TagController::class, 'stat_tag'])->name('api.tag.stat_tag');
-    
+
     // Users
     Route::get('/user/{id}', [UserController::class, 'show'])->name('api.user.show');
 });

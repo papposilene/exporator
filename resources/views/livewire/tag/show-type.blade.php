@@ -1,4 +1,4 @@
-@section('title', @ucfirst($tag->type))
+@section('title', @ucfirst($type->type))
 
 <div>
     <x-slot name="header">
@@ -8,7 +8,7 @@
                     @ucfirst(__('app.list_of', ['what' => __('app.tags')]))
                 </a>
             </span> /
-            <span>@ucfirst($tag->type)</span>
+            <span>@ucfirst($type->type)</span>
         </h2>
     </x-slot>
 
@@ -110,7 +110,7 @@ document.addEventListener('livewire:load', function () {
     const chartErrored = false;
     const chartLoading = true;
     const ctx = document.getElementById('chartType').getContext('2d');
-    axios.get('{{ route("api.tag.stat") }}')
+    axios.get("{{ route('api.tag.stat_type', ['slug' => $type->slug]) }}")
         .then(response => {
             new Chart(document.getElementById('chartType').getContext('2d'), {
                 type: 'pie',
