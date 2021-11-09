@@ -51,10 +51,11 @@ class RoleSeeder extends Seeder
 
         // create roles and assign created permissions
 
-        // this can be done as separate statements
-        $role = Role::create(['name' => 'super-admin']);
-        $role->givePermissionTo(Permission::all());
+        // Role: administrator
+        $role = Role::create(['name' => 'super-admin'])
+            ->givePermissionTo(Permission::all());
 
+        // Role: moderator
         $role = Role::create(['name' => 'moderator'])
             ->givePermissionTo([
                 'create places',
@@ -84,6 +85,7 @@ class RoleSeeder extends Seeder
                 'unpublish reviews',
             ]);
 
+        // Role: editor
         $role = Role::create(['name' => 'editor'])
             ->givePermissionTo([
                 'create places',
@@ -111,7 +113,8 @@ class RoleSeeder extends Seeder
                 'unpublish reviews',
             ]);
 
-            $role = Role::create(['name' => 'user'])
+        // Role: user
+        $role = Role::create(['name' => 'user'])
             ->givePermissionTo([
                 'follow places',
                 'unfollow places',
@@ -125,7 +128,5 @@ class RoleSeeder extends Seeder
                 'publish reviews',
                 'unpublish reviews',
             ]);
-
-
     }
 }
