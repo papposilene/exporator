@@ -18,7 +18,7 @@ class RoleSeeder extends Seeder
         // Reset cached roles and permissions
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
-        // create permissions
+        // Create permissions for places
         Permission::create(['name' => 'create places']);
         Permission::create(['name' => 'update places']);
         Permission::create(['name' => 'delete places']);
@@ -27,6 +27,7 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'follow places']);
         Permission::create(['name' => 'unfollow places']);
 
+        // Create permissions for exhibitions
         Permission::create(['name' => 'create exhibitions']);
         Permission::create(['name' => 'update exhibitions']);
         Permission::create(['name' => 'delete exhibitions']);
@@ -35,6 +36,7 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'follow exhibitions']);
         Permission::create(['name' => 'unfollow exhibitions']);
 
+        // Create permissions for tags
         Permission::create(['name' => 'create tags']);
         Permission::create(['name' => 'update tags']);
         Permission::create(['name' => 'delete tags']);
@@ -43,19 +45,20 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'follow tags']);
         Permission::create(['name' => 'unfollow tags']);
 
+        // Create permissions for reviews
         Permission::create(['name' => 'create reviews']);
         Permission::create(['name' => 'update reviews']);
         Permission::create(['name' => 'delete reviews']);
         Permission::create(['name' => 'publish reviews']);
         Permission::create(['name' => 'unpublish reviews']);
+        Permission::create(['name' => 'follow reviews']);
+        Permission::create(['name' => 'unfollow reviews']);
 
-        // create roles and assign created permissions
-
-        // Role: administrator
+        // Create role for administrator
         $role = Role::create(['name' => 'super-admin'])
             ->givePermissionTo(Permission::all());
 
-        // Role: moderator
+        // Create role for moderator
         $role = Role::create(['name' => 'moderator'])
             ->givePermissionTo([
                 'create places',
@@ -85,7 +88,7 @@ class RoleSeeder extends Seeder
                 'unpublish reviews',
             ]);
 
-        // Role: editor
+        // Create role for editor
         $role = Role::create(['name' => 'editor'])
             ->givePermissionTo([
                 'create places',
@@ -113,7 +116,7 @@ class RoleSeeder extends Seeder
                 'unpublish reviews',
             ]);
 
-        // Role: user
+        // Create role for user
         $role = Role::create(['name' => 'user'])
             ->givePermissionTo([
                 'follow places',
