@@ -50,7 +50,7 @@
                     </a>
                     @endauth
                 </div>
-                <x-forms.input wire:model="search" type="search" class="ml-2" :placeholder="@ucfirst(__('app.search'))" />
+                <x-forms.input wire:model="search" type="search" class="dark:text-gray-800 dark:bg-bluegray-300 ml-2" :placeholder="@ucfirst(__('app.search'))" />
             </div>
             {{ $tags->links() }}
             <div class="py-5">

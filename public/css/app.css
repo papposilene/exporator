@@ -4025,6 +4025,13 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	--tw-bg-opacity: 1;
 	background-color: rgba(82, 82, 91, var(--tw-bg-opacity));
 }
+.dark .dark\:bg-gray-500 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(113, 113, 122, var(--tw-bg-opacity));
+}
+.dark .dark\:bg-transparent {
+	background-color: transparent;
+}
 .dark .dark\:text-bluegray-100 {
 	--tw-text-opacity: 1;
 	color: rgba(241, 245, 249, var(--tw-text-opacity));
