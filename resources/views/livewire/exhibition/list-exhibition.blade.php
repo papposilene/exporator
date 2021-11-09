@@ -7,7 +7,7 @@
         <livewire:modals.import-exhibition />
         @endif
         @endauth
-        <h2 class="font-semibold text-xl text-bluegray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-bluegray-800 dark:text-bluegray-100 leading-tight">
             <span>@ucfirst(__('app.list_of', ['what' => __('app.exhibitions')]))</span>
         </h2>
     </x-slot>
@@ -70,7 +70,7 @@
                         if ($exhibition->is_published === false) {
                             $is_not_published = 'font-bold text-red-500';
                         }
-                        
+
                         $today = date('Y-m-d');
                         if ($today > $exhibition->began_at && $today < $exhibition->ended_at) {
                             // Current exhibition

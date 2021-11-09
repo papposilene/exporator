@@ -2,7 +2,7 @@
 
 <div>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-bluegray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-bluegray-800 dark:text-bluegray-100 leading-tight">
             <span>
                 <a href="{{ route('front.place.show', ['slug' => $exhibition->inPlace->slug]) }}">
                     {{ $exhibition->inPlace->name }}
@@ -70,7 +70,7 @@
                 </ul>
             </div>
             @endif
-            
+
             @if ($exhibition->is_published === false)
             <div class="bg-red-500 border border-red-700 mb-3 p-3 rounded shadow text-white font-bold">
                 <ul>

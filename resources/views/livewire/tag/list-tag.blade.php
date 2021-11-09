@@ -7,7 +7,7 @@
         <livewire:modals.create-tag />
         @endif
         @endauth
-        <h2 class="font-semibold text-xl text-bluegray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-bluegray-800 dark:text-bluegray-100 leading-tight">
             <span>@ucfirst(__('app.list_of', ['what' => __('app.tags')]))</span>
         </h2>
     </x-slot>

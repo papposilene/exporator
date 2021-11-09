@@ -43,26 +43,14 @@
         @endif
     </head>
 
-    <body class="antialiased font-sans bg-bluegray-100 dark:bg-bluegray-900" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <body class="antialiased font-sans bg-bluegray-100 dark:bg-gray-700" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
         <div class="flex flex-col h-min-screen">
             <livewire:menu />
 
             <!-- Page Heading -->
             @if (isset($header))
-            <header class="flex bg-white dark:bg-black shadow">
+            <header class="flex bg-white dark:bg-gray-900 shadow">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 w-full">
-                    <div class="float-right">
-                        <x-forms.button @click="darkMode = !darkMode">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                                    d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                                    d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                            </svg>
-                        </x-forms.button>
-                    </div>
                     {{ $header }}
                 </div>
             </header>
@@ -73,7 +61,7 @@
                 {{ $slot }}
             </main>
 
-            <footer class="flex bg-bluegray-200 dark:bg-bluegray-800 shadow">
+            <footer class="flex bg-bluegray-200 dark:bg-gray-800 shadow">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 w-full">
                     <x-footer />
                 </div>

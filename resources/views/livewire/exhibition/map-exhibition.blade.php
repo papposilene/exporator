@@ -2,7 +2,7 @@
 
 <div>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-bluegray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-bluegray-800 dark:text-bluegray-100 leading-tight">
             <span>@ucfirst(__('app.map_of', ['what' => __('app.exhibitions')]))</span>
         </h2>
     </x-slot>

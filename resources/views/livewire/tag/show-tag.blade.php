@@ -10,7 +10,7 @@
         <livewire:modals.edit-tag :tag="$tag" :wire:key="$tag->id" />
         @endif
         @endauth
-        <h2 class="font-semibold text-xl text-bluegray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-bluegray-800 dark:text-bluegray-100 leading-tight">
             <span>
                 <a href="{{ route('front.tag.index') }}">
                     @ucfirst(__('app.list_of', ['what' => __('app.tags')]))

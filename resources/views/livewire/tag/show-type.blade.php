@@ -2,7 +2,7 @@
 
 <div>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-bluegray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-bluegray-800 dark:text-bluegray-100 leading-tight">
             <span>
                 <a href="{{ route('front.tag.index') }}">
                     @ucfirst(__('app.list_of', ['what' => __('app.tags')]))
@@ -23,10 +23,10 @@
                 </ul>
             </div>
             @endif
-            
+
             <div class="py-5">
                 <canvas id="chartType" width="400" height="400"></canvas>
-            
+
             </div>
 
             @if($exhibitions->count() > 0)
