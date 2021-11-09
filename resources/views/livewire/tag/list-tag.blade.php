@@ -29,17 +29,13 @@
                     @auth
                     <a href="?filter=" class="flex flex-auto text-base md:rounded-r-none hover:scale-110 focus:outline-none
                         justify-center px-4 py-2 rounded font-bold cursor-pointer hover:text-black
-                        hover:bg-bluegray-300 dark:hover:bg-gray-600
-                        dark:text-white bg-bluegray-200 dark:bg-gray-800
-                        hover:border-bluegray-400 dark:hover:border-gray-800
+                        hover:bg-bluegray-300 bg-bluegray-200 hover:border-bluegray-400
                         border duration-200 ease-in-out transition">
                         <div class="flex leading-5">@ucfirst(__('app.all'))</div>
                     </a>
                     <a href="?filter=followed" class="flex flex-auto text-base md:rounded-l-none hover:scale-110 focus:outline-none
                         justify-center px-4 py-2 rounded font-bold cursor-pointer hover:text-black
-                        hover:bg-bluegray-300 dark:hover:bg-gray-600
-                        dark:text-white bg-bluegray-200 dark:bg-gray-800
-                        hover:border-bluegray-400 dark:hover:border-gray-800
+                        hover:bg-bluegray-300 bg-bluegray-200 hover:border-bluegray-400
                         border duration-200 ease-in-out transition">
                         <div class="flex leading-5">
                             <svg xmlns="http://www.w3.org/2000/svg" class="text-yellow-500 h-6 w-6" fill="yes" viewBox="0 0 24 24" stroke="currentColor" title="@ucfirst(__('app.followed'))">

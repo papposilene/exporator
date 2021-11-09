@@ -2,14 +2,12 @@
 
 namespace App\Policies;
 
-use App\Models\Team;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Laravel\Jetstream\HasTeams;
 
 class UserPolicy
 {
-    use HandlesAuthorization, hasTeams;
+    use HandlesAuthorization;
 
     /**
      * Determine whether the user can view any models.

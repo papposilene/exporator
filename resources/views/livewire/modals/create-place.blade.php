@@ -11,7 +11,7 @@
         <!-- Modal -->
         <div class="bg-white dark:bg-gray-700 dark:text-white overflow-auto w-1/2 h-1/2 p-12">
             <!-- Close modal button-->
-            <button id="modalCloseCreateMuseum" type="button" class="focus:outline-none float-right">
+            <button id="modalCloseCreatePlace" type="button" class="focus:outline-none float-right">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

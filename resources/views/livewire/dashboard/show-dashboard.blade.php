@@ -23,17 +23,18 @@
                     <p class="mb-3">
                         Vous trouverez sur ce site les expositions temporaires actuellement en cours et futures (et
                         celles déjà passées, mais bon...) disponibles sous la forme d’<a href="{{ route('front.exhibition.index') }}"
-                        class="text-white hover:text-red-400">une simple liste</a>, d’<a href="{{ route('front.exhibition.map') }}"
-                        class="text-white hover:text-red-400">une représentation cartographique</a> et
-                        d’<a href="{{ route('front.exhibition.calendar') }}" class="text-white hover:text-red-400">un agenda</a>.
+                        class="text-white hover:text-red-400">une simple liste</a> et d’<a href="{{ route('front.exhibition.map') }}"
+                        class="text-white hover:text-red-400">une représentation cartographique</a>.
                     </p>
                 </div>
+                @guest
                 <div class="mb-3">
                     <a href="{{ route('login') }}" class="text-white hover:text-red-400">@ucfirst(__('auth.login'))</a>
                     @if (Route::has('register'))
                     <a href="{{ route('register') }}" class="text-white hover:text-red-400">@ucfirst(__('auth.register'))</a>
                     @endif
                 </div>
+                @endguest
             </div>
         </div>
         <div class="flex flex-col lg:flex-row flex-wrap max-w-7xl mx-auto -mt-8 py-5 px-6">

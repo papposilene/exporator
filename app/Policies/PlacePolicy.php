@@ -3,14 +3,12 @@
 namespace App\Policies;
 
 use App\Models\Place;
-use App\Models\Team;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Laravel\Jetstream\HasTeams;
 
 class PlacePolicy
 {
-    use HandlesAuthorization, hasTeams;
+    use HandlesAuthorization;
 
     /**
      * Determine whether the user can view any models.

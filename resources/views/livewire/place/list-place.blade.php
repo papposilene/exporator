@@ -28,8 +28,8 @@
             <div class="relative flex items-center justify-between mb-2 w-full">
                 <div class="flex flex-wrap">
                     <a href="?type=" class="flex flex-auto text-base md:rounded-r-none hover:scale-110 focus:outline-none
-                        justify-center px-4 py-2 hover:rounded font-bold cursor-pointer
-                        hover:bg-bluegray-300 hover:text-black bg-bluegray-200 border duration-200 ease-in-out hover:border-bluegray-400 transition">
+                        justify-center px-4 py-2 hover:rounded font-bold cursor-pointer border duration-200 ease-in-out transition
+                        hover:bg-bluegray-300 hover:text-black bg-bluegray-200 hover:border-bluegray-400">
                         <div class="flex leading-5">@ucfirst(__('app.all'))</div>
                     </a>
                     @foreach($types as $type)

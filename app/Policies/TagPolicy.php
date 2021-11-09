@@ -3,14 +3,12 @@
 namespace App\Policies;
 
 use App\Models\Tag;
-use App\Models\Team;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Laravel\Jetstream\HasTeams;
 
 class TagPolicy
 {
-    use HandlesAuthorization, hasTeams;
+    use HandlesAuthorization;
 
     /**
      * Determine whether the user can view any models.
