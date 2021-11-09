@@ -112,7 +112,7 @@ document.addEventListener('livewire:load', function () {
     axios.get("{{ route('api.tag.stat_type', ['slug' => $type->type]) }}")
         .then(response => {
             new Chart(document.getElementById('chartType').getContext('2d'), {
-                type: 'line',
+                type: 'bar',
                 data: response.data.chart,
                 options: response.data.options,
             });

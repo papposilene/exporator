@@ -102,6 +102,17 @@ class TagController extends Controller
         foreach ($type as $tag)
         {
             $exhibitions = $tag->hasExhibitions()->get();
+            $count[] = $exhibitions->groupBy(function($date) {
+                // Solution found at https://stackoverflow.com/a/25538667
+                return Carbon::parse($date->began_at)->format('Y'); // grouping by years
+            });
+        }
+        dd(max($count));
+
+        foreach ($type as $tag)
+        {
+
+            $exhibitions = $tag->hasExhibitions()->get();
             $dataYears = $exhibitions->groupBy(function($date) {
                 // Solution found at https://stackoverflow.com/a/25538667
                 return Carbon::parse($date->began_at)->format('Y'); // grouping by years
@@ -117,25 +128,27 @@ class TagController extends Controller
 
             $dataChart[] = [
                 'axis' => 'x',
-                'label' => ucfirst(__('chart.tag_by_year')),
+                'label' => $tag->name,
                 'data' => array_values($years),
                 'backgroundColor' => [
                     '#F87171',
+                    '#cc0000',
+                    '#dd0000',
                 ],
                 'borderColor' => '#000',
             ];
         }
 
         $statistics = collect([
-            'data' => [
-                'total' => $type->count(),
-            ],
             'chart' => [
                 'labels' => array_keys($years),
                 'datasets' => $dataChart,
             ],
             'options' => [
                 'indexAxis' => 'x',
+                'x' => [
+                    'stacked' => true,
+                ],
                 'title' => [
                     'display' => true,
                     'fontColor' => '#fff',

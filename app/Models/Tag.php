@@ -101,6 +101,18 @@ class Tag extends Model
     }
 
     /**
+     * Get all the exhibitions for a specific tag.
+     */
+    public function hasTagged()
+    {
+        return $this->hasMany(
+            'App\Models\Tagged',
+            'tag_id',
+            'taggable_id'
+        );
+    }
+
+    /**
      * Get if the user has followed the place
      */
     public function isFollowed()
