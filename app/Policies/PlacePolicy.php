@@ -28,7 +28,7 @@ class PlacePolicy
      * @param  \App\Models\Place  $place
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(?User $user, Place $place)
+    public function view(User $user, Place $place)
     {
         //
     }
@@ -41,7 +41,8 @@ class PlacePolicy
      */
     public function create(User $user)
     {
-        if ($user->can('create places')) {
+        if ($user->can('create places'))
+        {
             return true;
         }
     }
@@ -55,7 +56,8 @@ class PlacePolicy
      */
     public function update(User $user, Place $place)
     {
-        if ($user->can('update places')) {
+        if ($user->can('update places'))
+        {
             return true;
         }
     }
@@ -69,7 +71,8 @@ class PlacePolicy
      */
     public function delete(User $user, Place $place)
     {
-        if ($user->can('delete places')) {
+        if ($user->can('delete places'))
+        {
             return true;
         }
     }
@@ -83,7 +86,8 @@ class PlacePolicy
      */
     public function restore(User $user, Place $place)
     {
-        if ($user->can('restore places')) {
+        if ($user->can('restore places'))
+        {
             return true;
         }
     }

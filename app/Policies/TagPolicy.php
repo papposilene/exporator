@@ -28,7 +28,7 @@ class TagPolicy
      * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(?User $user, Tag $tag)
+    public function view(User $user, Tag $tag)
     {
         //
     }
@@ -41,7 +41,8 @@ class TagPolicy
      */
     public function create(User $user)
     {
-        if ($user->can('create tags')) {
+        if ($user->can('create tags'))
+        {
             return true;
         }
     }
@@ -55,7 +56,8 @@ class TagPolicy
      */
     public function update(User $user, Tag $tag)
     {
-        if ($user->can('update tags')) {
+        if ($user->can('update tags'))
+        {
             return true;
         }
     }
@@ -69,7 +71,8 @@ class TagPolicy
      */
     public function delete(User $user, Tag $tag)
     {
-        if ($user->can('delete tags')) {
+        if ($user->can('delete tags'))
+        {
             return true;
         }
     }
@@ -83,7 +86,8 @@ class TagPolicy
      */
     public function restore(User $user, Tag $tag)
     {
-        if ($user->can('restore tags')) {
+        if ($user->can('restore tags'))
+        {
             return true;
         }
     }

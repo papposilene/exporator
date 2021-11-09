@@ -28,7 +28,7 @@ class ExhibitionPolicy
      * @param  \App\Models\Exhibition  $exhibition
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(?User $user, Exhibition $exhibition)
+    public function view(User $user, Exhibition $exhibition)
     {
         //
     }
@@ -41,7 +41,8 @@ class ExhibitionPolicy
      */
     public function create(User $user)
     {
-        if ($user->can('create exhibitions')) {
+        if ($user->can('create exhibitions'))
+        {
             return true;
         }
     }
@@ -55,7 +56,8 @@ class ExhibitionPolicy
      */
     public function update(User $user, Exhibition $exhibition)
     {
-        if ($user->can('update exhibitions')) {
+        if ($user->can('update exhibitions'))
+        {
             return true;
         }
     }
@@ -69,7 +71,8 @@ class ExhibitionPolicy
      */
     public function delete(User $user, Exhibition $exhibition)
     {
-        if ($user->can('delete exhibitions')) {
+        if ($user->can('delete exhibitions'))
+        {
             return true;
         }
     }
@@ -83,7 +86,8 @@ class ExhibitionPolicy
      */
     public function restore(User $user, Exhibition $exhibition)
     {
-        if ($user->can('restore exhibitions')) {
+        if ($user->can('restore exhibitions'))
+        {
             return true;
         }
     }
