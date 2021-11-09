@@ -19,8 +19,6 @@
                     <p class="text-lg">
                         L'Exporateur, mot-valise entre <em>exposition</em> et <em>explorateur</em>, est un (énième ?)
                         site de référencement des expositions temporaires à Paris et ses proches alentours.
-                    </p>
-                    <p class="mb-3">
                         Vous trouverez sur ce site les expositions temporaires actuellement en cours et futures (et
                         celles déjà passées, mais bon...) disponibles sous la forme d’<a href="{{ route('front.exhibition.index') }}"
                         class="text-white hover:text-red-400">une simple liste</a> et d’<a href="{{ route('front.exhibition.map') }}"
