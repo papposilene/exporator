@@ -82,7 +82,7 @@
                 </div>
 
                 <div class="flex items-center justify-end mt-4">
-                    <x-forms.button class="ml-4 bg-bluegray-500">
+                    <x-forms.button class="ml-4 bg-bluegray-500 p-2">
                         @ucfirst(__('app.import'))
                     </x-forms.button>
                 </div>
