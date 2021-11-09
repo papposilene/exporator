@@ -125,8 +125,8 @@ class User extends Authenticatable
             'App\Models\Tag',
             'App\Models\UserTag',
             'user_uuid',
-            'id',
             'uuid',
+            'id',
             'tag_id'
         );
     }

@@ -109,9 +109,9 @@ class Tag extends Model
             'App\Models\User',
             'App\Models\UserTag',
             'tag_id',
+            'uuid',
             'id',
-            'id',
-            'user_id'
+            'user_uuid'
         );
     }
 }
