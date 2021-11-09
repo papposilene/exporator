@@ -84,7 +84,7 @@
                 </div>
 
                 <div class="flex items-center">
-                    <x-forms.input id="file" class="dark:text-gray-800 dark:bg-bluegray-300 block mt-1 w-full" type="file" name="datafile" required autofocus />
+                    <x-forms.input id="file" class="dark:text-gray-800 dark:bg-bluegray-300 block mt-1 w-full" type="file" name="datafile" required />
                 </div>
 
                 <div class="flex items-center justify-end mt-4">
