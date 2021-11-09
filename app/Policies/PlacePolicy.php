@@ -30,7 +30,7 @@ class PlacePolicy
      * @param  \App\Models\Place  $place
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Place $place)
+    public function view(?User $user, Place $place)
     {
         //
     }
@@ -43,9 +43,9 @@ class PlacePolicy
      */
     public function create(User $user)
     {
-        $team = Team::where('id', $user->current_team_id)->first();
-
-        return $user->hasTeamPermission($team, 'server:update');
+        if ($user->can('create places')) {
+            return true;
+        }
     }
 
     /**
@@ -57,9 +57,9 @@ class PlacePolicy
      */
     public function update(User $user, Place $place)
     {
-        $team = Team::where('id', $user->current_team_id)->first();
-
-        return $user->hasTeamPermission($team, 'server:update');
+        if ($user->can('update places')) {
+            return true;
+        }
     }
 
     /**
@@ -71,9 +71,9 @@ class PlacePolicy
      */
     public function delete(User $user, Place $place)
     {
-        $team = Team::where('id', $user->current_team_id)->first();
-
-        return $user->hasTeamPermission($team, 'server:update');
+        if ($user->can('delete places')) {
+            return true;
+        }
     }
 
     /**
@@ -85,9 +85,9 @@ class PlacePolicy
      */
     public function restore(User $user, Place $place)
     {
-        $team = Team::where('id', $user->current_team_id)->first();
-
-        return $user->hasTeamPermission($team, 'server:update');
+        if ($user->can('restore places')) {
+            return true;
+        }
     }
 
     /**

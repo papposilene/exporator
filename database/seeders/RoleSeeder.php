@@ -22,6 +22,7 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'create places']);
         Permission::create(['name' => 'update places']);
         Permission::create(['name' => 'delete places']);
+        Permission::create(['name' => 'restore places']);
         Permission::create(['name' => 'publish places']);
         Permission::create(['name' => 'unpublish places']);
         Permission::create(['name' => 'follow places']);
@@ -31,6 +32,7 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'create exhibitions']);
         Permission::create(['name' => 'update exhibitions']);
         Permission::create(['name' => 'delete exhibitions']);
+        Permission::create(['name' => 'restore exhibitions']);
         Permission::create(['name' => 'publish exhibitions']);
         Permission::create(['name' => 'unpublish exhibitions']);
         Permission::create(['name' => 'follow exhibitions']);
@@ -40,6 +42,7 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'create tags']);
         Permission::create(['name' => 'update tags']);
         Permission::create(['name' => 'delete tags']);
+        Permission::create(['name' => 'restore tags']);
         Permission::create(['name' => 'publish tags']);
         Permission::create(['name' => 'unpublish tags']);
         Permission::create(['name' => 'follow tags']);
@@ -49,6 +52,7 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'create reviews']);
         Permission::create(['name' => 'update reviews']);
         Permission::create(['name' => 'delete reviews']);
+        Permission::create(['name' => 'restore reviews']);
         Permission::create(['name' => 'publish reviews']);
         Permission::create(['name' => 'unpublish reviews']);
         Permission::create(['name' => 'follow reviews']);
@@ -70,6 +74,7 @@ class RoleSeeder extends Seeder
                 'create exhibitions',
                 'update exhibitions',
                 'delete exhibitions',
+                'restore exhibitions',
                 'publish exhibitions',
                 'unpublish exhibitions',
                 'follow exhibitions',
@@ -77,6 +82,7 @@ class RoleSeeder extends Seeder
                 'create tags',
                 'update tags',
                 'delete tags',
+                'restore tags',
                 'publish tags',
                 'unpublish tags',
                 'follow tags',
@@ -84,6 +90,7 @@ class RoleSeeder extends Seeder
                 'create reviews',
                 'update reviews',
                 'delete reviews',
+                'restore reviews',
                 'publish reviews',
                 'unpublish reviews',
             ]);

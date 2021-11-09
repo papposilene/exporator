@@ -41,9 +41,7 @@ class UserPolicy
      */
     public function create(User $user)
     {
-        $team = Team::where('id', $user->current_team_id)->first();
-
-        return $user->hasTeamPermission($team, 'server:update');
+        //
     }
 
     /**
@@ -54,9 +52,7 @@ class UserPolicy
      */
     public function update(User $user)
     {
-        $team = Team::where('id', $user->current_team_id)->first();
-
-        return $user->hasTeamPermission($team, 'server:update');
+        //
     }
 
     /**
@@ -67,9 +63,7 @@ class UserPolicy
      */
     public function delete(User $user)
     {
-        $team = Team::where('id', $user->current_team_id)->first();
-
-        return $user->hasTeamPermission($team, 'server:update');
+        //
     }
 
     /**
@@ -80,9 +74,7 @@ class UserPolicy
      */
     public function restore(User $user)
     {
-        $team = Team::where('id', $user->current_team_id)->first();
-
-        return $user->hasTeamPermission($team, 'server:update');
+        //
     }
 
     /**

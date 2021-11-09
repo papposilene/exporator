@@ -30,7 +30,7 @@ class TagPolicy
      * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Tag $tag)
+    public function view(?User $user, Tag $tag)
     {
         //
     }
@@ -43,9 +43,9 @@ class TagPolicy
      */
     public function create(User $user)
     {
-        $team = Team::where('id', $user->current_team_id)->first();
-
-        return $user->hasTeamPermission($team, 'server:update');
+        if ($user->can('create tags')) {
+            return true;
+        }
     }
 
     /**
@@ -57,9 +57,9 @@ class TagPolicy
      */
     public function update(User $user, Tag $tag)
     {
-        $team = Team::where('id', $user->current_team_id)->first();
-
-        return $user->hasTeamPermission($team, 'server:update');
+        if ($user->can('update tags')) {
+            return true;
+        }
     }
 
     /**
@@ -71,9 +71,9 @@ class TagPolicy
      */
     public function delete(User $user, Tag $tag)
     {
-        $team = Team::where('id', $user->current_team_id)->first();
-
-        return $user->hasTeamPermission($team, 'server:update');
+        if ($user->can('delete tags')) {
+            return true;
+        }
     }
 
     /**
@@ -85,9 +85,9 @@ class TagPolicy
      */
     public function restore(User $user, Tag $tag)
     {
-        $team = Team::where('id', $user->current_team_id)->first();
-
-        return $user->hasTeamPermission($team, 'server:update');
+        if ($user->can('restore tags')) {
+            return true;
+        }
     }
 
     /**

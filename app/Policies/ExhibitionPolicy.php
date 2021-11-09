@@ -30,7 +30,7 @@ class ExhibitionPolicy
      * @param  \App\Models\Exhibition  $exhibition
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Exhibition $exhibition)
+    public function view(?User $user, Exhibition $exhibition)
     {
         //
     }
@@ -43,9 +43,9 @@ class ExhibitionPolicy
      */
     public function create(User $user)
     {
-        $team = Team::where('id', $user->current_team_id)->first();
-
-        return $user->hasTeamPermission($team, 'server:update');
+        if ($user->can('create exhibitions')) {
+            return true;
+        }
     }
 
     /**
@@ -57,9 +57,9 @@ class ExhibitionPolicy
      */
     public function update(User $user, Exhibition $exhibition)
     {
-        $team = Team::where('id', $user->current_team_id)->first();
-
-        return $user->hasTeamPermission($team, 'server:update');
+        if ($user->can('update exhibitions')) {
+            return true;
+        }
     }
 
     /**
@@ -71,9 +71,9 @@ class ExhibitionPolicy
      */
     public function delete(User $user, Exhibition $exhibition)
     {
-        $team = Team::where('id', $user->current_team_id)->first();
-
-        return $user->hasTeamPermission($team, 'server:update');
+        if ($user->can('delete exhibitions')) {
+            return true;
+        }
     }
 
     /**
@@ -85,9 +85,9 @@ class ExhibitionPolicy
      */
     public function restore(User $user, Exhibition $exhibition)
     {
-        $team = Team::where('id', $user->current_team_id)->first();
-
-        return $user->hasTeamPermission($team, 'server:update');
+        if ($user->can('restore exhibitions')) {
+            return true;
+        }
     }
 
     /**
