@@ -28,21 +28,24 @@
             <div class="relative flex items-center justify-between mb-2 w-full">
                 <div class="flex flex-wrap">
                     <a href="?type=" class="flex flex-auto text-base md:rounded-r-none hover:scale-110 focus:outline-none
-                        justify-center px-4 py-2 hover:rounded font-bold cursor-pointer border duration-200 ease-in-out transition
-                        hover:bg-bluegray-300 hover:text-black bg-bluegray-200 hover:border-bluegray-400">
+                        justify-center px-4 py-2 rounded font-bold cursor-pointer hover:text-black
+                        hover:bg-bluegray-300 bg-bluegray-200 hover:border-bluegray-400
+                        border duration-200 ease-in-out transition">
                         <div class="flex leading-5">@ucfirst(__('app.all'))</div>
                     </a>
                     @foreach($types as $type)
-                    <a href="?type={{ $type->type }}" class="flex flex-auto text-base md:rounded-r-none hover:scale-110 focus:outline-none
-                        justify-center px-4 py-2 hover:rounded font-bold cursor-pointer
-                        hover:bg-bluegray-300 hover:text-black bg-bluegray-200 border duration-200 ease-in-out hover:border-bluegray-400 transition">
+                    <a href="?type={{ $type->type }}" class="flex flex-auto text-base hover:scale-110 focus:outline-none
+                        justify-center px-4 py-2 rounded font-bold cursor-pointer hover:text-black
+                        hover:bg-bluegray-300 bg-bluegray-200 hover:border-bluegray-400
+                        border duration-200 ease-in-out transition">
                         <div class="flex leading-5">@ucfirst(__('app.' . Str::slug($type->type, '_')))</div>
                     </a>
                     @endforeach
                     @auth
-                    <a href="?filter=followed" class="flex flex-auto text-base md:rounded-r-none hover:scale-110 focus:outline-none
-                        justify-center px-4 py-2 hover:rounded font-bold cursor-pointer
-                        hover:bg-bluegray-300 hover:text-black bg-bluegray-200 border duration-200 ease-in-out hover:border-bluegray-400 transition">
+                    <a href="?filter=followed" class="flex flex-auto text-base hover:scale-110 focus:outline-none
+                        justify-center px-4 py-2 rounded font-bold cursor-pointer hover:text-black
+                        hover:bg-bluegray-300 bg-bluegray-200 hover:border-bluegray-400
+                        border duration-200 ease-in-out transition">
                         <div class="flex leading-5">
                             <svg xmlns="http://www.w3.org/2000/svg" class="text-yellow-500 h-6 w-6" fill="yes" viewBox="0 0 24 24" stroke="currentColor" title="@ucfirst(__('app.followed'))">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -52,8 +55,9 @@
                     </a>
                     @if (Auth::user()->can('create', App\Models\Exhibition::class))
                     <a href="?filter=no_exhibition" class="flex flex-auto text-base md:rounded-r-none hover:scale-110 focus:outline-none
-                        justify-center px-4 py-2 hover:rounded font-bold cursor-pointer
-                        hover:bg-bluegray-300 hover:text-black bg-bluegray-200 border duration-200 ease-in-out hover:border-bluegray-400 transition">
+                        justify-center px-4 py-2 rounded font-bold cursor-pointer hover:text-black
+                        hover:bg-bluegray-300 bg-bluegray-200 hover:border-bluegray-400
+                        border duration-200 ease-in-out transition">
                         <div class="flex leading-5">@ucfirst(__('app.no_exhibition'))</div>
                     </a>
                     @endif
