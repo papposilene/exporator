@@ -87,7 +87,7 @@
             <div class="py-5">
                 <table class="w-full p-5 table-fixed shadow">
                     <thead>
-                        <tr class="bg-bluegray-700 text-white">
+                        <tr class="bg-bluegray-700 dark:bg-gray-900 text-white">
                             <th class="w-1/12 text-center p-3">@ucfirst(__('app.iteration'))</th>
                             <th class="w-7/12 text-center">@ucfirst(__('app.titles'))</th>
                             <th class="hidden md:table-cell md:w-2/12 text-center">@ucfirst(__('app.began_at'))</th>

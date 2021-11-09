@@ -28,13 +28,19 @@
                 <div class="flex flex-wrap">
                     @auth
                     <a href="?filter=" class="flex flex-auto text-base md:rounded-r-none hover:scale-110 focus:outline-none
-                        justify-center px-4 py-2 hover:rounded font-bold cursor-pointer
-                        hover:bg-bluegray-300 hover:text-black bg-bluegray-200 border duration-200 ease-in-out hover:border-bluegray-400 transition">
+                        justify-center px-4 py-2 rounded font-bold cursor-pointer hover:text-black
+                        hover:bg-bluegray-300 dark:hover:bg-gray-600
+                        dark:text-white bg-bluegray-200 dark:bg-gray-800
+                        hover:border-bluegray-400 dark:hover:border-gray-800
+                        border duration-200 ease-in-out transition">
                         <div class="flex leading-5">@ucfirst(__('app.all'))</div>
                     </a>
-                    <a href="?filter=followed" class="flex flex-auto text-base md:rounded-r-none hover:scale-110 focus:outline-none
-                        justify-center px-4 py-2 hover:rounded font-bold cursor-pointer
-                        hover:bg-bluegray-300 hover:text-black bg-bluegray-200 border duration-200 ease-in-out hover:border-bluegray-400 transition">
+                    <a href="?filter=followed" class="flex flex-auto text-base md:rounded-l-none hover:scale-110 focus:outline-none
+                        justify-center px-4 py-2 rounded font-bold cursor-pointer hover:text-black
+                        hover:bg-bluegray-300 dark:hover:bg-gray-600
+                        dark:text-white bg-bluegray-200 dark:bg-gray-800
+                        hover:border-bluegray-400 dark:hover:border-gray-800
+                        border duration-200 ease-in-out transition">
                         <div class="flex leading-5">
                             <svg xmlns="http://www.w3.org/2000/svg" class="text-yellow-500 h-6 w-6" fill="yes" viewBox="0 0 24 24" stroke="currentColor" title="@ucfirst(__('app.followed'))">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -50,7 +56,7 @@
             <div class="py-5">
                 <table class="w-full p-5 table-fixed shadow">
                     <thead>
-                        <tr class="bg-bluegray-700 text-white">
+                        <tr class="bg-bluegray-700 dark:bg-gray-900 text-white">
                             <th class="w-1/12 text-center p-3">@ucfirst(__('app.iteration'))</th>
                             <th class="w-1/12 text-center hidden lg:table-cell">@ucfirst(__('app.followed'))</th>
                             <th class="w-4/12 text-center">@ucfirst(__('app.types'))</th>

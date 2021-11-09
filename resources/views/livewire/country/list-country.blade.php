@@ -16,7 +16,7 @@
             <div class="py-5">
                 <table class="w-full p-5 table-fixed">
                     <thead>
-                        <tr class="bg-bluegray-700 text-white">
+                        <tr class="bg-bluegray-700 dark:bg-gray-900 text-white">
                             <th class="w-1/12 text-center p-3">@ucfirst(__('app.iteration'))</th>
                             <th class="w-1/12 text-center">@ucfirst(__('app.flags'))</th>
                             <th class="w-6/12 text-center">@ucfirst(__('app.countries'))</th>

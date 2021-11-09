@@ -30,7 +30,7 @@
                             <span class="bg-red-200 ml-2 p-2">@ucfirst(__('app.mandatory'))</span>
                         </caption>
                         <thead>
-                            <tr class="bg-bluegray-700 text-white">
+                            <tr class="bg-bluegray-700 dark:bg-gray-900 text-white">
                                 <th class="p-3">@ucfirst(__('app.columns'))</th>
                                 <th>@ucfirst(__('app.details'))</th>
                             </tr>

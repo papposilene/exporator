@@ -4001,6 +4001,22 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	--tw-bg-opacity: 1;
 	background-color: rgba(39, 39, 42, var(--tw-bg-opacity));
 }
+.dark .dark\:bg-bluegray-300 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(203, 213, 225, var(--tw-bg-opacity));
+}
+.dark .dark\:bg-gray-300 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(212, 212, 216, var(--tw-bg-opacity));
+}
+.dark .dark\:bg-bluegray-200 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(226, 232, 240, var(--tw-bg-opacity));
+}
+.dark .dark\:bg-bluegray-100 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(241, 245, 249, var(--tw-bg-opacity));
+}
 .dark .dark\:text-bluegray-100 {
 	--tw-text-opacity: 1;
 	color: rgba(241, 245, 249, var(--tw-text-opacity));
@@ -4029,6 +4045,18 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	--tw-text-opacity: 1;
 	color: rgba(148, 163, 184, var(--tw-text-opacity));
 }
+.dark .dark\:text-gray-500 {
+	--tw-text-opacity: 1;
+	color: rgba(113, 113, 122, var(--tw-text-opacity));
+}
+.dark .dark\:text-gray-300 {
+	--tw-text-opacity: 1;
+	color: rgba(212, 212, 216, var(--tw-text-opacity));
+}
+.dark .dark\:hover\:border-gray-800:hover {
+	--tw-border-opacity: 1;
+	border-color: rgba(39, 39, 42, var(--tw-border-opacity));
+}
 .dark .dark\:hover\:bg-bluegray-900:hover {
 	--tw-bg-opacity: 1;
 	background-color: rgba(15, 23, 42, var(--tw-bg-opacity));
@@ -4036,6 +4064,22 @@ svg.leaflet-image-layer.leaflet-interactive path {
 .dark .dark\:hover\:bg-white:hover {
 	--tw-bg-opacity: 1;
 	background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
+}
+.dark .dark\:hover\:bg-bluegray-300:hover {
+	--tw-bg-opacity: 1;
+	background-color: rgba(203, 213, 225, var(--tw-bg-opacity));
+}
+.dark .dark\:hover\:bg-bluegray-700:hover {
+	--tw-bg-opacity: 1;
+	background-color: rgba(51, 65, 85, var(--tw-bg-opacity));
+}
+.dark .dark\:hover\:bg-gray-700:hover {
+	--tw-bg-opacity: 1;
+	background-color: rgba(63, 63, 70, var(--tw-bg-opacity));
+}
+.dark .dark\:hover\:bg-gray-600:hover {
+	--tw-bg-opacity: 1;
+	background-color: rgba(82, 82, 91, var(--tw-bg-opacity));
 }
 .dark .dark\:hover\:text-bluegray-300:hover {
 	--tw-text-opacity: 1;
