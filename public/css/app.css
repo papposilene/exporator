@@ -4076,6 +4076,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	--tw-text-opacity: 1;
 	color: rgba(244, 244, 245, var(--tw-text-opacity));
 }
+.dark .dark\:text-black {
+	--tw-text-opacity: 1;
+	color: rgba(0, 0, 0, var(--tw-text-opacity));
+}
 .dark .dark\:hover\:border-gray-800:hover {
 	--tw-border-opacity: 1;
 	border-color: rgba(39, 39, 42, var(--tw-border-opacity));

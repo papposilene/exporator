@@ -18,16 +18,19 @@
                         d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
             </button>
+            <h5 class="text-xl text-bold">
+                @ucfirst(__('app.import'))
+            </h5>
             <!-- Modal content -->
             <form method="POST" action="{{ route('admin.exhibition.import') }}" enctype="multipart/form-data"
                 class="overflow-auto flex flex-col w-full">
                 @csrf
 
-                <div class="flex mb-5">
+                <div class="flex mb-5 mt-4">
                     <table class="table-auto w-full">
                         <caption class="grid-cols-2 mb-2 p-2">
-                            <span class="bg-green-200 mr-2 p-2">@ucfirst(__('app.optional'))</span>
-                            <span class="bg-red-200 ml-2 p-2">@ucfirst(__('app.mandatory'))</span>
+                            <span class="bg-green-200 dark:text-black mr-2 p-2">@ucfirst(__('app.optional'))</span>
+                            <span class="bg-red-200 dark:text-black ml-2 p-2">@ucfirst(__('app.mandatory'))</span>
                         </caption>
                         <thead>
                             <tr class="bg-bluegray-700 dark:bg-gray-900 text-white">
@@ -38,42 +41,42 @@
                         <tbody>
                             <tr class="border-b border-black border-dashed"
                                 title="@ucfirst(__('app.mandatory'))">
-                                <td class="bg-red-200 font-bold text-center">place</td>
+                                <td class="bg-red-200 font-bold text-center dark:text-black">place</td>
                                 <td class="p-2">@ucfirst(__('app.museum'))</td>
                             </tr>
                             <tr class="border-b border-black border-dashed"
                                 title="@ucfirst(__('app.mandatory'))">
-                                <td class="bg-red-200 font-bold text-center">title</td>
+                                <td class="bg-red-200 font-bold text-center dark:text-black">title</td>
                                 <td class="p-2">@ucfirst(__('app.title'))</td>
                             </tr>
                             <tr class="border-b border-black border-dashed"
                                 title="@ucfirst(__('app.mandatory'))">
-                                <td class="bg-red-200 font-bold text-center">began_at</td>
+                                <td class="bg-red-200 font-bold text-center dark:text-black">began_at</td>
                                 <td class="p-2">@ucfirst(__('app.began_at'))</td>
                             </tr>
                             <tr class="border-b border-black border-dashed"
                                 title="@ucfirst(__('app.mandatory'))">
-                                <td class="bg-red-200 font-bold text-center">ended_at</td>
+                                <td class="bg-red-200 font-bold text-center dark:text-black">ended_at</td>
                                 <td class="p-2">@ucfirst(__('app.ended_at'))</td>
                             </tr>
                             <tr class="border-b border-black border-dashed"
                                 title="@ucfirst(__('app.mandatory'))">
-                                <td class="bg-red-200 font-bold text-center">description</td>
+                                <td class="bg-red-200 font-bold text-center dark:text-black">description</td>
                                 <td class="p-2">@ucfirst(__('app.description'))</td>
                             </tr>
                             <tr class="border-b border-black border-dashed"
                                 title="@ucfirst(__('app.optional'))">
-                                <td class="bg-green-200 font-bold text-center">link</td>
+                                <td class="bg-green-200 font-bold text-center dark:text-black">link</td>
                                 <td class="p-2">@ucfirst(__('app.link'))</td>
                             </tr>
                             <tr class="border-b border-black border-dashed"
                                 title="@ucfirst(__('app.optional'))">
-                                <td class="bg-green-200 font-bold text-center">price</td>
+                                <td class="bg-green-200 font-bold text-center dark:text-black">price</td>
                                 <td class="p-2">@ucfirst(__('app.price'))</td>
                             </tr>
                             <tr class="border-b border-black border-dashed"
                                 title="@ucfirst(__('app.optional'))">
-                                <td class="bg-green-200 font-bold text-center">tags</td>
+                                <td class="bg-green-200 font-bold text-center dark:text-black">tags</td>
                                 <td class="p-2">type1:tag1,type1:tag2,type2:tag:1</td>
                             </tr>
                         </tbody>

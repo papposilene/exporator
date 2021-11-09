@@ -34,12 +34,6 @@ class ListPlace extends Component
 
     public function render()
     {
-        if (Auth::check())
-        {
-            $user = Auth::user();
-            $team = \App\Models\Team::where('id', $user->current_team_id)->first();
-        }
-
         if (Auth::check() &&
             ((string) Str::of($this->filter)->trim() === 'followed'))
         {
@@ -53,7 +47,7 @@ class ListPlace extends Component
                 ->paginate(25);
         }
         elseif (Auth::check() &&
-            $user->hasTeamPermission($team, 'server:create') &&
+            Auth::user()->hasPermissionTo('create exhibitions') &&
             ((string) Str::of($this->filter)->trim() === 'no_exhibition'))
         {
             $places = Place::withCount('hasExhibitions')
