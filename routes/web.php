@@ -65,7 +65,7 @@ Route::get('/tag/type/{slug}', ShowType::class)->name('front.tag.type');
 Route::get('/users', ListUser::class)->name('front.user.index');
 Route::get('/user/{uuid}', ShowUser::class)->name('front.user.show');
 Route::get('/activities', ListActivity::class)->name('front.activity.index');
-Route::get('/activity/{uuid}', ShowActivity::class)->name('front.activity.show');
+Route::get('/activity/{id}', ShowActivity::class)->name('front.activity.show');
 
 /*
 |--------------------------------------------------------------------------

@@ -2,12 +2,12 @@
 
 namespace App\Http\Livewire\User;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Spatie\Activitylog\Models\Activity;
 
 class ListActivity extends Component
 {
@@ -30,9 +30,7 @@ class ListActivity extends Component
 
     public function render()
     {
-        $activities = User::where('name', 'like', '%'.$this->search.'%')
-            ->orWhere('email', 'like', '%'.$this->search.'%')
-            ->orderBy('name', 'asc')
+        $activities = Activity::orderBy('updated_at', 'asc')
             ->paginate(25);
 
         return view('livewire.user.list-activity', [

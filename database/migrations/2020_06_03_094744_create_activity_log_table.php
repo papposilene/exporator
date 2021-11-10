@@ -18,6 +18,11 @@ class CreateActivityLogTable extends Migration
             $table->timestamps();
             $table->index('log_name');
         });
+
+        Schema::table(config('activitylog.table_name'), function (Blueprint $table) {
+            $table->uuid('subject_id')->change();
+            $table->uuid('causer_id')->change();
+        });
     }
 
     public function down()
