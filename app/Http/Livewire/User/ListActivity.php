@@ -2,6 +2,10 @@
 
 namespace App\Http\Livewire\User;
 
+use App\Models\Country;
+use App\Models\Exhibition;
+use App\Models\Place;
+use App\Models\Type;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -33,10 +37,16 @@ class ListActivity extends Component
     {
         $activities = Activity::orderBy('updated_at', 'desc')
             ->paginate(25);
-        $users = User::all()->pluck('uuid', 'name');
+        $exhibitions = Exhibition::select('uuid')->addSelect('title');
+        $places = Place::select('uuid')->addSelect('name');
+        $types = Type::select('uuid')->addSelect('type');
+        $users = User::select('uuid')->addSelect('name');
 
         return view('livewire.user.list-activity', [
             'activities' => $activities,
+            'exhibitions' => $exhibitions,
+            'places' => $places,
+            'types' => $types,
             'users' => $users,
         ]);
     }

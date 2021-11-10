@@ -62,15 +62,56 @@
                             <td>
                                 @if ($activity->causer_id)
                                 <a href="{{ route('front.user.show', ['uuid' => $activity->causer_id]) }}">
-                                    {{ dd($users->where('uuid', $activity->causer_id)) }}
+                                    {{ $users->find($activity->causer_id)->name }}
                                 </a>
                                 @else
                                 @ucfirst(__('activity.no_subject'))
                                 @endif
                             </td>
                             <td class="text-center">{{ $activity->event }}</td>
-                            <td>{{ $activity->subject_type }}</td>
-                            <td>{{ $activity->subject_id }}</td>
+                            <td>
+                                @if ($activity->subject_type === 'App\Models\Country')
+                                {{ $users->find($activity->causer_id)->name }}
+                                @elseif ($activity->subject_type === 'App\Models\Exhibition')
+                                <a href="{{ route('front.exhiibtion.show', ['uuid' => $activity->subject_id]) }}">
+                                    {{ $exhiibtions->find($activity->subject_id)->title }}
+                                </a>
+                                @elseif ($activity->subject_type === 'App\Models\Place')
+                                <a href="{{ route('front.place.show', ['uuid' => $activity->causer_id]) }}">
+                                    {{ $places->find($activity->subject_id)->name }}
+                                </a>
+                                @elseif ($activity->subject_type === 'App\Models\Tag')
+                                <a href="{{ route('front.tag.show', ['uuid' => $activity->causer_id]) }}">
+                                    {{ $tags->find($activity->subject_id)->name }}
+                                </a>
+                                @elseif ($activity->subject_type === 'App\Models\Type')
+                                <a href="{{ route('front.type.show', ['uuid' => $activity->causer_id]) }}">
+                                    {{ $types->find($activity->subject_id)->type }}
+                                </a>
+                                @elseif ($activity->subject_type === 'App\Models\User')
+                                <a href="{{ route('front.user.show', ['uuid' => $activity->subject_id]) }}">
+                                    {{ $users->find($activity->subject_id)->name }}
+                                </a>
+                                @elseif ($activity->subject_type === 'App\Models\UserExhibition')
+                                <a href="{{ route('front.user.show', ['uuid' => $activity->causer_id]) }}">
+                                    {{ $users->find($activity->subject_id)->name }}
+                                </a>
+                                @elseif ($activity->subject_type === 'App\Models\UserPlace')
+                                <a href="{{ route('front.user.show', ['uuid' => $activity->causer_id]) }}">
+                                    {{ $users->find($activity->subject_id)->name }}
+                                </a>
+                                @elseif ($activity->subject_type === 'App\Models\UserReview')
+                                <a href="{{ route('front.user.show', ['uuid' => $activity->causer_id]) }}">
+                                    {{ $users->find($activity->subject_id)->name }}
+                                </a>
+                                @elseif ($activity->subject_type === 'App\Models\UserTag')
+                                <a href="{{ route('front.user.show', ['uuid' => $activity->causer_id]) }}">
+                                    {{ $users->find($activity->subject_id)->name }}
+                                </a>
+                                @else
+                                {{ $activity->subject_id }}
+                                @endif
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
