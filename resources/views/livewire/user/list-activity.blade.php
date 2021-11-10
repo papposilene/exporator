@@ -49,9 +49,10 @@
                     <thead>
                         <tr class="bg-bluegray-700 dark:bg-gray-900 text-white">
                             <th class="w-1/12 text-center p-3">@ucfirst(__('app.iteration'))</th>
-                            <th class="w-3/12 text-center">@ucfirst(__('app.users'))</th>
+                            <th class="w-2/12 text-center">@ucfirst(__('app.users'))</th>
                             <th class="w-2/12 text-center">@ucfirst(__('activity.events'))</th>
                             <th class="w-3/12 text-center">@ucfirst(__('activity.subjects_id'))</th>
+                            <th class="w-1/12 text-center">&nbsp;</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -110,6 +111,14 @@
                                 @else
                                 {{ $activity->subject_id }}
                                 @endif
+                            </td>
+                            <td class="flex justify-center items-stretch">
+                                <a href="{{ route('front.activity.show', ['activity_id' => $activity->id]) }}" class="self-stretch">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M8 16l2.879-2.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242zM21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </a>
                             </td>
                         </tr>
                         @endforeach
