@@ -117,11 +117,11 @@
                             <x-slot name="content">
                                 <!-- Account Management -->
                                 <div class="block px-4 py-2 text-xs text-bluegray-400 dark:text-bluegray-600">
-                                    {{ __('Manage Account') }}
+                                    @ucfirst(__('app.account_manage'))
                                 </div>
 
                                 <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                                    {{ __('Profile') }}
+                                    @ucfirst(__('app.profile_manage'))
                                 </x-jet-dropdown-link>
 
                                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -129,6 +129,12 @@
                                         {{ __('API Tokens') }}
                                     </x-jet-dropdown-link>
                                 @endif
+
+                                <div class="border-t border-bluegray-100 dark:text-bluegray-900"></div>
+
+                                <x-jet-dropdown-link href="{{ route('admin.user.index') }}">
+                                    @ucfirst(__('app.users_manage'))
+                                </x-jet-dropdown-link>
 
                                 <div class="border-t border-bluegray-100 dark:text-bluegray-900"></div>
 

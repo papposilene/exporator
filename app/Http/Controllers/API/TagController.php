@@ -107,11 +107,14 @@ class TagController extends Controller
                 return Carbon::parse($date->began_at)->format('Y'); // grouping by years
             });
         }
-        dd(max($count));
+
+        $biggest = max($count);
+        $biggest = $biggest->toArray();
+        ksort($biggest);
 
         foreach ($type as $tag)
         {
-
+            $year = array_keys($biggest);
             $exhibitions = $tag->hasExhibitions()->get();
             $dataYears = $exhibitions->groupBy(function($date) {
                 // Solution found at https://stackoverflow.com/a/25538667

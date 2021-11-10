@@ -5,8 +5,6 @@ use App\Http\Controllers\Backend\ExhibitionController;
 use App\Http\Controllers\Backend\PlaceController;
 use App\Http\Controllers\Backend\TagController;
 use App\Http\Controllers\Backend\UserController;
-use App\Http\Livewire\Country\ListCountry;
-use App\Http\Livewire\Country\ShowCountry;
 use App\Http\Livewire\Dashboard\ShowAbout;
 use App\Http\Livewire\Dashboard\ShowDashboard;
 use App\Http\Livewire\Exhibition\CalendarExhibition;
@@ -19,6 +17,8 @@ use App\Http\Livewire\Place\ShowPlace;
 use App\Http\Livewire\Tag\ListTag;
 use App\Http\Livewire\Tag\ShowTag;
 use App\Http\Livewire\Tag\ShowType;
+use App\Http\Livewire\User\ListUser;
+use App\Http\Livewire\User\ShowUser;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -59,6 +59,9 @@ Route::get('/tags', ListTag::class)->name('front.tag.index');
 Route::get('/tag/{slug}', ShowTag::class)->name('front.tag.show');
 Route::get('/tag/type/{slug}', ShowType::class)->name('front.tag.type');
 
+// Users
+Route::get('/user/{uuid}', ShowUser::class)->name('front.user.show');
+
 /*
 |--------------------------------------------------------------------------
 | Backend
@@ -83,6 +86,7 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function
     Route::post('/tag/delete', [TagController::class, 'delete'])->name('admin.tag.delete');
 
     // User
+    Route::get('/users', ListUser::class)->name('admin.user.index');
     Route::post('/user/place/follow', [UserController::class, 'place_follow'])->name('admin.user.place_follow'); // Follow a place
     Route::post('/user/place/unfollow', [UserController::class, 'place_unfollow'])->name('admin.user.place_unfollow'); // Unfollow a place
     Route::post('/user/exhibition/follow', [UserController::class, 'exhibition_follow'])->name('admin.user.exhibition_follow'); // Follow an exhibition
