@@ -5538,3 +5538,7 @@
 #82 /var/www/html/server.php(21): require_once('...')
 #83 {main}
 "} 
+[2021-11-10 13:52:29] local.ERROR: Class App\Models\User contains 1 abstract method and must therefore be declared abstract or implement the remaining methods (App\Models\User::getActivitylogOptions) {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Class App\\Models\\User contains 1 abstract method and must therefore be declared abstract or implement the remaining methods (App\\Models\\User::getActivitylogOptions) at /var/www/html/app/Models/User.php:17)
+[stacktrace]
+#0 {main}
+"} 
