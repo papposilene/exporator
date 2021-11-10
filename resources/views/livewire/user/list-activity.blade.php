@@ -50,8 +50,7 @@
                         <tr class="bg-bluegray-700 dark:bg-gray-900 text-white">
                             <th class="w-1/12 text-center p-3">@ucfirst(__('app.iteration'))</th>
                             <th class="w-3/12 text-center">@ucfirst(__('app.users'))</th>
-                            <th class="w-1/12 text-center">@ucfirst(__('activity.events'))</th>
-                            <th class="w-1/12 text-center">@ucfirst(__('activity.subjects_type'))</th>
+                            <th class="w-2/12 text-center">@ucfirst(__('activity.events'))</th>
                             <th class="w-3/12 text-center">@ucfirst(__('activity.subjects_id'))</th>
                         </tr>
                     </thead>
@@ -71,13 +70,13 @@
                             <td class="text-center">{{ $activity->event }}</td>
                             <td>
                                 @if ($activity->subject_type === 'App\Models\Country')
-                                {{ $users->find($activity->causer_id)->name }}
+                                {{ $countries->find($activity->subject_id)->name_official_fra }}
                                 @elseif ($activity->subject_type === 'App\Models\Exhibition')
-                                <a href="{{ route('front.exhiibtion.show', ['uuid' => $activity->subject_id]) }}">
-                                    {{ $exhiibtions->find($activity->subject_id)->title }}
+                                <a href="{{ route('front.exhibtion.show', ['place' => $places->where('uuid', $exhibitions->find($activity->subject_id)->place_uuid)->slug, 'slug' => $exhibitions->find($activity->subject_id)->slug]) }}">
+                                    {{ $exhibitions->find($activity->subject_id)->title }}
                                 </a>
                                 @elseif ($activity->subject_type === 'App\Models\Place')
-                                <a href="{{ route('front.place.show', ['uuid' => $activity->causer_id]) }}">
+                                <a href="{{ route('front.place.show', ['slug' => $places->find($activity->subject_id)->slug]) }}">
                                     {{ $places->find($activity->subject_id)->name }}
                                 </a>
                                 @elseif ($activity->subject_type === 'App\Models\Tag')
@@ -85,7 +84,7 @@
                                     {{ $tags->find($activity->subject_id)->name }}
                                 </a>
                                 @elseif ($activity->subject_type === 'App\Models\Type')
-                                <a href="{{ route('front.type.show', ['uuid' => $activity->causer_id]) }}">
+                                <a href="{{ route('front.tag.type', ['slug' => $types->find($activity->subject_id)->slug]) }}">
                                     {{ $types->find($activity->subject_id)->type }}
                                 </a>
                                 @elseif ($activity->subject_type === 'App\Models\User')

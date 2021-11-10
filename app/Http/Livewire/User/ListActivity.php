@@ -37,13 +37,15 @@ class ListActivity extends Component
     {
         $activities = Activity::orderBy('updated_at', 'desc')
             ->paginate(25);
-        $exhibitions = Exhibition::select('uuid')->addSelect('title');
-        $places = Place::select('uuid')->addSelect('name');
-        $types = Type::select('uuid')->addSelect('type');
+        $countries = Country::all();
+        $exhibitions = Exhibition::all();
+        $places = Place::all();
+        $types = Type::all();
         $users = User::select('uuid')->addSelect('name');
 
         return view('livewire.user.list-activity', [
             'activities' => $activities,
+            'countries' => $countries,
             'exhibitions' => $exhibitions,
             'places' => $places,
             'types' => $types,
