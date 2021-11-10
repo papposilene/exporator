@@ -64,11 +64,11 @@
                                     {{ $user->name }}
                                 </a>
                             </td>
-                            <td>{{ $user->getRoleNames() }}</td>
+                            <td>{{ $user->getRoleNames()->first() }}</td>
                             <td>
                                 <a href="{{ route('front.user.show', ['uuid' => $user->uuid]) }}"
                                     title="{{ $user->name }}" aria-label="{{ $user->name }}">
-                                    {{ $user->getRoleNames() }}
+                                    {{ $user->getRoleNames()->first() }}
                                 </a>
                             </td>
                         </tr>
