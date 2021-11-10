@@ -132,7 +132,7 @@
 
                                 <div class="border-t border-bluegray-100 dark:text-bluegray-900"></div>
 
-
+                                @hasanyrole('super-admin|moderator')
                                 <x-jet-dropdown-link href="{{ route('front.activity.index') }}">
                                     @ucfirst(__('app.activities_manage'))
                                 </x-jet-dropdown-link>
@@ -142,7 +142,7 @@
                                 </x-jet-dropdown-link>
 
                                 <div class="border-t border-bluegray-100 dark:text-bluegray-900"></div>
-
+                                @endrole
 
                                 <!-- Authentication -->
                                 <form method="POST" action="{{ route('logout') }}">
