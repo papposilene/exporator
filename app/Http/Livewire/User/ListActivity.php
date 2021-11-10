@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\User;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
@@ -30,11 +31,13 @@ class ListActivity extends Component
 
     public function render()
     {
-        $activities = Activity::orderBy('updated_at', 'asc')
+        $activities = Activity::orderBy('updated_at', 'desc')
             ->paginate(25);
+        $users = User::all()->pluck('uuid', 'name');
 
         return view('livewire.user.list-activity', [
             'activities' => $activities,
+            'users' => $users,
         ]);
     }
 }

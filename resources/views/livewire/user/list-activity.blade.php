@@ -49,9 +49,10 @@
                     <thead>
                         <tr class="bg-bluegray-700 dark:bg-gray-900 text-white">
                             <th class="w-1/12 text-center p-3">@ucfirst(__('app.iteration'))</th>
-                            <th class="w-4/12 text-center">@ucfirst(__('app.users'))</th>
-                            <th class="w-5/12 text-center">@ucfirst(__('app.events'))</th>
-                            <th class="w-5/12 text-center">@ucfirst(__('app.subjects'))</th>
+                            <th class="w-3/12 text-center">@ucfirst(__('app.users'))</th>
+                            <th class="w-1/12 text-center">@ucfirst(__('activity.events'))</th>
+                            <th class="w-1/12 text-center">@ucfirst(__('activity.subjects_type'))</th>
+                            <th class="w-3/12 text-center">@ucfirst(__('activity.subjects_id'))</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -60,21 +61,16 @@
                             <td class="text-center">{{ $loop->iteration }}</td>
                             <td>
                                 @if ($activity->causer_id)
-                                <a href="{{ route('front.user.show', ['uuid' => $activity->causer_id]) }}"
-                                    title="{{ $user->name }}" aria-label="{{ $user->name }}">
-                                    {{ $activity->causer_id }}<br />
-                                    {{ $activity->causer_type }}
+                                <a href="{{ route('front.user.show', ['uuid' => $activity->causer_id]) }}">
+                                    {{ dd($users->where('uuid', $activity->causer_id)) }}
                                 </a>
                                 @else
-                                {{ $activity->causer_id }}<br />
-                                {{ $activity->causer_type }}
+                                @ucfirst(__('activity.no_subject'))
                                 @endif
                             </td>
-                            <td>{{ $activity->event }}</td>
-                            <td>
-                                {{ $activity->subject_type }}<br />
-                                {{ $activity->subject_id }}
-                            </td>
+                            <td class="text-center">{{ $activity->event }}</td>
+                            <td>{{ $activity->subject_type }}</td>
+                            <td>{{ $activity->subject_id }}</td>
                         </tr>
                         @endforeach
                     </tbody>
