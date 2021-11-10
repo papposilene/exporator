@@ -32,10 +32,11 @@
             </ul>
             @endif
             <ul class="bg-rose-100 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
-                <li title="@ucfirst(__('app.place'))">
+                <li class="flex flex-grow justify-between" title="@ucfirst(__('app.tag'))">
                     <h3 class="font-bold text-2xl mb-5">
                         {{ $place->name }}
                     </h3>
+                    <span><livewire:interfaces.follow-place :place="$place" :wire:key="$place->uuid" /></span>
                 </li>
                 <li title="@ucfirst(__('app.type'))">@ucfirst(__('app.' . Str::slug($place->type, '_')))</li>
                 <li title="@ucfirst(__('app.address'))">{{ $place->address }}</li>
@@ -62,9 +63,6 @@
             </ul>
             <ul class="list-inside md:m-5 mt-5 md:mt-0 shadow w-full">
                 <li><livewire:interfaces.map :place="$place" :wire:key="$place->uuid" /></li>
-            </ul>
-            <ul class="bg-bluegray-200 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
-                <li><livewire:interfaces.follow-place :place="$place" :wire:key="$place->uuid" /></li>
             </ul>
         </div>
 
