@@ -132,7 +132,7 @@
 
                                 <div class="border-t border-bluegray-100 dark:text-bluegray-900"></div>
 
-                                <x-jet-dropdown-link href="{{ route('admin.user.index') }}">
+                                <x-jet-dropdown-link href="{{ route('front.user.index') }}">
                                     @ucfirst(__('app.users_manage'))
                                 </x-jet-dropdown-link>
 

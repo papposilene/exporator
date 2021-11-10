@@ -60,6 +60,7 @@ Route::get('/tag/{slug}', ShowTag::class)->name('front.tag.show');
 Route::get('/tag/type/{slug}', ShowType::class)->name('front.tag.type');
 
 // Users
+Route::get('/users', ListUser::class)->name('front.user.index');
 Route::get('/user/{uuid}', ShowUser::class)->name('front.user.show');
 
 /*
@@ -86,7 +87,6 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function
     Route::post('/tag/delete', [TagController::class, 'delete'])->name('admin.tag.delete');
 
     // User
-    Route::get('/users', ListUser::class)->name('admin.user.index');
     Route::post('/user/place/follow', [UserController::class, 'place_follow'])->name('admin.user.place_follow'); // Follow a place
     Route::post('/user/place/unfollow', [UserController::class, 'place_unfollow'])->name('admin.user.place_unfollow'); // Unfollow a place
     Route::post('/user/exhibition/follow', [UserController::class, 'exhibition_follow'])->name('admin.user.exhibition_follow'); // Follow an exhibition
