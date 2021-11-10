@@ -17,6 +17,9 @@ return [
 
     'about' => 'a propos',
     'account_manage' => 'gérer mon compte',
+    'activity' => 'activité',
+    'activities' => 'activités',
+    'activities_manage' => 'gérer les activités',
     'actions' => 'actions',
     'address' => 'adresse postale',
     'all' => 'tout',

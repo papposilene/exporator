@@ -125,18 +125,24 @@
                                 </x-jet-dropdown-link>
 
                                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
-                                    <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
-                                        {{ __('API Tokens') }}
-                                    </x-jet-dropdown-link>
+                                <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
+                                    {{ __('API Tokens') }}
+                                </x-jet-dropdown-link>
                                 @endif
 
                                 <div class="border-t border-bluegray-100 dark:text-bluegray-900"></div>
+
+
+                                <x-jet-dropdown-link href="{{ route('front.activity.index') }}">
+                                    @ucfirst(__('app.activities_manage'))
+                                </x-jet-dropdown-link>
 
                                 <x-jet-dropdown-link href="{{ route('front.user.index') }}">
                                     @ucfirst(__('app.users_manage'))
                                 </x-jet-dropdown-link>
 
                                 <div class="border-t border-bluegray-100 dark:text-bluegray-900"></div>
+
 
                                 <!-- Authentication -->
                                 <form method="POST" action="{{ route('logout') }}">

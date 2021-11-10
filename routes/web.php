@@ -19,6 +19,8 @@ use App\Http\Livewire\Tag\ShowTag;
 use App\Http\Livewire\Tag\ShowType;
 use App\Http\Livewire\User\ListUser;
 use App\Http\Livewire\User\ShowUser;
+use App\Http\Livewire\User\ListActivity;
+use App\Http\Livewire\User\ShowActivity;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -62,6 +64,8 @@ Route::get('/tag/type/{slug}', ShowType::class)->name('front.tag.type');
 // Users
 Route::get('/users', ListUser::class)->name('front.user.index');
 Route::get('/user/{uuid}', ShowUser::class)->name('front.user.show');
+Route::get('/activities', ListActivity::class)->name('front.activity.index');
+Route::get('/activity/{uuid}', ShowActivity::class)->name('front.activity.show');
 
 /*
 |--------------------------------------------------------------------------
