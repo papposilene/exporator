@@ -1135,6 +1135,10 @@ select {
 	margin-top: 1.25rem;
 	margin-bottom: 1.25rem;
 }
+.mx-2 {
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
+}
 .ml-3 {
 	margin-left: 0.75rem;
 }
@@ -4425,6 +4429,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
 	.lg\:gap-4 {
 		gap: 1rem;
+	}
+
+	.lg\:rounded-none {
+		border-radius: 0px;
 	}
 
 	.lg\:rounded-r-none {
