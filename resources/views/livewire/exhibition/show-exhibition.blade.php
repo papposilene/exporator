@@ -52,7 +52,7 @@
                 <li><livewire:interfaces.follow-exhibition :exhibition="$exhibition" :wire:key="$exhibition->uuid" /></li>
             </ul>
             @auth
-            @if (Auth::user()->can('create', App\Models\Exhibition::class))
+            @if (Auth::user()->can('update exhibitions'))
             <ul class="bg-bluegray-200 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
                 <li><livewire:modals.edit-exhibition :exhibition="$exhibition" :wire:key="$exhibition->uuid" /></li>
             </ul>
@@ -127,7 +127,7 @@
                 <div title="@ucfirst(__('app.no_tags'))">@ucfirst(__('app.no_tags'))</div>
                 @endif
                 @auth
-                @if (Auth::user()->can('update', App\Models\User::class, App\Models\Exhibition::class))
+                @if (Auth::user()->can('update exhibitions'))
                 <livewire:interfaces.tag-exhibition :exhibition="$exhibition" :wire:key="$exhibition->uuid" />
                 @endif
                 @endauth
