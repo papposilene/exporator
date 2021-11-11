@@ -31,7 +31,10 @@ class ShowExhibition extends Component
                 return $query->where('is_published', true);
             })
             ->where('slug', $this->slug)->firstOrFail();
-        $this->suggestions = Tagged::where('taggable_id', $this->exhibition->uuid)->take(3)->get();
+        $this->suggestions = Tagged::where('tag_id', $this->exhibition->isTagged()->first()->id)
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
     }
 
     public function updatingSearch()

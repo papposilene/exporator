@@ -72,7 +72,7 @@
             @endif
 
             @if ($exhibition->is_published === false)
-            <div class="bg-red-500 border border-red-700 mb-3 p-3 rounded shadow text-white font-bold">
+            <div class="bg-red-500 border border-red-700 mb-5 p-3 text-white font-bold rounded shadow">
                 <ul>
                     <li>@ucfirst(__('app.published_info'))</li>
                     <li>
@@ -82,7 +82,7 @@
             </div>
             @endif
 
-            <ul class="list-inside bg-bluegray-200 my-5 w-full">
+            <ul class="list-inside bg-bluegray-200 mb-5 shadow w-full">
                 <li title="@ucfirst(__('app.exhibition'))">
                     <h4 class="bg-bluegray-300 font-bold text-2xl p-3 mb-5">
                         {{ $exhibition->title }}
@@ -115,11 +115,11 @@
                     @endif
                 </li>
             </ul>
-            <div class="bg-bluegray-200 px-5 p-5 w-full">
+            <div class="bg-indigo-300 px-5 p-5 shadow w-full">
                 @if (count($exhibition->tags) > 0)
                 @foreach ($exhibition->tags as $tag)
                 <a href="{{ route('front.tag.show', ['slug' => $tag->slug]) }}"
-                    class="bg-bluegray-300 mr-2 p-2 inline-block" title="{{ $tag->type }}">
+                    class="bg-indigo-500 text-white mr-2 p-2 inline-block" title="{{ $tag->type }}">
                     {{ $tag->name }}
                 </a>
                 @endforeach
@@ -132,17 +132,21 @@
                 @endif
                 @endauth
             </div>
-            <div class="bg-indigo-100 mt-5 px-5 p-5 w-full">
+            @if ($suggestions->count() > 0)
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-2 bg-indigo-300 px-5 p-5 w-full">
                 @foreach ($suggestions as $suggestion)
                 @if ($suggestion->isExhibition->uuid == $exhibition->uuid)
                     @continue
                 @endif
                 <a href="{{ route('front.exhibition.show', ['place' => $suggestion->isExhibition->inPlace->slug, 'slug' => $suggestion->isExhibition->slug]) }}"
-                    class="bg-bluegray-300 mr-2 p-2 inline-block" title="{{ $suggestion->isExhibition->title }}">
-                    {{ $suggestion->isExhibition->title }}
+                    class="bg-indigo-500 text-white p-2 inline-block" title="{{ $suggestion->isExhibition->title }}">
+                    <span class="italic">{{ $suggestion->isExhibition->title }}</span><br />
+                    <span class="">{{ $suggestion->isExhibition->inPlace->name }}</span><br />
+                    <span class="text-sm">@date($suggestion->isExhibition->began_at) - @date($suggestion->isExhibition->ended_at)</span>
                 </a>
                 @endforeach
             </div>
+            @endif
         </div>
     </div>
 </div>

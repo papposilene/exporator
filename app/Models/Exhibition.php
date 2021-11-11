@@ -126,4 +126,19 @@ class Exhibition extends Model
             'user_uuid'
         );
     }
+
+    /**
+     * Get all the tags for a specific exhibition.
+     */
+    public function isTagged()
+    {
+        return $this->hasManyThrough(
+            'App\Models\Tag',
+            'App\Models\Tagged',
+            'taggable_id',
+            'id',
+            'uuid',
+            'tag_id'
+        );
+    }
 }

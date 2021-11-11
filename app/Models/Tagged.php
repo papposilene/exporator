@@ -26,7 +26,7 @@ class Tagged extends Model
     }
 
     /**
-     * Get all the exhibitions for a specific tag.
+     * Get the exhibition for a specific tag.
      */
     public function isExhibition()
     {
@@ -34,6 +34,18 @@ class Tagged extends Model
             'App\Models\Exhibition',
             'uuid',
             'taggable_id'
+        );
+    }
+
+    /**
+     * Get all the exhibitions for a specific tag.
+     */
+    public function isTag()
+    {
+        return $this->hasOne(
+            'App\Models\Tag',
+            'id',
+            'tag_id'
         );
     }
 }
