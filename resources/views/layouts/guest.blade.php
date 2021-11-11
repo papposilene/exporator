@@ -35,9 +35,9 @@
         <noscript><p><img src="//pwk.psln.nl/matomo.php?idsite=14&amp;rec=1" style="border:0;" alt="" /></p></noscript>
         <!-- End Matomo Code -->
     </head>
-    
-    <body class="font-sans antialiased bg-bluegray-100 dark:bg-bluegray-900">
-        <div class="antialiased font-sans text-bluegray-900 dark:text-bluegray-100">
+
+    <body class="antialiased font-sans bg-bluegray-100 dark:bg-gray-700" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+        <div class="flex flex-col h-min-screen">
             {{ $slot }}
         </div>
     </body>
