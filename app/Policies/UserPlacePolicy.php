@@ -53,7 +53,10 @@ class UserPlacePolicy
      */
     public function update(User $user, UserPlace $userPlace)
     {
-        //
+        if ($user->can('follow places'))
+        {
+            return true;
+        }
     }
 
     /**

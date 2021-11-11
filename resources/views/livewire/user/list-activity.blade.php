@@ -93,21 +93,13 @@
                                     {{ $users->find($activity->subject_id)->name }}
                                 </a>
                                 @elseif ($activity->subject_type === 'App\Models\UserExhibition')
-                                <a href="{{ route('front.user.show', ['uuid' => $activity->causer_id]) }}">
-                                    @ucfirst(__('activity.tag_followed', ['what' => $exhibitions->where('id', $activity->properties->first()['tag_id'])->first()->name]))
-                                </a>
+                                    @ucfirst(__('activity.exhibition_followed', ['what' => $exhibitions->find($activity->properties->first()['exhibition_uuid'])->first()->title]))
                                 @elseif ($activity->subject_type === 'App\Models\UserPlace')
-                                <a href="{{ route('front.user.show', ['uuid' => $activity->causer_id]) }}">
-                                    @ucfirst(__('activity.tag_followed', ['what' => $places->where('id', $activity->properties->first()['tag_id'])->first()->name]))
-                                </a>
+                                    @ucfirst(__('activity.place_followed', ['what' => $places->find($activity->properties->first()['place_uuid'])->first()->name]))
                                 @elseif ($activity->subject_type === 'App\Models\UserReview')
-                                <a href="{{ route('front.user.show', ['uuid' => $activity->causer_id]) }}">
-                                    @ucfirst(__('activity.tag_followed', ['what' => $reviews->where('id', $activity->properties->first()['tag_id'])->first()->name]))
-                                </a>
+                                    @ucfirst(__('activity.review_followed', ['what' => $reviews->find($activity->properties->first()['review_uuid'])->first()->title]))
                                 @elseif ($activity->subject_type === 'App\Models\UserTag')
-                                <a href="{{ route('front.user.show', ['uuid' => $activity->causer_id]) }}">
                                     @ucfirst(__('activity.tag_followed', ['what' => $tags->where('id', $activity->properties->first()['tag_id'])->first()->name]))
-                                </a>
                                 @else
                                 {{ $activity->subject_id }}
                                 @endif

@@ -53,7 +53,10 @@ class UserExhibitionPolicy
      */
     public function update(User $user, UserExhibition $userExhibition)
     {
-        //
+        if ($user->can('follow exhibitions'))
+        {
+            return true;
+        }
     }
 
     /**
