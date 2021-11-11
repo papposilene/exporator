@@ -28,11 +28,12 @@ class UserController extends Controller
      * Follow a place.
      *
      * @param  \Illuminate\Http\FollowPlaceRequest  $request
+     * @param  \App\Models\UserPlace  $userplace
      * @return \Illuminate\Http\Response
      */
-    public function place_follow(FollowPlaceRequest $request)
+    public function place_follow(FollowPlaceRequest $request, UserPlace $userplace)
     {
-        $this->authorize('create', User::class);
+        $this->authorize('update', $userplace);
 
         $validated = $request->validated();
 
@@ -51,11 +52,12 @@ class UserController extends Controller
      * Unfollow a place.
      *
      * @param  \Illuminate\Http\UnfollowPlaceRequest  $request
+     * @param  \App\Models\UserPlace  $userplace
      * @return \Illuminate\Http\Response
      */
-    public function place_unfollow(UnfollowPlaceRequest $request)
+    public function place_unfollow(UnfollowPlaceRequest $request, UserPlace $userplace)
     {
-        $this->authorize('delete', User::class);
+        $this->authorize('update', $userplace);
 
         $validated = $request->validated();
 
@@ -69,11 +71,12 @@ class UserController extends Controller
      * Follow an exhibition.
      *
      * @param  \Illuminate\Http\FollowExhibitionRequest  $request
+     * @param  \App\Models\UserExhibition  $userexhibition
      * @return \Illuminate\Http\Response
      */
-    public function exhibition_follow(FollowExhibitionRequest $request)
+    public function exhibition_follow(FollowExhibitionRequest $request, UserExhibition $userexhibition)
     {
-        $this->authorize('create', User::class);
+        $this->authorize('update', $userexhibition);
 
         $validated = $request->validated();
 
@@ -93,11 +96,12 @@ class UserController extends Controller
      * Visited exhibition
      *
      * @param  \Illuminate\Http\FollowExhibitionRequest  $request
+     * @param  \App\Models\UserExhibition  $userexhibition
      * @return \Illuminate\Http\Response
      */
-    public function exhibition_visited(FollowExhibitionRequest $request)
+    public function exhibition_visited(FollowExhibitionRequest $request, UserExhibition $userexhibition)
     {
-        $this->authorize('create', User::class);
+        $this->authorize('update', $userexhibition);
 
         $validated = $request->validated();
 
@@ -119,11 +123,12 @@ class UserController extends Controller
      * Unfollow an exhibition.
      *
      * @param  \Illuminate\Http\UnfollowExhibitionRequest  $request
+     * @param  \App\Models\UserExhibition  $userexhibition
      * @return \Illuminate\Http\Response
      */
-    public function exhibition_unfollow(UnfollowExhibitionRequest $request)
+    public function exhibition_unfollow(UnfollowExhibitionRequest $request, UserExhibition $userexhibition)
     {
-        $this->authorize('delete', User::class);
+        $this->authorize('update', $userexhibition);
 
         $validated = $request->validated();
 
@@ -137,11 +142,12 @@ class UserController extends Controller
      * Un-visited exhibition
      *
      * @param  \Illuminate\Http\FollowExhibitionRequest  $request
+     * @param  \App\Models\UserExhibition  $userexhibition
      * @return \Illuminate\Http\Response
      */
-    public function exhibition_unvisited(FollowExhibitionRequest $request)
+    public function exhibition_unvisited(FollowExhibitionRequest $request, UserExhibition $userexhibition)
     {
-        $this->authorize('create', User::class);
+        $this->authorize('update', $userexhibition);
 
         $validated = $request->validated();
 
@@ -163,11 +169,12 @@ class UserController extends Controller
      * Follow a tag.
      *
      * @param  \Illuminate\Http\FollowTagRequest  $request
+     * @param  \App\Models\UserTag  $usertag
      * @return \Illuminate\Http\Response
      */
-    public function tag_follow(FollowTagRequest $request)
+    public function tag_follow(FollowTagRequest $request, UserTag $usertag)
     {
-        $this->authorize('create', User::class);
+        $this->authorize('update', $usertag);
 
         $validated = $request->validated();
 
@@ -186,11 +193,12 @@ class UserController extends Controller
      * Unfollow a tag.
      *
      * @param  \Illuminate\Http\UnfollowTagRequest  $request
+     * @param  \App\Models\UserTag  $usertag
      * @return \Illuminate\Http\Response
      */
-    public function tag_unfollow(UnfollowTagRequest $request)
+    public function tag_unfollow(UnfollowTagRequest $request, UserTag $usertag)
     {
-        $this->authorize('delete', User::class);
+        $this->authorize('update', $usertag);
 
         $validated = $request->validated();
 

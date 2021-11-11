@@ -7,6 +7,7 @@ use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 
 class UserController extends Controller
@@ -31,7 +32,7 @@ class UserController extends Controller
     {
         // Abort unless the given User's UUID is not the same as Auth:id()
         abort_unless(Auth::id() === $id, 403);
-        
+
         return new UserResource(User::findOrFail($id));
     }
 

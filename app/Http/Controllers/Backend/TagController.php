@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\Exhibition;
+use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AttachTagRequest;
 use App\Http\Requests\DeleteTagRequest;
@@ -111,7 +112,7 @@ class TagController extends Controller
      */
     public function update(StoreTagRequest $request, Tag $tag)
     {
-        $this->authorize('update', App\Models\User::class, Tag::class);
+        $this->authorize('update', User::class, Tag::class);
 
         $validated = $request->validated();
 
