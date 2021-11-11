@@ -73,7 +73,7 @@
                                 @if ($activity->subject_type === 'App\Models\Country')
                                 {{ $countries->find($activity->subject_id)->name_official_fra }}
                                 @elseif ($activity->subject_type === 'App\Models\Exhibition')
-                                <a href="{{ route('front.exhibtion.show', ['place' => $places->where('uuid', $exhibitions->find($activity->subject_id)->place_uuid)->slug, 'slug' => $exhibitions->find($activity->subject_id)->slug]) }}">
+                                <a href="{{ route('front.exhibition.show', ['place' => $places->where('uuid', $exhibitions->find($activity->subject_id)->place_uuid)->first()->slug, 'slug' => $exhibitions->find($activity->subject_id)->slug]) }}">
                                     {{ $exhibitions->find($activity->subject_id)->title }}
                                 </a>
                                 @elseif ($activity->subject_type === 'App\Models\Place')
@@ -94,19 +94,19 @@
                                 </a>
                                 @elseif ($activity->subject_type === 'App\Models\UserExhibition')
                                 <a href="{{ route('front.user.show', ['uuid' => $activity->causer_id]) }}">
-                                    {{ $users->find($activity->subject_id)->name }}
+                                    {{ $users->find($activity->causer_id)->name }}
                                 </a>
                                 @elseif ($activity->subject_type === 'App\Models\UserPlace')
                                 <a href="{{ route('front.user.show', ['uuid' => $activity->causer_id]) }}">
-                                    {{ $users->find($activity->subject_id)->name }}
+                                    {{ $users->find($activity->causer_id)->name }}
                                 </a>
                                 @elseif ($activity->subject_type === 'App\Models\UserReview')
                                 <a href="{{ route('front.user.show', ['uuid' => $activity->causer_id]) }}">
-                                    {{ $users->find($activity->subject_id)->name }}
+                                    {{ $users->find($activity->causer_id)->name }}
                                 </a>
                                 @elseif ($activity->subject_type === 'App\Models\UserTag')
                                 <a href="{{ route('front.user.show', ['uuid' => $activity->causer_id]) }}">
-                                    {{ $users->find($activity->subject_id)->name }}
+                                    {{ $users->find($activity->causer_id)->name }}
                                 </a>
                                 @else
                                 {{ $activity->subject_id }}
