@@ -1279,9 +1279,6 @@ select {
 .h-72 {
 	height: 18rem;
 }
-.h-full {
-	height: 100%;
-}
 .min-h-screen {
 	min-height: 100vh;
 }
@@ -1505,9 +1502,6 @@ select {
 	--tw-space-x-reverse: 0;
 	margin-right: calc(1.25rem * var(--tw-space-x-reverse));
 	margin-left: calc(1.25rem * calc(1 - var(--tw-space-x-reverse)));
-}
-.self-center {
-	align-self: center;
 }
 .self-stretch {
 	align-self: stretch;
@@ -1769,6 +1763,14 @@ select {
 	--tw-bg-opacity: 1;
 	background-color: rgba(255, 228, 230, var(--tw-bg-opacity));
 }
+.bg-teal-100 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(204, 251, 241, var(--tw-bg-opacity));
+}
+.bg-teal-500 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(20, 184, 166, var(--tw-bg-opacity));
+}
 .bg-bluegray-800 {
 	--tw-bg-opacity: 1;
 	background-color: rgba(30, 41, 59, var(--tw-bg-opacity));
@@ -1788,34 +1790,6 @@ select {
 .bg-pink-100 {
 	--tw-bg-opacity: 1;
 	background-color: rgba(252, 231, 243, var(--tw-bg-opacity));
-}
-.bg-warmgray-100 {
-	--tw-bg-opacity: 1;
-	background-color: rgba(245, 245, 244, var(--tw-bg-opacity));
-}
-.bg-warmgray-500 {
-	--tw-bg-opacity: 1;
-	background-color: rgba(120, 113, 108, var(--tw-bg-opacity));
-}
-.bg-amber-100 {
-	--tw-bg-opacity: 1;
-	background-color: rgba(254, 243, 199, var(--tw-bg-opacity));
-}
-.bg-teal-100 {
-	--tw-bg-opacity: 1;
-	background-color: rgba(204, 251, 241, var(--tw-bg-opacity));
-}
-.bg-teal-500 {
-	--tw-bg-opacity: 1;
-	background-color: rgba(20, 184, 166, var(--tw-bg-opacity));
-}
-.bg-teal-300 {
-	--tw-bg-opacity: 1;
-	background-color: rgba(94, 234, 212, var(--tw-bg-opacity));
-}
-.bg-teal-600 {
-	--tw-bg-opacity: 1;
-	background-color: rgba(13, 148, 136, var(--tw-bg-opacity));
 }
 .bg-opacity-25 {
 	--tw-bg-opacity: 0.25;
@@ -3782,6 +3756,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
 .hover\:text-bluegray-700:hover {
 	--tw-text-opacity: 1;
 	color: rgba(51, 65, 85, var(--tw-text-opacity));
+}
+.hover\:text-red-500:hover {
+	--tw-text-opacity: 1;
+	color: rgba(239, 68, 68, var(--tw-text-opacity));
 }
 .hover\:text-bluegray-400:hover {
 	--tw-text-opacity: 1;
