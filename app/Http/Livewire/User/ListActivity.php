@@ -5,6 +5,8 @@ namespace App\Http\Livewire\User;
 use App\Models\Country;
 use App\Models\Exhibition;
 use App\Models\Place;
+//use App\Models\Review;
+use App\Models\Tag;
 use App\Models\Type;
 use App\Models\User;
 use Livewire\Component;
@@ -37,14 +39,19 @@ class ListActivity extends Component
         $countries = Country::all();
         $exhibitions = Exhibition::all();
         $places = Place::all();
+        //$reviews = review::all();
+        $tags = Tag::all();
         $types = Type::all();
         $users = User::select('uuid')->addSelect('name');
+
 
         return view('livewire.user.list-activity', [
             'activities' => $activities,
             'countries' => $countries,
             'exhibitions' => $exhibitions,
             'places' => $places,
+            //'reviews' => $reviews,
+            'tags' => $tags,
             'types' => $types,
             'users' => $users,
         ]);

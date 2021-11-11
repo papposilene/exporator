@@ -94,19 +94,19 @@
                                 </a>
                                 @elseif ($activity->subject_type === 'App\Models\UserExhibition')
                                 <a href="{{ route('front.user.show', ['uuid' => $activity->causer_id]) }}">
-                                    {{ $users->find($activity->causer_id)->name }}
+                                    @ucfirst(__('activity.tag_followed', ['what' => $exhibitions->where('id', $activity->properties->first()['tag_id'])->first()->name]))
                                 </a>
                                 @elseif ($activity->subject_type === 'App\Models\UserPlace')
                                 <a href="{{ route('front.user.show', ['uuid' => $activity->causer_id]) }}">
-                                    {{ $users->find($activity->causer_id)->name }}
+                                    @ucfirst(__('activity.tag_followed', ['what' => $places->where('id', $activity->properties->first()['tag_id'])->first()->name]))
                                 </a>
                                 @elseif ($activity->subject_type === 'App\Models\UserReview')
                                 <a href="{{ route('front.user.show', ['uuid' => $activity->causer_id]) }}">
-                                    {{ $users->find($activity->causer_id)->name }}
+                                    @ucfirst(__('activity.tag_followed', ['what' => $reviews->where('id', $activity->properties->first()['tag_id'])->first()->name]))
                                 </a>
                                 @elseif ($activity->subject_type === 'App\Models\UserTag')
                                 <a href="{{ route('front.user.show', ['uuid' => $activity->causer_id]) }}">
-                                    {{ $users->find($activity->causer_id)->name }}
+                                    @ucfirst(__('activity.tag_followed', ['what' => $tags->where('id', $activity->properties->first()['tag_id'])->first()->name]))
                                 </a>
                                 @else
                                 {{ $activity->subject_id }}

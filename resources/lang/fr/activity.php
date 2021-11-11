@@ -22,4 +22,9 @@ return [
     'subjects_type' => 'types d’objet',
     'no_subject' => 'pas d’initiateur',
 
+    'exhibition_followed' => 'opération sur le following de l’exposition <em>:what</em>',
+    'place_followed' => 'opération sur le following du lieu d’exposition <em>:what</em>',
+    'tag_followed' => 'opération sur le following du tag <em>:what</em>',
+    'user_followed' => 'opération sur le following de l’utlisateur <em>:what</em>',
+
 ];
