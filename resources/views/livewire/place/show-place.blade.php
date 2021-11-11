@@ -135,7 +135,7 @@
             </div>
             {{ $exhibitions->links() }}
             @else
-            <div class="max-w-8xl mx-auto py-5 sm:px-6 lg:px-8">
+            <div class="flex justify-center bg-bluegray-500 text-white p-5 shadow w-full">
                 <p class="text-center py-10">
                     @ucfirst(__('app.nothing'))
                 </p>
