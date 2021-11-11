@@ -59,7 +59,7 @@ Route::post('/exhibitions/propose', [ExhibitionController::class, 'propose'])->n
 // Tags
 Route::get('/tags', ListTag::class)->name('front.tag.index');
 Route::get('/tag/{slug}', ShowTag::class)->name('front.tag.show');
-Route::get('/tag/type/{slug}', ShowType::class)->name('front.tag.type');
+//Route::get('/tag/type/{slug}', ShowType::class)->name('front.tag.type');
 
 // Users
 Route::get('/users', ListUser::class)->name('front.user.index');

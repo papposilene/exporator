@@ -67,12 +67,7 @@
                             <td class="hidden lg:table-cell">
                                 <livewire:interfaces.follow-tag :tag="$tag" :wire:key="$tag->id" />
                             </td>
-                            <td>
-                                <a href="{{ route('front.tag.type', ['slug' => $tag->type]) }}"
-                                    title="@ucfirst($tag->type)" aria-label="@ucfirst($tag->type)">
-                                    @ucfirst($tag->type)
-                                </a>
-                            </td>
+                            <td>@ucfirst($tag->type)</td>
                             <td>
                                 <a href="{{ route('front.tag.show', ['slug' => $tag->slug]) }}"
                                     title="@ucfirst($tag->name)" aria-label="@ucfirst($tag->name)">
