@@ -11,14 +11,14 @@ class StatExhibition extends Component
     {
         $today = date('Y-m-d');
         $month = date('Y-m-30');
-        $month_next = date('Y-m-01', strtotime('+1 month'));
+        $month_next = date('Y-m-d', strtotime('+30 days'));
         $year = date('Y');
 
         $exhibitions = Exhibition::count();
         $exhibitions_today = Exhibition::whereDate('began_at', '<', $today)
             ->whereDate('ended_at', '>', $today)
             ->count();
-        $exhibitions_nextmonth = Exhibition::whereDate('began_at', '>', $month_next)
+        $exhibitions_nextmonth = Exhibition::whereDate('ended_at', '>', $month_next)
             ->count();
         $exhibitions_finaldays = Exhibition::whereDate('ended_at', '=', $month)
             ->get();

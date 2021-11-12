@@ -73,7 +73,7 @@
 
                     <input type="hidden" name="uuid" value="{{ $exhibition->uuid }}" />
 
-                    <div class="mt-4">
+                    <div class="mt-4 text-white">
                         @ucfirst(__('app.review_info'))
                     </div>
 
@@ -81,6 +81,31 @@
                         <x-forms.label class="text-gray-100 text-xl" for="title">@ucfirst(__('app.title'))</x-forms.label>
                         <x-forms.input class="text-gray-800 bg-bluegray-300 block mt-1 w-full"
                             type="text" id="title" name="title" required :value="old('title')" />
+                    </div>
+
+                    <div class="mt-4" x-data="setupEditor('<p>Hello World! :-)</p>')" x-init="() => init($refs.element)">
+                        <template x-if="editor">
+                            <div class="menu">
+                                <button
+                                    @click="editor.chain().toggleHeading({ level: 1 }).focus().run()"
+                                    :class="{ 'is-active': editor.isActive('heading', { level: 1 }) }">
+                                    H1
+                                </button>
+                                <button
+                                    @click="editor.chain().toggleBold().focus().run()"
+                                    :class="{ 'is-active': editor.isActive('bold') }">
+                                    Bold
+                                </button>
+                                <button
+                                    @click="editor.chain().toggleItalic().focus().run()"
+                                    :class="{ 'is-active': editor.isActive('italic') }">
+                                    Italic
+                                </button>
+                            </div>
+                        </template>
+                        <div class="border-bluegray-300 text-gray-800 bg-bluegray-300 block mt-1
+                            focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded-md shadow-sm w-full"
+                            x-ref="element"></div>
                     </div>
 
                     <div class="mt-4">

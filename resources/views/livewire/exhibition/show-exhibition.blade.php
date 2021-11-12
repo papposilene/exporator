@@ -7,7 +7,7 @@
         <livewire:modals.edit-exhibition :exhibition="$exhibition" :wire:key="$exhibition->uuid" />
         @endif
         @if (Auth::user()->can('create reviews'))
-        <livewire:modals.create-review :exhibition="$exhibition" :wire:key="$exhibition->uuid" />
+        <!-- livewire:modals.create-review :exhibition="$exhibition" :wire:key="$exhibition->uuid" / -->
         @endif
         @endauth
         <h2 class="font-semibold text-xl text-bluegray-800 dark:text-bluegray-100 leading-tight">
@@ -163,7 +163,7 @@
             @endif
 
             <!-- Reviews -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-2 bg-purple-300 mt-5 px-5 p-5 rounded shadow w-full">
+            <!-- div class="grid grid-cols-1 lg:grid-cols-3 gap-2 bg-purple-300 mt-5 px-5 p-5 rounded shadow w-full">
                 @if ($reviews->count() > 0)
                 @foreach ($reviews as $review)
                 <a href="{{ route('front.review.show', ['slug' => $review->slug]) }}"
@@ -179,9 +179,8 @@
                     @ucfirst(__('app.nothing'))
                 </p>
                 @endif
-            </div>
+            </div -->
             <!-- End of reviews -->
-
         </div>
     </div>
 </div>
