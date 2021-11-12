@@ -76,13 +76,22 @@
   {
     "type":"movement",
     "tag":{
-        "fr": "art cinétique"
+        "fr": "art corporel",
+        "en": "body art"
     }
   },
   {
     "type":"movement",
     "tag":{
-        "fr": "art conceptuel"
+        "fr": "art cinétique",
+        "en": "cinetic art"
+    }
+  },
+  {
+    "type":"movement",
+    "tag":{
+        "fr": "art conceptuel",
+        "en": "conceptual art"
     }
   },
   {
@@ -94,7 +103,8 @@
   {
     "type":"movement",
     "tag":{
-        "fr": "art nouveau"
+        "fr": "art nouveau",
+        "en": "art nouveau"
     }
   },
   {
