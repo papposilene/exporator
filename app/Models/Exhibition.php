@@ -101,6 +101,21 @@ class Exhibition extends Model
     }
 
     /**
+     * Get all the reviews written by an user.
+     */
+    public function hasReviews()
+    {
+        return $this->hasManyThrough(
+            'App\Models\Review',
+            'App\Models\UserReview',
+            'exhibition_uuid',
+            'uuid',
+            'uuid',
+            'review_uuid'
+        );
+    }
+
+    /**
      * Get all the exhibitions for a specific place.
      */
     public function inPlace()

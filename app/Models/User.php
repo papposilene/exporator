@@ -141,4 +141,19 @@ class User extends Authenticatable
             'tag_id'
         );
     }
+
+    /**
+     * Get all the reviews written by an user.
+     */
+    public function hasReviews()
+    {
+        return $this->hasManyThrough(
+            'App\Models\Review',
+            'App\Models\UserReview',
+            'user_uuid',
+            'uuid',
+            'uuid',
+            'review_uuid'
+        );
+    }
 }

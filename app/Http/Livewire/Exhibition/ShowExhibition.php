@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Exhibition;
 
 use App\Models\Exhibition;
 use App\Models\Tagged;
+use App\Models\UserReview;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -30,13 +31,22 @@ class ShowExhibition extends Component
             }, function ($query) {
                 return $query->where('is_published', true);
             })
-            ->where('slug', $this->slug)->firstOrFail();
+            ->where('slug', $this->slug)
+            ->firstOrFail();
 
         $hasTags = ($this->exhibition->isTagged()->first() ? $this->exhibition->isTagged()->first()->id : 0);
         $this->suggestions = Tagged::where('tag_id', $hasTags)
                 ->inRandomOrder()
                 ->take(3)
                 ->get();
+
+        $this->reviews = $this->exhibition->hasReviews()->when(Auth::check(), function ($query) {
+                return $query;
+            }, function ($query) {
+                return $query->where('is_published', true);
+            })
+            ->orderBy('updated_at', 'desc')
+            ->get();
     }
 
     public function updatingSearch()
@@ -48,7 +58,8 @@ class ShowExhibition extends Component
     {
         return view('livewire.exhibition.show-exhibition', [
             'exhibition' => $this->exhibition,
-            'suggestions' => $this->suggestions
+            'suggestions' => $this->suggestions,
+            'reviews' => $this->reviews,
         ]);
     }
 }

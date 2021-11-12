@@ -111,6 +111,8 @@
                     @endif
                 </li>
             </ul>
+
+            <!-- Tags -->
             <div class="bg-indigo-300 px-5 p-5 shadow w-full">
                 @if (count($exhibition->tags) > 0)
                 @foreach ($exhibition->tags as $tag)
@@ -128,7 +130,10 @@
                 @endif
                 @endauth
             </div>
+            <!-- End of tags -->
+
             @if ($suggestions->count() > 0)
+            <!-- Tags suggestions -->
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-2 bg-indigo-300 px-5 p-5 w-full">
                 @foreach ($suggestions as $suggestion)
                 @if ($suggestion->isExhibition->uuid === $exhibition->uuid)
@@ -142,6 +147,23 @@
                 </a>
                 @endforeach
             </div>
+            <!-- End of tags suggestions -->
+            @endif
+
+            @if ($reviews->count() > 0)
+            <!-- Reviews -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-2 bg-purple-300 px-5 p-5 w-full">
+                @foreach ($reviews as $review)
+                <a href="{{ route('front.review.show', ['slug' => $review->slug]) }}"
+                    class="bg-purple-500 text-white p-2 inline-block" title="{{ $review->title }}">
+                    <span class="italic">{{ $review->title }}</span><br />
+                    <span class="">{{ $review->byUser->name }}</span><br />
+                    <span class="">{{ $review->note }}</span><br />
+                    <span class="text-sm">@date($review->updated_at)</span>
+                </a>
+                @endforeach
+            </div>
+            <!-- End of reviews -->
             @endif
         </div>
     </div>
