@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\Backend\ExhibitionController;
 use App\Http\Controllers\Backend\PlaceController;
+use App\Http\Controllers\Backend\ReviewController;
 use App\Http\Controllers\Backend\TagController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Livewire\Dashboard\ShowAbout;
@@ -56,6 +57,10 @@ Route::get('/exhibitions/map', MapExhibition::class)->name('front.exhibition.map
 Route::get('/exhibitions/timeline', TimelineExhibition::class)->name('front.exhibition.timeline');
 Route::post('/exhibitions/propose', [ExhibitionController::class, 'propose'])->name('front.exhibition.propose');
 
+// Reviews
+Route::get('/reviews', ListUser::class)->name('front.review.index');
+Route::get('/review/{slug}', ShowUser::class)->name('front.review.show');
+
 // Tags
 Route::get('/tags', ListTag::class)->name('front.tag.index');
 Route::get('/tag/{slug}', ShowTag::class)->name('front.tag.show');
@@ -83,6 +88,11 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function
     Route::post('/exhibition/update', [ExhibitionController::class, 'update'])->name('admin.exhibition.update');
     Route::post('/exhibitions/import', [ExhibitionController::class, 'import'])->name('admin.exhibition.import');
     Route::post('/exhibitions/publish', [ExhibitionController::class, 'publish'])->name('admin.exhibition.publish');
+
+    // Review
+    Route::post('/review/store', [ReviewController::class, 'store'])->name('admin.review.store');
+    Route::post('/review/update', [ReviewController::class, 'update'])->name('admin.review.update');
+    Route::post('/review/delete', [ReviewController::class, 'delete'])->name('admin.review.delete');
 
     // Tag
     Route::post('/tag/store', [TagController::class, 'store'])->name('admin.tag.store');
