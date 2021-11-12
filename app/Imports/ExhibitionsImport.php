@@ -103,7 +103,7 @@ class ExhibitionsImport implements ToModel, SkipsEmptyRows, WithBatchInserts, Wi
             ],
             '*.price' => [
                 'nullable',
-                'integer'
+                'numeric'
             ],
         ];
     }

@@ -137,15 +137,4 @@ class PlaceController extends Controller
 
         return $statistics;
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Place  $place
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Place $place)
-    {
-        //
-    }
 }

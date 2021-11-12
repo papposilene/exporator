@@ -30,7 +30,7 @@ class ReviewController extends Controller
      */
     public function statistic(Review $review)
     {
-        $dataStatistics = Review::orderBy('has_places_count', 'desc')->get();
+        $dataStatistics = Review::orderBy('note', 'desc')->get();
 
         $statistics = collect([
             'data' => [
@@ -40,7 +40,7 @@ class ReviewController extends Controller
                 'labels' => $dataStatistics->pluck('type'),
                 'datasets' => [
                     [
-                        'label' => ucfirst(__('chart.places_by_types')),
+                        'label' => ucfirst(__('chart.exhibitions_by_notes')),
                         'data' => $dataStatistics->pluck('has_places_count'),
                         'backgroundColor' => [
                             '#F87171',
@@ -63,7 +63,7 @@ class ReviewController extends Controller
                     'display' => true,
                     'fontColor' => '#fff',
                     'position' => 'top',
-                    'text' => ucfirst(__('chart.places_by_types')),
+                    'text' => ucfirst(__('chart.exhibitions_by_notes')),
                 ],
                 //'indexAxis' => 'y',
                 'responsive' => true,
@@ -76,16 +76,5 @@ class ReviewController extends Controller
         ])->all();
 
         return $statistics;
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Place  $place
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Place $place)
-    {
-        //
     }
 }

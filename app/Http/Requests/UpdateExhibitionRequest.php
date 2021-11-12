@@ -21,7 +21,7 @@ class UpdateExhibitionRequest extends FormRequest
             'ended_at' => 'required|date_format:d/m/Y',
             'description' => 'required|string',
             'link' => 'nullable|url',
-            'price' => 'nullable|integer',
+            'price' => 'nullable|numeric',
             'is_published' => 'required|boolean',
         ];
     }

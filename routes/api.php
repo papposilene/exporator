@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\CountryController;
 use App\Http\Controllers\API\ExhibitionController;
 use App\Http\Controllers\API\PlaceController;
+use App\Http\Controllers\API\ReviewController;
 use App\Http\Controllers\API\TagController;
 use App\Http\Controllers\API\UserController;
 

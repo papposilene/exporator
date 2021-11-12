@@ -31,10 +31,12 @@ class ShowExhibition extends Component
                 return $query->where('is_published', true);
             })
             ->where('slug', $this->slug)->firstOrFail();
-        $this->suggestions = Tagged::where('tag_id', $this->exhibition->isTagged()->first()->id)
-            ->inRandomOrder()
-            ->take(3)
-            ->get();
+
+        $hasTags = ($this->exhibition->isTagged()->first() ? $this->exhibition->isTagged()->first()->id : 0);
+        $this->suggestions = Tagged::where('tag_id', $hasTags)
+                ->inRandomOrder()
+                ->take(3)
+                ->get();
     }
 
     public function updatingSearch()

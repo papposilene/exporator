@@ -2,6 +2,11 @@
 
 <div>
     <x-slot name="header">
+        @auth
+        @if (Auth::user()->can('update exhibitions'))
+        <livewire:modals.edit-exhibition :exhibition="$exhibition" :wire:key="$exhibition->uuid" />
+        @endif
+        @endauth
         <h2 class="font-semibold text-xl text-bluegray-800 dark:text-bluegray-100 leading-tight">
             <span>
                 <a href="{{ route('front.place.show', ['slug' => $exhibition->inPlace->slug]) }}">
@@ -15,12 +20,13 @@
     <div class="flex flex-wrap w-full max-w-7xl mx-auto">
         <div class="mx-auto md:w-1/4 py-5 px-6 w-full">
             <ul class="bg-indigo-100 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
-                <li title="@ucfirst(__('app.place'))">
+                <li class="flex flex-grow justify-between" title="@ucfirst(__('app.place'))">
                     <h3 class="font-bold text-2xl mb-5">
                         <a href="{{ route('front.place.show', ['slug' => $exhibition->inPlace->slug]) }}">
                             {{ $exhibition->inPlace->name }}
                         </a>
                     </h3>
+                    <span><livewire:interfaces.follow-place :place="$exhibition->inPlace" :wire:key="$exhibition->inPlace->uuid" /></span>
                 </li>
                 <li title="@ucfirst(__('app.type'))">@ucfirst(__('app.' . Str::slug($exhibition->inPlace->type, '_')))</li>
                 <li title="@ucfirst(__('app.address'))">{{ $exhibition->inPlace->address }}</li>
@@ -48,16 +54,6 @@
             <ul class="list-inside md:m-5 mt-5 md:mt-0 shadow w-full">
                 <li><livewire:interfaces.map :place="$exhibition->inPlace" :wire:key="$exhibition->inPlace->uuid" /></li>
             </ul>
-            <ul class="bg-bluegray-200 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
-                <li><livewire:interfaces.follow-exhibition :exhibition="$exhibition" :wire:key="$exhibition->uuid" /></li>
-            </ul>
-            @auth
-            @if (Auth::user()->can('update exhibitions'))
-            <ul class="bg-bluegray-200 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
-                <li><livewire:modals.edit-exhibition :exhibition="$exhibition" :wire:key="$exhibition->uuid" /></li>
-            </ul>
-            @endif
-            @endauth
         </div>
 
         <div class="mx-auto md:w-3/4 py-5 px-6">
@@ -119,7 +115,7 @@
                 @if (count($exhibition->tags) > 0)
                 @foreach ($exhibition->tags as $tag)
                 <a href="{{ route('front.tag.show', ['slug' => $tag->slug]) }}"
-                    class="bg-indigo-500 text-white mr-2 p-2 inline-block" title="{{ $tag->type }}">
+                    class="bg-indigo-500 text-white mr-2 p-2 inline-block rounded" title="{{ $tag->type }}">
                     {{ $tag->name }}
                 </a>
                 @endforeach
@@ -135,7 +131,7 @@
             @if ($suggestions->count() > 0)
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-2 bg-indigo-300 px-5 p-5 w-full">
                 @foreach ($suggestions as $suggestion)
-                @if ($suggestion->isExhibition->uuid == $exhibition->uuid)
+                @if ($suggestion->isExhibition->uuid === $exhibition->uuid)
                     @continue
                 @endif
                 <a href="{{ route('front.exhibition.show', ['place' => $suggestion->isExhibition->inPlace->slug, 'slug' => $suggestion->isExhibition->slug]) }}"

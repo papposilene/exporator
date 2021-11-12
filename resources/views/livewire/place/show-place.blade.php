@@ -3,10 +3,10 @@
 <div>
     <x-slot name="header">
         @auth
-        @if (Auth::user()->can('update', App\Models\User::class, App\Models\Exhibition::class))
+        @if (Auth::user()->can('update places'))
         <livewire:modals.edit-place :place="$place" :wire:key="$place->uuid" />
         @endif
-        @if (Auth::user()->can('create', App\Models\Exhibition::class))
+        @if (Auth::user()->can('create exhibitions'))
         <livewire:modals.create-exhibition :place="$place" :wire:key="$place->uuid" />
         @else
         <livewire:modals.propose-exhibition :place="$place" :wire:key="$place->uuid" />

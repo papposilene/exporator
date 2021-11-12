@@ -119,6 +119,7 @@ return [
     'titles' => 'titres',
     'type' => 'typologie',
     'types' => 'typologies',
+    'update' => 'mettre à jour',
     'user' => 'utilisateur',
     'users' => 'utilisateurs',
     'users_manage' => 'gérer les utilisateurs',

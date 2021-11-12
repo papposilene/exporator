@@ -1,8 +1,8 @@
-<div id="modalUpdateExhibition">
+<div id="modalUpdateExhibition" class="relative float-right mr-2">
     <div id="modalButtonUpdateExhibition">
-        <button id="modalOpenCreateExhibition" class="focus:outline-none bg-sky-300 text-black bg-opacity-75 p-2 rounded w-full"
+        <button id="modalOpenUpdateExhibition" class="focus:outline-none bg-sky-300 text-black bg-opacity-75 px-1 rounded"
             type="button" title="@ucfirst(__('app.edit_', ['what' => $exhibition->title]))">
-            @ucfirst(__('app.edit_', ['what' => $exhibition->title]))
+            @ucfirst(__('app.update'))
         </button>
     </div>
 
@@ -39,8 +39,8 @@
                 <div class="grid grid-cols-2 gap-x-4 mt-4">
                     <x-forms.label class="dark:text-gray-100" for="began_at">@ucfirst(__('app.began_at'))</x-forms.label>
                     <x-forms.label class="dark:text-gray-100" for="ended_at">@ucfirst(__('app.ended_at'))</x-forms.label>
-                    <x-forms.input id="began_at" class="dark:text-gray-800 dark:bg-bluegray-300 block mt-1 w-full" type="text" name="began_at" :placeholder="@ucfirst(__('app.ddmmyyyy'))" value="@date($exhibition->began_at)" required />
-                    <x-forms.input id="ended_at" class="dark:text-gray-800 dark:bg-bluegray-300 block mt-1 w-full" type="text" name="ended_at" :placeholder="@ucfirst(__('app.ddmmyyyy'))" value="@date($exhibition->ended_at)" required />
+                    <x-forms.input id="began_at" class="dark:text-gray-800 dark:bg-bluegray-300 block mt-1 w-full" type="text" name="began_at" :placeholder="@ucfirst(__('app.ddmmyyyy'))" value="{{ $exhibition->began_at->format('d/m/Y') }}" required />
+                    <x-forms.input id="ended_at" class="dark:text-gray-800 dark:bg-bluegray-300 block mt-1 w-full" type="text" name="ended_at" :placeholder="@ucfirst(__('app.ddmmyyyy'))" value="{{ $exhibition->ended_at->format('d/m/Y') }}" required />
                 </div>
 
                 <div class="mt-4">
