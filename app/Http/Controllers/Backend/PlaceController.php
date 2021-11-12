@@ -98,14 +98,18 @@ class PlaceController extends Controller
 
         $validated = $request->validated();
 
-        try {
+        try
+        {
             $import = new PlacesImport();
             $import->import($request->file('datafile'));
-        } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+        } catch (\Maatwebsite\Excel\Validators\ValidationException $e)
+        {
             Storage::delete($request->file('datafile'));
             $failures = $e->failures();
 
-            return redirect()->route('front.place.index', compact($failures));
+            return redirect()->route('front.place.index', [
+                'errors' => $failures,
+            ]);
         }
 
         Storage::delete($request->file('datafile'));

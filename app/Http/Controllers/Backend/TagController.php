@@ -137,7 +137,7 @@ class TagController extends Controller
      */
     public function delete(DeleteTagRequest $request, Tag $tag)
     {
-        $this->authorize('delete', App\Models\User::class, Tag::class);
+        $this->authorize('delete', User::class, Tag::class);
 
         $validated = $request->validated();
 

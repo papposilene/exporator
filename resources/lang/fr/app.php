@@ -52,7 +52,7 @@ return [
     'foundation' => 'fondation',
     'geolocate' => 'me géolocaliser',
     'import' => 'importer',
-    'is_open' => 'le lieu est-il ouvert ? Si oui, open. Si non, close.',
+    'is_open' => 'le lieu est-il ouvert ? Si oui, <em>open</em>. Si non, <em>closed</em>.',
     'is_published' => 'visibilité',
     'iteration' => '#',
     'file' => 'fichier à importer',

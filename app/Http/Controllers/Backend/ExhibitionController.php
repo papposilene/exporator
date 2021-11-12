@@ -97,7 +97,7 @@ class ExhibitionController extends Controller
 
         return redirect()->route('front.dashboard')->with('success', 'All good!');
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -114,7 +114,7 @@ class ExhibitionController extends Controller
         $exhibition->is_published = true;
         $exhibition->save();
 
-        return redirect()->route('front.exhibition.show', ['place' => exhibition->inPlace->slug, 'slug' => exhibition->slug])->with('success', 'All good!');
+        return redirect()->route('front.exhibition.show', ['place' => $exhibition->inPlace->slug, 'slug' => $exhibition->slug])->with('success', 'All good!');
     }
 
     /**
@@ -129,16 +129,18 @@ class ExhibitionController extends Controller
 
         $validated = $request->validated();
 
-        try {
+        try
+        {
             $import = new ExhibitionsImport();
             $import->import($request->file('datafile'));
-        } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+        } catch (\Maatwebsite\Excel\Validators\ValidationException $e)
+        {
             Storage::delete($request->file('datafile'));
             $failures = $e->failures();
 
-            dd($failures);
-
-            return redirect()->route('front.exhibition.index', compact($failures));
+            return redirect()->route('front.exhibition.index', [
+                'errors' => $failures,
+            ]);
         }
 
         Storage::delete($request->file('datafile'));

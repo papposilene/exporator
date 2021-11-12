@@ -67,10 +67,10 @@ class PlacesImport implements ToModel, SkipsEmptyRows, WithBatchInserts, WithChu
 
                 // Find or create the tag for the exhibition type.
                 $splittag = Str::of($tag)->split('/:+/');
-                
+
                 $tag_type = Str::of($splittag[1])->lower();
                 $tag_tag = Str::of($splittag[0])->lower();
-                
+
                 $tagged = Tag::findOrCreate($tag_tag, $tag_type);
                 $place->attachTags([$tag_tag], $tag_type);
             }
@@ -97,7 +97,7 @@ class PlacesImport implements ToModel, SkipsEmptyRows, WithBatchInserts, WithChu
             ],
             '*.status' => [
                 'required',
-                'in:open,close'
+                'in:open,closed'
             ],
             '*.address' => [
                 'required',
