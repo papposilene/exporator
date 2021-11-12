@@ -3996,6 +3996,18 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	--tw-bg-opacity: 1;
 	background-color: rgba(30, 41, 59, var(--tw-bg-opacity));
 }
+.dark .dark\:bg-gray-100 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(244, 244, 245, var(--tw-bg-opacity));
+}
+.dark .dark\:bg-gray-500 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(113, 113, 122, var(--tw-bg-opacity));
+}
+.dark .dark\:bg-gray-600 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(82, 82, 91, var(--tw-bg-opacity));
+}
 .dark .dark\:text-bluegray-100 {
 	--tw-text-opacity: 1;
 	color: rgba(241, 245, 249, var(--tw-text-opacity));
@@ -4039,6 +4051,50 @@ svg.leaflet-image-layer.leaflet-interactive path {
 .dark .dark\:text-bluegray-400 {
 	--tw-text-opacity: 1;
 	color: rgba(148, 163, 184, var(--tw-text-opacity));
+}
+.dark .dark\:text-gray-500 {
+	--tw-text-opacity: 1;
+	color: rgba(113, 113, 122, var(--tw-text-opacity));
+}
+.dark .dark\:text-gray-400 {
+	--tw-text-opacity: 1;
+	color: rgba(161, 161, 170, var(--tw-text-opacity));
+}
+.dark .dark\:text-red-400 {
+	--tw-text-opacity: 1;
+	color: rgba(248, 113, 113, var(--tw-text-opacity));
+}
+.dark .dark\:text-red-600 {
+	--tw-text-opacity: 1;
+	color: rgba(220, 38, 38, var(--tw-text-opacity));
+}
+.dark .dark\:text-red-500 {
+	--tw-text-opacity: 1;
+	color: rgba(239, 68, 68, var(--tw-text-opacity));
+}
+.dark .dark\:text-pink-500 {
+	--tw-text-opacity: 1;
+	color: rgba(236, 72, 153, var(--tw-text-opacity));
+}
+.dark .dark\:text-pink-400 {
+	--tw-text-opacity: 1;
+	color: rgba(244, 114, 182, var(--tw-text-opacity));
+}
+.dark .dark\:text-pink-900 {
+	--tw-text-opacity: 1;
+	color: rgba(131, 24, 67, var(--tw-text-opacity));
+}
+.dark .dark\:text-pink-300 {
+	--tw-text-opacity: 1;
+	color: rgba(249, 168, 212, var(--tw-text-opacity));
+}
+.dark .dark\:text-rose-500 {
+	--tw-text-opacity: 1;
+	color: rgba(244, 63, 94, var(--tw-text-opacity));
+}
+.dark .dark\:text-rose-400 {
+	--tw-text-opacity: 1;
+	color: rgba(251, 113, 133, var(--tw-text-opacity));
 }
 .dark .dark\:hover\:bg-white:hover {
 	--tw-bg-opacity: 1;
