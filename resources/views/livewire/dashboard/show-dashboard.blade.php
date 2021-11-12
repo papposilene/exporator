@@ -9,7 +9,7 @@
 
     <div>
         <div class="flex flex-col lg:flex-row flex-wrap max-w-7xl mx-auto py-5 px-6">
-            <div class="flex flex-grow lg:flex-grow-0 flex-wrap bg-bluegray-500 text-white p-5 shadow w-full">
+            <div class="flex flex-grow lg:flex-grow-0 flex-wrap bg-bluegray-500 text-white p-5 rounded shadow w-full">
                 @auth
                 <h3 class="font-bold text-2xl mb-5">@ucfirst(__('app.welcome_to', ['name' => Auth::user()->name]))</h3>
                 @else

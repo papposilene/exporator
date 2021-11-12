@@ -93,7 +93,7 @@
             </div>
             {{ $exhibitions->links() }}
             @else
-            <div class="flex justify-center bg-bluegray-500 text-white p-5 shadow w-full">
+            <div class="flex justify-center bg-bluegray-500 text-white p-5 rounded shadow w-full">
                 <p class="text-center py-10">
                     @ucfirst(__('app.nothing'))
                 </p>

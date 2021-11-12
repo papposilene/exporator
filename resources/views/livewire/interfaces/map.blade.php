@@ -1,6 +1,6 @@
 <div>
     <div class="flex">
-        <div id="leaflet-map" class="w-full shadow h-72"></div>
+        <div id="leaflet-map" class="w-full rounded shadow h-72"></div>
     </div>
 </div>
 

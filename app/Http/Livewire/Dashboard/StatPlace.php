@@ -13,8 +13,8 @@ class StatPlace extends Component
         $top1_of_places = Place::withCount('hasExhibitions')->orderBy('has_exhibitions_count', 'desc')->first();
         $museum_type = Place::where('type', 'museum')->count();
         $gallery_type = Place::where('type', 'gallery')->count();
-        $artcenter_type = Place::where('type', 'art center')->count();
-        $artfair_type = Place::where('type', 'art fair')->count();
+        $artcenter_type = Place::where('type', 'art-center')->count();
+        $artfair_type = Place::where('type', 'art-fair')->count();
         $library_type = Place::where('type', 'library')->count();
         $foundation_type = Place::where('type', 'foundation')->count();
         $other_type = Place::where('type', 'other')->count();

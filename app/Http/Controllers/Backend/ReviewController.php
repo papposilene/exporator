@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\DeleteReviewRequest;
 use App\Http\Requests\StoreReviewRequest;
 use App\Http\Requests\UpdateReviewRequest;
+use App\Models\Exhibition;
 use App\Models\Review;
 use App\Models\User;
 use App\Models\UserReview;
@@ -32,9 +33,13 @@ class ReviewController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($uuid)
     {
-        //
+        $this->authorize('create', Review::class);
+
+        $exhibition = Exhibition::findOrFail($uuid);
+
+        return view('livewire.review.create-review');
     }
 
     /**

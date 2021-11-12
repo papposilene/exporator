@@ -129,6 +129,7 @@ return [
     'with_current_exhibition' => 'Exposition(s) en cours',
     'with_future_exhibition' => 'Exposition(s) future(s)',
     'without_exhibition' => 'Pas d’exposition',
+    'write_one_review' => 'rédiger une critique',
 
     // Texts
     'published_info' => 'cette exposition n’est pas encore publiée, et n’est donc pas visible pour les visiteurs
@@ -139,6 +140,7 @@ return [
         dans une typologie plus globale.',
     'propose_info' => 'Vous pouvez proposer à tout moment une exposition temporaire. Elle devra être validée par
         un des administrateurs pour qu’elle soit publiée.',
+    'ended_info' => 'cette exposition est terminée depuis le :date.',
 
     // Placeholders
     'calendar_of' => 'agenda des :what',

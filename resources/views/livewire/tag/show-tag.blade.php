@@ -22,7 +22,7 @@
 
     <div class="flex flex-wrap w-full max-w-7xl mx-auto">
         <div class="mx-auto py-5 px-6 w-full lg:w-1/4">
-            <ul class="bg-indigo-300 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
+            <ul class="bg-indigo-300 list-inside md:m-5 mt-5 md:mt-0 p-5 rounded shadow w-full">
                 <li class="flex flex-grow justify-between" title="@ucfirst(__('app.tag'))">
                     <h3 class="font-bold text-2xl mb-5">
                         @ucfirst($tag->name)
@@ -31,14 +31,14 @@
                 </li>
                 <li title="@ucfirst(__('app.type'))">@ucfirst(__('app.category_is', ['what' => $tag->type]))</li>
             </ul>
-            <div class="bg-indigo-200 md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
+            <div class="bg-indigo-200 md:m-5 mt-5 md:mt-0 p-5 rounded shadow w-full">
                 <h4 class="font-bold text-2xl mb-5">
                     @ucfirst(__('app.statistics'))
                 </h4>
                 <canvas id="chartTags" width="400" height="400"></canvas>
             </div>
             @if ($suggestions->count()  > 0)
-            <div class="bg-indigo-200 md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
+            <div class="bg-indigo-200 md:m-5 mt-5 md:mt-0 p-5 rounded shadow w-full">
                 <h4 class="font-bold text-2xl mb-5">
                     @ucfirst(__('app.suggestions'))
                 </h4>
@@ -137,7 +137,7 @@
             </div>
             {{ $exhibitions->links() }}
             @else
-            <div class="flex justify-center bg-bluegray-500 text-white p-5 shadow w-full">
+            <div class="flex justify-center bg-bluegray-500 text-white p-5 rounded shadow w-full">
                 <p class="text-center py-10">
                     @ucfirst(__('app.nothing'))
                 </p>

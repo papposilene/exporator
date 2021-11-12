@@ -6,6 +6,9 @@
         @if (Auth::user()->can('update exhibitions'))
         <livewire:modals.edit-exhibition :exhibition="$exhibition" :wire:key="$exhibition->uuid" />
         @endif
+        @if (Auth::user()->can('create reviews'))
+        <livewire:modals.create-review :exhibition="$exhibition" :wire:key="$exhibition->uuid" />
+        @endif
         @endauth
         <h2 class="font-semibold text-xl text-bluegray-800 dark:text-bluegray-100 leading-tight">
             <span>
@@ -19,7 +22,7 @@
 
     <div class="flex flex-wrap w-full max-w-7xl mx-auto">
         <div class="mx-auto md:w-1/4 py-5 px-6 w-full">
-            <ul class="bg-indigo-100 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
+            <ul class="bg-indigo-100 list-inside md:m-5 mt-5 md:mt-0 p-5 rounded shadow w-full">
                 <li class="flex flex-grow justify-between" title="@ucfirst(__('app.place'))">
                     <h3 class="font-bold text-2xl mb-5">
                         <a href="{{ route('front.place.show', ['slug' => $exhibition->inPlace->slug]) }}">
@@ -39,9 +42,9 @@
                 </li>
             </ul>
             @if ($exhibition->inPlace->status === 1)
-            <ul class="bg-green-100 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
+            <ul class="bg-green-100 list-inside md:m-5 mt-5 md:mt-0 p-5 rounded shadow w-full">
             @else
-            <ul class="bg-red-100 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
+            <ul class="bg-red-100 list-inside md:m-5 mt-5 md:mt-0 p-5 rounded shadow w-full">
             @endif
                 <li title="@ucfirst(__('app.is_open'))">
                     @if ($exhibition->inPlace->status === 1)
@@ -51,7 +54,7 @@
                     @endif
                 </li>
             </ul>
-            <ul class="list-inside md:m-5 mt-5 md:mt-0 shadow w-full">
+            <ul class="list-inside md:m-5 mt-5 md:mt-0 rounded shadow w-full">
                 <li><livewire:interfaces.map :place="$exhibition->inPlace" :wire:key="$exhibition->inPlace->uuid" /></li>
             </ul>
         </div>
@@ -78,32 +81,41 @@
             </div>
             @endif
 
-            <ul class="list-inside bg-bluegray-200 mb-5 shadow w-full">
-                <li title="@ucfirst(__('app.exhibition'))">
-                    <h4 class="bg-bluegray-300 font-bold text-2xl p-3 mb-5">
-                        {{ $exhibition->title }}
-                    </h4>
-                </li>
-                <li class="flex space-x-5 md:px-0 justify-end mb-5">
-                    <span class="bg-yellow-100 p-2" title="@ucfirst(__('app.price'))">
-                        @ucfirst(__('app.price')) :
-                        @if ($exhibition->price)
-                            {{ $exhibition->price }}.
-                        @else
-                            {{ __('app.no_price') }}.
-                        @endif
-                    </span>
-                    <span class="bg-green-100 p-2" title="@ucfirst(__('app.began_at'))">
-                        @ucfirst(__('app.began_at')) : @date($exhibition->began_at).
-                    </span>
-                    <span class="bg-red-100 p-2" title="@ucfirst(__('app.ended_at'))">
-                        @ucfirst(__('app.ended_at')) : @date($exhibition->ended_at).
-                    </span>
-                </li>
-                <li class="px-5">
+            @if ($exhibition->ended_at < date('Y-m-d'))
+            <div class="bg-red-400 border border-red-600 mb-5 p-3 text-white font-bold rounded shadow">
+                <ul>
+                    <li>@ucfirst(__('app.ended_info', ['date' => $exhibition->ended_at->format('d/m/Y')]))</li>
+                </ul>
+            </div>
+            @endif
+
+            <h4 class="bg-bluegray-300 font-bold text-2xl p-3 rounded shadow w-full"
+                title="@ucfirst(__('app.exhibition'))">
+                {{ $exhibition->title }}
+            </h4>
+
+            <div class="flex space-x-5 md:px-0 justify-center p-5 my-5 w-full">
+                <span class="bg-yellow-100 border border-yellow-300 p-2 rounded shadow" title="@ucfirst(__('app.price'))">
+                    @ucfirst(__('app.price')) :
+                    @if ($exhibition->price)
+                        {{ $exhibition->price }}.
+                    @else
+                        {{ __('app.no_price') }}.
+                    @endif
+                </span>
+                <span class="bg-green-100 border border-green-300 p-2 rounded shadow" title="@ucfirst(__('app.began_at'))">
+                    @ucfirst(__('app.began_at')) : @date($exhibition->began_at).
+                </span>
+                <span class="bg-red-100 border border-red-300 p-2 rounded shadow" title="@ucfirst(__('app.ended_at'))">
+                    @ucfirst(__('app.ended_at')) : @date($exhibition->ended_at).
+                </span>
+            </div>
+
+            <ul class="list-inside bg-bluegray-200 rounded shadow w-full">
+                <li class="p-5">
                     {{ $exhibition->description }}
                 </li>
-                <li class="mt-5 p-5" title="@ucfirst(__('app.link'))">
+                <li class="p-5" title="@ucfirst(__('app.link'))">
                     @if ($exhibition->link)
                     <a href="{{ $exhibition->link }}" class="text-sky-700 hover:text-red-600" target="_blank" rel="noopener">{{ $exhibition->link }}</a>
                     @else
@@ -113,11 +125,11 @@
             </ul>
 
             <!-- Tags -->
-            <div class="bg-indigo-300 px-5 p-5 shadow w-full">
+            <div class="bg-indigo-300 mt-5 px-5 p-5 rounded shadow w-full">
                 @if (count($exhibition->tags) > 0)
                 @foreach ($exhibition->tags as $tag)
                 <a href="{{ route('front.tag.show', ['slug' => $tag->slug]) }}"
-                    class="bg-indigo-500 text-white mr-2 p-2 inline-block rounded" title="{{ $tag->type }}">
+                    class="bg-indigo-500 text-white mr-2 p-2 inline-block rounded shadow" title="{{ $tag->type }}">
                     {{ $tag->name }}
                 </a>
                 @endforeach
@@ -134,25 +146,25 @@
 
             @if ($suggestions->count() > 0)
             <!-- Tags suggestions -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-2 bg-indigo-300 px-5 p-5 w-full">
+            <!-- div class="grid grid-cols-1 lg:grid-cols-3 gap-2 bg-indigo-300 mt-5 px-5 p-5 rounded shadow w-full">
                 @foreach ($suggestions as $suggestion)
                 @if ($suggestion->isExhibition->uuid === $exhibition->uuid)
                     @continue
                 @endif
                 <a href="{{ route('front.exhibition.show', ['place' => $suggestion->isExhibition->inPlace->slug, 'slug' => $suggestion->isExhibition->slug]) }}"
-                    class="bg-indigo-500 text-white p-2 inline-block" title="{{ $suggestion->isExhibition->title }}">
+                    class="bg-indigo-500 text-white p-2 inline-block rounded shadow" title="{{ $suggestion->isExhibition->title }}">
                     <span class="italic">{{ $suggestion->isExhibition->title }}</span><br />
                     <span class="">{{ $suggestion->isExhibition->inPlace->name }}</span><br />
                     <span class="text-sm">@date($suggestion->isExhibition->began_at) - @date($suggestion->isExhibition->ended_at)</span>
                 </a>
                 @endforeach
-            </div>
+            </div -->
             <!-- End of tags suggestions -->
             @endif
 
-            @if ($reviews->count() > 0)
             <!-- Reviews -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-2 bg-purple-300 px-5 p-5 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-2 bg-purple-300 mt-5 px-5 p-5 rounded shadow w-full">
+                @if ($reviews->count() > 0)
                 @foreach ($reviews as $review)
                 <a href="{{ route('front.review.show', ['slug' => $review->slug]) }}"
                     class="bg-purple-500 text-white p-2 inline-block" title="{{ $review->title }}">
@@ -162,9 +174,14 @@
                     <span class="text-sm">@date($review->updated_at)</span>
                 </a>
                 @endforeach
+                @else
+                <p class="text-black p-2 inline-block">
+                    @ucfirst(__('app.nothing'))
+                </p>
+                @endif
             </div>
             <!-- End of reviews -->
-            @endif
+
         </div>
     </div>
 </div>

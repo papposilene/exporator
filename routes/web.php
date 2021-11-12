@@ -90,6 +90,7 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function
     Route::post('/exhibitions/publish', [ExhibitionController::class, 'publish'])->name('admin.exhibition.publish');
 
     // Review
+    Route::get('/review/create/{uuid}', [ReviewController::class, 'create'])->name('admin.review.create');
     Route::post('/review/store', [ReviewController::class, 'store'])->name('admin.review.store');
     Route::post('/review/update', [ReviewController::class, 'update'])->name('admin.review.update');
     Route::post('/review/delete', [ReviewController::class, 'delete'])->name('admin.review.delete');

@@ -8,7 +8,7 @@
     </x-slot>
 
     <div class="flex flex-row flex-wrap max-w-7xl mx-auto py-5 px-6">
-        <div class="flex sm:flex-row lg:flex-col flex-grow flex-wrap bg-bluegray-500 text-white lg:mr-3 p-5 shadow w-full">
+        <div class="flex sm:flex-row lg:flex-col flex-grow flex-wrap bg-bluegray-500 text-white lg:mr-3 p-5 rounded shadow w-full">
             <p class="mb-3">
                 L'Exporateur, mot-valise entre <em>exposition</em> et <em>explorateur</em>, est un (énième ?)
                 site de référencement des expositions temporaires à Paris et ses proches alentours.

@@ -25,13 +25,13 @@
     <div class="flex flex-wrap w-full max-w-7xl mx-auto">
         <div class="mx-auto md:w-1/4 py-5 px-6 w-full">
             @if ($place->image)
-            <ul class="bg-rose-100 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
+            <ul class="bg-rose-100 list-inside md:m-5 mt-5 md:mt-0 p-5 rounded shadow w-full">
                 <li>
                     <img src="{{ storage_path($place->image) }}" class="" alt="{{ $place->name }}" title="{{ $place->name }}" />
                 </li>
             </ul>
             @endif
-            <ul class="bg-rose-100 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
+            <ul class="bg-rose-100 list-inside md:m-5 mt-5 md:mt-0 p-5 rounded shadow w-full">
                 <li class="flex flex-grow justify-between" title="@ucfirst(__('app.tag'))">
                     <h3 class="font-bold text-2xl mb-5">
                         {{ $place->name }}
@@ -49,9 +49,9 @@
                 </li>
             </ul>
             @if ($place->status === 1)
-            <ul class="bg-green-100 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
+            <ul class="bg-green-100 list-inside md:m-5 mt-5 md:mt-0 p-5 rounded shadow w-full">
             @else
-            <ul class="bg-red-100 list-inside md:m-5 mt-5 md:mt-0 p-5 shadow w-full">
+            <ul class="bg-red-100 list-inside md:m-5 mt-5 md:mt-0 p-5 rounded shadow w-full">
             @endif
                 <li title="@ucfirst(__('app.is_open'))">
                     @if ($place->status === 1)
@@ -135,7 +135,7 @@
             </div>
             {{ $exhibitions->links() }}
             @else
-            <div class="flex justify-center bg-bluegray-500 text-white p-5 shadow w-full">
+            <div class="flex justify-center bg-bluegray-500 text-white p-5 rounded shadow w-full">
                 <p class="text-center py-10">
                     @ucfirst(__('app.nothing'))
                 </p>

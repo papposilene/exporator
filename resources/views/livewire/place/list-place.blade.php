@@ -34,7 +34,7 @@
                         <div class="flex leading-5">@ucfirst(__('app.all'))</div>
                     </a>
                     @foreach($types as $type)
-                    <a href="{{ route('front.place.index', ['type' => $type->type]) }}" class="flex flex-auto text-base hover:scale-110 focus:outline-none
+                    <a href="{{ route('front.place.index', ['type' => $type->slug]) }}" class="flex flex-auto text-base hover:scale-110 focus:outline-none
                         justify-center px-4 py-2 rounded font-bold cursor-pointer hover:text-black
                         hover:bg-bluegray-300 bg-bluegray-200 hover:border-bluegray-400
                         border duration-200 ease-in-out transition lg:rounded-none">

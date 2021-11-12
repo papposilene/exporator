@@ -1120,6 +1120,9 @@ select {
 .m-2 {
 	margin: 0.5rem;
 }
+.m-5 {
+	margin: 1.25rem;
+}
 .mx-auto {
 	margin-left: auto;
 	margin-right: auto;
@@ -1127,6 +1130,10 @@ select {
 .my-2 {
 	margin-top: 0.5rem;
 	margin-bottom: 0.5rem;
+}
+.my-5 {
+	margin-top: 1.25rem;
+	margin-bottom: 1.25rem;
 }
 .ml-3 {
 	margin-left: 0.75rem;
@@ -1623,6 +1630,22 @@ select {
 .border-gray-400 {
 	--tw-border-opacity: 1;
 	border-color: rgba(161, 161, 170, var(--tw-border-opacity));
+}
+.border-red-600 {
+	--tw-border-opacity: 1;
+	border-color: rgba(220, 38, 38, var(--tw-border-opacity));
+}
+.border-yellow-300 {
+	--tw-border-opacity: 1;
+	border-color: rgba(253, 224, 71, var(--tw-border-opacity));
+}
+.border-green-300 {
+	--tw-border-opacity: 1;
+	border-color: rgba(134, 239, 172, var(--tw-border-opacity));
+}
+.border-red-300 {
+	--tw-border-opacity: 1;
+	border-color: rgba(252, 165, 165, var(--tw-border-opacity));
 }
 .bg-white {
 	--tw-bg-opacity: 1;
