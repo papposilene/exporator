@@ -38,6 +38,10 @@ Route::prefix('1.1')->group(function () {
     Route::get('/exhibition/timeline', [ExhibitionController::class, 'json'])->name('api.exhibition.timeline');
     Route::get('/exhibition/{slug}', [ExhibitionController::class, 'show'])->name('api.exhibition.show');
 
+    // Reviews
+    Route::get('/reviews', [ReviewController::class, 'index'])->name('api.review.all');
+    Route::get('/reviews/statistics', [ReviewController::class, 'statistic'])->name('api.review.stat');
+
     // Tags
     Route::get('/tags', [TagController::class, 'index'])->name('api.tag.index');
     Route::get('/tag/{slug}', [TagController::class, 'show'])->name('api.tag.show');

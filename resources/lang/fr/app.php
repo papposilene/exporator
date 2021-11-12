@@ -166,6 +166,7 @@ return [
     'numbers_of_foundation_type' => 'total des fondations : :count',
     'numbers_of_other_type' => 'total hors catégories : :count',
     'numbers_of_exhibitions' => 'nombre total : :count',
+    'numbers_of_reviews' => 'nombre total : :count',
     'numbers_of_today_exhibitions' => 'expositions pour aujourd’hui : :count',
     'numbers_of_next_exhibitions' => 'expositions du mois prochain : :count',
     'propose_one' => 'proposer une :what',

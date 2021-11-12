@@ -27,19 +27,19 @@
                 </div>
                 @guest
                 <div class="mb-3">
-                    <a href="{{ route('login') }}" class="text-white hover:text-red-400">@ucfirst(__('auth.login'))</a>
+                    <a href="{{ route('login') }}" class="bg-bluegray-400 hover:bg-bluegray-600 ml-4 p-2 text-white rounded">@ucfirst(__('auth.login'))</a>
                     @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="text-white hover:text-red-400">@ucfirst(__('auth.register'))</a>
+                    <a href="{{ route('register') }}" class="bg-bluegray-400 hover:bg-bluegray-600 ml-4 p-2 text-white rounded">@ucfirst(__('auth.register'))</a>
                     @endif
                 </div>
                 @endguest
             </div>
         </div>
         <div class="flex flex-col lg:flex-row flex-wrap max-w-7xl mx-auto -mt-8 py-5 px-6">
-            <div class="flex flex-grow lg:flex-grow-0 flex-wrap w-full lg:w-1/3">
+            <div class="flex flex-grow lg:flex-grow-0 lg:pr-2 flex-wrap w-full lg:w-1/3">
                 <livewire:dashboard.stat-place />
             </div>
-            <div class="flex flex-grow lg:flex-grow-0 flex-wrap w-full lg:w-1/3">
+            <div class="flex flex-grow lg:flex-grow-0 lg:pr-2 flex-wrap w-full lg:w-1/3">
                 <livewire:dashboard.stat-exhibition />
             </div>
             <div class="flex flex-grow lg:flex-grow-0 flex-wrap w-full lg:w-1/3">

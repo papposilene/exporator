@@ -5,7 +5,7 @@ namespace App\Http\Livewire\Dashboard;
 use App\Models\Review;
 use Livewire\Component;
 
-class StatExhibition extends Component
+class StatReview extends Component
 {
     public function render()
     {
