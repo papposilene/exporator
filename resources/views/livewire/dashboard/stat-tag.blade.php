@@ -1,4 +1,4 @@
-<div class="flex-grow bg-indigo-300 p-5 w-full">
+<div class="flex-grow bg-indigo-300 p-5 rounded shadow w-full">
     <h3 class="font-bold text-2xl mb-5">
         <a href="{{ route('front.tag.index') }}">
             @ucfirst(__('app.tagcloud'))
