@@ -47,7 +47,7 @@ class ListPlace extends Component
                 ->paginate(25);
         }
         elseif (Auth::check() &&
-            Auth::user()->hasPermissionTo('create exhibitions') &&
+            Auth::user()->can('create exhibitions') &&
             ((string) Str::of($this->filter)->trim() === 'no_exhibition'))
         {
             $places = Place::withCount('hasExhibitions')
@@ -56,8 +56,6 @@ class ListPlace extends Component
                 ->orderBy('has_exhibitions_count', 'desc')
                 ->orderBy('name', 'asc')
                 ->paginate(25);
-
-                //dd($places[0]->hasExhibitions()->whereDate('ended_at', '>', date('Y-m-d'))->get());
         }
         elseif (Str::of($this->type)->trim()->isNotEmpty())
         {

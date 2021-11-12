@@ -33,13 +33,9 @@ class ReviewController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($uuid)
+    public function create()
     {
-        $this->authorize('create', Review::class);
-
-        $exhibition = Exhibition::findOrFail($uuid);
-
-        return view('livewire.review.create-review');
+        //
     }
 
     /**

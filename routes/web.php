@@ -15,6 +15,7 @@ use App\Http\Livewire\Exhibition\ShowExhibition;
 use App\Http\Livewire\Exhibition\TimelineExhibition;
 use App\Http\Livewire\Place\ListPlace;
 use App\Http\Livewire\Place\ShowPlace;
+use App\Http\Livewire\Review\CreateReview;
 use App\Http\Livewire\Tag\ListTag;
 use App\Http\Livewire\Tag\ShowTag;
 use App\Http\Livewire\Tag\ShowType;
@@ -90,7 +91,7 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function
     Route::post('/exhibitions/publish', [ExhibitionController::class, 'publish'])->name('admin.exhibition.publish');
 
     // Review
-    Route::get('/review/create/{uuid}', [ReviewController::class, 'create'])->name('admin.review.create');
+    Route::get('/review/create/{uuid}', CreateReview::class)->name('admin.review.create');
     Route::post('/review/store', [ReviewController::class, 'store'])->name('admin.review.store');
     Route::post('/review/update', [ReviewController::class, 'update'])->name('admin.review.update');
     Route::post('/review/delete', [ReviewController::class, 'delete'])->name('admin.review.delete');
