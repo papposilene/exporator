@@ -15,6 +15,18 @@
   {
     "type":"art",
     "tag":{
+        "fr": "art juif"
+    }
+  },
+  {
+    "type":"art",
+    "tag":{
+        "fr": "art chrétien"
+    }
+  },
+  {
+    "type":"art",
+    "tag":{
         "fr": "art de l'islam"
     }
   },
