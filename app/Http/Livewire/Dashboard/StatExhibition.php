@@ -24,13 +24,11 @@ class StatExhibition extends Component
             ->get();
 
 
-        return view('livewire.dashboard.stat-exhibition',
-            compact(
-                'exhibitions',
-                'exhibitions_today',
-                'exhibitions_finaldays',
-                'exhibitions_nextmonth'
-            )
-        );
+        return view('livewire.dashboard.stat-exhibition', [
+            'exhibitions' => $exhibitions,
+            'exhibitions_today' => $exhibitions_today,
+            'exhibitions_finaldays' => $exhibitions_finaldays,
+            'exhibitions_nextmonth' => $exhibitions_nextmonth,
+        ]);
     }
 }

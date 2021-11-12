@@ -23,19 +23,17 @@ class StatPlace extends Component
             ->orderBy('name', 'asc')
             ->get();
 
-        return view('livewire.dashboard.stat-place',
-            compact(
-                'places',
-                'top1_of_places',
-                'museum_type',
-                'gallery_type',
-                'artcenter_type',
-                'artfair_type',
-                'library_type',
-                'foundation_type',
-                'other_type',
-                'open_places_without_exhibition'
-            )
-        );
+        return view('livewire.dashboard.stat-place', [
+            'places' => $places,
+            'top1_of_places' => $top1_of_places,
+            'museum_type' => $museum_type,
+            'gallery_type' => $gallery_type,
+            'artcenter_type' => $artcenter_type,
+            'artfair_type' => $artfair_type,
+            'library_type' => $library_type,
+            'foundation_type' => $foundation_type,
+            'other_type' => $other_type,
+            'open_places_without_exhibition' => $open_places_without_exhibition,
+        ]);
     }
 }
