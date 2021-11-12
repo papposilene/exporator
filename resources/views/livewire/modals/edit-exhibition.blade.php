@@ -19,7 +19,7 @@
                 </svg>
             </button>
             <!-- Modal content -->
-            <form method="POST" action="{{ route('admin.exhibition.store') }}" enctype="multipart/form-data"
+            <form method="POST" action="{{ route('admin.exhibition.update') }}" enctype="multipart/form-data"
                 class="flex flex-col w-full">
                 @csrf
 
@@ -45,19 +45,21 @@
 
                 <div class="mt-4">
                     <x-forms.label class="dark:text-gray-100" for="description">@ucfirst(__('app.description'))</x-forms.label>
-                    <x-forms.textarea id="description" class="dark:text-gray-800 dark:bg-bluegray-300 block mt-1 w-full" type="text" name="description" :placeholder="@ucfirst(__('app.loremipsum'))" value="{{ $exhibition->description }}" required />
+                    <x-forms.textarea id="description" class="dark:text-gray-800 dark:bg-bluegray-300 block mt-1 w-full" type="text" name="description" :placeholder="@ucfirst(__('app.loremipsum'))" required >
+                        @nl2br($exhibition->description)
+                    </x-forms.textarea>
                 </div>
 
                 <div class="mt-4">
                     <x-forms.label class="dark:text-gray-100" for="link">@ucfirst(__('app.link'))</x-forms.label>
-                    <x-forms.input id="link" class="dark:text-gray-800 dark:bg-bluegray-300 block mt-1 w-full" type="text" name="link" placeholder="{{ __('app.https') }}" value="{{ $exhibition->link }}"" required />
+                    <x-forms.input id="link" class="dark:text-gray-800 dark:bg-bluegray-300 block mt-1 w-full" type="text" name="link" placeholder="{{ __('app.https') }}" value="{{ $exhibition->link }}" required />
                 </div>
 
                 <div class="grid grid-cols-2 gap-x-4 mt-4">
                     <x-forms.label class="dark:text-gray-100" for="price">@ucfirst(__('app.price'))</x-forms.label>
                     <x-forms.label class="dark:text-gray-100" for="public">@ucfirst(__('app.is_published'))</x-forms.label>
                     <x-forms.input id="price" class="dark:text-gray-800 dark:bg-bluegray-300 block mt-1 w-full" type="text" name="price" placeholder="{{ __('app.price') }}" value="{{ $exhibition->price }}" required />
-                    <x-forms.select id="public" class="dark:text-gray-800 dark:bg-bluegray-300 block mt-1 w-full" name="public" required>
+                    <x-forms.select id="public" class="dark:text-gray-800 dark:bg-bluegray-300 block mt-1 w-full" name="is_published" required>
                         <option value="1" selected>@ucfirst(__('app.yes'))</option>
                         <option value="0" selected>@ucfirst(__('app.no'))</option>
                     </x-forms.select>

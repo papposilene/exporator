@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ImportExhibitionRequest;
 use App\Http\Requests\PublishExhibitionRequest;
 use App\Http\Requests\StoreExhibitionRequest;
+use App\Http\Requests\UpdateExhibitionRequest;
+use App\Http\Requests\DeleteExhibitionRequest;
 use App\Imports\ExhibitionsImport;
 use App\Models\Exhibition;
 use App\Models\Place;
@@ -177,9 +179,25 @@ class ExhibitionController extends Controller
      * @param  \App\Models\Exhibition  $exhibition
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Exhibition $exhibition)
+    public function update(UpdateExhibitionRequest $request, Exhibition $exhibition)
     {
-        //
+        $this->authorize('update', Exhibition::class);
+
+        $validated = $request->validated();
+
+        $exhibition = Exhibition::findOrFail($request->input('uuid'));
+        $exhibition->place_uuid = $request->input('place');
+        $exhibition->slug = Str::slug($request->input('title'));
+        $exhibition->title = $request->input('title');
+        $exhibition->began_at = Carbon::createFromFormat('d/m/Y', $request->input('began_at'))->format('Y-m-d');
+        $exhibition->ended_at = Carbon::createFromFormat('d/m/Y', $request->input('ended_at'))->format('Y-m-d');
+        $exhibition->description = $request->input('description');
+        $exhibition->link = $request->input('link');
+        $exhibition->price = $request->input('price');
+        $exhibition->is_published = $request->input('is_published');
+        $exhibition->save();
+
+        return redirect()->back()->with('success', 'All good!');
     }
 
     /**

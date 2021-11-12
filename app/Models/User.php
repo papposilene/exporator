@@ -143,6 +143,18 @@ class User extends Authenticatable
     }
 
     /**
+     * Get all the activities done by an user.
+     */
+    public function hasActivities()
+    {
+        return $this->hasMany(
+            'Spatie\Activitylog\Models\Activity',
+            'causer_id',
+            'uuid'
+        );
+    }
+
+    /**
      * Get all the reviews written by an user.
      */
     public function hasReviews()
