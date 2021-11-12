@@ -366,7 +366,7 @@
     }
   },
   {
-    "type":"technique",
+    "type":"art",
     "tag":{
         "fr": "architecture",
         "en": "architecture"
@@ -503,6 +503,13 @@
     "tag":{
         "fr": "militaire",
         "en": "militaria"
+    }
+  },
+  {
+    "type":"theme",
+    "tag":{
+        "fr": "monnaie",
+        "en": "currency"
     }
   },
   {
