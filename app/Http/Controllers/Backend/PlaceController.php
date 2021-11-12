@@ -148,7 +148,7 @@ class PlaceController extends Controller
      */
     public function update(UpdatePlaceRequest $request, Place $place)
     {
-        $this->authorize('update', User::class, Place::class);
+        $this->authorize('update', $place);
 
         $validated = $request->validated();
 

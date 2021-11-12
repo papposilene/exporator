@@ -79,7 +79,7 @@ class ExhibitionController extends Controller
      */
     public function propose(StoreExhibitionRequest $request)
     {
-        $this->authorize('update', User::class, Exhibition::class);
+        $this->authorize('create', Exhibition::class);
 
         $validated = $request->validated();
 
@@ -181,7 +181,7 @@ class ExhibitionController extends Controller
      */
     public function update(UpdateExhibitionRequest $request, Exhibition $exhibition)
     {
-        $this->authorize('update', Exhibition::class);
+        $this->authorize('update', $exhibition);
 
         $validated = $request->validated();
 
@@ -197,7 +197,7 @@ class ExhibitionController extends Controller
         $exhibition->is_published = $request->input('is_published');
         $exhibition->save();
 
-        return redirect()->back()->with('success', 'All good!');
+        return redirect()->route('front.exhibition.show', ['place' => $exhibition->inPlace->slug, 'slug' => $exhibition->slug])->with('success', 'All good!');
     }
 
     /**

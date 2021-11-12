@@ -112,7 +112,7 @@ class TagController extends Controller
      */
     public function update(StoreTagRequest $request, Tag $tag)
     {
-        $this->authorize('update', User::class, Tag::class);
+        $this->authorize('update', $tag);
 
         $validated = $request->validated();
 
@@ -137,7 +137,7 @@ class TagController extends Controller
      */
     public function delete(DeleteTagRequest $request, Tag $tag)
     {
-        $this->authorize('delete', User::class, Tag::class);
+        $this->authorize('delete', $tag);
 
         $validated = $request->validated();
 
