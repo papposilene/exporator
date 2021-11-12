@@ -3,7 +3,7 @@
 <div>
     <x-slot name="header">
         @auth
-        @if (Auth::user()->can('create', App\Models\Exhibition::class))
+        @if (Auth::user()->can('import exhibitions'))
         <livewire:modals.import-exhibition />
         @endif
         @endauth

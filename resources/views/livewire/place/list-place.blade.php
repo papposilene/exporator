@@ -3,8 +3,10 @@
 <div>
     <x-slot name="header">
         @auth
-        @if (Auth::user()->can('create', App\Models\Place::class))
+        @if (Auth::user()->can('import places'))
         <livewire:modals.import-place />
+        @endif
+        @if (Auth::user()->can('create places'))
         <livewire:modals.create-place />
         @endif
         @endauth

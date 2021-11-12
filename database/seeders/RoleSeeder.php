@@ -20,6 +20,7 @@ class RoleSeeder extends Seeder
 
         // Create permissions for places
         Permission::create(['name' => 'create places']);
+        Permission::create(['name' => 'import places']);
         Permission::create(['name' => 'update places']);
         Permission::create(['name' => 'delete places']);
         Permission::create(['name' => 'restore places']);
@@ -30,6 +31,7 @@ class RoleSeeder extends Seeder
 
         // Create permissions for exhibitions
         Permission::create(['name' => 'create exhibitions']);
+        Permission::create(['name' => 'import exhibitions']);
         Permission::create(['name' => 'update exhibitions']);
         Permission::create(['name' => 'delete exhibitions']);
         Permission::create(['name' => 'restore exhibitions']);
