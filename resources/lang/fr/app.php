@@ -141,6 +141,11 @@ return [
     'propose_info' => 'Vous pouvez proposer à tout moment une exposition temporaire. Elle devra être validée par
         un des administrateurs pour qu’elle soit publiée.',
     'ended_info' => 'cette exposition est terminée depuis le :date.',
+    'review_info' => 'vous pouvez publier votre propre critique d‘une exposition visitée. A votre critique
+        doit être rattachée une note sur 10. Les textes restent légalement les vôtres : en les publiant sur
+        le présent site, nous ne nous les accaparerons pas et ils resteront votre entière propriété. C’est
+        pourquoi d’ailleurs, si jamais votre critique est déjà publiée sur un autre site, vous pouvez fournir
+        le lien vers l’article en question.',
 
     // Placeholders
     'calendar_of' => 'agenda des :what',
