@@ -36,6 +36,7 @@ return [
     'countries' => 'pays',
     'create' => 'ajouter',
     'dashboard' => 'dashboard',
+    'date' => 'date',
     'delete' => 'supprimer',
     'description' => 'description',
     'details' => 'détails',
