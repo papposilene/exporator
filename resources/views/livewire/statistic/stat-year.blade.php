@@ -10,20 +10,20 @@
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-2 w-full">
             <div class="bg-rose-400 text-black p-2 rounded shadow">
                 <div class="flex flex-wrap items-stretch justify-center">
-                    <span class="font-bold text-center text-xl p-3 w-full"></span>
                     <span class="text-center text-xl px-3 w-full">@ucfirst(__('app.place_first', ['year' => $year]))</span>
+                    <span class="font-bold text-center text-xl p-3 w-full">{{ $places->first()->name }}</span>
                 </div>
             </div>
             <div class="bg-sky-400 text-black p-2 rounded shadow">
                 <div class="flex flex-wrap items-stretch justify-center">
-                    <span class="font-bold text-center text-xl p-3 w-full">{{ $exhibitions->count() }}</span>
                     <span class="text-center text-xl px-3 w-full">@ucfirst(__('app.exhibitions_for', ['year' => $year]))</span>
+                    <span class="font-bold text-center text-xl p-3 w-full">{{ $exhibitions->count() }}</span>
                 </div>
             </div>
             <div class="bg-yellow-400 text-black p-2 rounded shadow">
                 <div class="flex flex-wrap items-stretch justify-center">
-                    <span class="font-bold text-center text-xl p-3 w-full">{{ $exhibitions->sum('price') }}&nbsp;&euro;</span>
                     <span class="text-center text-xl px-3 w-full">@ucfirst(__('app.prices_for', ['year' => $year]))</span>
+                    <span class="font-bold text-center text-xl p-3 w-full">{{ $exhibitions->sum('price') }}&nbsp;&euro;</span>
                 </div>
             </div>
         </div>
