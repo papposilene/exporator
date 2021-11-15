@@ -59,7 +59,7 @@
             </ul>
         </div>
 
-        <div class="mx-auto md:w-3/4 py-5 px-6">
+        <div class="mx-auto lg:w-3/4 py-5 px-6">
             @if ($errors->any())
             <div class="bg-red-500 border border-red-700 mb-3 p-3 rounded shadow text-white font-bold">
                 <ul>
@@ -94,7 +94,7 @@
                 {{ $exhibition->title }}
             </h4>
 
-            <div class="flex space-x-5 md:px-0 justify-center p-5 my-5 w-full">
+            <div class="flex space-x-5 md:px-0 justify-center my-5 w-full">
                 <span class="bg-yellow-100 border border-yellow-300 p-2 rounded shadow" title="@ucfirst(__('app.price'))">
                     @ucfirst(__('app.price')) :
                     @if ($exhibition->price)

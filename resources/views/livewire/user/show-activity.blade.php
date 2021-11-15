@@ -34,7 +34,7 @@
             </ul>
         </div>
 
-        <div class="mx-auto md:w-3/4 py-5 px-6">
+        <div class="mx-auto lg:w-3/4 py-5 px-6">
             @if ($errors->any())
             <div class="bg-red-500 border border-red-700 mb-3 p-3 rounded shadow text-white font-bold">
                 <ul>
