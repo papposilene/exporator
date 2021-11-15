@@ -1,10 +1,10 @@
-<div class="flex-grow bg-rose-200 p-5 rounded shadow w-full">
+<div class="bg-rose-300 mt-2 lg:mt-0 p-5 rounded shadow w-full">
     <h3 class="font-bold text-2xl mb-5">
         <a href="{{ route('front.place.index') }}">
             @ucfirst(__('app.places'))
         </a>
     </h3>
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 gap-4">
         <div class="">
             <h4 class="font-bold text-xl">
                 @ucfirst(__('chart.places_by_types'))
@@ -17,11 +17,7 @@
             </h4>
             <canvas id="chartStatus" width="400" height="400"></canvas>
         </div>
-        <div class="">
-            <canvas id="chartPlaces" width="400" height="400"></canvas>
-        </div>
     </div>
-
 </div>
 
 <script>

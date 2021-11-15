@@ -62,28 +62,4 @@
             </a>
         </div>
     </div>
-    <canvas id="chartPlaces" width="400" height="400"></canvas>
 </div>
-
-<script>
-document.addEventListener('livewire:load', function () {
-    const chartError = null;
-    const chartErrored = false;
-    const chartLoading = true;
-    const ctx = document.getElementById('chartPlaces').getContext('2d');
-    axios.get("{{ route('api.place.stat') }}")
-        .then(response => {
-            new Chart(document.getElementById('chartPlaces').getContext('2d'), {
-                type: 'doughnut',
-                data: response.data.chart,
-                options: response.data.options,
-            });
-            this.chartLoading = false
-        })
-        .catch(error => {
-            this.chartErrored = true
-            this.chartError = error.response.data.message || error.message
-        })
-        .finally(() => this.chartLoading = false);
-})
-</script>

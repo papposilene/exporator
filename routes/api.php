@@ -36,7 +36,8 @@ Route::prefix('1.1')->group(function () {
     // Exhibitions
     Route::get('/exhibitions', [ExhibitionController::class, 'index'])->name('api.exhibition.index');
     Route::get('/exhibitions/all', [ExhibitionController::class, 'all'])->name('api.exhibition.all');
-    Route::get('/exhibitions/statistics', [ExhibitionController::class, 'statistic'])->name('api.exhibition.stat');
+    Route::get('/exhibitions/statistics/total', [ExhibitionController::class, 'stat_total'])->name('api.exhibition.stat_total');
+    Route::get('/exhibitions/statistics/year', [ExhibitionController::class, 'stat_year'])->name('api.exhibition.stat_year');
     Route::get('/exhibition/timeline', [ExhibitionController::class, 'json'])->name('api.exhibition.timeline');
     Route::get('/exhibition/{slug}', [ExhibitionController::class, 'show'])->name('api.exhibition.show');
 
@@ -47,9 +48,9 @@ Route::prefix('1.1')->group(function () {
     // Tags
     Route::get('/tags', [TagController::class, 'index'])->name('api.tag.index');
     Route::get('/tag/{slug}', [TagController::class, 'show'])->name('api.tag.show');
-    Route::get('/statistics/tags', [TagController::class, 'stat_tags'])->name('api.tag.stat_tags');
-    Route::get('/statistics/tags/type/{slug}', [TagController::class, 'stat_type'])->name('api.tag.stat_type');
-    Route::get('/statistics/tag/{slug}', [TagController::class, 'stat_tag'])->name('api.tag.stat_tag');
+    Route::get('/tags/statistics/total', [TagController::class, 'stat_tags'])->name('api.tag.stat_tags');
+    Route::get('/tags/statistics/tag/{slug}', [TagController::class, 'stat_tag'])->name('api.tag.stat_tag');
+    Route::get('/tags/statistics/type/{slug}', [TagController::class, 'stat_type'])->name('api.tag.stat_type');
 
     // Users
     Route::get('/user/{id}', [UserController::class, 'show'])->name('api.user.show');
