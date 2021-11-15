@@ -12,7 +12,7 @@ class StatTag extends Component
     {
         $tags = Tag::withCount('hasExhibitions')
             ->inRandomOrder()
-            ->limit(10)
+            ->limit(8)
             ->get();
 
         return view('livewire.dashboard.stat-tag', [

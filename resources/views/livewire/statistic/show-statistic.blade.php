@@ -6,11 +6,11 @@
         </h2>
     </x-slot>
 
-    <div class="flex flex-wrap w-full max-w-7xl mx-auto">
+    <div class="flex flex-wrap w-full max-w-7xl mx-auto pt-5">
         <div class="flex flex-row flex-wrap bg-bluegray-300 mx-6 py-5 px-6 rounded shadow w-full">
             @foreach (array_keys($years) as $yearAvailable)
             <a href="{{ route('front.stat', ['year' => $yearAvailable]) }}"
-                class="bg-bluegray-700 text-white mr-2 p-2 rounded shadow }">
+                class="bg-bluegray-700 text-white mr-2 mb-2 p-2 rounded shadow }">
                 {{ $yearAvailable }}
             </a>
             @endforeach

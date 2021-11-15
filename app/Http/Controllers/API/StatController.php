@@ -55,9 +55,12 @@ class StatController extends Controller
                     [
                         'data' => array_values($tagged),
                         'backgroundColor' => [
-                            '#2563EB',
-                            '#DC2626',
-                            '#D97706',
+                            '#06B6D4',
+                            '#EF4444',
+                            '#8B5CF6',
+                            '#84CC16',
+                            '#0EA5E9',
+                            '#F97316',
                         ],
                         'borderColor' => '#000',
                         'tension' => '0.3',

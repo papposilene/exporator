@@ -1,20 +1,75 @@
 <div class="bg-bluegray-300 mt-2 lg:mt-0 p-5 rounded shadow w-full">
     <h3 class="font-bold text-2xl mb-5">
         <a href="{{ route('front.exhibition.index') }}">
-            @ucfirst(__('app.statistics'))
+            @ucfirst(__('app.statistics_for', ['year' => $year]))
         </a>
     </h3>
 
     <div class="flex flex-row flex-grow flex-wrap w-full">
-        Lorem ipsum description : {{ $year }}.
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <!-- Global statistics by exhibitions -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-2 w-full">
+            <div class="bg-rose-400 text-black p-2 rounded shadow">
+                <div class="flex flex-wrap items-stretch justify-center">
+                    <span class="font-bold text-center text-xl p-3 w-full"></span>
+                    <span class="text-center text-xl px-3 w-full">@ucfirst(__('app.place_first', ['year' => $year]))</span>
+                </div>
+            </div>
+            <div class="bg-sky-400 text-black p-2 rounded shadow">
+                <div class="flex flex-wrap items-stretch justify-center">
+                    <span class="font-bold text-center text-xl p-3 w-full">{{ $exhibitions->count() }}</span>
+                    <span class="text-center text-xl px-3 w-full">@ucfirst(__('app.exhibitions_for', ['year' => $year]))</span>
+                </div>
+            </div>
+            <div class="bg-yellow-400 text-black p-2 rounded shadow">
+                <div class="flex flex-wrap items-stretch justify-center">
+                    <span class="font-bold text-center text-xl p-3 w-full">{{ $exhibitions->sum('price') }}&nbsp;&euro;</span>
+                    <span class="text-center text-xl px-3 w-full">@ucfirst(__('app.prices_for', ['year' => $year]))</span>
+                </div>
+            </div>
+        </div>
+        <!-- End of global statistics by exhibitions -->
+
+        <!-- Statistics by exhibitions -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 mt-2 w-full">
+            <div class="bg-sky-400 text-black p-2 rounded shadow">
+                <div class="flex flex-wrap items-stretch justify-center">
+                    <span class="text-center text-xl px-3 w-full">@ucfirst(__('app.first_exhibition_for', ['year' => $year]))</span>
+                    <span class="font-bold text-center text-xl p-3 w-full">
+                        <a href="{{ route('front.exhibition.show', ['place' => $exhibitions->first()->inPlace->slug, 'slug' => $exhibitions->first()->slug]) }}">
+                            {{ $exhibitions->first()->title }}
+                        </a>
+                    </span>
+                </div>
+            </div>
+            <div class="bg-sky-400 text-black p-2 rounded shadow">
+                <div class="flex flex-wrap items-stretch justify-center">
+                    <span class="text-center text-xl px-3 w-full">@ucfirst(__('app.last_exhibition_for', ['year' => $year]))</span>
+                    <span class="font-bold text-center text-xl p-3 w-full">
+                        <a href="{{ route('front.exhibition.show', ['place' => $exhibitions->last()->inPlace->slug, 'slug' => $exhibitions->last()->slug]) }}">
+                            {{ $exhibitions->last()->title }}
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <!-- End of statistics by exhibitions -->
+
+        <!-- Statistics by charts -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-2">
             <div class="">
+                <h4 class="font-bold text-xl text-center my-2">
+                    @ucfirst(__('chart.genders_by_years'))
+                </h4>
                 <canvas id="chartGenders" width="400" height="400"></canvas>
             </div>
             <div class="">
+                <h4 class="font-bold text-xl text-center my-2">
+                    @ucfirst(__('chart.continents_by_years'))
+                </h4>
                 <canvas id="chartContinents" width="400" height="400"></canvas>
             </div>
         </div>
+        <!-- End of statistics by charts -->
     </div>
 </div>
 
