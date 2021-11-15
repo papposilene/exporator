@@ -5,9 +5,17 @@
         </a>
     </h3>
     @if(count($tags) > 0)
-    <div class="grid grid-cols-1 lg:grid-cols-4 sm:gap-2 lg:gap-4">
+    <div class="grid grid-cols-1 gap-2 lg:gap-4">
+        @auth
+        <div class="bg-indigo-500 text-white p-2 rounded" title="@ucfirst(__('app.followed_tags'))">
+            <a href="{{ route('front.tag.index', ['filter' => 'followed']) }}" class="flex flex-grow justify-between">
+                <span class="px-3">@ucfirst(__('app.followed_tags'))</span>
+                <span class="px-3">{{ $user->followedTags()->count() }}</span>
+            </a>
+        </div>
+        @endauth
         @foreach($tags as $tag)
-        <div class="bg-indigo-500 text-white m-2 p-2 rounded" title="@ucfirst(__('app.type_is', ['type' => $tag->type]))">
+        <div class="bg-indigo-500 text-white p-2 rounded" title="@ucfirst(__('app.type_is', ['type' => $tag->type]))">
             <a href="{{ route('front.tag.show', ['slug' => $tag->slug]) }}" class="flex flex-grow justify-between">
                 <span class="px-3">@ucfirst($tag->name)</span>
                 <span class="px-3">{{ $tag->has_exhibitions_count }}</span>

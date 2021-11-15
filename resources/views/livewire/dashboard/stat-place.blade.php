@@ -4,48 +4,65 @@
             @ucfirst(__('app.places'))
         </a>
     </h3>
+    <div class="grid grid-cols-1 gap-2 lg:gap-4">
+        @auth
+        <div class="bg-rose-500 text-white p-2 rounded" title="@ucfirst(__('app.followed_exhibitions'))">
+            <a href="{{ route('front.exhibition.index', ['filter' => 'followed']) }}" class="flex flex-grow justify-between">
+                <span class="px-3">@ucfirst(__('app.followed_exhibitions'))</span>
+                <span class="px-3">{{ $user->followedExhibitions()->count() }}</span>
+            </a>
+        </div>
+        @endauth
+        <div class="bg-rose-500 text-white p-2 rounded">
+            <a href="{{ route('front.place.index', ['filter' => 'followed']) }}" class="flex flex-grow justify-between">
+                <span class="px-3">@ucfirst(__('app.numbers_of_places'))</span>
+                <span class="px-3">{{ $places }}</span>
+            </a>
+        </div>
+        <div class="bg-rose-500 text-white p-2 rounded">
+            <a href="{{ route('front.place.index', ['filter' => 'followed']) }}" class="flex flex-grow justify-between">
+                <span class="px-3">@ucfirst(__('app.numbers_of_museum_type'))</span>
+                <span class="px-3">{{ $museum_type }}</span>
+            </a>
+        </div>
+        <div class="bg-rose-500 text-white p-2 rounded">
+            <a href="{{ route('front.place.index', ['filter' => 'followed']) }}" class="flex flex-grow justify-between">
+                <span class="px-3">@ucfirst(__('app.numbers_of_gallery_type'))</span>
+                <span class="px-3">{{ $gallery_type }}</span>
+            </a>
+        </div>
+        <div class="bg-rose-500 text-white p-2 rounded">
+            <a href="{{ route('front.place.index', ['filter' => 'followed']) }}" class="flex flex-grow justify-between">
+                <span class="px-3">@ucfirst(__('app.numbers_of_artcenter_type'))</span>
+                <span class="px-3">{{ $artcenter_type }}</span>
+            </a>
+        </div>
+        <div class="bg-rose-500 text-white p-2 rounded">
+            <a href="{{ route('front.place.index', ['filter' => 'followed']) }}" class="flex flex-grow justify-between">
+                <span class="px-3">@ucfirst(__('app.numbers_of_artfair_type'))</span>
+                <span class="px-3">{{ $artfair_type }}</span>
+            </a>
+        </div>
+        <div class="bg-rose-500 text-white p-2 rounded">
+            <a href="{{ route('front.place.index', ['filter' => 'followed']) }}" class="flex flex-grow justify-between">
+                <span class="px-3">@ucfirst(__('app.numbers_of_library_type'))</span>
+                <span class="px-3">{{ $library_type }}</span>
+            </a>
+        </div>
+        <div class="bg-rose-500 text-white p-2 rounded">
+            <a href="{{ route('front.place.index', ['filter' => 'followed']) }}" class="flex flex-grow justify-between">
+                <span class="px-3">@ucfirst(__('app.numbers_of_foundation_type'))</span>
+                <span class="px-3">{{ $foundation_type }}</span>
+            </a>
+        </div>
+        <div class="bg-rose-500 text-white p-2 rounded">
+            <a href="{{ route('front.place.index', ['filter' => 'followed']) }}" class="flex flex-grow justify-between">
+                <span class="px-3">@ucfirst(__('app.numbers_of_other_type'))</span>
+                <span class="px-3">{{ $other_type }}</span>
+            </a>
+        </div>
+    </div>
     <canvas id="chartPlaces" width="400" height="400"></canvas>
-    <h4 class="font-bold text-1xl mb-2">@ucfirst(__('app.statistics'))</h4>
-    <ol class="list-inside list-disc">
-        <li class="font-bold">
-            @ucfirst(__('app.numbers_of_places', ['count' => $places]))
-        </li>
-        <li>
-            <a href="{{ route('front.place.index', ['filter' => 'museum']) }}" class="text-black hover:text-sky-800">
-                @ucfirst(__('app.numbers_of_museum_type', ['count' => $museum_type]))
-            </a>
-        </li>
-        <li>
-            <a href="{{ route('front.place.index', ['filter' => 'gallery']) }}" class="text-black hover:text-sky-800">
-                @ucfirst(__('app.numbers_of_gallery_type', ['count' => $gallery_type]))
-            </a>
-        </li>
-        <li>
-            <a href="{{ route('front.place.index', ['filter' => 'art-center']) }}" class="text-black hover:text-sky-800">
-                @ucfirst(__('app.numbers_of_artcenter_type', ['count' => $artcenter_type]))
-            </a>
-        </li>
-        <li>
-            <a href="{{ route('front.place.index', ['filter' => 'art-fair']) }}" class="text-black hover:text-sky-800">
-                @ucfirst(__('app.numbers_of_artfair_type', ['count' => $artfair_type]))
-            </a>
-        </li>
-        <li>
-            <a href="{{ route('front.place.index', ['filter' => 'library']) }}" class="text-black hover:text-sky-800">
-                @ucfirst(__('app.numbers_of_library_type', ['count' => $library_type]))
-            </a>
-        </li>
-        <li>
-            <a href="{{ route('front.place.index', ['filter' => 'foundation']) }}" class="text-black hover:text-sky-800">
-                @ucfirst(__('app.numbers_of_foundation_type', ['count' => $foundation_type]))
-            </a>
-        </li>
-        <li>
-            <a href="{{ route('front.place.index', ['filter' => 'other']) }}" class="text-black hover:text-sky-800">
-                @ucfirst(__('app.numbers_of_other_type', ['count' => $other_type]))
-            </a>
-        </li>
-    </ol>
 </div>
 
 <script>

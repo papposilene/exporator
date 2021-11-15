@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Dashboard;
 
 use Livewire\Component;
 use App\Models\Tag;
+use Illuminate\Support\Facades\Auth;
 
 class StatTag extends Component
 {
@@ -11,11 +12,12 @@ class StatTag extends Component
     {
         $tags = Tag::withCount('hasExhibitions')
             ->inRandomOrder()
-            ->limit(12)
+            ->limit(10)
             ->get();
 
         return view('livewire.dashboard.stat-tag', [
             'tags' => $tags,
+            'user' => Auth::user(),
         ]);
     }
 }

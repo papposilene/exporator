@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Dashboard;
 
 use App\Models\Place;
 use Livewire\Component;
+use Illuminate\Support\Facades\Auth;
 
 class StatPlace extends Component
 {
@@ -34,6 +35,7 @@ class StatPlace extends Component
             'foundation_type' => $foundation_type,
             'other_type' => $other_type,
             'open_places_without_exhibition' => $open_places_without_exhibition,
+            'user' => Auth::user(),
         ]);
     }
 }

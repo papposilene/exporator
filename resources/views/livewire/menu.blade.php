@@ -25,10 +25,6 @@
                         :active="request()->routeIs(['front.exhibition.index', 'front.exhibition.show'])">
                         @ucfirst(__('app.exhibitions'))
                     </x-jet-nav-link>
-                    <!-- x-jet-nav-link href="{{ route('front.exhibition.calendar') }}" class="text-bluegray-900 dark:text-bluegray-100"
-                        :active="request()->routeIs('front.exhibition.calendar')">
-                        @ucfirst(__('app.calendar'))
-                    </x-jet-nav-link -->
                     <x-jet-nav-link href="{{ route('front.exhibition.map') }}" class="text-bluegray-900 dark:text-bluegray-100"
                         :active="request()->routeIs('front.exhibition.map')">
                         @ucfirst(__('app.map'))
@@ -36,6 +32,10 @@
                     <x-jet-nav-link href="{{ route('front.tag.index') }}" class="text-bluegray-900 dark:text-bluegray-100"
                         :active="request()->routeIs('front.tag.*')">
                         @ucfirst(__('app.tags'))
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('front.stat') }}" class="text-bluegray-900 dark:text-bluegray-100"
+                        :active="request()->routeIs('front.stat')">
+                        @ucfirst(__('app.statistics'))
                     </x-jet-nav-link>
                 </div>
             </div>
@@ -214,10 +214,6 @@
                 class="text-bluegray-900 dark:text-bluegray-100" :active="request()->routeIs('front.exhibition.*')">
                 @ucfirst(__('app.exhibitions'))
             </x-jet-responsive-nav-link>
-            <!-- x-jet-responsive-nav-link href="{{ route('front.exhibition.calendar') }}"
-                class="text-bluegray-900 dark:text-bluegray-100" :active="request()->routeIs('front.exhibition.calendar')">
-                @ucfirst(__('app.calendar'))
-            </x-jet-responsive-nav-link -->
             <x-jet-responsive-nav-link href="{{ route('front.exhibition.map') }}"
                 class="text-bluegray-900 dark:text-bluegray-100" :active="request()->routeIs('front.exhibition.map')">
                 @ucfirst(__('app.map'))
@@ -225,6 +221,10 @@
             <x-jet-responsive-nav-link href="{{ route('front.tag.index') }}"
                 class="text-bluegray-900 dark:text-bluegray-100" :active="request()->routeIs('front.tag.*')">
                 @ucfirst(__('app.tags'))
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('front.stat') }}"
+                class="text-bluegray-900 dark:text-bluegray-100" :active="request()->routeIs('front.stat')">
+                @ucfirst(__('app.statistics'))
             </x-jet-responsive-nav-link>
         </div>
 

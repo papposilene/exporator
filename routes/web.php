@@ -16,6 +16,7 @@ use App\Http\Livewire\Exhibition\TimelineExhibition;
 use App\Http\Livewire\Place\ListPlace;
 use App\Http\Livewire\Place\ShowPlace;
 use App\Http\Livewire\Review\CreateReview;
+use App\Http\Livewire\Statistics\ShowStatistics;
 use App\Http\Livewire\Tag\ListTag;
 use App\Http\Livewire\Tag\ShowTag;
 use App\Http\Livewire\Tag\ShowType;
@@ -45,6 +46,7 @@ use Illuminate\Support\Facades\Route;
 Route::redirect('/', '/dashboard', 301);
 Route::get('/dashboard', ShowDashboard::class)->name('dashboard');
 Route::get('/about', ShowAbout::class)->name('front.about');
+Route::get('/statistics', ShowStatistics::class)->name('front.stat');
 
 // Museums
 Route::get('/places', ListPlace::class)->name('front.place.index');
