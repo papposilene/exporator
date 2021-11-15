@@ -8,15 +8,15 @@
 
     <div class="flex flex-wrap w-full max-w-7xl mx-auto">
         <div class="flex flex-row flex-wrap bg-bluegray-300 mx-6 py-5 px-6 rounded shadow w-full">
-            @foreach (array_keys($years) as $year)
-            <a href="{{ route('front.stat', ['year' => $year]) }}"
+            @foreach (array_keys($years) as $yearAvailable)
+            <a href="{{ route('front.stat', ['year' => $yearAvailable]) }}"
                 class="bg-bluegray-700 text-white mr-2 p-2 rounded shadow }">
-                {{ $year }}
+                {{ $yearAvailable }}
             </a>
             @endforeach
         </div>
 
-        <div class="mx-auto lg:w-1/4 py-5 px-6 lg:px-0 lg:pr-6 lg:px-0 lg:pr-6 w-full">
+        <div class="mx-auto lg:w-1/4 py-5 px-6 lg:px-0 lg:pr-6 w-full">
             <livewire:statistic.stat-place />
         </div>
 

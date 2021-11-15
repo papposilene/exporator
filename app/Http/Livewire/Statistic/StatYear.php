@@ -2,13 +2,16 @@
 
 namespace App\Http\Livewire\Statistic;
 
-use App\Models\Exhibition;
-use Carbon\Carbon;
 use Livewire\Component;
 
 class StatYear extends Component
 {
     public $year;
+
+    public function mount()
+    {
+        $this->year = ($this->year ? $this->year : date('Y'));
+    }
 
     public function render()
     {

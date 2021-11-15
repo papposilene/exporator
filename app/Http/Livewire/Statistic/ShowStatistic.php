@@ -8,6 +8,13 @@ use Livewire\Component;
 
 class ShowStatistic extends Component
 {
+    public $year;
+
+    public function mount()
+    {
+        $this->year = $this->year;
+    }
+
     public function render()
     {
         $exhibitions = Exhibition::all();
@@ -17,8 +24,8 @@ class ShowStatistic extends Component
             //return Carbon::parse($date->created_at)->format('m'); // grouping by months
         })->toArray();
 
-
         return view('livewire.statistic.show-statistic', [
+            'year' => $this->year,
             'years' => $years,
         ]);
     }

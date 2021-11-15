@@ -34,7 +34,7 @@ class StatController extends Controller
      */
     public function continents($year)
     {
-        $types = Tag::where('type', 'gender')->get();
+        $types = Tag::where('type', 'continent')->get();
 
         foreach ($types as $type)
         {
