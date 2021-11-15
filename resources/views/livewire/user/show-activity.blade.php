@@ -13,7 +13,7 @@
     </x-slot>
 
     <div class="flex flex-wrap w-full max-w-7xl mx-auto">
-        <div class="mx-auto md:w-1/4 py-5 px-6 w-full">
+        <div class="mx-auto lg:w-1/4 py-5 px-6 lg:px-0 lg:pr-6">
             <ul class="bg-teal-100 md:m-5 mt-5 md:mt-0 p-5 rounded shadow w-full">
                 <li class="font-semibold text-red-500 text-center text-2xl mb-3">
                     {{ $users->find($activity->causer_id)->getRoleNames()->first() }}

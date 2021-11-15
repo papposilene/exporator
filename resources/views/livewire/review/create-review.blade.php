@@ -13,7 +13,7 @@
     </x-slot>
 
     <div class="flex flex-wrap w-full max-w-7xl mx-auto">
-        <div class="mx-auto md:w-1/4 py-5 px-6 w-full">
+        <div class="mx-auto lg:w-1/4 py-5 px-6 lg:px-0 lg:pr-6">
             <ul class="bg-rose-100 list-inside md:m-5 mt-5 md:mt-0 p-5 rounded shadow w-full">
                 <li class="flex flex-grow justify-between" title="@ucfirst(__('app.tag'))">
                     <h4 class="font-bold text-2xl mb-5">

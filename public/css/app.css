@@ -1120,6 +1120,9 @@ select {
 .m-2 {
 	margin: 0.5rem;
 }
+.m-5 {
+	margin: 1.25rem;
+}
 .mx-auto {
 	margin-left: auto;
 	margin-right: auto;
@@ -1135,6 +1138,10 @@ select {
 .my-4 {
 	margin-top: 1rem;
 	margin-bottom: 1rem;
+}
+.mx-6 {
+	margin-left: 1.5rem;
+	margin-right: 1.5rem;
 }
 .ml-3 {
 	margin-left: 0.75rem;
@@ -1982,6 +1989,12 @@ select {
 }
 .pt-8 {
 	padding-top: 2rem;
+}
+.pl-6 {
+	padding-left: 1.5rem;
+}
+.pr-6 {
+	padding-right: 1.5rem;
 }
 .text-left {
 	text-align: left;
@@ -4437,6 +4450,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
 		margin-top: 0px;
 	}
 
+	.lg\:ml-6 {
+		margin-left: 1.5rem;
+	}
+
 	.lg\:table-cell {
 		display: table-cell;
 	}
@@ -4504,8 +4521,25 @@ svg.leaflet-image-layer.leaflet-interactive path {
 		padding-right: 2rem;
 	}
 
+	.lg\:px-0 {
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+
 	.lg\:pr-2 {
 		padding-right: 0.5rem;
+	}
+
+	.lg\:pr-6 {
+		padding-right: 1.5rem;
+	}
+
+	.lg\:pr-0 {
+		padding-right: 0px;
+	}
+
+	.lg\:pl-6 {
+		padding-left: 1.5rem;
 	}
 }
 

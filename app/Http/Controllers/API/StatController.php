@@ -10,10 +10,9 @@ use App\Models\Tagged;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\DB;
+
 
 class StatController extends Controller
 {
@@ -28,62 +27,38 @@ class StatController extends Controller
     }
 
     /**
-     * Retrieve the statistics by year.
+     * Retrieve the statistics for all continents.
      *
      * @param  $year
      * @return \Illuminate\Http\Response
      */
-    public function genders($year)
+    public function continents($year)
     {
-        $tags = DB::table('taggables')
-            ->where('type', 'gender')
-            ->selectRaw('id, name, count(tag_id) as total')
-            ->join('tags', 'tags.id', '=', 'taggables.tag_id')
-            ->groupBy('tag_id')
-            ->orderBy('name', 'asc')
-            ->get()
-            ->map(function($tag){
-                return [
-                    'id' => $tag->id,
-                    'tag' => json_decode($tag->name)->{app()->getLocale()},
-                    'count' => $tag->total
-                ];
-            });
+        $types = Tag::where('type', 'gender')->get();
 
-        foreach ($tags as $tag)
+        foreach ($types as $type)
         {
-            $stat[$tag['tag']] = Tagged::where('tag_id', $tag['id'])
-                ->with('isExhibition')
-                ->get();
-
-                dd( $stat[$tag['tag']] );
-
-                //->whereYear('began_at', $year)
-                //->count();
+            $tagged[$type->name] = Tagged::where('tag_id', $type->id)
+                ->whereRelation(
+                    'hasExhibitions',
+                    'began_at', 'like', $year . '%'
+                )
+                ->count();
         }
 
-
-
-        //$exhibitions = $tags->hasExhibitions()->whereYear('began_at', $year)->get();
-
-
-        dd( $stat );
-
-
-
-        $dataStatistics = $tags->toArray();
-        rsort($dataStatistics);
+        arsort($tagged);
 
         $statistics = collect([
-            'data' => [
-                'total' => $tags->count(),
-            ],
             'chart' => [
-                'labels' => array_values(data_get($dataStatistics, '*.name')),
+                'labels' => array_keys($tagged),
                 'datasets' => [
                     [
-                        'data' => array_values(data_get($dataStatistics, '*.count')),
-                        'backgroundColor' => '',
+                        'data' => array_values($tagged),
+                        'backgroundColor' => [
+                            '#2563EB',
+                            '#DC2626',
+                            '#D97706',
+                        ],
                         'borderColor' => '#000',
                         'tension' => '0.3',
                         'fill' => false,
@@ -111,73 +86,38 @@ class StatController extends Controller
     }
 
     /**
-     * Retrieve the statistics for places.
+     * Retrieve the statistics for all genders.
      *
-     * @param  $slug
-     * @param  \App\Models\Tag  $tag
+     * @param  $year
      * @return \Illuminate\Http\Response
      */
-    public function stat_type($slug, Tag $tag)
+    public function genders($year)
     {
-        if ($slug === 'continent')
+        $types = Tag::where('type', 'gender')->get();
+
+        foreach ($types as $type)
         {
-            $colors = ['#06B6D4', '#EF4444', '#8B5CF6', '#84CC16','#0EA5E9'];
-        }
-        elseif ($slug === 'gender')
-        {
-            $colors = ['#2563EB', '#DC2626', '#D97706'];
-        }
-        else
-        {
-            $colors = [
-                '#06B6D4',
-                '#EF4444',
-                '#8B5CF6',
-                '#84CC16',
-                '#0EA5E9',
-                '#F97316',
-                '#A855F7',
-                '#22C55E',
-                '#3B82F6',
-                '#F59E0B',
-                '#D946EF',
-                '#10B981',
-                '#6366F1',
-                '#EAB308',
-                '#EC4899',
-                '#14B8A6',
-                '#F43F5E',
-            ];
+            $tagged[$type->name] = Tagged::where('tag_id', $type->id)
+                ->whereRelation(
+                    'hasExhibitions',
+                    'began_at', 'like', $year . '%'
+                )
+                ->count();
         }
 
-
-        $tags = DB::table('taggables')
-            ->where('type', $slug)
-            ->selectRaw('name, count(tag_id) as total')
-            ->join('tags', 'tags.id', '=', 'taggables.tag_id')
-            ->groupBy('tag_id')
-            ->orderBy('name', 'asc')
-            ->get()
-            ->map(function($tag){
-                return [
-                    'name' => json_decode($tag->name)->{app()->getLocale()},
-                    'count' => $tag->total
-                ];
-            });
-
-        $dataStatistics = $tags->toArray();
-        rsort($dataStatistics);
+        arsort($tagged);
 
         $statistics = collect([
-            'data' => [
-                'total' => $tags->count(),
-            ],
             'chart' => [
-                'labels' => array_values(data_get($dataStatistics, '*.name')),
+                'labels' => array_keys($tagged),
                 'datasets' => [
                     [
-                        'data' => array_values(data_get($dataStatistics, '*.count')),
-                        'backgroundColor' => $colors,
+                        'data' => array_values($tagged),
+                        'backgroundColor' => [
+                            '#2563EB',
+                            '#DC2626',
+                            '#D97706',
+                        ],
                         'borderColor' => '#000',
                         'tension' => '0.3',
                         'fill' => false,

@@ -21,7 +21,7 @@
     </x-slot>
 
     <div class="flex flex-wrap w-full max-w-7xl mx-auto">
-        <div class="mx-auto md:w-1/4 py-5 px-6 w-full">
+        <div class="mx-auto lg:w-1/4 py-5 px-6 lg:px-0 lg:pr-6">
             <ul class="bg-indigo-100 list-inside md:m-5 mt-5 md:mt-0 p-5 rounded shadow w-full">
                 <li class="flex flex-grow justify-between" title="@ucfirst(__('app.place'))">
                     <h3 class="font-bold text-2xl mb-5">
@@ -143,44 +143,6 @@
                 @endauth
             </div>
             <!-- End of tags -->
-
-            @if ($suggestions->count() > 0)
-            <!-- Tags suggestions -->
-            <!-- div class="grid grid-cols-1 lg:grid-cols-3 gap-2 bg-indigo-300 mt-5 px-5 p-5 rounded shadow w-full">
-                @foreach ($suggestions as $suggestion)
-                @if ($suggestion->isExhibition->uuid === $exhibition->uuid)
-                    @continue
-                @endif
-                <a href="{{ route('front.exhibition.show', ['place' => $suggestion->isExhibition->inPlace->slug, 'slug' => $suggestion->isExhibition->slug]) }}"
-                    class="bg-indigo-500 text-white p-2 inline-block rounded shadow" title="{{ $suggestion->isExhibition->title }}">
-                    <span class="italic">{{ $suggestion->isExhibition->title }}</span><br />
-                    <span class="">{{ $suggestion->isExhibition->inPlace->name }}</span><br />
-                    <span class="text-sm">@date($suggestion->isExhibition->began_at) - @date($suggestion->isExhibition->ended_at)</span>
-                </a>
-                @endforeach
-            </div -->
-            <!-- End of tags suggestions -->
-            @endif
-
-            <!-- Reviews -->
-            <!-- div class="grid grid-cols-1 lg:grid-cols-3 gap-2 bg-purple-300 mt-5 px-5 p-5 rounded shadow w-full">
-                @if ($reviews->count() > 0)
-                @foreach ($reviews as $review)
-                <a href="{{ route('front.review.show', ['slug' => $review->slug]) }}"
-                    class="bg-purple-500 text-white p-2 inline-block" title="{{ $review->title }}">
-                    <span class="italic">{{ $review->title }}</span><br />
-                    <span class="">{{ $review->byUser->name }}</span><br />
-                    <span class="">{{ $review->note }}</span><br />
-                    <span class="text-sm">@date($review->updated_at)</span>
-                </a>
-                @endforeach
-                @else
-                <p class="text-black p-2 inline-block">
-                    @ucfirst(__('app.nothing'))
-                </p>
-                @endif
-            </div -->
-            <!-- End of reviews -->
         </div>
     </div>
 </div>

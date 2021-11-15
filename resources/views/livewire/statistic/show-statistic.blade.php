@@ -7,12 +7,21 @@
     </x-slot>
 
     <div class="flex flex-wrap w-full max-w-7xl mx-auto">
-        <div class="mx-auto md:w-1/4 py-5 px-6 w-full">
+        <div class="flex flex-row flex-wrap bg-bluegray-300 mx-6 py-5 px-6 rounded shadow w-full">
+            @foreach (array_keys($years) as $year)
+            <a href="{{ route('front.stat', ['year' => $year]) }}"
+                class="bg-bluegray-700 text-white mr-2 p-2 rounded shadow }">
+                {{ $year }}
+            </a>
+            @endforeach
+        </div>
+
+        <div class="mx-auto lg:w-1/4 py-5 px-6 lg:px-0 lg:pr-6 lg:px-0 lg:pr-6 w-full">
             <livewire:statistic.stat-place />
         </div>
 
-        <div class="mx-auto md:w-3/4 py-5 px-6">
-            <livewire:statistic.stat-year />
+        <div class="mx-auto lg:w-3/4 py-5 px-6">
+            <livewire:statistic.stat-year :year="$year" />
         </div>
     </div>
 </div>

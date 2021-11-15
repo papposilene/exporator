@@ -28,7 +28,7 @@ class Tagged extends Model
     /**
      * Get the exhibition for a specific tag.
      */
-    public function isExhibition()
+    public function hasExhibitions()
     {
         return $this->hasMany(
             'App\Models\Exhibition',
