@@ -94,7 +94,7 @@
                 {{ $exhibition->title }}
             </h4>
 
-            <div class="flex space-x-5 md:px-0 justify-center my-5 w-full">
+            <div class="flex space-x-5 lg:bg-bluegray-200 md:px-0 lg:p-5 justify-center my-5 rounded lg:shadow w-full">
                 <span class="bg-yellow-100 border border-yellow-300 p-2 rounded shadow" title="@ucfirst(__('app.price'))">
                     @ucfirst(__('app.price')) :
                     @if ($exhibition->price)
