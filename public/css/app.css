@@ -1828,6 +1828,14 @@ select {
 	--tw-bg-opacity: 1;
 	background-color: rgba(244, 63, 94, var(--tw-bg-opacity));
 }
+.bg-rose-400 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(251, 113, 133, var(--tw-bg-opacity));
+}
+.bg-rose-200 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(254, 205, 211, var(--tw-bg-opacity));
+}
 .bg-opacity-25 {
 	--tw-bg-opacity: 0.25;
 }

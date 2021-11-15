@@ -21,16 +21,14 @@
                 </div>
             </div>
         </div>
-        <div class="flex flex-col lg:flex-row flex-wrap max-w-7xl mx-auto -mt-8 py-5 px-6">
-            <div class="flex flex-grow lg:flex-grow-0 lg:pr-2 flex-wrap w-full lg:w-1/3">
-                <livewire:statistic.stat-place />
-            </div>
-            <div class="flex flex-grow lg:flex-grow-0 mt-2 lg:mt-0 lg:pr-2 flex-wrap w-full lg:w-1/3">
-                <livewire:statistic.stat-exhibition />
-            </div>
-            <div class="flex flex-grow lg:flex-grow-0 mt-2 lg:mt-0 flex-wrap w-full lg:w-1/3">
-                <livewire:statistic.stat-tag />
-            </div>
+        <div class="flex flex-row flex-wrap max-w-7xl mx-auto -mt-8 py-5 px-6 w-full">
+            <livewire:statistic.stat-place />
+        </div>
+        <div class="flex flex-row flex-wrap max-w-7xl mx-auto -mt-8 py-5 px-6 w-full">
+            <livewire:statistic.stat-exhibition />
+        </div>
+        <div class="flex flex-row flex-wrap max-w-7xl mx-auto -mt-8 py-5 px-6 w-full">
+            <livewire:statistic.stat-tag />
         </div>
     </div>
 </div>

@@ -100,7 +100,7 @@
                                 @if ($place->status === 1)
                                 <span class="text-green-900">@ucfirst(__('app.place_open'))</span>
                                 @else
-                                <span class="text-red-900">@ucfirst(__('app.place_close'))</span>
+                                <span class="text-red-900">@ucfirst(__('app.place_closed'))</span>
                                 @endif
                             </td>
                             <td class="text-center">{{ $place->hasExhibitions()->count() }}</td>

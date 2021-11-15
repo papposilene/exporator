@@ -88,7 +88,7 @@ class PlaceController extends Controller
      * @param  \App\Models\Place  $place
      * @return \Illuminate\Http\Response
      */
-    public function statistic(Place $place)
+    public function stat_total(Place $place)
     {
         $dataStatistics = Type::withCount('hasPlaces')->orderBy('has_places_count', 'desc')->get();
 
@@ -103,14 +103,68 @@ class PlaceController extends Controller
                         'label' => ucfirst(__('chart.places_by_types')),
                         'data' => $dataStatistics->pluck('has_places_count'),
                         'backgroundColor' => [
-                            '#34D399',
-                            '#FBBF24',
-                            '#F87171',
-                            '#60A5FA',
+                            '#2563EB',
                             '#059669',
                             '#D97706',
                             '#DC2626',
-                            '#2563EB',
+                            '#60A5FA',
+                            '#34D399',
+                            '#FBBF24',
+                            '#F87171',
+                        ],
+                        'borderColor' => '#000',
+                    ],
+                ],
+            ],
+            'options' => [
+                'title' => [
+                    'display' => true,
+                    'fontColor' => '#fff',
+                    'position' => 'bottom',
+                    'text' => ucfirst(__('chart.places_by_types')),
+                ],
+                //'indexAxis' => 'x',
+                'responsive' => true,
+                'legend' => [
+                    'display' => true,
+                    'position' => 'bottom',
+                    'fontColor' => '#fff',
+                ],
+            ],
+        ])->all();
+
+        return $statistics;
+    }
+
+    /**
+     * Retrieve the statistics for places.
+     *
+     * @param  \App\Models\Place  $place
+     * @return \Illuminate\Http\Response
+     */
+    public function stat_status(Place $place)
+    {
+        $dataStatistics = Place::all();
+
+        $statistics = collect([
+            'data' => [
+                'total' => $dataStatistics->count(),
+            ],
+            'chart' => [
+                'labels' => [
+                    @ucfirst(__('app.places_open')),
+                    @ucfirst(__('app.places_closed')),
+                ],
+                'datasets' => [
+                    [
+                        'label' => ucfirst(__('chart.places_by_status')),
+                        'data' => [
+                            $dataStatistics->where('status', 1)->count(),
+                            $dataStatistics->where('status', 0)->count(),
+                        ],
+                        'backgroundColor' => [
+                            '#059669',
+                            '#DC2626',
                         ],
                         'borderColor' => '#000',
                     ],
@@ -121,12 +175,12 @@ class PlaceController extends Controller
                     'display' => true,
                     'fontColor' => '#fff',
                     'position' => 'top',
-                    'text' => ucfirst(__('chart.places_by_types')),
+                    'text' => ucfirst(__('chart.places_by_status')),
                 ],
                 //'indexAxis' => 'y',
                 'responsive' => true,
                 'legend' => [
-                    'display' => false,
+                    'display' => true,
                     'position' => 'bottom',
                     'fontColor' => '#fff',
                 ],

@@ -29,7 +29,8 @@ Route::prefix('1.1')->group(function () {
     // Places
     Route::get('/places', [PlaceController::class, 'index'])->name('api.place.index');
     Route::get('/places/geojson', [PlaceController::class, 'geojson'])->name('api.place.geojson');
-    Route::get('/places/statistics', [PlaceController::class, 'statistic'])->name('api.place.stat');
+    Route::get('/places/statistics/total', [PlaceController::class, 'stat_total'])->name('api.place.stat_total');
+    Route::get('/places/statistics/status', [PlaceController::class, 'stat_status'])->name('api.place.stat_status');
     Route::get('/place/{slug}', [PlaceController::class, 'show'])->name('api.place.show');
 
     // Exhibitions
