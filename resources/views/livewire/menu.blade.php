@@ -33,7 +33,7 @@
                         :active="request()->routeIs('front.tag.*')">
                         @ucfirst(__('app.tags'))
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('front.stat') }}" class="text-bluegray-900 dark:text-bluegray-100"
+                    <x-jet-nav-link href="{{ route('front.stat', ['year' => date('Y')]) }}" class="text-bluegray-900 dark:text-bluegray-100"
                         :active="request()->routeIs('front.stat')">
                         @ucfirst(__('app.statistics'))
                     </x-jet-nav-link>
@@ -222,7 +222,7 @@
                 class="text-bluegray-900 dark:text-bluegray-100" :active="request()->routeIs('front.tag.*')">
                 @ucfirst(__('app.tags'))
             </x-jet-responsive-nav-link>
-            <x-jet-responsive-nav-link href="{{ route('front.stat') }}"
+            <x-jet-responsive-nav-link href="{{ route('front.stat', ['year' => date('Y')]) }}"
                 class="text-bluegray-900 dark:text-bluegray-100" :active="request()->routeIs('front.stat')">
                 @ucfirst(__('app.statistics'))
             </x-jet-responsive-nav-link>

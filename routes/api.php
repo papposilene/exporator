@@ -7,6 +7,7 @@ use App\Http\Controllers\API\CountryController;
 use App\Http\Controllers\API\ExhibitionController;
 use App\Http\Controllers\API\PlaceController;
 use App\Http\Controllers\API\ReviewController;
+use App\Http\Controllers\API\StatController;
 use App\Http\Controllers\API\TagController;
 use App\Http\Controllers\API\UserController;
 
@@ -44,6 +45,10 @@ Route::prefix('1.1')->group(function () {
     // Reviews
     Route::get('/reviews', [ReviewController::class, 'index'])->name('api.review.all');
     Route::get('/reviews/statistics', [ReviewController::class, 'statistic'])->name('api.review.stat');
+
+    // Statistics
+    Route::get('/statistics/{year}/continents', [StatController::class, 'continents'])->name('api.stat.continent');
+    Route::get('/statistics/{year}/genders', [StatController::class, 'genders'])->name('api.stat.gender');
 
     // Tags
     Route::get('/tags', [TagController::class, 'index'])->name('api.tag.index');

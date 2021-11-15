@@ -46,7 +46,7 @@ use Illuminate\Support\Facades\Route;
 Route::redirect('/', '/dashboard', 301);
 Route::get('/dashboard', ShowDashboard::class)->name('dashboard');
 Route::get('/about', ShowAbout::class)->name('front.about');
-Route::get('/statistics', ShowStatistic::class)->name('front.stat');
+Route::get('/statistics/{year}', ShowStatistic::class)->name('front.stat');
 
 // Museums
 Route::get('/places', ListPlace::class)->name('front.place.index');

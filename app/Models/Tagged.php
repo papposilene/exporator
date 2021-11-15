@@ -30,7 +30,7 @@ class Tagged extends Model
      */
     public function isExhibition()
     {
-        return $this->hasOne(
+        return $this->hasMany(
             'App\Models\Exhibition',
             'uuid',
             'taggable_id'
