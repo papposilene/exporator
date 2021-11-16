@@ -194,6 +194,13 @@
   {
     "type":"movement",
     "tag":{
+        "fr": "expressionnisme abstrait",
+        "en": "abstract expressionnism"
+    }
+  },
+  {
+    "type":"movement",
+    "tag":{
         "fr": "fauvisme",
         "en": "fauvism"
     }
@@ -411,6 +418,13 @@
   {
     "type":"technique",
     "tag":{
+        "fr": "assemblage",
+        "en": "assemblage"
+    }
+  },
+  {
+    "type":"technique",
+    "tag":{
         "fr": "bande dessinée",
         "en": "comics"
     }
@@ -493,6 +507,41 @@
     }
   },
   {
+    "type":"technique",
+    "tag":{
+        "fr": "verrerie",
+        "en": "glassware"
+    }
+  },
+  {
+    "type":"theme",
+    "tag":{
+        "fr": "animaux",
+        "en": "animals"
+    }
+  },
+  {
+    "type":"theme",
+    "tag":{
+        "fr": "nature",
+        "en": "nature"
+    }
+  },
+  {
+    "type":"theme",
+    "tag":{
+        "fr": "collection",
+        "en": "collection"
+    }
+  },
+  {
+    "type":"theme",
+    "tag":{
+        "fr": "commémoration",
+        "en": "commemoration"
+    }
+  },
+  {
     "type":"theme",
     "tag":{
         "fr": "design",
@@ -502,8 +551,22 @@
   {
     "type":"theme",
     "tag":{
+        "fr": "donation",
+        "en": "donation"
+    }
+  },
+  {
+    "type":"theme",
+    "tag":{
         "fr": "etudes de genre",
         "en": "gender studies"
+    }
+  },
+  {
+    "type":"theme",
+    "tag":{
+        "fr": "société",
+        "en": "society"
     }
   },
   {
@@ -544,6 +607,27 @@
   {
     "type":"theme",
     "tag":{
+        "fr": "nature morte",
+        "en": "still life"
+    }
+  },
+  {
+    "type":"theme",
+    "tag":{
+        "fr": "paysage",
+        "en": "landscape"
+    }
+  },
+  {
+    "type":"theme",
+    "tag":{
+        "fr": "portrait",
+        "en": "portrait"
+    }
+  },
+  {
+    "type":"theme",
+    "tag":{
         "fr": "prix artistique",
         "en": "artistic award"
     }
@@ -560,6 +644,20 @@
     "tag":{
         "fr": "sciences et techniques",
         "en": "sciences and techniques"
+    }
+  },
+  {
+    "type":"theme",
+    "tag":{
+        "fr": "inclassable",
+        "en": "unclassifiable"
+    }
+  },
+  {
+    "type":"theme",
+    "tag":{
+        "fr": "satire",
+        "en": "satire"
     }
   }
 ]

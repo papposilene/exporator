@@ -29,7 +29,9 @@ class PlacesImport implements ToModel, SkipsEmptyRows, WithBatchInserts, WithChu
     */
     public function model(array $row)
     {
-        $slug = Str::slug($row['city'] . ' ' . $row['name'], '-');
+        $city = Str::of($row['city'])->trim();
+        $name = Str::of($row['name'])->trim();
+        $slug = Str::slug($city . ' ' . $name, '-');
         $country = Country::where('cca3', strtolower($row['country']))->firstOrFail();
         $type = Type::firstOrCreate([
                 'type' => strtolower($row['type']),
@@ -39,17 +41,16 @@ class PlacesImport implements ToModel, SkipsEmptyRows, WithBatchInserts, WithChu
             ]);
         $status = ($row['status'] === 'open' ? true : false);
 
-
         $place = Place::updateOrCreate([
             'slug' => $slug,
-            'name' => $row['name'],
+            'name' => $name,
         ],
         [
             'uuid' => (string) Str::uuid(),
             'type' => $type->slug,
             'status' => $status,
             'address' => $row['address'],
-            'city' => $row['city'],
+            'city' => $city,
             'country_cca3' => $country->cca3,
             'lat' => $row['latitude'],
             'lon' => $row['longitude'],
@@ -93,7 +94,7 @@ class PlacesImport implements ToModel, SkipsEmptyRows, WithBatchInserts, WithChu
             '*.name' => Rule::unique('places', 'name'),
             '*.type' => [
                 'required',
-                'in:museum,gallery,library,foundation,art center,other'
+                'in:museum,gallery,library,foundation,art center,art fair,other'
             ],
             '*.status' => [
                 'required',

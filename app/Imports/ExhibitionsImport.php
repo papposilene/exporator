@@ -29,15 +29,17 @@ class ExhibitionsImport implements ToModel, SkipsEmptyRows, WithBatchInserts, Wi
     */
     public function model(array $row)
     {
-        $place = Place::where('name', $row['place'])->firstOrFail();
+        $place = Str::of($row['place'])->trim();
+        $title = Str::of($row['title'])->trim();
+        $isPlace = Place::where('name', $place)->firstOrFail();
 
         $exhibition = Exhibition::updateOrCreate([
-            'slug' => Str::slug($row['title'], '-'),
-            'title' => $row['title'],
+            'slug' => Str::slug($title, '-'),
+            'title' => $title,
         ],
         [
             'uuid' => (string) Str::uuid(),
-            'place_uuid' => $place->uuid,
+            'place_uuid' => $isPlace->uuid,
             'began_at' => Carbon::createFromFormat('d/m/Y', $row['began_at'])->format('Y-m-d'),
             'ended_at' => Carbon::createFromFormat('d/m/Y', $row['ended_at'])->format('Y-m-d'),
             'description' => $row['description'],
