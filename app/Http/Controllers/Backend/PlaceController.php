@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ImportPlaceRequest;
 use App\Http\Requests\StorePlaceRequest;
 use App\Http\Requests\UpdatePlaceRequest;
+use App\Exports\PlacesExport;
 use App\Imports\PlacesImport;
 use App\Models\Country;
 use App\Models\Place;
@@ -177,6 +178,17 @@ class PlaceController extends Controller
         $place->save();
 
         return redirect()->route('front.place.show', ['slug' => $request->input('slug')])->with('success', 'All good!');
+    }
+
+    /**
+     * Export all the resources from storage.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function export()
+    {
+        $date = date('Y-m-d');
+        return Excel::download(new PlacesExport, $date . '_places.xlsx');
     }
 
     /**

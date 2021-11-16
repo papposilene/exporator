@@ -85,24 +85,28 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function
     Route::post('/place/store', [PlaceController::class, 'store'])->name('admin.place.store');
     Route::post('/place/update', [PlaceController::class, 'update'])->name('admin.place.update');
     Route::post('/places/import', [PlaceController::class, 'import'])->name('admin.place.import');
+    Route::post('/places/export', [PlaceController::class, 'export'])->name('admin.place.export');
 
     // Exhibitions
     Route::post('/exhibition/store', [ExhibitionController::class, 'store'])->name('admin.exhibition.store');
     Route::post('/exhibition/update', [ExhibitionController::class, 'update'])->name('admin.exhibition.update');
     Route::post('/exhibitions/import', [ExhibitionController::class, 'import'])->name('admin.exhibition.import');
     Route::post('/exhibitions/publish', [ExhibitionController::class, 'publish'])->name('admin.exhibition.publish');
+    Route::post('/exhibitions/export', [ExhibitionController::class, 'export'])->name('admin.exhibition.export');
 
     // Review
     Route::get('/review/create/{uuid}', CreateReview::class)->name('admin.review.create');
     Route::post('/review/store', [ReviewController::class, 'store'])->name('admin.review.store');
     Route::post('/review/update', [ReviewController::class, 'update'])->name('admin.review.update');
     Route::post('/review/delete', [ReviewController::class, 'delete'])->name('admin.review.delete');
+    Route::post('/review/export', [ReviewController::class, 'export'])->name('admin.review.export');
 
     // Tag
     Route::post('/tag/store', [TagController::class, 'store'])->name('admin.tag.store');
     Route::post('/tag/update', [TagController::class, 'update'])->name('admin.tag.update');
     Route::post('/tag/attach', [TagController::class, 'attach'])->name('admin.tag.attach');
     Route::post('/tag/delete', [TagController::class, 'delete'])->name('admin.tag.delete');
+    Route::post('/tag/export', [TagController::class, 'export'])->name('admin.tag.export');
 
     // User
     Route::post('/user/place/follow', [UserController::class, 'place_follow'])->name('admin.user.place_follow'); // Follow a place

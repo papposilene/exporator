@@ -8,6 +8,7 @@ use App\Http\Requests\PublishExhibitionRequest;
 use App\Http\Requests\StoreExhibitionRequest;
 use App\Http\Requests\UpdateExhibitionRequest;
 use App\Http\Requests\DeleteExhibitionRequest;
+use App\Exports\ExhibitionsExport;
 use App\Imports\ExhibitionsImport;
 use App\Models\Exhibition;
 use App\Models\Place;
@@ -198,6 +199,17 @@ class ExhibitionController extends Controller
         $exhibition->save();
 
         return redirect()->route('front.exhibition.show', ['place' => $exhibition->inPlace->slug, 'slug' => $exhibition->slug])->with('success', 'All good!');
+    }
+
+    /**
+     * Export all the resources from storage.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function export()
+    {
+        $date = date('Y-m-d');
+        return Excel::download(new ExhibitionsExport, $date . '_exhibitions.xlsx');
     }
 
     /**
