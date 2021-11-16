@@ -11,7 +11,11 @@
             <div class="bg-rose-400 text-black p-2 rounded shadow">
                 <div class="flex flex-wrap items-stretch justify-center">
                     <span class="text-center text-xl px-3 w-full">@ucfirst(__('app.place_first', ['year' => $year]))</span>
-                    <span class="font-bold text-center text-xl p-3 w-full">{{ $places->first()->name }}</span>
+                    <span class="font-bold text-center text-xl p-3 w-full">
+                        <a href="{{ route('front.place.show', ['slug' => $places->first()->slug]) }}">
+                            {{ $places->first()->name }}
+                        </a>
+                    </span>
                 </div>
             </div>
             <div class="bg-sky-400 text-black p-2 rounded shadow">
