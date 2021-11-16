@@ -4,7 +4,7 @@
     <x-slot name="header">
         @auth
         @if (Auth::user()->can('export places'))
-        <livewire:modals.export-place />
+        <livewire:interfaces.export-place />
         @endif
         @if (Auth::user()->can('import places'))
         <livewire:modals.import-place />

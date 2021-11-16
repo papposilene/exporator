@@ -22,6 +22,7 @@ class PlacesExport implements FromCollection, WithHeadings, WithMapping
         return [
             'uuid',
             'type',
+            'status',
             'name',
             'address',
             'city',
@@ -38,12 +39,13 @@ class PlacesExport implements FromCollection, WithHeadings, WithMapping
         return [
             $place->uuid,
             $place->hasType->type,
+            $place->status,
             $place->name,
             $place->address,
             $place->city,
             $place->inCountry->cca3,
-            $place->latitude,
-            $place->longitude,
+            $place->lat,
+            $place->lon,
             $place->link,
         ];
     }

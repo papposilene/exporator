@@ -4,7 +4,7 @@
     <x-slot name="header">
         @auth
         @if (Auth::user()->can('export exhibitions'))
-        <livewire:modals.export-exhibition />
+        <livewire:interfaces.export-exhibition />
         @endif
         @if (Auth::user()->can('import exhibitions'))
         <livewire:modals.import-exhibition />
