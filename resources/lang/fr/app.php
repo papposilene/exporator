@@ -179,7 +179,7 @@ return [
     'numbers_of_museum_type' => 'total des lieux d’exposition',
     'numbers_of_gallery_type' => 'total des galeries',
     'numbers_of_artcenter_type' => 'total des centres d’art',
-    'numbers_of_artfair_type' => 'total des foires.',
+    'numbers_of_artfair_type' => 'total des foires',
     'numbers_of_library_type' => 'total des bibliothèques',
     'numbers_of_foundation_type' => 'total des fondations',
     'numbers_of_other_type' => 'total hors catégories',
