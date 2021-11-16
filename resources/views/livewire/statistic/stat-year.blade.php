@@ -1,8 +1,6 @@
 <div class="bg-bluegray-300 mt-2 lg:mt-0 p-5 rounded shadow w-full">
     <h3 class="font-bold text-2xl mb-5">
-        <a href="{{ route('front.exhibition.index') }}">
-            @ucfirst(__('app.statistics_for', ['year' => $year]))
-        </a>
+        @ucfirst(__('app.statistics_for', ['year' => $year]))
     </h3>
 
     <div class="flex flex-row flex-grow flex-wrap w-full">
@@ -12,9 +10,7 @@
                 <div class="flex flex-wrap items-stretch justify-center">
                     <span class="text-center text-xl px-3 w-full">@ucfirst(__('app.place_first', ['year' => $year]))</span>
                     <span class="font-bold text-center text-xl p-3 w-full">
-                        <a href="{{ route('front.place.show', ['slug' => $places->first()->slug]) }}">
-                            {{ $places->first()->name }}
-                        </a>
+                        {{ array_key_first($places) }}
                     </span>
                 </div>
             </div>
