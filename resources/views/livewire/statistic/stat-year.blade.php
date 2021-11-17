@@ -80,7 +80,7 @@
         <h4 class="font-bold text-xl mb-5">
         @ucfirst(__('app.user_total_for', ['year' => $year]))
         </h4>
-        <div class="grid grid-cols-1 gap-2 bg-bluegray-400 p-5 rounded shadow w-full">
+        <div class="grid grid-cols-1 gap-2 w-full">
             <p class="flex flex-grow bg-sky-300 justify-between p-2 rounded shadow w-full">
                 <span class="px-3">@ucfirst(__('app.user_has_visited', ['year' => $year]))</span>
                 <span class="px-3">
