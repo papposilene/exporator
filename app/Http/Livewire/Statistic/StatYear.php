@@ -18,6 +18,7 @@ class StatYear extends Component
     public function mount()
     {
         $this->year = ($this->year ? $this->year : date('Y'));
+        $this->user = User::findOrFail(Auth::id());
         $this->exhibitions = Exhibition::whereYear('began_at', $this->year)->orderBy('began_at', 'ASC')->get();
         $this->places = $this->exhibitions->groupBy(function($place) {
             // Solution found at https://stackoverflow.com/a/25538667
@@ -25,15 +26,6 @@ class StatYear extends Component
             //return Carbon::parse($date->created_at)->format('m'); // grouping by months
         })->toArray();
         arsort($this->places);
-
-        if (Auth::check())
-        {
-            $this->user = User::findOrFail(Auth::id());
-        }
-        else
-        {
-            $this->user = User::find(0);
-        }
     }
 
     public function render()
