@@ -13,6 +13,11 @@ return [
     |
     */
 
+    'names' => 'nom et prénom',
+    'fname' => 'prénom',
+    'lname' => 'nom',
+    'email' => 'courriel',
+
     'already_registered' => 'déjà inscrit ?',
     'login' => 'se connecter',
     'logout' => 'se déconnecter',
