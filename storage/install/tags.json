@@ -481,6 +481,13 @@
   {
     "type":"technique",
     "tag":{
+        "fr": "graffiti",
+        "en": "graffiti"
+    }
+  },
+  {
+    "type":"technique",
+    "tag":{
         "fr": "orfèvrerie",
         "en": "jewellery"
     }
@@ -658,6 +665,20 @@
     "tag":{
         "fr": "satire",
         "en": "satire"
+    }
+  },
+  {
+    "type":"theme",
+    "tag":{
+        "fr": "décolonisation",
+        "en": "decolonisation"
+    }
+  },
+  {
+    "type":"theme",
+    "tag":{
+        "fr": "contre-culture",
+        "en": "counterculture"
     }
   }
 ]

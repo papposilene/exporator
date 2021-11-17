@@ -22,7 +22,7 @@
             </div>
             <div class="bg-yellow-400 text-black p-2 rounded shadow">
                 <div class="flex flex-wrap items-stretch justify-center">
-                    <span class="text-center text-xl px-3 w-full">@ucfirst(__('app.prices_for', ['year' => $year]))</span>
+                    <span class="text-center text-xl px-3 w-full">@ucfirst(__('app.prices_for', ['year' => $year]))<sup>1</sup></span>
                     <span class="font-bold text-center text-xl p-3 w-full">{{ $exhibitions->sum('price') }}&nbsp;&euro;</span>
                 </div>
             </div>
@@ -55,7 +55,7 @@
         <!-- End of statistics by exhibitions -->
 
         <!-- Statistics by charts -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-2">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 m-2">
             <div class="">
                 <h4 class="font-bold text-xl text-center my-2">
                     @ucfirst(__('chart.genders_by_years'))
@@ -70,6 +70,15 @@
             </div>
         </div>
         <!-- End of statistics by charts -->
+
+        <!-- Notes about astatistics -->
+        <div class="flex flex-col mt-5 w-full">
+            <p class="flex font-bold text-sm w-full">@ucfirst(__('app.informations'))</p>
+            <ol class="list-inside list-decimal w-full">
+                <li class="text-sm">@ucfirst(__('app.stats_info'))</li>
+            </ol>
+        </div>
+        <!-- End of notes about astatistics -->
     </div>
 </div>
 

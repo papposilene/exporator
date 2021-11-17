@@ -53,6 +53,7 @@ return [
     'foundation' => 'fondation',
     'geolocate' => 'me géolocaliser',
     'import' => 'importer',
+    'informations' => 'informations',
     'is_open' => 'le lieu est-il ouvert ? Si oui, <em>open</em>. Si non, <em>closed</em>.',
     'is_published' => 'visibilité',
     'iteration' => '#',
@@ -153,6 +154,9 @@ return [
         le présent site, nous ne nous les accaparerons pas et ils resteront votre entière propriété. C’est
         pourquoi d’ailleurs, si jamais votre critique est déjà publiée sur un autre site, vous pouvez fournir
         le lien vers l’article en question.',
+    'stats_info' => 'les statistiques concernant le prix cumulé du tarif plein des expositions part du principe,
+        forcément erroné, que chaque exposition est visitée de façon individuelle et non groupée avec les autres
+        expositions présentées au même moment dans la même institution.',
 
     // Placeholders
     'calendar_of' => 'agenda des :what',
