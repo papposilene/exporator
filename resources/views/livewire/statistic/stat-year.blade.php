@@ -55,7 +55,7 @@
         <!-- End of statistics by exhibitions -->
 
         <!-- Statistics by charts -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 bg-bluegray-400 my-2 p-5 rounded shadow w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 bg-sky-400 my-2 p-5 rounded shadow w-full">
             <div class="">
                 <h4 class="font-bold text-xl text-center mb-2">
                     @ucfirst(__('chart.genders_by_years'))
@@ -67,6 +67,20 @@
                     @ucfirst(__('chart.continents_by_years'))
                 </h4>
                 <canvas id="chartContinents" width="400" height="400"></canvas>
+            </div>
+        </div>
+        <!-- End of statistics by charts -->
+
+        <!-- Statistics by charts -->
+        <div class="grid grid-cols-1 gap-2 bg-bluegray-400 my-2 p-5 rounded shadow w-full">
+            <div class="bg-bluegray-300 p-2 rounded">
+                <p class="flex flex-grow justify-between">
+                    <span class="px-3">@ucfirst(__('app.user_has_visited', ['year' => $year]))</span>
+                    <span class="px-3">
+                        {{ $user->hasVisitedExhibitions()->count() }}/{{ $exhibitions->count() }}
+                        ({{ round( ($user->hasVisitedExhibitions()->count() / $exhibitions->count()) * 100, 2) }}&nbsp;&percnt;)
+                    </span>
+                </p>
             </div>
         </div>
         <!-- End of statistics by charts -->

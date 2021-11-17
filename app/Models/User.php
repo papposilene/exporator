@@ -170,6 +170,18 @@ class User extends Authenticatable
     }
 
     /**
+     * Get all the visited exhibitions by an user.
+     */
+    public function hasVisitedExhibitions()
+    {
+        return $this->hasMany(
+            'App\Models\UserPlace',
+            'user_uuid',
+            'uuid'
+        );
+    }
+
+    /**
      * Get if an exhibition is followed by an user.
      */
     public function isFollowingExhibition()

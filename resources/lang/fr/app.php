@@ -212,6 +212,7 @@ return [
     'user_following_places' => 'total des lieux d’exposition suivis : :count.',
     'user_following_exhibitions' => 'total des expositions suivies : :count.',
     'user_following_tags' => 'total des mots-clés suivis : :count.',
+    'user_has_visited' => 'ratio d‘expositions visitées pour l’année :year',
     'visited_at' => 'exposition visitée le :date.',
     'welcome_to' => 'bienvenue, :name !',
 ];
