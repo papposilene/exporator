@@ -67,7 +67,13 @@
                 </div>
                 <x-forms.input wire:model="search" type="search" class="ml-2" :placeholder="@ucfirst(__('app.search'))" />
             </div>
+            <!-- End of navigation and search -->
+
+            <!-- Pagination -->
             {{ $exhibitions->links() }}
+            <!-- End of pagination -->
+
+            <!-- Exhibitions -->
             <div class="py-5">
                 <table class="w-full p-5 table-fixed rounded shadow">
                     <thead>
@@ -134,7 +140,11 @@
                     </tbody>
                 </table>
             </div>
+            <!-- End of exhibitions -->
+
+            <!-- Pagination -->
             {{ $exhibitions->links() }}
+            <!-- End of pagination -->
         </div>
     </div>
 </div>

@@ -30,6 +30,7 @@
             </div>
             @endif
 
+            <!-- Navigation and search -->
             <div class="relative flex items-center justify-between mb-2 w-full">
                 <div class="flex flex-wrap">
                     <a href="{{ route('front.place.index', ['type' => '']) }}" class="flex flex-auto text-base hover:scale-110 focus:outline-none
@@ -70,7 +71,13 @@
                 </div>
                 <x-forms.input wire:model="search" type="search" class="ml-2" :placeholder="@ucfirst(__('app.search'))" />
             </div>
+            <!-- End of navigation and search -->
+
+            <!-- Pagination -->
             {{ $places->links() }}
+            <!-- End of pagination -->
+
+            <!-- Places -->
             <div class="py-5">
                 <table class="w-full p-5 table-fixed rounded shadow">
                     <thead>
@@ -112,7 +119,11 @@
                     </tbody>
                 </table>
             </div>
+            <!-- End of places -->
+
+            <!-- Pagination -->
             {{ $places->links() }}
+            <!-- End of pagination -->
         </div>
     </div>
 </div>

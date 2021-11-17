@@ -19,6 +19,7 @@
             </div>
             @endif
 
+            <!-- Navigation and search -->
             <div class="relative flex items-center justify-between mb-2 w-full">
                 <div class="flex flex-wrap">
                     @auth
@@ -32,7 +33,13 @@
                 </div>
                 <x-forms.input wire:model="search" type="search" class="dark:text-gray-800 dark:bg-bluegray-300 ml-2" :placeholder="@ucfirst(__('app.search'))" />
             </div>
+            <!-- End of navigation and search -->
+
+            <!-- Pagination -->
             {{ $users->links() }}
+            <!-- End of pagination -->
+
+            <!-- Users -->
             <div class="py-5">
                 <table class="w-full p-5 table-fixed shadow">
                     <thead>
@@ -62,7 +69,11 @@
                     </tbody>
                 </table>
             </div>
+            <!-- End of users -->
+
+            <!-- Pagination -->
             {{ $users->links() }}
+            <!-- End of pagination -->
         </div>
     </div>
 </div>
