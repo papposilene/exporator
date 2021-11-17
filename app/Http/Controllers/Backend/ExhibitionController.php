@@ -82,7 +82,7 @@ class ExhibitionController extends Controller
     {
         if( !Auth::user()->can('propose exhibitions') )
         {
-            abort('403');
+            abort(403);
         }
 
         $validated = $request->validated();
