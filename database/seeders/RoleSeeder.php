@@ -37,6 +37,7 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'update exhibitions']);
         Permission::create(['name' => 'delete exhibitions']);
         Permission::create(['name' => 'restore exhibitions']);
+        Permission::create(['name' => 'propose exhibitions']);
         Permission::create(['name' => 'publish exhibitions']);
         Permission::create(['name' => 'unpublish exhibitions']);
         Permission::create(['name' => 'follow exhibitions']);
@@ -134,6 +135,7 @@ class RoleSeeder extends Seeder
             ->givePermissionTo([
                 'follow places',
                 'unfollow places',
+                'propose exhibitions',
                 'follow exhibitions',
                 'unfollow exhibitions',
                 'follow tags',
