@@ -19,6 +19,7 @@ import 'leaflet-extra-markers/dist/js/leaflet.extra-markers.js';
 import 'leaflet.locatecontrol/dist/L.Control.Locate.min.js';
 
 // Datepicker
+import '@themesberg/flowbite/dist/datepicker.bundle.js';
 import '@themesberg/tailwind-datepicker';
 
 window.Alpine = Alpine;

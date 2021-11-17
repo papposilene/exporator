@@ -48,7 +48,7 @@
                         </path>
                     </svg>
                 </div>
-                <input datepicker type="text" id="datepicker" placeholder="Select date"
+                <input datepicker type="text" name="date" id="datepicker" placeholder="Select date"
                     datepicker-autohide datepicker-format="yyyy/mm/dd"
                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 datepicker-input">
             </div>
@@ -68,7 +68,6 @@
 
 <script>
 document.addEventListener('livewire:load', function () {
-    const datepickerEl = document.getElementById('datepicker');
-    new Datepicker(datepickerEl);
-});
+    new Datepicker(document.getElementById('datepicker'));
+})
 </script>
