@@ -15,7 +15,7 @@ class VisitedExhibitionRequest extends FormRequest
     {
         return [
             'exhibition' => 'required|bail|uuid',
-            'date' => 'required|date',
+            'date' => 'required|date_format:d/m/Y',
         ];
     }
 }

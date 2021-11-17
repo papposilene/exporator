@@ -55,15 +55,15 @@
         <!-- End of statistics by exhibitions -->
 
         <!-- Statistics by charts -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 m-2">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 bg-bluegray-400 my-2 p-5 rounded shadow w-full">
             <div class="">
-                <h4 class="font-bold text-xl text-center my-2">
+                <h4 class="font-bold text-xl text-center mb-2">
                     @ucfirst(__('chart.genders_by_years'))
                 </h4>
                 <canvas id="chartGenders" width="400" height="400"></canvas>
             </div>
             <div class="">
-                <h4 class="font-bold text-xl text-center my-2">
+                <h4 class="font-bold text-xl text-center mb-2">
                     @ucfirst(__('chart.continents_by_years'))
                 </h4>
                 <canvas id="chartContinents" width="400" height="400"></canvas>
@@ -72,7 +72,7 @@
         <!-- End of statistics by charts -->
 
         <!-- Notes about astatistics -->
-        <div class="flex flex-col mt-5 w-full">
+        <div class="flex flex-col bg-bluegray-400 mt-2 p-5 rounded shadow w-full">
             <p class="flex font-bold text-sm w-full">@ucfirst(__('app.informations'))</p>
             <ol class="list-inside list-decimal w-full">
                 <li class="text-sm">@ucfirst(__('app.stats_info'))</li>

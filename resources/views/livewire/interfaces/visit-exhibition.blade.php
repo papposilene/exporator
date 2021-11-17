@@ -1,5 +1,6 @@
 <div>
-    @if (Auth::check() && Auth::user()->isFollowingExhibition && Auth::user()->isFollowingExhibition->visited_at)
+    @if (Auth::check() && Auth::user()->isFollowingExhibition)
+    @if (filled(Auth::user()->isFollowingExhibition->visited_at))
     <form method="POST" action="{{ route('admin.user.exhibition_unvisited') }}" class="flex flex-col w-full">
         @csrf
 
@@ -27,6 +28,7 @@
             </x-forms.button>
         </div>
     </form>
+    @endif
     @else
     <form method="POST" action="{{ route('admin.user.exhibition_visited') }}" class="flex flex-col w-full">
         @csrf
