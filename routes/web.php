@@ -112,8 +112,8 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function
     Route::post('/user/place/follow', [UserController::class, 'place_follow'])->name('admin.user.place_follow'); // Follow a place
     Route::post('/user/place/unfollow', [UserController::class, 'place_unfollow'])->name('admin.user.place_unfollow'); // Unfollow a place
     Route::post('/user/exhibition/follow', [UserController::class, 'exhibition_follow'])->name('admin.user.exhibition_follow'); // Follow an exhibition
-    Route::post('/user/exhibition/visited', [UserController::class, 'exhibition_visited'])->name('admin.user.exhibition_visited'); // Exhibition visited
     Route::post('/user/exhibition/unfollow', [UserController::class, 'exhibition_unfollow'])->name('admin.user.exhibition_unfollow'); // Unfollow an exhibition
+    Route::post('/user/exhibition/visited', [UserController::class, 'exhibition_visited'])->name('admin.user.exhibition_visited'); // Exhibition visited
     Route::post('/user/exhibition/unvisited', [UserController::class, 'exhibition_unvisited'])->name('admin.user.exhibition_unvisited'); // Exhibition visited
     Route::post('/user/tag/follow', [UserController::class, 'tag_follow'])->name('admin.user.tag_follow'); // Follow a tag
     Route::post('/user/tag/unfollow', [UserController::class, 'tag_unfollow'])->name('admin.user.tag_unfollow'); // Unfollow a tag

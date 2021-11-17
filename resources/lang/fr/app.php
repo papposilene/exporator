@@ -37,6 +37,7 @@ return [
     'create' => 'ajouter',
     'dashboard' => 'dashboard',
     'date' => 'date',
+    'datepîcker' => 'veuillez sélectionner une date',
     'delete' => 'supprimer',
     'description' => 'description',
     'details' => 'détails',
@@ -63,7 +64,7 @@ return [
     'flags' => '🏳️',
     'follow' => 'suivre',
     'followed' => 'suivis',
-    'followed_exhibitions' => 'expositions visitées',
+    'followed_exhibitions' => 'expositions suivies',
     'followed_places' => 'lieux d’exposition suivis',
     'followed_tags' => 'mots-clés suivis',
     'followed_users' => 'utlisateurs suivis',
@@ -76,6 +77,8 @@ return [
     'link' => 'lien vers le site internet',
     'map' => 'carte',
     'mandatory' => 'informations obligatoires',
+    'mark_as_unvisited' => 'marquer l’exposition comme non visitée',
+    'mark_as_visited' => 'marquer comme visitée',
     'museum' => 'musée',
     'museums' => 'musées',
     'name' => 'dénomination',
@@ -132,6 +135,7 @@ return [
     'users' => 'utilisateurs',
     'users_manage' => 'gérer les utilisateurs',
     'unfollow' => 'ne plus suivre',
+    'visited_exhibitions' => 'expositions visitées',
     'welcome' => 'bienvenue',
     'with_past_exhibition' => 'Exposition(s) passée(s)',
     'with_current_exhibition' => 'Exposition(s) en cours',
@@ -157,6 +161,8 @@ return [
     'stats_info' => 'les statistiques concernant le prix cumulé du tarif plein des expositions part du principe,
         forcément erroné, que chaque exposition est visitée de façon individuelle et non groupée avec les autres
         expositions présentées au même moment dans la même institution.',
+    'visit_info' => 'vous pouvez indiquer avoir visité cette exposition. Si la date sélectionnée ne rentre pas
+        entre les dates d’ouverture et de fermeture de l’exposition, la date médiane sera automatiquement enregistrée.',
 
     // Placeholders
     'calendar_of' => 'agenda des :what',
@@ -206,5 +212,6 @@ return [
     'user_following_places' => 'total des lieux d’exposition suivis : :count.',
     'user_following_exhibitions' => 'total des expositions suivies : :count.',
     'user_following_tags' => 'total des mots-clés suivis : :count.',
+    'visited_at' => 'exposition visitée le :date.',
     'welcome_to' => 'bienvenue, :name !',
 ];

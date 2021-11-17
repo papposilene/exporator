@@ -34,7 +34,7 @@ class UserExhibition extends Model
      * @var array
      */
     protected $casts = [
-        'visited' => 'boolean',
+        //
     ];
 
     /**
@@ -44,6 +44,7 @@ class UserExhibition extends Model
      */
     protected $dates = [
         'deleted_at',
+        'visited_at',
     ];
 
     /**
@@ -67,7 +68,7 @@ class UserExhibition extends Model
         'uuid',
         'user_uuid',
         'exhibition_uuid',
-        'visited',
+        'visited_at',
     ];
 
     /**

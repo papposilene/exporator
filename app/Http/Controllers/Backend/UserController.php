@@ -13,10 +13,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\FollowExhibitionRequest;
 use App\Http\Requests\FollowPlaceRequest;
 use App\Http\Requests\FollowTagRequest;
+use App\Http\Requests\VisitedExhibitionRequest;
 use App\Http\Requests\UnfollowExhibitionRequest;
 use App\Http\Requests\UnfollowPlaceRequest;
 use App\Http\Requests\UnfollowTagRequest;
+use App\Http\Requests\UnvisitedExhibitionRequest;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
@@ -93,33 +96,6 @@ class UserController extends Controller
     }
 
     /**
-     * Visited exhibition
-     *
-     * @param  \Illuminate\Http\FollowExhibitionRequest  $request
-     * @param  \App\Models\UserExhibition  $userexhibition
-     * @return \Illuminate\Http\Response
-     */
-    public function exhibition_visited(FollowExhibitionRequest $request, UserExhibition $userexhibition)
-    {
-        $this->authorize('update', $userexhibition);
-
-        $validated = $request->validated();
-
-        $user = Auth::id();
-        $exhibition = Exhibition::findOrFail($request->input('exhibition'));
-
-        UserExhibition::updateOrCreate([
-            'user_uuid' => $user,
-            'exhibition_uuid' => $exhibition->uuid,
-        ],
-        [
-            'visited_at' => date('Y-m-d')
-        ]);
-
-        return redirect()->back()->with('success', 'All good!');
-    }
-
-    /**
      * Unfollow an exhibition.
      *
      * @param  \Illuminate\Http\UnfollowExhibitionRequest  $request
@@ -139,13 +115,13 @@ class UserController extends Controller
     }
 
     /**
-     * Un-visited exhibition
+     * Visited exhibition
      *
-     * @param  \Illuminate\Http\FollowExhibitionRequest  $request
+     * @param  \Illuminate\Http\VisitedExhibitionRequest  $request
      * @param  \App\Models\UserExhibition  $userexhibition
      * @return \Illuminate\Http\Response
      */
-    public function exhibition_unvisited(FollowExhibitionRequest $request, UserExhibition $userexhibition)
+    public function exhibition_visited(VisitedExhibitionRequest $request, UserExhibition $userexhibition)
     {
         $this->authorize('update', $userexhibition);
 
@@ -154,13 +130,41 @@ class UserController extends Controller
         $user = Auth::id();
         $exhibition = Exhibition::findOrFail($request->input('exhibition'));
 
+        $visited_at = $request->input('date');
+
+        if ($exhibition->began_at < $visited_at || $exhibition->ended_at < $visited_at )
+        {
+            $visited_at = $exhibition->ended_at->subDays(2);
+        }
+
         UserExhibition::updateOrCreate([
             'user_uuid' => $user,
             'exhibition_uuid' => $exhibition->uuid,
         ],
         [
-            'visited' => false
+            'visited_at' => $visited_at,
         ]);
+
+        return redirect()->back()->with('success', 'All good!');
+    }
+
+    /**
+     * Un-visited exhibition
+     *
+     * @param  \Illuminate\Http\UnvisitedExhibitionRequest  $request
+     * @param  \App\Models\UserExhibition  $userexhibition
+     * @return \Illuminate\Http\Response
+     */
+    public function exhibition_unvisited(UnvisitedExhibitionRequest $request, UserExhibition $userexhibition)
+    {
+        $this->authorize('update', $userexhibition);
+
+        $validated = $request->validated();
+
+        $user = Auth::id();
+        $exhibition = UserExhibition::findOrFail($request->input('visit'));
+        $exhibition->visited_at = null;
+        $exhibition->save();
 
         return redirect()->back()->with('success', 'All good!');
     }

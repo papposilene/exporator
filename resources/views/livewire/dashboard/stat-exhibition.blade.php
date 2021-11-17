@@ -12,6 +12,12 @@
                 <span class="px-3">{{ $user->followedExhibitions()->count() }}</span>
             </a>
         </div>
+        <div class="bg-sky-500 text-white p-2 rounded" title="@ucfirst(__('app.followed_exhibitions'))">
+            <a href="{{ route('front.exhibition.index', ['filter' => 'followed']) }}" class="flex flex-grow justify-between">
+                <span class="px-3">@ucfirst(__('app.visited_exhibitions'))</span>
+                <span class="px-3">{{ $user->followedExhibitions()->where('visited_at', true)->count() }}</span>
+            </a>
+        </div>
         @endauth
         <div class="bg-sky-500 text-white p-2 rounded">
             <a href="{{ route('front.exhibition.index', ['filter' => 'followed']) }}" class="flex flex-grow justify-between">

@@ -128,7 +128,7 @@ class Exhibition extends Model
     }
 
     /**
-     * Get if the user has followed the place
+     * Get if the user has followed the exhibition
      */
     public function isFollowed()
     {

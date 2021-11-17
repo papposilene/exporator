@@ -168,4 +168,40 @@ class User extends Authenticatable
             'review_uuid'
         );
     }
+
+    /**
+     * Get if an exhibition is followed by an user.
+     */
+    public function isFollowingExhibition()
+    {
+        return $this->hasOne(
+            'App\Models\UserExhibition',
+            'user_uuid',
+            'uuid'
+        );
+    }
+
+    /**
+     * Get if a place is followed by an user.
+     */
+    public function isFollowingPlace()
+    {
+        return $this->hasOne(
+            'App\Models\UserPlace',
+            'user_uuid',
+            'uuid'
+        );
+    }
+
+    /**
+     * Get if a tag is followed by an user.
+     */
+    public function isFollowingTag()
+    {
+        return $this->hasOne(
+            'App\Models\UserTag',
+            'user_uuid',
+            'uuid'
+        );
+    }
 }

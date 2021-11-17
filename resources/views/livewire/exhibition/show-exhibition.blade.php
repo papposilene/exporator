@@ -71,6 +71,7 @@
             @endif
 
             @if ($exhibition->is_published === false)
+            <!-- Not published exhibition -->
             <div class="bg-red-500 border border-red-700 mb-5 p-3 text-white font-bold rounded shadow">
                 <ul>
                     <li>@ucfirst(__('app.published_info'))</li>
@@ -79,21 +80,30 @@
                     </li>
                 </ul>
             </div>
+            <!-- End of not published exhibition -->
             @endif
 
             @if ($exhibition->ended_at < date('Y-m-d'))
+            <!-- Ended exhibition -->
             <div class="bg-red-400 border border-red-600 mb-5 p-3 text-white font-bold rounded shadow">
                 <ul>
                     <li>@ucfirst(__('app.ended_info', ['date' => $exhibition->ended_at->format('d/m/Y')]))</li>
                 </ul>
             </div>
+            <!-- End of ended exhibition -->
             @endif
 
-            <h4 class="bg-bluegray-300 font-bold text-2xl p-3 rounded shadow w-full"
+            <!-- Exhibition title -->
+            <div class="flex flex-grow justify-between bg-bluegray-300 font-bold text-2xl p-3 rounded shadow w-full"
                 title="@ucfirst(__('app.exhibition'))">
-                {{ $exhibition->title }}
-            </h4>
+                <h4>
+                    {{ $exhibition->title }}
+                </h4>
+                <span><livewire:interfaces.follow-exhibition :exhibition="$exhibition" :wire:key="$exhibition->uuid" /></span>
+            </div>
+            <!-- End of exhibition title -->
 
+            <!-- Exhibition informations -->
             <div class="flex space-x-5 lg:bg-bluegray-200 md:px-0 lg:p-5 justify-center my-5 rounded lg:shadow w-full">
                 <span class="bg-yellow-100 border border-yellow-300 p-2 rounded shadow" title="@ucfirst(__('app.price'))">
                     @ucfirst(__('app.price')) :
@@ -110,7 +120,9 @@
                     @ucfirst(__('app.ended_at')) : @date($exhibition->ended_at).
                 </span>
             </div>
+            <!-- End of exhibition informations -->
 
+            <!-- End of exhibition data -->
             <ul class="list-inside bg-bluegray-200 rounded shadow w-full">
                 <li class="p-5">
                     {{ $exhibition->description }}
@@ -123,6 +135,13 @@
                     @endif
                 </li>
             </ul>
+            <!-- End of exhibition data -->
+
+            <!-- User actions -->
+            <div class="flex space-x-5 lg:bg-bluegray-200 md:px-0 lg:p-5 justify-center my-5 rounded lg:shadow w-full">
+                <livewire:interfaces.visit-exhibition :exhibition="$exhibition" :wire:key="$exhibition->uuid" />
+            </div>
+            <!-- End of user actions -->
 
             <!-- Tags -->
             <div class="bg-indigo-300 mt-5 px-5 p-5 rounded shadow w-full">
