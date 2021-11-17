@@ -219,6 +219,25 @@ class ExhibitionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
+     * @param  \Illuminate\Http\DeleteExhibitionRequest  $request
+     * @param  \App\Models\Exhibition  $exhibition
+     * @return \Illuminate\Http\Response
+     */
+    public function delete(DeleteExhibitionRequest $request, Exhibition $exhibition)
+    {
+        $this->authorize('delete', $exhibition);
+
+        $validated = $request->validated();
+
+        $exhibition = Exhibition::findOrFail($request->input('uuid'));
+        $exhibition->delete();
+
+        return redirect()->route('front.exhibition.index')->with('success', 'All good!');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
      * @param  \App\Models\Exhibition  $exhibition
      * @return \Illuminate\Http\Response
      */

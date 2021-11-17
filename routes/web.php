@@ -93,6 +93,7 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function
     Route::post('/exhibitions/import', [ExhibitionController::class, 'import'])->name('admin.exhibition.import');
     Route::post('/exhibitions/publish', [ExhibitionController::class, 'publish'])->name('admin.exhibition.publish');
     Route::post('/exhibitions/export', [ExhibitionController::class, 'export'])->name('admin.exhibition.export');
+    Route::post('/exhibitions/delete', [ExhibitionController::class, 'delete'])->name('admin.exhibition.delete');
 
     // Review
     Route::get('/review/create/{uuid}', CreateReview::class)->name('admin.review.create');

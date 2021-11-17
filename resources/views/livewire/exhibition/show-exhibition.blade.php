@@ -75,8 +75,9 @@
             <div class="bg-red-500 border border-red-700 mb-5 p-3 text-white font-bold rounded shadow">
                 <ul>
                     <li>@ucfirst(__('app.published_info'))</li>
-                    <li>
+                    <li class="flex flex-row justify-around mt-2">
                         <livewire:interfaces.publish-exhibition :exhibition="$exhibition" :wire:key="$exhibition->uuid" />
+                        <livewire:interfaces.delete-exhibition :exhibition="$exhibition" :wire:key="$exhibition->uuid" />
                     </li>
                 </ul>
             </div>
