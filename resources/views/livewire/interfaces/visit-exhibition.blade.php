@@ -49,10 +49,9 @@
                     </svg>
                 </div>
                 <input datepicker type="text" name="date" id="datepicker" placeholder="Select date"
-                    datepicker-autohide datepicker-format="yyyy/mm/dd"
+                    datepicker-autohide datepicker-format="dd//mm/yyyy"
                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 datepicker-input">
             </div>
-
 
             <x-forms.button class="block bg-bluegray-500 p-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="text-yellow-500 h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">

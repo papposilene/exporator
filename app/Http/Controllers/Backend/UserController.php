@@ -130,9 +130,16 @@ class UserController extends Controller
         $user = Auth::id();
         $exhibition = Exhibition::findOrFail($request->input('exhibition'));
 
-        $visited_at = $request->input('date');
+        $visited_at = Carbon::createFromFormat('d/m/Y', $request->input('date'))->format('Y-m-d');
 
-        if ($exhibition->began_at < $visited_at || $exhibition->ended_at < $visited_at )
+        // Error in the visited date : visited_at < began_at date
+        if ($visited_at < $exhibition->began_at)
+        {
+            $visited_at = $exhibition->began_at->addDays(2);
+        }
+
+        // Error in the visited date : visited_at > ended_at date
+        if ($visited_at > $exhibition->ended_at)
         {
             $visited_at = $exhibition->ended_at->subDays(2);
         }
