@@ -78,12 +78,19 @@
             @endif
 
             @if($exhibitions->count() > 0)
+            <!-- End of navigation and search -->
             <div class="relative flex items-center justify-end mb-2 w-full">
                 <div class="flex flex-wrap">
                     <x-forms.input wire:model="search" type="search" class="ml-2" :placeholder="@ucfirst(__('app.search'))" />
                 </div>
             </div>
+            <!-- End of navigation and search -->
+
+            <!-- Pagination -->
             {{ $exhibitions->links() }}
+            <!-- End of pagination -->
+
+            <!-- Exhibitions -->
             <div class="py-5">
                 <table class="w-full p-5 table-fixed rounded shadow">
                     <thead>
@@ -135,13 +142,20 @@
                     </tbody>
                 </table>
             </div>
+            <!-- End of exhibitions -->
+
+            <!-- Pagination -->
             {{ $exhibitions->links() }}
+            <!-- End of pagination -->
+
             @else
+            <!-- No data to show -->
             <div class="flex justify-center bg-bluegray-500 text-white p-5 rounded shadow w-full">
                 <p class="text-center py-10">
                     @ucfirst(__('app.nothing'))
                 </p>
             </div>
+            <!-- End of no data to show -->
             @endif
         </div>
     </div>
