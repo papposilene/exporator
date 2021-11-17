@@ -70,25 +70,41 @@
             </div>
         </div>
         <!-- End of statistics by charts -->
+    </div>
+</div>
 
-        @auth
+@auth
+<div class="bg-bluegray-300 mt-2 p-5 rounded shadow w-full">
+    <div class="flex flex-row flex-grow flex-wrap w-full">
         <!-- Statistics for user -->
-        <div class="grid grid-cols-1 gap-2 bg-bluegray-400 my-2 p-5 rounded shadow w-full">
-            <div class="bg-bluegray-300 p-2 rounded">
-                <p class="flex flex-grow justify-between">
-                    <span class="px-3">@ucfirst(__('app.user_has_visited', ['year' => $year]))</span>
-                    <span class="px-3">
-                        {{ $user->hasVisitedExhibitions()->count() }}/{{ $exhibitions->count() }}
-                        ({{ round( ($user->hasVisitedExhibitions()->count() / $exhibitions->count()) * 100, 2) }}&nbsp;&percnt;)
-                    </span>
-                </p>
-            </div>
+        <h4 class="font-bold text-xl mb-5">
+        @ucfirst(__('app.user_total_for', ['year' => $year]))
+        </h4>
+        <div class="grid grid-cols-1 gap-2 bg-bluegray-400 p-5 rounded shadow w-full">
+            <p class="flex flex-grow bg-sky-300 justify-between p-2 rounded shadow w-full">
+                <span class="px-3">@ucfirst(__('app.user_has_visited', ['year' => $year]))</span>
+                <span class="px-3">
+                    {{ $user->hasVisitedExhibitions()->count() }} / {{ $exhibitions->count() }}
+                    ({{ round( ($user->hasVisitedExhibitions()->count() / $exhibitions->count()) * 100, 2) }}&nbsp;&percnt;)
+                </span>
+            </p>
+            <p class="flex flex-grow bg-yellow-300 justify-between p-2 rounded shadow w-full">
+                <span class="px-3">@ucfirst(__('app.user_has_paid', ['year' => $year]))<sup>1</sup></span>
+                <span class="px-3">
+                    {{ $user->visitedExhibitions()->sum('price') }}&nbsp;&euro; / {{ $exhibitions->sum('price') }}&nbsp;&euro;
+                    ({{ round( ($user->visitedExhibitions()->sum('price') / $exhibitions->sum('price')) * 100, 2) }}&nbsp;&percnt;)
+                </span>
+            </p>
         </div>
         <!-- End of statistics for user -->
-        @endauth
+    </div>
+</div>
+@endauth
 
+<div class="bg-bluegray-300 mt-2 p-5 rounded shadow w-full">
+    <div class="flex flex-row flex-grow flex-wrap bg-bluegray-400 p-5 rounded shadow w-full">
         <!-- Notes about astatistics -->
-        <div class="flex flex-col bg-bluegray-400 mt-2 p-5 rounded shadow w-full">
+        <div class="flex flex-col w-full">
             <p class="flex font-bold text-sm w-full">@ucfirst(__('app.informations'))</p>
             <ol class="list-inside list-decimal w-full">
                 <li class="text-sm">@ucfirst(__('app.stats_info'))</li>

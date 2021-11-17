@@ -182,6 +182,21 @@ class User extends Authenticatable
     }
 
     /**
+     * Get all the reviews written by an user.
+     */
+    public function visitedExhibitions()
+    {
+        return $this->hasManyThrough(
+            'App\Models\Exhibition',
+            'App\Models\UserExhibition',
+            'user_uuid',
+            'uuid',
+            'uuid',
+            'exhibition_uuid'
+        )->whereNotNull('visited_at');
+    }
+
+    /**
      * Get if an exhibition is followed by an user.
      */
     public function isFollowingExhibition()
