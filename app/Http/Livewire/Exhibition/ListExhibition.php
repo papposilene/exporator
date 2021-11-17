@@ -30,10 +30,11 @@ class ListExhibition extends Component
     public function render()
     {
         $today = date('Y-m-d');
+        $canPublish = Auth::user()->can('publish exhibitions');
 
         if ($this->filter === 'past')
         {
-            $exhibitions = Exhibition::when(Auth::check(), function ($query) {
+            $exhibitions = Exhibition::when($canPublish, function ($query) {
                     return $query;
                 }, function ($query) {
                     return $query->where('is_published', true);
@@ -45,7 +46,7 @@ class ListExhibition extends Component
         }
         elseif ($this->filter === 'current')
         {
-            $exhibitions = Exhibition::when(Auth::check(), function ($query) {
+            $exhibitions = Exhibition::when($canPublish, function ($query) {
                     return $query;
                 }, function ($query) {
                     return $query->where('is_published', true);
@@ -58,7 +59,7 @@ class ListExhibition extends Component
         }
         elseif ($this->filter === 'future')
         {
-            $exhibitions = Exhibition::when(Auth::check(), function ($query) {
+            $exhibitions = Exhibition::when($canPublish, function ($query) {
                     return $query;
                 }, function ($query) {
                     return $query->where('is_published', true);
@@ -70,7 +71,7 @@ class ListExhibition extends Component
         }
         else
         {
-            $exhibitions = Exhibition::when(Auth::check(), function ($query) {
+            $exhibitions = Exhibition::when($canPublish, function ($query) {
                     return $query;
                 }, function ($query) {
                     return $query->where('is_published', true);

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ImportExhibitionRequest;
 use App\Http\Requests\PublishExhibitionRequest;
+use App\Http\Requests\ProposeExhibitionRequest;
 use App\Http\Requests\StoreExhibitionRequest;
 use App\Http\Requests\UpdateExhibitionRequest;
 use App\Http\Requests\DeleteExhibitionRequest;
@@ -75,10 +76,10 @@ class ExhibitionController extends Controller
     /**
      * Store a resource in storage, proposed by a guest.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\ProposeExhibitionRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function propose(StoreExhibitionRequest $request)
+    public function propose(ProposeExhibitionRequest $request)
     {
         if( !Auth::user()->can('propose exhibitions') )
         {
@@ -101,7 +102,7 @@ class ExhibitionController extends Controller
         $exhibition->is_published = false;
         $exhibition->save();
 
-        return redirect()->route('front.dashboard')->with('success', 'All good!');
+        return redirect()->back()->with('success', 'All good!');
     }
 
     /**

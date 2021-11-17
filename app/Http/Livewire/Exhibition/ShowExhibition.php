@@ -26,7 +26,9 @@ class ShowExhibition extends Component
 
     public function mount($slug)
     {
-        $this->exhibition = Exhibition::when(Auth::check(), function ($query) {
+        $canPublish = Auth::user()->can('publish exhibitions');
+
+        $this->exhibition = Exhibition::when($canPublish, function ($query) {
                 return $query;
             }, function ($query) {
                 return $query->where('is_published', true);
@@ -40,7 +42,7 @@ class ShowExhibition extends Component
                 ->take(3)
                 ->get();
 
-        $this->reviews = $this->exhibition->hasReviews()->when(Auth::check(), function ($query) {
+        $this->reviews = $this->exhibition->hasReviews()->when($canPublish, function ($query) {
                 return $query;
             }, function ($query) {
                 return $query->where('is_published', true);

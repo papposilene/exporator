@@ -33,10 +33,12 @@ class ShowPlace extends Component
 
     public function render()
     {
+        $canPublish = Auth::user()->can('publish exhibitions');
+
         return view('livewire.place.show-place', [
             'place' => $this->place,
             'exhibitions' => $this->place->hasExhibitions()
-                ->when(Auth::check(), function ($query) {
+                ->when($canPublish, function ($query) {
                     return $query;
                 }, function ($query) {
                     return $query->where('is_published', true);
