@@ -30,7 +30,16 @@ class ListExhibition extends Component
     public function render()
     {
         $today = date('Y-m-d');
-        $canPublish = Auth::user()->can('publish exhibitions');
+
+        if (Auth::check())
+        {
+            $canPublish = Auth::user()->can('publish exhibitions');
+        }
+        else
+        {
+            $canPublish = false;
+        }
+
 
         if ($this->filter === 'past')
         {

@@ -26,7 +26,14 @@ class ShowExhibition extends Component
 
     public function mount($slug)
     {
-        $canPublish = Auth::user()->can('publish exhibitions');
+        if (Auth::check())
+        {
+            $canPublish = Auth::user()->can('publish exhibitions');
+        }
+        else
+        {
+            $canPublish = false;
+        }
 
         $this->exhibition = Exhibition::when($canPublish, function ($query) {
                 return $query;
