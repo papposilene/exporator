@@ -71,7 +71,8 @@
         </div>
         <!-- End of statistics by charts -->
 
-        <!-- Statistics by charts -->
+        @auth
+        <!-- Statistics for user -->
         <div class="grid grid-cols-1 gap-2 bg-bluegray-400 my-2 p-5 rounded shadow w-full">
             <div class="bg-bluegray-300 p-2 rounded">
                 <p class="flex flex-grow justify-between">
@@ -83,7 +84,8 @@
                 </p>
             </div>
         </div>
-        <!-- End of statistics by charts -->
+        <!-- End of statistics for user -->
+        @endauth
 
         <!-- Notes about astatistics -->
         <div class="flex flex-col bg-bluegray-400 mt-2 p-5 rounded shadow w-full">
