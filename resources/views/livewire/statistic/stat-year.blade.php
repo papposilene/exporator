@@ -102,16 +102,14 @@
 @endauth
 
 <div class="bg-bluegray-300 mt-2 p-5 rounded shadow w-full">
-    <div class="flex flex-row flex-grow flex-wrap bg-bluegray-400 p-5 rounded shadow w-full">
-        <!-- Notes about astatistics -->
-        <div class="flex flex-col w-full">
-            <p class="flex font-bold text-sm w-full">@ucfirst(__('app.informations'))</p>
-            <ol class="list-inside list-decimal w-full">
-                <li class="text-sm">@ucfirst(__('app.stats_info'))</li>
-            </ol>
-        </div>
-        <!-- End of notes about astatistics -->
+    <!-- Notes about astatistics -->
+    <div class="flex flex-col w-full">
+        <p class="flex font-bold text-sm w-full">@ucfirst(__('app.informations'))</p>
+        <ol class="list-inside list-decimal w-full">
+            <li class="text-sm">@ucfirst(__('app.stats_info'))</li>
+        </ol>
     </div>
+    <!-- End of notes about astatistics -->
 </div>
 
 <script>
