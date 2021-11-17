@@ -109,9 +109,9 @@
                 <span class="bg-yellow-100 border border-yellow-300 p-2 rounded shadow" title="@ucfirst(__('app.price'))">
                     @ucfirst(__('app.price')) :
                     @if ($exhibition->price)
-                        {{ $exhibition->price }}&nbsp;&euro;.
+                    @currency($exhibition->price)&nbsp;&euro;.
                     @else
-                        {{ __('app.no_price') }}.
+                    {{ __('app.no_price') }}.
                     @endif
                 </span>
                 <span class="bg-green-100 border border-green-300 p-2 rounded shadow" title="@ucfirst(__('app.began_at'))">

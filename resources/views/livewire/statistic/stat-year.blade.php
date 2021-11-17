@@ -23,7 +23,7 @@
             <div class="bg-yellow-400 text-black p-2 rounded shadow">
                 <div class="flex flex-wrap items-stretch justify-center">
                     <span class="text-center text-xl px-3 w-full">@ucfirst(__('app.prices_for', ['year' => $year]))<sup>1</sup></span>
-                    <span class="font-bold text-center text-xl p-3 w-full">{{ $exhibitions->sum('price') }}&nbsp;&euro;</span>
+                    <span class="font-bold text-center text-xl p-3 w-full">@currency($exhibitions->sum('price'))&nbsp;&euro;</span>
                 </div>
             </div>
         </div>
@@ -91,7 +91,7 @@
             <p class="flex flex-grow bg-yellow-300 justify-between p-2 rounded shadow w-full">
                 <span class="px-3">@ucfirst(__('app.user_has_paid', ['year' => $year]))<sup>1</sup></span>
                 <span class="px-3">
-                    {{ $user->visitedExhibitions()->sum('price') }}&nbsp;&euro; / {{ $exhibitions->sum('price') }}&nbsp;&euro;
+                    @currency($user->visitedExhibitions()->sum('price'))&nbsp;&euro; / @currency($exhibitions->sum('price'))
                     ({{ round( ($user->visitedExhibitions()->sum('price') / $exhibitions->sum('price')) * 100, 2) }}&nbsp;&percnt;)
                 </span>
             </p>

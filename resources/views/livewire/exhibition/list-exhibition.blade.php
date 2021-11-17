@@ -80,9 +80,9 @@
                     <thead>
                         <tr class="bg-bluegray-700 dark:bg-gray-900 text-white">
                             <th class="w-1/12 text-center p-3">@ucfirst(__('app.iteration'))</th>
-                            <th class="w-1/12 text-center hidden lg:table-cell">@ucfirst(__('app.followed'))</th>
                             <th class="w-4/12 text-center">@ucfirst(__('app.places'))</th>
                             <th class="w-5/12 text-center">@ucfirst(__('app.titles'))</th>
+                            <th class="w-1/12 text-center hidden lg:table-cell">@ucfirst(__('app.prices'))</th>
                             <th class="w-1/12 text-center">@ucfirst(__('app.date'))</th>
                         </tr>
                     </thead>
@@ -114,9 +114,6 @@
                         @endphp
                         <tr class="border-b border-bluegray-300 border-dashed h-12 w-12 p-4 {{ $is_not_published }} {{ $is_current }}">
                             <td class="text-center">{{ $loop->iteration }}</td>
-                            <td class="hidden lg:table-cell">
-                                <livewire:interfaces.follow-exhibition :exhibition="$exhibition" :wire:key="$exhibition->uuid" />
-                            </td>
                             <td class="break-words">
                                 <a href="{{ route('front.place.show', ['slug' => $exhibition->inPlace->slug]) }}"
                                     title="{{ $exhibition->inPlace->name }}" aria-label="{{ $exhibition->inPlace->name }}">
@@ -128,6 +125,13 @@
                                     title="{{ $exhibition->title }}" aria-label="{{ $exhibition->title }}">
                                     {{ $exhibition->title }}
                                 </a>
+                            </td>
+                            <td class="hidden lg:table-cell text-right">
+                                @if ($exhibition->price)
+                                @currency($exhibition->price)&nbsp;&euro;
+                                @else
+                                @ucfirst(__('app.no_price'))
+                                @endif
                             </td>
                             @if ($exhibition->began_at > $today && $exhibition->ended_at > $today)
                             <td class="text-center" title="@date($exhibition->began_at)">{{ $exhibition->began_at->diff($today)->days }} jours</td>

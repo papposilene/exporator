@@ -105,6 +105,7 @@ return [
     'profile_manage' => 'gérer mon profil',
     'public' => 'public',
     'price' => 'prix d’entrée',
+    'no_price' => '---',
     'propose' => 'proposer',
     'region' => 'continent du pays',
     'review' => 'critique',
