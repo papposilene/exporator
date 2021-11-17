@@ -7,3 +7,5 @@
 @import 'leaflet/dist/leaflet.css';
 @import 'leaflet-extra-markers/dist/css/leaflet.extra-markers.min.css';
 @import 'leaflet.locatecontrol/dist/L.Control.Locate.css';
+
+@import '@themesberg/flowbite/dist/flowbite.min.css';
