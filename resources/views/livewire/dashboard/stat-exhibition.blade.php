@@ -20,15 +20,15 @@
             </a>
         </div>
         <div class="bg-sky-500 text-white p-2 rounded">
-            <a href="{{ route('front.exhibition.index', ['filter' => 'followed']) }}" class="flex flex-grow justify-between">
+            <a href="{{ route('front.exhibition.index', ['filter' => 'current']) }}" class="flex flex-grow justify-between">
                 <span class="px-3">@ucfirst(__('app.numbers_of_today_exhibitions'))</span>
                 <span class="px-3">{{ $exhibitions_today }}</span>
             </a>
         </div>
         <div class="bg-sky-500 text-white p-2 rounded">
-            <a href="{{ route('front.exhibition.index', ['filter' => 'followed']) }}" class="flex flex-grow justify-between">
-                <span class="px-3">@ucfirst(__('app.numbers_of_next_exhibitions'))</span>
-                <span class="px-3">{{ $exhibitions_nextmonth }}</span>
+            <a href="{{ route('front.exhibition.index', ['filter' => 'future']) }}" class="flex flex-grow justify-between">
+                <span class="px-3">@ucfirst(__('app.numbers_of_future_exhibitions'))</span>
+                <span class="px-3">{{ $exhibitions_future }}</span>
             </a>
         </div>
     </div>

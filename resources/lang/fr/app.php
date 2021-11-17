@@ -189,6 +189,7 @@ return [
     'numbers_of_other_type' => 'total hors catégories',
     'numbers_of_exhibitions' => 'nombre total d’expositions',
     'numbers_of_reviews' => 'nombre total de critiques',
+    'numbers_of_future_exhibitions' => 'expositions à venir',
     'numbers_of_today_exhibitions' => 'expositions pour aujourd’hui',
     'numbers_of_next_exhibitions' => 'expositions dans les 30 prochains jours',
     'place_first' => 'lieu d’exposition le plus prolifique pour :year',

@@ -16,17 +16,16 @@ class StatExhibition extends Component
         $year = date('Y');
 
         $exhibitions = Exhibition::count();
+        $exhibitions_future = Exhibition::whereDate('began_at', '>', $today)
+            ->count();
         $exhibitions_today = Exhibition::whereDate('began_at', '<', $today)
             ->whereDate('ended_at', '>', $today)
             ->count();
-        $exhibitions_nextmonth = Exhibition::whereDate('began_at', '>', $month_next)
-            ->count();
-
 
         return view('livewire.dashboard.stat-exhibition', [
             'exhibitions' => $exhibitions,
+            'exhibitions_future' => $exhibitions_future,
             'exhibitions_today' => $exhibitions_today,
-            'exhibitions_nextmonth' => $exhibitions_nextmonth,
             'user' => Auth::user(),
         ]);
     }

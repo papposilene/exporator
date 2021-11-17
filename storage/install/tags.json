@@ -432,6 +432,13 @@
   {
     "type":"technique",
     "tag":{
+        "fr": "calligraphie",
+        "en": "calligraphy"
+    }
+  },
+  {
+    "type":"technique",
+    "tag":{
         "fr": "céramique",
         "en": "ceramic"
     }
