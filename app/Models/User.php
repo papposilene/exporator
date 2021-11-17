@@ -175,7 +175,7 @@ class User extends Authenticatable
     public function hasVisitedExhibitions()
     {
         return $this->hasMany(
-            'App\Models\UserPlace',
+            'App\Models\UserExhibition',
             'user_uuid',
             'uuid'
         )->whereNotNull('visited_at');
