@@ -70,7 +70,7 @@
             </div>
             @endif
 
-            @if ($exhibition->is_published === false)
+            @if (!$exhibition->is_published)
             <!-- Not published exhibition -->
             <div class="bg-red-500 border border-red-700 mb-5 p-3 text-white font-bold rounded shadow">
                 <ul>
