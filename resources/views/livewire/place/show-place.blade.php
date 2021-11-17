@@ -78,10 +78,12 @@
             @endif
 
             @if($exhibitions->count() > 0)
-            <div class="flex flex-wrap justify-end">
-                <x-forms.input wire:model="search" type="search" class="relative float-right h-9 ml-2 mb-3" :placeholder="@ucfirst(__('app.search'))" />
-                {{ $exhibitions->links() }}
+            <div class="relative flex items-center justify-end mb-2 w-full">
+                <div class="flex flex-wrap">
+                    <x-forms.input wire:model="search" type="search" class="ml-2" :placeholder="@ucfirst(__('app.search'))" />
+                </div>
             </div>
+            {{ $exhibitions->links() }}
             <div class="py-5">
                 <table class="w-full p-5 table-fixed rounded shadow">
                     <thead>

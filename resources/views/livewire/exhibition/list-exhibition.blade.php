@@ -29,7 +29,7 @@
 
             <div class="relative flex items-center justify-between mb-2 w-full">
                 <div class="flex flex-wrap">
-                <a href="{{ route('front.exhibition.index', ['filter' => '']) }}" class="flex flex-auto text-base hover:scale-110 focus:outline-none
+                    <a href="{{ route('front.exhibition.index', ['filter' => '']) }}" class="flex flex-auto text-base hover:scale-110 focus:outline-none
                         justify-center px-4 py-2 rounded font-bold cursor-pointer hover:text-black
                         hover:bg-gray-300 bg-gray-200 hover:border-bluegray-300
                         border duration-200 ease-in-out transition lg:rounded-r-none">
