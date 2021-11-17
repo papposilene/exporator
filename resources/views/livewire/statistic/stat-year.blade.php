@@ -81,14 +81,14 @@
         @ucfirst(__('app.user_total_for', ['year' => $year]))
         </h4>
         <div class="grid grid-cols-1 gap-2 w-full">
-            <p class="flex flex-grow bg-sky-300 justify-between p-2 rounded shadow w-full">
+            <p class="flex flex-grow bg-sky-400 justify-between p-2 rounded shadow w-full">
                 <span class="px-3">@ucfirst(__('app.user_has_visited', ['year' => $year]))</span>
                 <span class="px-3">
                     {{ $user->hasVisitedExhibitions()->count() }} / {{ $exhibitions->count() }}
                     ({{ round( ($user->hasVisitedExhibitions()->count() / $exhibitions->count()) * 100, 2) }}&nbsp;&percnt;)
                 </span>
             </p>
-            <p class="flex flex-grow bg-yellow-300 justify-between p-2 rounded shadow w-full">
+            <p class="flex flex-grow bg-yellow-400 justify-between p-2 rounded shadow w-full">
                 <span class="px-3">@ucfirst(__('app.user_has_paid', ['year' => $year]))<sup>1</sup></span>
                 <span class="px-3">
                     @currency($user->visitedExhibitions()->sum('price'))&nbsp;&euro; / @currency($exhibitions->sum('price'))&nbsp;&euro;
