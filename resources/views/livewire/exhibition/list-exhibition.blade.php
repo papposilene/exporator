@@ -27,6 +27,7 @@
             </div>
             @endif
 
+            <!-- Navigation and search -->
             <div class="relative flex items-center justify-between mb-2 w-full">
                 <div class="flex flex-wrap">
                     <a href="{{ route('front.exhibition.index', ['filter' => '']) }}" class="flex flex-auto text-base hover:scale-110 focus:outline-none
