@@ -58,16 +58,6 @@
                             </svg>
                         </div>
                     </a>
-                    @auth
-                    @if (Auth::user()->can('create', App\Models\Exhibition::class))
-                    <a href="{{ route('front.place.index', ['filter' => 'no_exhibition']) }}" class="flex flex-auto text-base hover:scale-110 focus:outline-none
-                        justify-center px-4 py-2 rounded font-bold cursor-pointer hover:text-black
-                        hover:bg-bluegray-300 bg-bluegray-200 hover:border-bluegray-400
-                        border duration-200 ease-in-out transition">
-                        <div class="flex leading-5">@ucfirst(__('app.no_exhibition'))</div>
-                    </a>
-                    @endif
-                    @endauth
                 </div>
                 <x-forms.input wire:model="search" type="search" class="ml-2" :placeholder="@ucfirst(__('app.search'))" />
             </div>

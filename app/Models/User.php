@@ -178,7 +178,7 @@ class User extends Authenticatable
             'App\Models\UserPlace',
             'user_uuid',
             'uuid'
-        );
+        )->whereNotNull('visited_at');
     }
 
     /**

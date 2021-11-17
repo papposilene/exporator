@@ -16,7 +16,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
@@ -80,7 +80,10 @@ class ExhibitionController extends Controller
      */
     public function propose(StoreExhibitionRequest $request)
     {
-        $this->authorize('create', Exhibition::class);
+        if( !Auth::user()->can('propose exhibitions') )
+        {
+            abort('403');
+        }
 
         $validated = $request->validated();
 

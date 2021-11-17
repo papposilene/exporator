@@ -1,6 +1,6 @@
-<div id="modalProposeExhibition">
+<div id="modalProposeExhibition" class="relative float-right mr-2">
     <div id="modalButtonProposeExhibition">
-        <button id="modalOpenProposeExhibition" class="focus:outline-none bg-pink-100 text-black bg-opacity-75 p-2 rounded w-full"
+        <button id="modalOpenProposeExhibition" class="focus:outline-none bg-sky-300 text-black bg-opacity-75 px-1 rounded"
             type="button" title="@ucfirst(__('app.propose_one', ['what' => __('app.exhibition')]))">
             @ucfirst(__('app.propose_one', ['what' => __('app.exhibition')]))
         </button>
@@ -19,7 +19,7 @@
                 </svg>
             </button>
             <!-- Modal content -->
-            <form method="POST" action="{{ route('front.exhibition.propose') }}" enctype="multipart/form-data"
+            <form method="POST" action="{{ route('front.exhibition.propose') }}"
                 class="flex flex-col w-full">
                 @csrf
 
@@ -55,14 +55,9 @@
                     <x-forms.input id="link" class="dark:text-gray-800 dark:bg-bluegray-300 block mt-1 w-full" type="text" name="link" placeholder="{{ __('app.https') }}" required />
                 </div>
 
-                <div class="grid grid-cols-2 gap-x-4 mt-4">
+                <div class="mt-4">
                     <x-forms.label class="dark:text-gray-100" for="price">@ucfirst(__('app.price'))</x-forms.label>
-                    <x-forms.label class="dark:text-gray-100" for="public">@ucfirst(__('app.is_published'))</x-forms.label>
                     <x-forms.input id="price" class="dark:text-gray-800 dark:bg-bluegray-300 block mt-1 w-full" type="text" name="price" placeholder="{{ __('app.price') }}" required />
-                    <x-forms.select id="public" class="dark:text-gray-800 dark:bg-bluegray-300 block mt-1 w-full" name="public" required />
-                        <option value="1" selected>@ucfirst(__('app.yes'))</option>
-                        <option value="0" selected>@ucfirst(__('app.no'))</option>
-                    </x-forms.select>
                 </div>
 
                 <div class="flex items-center justify-end mt-4">
