@@ -42,6 +42,7 @@ class ListPlace extends Component
             $places = $user->followedPlaces()
                 ->withCount('hasExhibitions')
                 ->where('name', 'like', '%'.$this->search.'%')
+                ->orderBy('has_exhibitions_count', 'desc')
                 ->orderBy('name', 'asc')
                 ->paginate(25);
         }
@@ -52,6 +53,7 @@ class ListPlace extends Component
             $places = Place::withCount('hasExhibitions')
                 ->where('name', 'like', '%'.$this->search.'%')
                 ->where('has_exhibitions_count', 0)
+                ->orderBy('has_exhibitions_count', 'desc')
                 ->orderBy('name', 'asc')
                 ->paginate(25);
         }
@@ -60,6 +62,7 @@ class ListPlace extends Component
             $places = Place::withCount('hasExhibitions')
                 ->where('type', $this->type)
                 ->where('name', 'like', '%'.$this->search.'%')
+                ->orderBy('has_exhibitions_count', 'desc')
                 ->orderBy('name', 'asc')
                 ->paginate(25);
         }
@@ -67,6 +70,7 @@ class ListPlace extends Component
         {
             $places = Place::withCount('hasExhibitions')
                 ->where('name', 'like', '%'.$this->search.'%')
+                ->orderBy('has_exhibitions_count', 'desc')
                 ->orderBy('name', 'asc')
                 ->paginate(25);
         }
