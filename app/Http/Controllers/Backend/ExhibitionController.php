@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use Abraham\TwitterOAuth\TwitterOAuth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ImportExhibitionRequest;
 use App\Http\Requests\PublishExhibitionRequest;
@@ -69,6 +70,34 @@ class ExhibitionController extends Controller
         $exhibition->price = $request->input('price');
         $exhibition->is_published = $request->input('is_published');
         $exhibition->save();
+
+        // Twitter API: set up the connection before tweeting about the new place
+        try {
+            $twitter = new TwitterOAuth(
+                $_ENV['TWITTER_EXPORATOR_CONSUMERKEY'],
+                $_ENV['TWITTER_EXPORATOR_CONSUMERSECRET'],
+                $_ENV['TWITTER_EXPORATOR_TOKEN'],
+                $_ENV['TWITTER_EXPORATOR_TOKENSECRET']
+            );
+
+            try {
+                $tweet = ucfirst(__('app.send_exhibition_tweet', [
+                    'what' => $request->input('title'),
+                    'twitter' => $place->twitter,
+                    'url' => route('front.place.show', ['place' => $place->slug])
+                ]));
+
+                $twitter->post('statuses/update', [
+                    'status' => $tweet,
+                ]);
+            }
+            catch (\Throwable $e) {
+                report('Twitter: error during tweeting a new place.');
+            }
+        }
+        catch (\Throwable $e) {
+            report('Twitter: error during the connection for a new place.');
+        }
 
         return redirect()->route('front.place.show', ['slug' => $place->slug])->with('success', 'All good!');
     }

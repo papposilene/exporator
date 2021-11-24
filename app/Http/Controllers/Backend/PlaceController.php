@@ -97,21 +97,20 @@ class PlaceController extends Controller
             try {
                 $tweet = ucfirst(__('app.send_place_tweet', [
                     'what' => $name,
+                    'twitter' => $request->input('twitter'),
                     'url' => route('front.place.show', ['slug' => $slug])
                 ]));
-
-                dd($tweet);
 
                 $twitter->post('statuses/update', [
                     'status' => $tweet,
                 ]);
             }
-            catch (\Exception $e) {
-                die('Twitter: error during tweeting.');
+            catch (\Throwable $e) {
+                report('Twitter: error during tweeting a new place.');
             }
         }
-        catch (\Exception $e) {
-            die('Twitter: error during the connection.');
+        catch (\Throwable $e) {
+            report('Twitter: error during the connection for a new place.');
         }
 
         return redirect()->route('front.place.show', ['slug' => $slug])->with('success', 'All good!');
