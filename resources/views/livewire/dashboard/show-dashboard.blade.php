@@ -46,7 +46,7 @@
                 <livewire:dashboard.stat-tag />
             </div>
         </div>
-        <div class="flex flex-col lg:flex-row flex-wrap max-w-7xl mx-auto py-5 px-6">
+        <div class="flex flex-col lg:flex-row flex-wrap max-w-7xl mx-auto -mt-8 py-5 px-6">
             <div class="flex flex-grow lg:flex-grow-0 flex-wrap bg-bluegray-400 text-white p-5 rounded shadow w-full">
                 <ul class="list-inside list-none mb-3">
                     <li>

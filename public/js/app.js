@@ -13139,8 +13139,9 @@ function getStores() {
 
 // packages/alpinejs/src/clone.js
 var isCloning = false;
-function skipDuringClone(callback) {
-  return (...args) => isCloning || callback(...args);
+function skipDuringClone(callback, fallback = () => {
+}) {
+  return (...args) => isCloning ? fallback(...args) : callback(...args);
 }
 function clone(oldEl, newEl) {
   newEl._x_dataStack = oldEl._x_dataStack;
@@ -13207,10 +13208,11 @@ var Alpine = {
   get raw() {
     return raw;
   },
-  version: "3.5.0",
+  version: "3.5.1",
   flushAndStopDeferringMutations,
   disableEffectScheduling,
   setReactivityEngine,
+  skipDuringClone,
   addRootSelector,
   deferMutations,
   mapAttributes,
@@ -15016,7 +15018,7 @@ module.exports = function transformData(data, headers, fns) {
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-/* provided dependency */ var process = __webpack_require__(/*! process/browser */ "./node_modules/process/browser.js");
+/* provided dependency */ var process = __webpack_require__(/*! process/browser.js */ "./node_modules/process/browser.js");
 
 
 var utils = __webpack_require__(/*! ./utils */ "./node_modules/axios/lib/utils.js");

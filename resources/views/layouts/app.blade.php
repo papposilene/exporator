@@ -11,6 +11,7 @@
         <meta name="robots" content="index, follow" />
         <title>@yield('title') - {{ config('app.name', 'Exporator') }}</title>
         <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@lexporateur" />
         <meta name="twitter:creator" content="@papposilene" />
         <meta property="og:title" content="@yield('title') - {{ config('app.name', 'Exporator') }}" />
         <meta property="og:description" content="L'Exporateur, mot-valise entre exposition et explorateur, est un (énième ?) site de référencement des expositions temporaires à Paris et ses proches alentours." />

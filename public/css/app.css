@@ -1461,6 +1461,9 @@ select {
 .list-decimal {
 	list-style-type: decimal;
 }
+.list-none {
+	list-style-type: none;
+}
 .grid-cols-6 {
 	grid-template-columns: repeat(6, minmax(0, 1fr));
 }
