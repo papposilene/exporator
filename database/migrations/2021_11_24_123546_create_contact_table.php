@@ -17,6 +17,8 @@ class CreateContactTable extends Migration
             $table->uuid('uuid')->primary();
             $table->string('name', 255);
             $table->string('email', 255);
+            $table->uuid('user_uuid')->nullable();
+            $table->foreign('user_uuid')->references('uuid')->on('users');
             $table->text('message');
             $table->date('read_at')->nullable();
             $table->timestamps();
