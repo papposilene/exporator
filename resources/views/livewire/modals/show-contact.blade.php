@@ -37,8 +37,8 @@
                 </div>
 
                 <div class="mt-4">
-                    <x-forms.label class="dark:text-gray-100" for="comment">@ucfirst(__('app.comment'))</x-forms.label>
-                    <x-forms.textarea id="comment" class="dark:text-gray-800 dark:bg-bluegray-300 block mt-1 w-full" type="text" name="comment" :placeholder="@ucfirst(__('app.loremipsum'))" required />
+                    <x-forms.label class="dark:text-gray-100" for="message">@ucfirst(__('app.message'))</x-forms.label>
+                    <x-forms.textarea id="message" class="dark:text-gray-800 dark:bg-bluegray-300 block mt-1 w-full" type="text" name="message" :placeholder="@ucfirst(__('app.loremipsum'))" required />
                 </div>
 
                 <div class="flex items-center justify-end mt-4">

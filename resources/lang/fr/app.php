@@ -82,6 +82,8 @@ return [
     'mandatory' => 'informations obligatoires',
     'mark_as_unvisited' => 'marquer l’exposition comme non visitée',
     'mark_as_visited' => 'marquer comme visitée',
+    'message' => 'message',
+    'messages' => 'messages',
     'museum' => 'musée',
     'museums' => 'musées',
     'name' => 'dénomination',
