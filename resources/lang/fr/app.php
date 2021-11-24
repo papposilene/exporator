@@ -137,6 +137,8 @@ return [
     'titles' => 'titres',
     'type' => 'typologie',
     'types' => 'typologies',
+    'twitter' => 'twitter',
+    'twitter_name' => 'pseudonyme Twitter (sans le @)',
     'update' => 'mettre à jour',
     'user' => 'utilisateur',
     'users' => 'utilisateurs',
@@ -214,6 +216,7 @@ return [
     'top1_of_countries' => 'pays le plus référencé : :what',
     'top1_of_places' => 'Lieu d’exposition le plus référencé : :what',
     'type_is' => 'typologie de tag : :type',
+    'twitter_what' => '@:what',
     'unfollow_the' => 'cesser de suivre :what',
     'until' => 'jusqu’au :date',
     'user_total_for' => 'votre consommation culturelle pour l’année :year',
@@ -224,4 +227,7 @@ return [
     'user_has_paid' => 'ratio du coût total estimé pour l’année :year',
     'visited_at' => 'exposition visitée le :date.',
     'welcome_to' => 'bienvenue, :name !',
+
+    'send_place_tweet' => 'le lieu d’exposition &laquo; :what &raquo; vient d’être ajouté sur @lexporateur : :url.',
+    'send_exhibition_tweet' => 'l’exposition &laquo; :what &raquo; vient d’être ajoutée sur @lexporateur : :url.',
 ];

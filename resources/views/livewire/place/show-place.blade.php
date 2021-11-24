@@ -47,6 +47,9 @@
                 <li class="mt-5" title="@ucfirst(__('app.link'))">
                     <a href="{{ $place->link }}" class="text-sky-700 hover:text-red-600" target="_blank" rel="noopener">{{ $place->link }}</a>
                 </li>
+                <li class="mt-5" title="@ucfirst(__('app.link'))">
+                    <a href="{{ url("https://twitter.com/{$place->twitter}") }}" class="text-sky-700 hover:text-red-600" target="_blank" rel="noopener">{{ __('app.twitter_what', ['what' => $place->twitter]) }}</a>
+                </li>
             </ul>
             @if ($place->status === 1)
             <ul class="bg-green-100 list-inside md:m-5 mt-5 md:mt-0 p-5 rounded shadow w-full">

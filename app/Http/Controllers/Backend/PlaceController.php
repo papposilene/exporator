@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use Abraham\TwitterOAuth\TwitterOAuth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ImportPlaceRequest;
 use App\Http\Requests\StorePlaceRequest;
@@ -59,7 +60,8 @@ class PlaceController extends Controller
         $validated = $request->validated();
 
         $country = Country::where('cca3', $request->input('cca3'))->firstOrFail();
-        $slug = Str::slug($request->input('city') . ' ' . $request->input('name'), '-');
+        $name = $request->input('name');
+        $slug = Str::slug($request->input('city') . ' ' . $name, '-');
 
         if ($request->hasFile('image') && $request->file('image')->isValid())
         {
@@ -70,7 +72,7 @@ class PlaceController extends Controller
 
         $place = new Place();
         $place->slug = $slug;
-        $place->name = $request->input('name');
+        $place->name = $name;
         $place->type = $request->input('type');
         $place->status = (bool) $request->input('status');
         $place->address = $request->input('address');
@@ -79,10 +81,38 @@ class PlaceController extends Controller
         $place->lat = $request->input('latitude');
         $place->lon = $request->input('longitude');
         $place->link = $request->input('link');
+        $place->twitter = $request->input('twitter');
         $place->image = ($request->hasFile('image') ? $path : null);
         $place->save();
 
+        // Twitter API: set up the connection before tweeting about the new place
+        try {
+            $twitter = new TwitterOAuth(
+                $_ENV['TWITTER_EXPORATOR_CONSUMERKEY'],
+                $_ENV['TWITTER_EXPORATOR_CONSUMERSECRET'],
+                $_ENV['TWITTER_EXPORATOR_TOKEN'],
+                $_ENV['TWITTER_EXPORATOR_TOKENSECRET']
+            );
 
+            try {
+                $tweet = ucfirst(__('app.send_place_tweet', [
+                    'what' => $name,
+                    'url' => route('front.place.show', ['slug' => $slug])
+                ]));
+
+                dd($tweet);
+
+                $twitter->post('statuses/update', [
+                    'status' => $tweet,
+                ]);
+            }
+            catch (\Exception $e) {
+                die('Twitter: error during tweeting.');
+            }
+        }
+        catch (\Exception $e) {
+            die('Twitter: error during the connection.');
+        }
 
         return redirect()->route('front.place.show', ['slug' => $slug])->with('success', 'All good!');
     }
@@ -174,6 +204,7 @@ class PlaceController extends Controller
         $place->lat = $request->input('latitude');
         $place->lon = $request->input('longitude');
         $place->link = $request->input('link');
+        $place->twitter = $request->input('twitter');
         $place->image = ($request->hasFile('image') ? $path : null);
         $place->save();
 

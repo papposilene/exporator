@@ -22,6 +22,7 @@ class StorePlaceRequest extends FormRequest
             'latitude' => 'required|string|max:20',
             'longitude' => 'required|string|max:20',
             'link' => 'nullable|url',
+            'twitter' => 'nullable|string|max:255',
             'image' => 'nullable|image|size:2048',
         ];
     }
