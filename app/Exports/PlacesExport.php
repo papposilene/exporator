@@ -30,6 +30,7 @@ class PlacesExport implements FromCollection, WithHeadings, WithMapping
             'latitude',
             'longitude',
             'link',
+            'twitter',
             'tags',
         ];
     }
@@ -47,6 +48,7 @@ class PlacesExport implements FromCollection, WithHeadings, WithMapping
             $place->lat,
             $place->lon,
             $place->link,
+            $place->twitter,
         ];
     }
 }

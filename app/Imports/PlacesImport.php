@@ -55,6 +55,7 @@ class PlacesImport implements ToModel, SkipsEmptyRows, WithBatchInserts, WithChu
             'lat' => $row['latitude'],
             'lon' => $row['longitude'],
             'link' => $row['link'],
+            'link' => $row['twitter'],
         ]);
 
         // Is there some tags attached to the exhibition?

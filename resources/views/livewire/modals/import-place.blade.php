@@ -87,6 +87,11 @@
                                 <td class="bg-green-200 font-bold text-center dark:text-black">link</td>
                                 <td class="p-2">@ucfirst(__('app.link'))</td>
                             </tr>
+                            <tr class="border-b border-black border-dashed"
+                                title="@ucfirst(__('app.optional'))">
+                                <td class="bg-green-200 font-bold text-center dark:text-black">twitter</td>
+                                <td class="p-2">@ucfirst(__('app.twitter_name'))</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

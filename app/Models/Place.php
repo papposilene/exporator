@@ -76,6 +76,7 @@ class Place extends Model
         'lat',
         'lon',
         'link',
+        'twitter',
     ];
 
     /**
