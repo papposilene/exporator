@@ -46,20 +46,5 @@
                 <livewire:dashboard.stat-tag />
             </div>
         </div>
-        <div class="flex flex-col lg:flex-row flex-wrap max-w-7xl mx-auto -mt-8 py-5 px-6">
-            <div class="flex flex-grow lg:flex-grow-0 flex-wrap bg-bluegray-300 p-5 rounded shadow w-full">
-                <h3 class="font-bold text-2xl w-full">
-                    @ucfirst(__('app.social_medias'))
-                </h3>
-                <p class="mb-5 w-full">
-                    Vous pouvez suivre les actualités, mises à jour et autres informations sur les réseaux sociaux suivants :
-                </p>
-                <ul class="list-inside list-none">
-                    <li class="bg-bluegray-400 hover:bg-bluegray-600 text-white p-3 rounded shadow">
-                        <a href="https://twitter.com/lexporateur" target="_blank" rel="noopener">@lexporateur</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
     </div>
 </div>

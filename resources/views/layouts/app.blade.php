@@ -62,10 +62,8 @@
                 {{ $slot }}
             </main>
 
-            <footer class="flex bg-bluegray-100 dark:bg-gray-700">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 w-full">
-                    <x-footer />
-                </div>
+            <footer class="flex bg-bluegray-100 dark:bg-gray-700 max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 w-full">
+                <x-footer />
             <footer>
 
             @stack('modals')

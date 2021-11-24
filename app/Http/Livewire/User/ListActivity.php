@@ -48,7 +48,7 @@ class ListActivity extends Component
         //$reviews = review::all();
         $tags = Tag::all();
         $types = Type::all();
-        $users = User::select('uuid')->addSelect('name');
+        $users = User::all();
 
 
         return view('livewire.user.list-activity', [
