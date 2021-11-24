@@ -34,7 +34,7 @@ class ShowActivity extends Component
 
     public function mount($activity_id)
     {
-        if (! Auth::user()->hasAnyRole('super-admin', 'moderator'))
+        if( !Auth::check() || !Auth::user()->hasRole(['super-admin', 'moderator']) )
         {
             abort(403);
         }

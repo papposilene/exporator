@@ -42,19 +42,25 @@
                             <th class="w-4/12 text-center">@ucfirst(__('app.created_at'))</th>
                             <th class="w-5/12 text-center">@ucfirst(__('app.names'))</th>
                             <th class="w-5/12 text-center">@ucfirst(__('app.messages'))</th>
+                            <th class="w-5/12 text-center">@ucfirst(__('app.read_at'))</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($contacts as $contact)
                         <tr class="bg-bluegray-200 border-b border-bluegray-300 border-dashed h-12 w-12 p-4">
                             <td class="text-center">{{ $loop->iteration }}</td>
-                            <td class="text-center">@date(contact->created_at)</td>
+                            <td class="text-center">@date($contact->created_at)</td>
                             <td>
                                 <a href="{{ route('front.contact.show', ['uuid' => $contact->uuid]) }}">
                                     {{ $contact->name }}
                                 </a>
                             </td>
                             <td>{{ $contact->name }}</td>
+                            @if ($contact->read_at)
+                            <td class="text-center">@ucfirst(__('app.read_yes'))</td>
+                            @else
+                            <td class="text-center">@ucfirst(__('app.read_no'))</td>
+                            @endif
                         </tr>
                         @endforeach
                     </tbody>

@@ -9,6 +9,7 @@ use App\Models\Place;
 use App\Models\Tag;
 use App\Models\Type;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Spatie\Activitylog\Models\Activity;
@@ -34,6 +35,11 @@ class ListActivity extends Component
 
     public function render()
     {
+        if( !Auth::check() || !Auth::user()->hasRole(['super-admin', 'moderator']) )
+        {
+            abort(403);
+        }
+
         $activities = Activity::orderBy('updated_at', 'desc')
             ->paginate(25);
         $countries = Country::all();

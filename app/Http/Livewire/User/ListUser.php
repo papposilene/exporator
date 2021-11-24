@@ -30,6 +30,11 @@ class ListUser extends Component
 
     public function render()
     {
+        if( !Auth::check() || !Auth::user()->hasRole(['super-admin', 'moderator']) )
+        {
+            abort(403);
+        }
+
         if (Auth::check())
         {
             $user = Auth::user();
