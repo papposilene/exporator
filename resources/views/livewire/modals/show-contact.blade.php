@@ -22,8 +22,7 @@
                 @ucfirst(__('app.contact'))
             </h5>
             <!-- Modal content -->
-            <form method="POST" action="{{ route('admin.exhibition.store') }}" enctype="multipart/form-data"
-                class="flex flex-col w-full">
+            <form method="POST" action="{{ route('front.contact.store') }}" class="flex flex-col w-full">
                 @csrf
 
                 <div class="mt-4">

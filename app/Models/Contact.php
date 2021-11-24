@@ -54,7 +54,9 @@ class Contact extends Model
     protected $fillable = [
         'name',
         'email',
-        'contact',
+        'user_uuid',
+        'message',
+        'read_at',
     ];
 
     /**

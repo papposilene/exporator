@@ -35,6 +35,8 @@ return [
     'comment' => 'commentaire',
     'comments' => 'commentaires',
     'contact' => 'contact',
+    'contacts' => 'contacts',
+    'contacts_manage' => 'gérer les contacts',
     'country' => 'pays',
     'countries' => 'pays',
     'create' => 'ajouter',

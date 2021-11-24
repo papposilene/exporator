@@ -1,11 +1,13 @@
 <?php
 
-
+use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\ExhibitionController;
 use App\Http\Controllers\Backend\PlaceController;
 use App\Http\Controllers\Backend\ReviewController;
 use App\Http\Controllers\Backend\TagController;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Livewire\Contact\ListContact;
+use App\Http\Livewire\Contact\ShowContact;
 use App\Http\Livewire\Dashboard\ShowAbout;
 use App\Http\Livewire\Dashboard\ShowDashboard;
 use App\Http\Livewire\Exhibition\CalendarExhibition;
@@ -47,6 +49,11 @@ Route::redirect('/', '/dashboard', 301);
 Route::get('/dashboard', ShowDashboard::class)->name('dashboard');
 Route::get('/about', ShowAbout::class)->name('front.about');
 Route::get('/statistics/{year}', ShowStatistic::class)->name('front.stat');
+
+// Contact
+Route::get('/contacts', ListContact::class)->name('front.contact.index');
+Route::get('/contact/{uuid}', ShowContact::class)->name('front.contact.show');
+Route::post('/contact/store', [ContactController::class, 'store'])->name('front.contact.store');
 
 // Museums
 Route::get('/places', ListPlace::class)->name('front.place.index');

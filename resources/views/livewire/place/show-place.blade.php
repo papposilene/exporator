@@ -84,7 +84,7 @@
             </div>
             @endif
 
-            @if($exhibitions->count() > 0)
+            @if ($exhibitions->count() > 0)
             <!-- End of navigation and search -->
             <div class="relative flex items-center justify-end mb-2 w-full">
                 <div class="flex flex-wrap">

@@ -139,6 +139,10 @@
                                     @ucfirst(__('app.activities_manage'))
                                 </x-jet-dropdown-link>
 
+                                <x-jet-dropdown-link href="{{ route('front.contact.index') }}">
+                                    @ucfirst(__('app.contacts_manage'))
+                                </x-jet-dropdown-link>
+
                                 <x-jet-dropdown-link href="{{ route('front.user.index') }}">
                                     @ucfirst(__('app.users_manage'))
                                 </x-jet-dropdown-link>
