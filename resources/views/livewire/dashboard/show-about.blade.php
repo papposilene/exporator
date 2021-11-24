@@ -15,7 +15,7 @@
             </p>
             <p>
                 L'Exporateur permet de visualiser l'ensemble des expositions temporaires parisiennes sous
-                trois formes différentes, à savoir :
+                deux formes différentes, à savoir :
                 <ol class="list-inside list-decimal mb-3">
                     <li>
                         <a href="{{ route('front.exhibition.index') }}" class="hover:text-red-400">une liste des expositions temporaires</a>,
@@ -26,9 +26,12 @@
                 </ol>
             </p>
             <p class="mb-3">
-                Des améliorations sont déjà prévues, telles que la possibilité de se créer un compte d’utilisateur·rice. Cela lui permettra de pouvoir
-                indiquer les expositions temporaires qu'il·elle a déjà faites et sa créer ainsi une liste, carte et chronologie des expositions temporaires
-                restantes.
+                Vous pouvez suivre les actualités, mises à jour et autres informations sur les réseaux sociaux suivants :
+                <ol class="list-inside list-none mb-3">
+                    <li>
+                        <a href="https://twitter.com/lexporateur" class="hover:text-red-400">@lexporateur</a>
+                    </li>
+                </ol>
             </p>
             <p class="mt-7 mb-3">
                 Créée par <a href="https://dev.psln.nl/" class="hover:text-red-600" target="_blank" rel="noopener">Philippe-Alexandre Pierre</a>
