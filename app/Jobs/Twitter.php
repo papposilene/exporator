@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use Abraham\TwitterOAuth\TwitterOAuth;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
