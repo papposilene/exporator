@@ -88,10 +88,10 @@ class PlaceController extends Controller
         // Twitter API: set up the connection before tweeting about the new place
         try {
             $twitter = new TwitterOAuth(
-                $_ENV['TWITTER_EXPORATOR_CONSUMERKEY'],
-                $_ENV['TWITTER_EXPORATOR_CONSUMERSECRET'],
-                $_ENV['TWITTER_EXPORATOR_TOKEN'],
-                $_ENV['TWITTER_EXPORATOR_TOKENSECRET']
+                env('TWITTER_EXPORATOR_CONSUMERKEY', false),
+                env('TWITTER_EXPORATOR_CONSUMERSECRET', false),
+                env('TWITTER_EXPORATOR_TOKEN', false),
+                env('TWITTER_EXPORATOR_TOKENSECRET', false)
             );
 
             try {
