@@ -44,7 +44,7 @@
                     <x-forms.label class="dark:text-gray-100" for="status">@ucfirst(__('app.status'))</x-forms.label>
                     <x-forms.select id="status" class="dark:text-gray-800 dark:bg-bluegray-300 block mt-1 w-full" name="status" required>
                         <option value="1">@ucfirst(__('app.place_open'))</option>
-                        <option value="0">@ucfirst(__('app.place_close'))</option>
+                        <option value="0">@ucfirst(__('app.place_closed'))</option>
                     </x-forms.select>
                 </div>
 
