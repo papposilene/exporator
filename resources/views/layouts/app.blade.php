@@ -15,6 +15,7 @@
         <meta name="twitter:creator" content="@papposilene" />
         <meta property="og:title" content="@yield('title') - {{ config('app.name', 'Exporator') }}" />
         <meta property="og:description" content="L'Exporateur, mot-valise entre exposition et explorateur, est un (énième ?) site de référencement des expositions temporaires à Paris et ses proches alentours." />
+        <meta property="og:image" content="{{ asset('images/lexporateur.jpg') }}" />
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" />
         <!-- Styles -->
