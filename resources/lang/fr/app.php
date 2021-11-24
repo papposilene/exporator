@@ -122,6 +122,7 @@ return [
     'search' => 'rechercher',
     'send' => 'envoyer',
     'slug' => 'identifiant unique textuel',
+    'social_medias' => 'réseaux sociaux',
     'statistics' => 'statistiques',
     'subject' => 'sujet',
     'subjects' => 'sujets',

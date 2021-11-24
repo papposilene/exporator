@@ -27,9 +27,9 @@
             </p>
             <p class="mb-3">
                 Vous pouvez suivre les actualités, mises à jour et autres informations sur les réseaux sociaux suivants :
-                <ol class="list-inside list-none mb-3">
+                <ol class="list-inside list-decimal">
                     <li>
-                        <a href="https://twitter.com/lexporateur" class="hover:text-red-400">@lexporateur</a>
+                        <a href="https://twitter.com/lexporateur" class="hover:text-red-400">Twitter @lexporateur</a>
                     </li>
                 </ol>
             </p>
