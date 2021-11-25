@@ -238,6 +238,6 @@ return [
     'visited_at' => 'exposition visitée le :date.',
     'welcome_to' => 'bienvenue, :name !',
 
-    'send_place_tweet' => 'le lieu d’exposition :what @:twitter vient d’être ajouté sur @lexporateur.',
-    'send_exhibition_tweet' => 'l’exposition &laquo; :what &raquo; du @:twitter vient d’être ajoutée sur @lexporateur.',
+    'send_place_tweet' => 'le lieu d’exposition :what @:twitter vient d’être ajouté sur @lexporateur. :url',
+    'send_exhibition_tweet' => 'l’exposition &laquo; :what &raquo; du @:twitter vient d’être ajoutée sur @lexporateur. :url',
 ];

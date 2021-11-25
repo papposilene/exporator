@@ -90,11 +90,11 @@ class ExhibitionController extends Controller
                 $tweet = ucfirst(__('app.send_exhibition_tweet', [
                     'what' => $request->input('title'),
                     'twitter' => $place->twitter,
+                    'url' => route('front.place.show', ['slug' => $place->slug]),
                 ]));
 
                 $twitter->post('statuses/update', [
                     'status' => $tweet,
-                    'attachment_url' => route('front.place.show', ['place' => $place->slug]),
                 ]);
             }
             catch (\Throwable $e) {

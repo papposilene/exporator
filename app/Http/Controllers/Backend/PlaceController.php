@@ -98,11 +98,11 @@ class PlaceController extends Controller
                 $tweet = ucfirst(__('app.send_place_tweet', [
                     'what' => $name,
                     'twitter' => $request->input('twitter'),
+                    'url' => route('front.place.show', ['slug' => $slug]),
                 ]));
 
                 $twitter->post('statuses/update', [
                     'status' => $tweet,
-                    'attachment_url' => route('front.place.show', ['slug' => $slug]),
                 ]);
             }
             catch (\Throwable $e) {
