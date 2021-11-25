@@ -87,6 +87,7 @@ return [
     'mark_as_visited' => 'marquer comme visitée',
     'message' => 'message',
     'messages' => 'messages',
+    'messenger' => 'messagerie',
     'museum' => 'musée',
     'museums' => 'musées',
     'name' => 'dénomination',

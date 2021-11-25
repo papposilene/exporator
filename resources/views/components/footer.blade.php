@@ -31,6 +31,6 @@
     <div class="flex space-x-8 text-bluegray-500 dark:text-gray-300 mt-3 lg:mt-0 text-sm items-center justify-evenly lg:justify-end w-full lg:w-1/2">
         <div class="text-center lg:text-right w-1/3 lg:w-auto"><livewire:modals.show-contact /></div>
         <div class="text-center lg:text-right w-1/3 lg:w-auto"><a href="{{ route('front.about') }}" class="hover:text-red-600 dark:hover:text-red-400">@ucfirst(__('app.about'))</a></div>
-        <div class="text-center lg:text-right w-1/3 lg:w-auto">&copy; 2021-{{ date('Y') }} {{ config('app.name', 'Exporator') }}.</div>
+        <div class="text-center lg:text-right w-1/3 lg:w-autogit">&copy; 2021-{{ date('Y') }} {{ config('app.name', 'Exporator') }}.</div>
     </div>
 </div>

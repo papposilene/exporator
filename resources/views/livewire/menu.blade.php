@@ -135,12 +135,16 @@
                                 <div class="border-t border-bluegray-100 dark:text-bluegray-900"></div>
 
                                 @hasanyrole('super-admin|moderator')
-                                <x-jet-dropdown-link href="{{ route('front.activity.index') }}">
-                                    @ucfirst(__('app.activities_manage'))
+                                <x-jet-dropdown-link href="{{ route('front.contact.index') }}">
+                                    @ucfirst(__('app.messenger'))
                                 </x-jet-dropdown-link>
 
-                                <x-jet-dropdown-link href="{{ route('front.contact.index') }}">
-                                    @ucfirst(__('app.contacts_manage'))
+                                <div class="border-t border-bluegray-100 dark:text-bluegray-900"></div>
+                                @endrole
+
+                                @hasanyrole('super-admin|moderator')
+                                <x-jet-dropdown-link href="{{ route('front.activity.index') }}">
+                                    @ucfirst(__('app.activities_manage'))
                                 </x-jet-dropdown-link>
 
                                 <x-jet-dropdown-link href="{{ route('front.user.index') }}">
@@ -255,14 +259,36 @@
             <div class="mt-3 space-y-1">
                 <!-- Account Management -->
                 <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
-                    {{ __('Profile') }}
+                    @ucfirst(__('app.profile_manage'))
                 </x-jet-responsive-nav-link>
 
                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
-                    <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
-                        {{ __('API Tokens') }}
-                    </x-jet-responsive-nav-link>
+                <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
+                    {{ __('API Tokens') }}
+                </x-jet-responsive-nav-link>
                 @endif
+
+                <div class="border-t border-bluegray-100 dark:text-bluegray-900"></div>
+
+                @hasanyrole('super-admin|moderator')
+                <x-jet-responsive-nav-link href="{{ route('front.contact.index') }}">
+                    @ucfirst(__('app.messenger'))
+                </x-jet-responsive-nav-link>
+
+                <div class="border-t border-bluegray-100 dark:text-bluegray-900"></div>
+                @endrole
+
+                @hasanyrole('super-admin|moderator')
+                <x-jet-responsive-nav-link href="{{ route('front.activity.index') }}">
+                    @ucfirst(__('app.activities_manage'))
+                </x-jet-responsive-nav-link>
+
+                <x-jet-responsive-nav-link href="{{ route('front.user.index') }}">
+                    @ucfirst(__('app.users_manage'))
+                </x-jet-responsive-nav-link>
+
+                <div class="border-t border-bluegray-100 dark:text-bluegray-900"></div>
+                @endrole
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
