@@ -25,14 +25,6 @@
                     </li>
                 </ol>
             </p>
-            <p class="mb-3">
-                Vous pouvez suivre les actualités, mises à jour et autres informations sur les réseaux sociaux suivants :
-                <ol class="list-inside list-decimal">
-                    <li>
-                        <a href="https://twitter.com/lexporateur" class="hover:text-red-400">Twitter @lexporateur</a>
-                    </li>
-                </ol>
-            </p>
             <p class="mt-7 mb-3">
                 Créée par <a href="https://dev.psln.nl/" class="hover:text-red-600" target="_blank" rel="noopener">Philippe-Alexandre Pierre</a>
                  en 2021, cette application web a été réalisée avec le <a href="https://laravel.com/docs/8.x"

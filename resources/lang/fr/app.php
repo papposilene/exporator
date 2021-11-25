@@ -239,5 +239,5 @@ return [
     'welcome_to' => 'bienvenue, :name !',
 
     'send_place_tweet' => 'le lieu d’exposition :what @:twitter vient d’être ajouté sur @lexporateur. :url',
-    'send_exhibition_tweet' => 'l’exposition &laquo; :what &raquo; du @:twitter vient d’être ajoutée sur @lexporateur. :url',
+    'send_exhibition_tweet' => 'l’exposition « :what » du @:twitter vient d’être ajoutée sur @lexporateur. :url',
 ];
