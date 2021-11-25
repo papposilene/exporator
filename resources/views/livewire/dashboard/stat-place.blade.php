@@ -6,57 +6,57 @@
     </h3>
     <div class="grid grid-cols-1 gap-2 lg:gap-4">
         @auth
-        <div class="bg-rose-500 text-white p-2 rounded" title="@ucfirst(__('app.followed_exhibitions'))">
-            <a href="{{ route('front.exhibition.index', ['filter' => 'followed']) }}" class="flex flex-grow justify-between">
-                <span class="px-3">@ucfirst(__('app.followed_exhibitions'))</span>
-                <span class="px-3">{{ $user->followedExhibitions()->count() }}</span>
+        <div class="bg-rose-500 text-white p-2 rounded" title="@ucfirst(__('app.followed_places'))">
+            <a href="{{ route('front.place.index', ['filter' => 'followed']) }}" class="flex flex-grow justify-between">
+                <span class="px-3">@ucfirst(__('app.followed_places'))</span>
+                <span class="px-3">{{ $user->followedPlaces()->count() }}</span>
             </a>
         </div>
         @endauth
         <div class="bg-rose-500 text-white p-2 rounded">
-            <a href="{{ route('front.place.index', ['filter' => 'followed']) }}" class="flex flex-grow justify-between">
+            <a href="{{ route('front.place.index', ['filter' => '']) }}" class="flex flex-grow justify-between">
                 <span class="px-3">@ucfirst(__('app.numbers_of_places'))</span>
                 <span class="px-3">{{ $places }}</span>
             </a>
         </div>
         <div class="bg-rose-500 text-white p-2 rounded">
-            <a href="{{ route('front.place.index', ['filter' => 'followed']) }}" class="flex flex-grow justify-between">
+            <a href="{{ route('front.place.index', ['filter' => 'museum']) }}" class="flex flex-grow justify-between">
                 <span class="px-3">@ucfirst(__('app.numbers_of_museum_type'))</span>
                 <span class="px-3">{{ $museum_type }}</span>
             </a>
         </div>
         <div class="bg-rose-500 text-white p-2 rounded">
-            <a href="{{ route('front.place.index', ['filter' => 'followed']) }}" class="flex flex-grow justify-between">
+            <a href="{{ route('front.place.index', ['filter' => 'gallery']) }}" class="flex flex-grow justify-between">
                 <span class="px-3">@ucfirst(__('app.numbers_of_gallery_type'))</span>
                 <span class="px-3">{{ $gallery_type }}</span>
             </a>
         </div>
         <div class="bg-rose-500 text-white p-2 rounded">
-            <a href="{{ route('front.place.index', ['filter' => 'followed']) }}" class="flex flex-grow justify-between">
+            <a href="{{ route('front.place.index', ['filter' => 'art-center']) }}" class="flex flex-grow justify-between">
                 <span class="px-3">@ucfirst(__('app.numbers_of_artcenter_type'))</span>
                 <span class="px-3">{{ $artcenter_type }}</span>
             </a>
         </div>
         <div class="bg-rose-500 text-white p-2 rounded">
-            <a href="{{ route('front.place.index', ['filter' => 'followed']) }}" class="flex flex-grow justify-between">
+            <a href="{{ route('front.place.index', ['filter' => 'art-fair']) }}" class="flex flex-grow justify-between">
                 <span class="px-3">@ucfirst(__('app.numbers_of_artfair_type'))</span>
                 <span class="px-3">{{ $artfair_type }}</span>
             </a>
         </div>
         <div class="bg-rose-500 text-white p-2 rounded">
-            <a href="{{ route('front.place.index', ['filter' => 'followed']) }}" class="flex flex-grow justify-between">
+            <a href="{{ route('front.place.index', ['filter' => 'library']) }}" class="flex flex-grow justify-between">
                 <span class="px-3">@ucfirst(__('app.numbers_of_library_type'))</span>
                 <span class="px-3">{{ $library_type }}</span>
             </a>
         </div>
         <div class="bg-rose-500 text-white p-2 rounded">
-            <a href="{{ route('front.place.index', ['filter' => 'followed']) }}" class="flex flex-grow justify-between">
+            <a href="{{ route('front.place.index', ['filter' => 'foundation']) }}" class="flex flex-grow justify-between">
                 <span class="px-3">@ucfirst(__('app.numbers_of_foundation_type'))</span>
                 <span class="px-3">{{ $foundation_type }}</span>
             </a>
         </div>
         <div class="bg-rose-500 text-white p-2 rounded">
-            <a href="{{ route('front.place.index', ['filter' => 'followed']) }}" class="flex flex-grow justify-between">
+            <a href="{{ route('front.place.index', ['filter' => 'other']) }}" class="flex flex-grow justify-between">
                 <span class="px-3">@ucfirst(__('app.numbers_of_other_type'))</span>
                 <span class="px-3">{{ $other_type }}</span>
             </a>
