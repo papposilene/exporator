@@ -49,9 +49,10 @@
                     <thead>
                         <tr class="bg-bluegray-700 dark:bg-gray-900 text-white">
                             <th class="w-1/12 text-center p-3">@ucfirst(__('app.iteration'))</th>
+                            <th class="w-2/12 text-center">@ucfirst(__('activity.created_at'))</th>
                             <th class="w-2/12 text-center">@ucfirst(__('app.users'))</th>
                             <th class="w-2/12 text-center">@ucfirst(__('activity.events'))</th>
-                            <th class="w-3/12 text-center">@ucfirst(__('activity.subjects_id'))</th>
+                            <th class="w-4/12 text-center">@ucfirst(__('activity.subjects_id'))</th>
                             <th class="w-1/12 text-center">&nbsp;</th>
                         </tr>
                     </thead>
@@ -59,6 +60,7 @@
                         @foreach($activities as $activity)
                         <tr class="bg-bluegray-200 border-b border-bluegray-300 border-dashed h-12 w-12 p-4">
                             <td class="text-center">{{ $loop->iteration }}</td>
+                            <td class="text-center">@datetime($activity->created_at)</td>
                             <td>
                                 @if ($activity->causer_id)
                                 <a href="{{ route('front.user.show', ['uuid' => $activity->causer_id]) }}">
