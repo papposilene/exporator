@@ -205,7 +205,7 @@ return [
     'map_of' => 'carte des :what',
     'numbers_of_countries' => 'nombre total',
     'numbers_of_places' => 'nombre total des lieux',
-    'numbers_of_museum_type' => 'total des lieux d’exposition',
+    'numbers_of_museum_type' => 'total des musées',
     'numbers_of_gallery_type' => 'total des galeries',
     'numbers_of_artcenter_type' => 'total des centres d’art',
     'numbers_of_artfair_type' => 'total des foires',
