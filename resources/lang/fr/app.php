@@ -182,7 +182,9 @@ return [
         expositions présentées au même moment dans la même institution.',
     'visit_info' => 'vous pouvez indiquer avoir visité cette exposition. Si la date sélectionnée ne rentre pas
         entre les dates d’ouverture et de fermeture de l’exposition, la date médiane sera automatiquement enregistrée.',
-    'visit_login' => 'en vous connectant à votre compte, ou en créant un compte, vous pouvez indiquer avoir visité cette exposition.',
+    'visit_login' => 'en vous connectant à votre compte, ou en créant un compte, vous pouvez indiquer avoir visité
+        cette exposition. Vous pourrez également ainsi accéder et contribuer aux statistiques sur les lieux d’exposition,
+        les expositions et les mots-clés.',
 
     // Placeholders
     'calendar_of' => 'agenda des :what',

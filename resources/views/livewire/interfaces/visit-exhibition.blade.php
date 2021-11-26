@@ -1,7 +1,7 @@
 <div>
     @if (Auth::check() && $exhibition->isFollowed)
     @if (filled(Auth::user()->isFollowingExhibition->visited_at))
-    <form method="POST" action="{{ route('admin.user.exhibition_unvisited') }}" class="flex flex-col w-full">
+    <form method="POST" action="{{ route('admin.user.exhibition_unvisited') }}" class="flex flex-col p-5 w-full">
         @csrf
 
         <input type="hidden" name="visit" value="{{ $exhibition->hasOne(\App\Models\UserExhibition::class)->first()->uuid }}" />
@@ -30,7 +30,7 @@
     </form>
     @endif
     @elseif (Auth::check() && !$exhibition->isFollowed)
-    <form method="POST" action="{{ route('admin.user.exhibition_visited') }}" class="flex flex-col w-full">
+    <form method="POST" action="{{ route('admin.user.exhibition_visited') }}" class="flex flex-col p-5 w-full">
         @csrf
 
         <input type="hidden" name="exhibition" value="{{ $exhibition->uuid }}" />
@@ -65,8 +65,8 @@
         </div>
     </form>
     @else
-    <div class="flex flex-col w-full">
-        <div class="grid grid-cols-1 gap-4 p-5">
+    <div class="flex flex-col p-5 w-full">
+        <div class="grid grid-cols-1 gap-4">
             <p>
                 @ucfirst(__('app.visit_login'))
             </p>
