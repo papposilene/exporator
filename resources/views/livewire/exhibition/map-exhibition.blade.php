@@ -58,7 +58,7 @@ document.addEventListener('livewire:load', function () {
 
     var leafletMap = L.map('leaflet-map', {
         center: [48.8635, 2.354],
-        zoom: 2.5,
+        zoom: 11,
         layers: [
             with_current_exhibition
         ]
@@ -80,7 +80,7 @@ document.addEventListener('livewire:load', function () {
                 const url = place.properties.url;
                 const popupContent = `<h5 class="font-medium text-lg">${name}</h5><br />
                           ${address}<br /><br />
-                          <a href="${url}" class="my-2">@ucfirst(__('app.list_of', ['name' => __('app.exhibitions')]))...</a>`;
+                          <a href="${url}" class="my-2">@ucfirst(__('app.list_of', ['what' => __('app.exhibitions')]))...</a>`;
                 const exhibition_past = place.properties.exhibitions.past;
                 const exhibition_current = place.properties.exhibitions.present;
                 const exhibition_future = place.properties.exhibitions.future;
