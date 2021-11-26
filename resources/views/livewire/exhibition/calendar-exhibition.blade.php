@@ -47,7 +47,7 @@
                         </svg>
                     </a>
                 </h4>
-                <div class="bg-bluegray-200 grid grid-cols-1 md:grid-cols-3 md:gap-4" x-show="selected == {{ $ii }}">
+                <div class="bg-bluegray-200 grid grid-cols-1 lg:grid-cols-3 lg:gap-4" x-show="selected == {{ $ii }}">
                     @foreach ($exhibitions_of_the_day as $exhibition_of_the_day)
                     <a href="{{ route('front.exhibition.show', ['place' => $exhibition_of_the_day->inPlace->slug, 'slug' => $exhibition_of_the_day->slug]) }}"
                             title="{{ $exhibition_of_the_day->title }}" aria-label="{{ $exhibition_of_the_day->title }}"

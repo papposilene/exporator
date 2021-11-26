@@ -12,7 +12,7 @@
             </p>
         </div>
 
-        <div class="grid grid-cols-1 gap-4 mt-2 md:grid-cols-2">
+        <div class="grid grid-cols-1 gap-4 mt-2 lg:grid-cols-2">
             <div>
                 <p class="bg-bluegray-300 dark:text-gray-800 dark:bg-bluegray-300 block py-2 px-2 rounded-md shadow-sm w-full">
                     @ucfirst(__('app.visited_at', ['date' => $exhibition->hasOne(\App\Models\UserExhibition::class)->first()->visited_at->format('d/m/Y')]))
@@ -29,7 +29,7 @@
         </div>
     </form>
     @endif
-    @else
+    @elseif (Auth::check() && !$exhibition->isFollowed)
     <form method="POST" action="{{ route('admin.user.exhibition_visited') }}" class="flex flex-col w-full">
         @csrf
 
@@ -41,7 +41,7 @@
             </p>
         </div>
 
-        <div class="grid grid-cols-1 gap-4 mt-2 md:grid-cols-2">
+        <div class="grid grid-cols-1 gap-4 mt-2 lg:grid-cols-2">
             <div class="relative">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -64,6 +64,20 @@
             </x-forms.button>
         </div>
     </form>
+    @else
+    <div class="flex flex-col w-full">
+        <div class="grid grid-cols-1 gap-4 p-5">
+            <p>
+                @ucfirst(__('app.visit_login'))
+            </p>
+            <div>
+                <a href="{{ route('login') }}" class="bg-bluegray-400 hover:bg-bluegray-600 ml-4 p-2 text-white rounded">@ucfirst(__('auth.login'))</a>
+                @if (Route::has('register'))
+                <a href="{{ route('register') }}" class="bg-bluegray-400 hover:bg-bluegray-600 ml-4 p-2 text-white rounded">@ucfirst(__('auth.register'))</a>
+                @endif
+            </div>
+        </div>
+    </div>
     @endif
 </div>
 

@@ -1,4 +1,4 @@
-<div class="bg-rose-300 md:m-5 mt-5 md:mt-0 p-5 rounded shadow w-full">
+<div class="bg-rose-300 lg:m-5 mt-5 lg:mt-0 p-5 rounded shadow w-full">
     <h3 class="font-bold text-2xl mb-5">
         <a href="{{ route('front.place.index') }}">
             @ucfirst(__('app.places'))

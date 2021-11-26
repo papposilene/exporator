@@ -22,7 +22,7 @@
 
     <div class="flex flex-wrap w-full max-w-7xl mx-auto">
         <div class="mx-auto lg:w-1/4 py-5 px-6 lg:px-0 lg:pr-6">
-            <ul class="bg-indigo-100 list-inside md:m-5 mt-5 md:mt-0 p-5 rounded shadow w-full">
+            <ul class="bg-indigo-100 list-inside lg:m-5 mt-5 lg:mt-0 p-5 rounded shadow w-full">
                 <li class="flex flex-grow justify-between" title="@ucfirst(__('app.place'))">
                     <h3 class="font-bold text-2xl mb-5">
                         <a href="{{ route('front.place.show', ['slug' => $exhibition->inPlace->slug]) }}">
@@ -42,9 +42,9 @@
                 </li>
             </ul>
             @if ($exhibition->inPlace->status === 1)
-            <ul class="bg-green-100 list-inside md:m-5 mt-5 md:mt-0 p-5 rounded shadow w-full">
+            <ul class="bg-green-100 list-inside lg:m-5 mt-5 lg:mt-0 p-5 rounded shadow w-full">
             @else
-            <ul class="bg-red-100 list-inside md:m-5 mt-5 md:mt-0 p-5 rounded shadow w-full">
+            <ul class="bg-red-100 list-inside lg:m-5 mt-5 lg:mt-0 p-5 rounded shadow w-full">
             @endif
                 <li title="@ucfirst(__('app.is_open'))">
                     @if ($exhibition->inPlace->status === 1)
@@ -54,7 +54,7 @@
                     @endif
                 </li>
             </ul>
-            <ul class="list-inside md:m-5 mt-5 md:mt-0 rounded shadow w-full">
+            <ul class="list-inside lg:m-5 mt-5 lg:mt-0 rounded shadow w-full">
                 <li><livewire:interfaces.map :place="$exhibition->inPlace" :wire:key="$exhibition->inPlace->uuid" /></li>
             </ul>
         </div>
@@ -105,7 +105,7 @@
             <!-- End of exhibition title -->
 
             <!-- Exhibition informations -->
-            <div class="flex space-x-5 lg:bg-bluegray-200 md:px-0 lg:p-5 justify-center my-5 rounded lg:shadow w-full">
+            <div class="flex space-x-5 lg:bg-bluegray-200 lg:px-0 lg:p-5 justify-center my-5 rounded lg:shadow w-full">
                 <span class="bg-yellow-100 border border-yellow-300 p-2 rounded shadow" title="@ucfirst(__('app.price'))">
                     @ucfirst(__('app.price')) :
                     @if ($exhibition->price)
@@ -139,7 +139,7 @@
             <!-- End of exhibition data -->
 
             <!-- User actions -->
-            <div class="flex space-x-5 lg:bg-bluegray-200 md:px-0 lg:p-5 justify-center my-5 rounded lg:shadow w-full">
+            <div class="flex space-x-5 bg-bluegray-200 justify-center my-5 rounded shadow w-full">
                 <livewire:interfaces.visit-exhibition :exhibition="$exhibition" :wire:key="$exhibition->uuid" />
             </div>
             <!-- End of user actions -->

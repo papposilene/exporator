@@ -458,15 +458,15 @@
     </head>
     <body class="antialiased font-sans">
         <div class="md:flex min-h-screen">
-            <div class="w-full md:w-1/2 bg-white flex items-center justify-center">
+            <div class="w-full lg:w-1/2 bg-white flex items-center justify-center">
                 <div class="max-w-sm m-8">
-                    <div class="text-black text-5xl md:text-15xl font-black">
+                    <div class="text-black text-5xl lg:text-15xl font-black">
                         @yield('code', __('Oh no'))
                     </div>
 
-                    <div class="w-16 h-1 bg-purple-light my-3 md:my-6"></div>
+                    <div class="w-16 h-1 bg-purple-light my-3 lg:my-6"></div>
 
-                    <p class="text-grey-darker text-2xl md:text-3xl font-light mb-8 leading-normal">
+                    <p class="text-grey-darker text-2xl lg:text-3xl font-light mb-8 leading-normal">
                         @yield('message')
                     </p>
 
@@ -478,7 +478,7 @@
                 </div>
             </div>
 
-            <div class="relative pb-full md:flex md:pb-0 md:min-h-screen w-full md:w-1/2">
+            <div class="relative pb-full lg:flex lg:pb-0 lg:min-h-screen w-full lg:w-1/2">
                 @yield('image')
             </div>
         </div>

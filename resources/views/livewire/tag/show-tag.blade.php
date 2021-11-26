@@ -22,7 +22,7 @@
 
     <div class="flex flex-wrap w-full max-w-7xl mx-auto">
         <div class="mx-auto py-5 px-6 w-full lg:w-1/4">
-            <ul class="bg-indigo-300 list-inside md:m-5 mt-5 md:mt-0 p-5 rounded shadow w-full">
+            <ul class="bg-indigo-300 list-inside lg:m-5 mt-5 lg:mt-0 p-5 rounded shadow w-full">
                 <li class="flex flex-grow justify-between" title="@ucfirst(__('app.tag'))">
                     <h3 class="font-bold text-2xl mb-5">
                         @ucfirst($tag->name)
@@ -31,14 +31,14 @@
                 </li>
                 <li title="@ucfirst(__('app.type'))">@ucfirst(__('app.category_is', ['what' => $tag->type]))</li>
             </ul>
-            <div class="bg-indigo-200 md:m-5 mt-5 md:mt-0 p-5 rounded shadow w-full">
+            <div class="bg-indigo-200 lg:m-5 mt-5 lg:mt-0 p-5 rounded shadow w-full">
                 <h4 class="font-bold text-2xl mb-5">
                     @ucfirst(__('app.statistics'))
                 </h4>
                 <canvas id="chartTags" width="400" height="400"></canvas>
             </div>
             @if ($suggestions->count()  > 0)
-            <div class="bg-indigo-200 md:m-5 mt-5 md:mt-0 p-5 rounded shadow w-full">
+            <div class="bg-indigo-200 lg:m-5 mt-5 lg:mt-0 p-5 rounded shadow w-full">
                 <h4 class="font-bold text-2xl mb-5">
                     @ucfirst(__('app.suggestions'))
                 </h4>
@@ -84,7 +84,7 @@
                             <th class="w-1/12 text-center p-3">@ucfirst(__('app.iteration'))</th>
                             <th class="w-3/12 text-center">@ucfirst(__('app.places'))</th>
                             <th class="w-4/12 text-center">@ucfirst(__('app.titles'))</th>
-                            <th class="hidden md:table-cell md:w-2/12 text-center">@ucfirst(__('app.began_at'))</th>
+                            <th class="hidden lg:table-cell lg:w-2/12 text-center">@ucfirst(__('app.began_at'))</th>
                             <th class="w-2/12 text-center">@ucfirst(__('app.ended_at'))</th>
                         </tr>
                     </thead>
@@ -128,7 +128,7 @@
                                     {{ $exhibition->title }}
                                 </a>
                             </td>
-                            <td class="hidden md:table-cell text-center break-words">@date($exhibition->began_at)</td>
+                            <td class="hidden lg:table-cell text-center break-words">@date($exhibition->began_at)</td>
                             <td class="text-center break-words">@date($exhibition->ended_at)</td>
                         </tr>
                         @endforeach

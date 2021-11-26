@@ -22,7 +22,7 @@
                 <div class="col-span-6">
                     <x-jet-label for="permissions" value="{{ __('Permissions') }}" />
 
-                    <div class="mt-2 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="mt-2 grid grid-cols-1 lg:grid-cols-2 gap-4">
                         @foreach (Laravel\Jetstream\Jetstream::$permissions as $permission)
                             <label class="flex items-center">
                                 <x-jet-checkbox wire:model.defer="createApiTokenForm.permissions" :value="$permission"/>
@@ -125,7 +125,7 @@
         </x-slot>
 
         <x-slot name="content">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 @foreach (Laravel\Jetstream\Jetstream::$permissions as $permission)
                     <label class="flex items-center">
                         <x-jet-checkbox wire:model.defer="updateApiTokenForm.permissions" :value="$permission"/>
