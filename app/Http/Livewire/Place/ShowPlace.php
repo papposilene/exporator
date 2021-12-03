@@ -51,7 +51,7 @@ class ShowPlace extends Component
                     return $query->where('is_published', true);
                 })
                 ->where('title', 'like', '%'.$this->search.'%')
-                ->orderBy('began_at', 'desc')
+                ->orderBy('ended_at', 'desc')
                 ->paginate(25),
         ]);
     }

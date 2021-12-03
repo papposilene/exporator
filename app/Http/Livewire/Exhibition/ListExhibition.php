@@ -50,7 +50,7 @@ class ListExhibition extends Component
                 })
                 ->where('title', 'like', '%'.$this->search.'%')
                 ->where('ended_at', '<', $today)
-                ->orderBy('began_at', 'desc')
+                ->orderBy('ended_at', 'desc')
                 ->paginate(25);
         }
         elseif ($this->filter === 'current')
@@ -63,7 +63,7 @@ class ListExhibition extends Component
                 ->where('title', 'like', '%'.$this->search.'%')
                 ->where('began_at', '<', $today)
                 ->where('ended_at', '>', $today)
-                ->orderBy('began_at', 'desc')
+                ->orderBy('ended_at', 'desc')
                 ->paginate(25);
         }
         elseif ($this->filter === 'future')
@@ -75,7 +75,7 @@ class ListExhibition extends Component
                 })
                 ->where('title', 'like', '%'.$this->search.'%')
                 ->where('began_at', '>', $today)
-                ->orderBy('began_at', 'desc')
+                ->orderBy('ended_at', 'desc')
                 ->paginate(25);
         }
         else
@@ -86,7 +86,7 @@ class ListExhibition extends Component
                     return $query->where('is_published', true);
                 })
                 ->where('title', 'like', '%'.$this->search.'%')
-                ->orderBy('began_at', 'desc')
+                ->orderBy('ended_at', 'desc')
                 ->paginate(25);
         }
 

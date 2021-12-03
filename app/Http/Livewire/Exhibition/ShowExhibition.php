@@ -41,6 +41,7 @@ class ShowExhibition extends Component
                 return $query->where('is_published', true);
             })
             ->where('slug', $this->slug)
+            ->orderBy('ended_at', 'desc')
             ->firstOrFail();
 
         $hasTags = ($this->exhibition->isTagged()->first() ? $this->exhibition->isTagged()->first()->id : 0);

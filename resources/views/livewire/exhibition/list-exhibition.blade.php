@@ -79,8 +79,8 @@
                 <table class="w-full p-5 table-fixed rounded shadow">
                     <thead>
                         <tr class="bg-bluegray-700 dark:bg-gray-900 text-white">
-                            <th class="w-1/12 text-center p-3">@ucfirst(__('app.iteration'))</th>
-                            <th class="w-4/12 text-center">@ucfirst(__('app.places'))</th>
+                            <th class="w-1/12 text-center p-3 hidden lg:table-cell">@ucfirst(__('app.iteration'))</th>
+                            <th class="w-4/12 text-center p-3">@ucfirst(__('app.places'))</th>
                             <th class="w-5/12 text-center">@ucfirst(__('app.titles'))</th>
                             <th class="w-1/12 text-center hidden lg:table-cell">@ucfirst(__('app.prices'))</th>
                             <th class="w-1/12 text-center">@ucfirst(__('app.date'))</th>
@@ -113,7 +113,7 @@
                         }
                         @endphp
                         <tr class="border-b border-bluegray-300 border-dashed h-12 w-12 p-4 {{ $is_not_published }} {{ $is_current }}">
-                            <td class="text-center">{{ $loop->iteration }}</td>
+                            <td class="text-center hidden lg:table-cell">{{ $loop->iteration }}</td>
                             <td class="break-words">
                                 <a href="{{ route('front.place.show', ['slug' => $exhibition->inPlace->slug]) }}"
                                     title="{{ $exhibition->inPlace->name }}" aria-label="{{ $exhibition->inPlace->name }}">
