@@ -25,7 +25,7 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
         @if (App::environment('prod'))
         <!-- Matomo -->
-        <script>
+        <script type="opt-in" data-type="application/javascript" data-name="matomo">
         var _paq = window._paq = window._paq || [];
         _paq.push(["setDomains", ["*.exp.psln.nl","*.lexporateur.fr"]]);
         _paq.push(["setDoNotTrack", true]);
@@ -39,7 +39,6 @@
             g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
         })();
         </script>
-        <noscript><p><img src="//pwk.psln.nl/matomo.php?idsite=14&amp;rec=1" style="border:0;" alt="" /></p></noscript>
         <!-- End Matomo Code -->
         @endif
     </head>
@@ -71,5 +70,12 @@
 
         @livewireScripts
         @stack('scripts')
+
+        @if (App::environment('prod'))
+        <!-- Matomo -->
+        <noscript>
+            <img type="opt-in" data-type="application/javascript" data-name="matomo" data-src="//pwk.psln.nl/matomo.php?idsite=14&amp;rec=1" style="border:0;" alt="" />
+        </noscript>
+        @endif
     </body>
 </html>
