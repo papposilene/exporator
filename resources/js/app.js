@@ -33,10 +33,34 @@ var orejimeConfig = {
     appElement: "#exporator",
     cookieName: "exporator-orejime",
     cookieDomain: 'lexporateur.fr',
-    privacyPolicy: "",
+    privacyPolicy: "./privacy-policy",
     lang: "fr",
     logo: false,
     debug: false,
+    translations: {
+        en: {
+            purposes: {
+                analytics: "Analytics",
+                security: "Security"
+            },
+            categories: {
+                analytics: {
+                    description: "The analysis, measurements and statistics web tools, which constitute the web analytics, make it possible to understand and optimize usages of this website."
+                }
+            }
+        },
+        fr: {
+            purposes: {
+                analytics: "Analyses, mesures et statistiques web",
+                security: "Sécurité"
+            },
+            categories: {
+                analytics: {
+                    description: "Les outils d'analyses, de mesures et de statistiques web, qui constituent les métriques du web, permettent de comprendre et d’optimiser les usages de ce site internet."
+                }
+            }
+        },
+    },
     apps: [
         {
             name: "matomo",
@@ -67,4 +91,5 @@ var orejimeConfig = {
     ]
 }
 
+var Orejime = require('orejime');
 Orejime.init(orejimeConfig);
