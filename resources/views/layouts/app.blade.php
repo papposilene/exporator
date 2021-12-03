@@ -44,7 +44,7 @@
     </head>
 
     <body class="antialiased font-sans bg-bluegray-100 dark:bg-gray-700" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-        <div class="flex flex-col h-min-screen">
+        <div id="exporator" class="flex flex-col h-min-screen">
             <livewire:menu />
 
             <!-- Page Heading -->

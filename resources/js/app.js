@@ -27,3 +27,44 @@ import 'orejime/dist/orejime.js';
 
 window.Alpine = Alpine;
 Alpine.start();
+
+var orejimeConfig = {
+    elementID: "exporator-orejime",
+    appElement: "#exporator",
+    cookieName: "exporator-orejime",
+    cookieDomain: 'lexporateur.fr',
+    privacyPolicy: "",
+    lang: "fr",
+    logo: false,
+    debug: false,
+    apps: [
+        {
+            name: "matomo",
+            title: "Matomo Analytics",
+            cookies: [
+                "_pk_ref",
+                "_pk_cvar",
+                "_pk_id",
+                "_pk_ses",
+                "mtm_consent",
+                "mtm_consent_removed",
+                "mtm_cookie_consent",
+                "matomo_ignore",
+                "matomo_sessid",
+                "_pk_hsr",
+            ],
+            purposes: ["analytics"],
+        }
+    ],
+    categories: [
+        {
+            name: "analytics",
+            title: "Analytics",
+            apps: [
+                "matomo",
+            ]
+        }
+    ]
+}
+
+Orejime.init(orejimeConfig);
