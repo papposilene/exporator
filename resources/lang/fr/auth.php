@@ -29,7 +29,7 @@ return [
     'password_forgot' => 'mot de passe oublié ?',
     'remember_me' => 'se souvenir de moi ?',
 
-    'terms_of_servcice' => 'termes du service',
+    'terms_of_service' => 'termes du service',
     'privacy_policy' => 'politique de confidentialité',
 
     'failed' => 'Les données d’authentification ne coorespondent à aucune de nos données.',
