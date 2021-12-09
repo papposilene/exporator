@@ -91,6 +91,7 @@ class ExhibitionController extends Controller
                     'what' => $request->input('title'),
                     'twitter' => $place->twitter,
                     'url' => route('front.place.show', ['slug' => $place->slug]),
+                    'site' => $request->input('link'),
                 ]));
 
                 $twitter->post('statuses/update', [
