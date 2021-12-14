@@ -170,7 +170,7 @@ class UserController extends Controller
 
         $user = Auth::id();
         $exhibition = UserExhibition::findOrFail($request->input('visit'));
-        $exhibition->visited_at = null;
+        $exhibition->visited_at = NULL;
         $exhibition->save();
 
         return redirect()->back()->with('success', 'All good!');
