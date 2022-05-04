@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Backend;
 
-use Abraham\TwitterOAuth\TwitterOAuth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ImportExhibitionRequest;
 use App\Http\Requests\PublishExhibitionRequest;
@@ -32,26 +31,6 @@ class ExhibitionController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -76,35 +55,8 @@ class ExhibitionController extends Controller
         $exhibition->price = $request->input('price');
         $exhibition->is_published = $request->input('is_published');
         $exhibition->save();
-
-        // Twitter API: set up the connection before tweeting about the new place
-        try {
-            $twitter = new TwitterOAuth(
-                env('TWITTER_EXPORATOR_CONSUMERKEY', false),
-                env('TWITTER_EXPORATOR_CONSUMERSECRET', false),
-                env('TWITTER_EXPORATOR_TOKEN', false),
-                env('TWITTER_EXPORATOR_TOKENSECRET', false)
-            );
-
-            try {
-                $tweet = ucfirst(__('app.send_exhibition_tweet', [
-                    'what' => $request->input('title'),
-                    'twitter' => $place->twitter,
-                    'url' => route('front.place.show', ['slug' => $place->slug]),
-                    'site' => $request->input('link'),
-                ]));
-
-                $twitter->post('statuses/update', [
-                    'status' => $tweet,
-                ]);
-            }
-            catch (\Throwable $e) {
-                report('Twitter: error during tweeting a new place.');
-            }
-        }
-        catch (\Throwable $e) {
-            report('Twitter: error during the connection for a new place.');
-        }
+        
+        PostOnSocialNetworks::dispatch($exhibition);
 
         return redirect()->route('front.place.show', ['slug' => $place->slug])->with('success', 'All good!');
     }
@@ -192,28 +144,6 @@ class ExhibitionController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Exhibition  $exhibition
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Exhibition $exhibition)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Exhibition  $exhibition
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Exhibition $exhibition)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -269,16 +199,5 @@ class ExhibitionController extends Controller
         $exhibition->delete();
 
         return redirect()->route('front.exhibition.index')->with('success', 'All good!');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Exhibition  $exhibition
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Exhibition $exhibition)
-    {
-        //
     }
 }
