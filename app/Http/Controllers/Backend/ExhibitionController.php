@@ -29,6 +29,14 @@ class ExhibitionController extends Controller
         $this->middleware('auth')->except(['index', 'show']);
         //$this->authorizeResource('post');
     }
+    
+    public function feed()
+    {
+        $feed = Post::where('status', 'published')->
+            orderBy('created_at', 'desc')->
+            limit(50)->get();
+        return response()->view('feed.rss', compact('feed'))->header('Content-Type', 'application/xml');
+    }
 
     /**
      * Store a newly created resource in storage.
