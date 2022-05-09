@@ -22,36 +22,36 @@
         </h2>
     </x-slot>
 
-    <div class="flex flex-wrap w-full max-w-7xl mx-auto" itemscope itemtype="https://schema.org/TouristAttraction">
+    <div class="flex flex-wrap w-full max-w-7xl mx-auto">
         <div class="mx-auto lg:w-1/4 py-5 px-6 lg:px-0 lg:pr-6">
             @if ($place->image)
             <ul class="bg-rose-100 list-inside lg:m-5 mt-5 lg:mt-0 p-5 rounded shadow w-full">
                 <li>
-                    <img src="{{ storage_path($place->image) }}" class="" alt="{{ $place->name }}" title="{{ $place->name }}" itemprop="photo" />
+                    <img src="{{ storage_path($place->image) }}" class="" alt="{{ $place->name }}" title="{{ $place->name }}" />
                 </li>
             </ul>
             @endif
             <ul class="bg-rose-100 list-inside lg:m-5 mt-5 lg:mt-0 p-5 rounded shadow w-full">
                 <li class="flex flex-grow justify-between" title="@ucfirst(__('app.tag'))">
-                    <h3 class="font-bold text-2xl mb-5" itemprop="name">
+                    <h3 class="font-bold text-2xl mb-5">
                         {{ $place->name }}
                     </h3>
                     <span><livewire:interfaces.follow-place :place="$place" :wire:key="$place->uuid" /></span>
                 </li>
                 <li title="@ucfirst(__('app.type'))">@ucfirst(__('app.' . Str::slug($place->type, '_')))</li>
-                <li itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
-                    <span title="@ucfirst(__('app.address'))" itemprop="address">{{ $place->address }}</span>,
-                    <span title="@ucfirst(__('app.city'))" itemprop="addressLocality">{{ $place->city }}</span>,
-                    <span title="@ucfirst(__('app.country'))" itemprop="addressCountry">{{ $place->inCountry->name_common_fra }}</span>.
+                <li>
+                    <span title="@ucfirst(__('app.address'))">{{ $place->address }}</span>,
+                    <span title="@ucfirst(__('app.city'))">{{ $place->city }}</span>,
+                    <span title="@ucfirst(__('app.country'))">{{ $place->inCountry->name_common_fra }}</span>.
                 </li>
                 @if ($place->link)
                 <li class="mt-5" title="@ucfirst(__('app.link'))">
-                    <a href="{{ $place->link }}" class="text-sky-700 hover:text-red-600" target="_blank" rel="noopener" itemprop="url">{{ $place->link }}</a>
+                    <a href="{{ $place->link }}" class="text-sky-700 hover:text-red-600" target="_blank" rel="noopener">{{ $place->link }}</a>
                 </li>
                 @endif
                 @if ($place->twitter)
                 <li class="mt-5" title="@ucfirst(__('app.link'))">
-                    <a href="{{ url("https://twitter.com/{$place->twitter}") }}" class="text-sky-700 hover:text-red-600" target="_blank" rel="noopener" itemprop="url">{{ __('app.twitter_what', ['what' => $place->twitter]) }}</a>
+                    <a href="{{ url("https://twitter.com/{$place->twitter}") }}" class="text-sky-700 hover:text-red-600" target="_blank" rel="noopener">{{ __('app.twitter_what', ['what' => $place->twitter]) }}</a>
                 </li>
                 @endif
             </ul>
@@ -68,9 +68,32 @@
                     @endif
                 </li>
             </ul>
-            <ul class="list-inside lg:m-5 mt-5 lg:mt-0 shadow w-full" itemprop="hasMap">
+            <ul class="list-inside lg:m-5 mt-5 lg:mt-0 shadow w-full">
                 <li><livewire:interfaces.map :place="$place" :wire:key="$place->uuid" /></li>
             </ul>
+            
+            <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Place",
+      "name": "{{ $place->name }}",
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "{{ $place->lat }}",
+        "longitude": "{{ $place->lon }}",
+      },
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "{{ $place->address }}",
+          "addressLocality": "{{ $place->city }}",
+          "addressCountry": "{{ $place->inCountry->cca2 }}"
+      },
+      "isicV4": "9102",
+      "publicAccess": true,
+      "smokingAllowed": false,
+      "url": "{{ $place->link }}"
+    }
+    </script>
         </div>
 
         <div class="mx-auto lg:w-3/4 py-5 px-6">
