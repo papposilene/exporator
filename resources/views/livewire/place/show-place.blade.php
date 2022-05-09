@@ -22,10 +22,10 @@
         </h2>
     </x-slot>
 
-    <div class="flex flex-wrap w-full max-w-7xl mx-auto">
+    <div class="flex flex-wrap w-full max-w-7xl mx-auto" itemscope itemtype="https://schema.org/TouristAttraction">
         <div class="mx-auto lg:w-1/4 py-5 px-6 lg:px-0 lg:pr-6">
             @if ($place->image)
-            <ul class="bg-rose-100 list-inside lg:m-5 mt-5 lg:mt-0 p-5 rounded shadow w-full">
+            <ul class="bg-rose-100 list-inside lg:m-5 mt-5 lg:mt-0 p-5 rounded shadow w-full" itemprop="photo">
                 <li>
                     <img src="{{ storage_path($place->image) }}" class="" alt="{{ $place->name }}" title="{{ $place->name }}" />
                 </li>
@@ -33,20 +33,20 @@
             @endif
             <ul class="bg-rose-100 list-inside lg:m-5 mt-5 lg:mt-0 p-5 rounded shadow w-full">
                 <li class="flex flex-grow justify-between" title="@ucfirst(__('app.tag'))">
-                    <h3 class="font-bold text-2xl mb-5">
+                    <h3 class="font-bold text-2xl mb-5" itemprop="name">
                         {{ $place->name }}
                     </h3>
                     <span><livewire:interfaces.follow-place :place="$place" :wire:key="$place->uuid" /></span>
                 </li>
                 <li title="@ucfirst(__('app.type'))">@ucfirst(__('app.' . Str::slug($place->type, '_')))</li>
-                <li title="@ucfirst(__('app.address'))">{{ $place->address }}</li>
-                <li>
-                    <span title="@ucfirst(__('app.city'))">{{ $place->city }}</span>,
-                    <span title="@ucfirst(__('app.country'))">{{ $place->inCountry->name_common_fra }}</span>.
+                <li itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                    <span title="@ucfirst(__('app.address'))" itemprop="address">{{ $place->address }}</span>,
+                    <span title="@ucfirst(__('app.city'))" itemprop="addressLocality">{{ $place->city }}</span>,
+                    <span title="@ucfirst(__('app.country'))" itemprop="addressCountry">{{ $place->inCountry->name_common_fra }}</span>.
                 </li>
                 @if ($place->link)
                 <li class="mt-5" title="@ucfirst(__('app.link'))">
-                    <a href="{{ $place->link }}" class="text-sky-700 hover:text-red-600" target="_blank" rel="noopener">{{ $place->link }}</a>
+                    <a href="{{ $place->link }}" class="text-sky-700 hover:text-red-600" target="_blank" rel="noopener" itemprop="url">{{ $place->link }}</a>
                 </li>
                 @endif
                 @if ($place->twitter)
@@ -68,7 +68,7 @@
                     @endif
                 </li>
             </ul>
-            <ul class="list-inside lg:m-5 mt-5 lg:mt-0 shadow w-full">
+            <ul class="list-inside lg:m-5 mt-5 lg:mt-0 shadow w-full" itemprop="hasMap">
                 <li><livewire:interfaces.map :place="$place" :wire:key="$place->uuid" /></li>
             </ul>
         </div>
@@ -134,16 +134,16 @@
                             $is_current = 'bg-bluegray-200';
                         }
                         @endphp
-                        <tr class="border-b border-bluegray-300 border-dashed h-12 w-12 p-4 {{ $is_not_published }} {{ $is_current }}">
+                        <tr class="border-b border-bluegray-300 border-dashed h-12 w-12 p-4 {{ $is_not_published }} {{ $is_current }}" itemprop="event" itemscope itemtype="https://schema.org/Event">
                             <td class="text-center hidden lg:table-cell">{{ $loop->iteration }}</td>
                             <td class="break-words">
                                 <a href="{{ route('front.exhibition.show', ['place' => $exhibition->inPlace->slug, 'slug' => $exhibition->slug]) }}"
-                                    title="{{ $exhibition->title }}" aria-label="{{ $exhibition->title }}">
+                                    title="{{ $exhibition->title }}" aria-label="{{ $exhibition->title }}" itemprop="name">
                                     {{ $exhibition->title }}
                                 </a>
                             </td>
-                            <td class="hidden lg:table-cell text-center break-words">@date($exhibition->began_at)</td>
-                            <td class="text-center break-words">@date($exhibition->ended_at)</td>
+                            <td class="hidden lg:table-cell text-center break-words" itemprop="startDate">@date($exhibition->began_at)</td>
+                            <td class="text-center break-words" itemprop="endDate">@date($exhibition->ended_at)</td>
                         </tr>
                         @endforeach
                     </tbody>
