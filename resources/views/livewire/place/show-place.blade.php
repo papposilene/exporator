@@ -142,8 +142,8 @@
                                     {{ $exhibition->title }}
                                 </a>
                             </td>
-                            <td class="hidden lg:table-cell text-center break-words" itemprop="startDate">@date($exhibition->began_at)</td>
-                            <td class="text-center break-words" itemprop="endDate">@date($exhibition->ended_at)</td>
+                            <td class="hidden lg:table-cell text-center break-words" itemprop="startDate" content="@datedit($exhibition->began_at)">@date($exhibition->began_at)</td>
+                            <td class="text-center break-words" itemprop="startDate" content="@datedit($exhibition->ended_at)">@date($exhibition->ended_at)</td>
                         </tr>
                         @endforeach
                     </tbody>
