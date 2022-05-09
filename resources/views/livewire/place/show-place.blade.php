@@ -25,9 +25,9 @@
     <div class="flex flex-wrap w-full max-w-7xl mx-auto" itemscope itemtype="https://schema.org/TouristAttraction">
         <div class="mx-auto lg:w-1/4 py-5 px-6 lg:px-0 lg:pr-6">
             @if ($place->image)
-            <ul class="bg-rose-100 list-inside lg:m-5 mt-5 lg:mt-0 p-5 rounded shadow w-full" itemprop="photo">
+            <ul class="bg-rose-100 list-inside lg:m-5 mt-5 lg:mt-0 p-5 rounded shadow w-full">
                 <li>
-                    <img src="{{ storage_path($place->image) }}" class="" alt="{{ $place->name }}" title="{{ $place->name }}" />
+                    <img src="{{ storage_path($place->image) }}" class="" alt="{{ $place->name }}" title="{{ $place->name }}" itemprop="photo" />
                 </li>
             </ul>
             @endif
@@ -51,7 +51,7 @@
                 @endif
                 @if ($place->twitter)
                 <li class="mt-5" title="@ucfirst(__('app.link'))">
-                    <a href="{{ url("https://twitter.com/{$place->twitter}") }}" class="text-sky-700 hover:text-red-600" target="_blank" rel="noopener">{{ __('app.twitter_what', ['what' => $place->twitter]) }}</a>
+                    <a href="{{ url("https://twitter.com/{$place->twitter}") }}" class="text-sky-700 hover:text-red-600" target="_blank" rel="noopener" itemprop="url">{{ __('app.twitter_what', ['what' => $place->twitter]) }}</a>
                 </li>
                 @endif
             </ul>
