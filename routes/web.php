@@ -1,31 +1,15 @@
 <?php
 
-use App\Http\Controllers\Backend\ContactController;
-use App\Http\Controllers\Backend\ExhibitionController;
-use App\Http\Controllers\Backend\PlaceController;
-use App\Http\Controllers\Backend\ReviewController;
-use App\Http\Controllers\Backend\TagController;
-use App\Http\Controllers\Backend\UserController;
-use App\Http\Livewire\Contact\ListContact;
-use App\Http\Livewire\Contact\ShowContact;
-use App\Http\Livewire\Dashboard\ShowAbout;
-use App\Http\Livewire\Dashboard\ShowDashboard;
-use App\Http\Livewire\Exhibition\CalendarExhibition;
-use App\Http\Livewire\Exhibition\ListExhibition;
-use App\Http\Livewire\Exhibition\MapExhibition;
-use App\Http\Livewire\Exhibition\ShowExhibition;
-use App\Http\Livewire\Exhibition\TimelineExhibition;
-use App\Http\Livewire\Place\ListPlace;
-use App\Http\Livewire\Place\ShowPlace;
+use App\Http\Controllers\Backend\{ ContactController, ExhibitionController, PlaceController, ReviewController, TagController, UserController };
+use App\Http\Controllers\FeedController;
+use App\Http\Livewire\Contact\{ ListContact, ShowContact };
+use App\Http\Livewire\Dashboard\{ShowAbout, ShowDashboard };
+use App\Http\Livewire\Exhibition\{ CalendarExhibition, ListExhibition, MapExhibition, ShowExhibition, TimelineExhibition };
+use App\Http\Livewire\Place\{ ListPlace, ShowPlace };
 use App\Http\Livewire\Review\CreateReview;
 use App\Http\Livewire\Statistic\ShowStatistic;
-use App\Http\Livewire\Tag\ListTag;
-use App\Http\Livewire\Tag\ShowTag;
-use App\Http\Livewire\Tag\ShowType;
-use App\Http\Livewire\User\ListUser;
-use App\Http\Livewire\User\ShowUser;
-use App\Http\Livewire\User\ListActivity;
-use App\Http\Livewire\User\ShowActivity;
+use App\Http\Livewire\Tag\{ ListTag, ShowTag, ShowType };
+use App\Http\Livewire\User\{ ListUser, ShowUser, ListActivity, ShowActivity };
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -49,6 +33,8 @@ Route::redirect('/', '/dashboard', 301);
 Route::get('/dashboard', ShowDashboard::class)->name('dashboard');
 Route::get('/about', ShowAbout::class)->name('front.about');
 Route::get('/statistics/{year}', ShowStatistic::class)->name('front.stat');
+
+Route::get('/rss', Feed::class)->name('feed.rss');
 
 // Contact
 Route::get('/contacts', ListContact::class)->name('front.contact.index');
