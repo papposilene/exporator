@@ -83,7 +83,7 @@
                     </thead>
                     <tbody>
                         @foreach($places as $place)
-                        <tr class="bg-bluegray-200 border-b border-bluegray-300 border-dashed h-12 w-12 p-4">
+                        <tr class="bg-bluegray-200 border-b border-bluegray-300 border-dashed h-12 w-12 p-4" itemscope itemtype="https://schema.org/TouristAttraction">
                             <td class="text-center hidden lg:table-cell">{{ $loop->iteration }}</td>
                             <td class="hidden lg:table-cell">
                                 <livewire:interfaces.follow-place :place="$place" :wire:key="$place->uuid" />
@@ -92,7 +92,7 @@
                             <td class="hidden lg:table-cell">{{ $place->city }}</td>
                             <td class="break-words">
                                 <a href="{{ route('front.place.show', ['slug' => $place->slug]) }}"
-                                    title="{{ $place->name }}" aria-label="{{ $place->name }}">
+                                    title="{{ $place->name }}" aria-label="{{ $place->name }}" itemprop="name">
                                     {{ $place->name }}
                                 </a>
                             </td>
