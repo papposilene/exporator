@@ -136,7 +136,7 @@
                         @endphp
                         <tr class="border-b border-bluegray-300 border-dashed h-12 w-12 p-4 {{ $is_not_published }} {{ $is_current }}" itemprop="event" itemscope itemtype="https://schema.org/Event">
                             <td class="text-center hidden lg:table-cell">{{ $loop->iteration }}</td>
-                            <td class="break-words">
+                            <td class="break-words" itemprop="eventStatus" content="https://schema.org/EventScheduled">
                                 <a href="{{ route('front.exhibition.show', ['place' => $exhibition->inPlace->slug, 'slug' => $exhibition->slug]) }}"
                                     title="{{ $exhibition->title }}" aria-label="{{ $exhibition->title }}" itemprop="name">
                                     {{ $exhibition->title }}
