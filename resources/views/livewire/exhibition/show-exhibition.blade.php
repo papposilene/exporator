@@ -164,5 +164,40 @@
             </div>
             <!-- End of tags -->
         </div>
+        
+        <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "{{ $exhibition->name }}",
+      "startDate": "@datedit($exhibition->began_at)",
+      "endDate": "@datedit($exhibition->ended_at)",
+      "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "location": {
+        "@type": "Place",
+        "name": "{{ $exhibition->inPlace->name }}",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "{{ $exhibition->inPlace->address }}",
+          "addressLocality": "{{ $exhibition->inPlace->city }}",
+          "addressCountry": "{{ $exhibition->inPlace->inCountry->cca2 }}"
+        }
+      },
+
+      "description": "{{ $exhibition->description }}",
+      "offers": {
+        "@type": "Offer",
+        "url": "{{ $exhibition->link }}",
+        "price": "@currency($exhibition->price)",
+        "priceCurrency": "EUR",
+      },
+      "organizer": {
+        "@type": "Organization",
+        "name": "{{ $exhibition->inPlace->name }}",
+        "url": "{{ $exhibition->inPlace->link }}"
+      }
+    }
+    </script>
     </div>
 </div>
