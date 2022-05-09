@@ -112,21 +112,21 @@
                             $is_current = 'bg-bluegray-200';
                         }
                         @endphp
-                        <tr class="border-b border-bluegray-300 border-dashed h-12 w-12 p-4 {{ $is_not_published }} {{ $is_current }}">
+                        <tr class="border-b border-bluegray-300 border-dashed h-12 w-12 p-4 {{ $is_not_published }} {{ $is_current }}" itemscope itemtype="https://schema.org/TouristAttraction">
                             <td class="text-center hidden lg:table-cell">{{ $loop->iteration }}</td>
                             <td class="break-words">
                                 <a href="{{ route('front.place.show', ['slug' => $exhibition->inPlace->slug]) }}"
-                                    title="{{ $exhibition->inPlace->name }}" aria-label="{{ $exhibition->inPlace->name }}">
+                                    title="{{ $exhibition->inPlace->name }}" aria-label="{{ $exhibition->inPlace->name }}" itemprop="name">
                                     {{ $exhibition->inPlace->name }}
                                 </a>
                             </td>
-                            <td class="break-words">
+                            <td class="break-words" itemprop="event" itemscope itemtype="https://schema.org/Event">
                                 <a href="{{ route('front.exhibition.show', ['place' => $exhibition->inPlace->slug, 'slug' => $exhibition->slug]) }}"
-                                    title="{{ $exhibition->title }}" aria-label="{{ $exhibition->title }}">
+                                    title="{{ $exhibition->title }}" aria-label="{{ $exhibition->title }}" itemprop="name">
                                     {{ $exhibition->title }}
                                 </a>
                             </td>
-                            <td class="hidden lg:table-cell text-right">
+                            <td class="hidden lg:table-cell text-right" itemprop="price" content="currency($exhibition->price)">
                                 @if ($exhibition->price)
                                 @currency($exhibition->price)&nbsp;&euro;
                                 @else
@@ -134,11 +134,11 @@
                                 @endif
                             </td>
                             @if ($exhibition->began_at > $today && $exhibition->ended_at > $today)
-                            <td class="text-center" title="@date($exhibition->began_at)">{{ $exhibition->began_at->diff($today)->days }} jours</td>
+                            <td class="text-center" title="@date($exhibition->began_at)" itemprop="startDate" content=""@datedit($exhibition->began_at)">{{ $exhibition->began_at->diff($today)->days }} jours</td>
                             @elseif ($exhibition->began_at < $today && $exhibition->ended_at > $today)
-                            <td class="text-center" title="@date($exhibition->ended_at)">{{ $exhibition->ended_at->diff($today)->days }} jours</td>
+                            <td class="text-center" title="@date($exhibition->ended_at)" itemprop="startDate" content=""@datedit($exhibition->began_at)">{{ $exhibition->ended_at->diff($today)->days }} jours</td>
                             @else
-                            <td class="text-center" title="@date($exhibition->ended_at)">@date($exhibition->ended_at)</td>
+                            <td class="text-center" title="@date($exhibition->ended_at)" itemprop="endDate" content="@datedit($exhibition->ended_at)">@date($exhibition->ended_at)</td>
                             @endif
                         </tr>
                         @endforeach
