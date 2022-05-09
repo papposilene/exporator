@@ -134,9 +134,9 @@
                                 @endif
                             </td>
                             @if ($exhibition->began_at > $today && $exhibition->ended_at > $today)
-                            <td class="text-center" title="@date($exhibition->began_at)" itemprop="startDate" content=""@datedit($exhibition->began_at)">{{ $exhibition->began_at->diff($today)->days }} jours</td>
+                            <td class="text-center" title="@date($exhibition->began_at)" itemprop="startDate" content="@datedit($exhibition->began_at)">{{ $exhibition->began_at->diff($today)->days }} jours</td>
                             @elseif ($exhibition->began_at < $today && $exhibition->ended_at > $today)
-                            <td class="text-center" title="@date($exhibition->ended_at)" itemprop="startDate" content=""@datedit($exhibition->began_at)">{{ $exhibition->ended_at->diff($today)->days }} jours</td>
+                            <td class="text-center" title="@date($exhibition->ended_at)" itemprop="endDate" content="@datedit($exhibition->ended_at)">{{ $exhibition->ended_at->diff($today)->days }} jours</td>
                             @else
                             <td class="text-center" title="@date($exhibition->ended_at)" itemprop="endDate" content="@datedit($exhibition->ended_at)">@date($exhibition->ended_at)</td>
                             @endif
