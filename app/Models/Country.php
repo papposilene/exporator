@@ -112,7 +112,7 @@ class Country extends Model
     public function hasPlaces()
     {
         return $this->hasMany(
-            'App\Models\Place',
+            App\Models\Place::class,
             'country_cca3',
             'cca3'
         );
