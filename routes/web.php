@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\Backend\{ ContactController, ExhibitionController, PlaceController, ReviewController, TagController, UserController };
-use App\Http\Controllers\FeedController;
 use App\Http\Livewire\Contact\{ ListContact, ShowContact };
 use App\Http\Livewire\Dashboard\{ShowAbout, ShowDashboard };
 use App\Http\Livewire\Exhibition\{ CalendarExhibition, ListExhibition, MapExhibition, ShowExhibition, TimelineExhibition };
@@ -34,7 +33,7 @@ Route::get('/dashboard', ShowDashboard::class)->name('dashboard');
 Route::get('/about', ShowAbout::class)->name('front.about');
 Route::get('/statistics/{year}', ShowStatistic::class)->name('front.stat');
 
-Route::get('/rss', Feed::class)->name('feed.rss');
+Route::get('/rss', [ExhibitionController::class, 'feed'])->name('feed.rss');
 
 // Contact
 Route::get('/contacts', ListContact::class)->name('front.contact.index');
