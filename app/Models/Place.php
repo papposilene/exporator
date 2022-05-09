@@ -105,7 +105,7 @@ class Place extends Model
     public function inCountry()
     {
         return $this->belongsTo(
-            'App\Models\Country',
+            App\Models\Country::class,
             'country_cca3',
             'cca3'
         );
@@ -117,7 +117,7 @@ class Place extends Model
     public function hasExhibitions()
     {
         return $this->hasMany(
-            'App\Models\Exhibition',
+            App\Models\Exhibition::class,
             'place_uuid',
             'uuid'
         );
@@ -129,7 +129,7 @@ class Place extends Model
     public function hasType()
     {
         return $this->hasOne(
-            'App\Models\Type',
+            App\Models\Type::class,
             'slug',
             'type'
         );
@@ -141,8 +141,8 @@ class Place extends Model
     public function isFollowed()
     {
         return $this->hasOneThrough(
-            'App\Models\User',
-            'App\Models\UserPlace',
+            App\Models\User::class,
+            App\Models\UserPlace::class,
             'place_uuid',
             'uuid',
             'uuid',
