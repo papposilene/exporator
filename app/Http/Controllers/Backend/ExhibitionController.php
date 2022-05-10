@@ -11,6 +11,7 @@ use App\Http\Requests\UpdateExhibitionRequest;
 use App\Http\Requests\DeleteExhibitionRequest;
 use App\Exports\ExhibitionsExport;
 use App\Imports\ExhibitionsImport;
+use App\Jobs\PostOnSocialNetworks;
 use App\Models\Exhibition;
 use App\Models\Place;
 use App\Models\User;
