@@ -59,7 +59,7 @@
             </ul>
         </div>
 
-        <div class="mx-auto lg:w-3/4 py-5 px-6" itemprop="event" itemscope itemtype="https://schema.org/Event">
+        <div class="mx-auto lg:w-3/4 py-5 px-6">
             @if ($errors->any())
             <div class="bg-red-500 border border-red-700 mb-3 p-3 rounded shadow text-white font-bold">
                 <ul>
@@ -97,7 +97,7 @@
             <!-- Exhibition title -->
             <div class="flex flex-grow justify-between bg-bluegray-300 font-bold text-2xl p-3 rounded shadow w-full"
                 title="@ucfirst(__('app.exhibition'))">
-                <h4 itemprop="name">
+                <h4>
                     {{ $exhibition->title }}
                 </h4>
                 <span><livewire:interfaces.follow-exhibition :exhibition="$exhibition" :wire:key="$exhibition->uuid" /></span>
@@ -106,7 +106,7 @@
 
             <!-- Exhibition informations -->
             <div class="flex space-x-5 lg:bg-bluegray-200 lg:px-0 lg:p-5 justify-center my-5 rounded lg:shadow w-full">
-                <span class="bg-yellow-100 border border-yellow-300 p-2 rounded shadow" title="@ucfirst(__('app.price'))" itemprop="price" content="currency($exhibition->price)">
+                <span class="bg-yellow-100 border border-yellow-300 p-2 rounded shadow" title="@ucfirst(__('app.price'))">
                     @ucfirst(__('app.price')) :
                     @if ($exhibition->price)
                     @currency($exhibition->price)&nbsp;&euro;.
@@ -114,10 +114,10 @@
                     {{ __('app.no_price') }}.
                     @endif
                 </span>
-                <span class="bg-green-100 border border-green-300 p-2 rounded shadow" title="@ucfirst(__('app.began_at'))" itemprop="startDate" content="@datedit($exhibition->began_at)">
+                <span class="bg-green-100 border border-green-300 p-2 rounded shadow" title="@ucfirst(__('app.began_at'))">
                     @ucfirst(__('app.began_at')) : @date($exhibition->began_at).
                 </span>
-                <span class="bg-red-100 border border-red-300 p-2 rounded shadow" title="@ucfirst(__('app.ended_at'))" itemprop="endDate" content="@datedit($exhibition->ended_at)">
+                <span class="bg-red-100 border border-red-300 p-2 rounded shadow" title="@ucfirst(__('app.ended_at'))">
                     @ucfirst(__('app.ended_at')) : @date($exhibition->ended_at).
                 </span>
             </div>
@@ -125,12 +125,12 @@
 
             <!-- End of exhibition data -->
             <ul class="list-inside bg-bluegray-200 rounded shadow w-full">
-                <li class="p-5" itemprop="about>
+                <li class="p-5">
                     {{ $exhibition->description }}
                 </li>
                 <li class="p-5" title="@ucfirst(__('app.link'))">
                     @if ($exhibition->link)
-                    <a href="{{ $exhibition->link }}" class="text-sky-700 hover:text-red-600" target="_blank" rel="noopener" itemprop="url">{{ $exhibition->link }}</a>
+                    <a href="{{ $exhibition->link }}" class="text-sky-700 hover:text-red-600" target="_blank" rel="noopener">{{ $exhibition->link }}</a>
                     @else
                     <a href="{{ $exhibition->inPlace->link }}" class="text-sky-700 hover:text-red-600" target="_blank" rel="noopener">{{ $exhibition->inPlace->link }}</a>
                     @endif
@@ -145,7 +145,7 @@
             <!-- End of user actions -->
 
             <!-- Tags -->
-            <div class="bg-indigo-300 mt-5 px-5 p-5 rounded shadow w-full" itemprop="keywords">
+            <div class="bg-indigo-300 mt-5 px-5 p-5 rounded shadow w-full">
                 @if (count($exhibition->tags) > 0)
                 @foreach ($exhibition->tags as $tag)
                 <a href="{{ route('front.tag.show', ['slug' => $tag->slug]) }}"
@@ -164,40 +164,38 @@
             </div>
             <!-- End of tags -->
         </div>
-        
-        <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Event",
-      "name": "{{ $exhibition->name }}",
-      "startDate": "@datedit($exhibition->began_at)",
-      "endDate": "@datedit($exhibition->ended_at)",
-      "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
-      "eventStatus": "https://schema.org/EventScheduled",
-      "location": {
-        "@type": "Place",
-        "name": "{{ $exhibition->inPlace->name }}",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "{{ $exhibition->inPlace->address }}",
-          "addressLocality": "{{ $exhibition->inPlace->city }}",
-          "addressCountry": "{{ $exhibition->inPlace->inCountry->cca2 }}"
-        }
-      },
 
-      "description": "{{ $exhibition->description }}",
-      "offers": {
-        "@type": "Offer",
-        "url": "{{ $exhibition->link }}",
-        "price": "@currency($exhibition->price)",
-        "priceCurrency": "EUR",
-      },
-      "organizer": {
-        "@type": "Organization",
-        "name": "{{ $exhibition->inPlace->name }}",
-        "url": "{{ $exhibition->inPlace->link }}"
-      }
-    }
-    </script>
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Event",
+            "name": "{{ $exhibition->name }}",
+            "startDate": "@datedit($exhibition->began_at)",
+            "endDate": "@datedit($exhibition->ended_at)",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "location": {
+                "@type": "Place",
+                "name": "{{ $exhibition->inPlace->name }}",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "{{ $exhibition->inPlace->address }}",
+                    "addressLocality": "{{ $exhibition->inPlace->city }}",
+                    "addressCountry": "{{ $exhibition->inPlace->inCountry->cca2 }}"
+                }
+            },
+            "description": "{{ $exhibition->description }}",
+            "offers": {
+                "@type": "Offer",
+                "url": "{{ $exhibition->link }}",
+                "price": "@currency($exhibition->price)",
+                "priceCurrency": "EUR"
+            },
+            "organizer": {
+                "@type": "Organization",
+                "name": "{{ $exhibition->inPlace->name }}",
+                "url": "{{ $exhibition->inPlace->link }}"
+            }
+        }
+        </script>
     </div>
 </div>

@@ -71,29 +71,6 @@
             <ul class="list-inside lg:m-5 mt-5 lg:mt-0 shadow w-full">
                 <li><livewire:interfaces.map :place="$place" :wire:key="$place->uuid" /></li>
             </ul>
-            
-            <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Place",
-      "name": "{{ $place->name }}",
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "{{ $place->lat }}",
-        "longitude": "{{ $place->lon }}",
-      },
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "{{ $place->address }}",
-          "addressLocality": "{{ $place->city }}",
-          "addressCountry": "{{ $place->inCountry->cca2 }}"
-      },
-      "isicV4": "9102",
-      "publicAccess": true,
-      "smokingAllowed": false,
-      "url": "{{ $place->link }}"
-    }
-    </script>
         </div>
 
         <div class="mx-auto lg:w-3/4 py-5 px-6">
@@ -157,16 +134,16 @@
                             $is_current = 'bg-bluegray-200';
                         }
                         @endphp
-                        <tr class="border-b border-bluegray-300 border-dashed h-12 w-12 p-4 {{ $is_not_published }} {{ $is_current }}" itemprop="event" itemscope itemtype="https://schema.org/Event">
+                        <tr class="border-b border-bluegray-300 border-dashed h-12 w-12 p-4 {{ $is_not_published }} {{ $is_current }}">
                             <td class="text-center hidden lg:table-cell">{{ $loop->iteration }}</td>
-                            <td class="break-words" itemprop="eventStatus" content="https://schema.org/EventScheduled">
+                            <td class="break-words">
                                 <a href="{{ route('front.exhibition.show', ['place' => $exhibition->inPlace->slug, 'slug' => $exhibition->slug]) }}"
-                                    title="{{ $exhibition->title }}" aria-label="{{ $exhibition->title }}" itemprop="name">
+                                    title="{{ $exhibition->title }}" aria-label="{{ $exhibition->title }}">
                                     {{ $exhibition->title }}
                                 </a>
                             </td>
-                            <td class="hidden lg:table-cell text-center break-words" itemprop="startDate" content="@datedit($exhibition->began_at)">@date($exhibition->began_at)</td>
-                            <td class="text-center break-words" itemprop="startDate" content="@datedit($exhibition->ended_at)">@date($exhibition->ended_at)</td>
+                            <td class="hidden lg:table-cell text-center break-words">@date($exhibition->began_at)</td>
+                            <td class="text-center break-words">@date($exhibition->ended_at)</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -187,6 +164,42 @@
             </div>
             <!-- End of no data to show -->
             @endif
+
+            <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "Place",
+                "name": "{{ $place->name }}",
+                "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": "{{ $place->lat }}",
+                    "longitude": "{{ $place->lon }}"
+                },
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "{{ $place->address }}",
+                    "addressLocality": "{{ $place->city }}",
+                    "addressCountry": "{{ $place->inCountry->cca2 }}"
+                },
+                "isicV4": "9102",
+                "publicAccess": true,
+                "smokingAllowed": false,
+                "url": "{{ $place->link }}",
+                @if(count($exhibitions) > 0)
+                "event": [
+                    @foreach($exhibitions as $exhibition)
+                    {
+                        "name": "{{ $exhibition->title }}",
+                        "startDate": "@datedit($exhibition->began_at)",
+                        "endDate": "@datedit($exhibition->ended_at)",
+                        "description": "{{ $exhibition->description }}",
+                        "eventStatus": "https://schema.org/EventScheduled"
+                    }@if(!$loop->last),@endif
+                    @endforeach
+                ]
+                @endif
+            }
+            </script>
         </div>
     </div>
 </div>

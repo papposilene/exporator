@@ -116,17 +116,19 @@
                             <td class="text-center hidden lg:table-cell">{{ $loop->iteration }}</td>
                             <td class="break-words">
                                 <a href="{{ route('front.place.show', ['slug' => $exhibition->inPlace->slug]) }}"
-                                    title="{{ $exhibition->inPlace->name }}" aria-label="{{ $exhibition->inPlace->name }}" itemprop="name">
-                                    {{ $exhibition->inPlace->name }}
+                                    title="{{ $exhibition->inPlace->name }}" aria-label="{{ $exhibition->inPlace->name }}">
+                                    <span itemprop="name">{{ $exhibition->inPlace->name }}</span>
                                 </a>
                             </td>
                             <td class="break-words" itemprop="event" itemscope itemtype="https://schema.org/Event">
                                 <a href="{{ route('front.exhibition.show', ['place' => $exhibition->inPlace->slug, 'slug' => $exhibition->slug]) }}"
-                                    title="{{ $exhibition->title }}" aria-label="{{ $exhibition->title }}" itemprop="name">
-                                    {{ $exhibition->title }}
+                                    title="{{ $exhibition->title }}" aria-label="{{ $exhibition->title }}">
+                                    <span itemprop="name">{{ $exhibition->title }}</span>
+                                    <meta itemprop="startDate" content="@datedit($exhibition->began_at)" />
+                                    <meta itemprop="endDate" content="@datedit($exhibition->ended_at)" />
                                 </a>
                             </td>
-                            <td class="hidden lg:table-cell text-right" itemprop="price" content="currency($exhibition->price)">
+                            <td class="hidden lg:table-cell text-right">
                                 @if ($exhibition->price)
                                 @currency($exhibition->price)&nbsp;&euro;
                                 @else
@@ -134,11 +136,11 @@
                                 @endif
                             </td>
                             @if ($exhibition->began_at > $today && $exhibition->ended_at > $today)
-                            <td class="text-center" title="@date($exhibition->began_at)" itemprop="startDate" content="@datedit($exhibition->began_at)">{{ $exhibition->began_at->diff($today)->days }} jours</td>
+                            <td class="text-center" title="@date($exhibition->began_at)">{{ $exhibition->began_at->diff($today)->days }} jours</td>
                             @elseif ($exhibition->began_at < $today && $exhibition->ended_at > $today)
-                            <td class="text-center" title="@date($exhibition->ended_at)" itemprop="endDate" content="@datedit($exhibition->ended_at)">{{ $exhibition->ended_at->diff($today)->days }} jours</td>
+                            <td class="text-center" title="@date($exhibition->ended_at)">{{ $exhibition->ended_at->diff($today)->days }} jours</td>
                             @else
-                            <td class="text-center" title="@date($exhibition->ended_at)" itemprop="endDate" content="@datedit($exhibition->ended_at)">@date($exhibition->ended_at)</td>
+                            <td class="text-center" title="@date($exhibition->ended_at)">@date($exhibition->ended_at)</td>
                             @endif
                         </tr>
                         @endforeach

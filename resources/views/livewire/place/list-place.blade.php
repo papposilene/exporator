@@ -92,8 +92,8 @@
                             <td class="hidden lg:table-cell">{{ $place->city }}</td>
                             <td class="break-words">
                                 <a href="{{ route('front.place.show', ['slug' => $place->slug]) }}"
-                                    title="{{ $place->name }}" aria-label="{{ $place->name }}" itemprop="name">
-                                    {{ $place->name }}
+                                    title="{{ $place->name }}" aria-label="{{ $place->name }}">
+                                    <span itemprop="name">{{ $place->name }}</span>
                                 </a>
                             </td>
                             <td class="text-center hidden lg:table-cell">

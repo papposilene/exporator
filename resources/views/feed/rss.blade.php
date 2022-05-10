@@ -9,15 +9,15 @@
         <language>{{ str_replace('_', '-', app()->getLocale()) }}</language>
         <pubDate>{{ now() }}</pubDate>
 
-        @foreach($posts as $post)
+        @foreach($feed as $element)
             <item>
-                <title><![CDATA[{{ $feed->title }}]]></title>
-                <link>{{ $feed->slug }}</link>
-                <description><![CDATA[{!! $feed->description !!}]]></description>
-                <category>{{ $feed->category }}</category>
-                <author><![CDATA[{{ $feed->user->username  }}]]></author>
-                <guid>{{ $feed->uuid }}</guid>
-                <pubDate>{{ $feed->created_at->toRssString() }}</pubDate>
+                <title><![CDATA[{{ $element->title }}]]></title>
+                <link>{{ route('front.exhibition.show', ['place' => $element->inPlace->slug, 'slug' => $element->slug]) }}</link>
+                <description><![CDATA[{!! $element->description !!}]]></description>
+                <category>{{ $element->category }}</category>
+                <author><![CDATA[{{ $element->inPlace->name  }}]]></author>
+                <guid>{{ $element->uuid }}</guid>
+                <pubDate>{{ $element->created_at->toRssString() }}</pubDate>
             </item>
         @endforeach
     </channel>
