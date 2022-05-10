@@ -1,33 +1,60 @@
-/vendor/
-node_modules/
+# Folders & directories #
+######################
+/.idea
+/.vscode
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/storage/data
+/vendor
+
+# Dev files #
+######################
+.env
+.env.backup
+.phpunit.result.cache
+docker-compose.override.yml
+Homestead.json
+Homestead.yaml
 npm-debug.log
 yarn-error.log
 
-# Laravel 4 specific
-bootstrap/compiled.php
-app/storage/
-
-# Laravel 5 & Lumen specific
-public/storage
-public/hot
-
-# Laravel 5 & Lumen specific with changed public path
-public_html/storage
-public_html/hot
-
-composer.lock
-package-lock.json
-
-run/var
-
+# OS generated files #
+######################
 .DS_Store
-storage/*.key
-storage/*.index
-storage/framework
-storage/search/*.index
-.env
-.env.backup
-Homestead.yaml
-Homestead.json
-/.vagrant
-.phpunit.result.cache
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs and databases #
+######################
+**/adminer
+*.log
+*.sql
+*.sqlite
+
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
