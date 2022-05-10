@@ -67,7 +67,7 @@ class ExhibitionController extends Controller
 
         if(Carbon::today()->toDateString() < $exhibition->ended_at)
         {
-            PostOnSocialNetworks::dispatch($exhibition)->delay(now()->addMinutes(3));
+            PostOnSocialNetworks::dispatch($exhibition)->delay(now()->addMinutes(5));
         }
 
         return redirect()->route('front.place.show', ['slug' => $place->slug])->with('success', 'All good!');
