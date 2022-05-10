@@ -16,6 +16,11 @@ class PostOnSocialNetworks implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     /**
+     * @var Exhibition $exhibition
+     */
+    private $exhibition;
+
+    /**
      * Create a new job instance.
      *
      * @return void
@@ -24,7 +29,6 @@ class PostOnSocialNetworks implements ShouldQueue
     {
         $this->onQueue('socialnetworking');
         $this->exhibition = $exhibition;
-        
     }
 
     /**
@@ -47,7 +51,7 @@ class PostOnSocialNetworks implements ShouldQueue
             catch (\Throwable $e) {
                 report('Twitter: error during the connection for a new place.');
             }
-            
+
             try {
                 $tweet = ucfirst(__('app.send_exhibition_tweet', [
                     'what' => $this->exhibition->title,
