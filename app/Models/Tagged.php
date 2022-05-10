@@ -31,7 +31,7 @@ class Tagged extends Model
     public function hasExhibitions()
     {
         return $this->hasMany(
-            'App\Models\Exhibition',
+            Exhibition::class,
             'uuid',
             'taggable_id'
         );
@@ -43,7 +43,7 @@ class Tagged extends Model
     public function isTag()
     {
         return $this->hasOne(
-            'App\Models\Tag',
+            Tag::class,
             'id',
             'tag_id'
         );

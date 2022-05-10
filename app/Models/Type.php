@@ -103,7 +103,7 @@ class Type extends Model
     public function hasPlaces()
     {
         return $this->hasMany(
-            App\Models\Place::class,
+            Place::class,
             'type',
             'slug'
         );

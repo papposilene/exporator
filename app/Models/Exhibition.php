@@ -121,7 +121,7 @@ class Exhibition extends Model
     public function inPlace()
     {
         return $this->belongsTo(
-            'App\Models\Place',
+            Place::class,
             'place_uuid',
             'uuid'
         );
@@ -133,8 +133,8 @@ class Exhibition extends Model
     public function isFollowed()
     {
         return $this->hasOneThrough(
-            'App\Models\User',
-            'App\Models\UserExhibition',
+            User::class,
+            UserExhibition::class,
             'exhibition_uuid',
             'uuid',
             'uuid',
@@ -148,8 +148,8 @@ class Exhibition extends Model
     public function isTagged()
     {
         return $this->hasManyThrough(
-            'App\Models\Tag',
-            'App\Models\Tagged',
+            Tag::class,
+            Tagged::class,
             'taggable_id',
             'id',
             'uuid',

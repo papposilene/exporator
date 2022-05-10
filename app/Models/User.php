@@ -12,6 +12,7 @@ use Laravel\Jetstream\HasProfilePhoto;
 //use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Models\Activity;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -103,8 +104,8 @@ class User extends Authenticatable
     public function followedPlaces()
     {
         return $this->hasManyThrough(
-            'App\Models\Place',
-            'App\Models\UserPlace',
+            Place::class,
+            UserPlace::class,
             'user_uuid',
             'uuid',
             'uuid',
@@ -118,8 +119,8 @@ class User extends Authenticatable
     public function followedExhibitions()
     {
         return $this->hasManyThrough(
-            'App\Models\Exhibition',
-            'App\Models\UserExhibition',
+            Exhibition::class,
+            UserExhibition::class,
             'user_uuid',
             'uuid',
             'uuid',
@@ -133,8 +134,8 @@ class User extends Authenticatable
     public function followedTags()
     {
         return $this->hasManyThrough(
-            'App\Models\Tag',
-            'App\Models\UserTag',
+            Tag::class,
+            UserTag::class,
             'user_uuid',
             'id',
             'uuid',
@@ -148,7 +149,7 @@ class User extends Authenticatable
     public function hasActivities()
     {
         return $this->hasMany(
-            'Spatie\Activitylog\Models\Activity',
+            Activity::class,
             'causer_id',
             'uuid'
         );

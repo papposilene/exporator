@@ -86,8 +86,8 @@ class Tag extends Model
     public function hasExhibitions()
     {
         return $this->hasManyThrough(
-            'App\Models\Exhibition',
-            'App\Models\Tagged',
+            Exhibition::class,
+            Tagged::class,
             'tag_id',
             'uuid',
             'id',
@@ -101,8 +101,8 @@ class Tag extends Model
     public function hasPlaces()
     {
         return $this->hasManyThrough(
-            'App\Models\Place',
-            'App\Models\Tagged',
+            Place::class,
+            Tagged::class,
             'tag_id',
             'uuid',
             'id',
@@ -116,7 +116,7 @@ class Tag extends Model
     public function hasTagged()
     {
         return $this->hasMany(
-            'App\Models\Tagged',
+            Tagged::class,
             'tag_id',
             'taggable_id'
         );
@@ -128,8 +128,8 @@ class Tag extends Model
     public function isFollowed()
     {
         return $this->hasOneThrough(
-            'App\Models\User',
-            'App\Models\UserTag',
+            User::class,
+            UserTag::class,
             'tag_id',
             'uuid',
             'id',
