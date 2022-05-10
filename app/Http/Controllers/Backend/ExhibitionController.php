@@ -29,12 +29,12 @@ class ExhibitionController extends Controller
         $this->middleware('auth')->except(['index', 'show']);
         //$this->authorizeResource('post');
     }
-    
+
     public function feed()
     {
-        $feed = Post::where('status', 'published')->
-            orderBy('created_at', 'desc')->
-            limit(50)->get();
+        $feed = Exhibition::orderBy('created_at', 'desc')
+            ->limit(50)
+            ->get();
         return response()->view('feed.rss', compact('feed'))->header('Content-Type', 'application/xml');
     }
 
@@ -63,7 +63,7 @@ class ExhibitionController extends Controller
         $exhibition->price = $request->input('price');
         $exhibition->is_published = $request->input('is_published');
         $exhibition->save();
-        
+
         PostOnSocialNetworks::dispatch($exhibition);
 
         return redirect()->route('front.place.show', ['slug' => $place->slug])->with('success', 'All good!');
