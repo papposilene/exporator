@@ -17,34 +17,15 @@ use Spatie\Tags\Tag;
 class TagController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param StoreTagRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function store(StoreTagRequest $request)
     {
-        $this->authorize('create', Tag::class);
+        $this->authorize('create tags', Tag::class);
 
         $validated = $request->validated();
 
@@ -57,38 +38,17 @@ class TagController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Tag  $tag
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Tag $tag)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Tag  $tag
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Tag $tag)
-    {
-        //
-    }
-
-    /**
      * Attach the specified tag to an exhibition.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Exhibition  $exhibition
-     * @param  \App\Models\Tag  $tag
-     * @return \Illuminate\Http\Response
+     * @param AttachTagRequest $request
+     * @param Exhibition $exhibition
+     * @param Tag $tag
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function attach(AttachTagRequest $request, Exhibition $exhibition, Tag $tag)
     {
-        $this->authorize('create', Exhibition::class);
+        $this->authorize('create tags', Exhibition::class);
 
         $validated = $request->validated();
 
@@ -106,13 +66,14 @@ class TagController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Tag  $tag
-     * @return \Illuminate\Http\Response
+     * @param StoreTagRequest $request
+     * @param Tag $tag
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update(StoreTagRequest $request, Tag $tag)
     {
-        $this->authorize('update', $tag);
+        $this->authorize('update tags', $tag);
 
         $validated = $request->validated();
 
@@ -131,13 +92,14 @@ class TagController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Tag  $tag
-     * @return \Illuminate\Http\Response
+     * @param DeleteTagRequest $request
+     * @param Tag $tag
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function delete(DeleteTagRequest $request, Tag $tag)
     {
-        $this->authorize('delete', $tag);
+        $this->authorize('delete tags', $tag);
 
         $validated = $request->validated();
 
@@ -145,16 +107,5 @@ class TagController extends Controller
         $tag->delete();
 
         return redirect()->route('front.tag.index')->with('success', 'All good!');
-    }
-
-    /**
-     * Delete the specified resource from storage.
-     *
-     * @param  \App\Models\Tag  $tag
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Tag $tag)
-    {
-        //
     }
 }

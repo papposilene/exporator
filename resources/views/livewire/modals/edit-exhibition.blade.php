@@ -61,7 +61,7 @@
                     <x-forms.input id="price" class="dark:text-gray-800 dark:bg-bluegray-300 block mt-1 w-full" type="text" name="price" placeholder="{{ __('app.price') }}" value="{{ $exhibition->price }}" required />
                     <x-forms.select id="public" class="dark:text-gray-800 dark:bg-bluegray-300 block mt-1 w-full" name="is_published" required>
                         <option value="1" selected>@ucfirst(__('app.yes'))</option>
-                        <option value="0" selected>@ucfirst(__('app.no'))</option>
+                        <option value="0">@ucfirst(__('app.no'))</option>
                     </x-forms.select>
                 </div>
 
