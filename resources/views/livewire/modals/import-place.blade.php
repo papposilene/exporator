@@ -7,7 +7,7 @@
     </div>
 
     <div id="modalWindowImportPlace"
-        class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-bluegray-900 bg-opacity-50 transform scale-0 transition-transform duration-300 z-1000">
+        class="invisible fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-bluegray-900 bg-opacity-50 transform scale-0 transition-transform duration-300 z-1000">
         <!-- Modal -->
         <div class="bg-white dark:bg-gray-700 dark:text-white overflow-auto w-1/2 h-1/2 p-12">
             <!-- Close modal button-->
@@ -108,15 +108,15 @@
             </form>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('livewire:load', function () {
+            const modalOpenImportPlace = document.getElementById('modalOpenImportPlace')
+            const modalCloseImportPlace = document.getElementById('modalCloseImportPlace')
+            const modalWindowImportPlace = document.getElementById('modalWindowImportPlace')
+
+            modalOpenImportPlace.addEventListener('click',()=>modalWindowImportPlace.classList.remove('invisible'))
+            modalCloseImportPlace.addEventListener('click',()=>modalWindowImportPlace.classList.add('invisible'))
+        })
+    </script>
 </div>
-
-<script>
-document.addEventListener('livewire:load', function () {
-    const modalOpenImportPlace = document.getElementById('modalOpenImportPlace')
-    const modalCloseImportPlace = document.getElementById('modalCloseImportPlace')
-    const modalWindowImportPlace = document.getElementById('modalWindowImportPlace')
-
-    modalOpenImportPlace.addEventListener('click',()=>modalWindowImportPlace.classList.remove('scale-0'))
-    modalCloseImportPlace.addEventListener('click',()=>modalWindowImportPlace.classList.add('scale-0'))
-})
-</script>

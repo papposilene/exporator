@@ -7,7 +7,7 @@
     </div>
 
     <div id="modalWindowUpdateExhibition"
-        class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-bluegray-900 bg-opacity-50 transform scale-0 transition-transform duration-300 z-1000">
+        class="invisible fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-bluegray-900 bg-opacity-50 transform scale-0 transition-transform duration-300 z-1000">
         <!-- Modal -->
         <div class="bg-white dark:bg-gray-700 dark:text-white overflow-auto w-1/2 h-1/2 p-12">
             <!-- Close modal button-->
@@ -46,7 +46,7 @@
                 <div class="mt-4">
                     <x-forms.label class="dark:text-gray-100" for="description">@ucfirst(__('app.description'))</x-forms.label>
                     <x-forms.textarea id="description" class="dark:text-gray-800 dark:bg-bluegray-300 block mt-1 w-full" type="text" name="description" :placeholder="@ucfirst(__('app.loremipsum'))" required >
-                        @nl2br($exhibition->description)
+                        {{ $exhibition->description }}
                     </x-forms.textarea>
                 </div>
 
@@ -73,15 +73,15 @@
             </form>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('livewire:load', function () {
+            const modalOpenUpdateExhibition = document.getElementById('modalOpenUpdateExhibition')
+            const modalCloseUpdateExhibition = document.getElementById('modalCloseUpdateExhibition')
+            const modalWindowUpdateExhibition = document.getElementById('modalWindowUpdateExhibition')
+
+            modalOpenUpdateExhibition.addEventListener('click',()=>modalWindowUpdateExhibition.classList.remove('invisible'))
+            modalCloseUpdateExhibition.addEventListener('click',()=>modalWindowUpdateExhibition.classList.add('invisible'))
+        })
+    </script>
 </div>
-
-<script>
-document.addEventListener('livewire:load', function () {
-    const modalOpenUpdateExhibition = document.getElementById('modalOpenUpdateExhibition')
-    const modalCloseUpdateExhibition = document.getElementById('modalCloseUpdateExhibition')
-    const modalWindowUpdateExhibition = document.getElementById('modalWindowUpdateExhibition')
-
-    modalOpenUpdateExhibition.addEventListener('click',()=>modalWindowUpdateExhibition.classList.remove('scale-0'))
-    modalCloseUpdateExhibition.addEventListener('click',()=>modalWindowUpdateExhibition.classList.add('scale-0'))
-})
-</script>

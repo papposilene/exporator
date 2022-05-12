@@ -126,7 +126,7 @@
             <!-- End of exhibition data -->
             <ul class="list-inside bg-bluegray-200 rounded shadow w-full">
                 <li class="p-5">
-                    {{ $exhibition->description }}
+                    @nl2br($exhibition->description)
                 </li>
                 <li class="p-5" title="@ucfirst(__('app.link'))">
                     @if ($exhibition->link)

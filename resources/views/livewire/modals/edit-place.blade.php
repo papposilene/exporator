@@ -7,7 +7,7 @@
     </div>
 
     <div id="modalWindowEditPlace"
-        class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-bluegray-900 bg-opacity-50 transform scale-0 transition-transform duration-300 z-1000">
+        class="invisible fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-bluegray-900 bg-opacity-50 transform scale-0 transition-transform duration-300 z-1000">
         <!-- Modal -->
         <div class="bg-white dark:bg-gray-700 dark:text-white overflow-auto w-1/2 h-1/2 p-12">
             <!-- Close modal button-->
@@ -94,15 +94,15 @@
             </form>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('livewire:load', function () {
+            const modalOpenEditPlace = document.getElementById('modalOpenEditPlace')
+            const modalCloseEditPlace = document.getElementById('modalCloseEditPlace')
+            const modalWindowEditPlace = document.getElementById('modalWindowEditPlace')
+
+            modalOpenEditPlace.addEventListener('click',()=>modalWindowEditPlace.classList.remove('invisible'))
+            modalCloseEditPlace.addEventListener('click',()=>modalWindowEditPlace.classList.add('invisible'))
+        })
+    </script>
 </div>
-
-<script>
-document.addEventListener('livewire:load', function () {
-    const modalOpenEditPlace = document.getElementById('modalOpenEditPlace')
-    const modalCloseEditPlace = document.getElementById('modalCloseEditPlace')
-    const modalWindowEditPlace = document.getElementById('modalWindowEditPlace')
-
-    modalOpenEditPlace.addEventListener('click',()=>modalWindowEditPlace.classList.remove('scale-0'))
-    modalCloseEditPlace.addEventListener('click',()=>modalWindowEditPlace.classList.add('scale-0'))
-})
-</script>

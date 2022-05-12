@@ -6,8 +6,7 @@
         </button>
     </div>
 
-    <div id="modalWindowCreatePlace"
-        class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-bluegray-900 bg-opacity-50 transform scale-0 transition-transform duration-300 z-1000">
+    <div id="modalWindowCreatePlace" class="invisible fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-bluegray-900 bg-opacity-50 transform scale-0 transition-transform duration-300 z-1000">
         <!-- Modal -->
         <div class="bg-white dark:bg-gray-700 dark:text-white overflow-auto w-1/2 h-1/2 p-12">
             <!-- Close modal button-->
@@ -22,8 +21,7 @@
                 @ucfirst(__('app.create_one', ['what' => __('app.place')]))
             </h5>
             <!-- Modal content -->
-            <form method="POST" action="{{ route('admin.place.store') }}" enctype="multipart/form-data"
-                class="flex flex-col w-full">
+            <form method="POST" action="{{ route('admin.place.store') }}" enctype="multipart/form-data" class="flex flex-col w-full">
                 @csrf
 
                 <div class="mt-4">
@@ -90,15 +88,15 @@
             </form>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('livewire:load', function () {
+            const modalOpenCreatePlace = document.getElementById('modalOpenCreatePlace')
+            const modalCloseCreatePlace = document.getElementById('modalCloseCreatePlace')
+            const modalWindowCreatePlace = document.getElementById('modalWindowCreatePlace')
+
+            modalOpenCreatePlace.addEventListener('click',()=>modalWindowCreatePlace.classList.remove('invisible'))
+            modalCloseCreatePlace.addEventListener('click',()=>modalWindowCreatePlace.classList.add('invisible'))
+        })
+    </script>
 </div>
-
-<script>
-document.addEventListener('livewire:load', function () {
-    const modalOpenCreatePlace = document.getElementById('modalOpenCreatePlace')
-    const modalCloseCreatePlace = document.getElementById('modalCloseCreatePlace')
-    const modalWindowCreatePlace = document.getElementById('modalWindowCreatePlace')
-
-    modalOpenCreatePlace.addEventListener('click',()=>modalWindowCreatePlace.classList.remove('scale-0'))
-    modalCloseCreatePlace.addEventListener('click',()=>modalWindowCreatePlace.classList.add('scale-0'))
-})
-</script>
