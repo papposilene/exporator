@@ -5,8 +5,8 @@ object-assign
 */
 
 /* @preserve
- * Leaflet 1.7.1, a JS library for interactive maps. http://leafletjs.com
- * (c) 2010-2019 Vladimir Agafonkin, (c) 2010-2011 CloudMade
+ * Leaflet 1.8.0, a JS library for interactive maps. https://leafletjs.com
+ * (c) 2010-2022 Vladimir Agafonkin, (c) 2010-2011 CloudMade
  */
 
 /*!
@@ -35,9 +35,9 @@ object-assign
  */
 
 /*!
- * Chart.js v3.6.0
+ * Chart.js v3.7.1
  * https://www.chartjs.org
- * (c) 2021 Chart.js Contributors
+ * (c) 2022 Chart.js Contributors
  * Released under the MIT License
  */
 
@@ -58,7 +58,7 @@ object-assign
 /*! Version: 0.74.1
 Copyright (c) 2016 Dominik Moritz */
 
-/*! orejime v2.1.1 - BSD-3-Clause license, original work Copyright (c) 2018 DPKit, modified work Copyright (c) 2019 Empreinte Digitale, all rights reserved. */
+/*! orejime v2.2.1 - BSD-3-Clause license, original work Copyright (c) 2018 DPKit, modified work Copyright (c) 2019 Empreinte Digitale, all rights reserved. */
 
 /**
  * @license
