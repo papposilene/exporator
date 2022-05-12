@@ -12,7 +12,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Revolution\Mastodon\Facades\Mastodon;
 
-class PostOnSocialNetworks implements ShouldQueue
+class PostOnSocialNetworks implements ShouldQueue, ShouldBeUnique
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
