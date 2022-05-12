@@ -3,7 +3,7 @@ const colors = require('tailwindcss/colors');
 
 module.exports = {
     mode: 'jit',
-    purge: [
+    content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './vendor/laravel/jetstream/**/*.blade.php',
         './storage/framework/views/*.php',
@@ -11,7 +11,6 @@ module.exports = {
     ],
 
     darkMode: 'class',
-    //darkMode: 'media',
 
     theme: {
         extend: {
@@ -28,9 +27,9 @@ module.exports = {
             black: colors.black,
             white: colors.white,
             gray: colors.gray,
-            coolgray: colors.coolGray,
-            bluegray: colors.blueGray,
-            warmgray: colors.warmGray,
+            coolgray: colors.gray,
+            bluegray: colors.slate,
+            warmgray: colors.stone,
             red: colors.red,
             blue: colors.blue,
             sky: colors.sky,
@@ -62,6 +61,6 @@ module.exports = {
         require('@tailwindcss/forms'),
         require('@tailwindcss/line-clamp'),
         require('@tailwindcss/typography'),
-        //require('@themesberg/flowbite/plugin'),
+        require('@themesberg/flowbite/plugin'),
     ],
 };
