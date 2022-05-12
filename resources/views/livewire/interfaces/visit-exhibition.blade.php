@@ -79,10 +79,10 @@
         </div>
     </div>
     @endif
-</div>
 
-<script>
-document.addEventListener('livewire:load', function () {
-    new Datepicker(document.getElementById('datepicker'));
-})
-</script>
+    <script>
+        document.addEventListener('livewire:load', function () {
+            new Datepicker(document.getElementById('datepicker'));
+        })
+    </script>
+</div>
