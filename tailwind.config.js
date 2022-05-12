@@ -9,6 +9,9 @@ module.exports = {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
     ],
+    safelist: [
+        'bg-rose-500', 'bg-sky-300', 'bg-sky-500', 'bg-bluegray-500', 'bg-bluegray-900',
+    ],
     darkMode: 'class',
     theme: {
         extend: {
