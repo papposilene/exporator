@@ -72,7 +72,7 @@
 
                 <div class="mt-4">
                     <x-forms.label class="dark:text-gray-100" for="twitter">@ucfirst(__('app.twitter_name'))</x-forms.label>
-                    <x-forms.input id="twitter" class="dark:text-gray-800 dark:bg-bluegray-300 block mt-1 w-full" type="text" name="twitter" required :value="old('twitter')" />
+                    <x-forms.input id="twitter" class="dark:text-gray-800 dark:bg-bluegray-300 block mt-1 w-full" type="text" name="twitter" :value="old('twitter')" />
                 </div>
 
                 <div class="mt-4">
