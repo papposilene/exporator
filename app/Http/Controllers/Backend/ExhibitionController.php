@@ -16,8 +16,11 @@ use App\Models\Exhibition;
 use App\Models\Place;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -28,7 +31,6 @@ class ExhibitionController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->except(['index', 'show']);
-        //$this->authorizeResource('post');
     }
 
     public function feed()
@@ -42,8 +44,9 @@ class ExhibitionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param StoreExhibitionRequest $request
+     * @return RedirectResponse
+     * @throws AuthorizationException
      */
     public function store(StoreExhibitionRequest $request)
     {
@@ -65,7 +68,7 @@ class ExhibitionController extends Controller
         $exhibition->is_published = $request->input('is_published');
         $exhibition->save();
 
-        if(Carbon::today()->toDateString() < $exhibition->ended_at)
+        if($place->twitter && Carbon::today()->toDateString() < $exhibition->ended_at)
         {
             PostOnSocialNetworks::dispatch($exhibition)->delay(now()->addMinutes(5));
         }
@@ -76,8 +79,8 @@ class ExhibitionController extends Controller
     /**
      * Store a resource in storage, proposed by a guest.
      *
-     * @param  \Illuminate\Http\ProposeExhibitionRequest  $request
-     * @return \Illuminate\Http\Response
+     * @param ProposeExhibitionRequest $request
+     * @return RedirectResponse
      */
     public function propose(ProposeExhibitionRequest $request)
     {
@@ -108,8 +111,9 @@ class ExhibitionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param PublishExhibitionRequest $request
+     * @return RedirectResponse
+     * @throws AuthorizationException
      */
     public function publish(PublishExhibitionRequest $request)
     {
@@ -127,8 +131,9 @@ class ExhibitionController extends Controller
     /**
      * Import a file for creating a new resource.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param ImportExhibitionRequest $request
+     * @return Response
+     * @throws AuthorizationException
      */
     public function import(ImportExhibitionRequest $request)
     {
@@ -158,9 +163,10 @@ class ExhibitionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Exhibition  $exhibition
-     * @return \Illuminate\Http\Response
+     * @param UpdateExhibitionRequest $request
+     * @param Exhibition $exhibition
+     * @return RedirectResponse
+     * @throws AuthorizationException
      */
     public function update(UpdateExhibitionRequest $request, Exhibition $exhibition)
     {
@@ -186,7 +192,7 @@ class ExhibitionController extends Controller
     /**
      * Export all the resources from storage.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
      */
     public function export()
     {
@@ -197,9 +203,10 @@ class ExhibitionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Illuminate\Http\DeleteExhibitionRequest  $request
-     * @param  \App\Models\Exhibition  $exhibition
-     * @return \Illuminate\Http\Response
+     * @param DeleteExhibitionRequest $request
+     * @param Exhibition $exhibition
+     * @return RedirectResponse
+     * @throws AuthorizationException
      */
     public function delete(DeleteExhibitionRequest $request, Exhibition $exhibition)
     {

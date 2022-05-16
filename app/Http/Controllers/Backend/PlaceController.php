@@ -25,7 +25,6 @@ class PlaceController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->except(['index', 'show']);
-        //$this->authorizeResource('post');
     }
 
     /**
@@ -66,8 +65,6 @@ class PlaceController extends Controller
         $place->save();
 
         if ($place->twitter) {
-
-
             // Twitter API: set up the connection before tweeting about the new place
             try {
                 $twitter = new TwitterOAuth(
