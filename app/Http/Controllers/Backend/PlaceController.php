@@ -67,6 +67,12 @@ class PlaceController extends Controller
         if ($place->twitter) {
             // Twitter API: set up the connection before tweeting about the new place
             try {
+                $tweet = ucfirst(__('app.send_place_tweet', [
+                    'name' => $name,
+                    'twitter' => $request->input('twitter'),
+                    'url' => route('front.place.show', ['slug' => $slug]),
+                ]));
+
                 $twitter = new TwitterOAuth(
                     env('TWITTER_EXPORATOR_CONSUMERKEY', null),
                     env('TWITTER_EXPORATOR_CONSUMERSECRET', null),
@@ -76,12 +82,6 @@ class PlaceController extends Controller
                 $twitter->setApiVersion('1.1');
 
                 try {
-                    $tweet = ucfirst(__('app.send_place_tweet', [
-                        'what' => $name,
-                        'twitter' => $request->input('twitter'),
-                        'url' => route('front.place.show', ['slug' => $slug]),
-                    ]));
-
                     $twitter->post('statuses/update', [
                         'status' => $tweet,
                     ]);

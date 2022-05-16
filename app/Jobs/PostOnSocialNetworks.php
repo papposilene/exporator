@@ -54,13 +54,23 @@ class PostOnSocialNetworks implements ShouldQueue, ShouldBeUnique
      */
     public function handle()
     {
-        if ($this->exhibition) {
-            $status = ucfirst(__('app.send_exhibition_tweet', [
-                'what' => $this->exhibition->title,
-                'twitter' => $this->exhibition->inPlace->twitter,
-                'url' => route('front.place.show', ['slug' => $this->exhibition->inPlace->slug]),
-                'site' => $this->exhibition->link,
-            ]));
+        if ($this->exhibition)
+        {
+            if ($this->exhibition->inPlace->twitter) {
+                $status = ucfirst(__('app.send_exhibition_tweetWith', [
+                    'what' => $this->exhibition->title,
+                    'twitter' => $this->exhibition->inPlace->twitter,
+                    'url' => route('front.place.show', ['slug' => $this->exhibition->inPlace->slug]),
+                    'site' => $this->exhibition->link,
+                ]));
+            } else {
+                $status = ucfirst(__('app.send_exhibition_tweetWithout', [
+                    'what' => $this->exhibition->title,
+                    'name' => $this->exhibition->inPlace->name,
+                    'url' => route('front.place.show', ['slug' => $this->exhibition->inPlace->slug]),
+                    'site' => $this->exhibition->link,
+                ]));
+            }
 
             try {
                 Mastodon::domain('https://mastodon.art')->token(env('MASTODON_EXPORATOR_TOKEN', false));
