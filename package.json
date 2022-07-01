@@ -42,7 +42,7 @@
         "leaflet": "^1.7.1",
         "leaflet-ajax": "^2.1.0",
         "leaflet-extra-markers": "^1.2.1",
-        "leaflet.locatecontrol": "^0.74.1",
+        "leaflet.locatecontrol": "^0.76.1",
         "orejime": "^2.1.1"
     }
 }
