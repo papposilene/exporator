@@ -1,8 +1,8 @@
 {
-    "name": "laravel/laravel",
+    "name": "papposilene/exporator",
     "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "description": "Exporator is an Laravel-based application for referencing temporary exhibitions. ",
+    "keywords": ["museum", "exhibition", "heritage", "culture", "laravel"],
     "license": "MIT",
     "require": {
         "php": "^8.1",
