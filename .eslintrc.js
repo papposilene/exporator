@@ -2,7 +2,7 @@ module.exports = {
 	parser: '@babel/eslint-parser',
 	extends: [
         'eslint:recommended',
-        'prettier'
+        'plugin:prettier/recommended'
     ],
 	plugins: ['prettier'],
 	parserOptions: {
@@ -18,9 +18,7 @@ module.exports = {
 		'RL_COMMUNITY': true,
 		'RL_ES6': true
 	},
-	// http://eslint.org/docs/rules/
 	rules: {
-		// plugins
 		'prettier/prettier': 'error',
 
 		'no-console': 'error',
