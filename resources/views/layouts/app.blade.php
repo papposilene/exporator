@@ -32,7 +32,7 @@
         _paq.push(['trackPageView']);
         _paq.push(['enableLinkTracking']);
         (function() {
-            var u="//pwk.psln.nl/";
+            var u="//mtm.httpap.dev/";
             _paq.push(['setTrackerUrl', u+'matomo.php']);
             _paq.push(['setSiteId', '14']);
             var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
@@ -74,7 +74,7 @@
         @if (App::environment('prod'))
         <!-- Matomo -->
         <noscript>
-            <img type="opt-in" data-type="application/javascript" data-name="matomo" data-src="//pwk.psln.nl/matomo.php?idsite=14&amp;rec=1" style="border:0;" alt="" />
+            <img type="opt-in" data-type="application/javascript" data-name="matomo" data-src="//mtm.httpap.dev/matomo.php?idsite=14&amp;rec=1" style="border:0;" alt="" />
         </noscript>
         @endif
     </body>
