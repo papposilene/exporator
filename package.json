@@ -35,7 +35,7 @@
         "@fullcalendar/timegrid": "^5.9.0",
         "@themesberg/flowbite": "^1.3.0",
         "@themesberg/tailwind-datepicker": "^1.0.1",
-        "@tiptap/core": "^2.0.0-beta.138",
+        "@tiptap/core": "^2.0.0-beta.182",
         "@tiptap/starter-kit": "^2.0.0-beta.185",
         "chart.js": "^3.6.0",
         "eslint-plugin-prettier": "^4.0.0",
